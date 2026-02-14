@@ -1,0 +1,254 @@
+/* Resource Page Styles - resources.ivanmanfredi.com */
+/* External file: iterate on styling without touching n8n nodes */
+
+/* ── Base Sizing ── */
+.resource-content {
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+.resource-content h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 3.5rem 0 1.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.resource-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+  line-height: 1.25;
+}
+.resource-content p {
+  margin: 1rem 0;
+  line-height: 1.85;
+}
+.resource-content ul, .resource-content ol {
+  margin: 1.25rem 0;
+}
+.resource-content li {
+  margin: 0.6rem 0;
+  line-height: 1.75;
+}
+
+/* ── Hero Section Sizing ── */
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+}
+.hero-intro {
+  font-size: 1.25rem !important;
+  line-height: 1.7 !important;
+}
+
+/* ── Fix HR Dividers (visible on white) ── */
+.resource-content hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, #00E676 0%, #000 30%, #000 70%, #2979FF 100%);
+  margin: 3rem 0;
+  opacity: 1;
+}
+
+/* ── Blockquotes / Callouts ── */
+.resource-content blockquote {
+  border-left: 5px solid #00E676;
+  padding: 1.25rem 1.75rem;
+  margin: 2rem 0;
+  background: #f0fdf4;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Key Takeaway Box ── */
+.resource-content .key-takeaway,
+.resource-content [data-type="takeaway"] {
+  background: #000;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  margin: 2.5rem 0;
+  border: 3px solid #000;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.resource-content .key-takeaway strong,
+.resource-content [data-type="takeaway"] strong {
+  color: #00E676;
+}
+
+/* ── Tip / Warning / Info Boxes ── */
+.resource-content .tip-box,
+.resource-content [data-type="tip"] {
+  background: #f0f9ff;
+  border: 2px solid #2979FF;
+  border-left: 5px solid #2979FF;
+  padding: 1.25rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 4px 4px 0;
+}
+.resource-content .warning-box,
+.resource-content [data-type="warning"] {
+  background: #fff7ed;
+  border: 2px solid #f97316;
+  border-left: 5px solid #f97316;
+  padding: 1.25rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Phase/Step Cards ── */
+.resource-content .phase-card {
+  display: flex;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 0 rgba(0,0,0,1);
+  background: #fff;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.resource-content .phase-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 rgba(0,0,0,1);
+}
+.resource-content .phase-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 56px;
+  background: #00E676;
+  border: 3px solid #000;
+  font-weight: 900;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* ── Comparison / Before-After ── */
+.resource-content .comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 2rem 0;
+  border: 3px solid #000;
+  overflow: hidden;
+}
+.resource-content .comparison-grid .bad {
+  background: #fef2f2;
+  padding: 1.5rem;
+  border-right: 3px solid #000;
+}
+.resource-content .comparison-grid .good {
+  background: #f0fdf4;
+  padding: 1.5rem;
+}
+.resource-content .comparison-grid .label {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+.resource-content .comparison-grid .bad .label { color: #dc2626; }
+.resource-content .comparison-grid .good .label { color: #16a34a; }
+
+/* ── Stats / Numbers Row ── */
+.resource-content .stats-row {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.resource-content .stat-card {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 0 rgba(0,0,0,1);
+}
+.resource-content .stat-card .number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #00E676;
+}
+.resource-content .stat-card .label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+/* ── Mermaid Diagrams ── */
+.mermaid {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 0 rgba(0,0,0,1);
+  background: #fafafa;
+  text-align: center;
+  overflow-x: auto;
+}
+
+/* ── Tables (improved) ── */
+.resource-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0 rgba(0,0,0,1);
+}
+.resource-content th {
+  background: black;
+  color: white;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+.resource-content td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.resource-content tr:hover td {
+  background: #f9f9f9;
+}
+
+/* ── Code Blocks ── */
+.resource-content code {
+  background: #f4f4f4;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  border: 1px solid #e5e7eb;
+}
+.resource-content pre {
+  background: #0a0a0a;
+  color: #00E676;
+  padding: 2rem;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0 rgba(0,0,0,1);
+  overflow-x: auto;
+  margin: 2rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .resource-content h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; }
+  .resource-content h3 { font-size: 1.25rem; }
+  .resource-content { font-size: 1.05rem; }
+  .comparison-grid { grid-template-columns: 1fr !important; }
+  .comparison-grid .bad { border-right: none !important; border-bottom: 3px solid #000; }
+  .stats-row { flex-direction: column; }
+  .phase-card { flex-direction: column; }
+}
