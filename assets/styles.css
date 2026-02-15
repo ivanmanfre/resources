@@ -7,7 +7,7 @@
   line-height: 1.85;
 }
 .resource-content h2 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   text-transform: uppercase;
   margin: 3.5rem 0 1.25rem;
@@ -15,7 +15,7 @@
   line-height: 1.15;
 }
 .resource-content h3 {
-  font-size: 1.65rem;
+  font-size: 1.85rem;
   font-weight: 700;
   margin: 2.5rem 0 1rem;
   line-height: 1.25;
@@ -34,7 +34,16 @@
 
 /* ── Hero Section Sizing ── */
 .hero-title {
-  font-size: clamp(2.75rem, 7vw, 5rem) !important;
+  font-size: clamp(3rem, 7.5vw, 5.5rem) !important;
+  display: inline-block;
+}
+.hero-title::after {
+  content: '';
+  display: block;
+  width: 140px;
+  height: 6px;
+  background: #00E676;
+  margin-top: 0.75rem;
 }
 .hero-intro {
   font-size: 1.35rem !important;
@@ -276,8 +285,8 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .resource-content h2 { font-size: 1.65rem; margin: 2.5rem 0 1rem; }
-  .resource-content h3 { font-size: 1.35rem; }
+  .resource-content h2 { font-size: 1.85rem; margin: 2.5rem 0 1rem; }
+  .resource-content h3 { font-size: 1.5rem; }
   .resource-content { font-size: 1.1rem; }
   .comparison-grid { grid-template-columns: 1fr !important; }
   .comparison-grid .bad { border-right: none !important; border-bottom: 3px solid #000; }
