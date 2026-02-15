@@ -34,7 +34,9 @@
 
 /* ── Hero Section Sizing ── */
 .hero-title {
-  font-size: clamp(3rem, 7.5vw, 5.5rem) !important;
+  font-size: clamp(2.75rem, 6.5vw, 4.75rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.03em !important;
   display: inline-block;
 }
 .hero-title::after {
@@ -46,7 +48,7 @@
   margin-top: 0.75rem;
 }
 .hero-intro {
-  font-size: 1.5rem !important;
+  font-size: 1.6rem !important;
   line-height: 1.7 !important;
 }
 
