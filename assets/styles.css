@@ -38,6 +38,8 @@
   font-weight: 900 !important;
   letter-spacing: -0.03em !important;
   display: inline-block;
+  text-align: center;
+  width: 100%;
 }
 .hero-title::after {
   content: '';
@@ -45,11 +47,14 @@
   width: 140px;
   height: 6px;
   background: #00E676;
-  margin-top: 0.75rem;
+  margin: 0.75rem auto 0;
 }
 .hero-intro {
   font-size: 1.35rem !important;
   line-height: 1.7 !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* ── Fix HR Dividers (visible on white) ── */
