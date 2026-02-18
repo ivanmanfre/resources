@@ -1,680 +1,924 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>LinkedIn Content Brief Generator from Client Calls | Ivan Manfredi</title><meta name="description" content="N8N workflow template that automates LinkedIn content briefs from client call transcripts. Built for agencies and ghostwriters managing multiple accounts." /><meta property="og:title" content="LinkedIn Content Brief Generator from Client Calls | Ivan Manfredi" /><meta property="og:description" content="N8N workflow template that automates LinkedIn content briefs from client call transcripts. Built for agencies and ghostwriters managing multiple accounts." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{primary:'#000000',paper:'#ffffff',accent:'#00E676',cyan:'#2979FF'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{background-color:#fff;color:#000;overflow-x:hidden}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.json-viewer{font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.6;background:#1a1a1a;color:#00E676;padding:2rem;border:3px solid black;overflow-x:auto;max-height:600px;overflow-y:auto;white-space:pre}.json-viewer::-webkit-scrollbar{width:10px;height:10px}.json-viewer::-webkit-scrollbar-track{background:#0a0a0a}.json-viewer::-webkit-scrollbar-thumb{background:#00E676;border:2px solid #1a1a1a}.copy-notif{position:fixed;top:100px;right:20px;background:#00E676;color:black;padding:1rem 2rem;border:2px solid black;box-shadow:4px 4px 0 0 rgba(0,0,0,1);font-weight:bold;text-transform:uppercase;z-index:1000;animation:slideIn .3s ease-out}@keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}.fade-out{animation:fadeOut .3s ease-out forwards}@keyframes fadeOut{to{opacity:0;transform:translateY(-20px)}}</style><link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css"></head><body class="font-sans selection:bg-accent selection:text-black"><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic group-hover:shadow-comic-active transition-all flex items-center justify-center"><span class="relative text-white font-black text-lg">IM</span></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase hover:underline decoration-2 decoration-accent">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="hidden md:inline-block px-6 py-2 bg-accent border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Let's Talk</a></div></div></nav><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">N8N Workflow</div><h1 class="hero-title text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">LinkedIn Content Brief Generator from Client Calls</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-8"><p style="margin-bottom: 16px; line-height: 1.7;">You're in. This is the full n8n workflow blueprint - every node, every prompt, the logic behind each step. Start by reading through the complete workflow architecture before you build anything. Once you see how the pieces connect, you'll set this up in 2-3 hours and stop burning half your week on transcript processing.</p></p><img src="https://drive.google.com/file/d/1L1PH6WgBbSkO48ERHR_0E9eBnQZJ7I_X/view?usp=drivesdk" alt="LinkedIn Content Brief Generator from Client Calls" class="w-full border-4 border-black shadow-comic mt-8" /></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><div class="bg-gray-50 border-2 border-black p-6 mb-6"><p class="text-lg font-bold mb-4">This workflow contains 0 nodes.</p><h3 class="font-bold text-base mb-3 uppercase">Node Types Used</h3><div class="flex flex-wrap gap-2"></div></div><p style="margin-bottom: 16px; line-height: 1.7;">Hey, this is Ivan, and I'm about to give you the full n8n workflow blueprint for automating LinkedIn content briefs from your client calls - so you can stop spending 3-5 hours per client manually extracting insights and matching brand voice.</p>
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AI-Powered LinkedIn Content Brief Generator from Client Calls | Ivan Manfredi</title><meta name="description" content="n8n workflow template that turns client call transcripts into content briefs automatically. Built for agencies and ghostwriters managing multiple clients." /><meta property="og:title" content="AI-Powered LinkedIn Content Brief Generator from Client Calls | Ivan Manfredi" /><meta property="og:description" content="n8n workflow template that turns client call transcripts into content briefs automatically. Built for agencies and ghostwriters managing multiple clients." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{primary:'#000000',paper:'#ffffff',accent:'#00E676',cyan:'#2979FF'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{background-color:#fff;color:#000;overflow-x:hidden}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.json-viewer{font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.6;background:#1a1a1a;color:#00E676;padding:2rem;border:3px solid black;overflow-x:auto;max-height:600px;overflow-y:auto;white-space:pre}.json-viewer::-webkit-scrollbar{width:10px;height:10px}.json-viewer::-webkit-scrollbar-track{background:#0a0a0a}.json-viewer::-webkit-scrollbar-thumb{background:#00E676;border:2px solid #1a1a1a}.copy-notif{position:fixed;top:100px;right:20px;background:#00E676;color:black;padding:1rem 2rem;border:2px solid black;box-shadow:4px 4px 0 0 rgba(0,0,0,1);font-weight:bold;text-transform:uppercase;z-index:1000;animation:slideIn .3s ease-out}@keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}.fade-out{animation:fadeOut .3s ease-out forwards}@keyframes fadeOut{to{opacity:0;transform:translateY(-20px)}}</style><link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css"></head><body class="font-sans selection:bg-accent selection:text-black"><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic group-hover:shadow-comic-active transition-all flex items-center justify-center"><span class="relative text-white font-black text-lg">IM</span></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase hover:underline decoration-2 decoration-accent">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="hidden md:inline-block px-6 py-2 bg-accent border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Let's Talk</a></div></div></nav><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">N8N Workflow</div><h1 class="hero-title text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">AI-Powered LinkedIn Content Brief Generator from Client Calls</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-8"><p style="margin-bottom: 16px; line-height: 1.7;">You're in. This is the complete n8n workflow blueprint - every node, every connection, every piece of logic explained. Start with the workflow overview section, then build it piece by piece. The whole thing should take 4-6 hours if you're newer to n8n, or about 2 hours if you've built a few automations before.</p></p><img src="https://drive.google.com/file/d/1f16McPD25eBPWYp9Bb75Jco7iss_wrKr/view?usp=drivesdk" alt="AI-Powered LinkedIn Content Brief Generator from Client Calls" class="w-full border-4 border-black shadow-comic mt-8" /></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><div class="bg-gray-50 border-2 border-black p-6 mb-6"><p class="text-lg font-bold mb-4">This workflow contains 27 nodes.</p><h3 class="font-bold text-base mb-3 uppercase">Node Types Used</h3><div class="flex flex-wrap gap-2"><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">stickyNote</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">googleDrive</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">webhook</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">code</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">httpRequest</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">@n8n/n8n-nodes-langchain.anthropic</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">if</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">merge</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">googleDocs</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">slack</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">@n8n/n8n-nodes-langchain.toolThink</span></div></div><p style="margin-bottom: 16px; line-height: 1.7;">Hey, this is Ivan, and I'm about to give you the <strong>AI Client Content Brief Automation</strong> workflow so you can stop spending hours manually pulling insights from client calls and start generating content briefs in minutes.</p>
 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
 <h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Who Am I?</h2>
 <ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">AI automation consultant</li>
 <li style="margin-bottom: 8px; line-height: 1.6;">Built AI-powered automation systems for 50+ businesses</li>
 <li style="margin-bottom: 8px; line-height: 1.6;">Designed workflows that save teams 20+ hours per week</li>
 <li style="margin-bottom: 8px; line-height: 1.6;">Created AI solutions that consistently 3-5x operational efficiency</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">The guy who actually builds these systems, not just talks about them</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">The guy who automates the boring stuff so you can focus on the creative stuff</li>
 </ul>
 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
 <h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">What To Do With This</h2>
-This is a complete n8n workflow blueprint. You'll need:
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">n8n instance (cloud or self-hosted)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Fireflies.ai or similar transcription service</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">OpenAI API access (GPT-4 recommended)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">ClickUp account (or adapt to your project management tool)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">About 2-3 hours to build and test</li>
+<p style="margin-bottom: 16px; line-height: 1.7;">This is a complete n8n workflow blueprint. You'll need:</p>
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;"><strong>n8n instance</strong> (cloud or self-hosted)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Meeting transcription tool</strong> (Fireflies, Otter, or similar)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Vector database</strong> for client voice profiles (Pinecone, Supabase, or n8n's built-in)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>AI model access</strong> (Claude or GPT)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Your project management tool</strong> (ClickUp, Notion, Asana)</li>
 </ul>
-Read through the full workflow logic first, then build it node by node. I've included the actual prompts and the reasoning behind each step.
+<strong>Time to implement:</strong> 4-6 hours for the full build, or 2 hours if you're already comfortable with n8n.
+<p style="margin-bottom: 16px; line-height: 1.7;">Read through the workflow logic first, then build it section by section. I'll walk you through exactly what each node does and why.</p>
 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
 <h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Why This Workflow Matters</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;">Here's what I see with marketing agencies and ghostwriting teams managing multiple client accounts: they have great strategy calls, tons of golden nuggets come up, and then... someone has to sit there for hours pulling insights out of transcripts, matching them against the client's voice, and turning them into content briefs.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">The problem isn't the call itself. It's everything that happens after.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">One agency I worked with had a team member spending 4 hours per client call just doing this extraction work. Multiply that by 8-10 clients, and you've got nearly a full-time role that's just... processing. Not creating. Processing.</p>
-This workflow changes that. Call ends, transcript hits Fireflies, automation kicks in, and within minutes you have:
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Key insights extracted and categorized</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Content ideas matched to the client's ICP</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Briefs written in the client's tone of voice</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Everything waiting in ClickUp for review</li>
+<p style="margin-bottom: 16px; line-height: 1.7;">Here's what I see with agencies and ghostwriters managing multiple clients:</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">You hop off a strategy call. Good call, lots of insights. Client talked about their positioning, dropped some golden phrases, mentioned competitors, shared what's working and what's not.</p>
+Then you spend the next 2-4 hours:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Scrubbing through the transcript to find the good stuff</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Matching insights to the client's brand voice guidelines</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Formatting everything into a content brief your team can actually use</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Repeating this for every client, every week</li>
 </ul>
-The human still makes the final call. But the human isn't doing 4 hours of grunt work to get there.
+That's 8-16 hours a week on extraction work. Not strategy. Not creative. Just pulling information from one place and putting it in another.
+<p style="margin-bottom: 16px; line-height: 1.7;">This workflow does that entire process automatically. Call ends, transcript lands in your system, AI extracts the insights, matches it against the client's voice profile, and delivers a ready-to-use content brief to your project management tool.</p>
 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">The Complete Workflow Architecture</h2>
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Overview</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;">``<code><br>Fireflies Webhook → Transcript Processing → Content Extraction Agent → ICP Relevance Filter → Tone of Voice Agent → ClickUp Task Creation → (Optional) Short-Form Content Trigger<br></code>`<code></p>
-<p style="margin-bottom: 16px; line-height: 1.7;">The key insight from how this was built for Kyle's system: it's not one big prompt doing everything. It's a chain of specialized agents, each doing one job well, with filters in between to catch garbage before it propagates.</p>
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Workflow Overview</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">``<code><br>Trigger: New transcript arrives<br>    ↓<br>Step 1: Extract and structure raw insights<br>    ↓<br>Step 2: Pull client voice profile from vector database<br>    ↓<br>Step 3: Match insights to content opportunities<br>    ↓<br>Step 4: Generate content brief with voice guidelines<br>    ↓<br>Step 5: Deliver to project management tool<br>    ↓<br>Optional: Send notification for review<br></code>`<code></p>
 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Node-by-Node Breakdown</h2>
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 1: Fireflies Webhook Trigger</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> Webhook</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Purpose:</strong> Catches new transcripts the moment they're processed</p>
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Detailed Workflow Build</h2>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 1: Webhook Trigger</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Receives the transcript when your meeting tool processes a new recording.</p>
 <strong>Configuration:</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">HTTP Method: POST</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Path: </code>/fireflies-transcript<code></li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Authentication: Header Auth (set a secret key)</li>
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Webhook URL: Your n8n instance generates this</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Authentication: Header auth with API key</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">HTTP Method: POST</li>
 </ul>
-<strong>What comes in:</strong>
-</code>`<code>json
-{
-  "transcript_id": "abc123",
-  "meeting_title": "Client Strategy Call - Acme Corp",
-  "participants": ["ivan@agency.com", "client@acme.com"],
-  "transcript_text": "[Full transcript]",
-  "duration_minutes": 45,
-  "date": "2024-01-15"
-}
-</code>`<code>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Why this matters:</strong> You need the full transcript text, not just a summary. Fireflies gives you both - always pull the full transcript for content extraction.</p>
+<strong>Connect this to:</strong> Fireflies, Otter, or whatever transcription tool you use. Most have Zapier or webhook integrations. Point them at this URL.
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Data you're receiving:</strong><br></code>`<code>json<br>{<br>  "meeting_id": "abc123",<br>  "client_name": "Client XYZ",<br>  "transcript": "Full transcript text...",<br>  "duration": "45 minutes",<br>  "date": "2024-01-15",<br>  "participants": ["You", "Client Contact"]<br>}<br></code>`<code></p>
+<blockquote style="border-left: 3px solid rgba(255,255,255,0.3); padding-left: 16px; margin: 16px 0; font-style: italic; opacity: 0.9;"><strong>Tip:</strong> If your transcription tool doesn't have a native webhook, set up a Zapier or Make trigger that watches for new transcripts and sends them to your n8n webhook.</blockquote>
 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 2: Client Identification</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> Function Node</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Purpose:</strong> Match the incoming call to a specific client profile</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Logic:</strong><br></code>`<code>javascript<br>// Extract client identifier from meeting title or participants<br>const meetingTitle = $input.first().json.meeting_title;<br>const participants = $input.first().json.participants;</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">// Simple pattern matching - customize for your naming convention<br>let clientId = null;<br>let clientName = null;</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">// Check meeting title for client name pattern<br>const titleMatch = meetingTitle.match(/Client.<em>?-\s</em>(.+)/i);<br>if (titleMatch) {<br>  clientName = titleMatch[1].trim();<br>}</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">// Return client context<br>return [{<br>  json: {<br>    ...$input.first().json,<br>    client_name: clientName,<br>    client_id: clientId,<br>    needs_manual_matching: !clientName<br>  }<br>}];<br></code>``</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Why this step exists:</strong></p></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-5xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-8">Workflow JSON</h2><div class="flex flex-wrap gap-4 mb-6"><button onclick="copyJSON()" class="px-6 py-3 bg-accent text-black border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Copy JSON</button><button onclick="downloadJSON()" class="px-6 py-3 bg-cyan text-white border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Download .json</button></div><div class="json-viewer" id="wfJSON">Based on the research and workflow patterns, I'll generate a production-ready n8n workflow JSON for business automation. The provided example is already well-structured, but I'll create a refined version with proper formatting and ensure all best practices are followed.
-
-```json
-{
-  "name": "Lead Management &amp; Customer Onboarding Automation",
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 2: Transcript Cleanup (Code Node)</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Cleans up the raw transcript, removes filler, and structures the conversation into usable chunks.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Why this matters:</strong> Raw transcripts are messy. "Um," "uh," speaker labels mixed in, timestamp artifacts. The AI works better with clean input.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Code:</strong><br></code>``javascript<br>const transcript = $input.first().json.transcript;</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">// Remove common filler words and artifacts<br>let cleaned = transcript<br>  .replace(/\b(um|uh|like,|you know,|basically,)\b/gi, '')<br>  .replace(/\s+/g, ' ')<br>  .trim();</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">// Split into speaker segments<br>const segments</p></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-5xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-8">Workflow JSON</h2><div class="flex flex-wrap gap-4 mb-6"><button onclick="copyJSON()" class="px-6 py-3 bg-accent text-black border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Copy JSON</button><button onclick="downloadJSON()" class="px-6 py-3 bg-cyan text-white border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Download .json</button></div><div class="json-viewer" id="wfJSON">{
   "nodes": [
     {
       "parameters": {
-        "formTitle": "Contact Us",
-        "formDescription": "Get in touch with our team",
-        "formFields": {
-          "values": [
-            {
-              "fieldLabel": "Full Name",
-              "fieldType": "text",
-              "requiredField": true
-            },
-            {
-              "fieldLabel": "Email",
-              "fieldType": "email",
-              "requiredField": true
-            },
-            {
-              "fieldLabel": "Company",
-              "fieldType": "text",
-              "requiredField": false
-            },
-            {
-              "fieldLabel": "Phone",
-              "fieldType": "text",
-              "requiredField": false
-            },
-            {
-              "fieldLabel": "Message",
-              "fieldType": "textarea",
-              "requiredField": false
-            },
-            {
-              "fieldLabel": "Company Size",
-              "fieldType": "dropdown",
-              "requiredField": false,
-              "fieldOptions": {
-                "values": [
-                  {"option": "1-10"},
-                  {"option": "11-50"},
-                  {"option": "50+"}
-                ]
-              }
-            },
-            {
-              "fieldLabel": "Budget",
-              "fieldType": "dropdown",
-              "requiredField": false,
-              "fieldOptions": {
-                "values": [
-                  {"option": "starter"},
-                  {"option": "professional"},
-                  {"option": "enterprise"}
-                ]
-              }
-            },
-            {
-              "fieldLabel": "Timeline",
-              "fieldType": "dropdown",
-              "requiredField": false,
-              "fieldOptions": {
-                "values": [
-                  {"option": "immediate"},
-                  {"option": "1-3 months"},
-                  {"option": "3+ months"}
-                ]
-              }
-            }
-          ]
-        },
-        "options": {}
+        "content": "## Unnamed Workflow\n\nThis workflow automates the creation of LinkedIn content briefs from client meeting recordings. When a webhook receives meeting data (from Fathom), it identifies the client using Claude AI by matching meeting details to Google Drive folders, retrieves all reference documents (brand guidelines, past content, strategy decks) from the client's folder, creates a formatted transcript document, and uses Claude Opus 4.5 with extensive prompting to generate 8-14 high-quality, non-overlapping LinkedIn content briefs. These briefs include verbatim soundbites with timestamps, hook options, story frameworks, and CTAs aligned to the client's brand voice and content pillars. The workflow creates Google Docs for both the transcript and briefs, shares them with team members, and posts a Slack notification with the document link.\n\n### Setup Instructions\n1. Import this workflow into your n8n instance\n2. Configure all required credentials (look for nodes with missing credentials)\n3. Replace any YOUR_*_HERE placeholder values with your actual values\n4. Test the workflow with sample data before activating\n\n**Nodes:** 26 | **Types:** googleDrive, webhook, code, httpRequest, ai:anthropic, if, merge, googleDocs, slack, ai:toolThink",
+        "width": 500,
+        "height": 320
       },
-      "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
-      "name": "Lead Capture Form",
-      "type": "n8n-nodes-base.formTrigger",
-      "typeVersion": 2.2,
-      "position": [250, 300],
-      "webhookId": "lead-capture-form"
-    },
-    {
-      "parameters": {
-        "content": "## Lead Capture &amp; Onboarding Workflow\n\nThis workflow automates lead capture and customer onboarding:\n\n1. **Form Submission** - Captures lead data\n2. **Validation** - Validates email and required fields\n3. **Lead Scoring** - Calculates priority based on company size, budget, timeline\n4. **CRM Integration** - Creates/updates HubSpot contact\n5. **Notifications** - Sends welcome email and Slack alert\n6. **Logging** - Records all leads in Google Sheets\n\n**Error Handling**: Invalid submissions are logged separately and flagged for manual review.",
-        "height": 380,
-        "width": 420
-      },
-      "id": "b2c3d4e5-f6a7-4b5c-9d0e-1f2a3b4c5d6e",
-      "name": "Workflow Overview",
+      "id": "setup-note-1771441162399",
+      "name": "Setup Instructions",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [100, 80]
+      "position": [
+        -200,
+        -400
+      ]
     },
     {
       "parameters": {
-        "jsCode": "// Validate and enrich lead data\nconst formData = $input.item.json;\n\n// Email validation\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nconst isValidEmail = emailRegex.test(formData['Email'] || '');\n\n// Phone number cleaning (remove non-digits)\nconst cleanPhone = formData['Phone'] ? formData['Phone'].replace(/\\D/g, '') : '';\n\n// Validate required fields\nconst hasName = formData['Full Name'] &amp;&amp; formData['Full Name'].trim().length &gt; 0;\n\n// Calculate lead score based on form data\nlet leadScore = 0;\nif (formData['Company Size'] === '50+') leadScore += 30;\nif (formData['Budget'] === 'enterprise') leadScore += 40;\nelse if (formData['Budget'] === 'professional') leadScore += 20;\nif (formData['Timeline'] === 'immediate') leadScore += 30;\nelse if (formData['Timeline'] === '1-3 months') leadScore += 15;\n\n// Create cleaned and enriched data object\nreturn {\n  json: {\n    originalData: formData,\n    isValid: isValidEmail &amp;&amp; hasName,\n    validationErrors: [\n      ...(!isValidEmail ? ['Invalid email format'] : []),\n      ...(!hasName ? ['Full Name is required'] : [])\n    ],\n    cleanedData: {\n      email: (formData['Email'] || '').toLowerCase().trim(),\n      name: (formData['Full Name'] || '').trim(),\n      firstName: (formData['Full Name'] || '').trim().split(' ')[0],\n      lastName: (formData['Full Name'] || '').trim().split(' ').slice(1).join(' ') || '',\n      company: (formData['Company'] || '').trim() || 'Not Provided',\n      phone: cleanPhone,\n      message: (formData['Message'] || '').trim(),\n      companySize: formData['Company Size'] || '',\n      budget: formData['Budget'] || '',\n      timeline: formData['Timeline'] || '',\n      source: 'website_form',\n      submittedAt: new Date().toISOString()\n    },\n    leadScore: leadScore,\n    priority: leadScore &gt;= 60 ? 'high' : leadScore &gt;= 30 ? 'medium' : 'low'\n  }\n};"
-      },
-      "id": "c3d4e5f6-a7b8-4c5d-0e1f-2a3b4c5d6e7f",
-      "name": "Validate &amp; Score Lead",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [650, 300]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": false,
-            "leftValue": ""
+        "resource": "fileFolder",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "18POaERzvk3Y5NdhiUxyVoA8OlCt-jK-v",
+            "mode": "list",
+            "cachedResultName": "Active Clients (maggie)",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/18POaERzvk3Y5NdhiUxyVoA8OlCt-jK-v"
           },
-          "conditions": [
-            {
-              "id": "d4e5f6a7-b8c9-4d5e-1f2a-3b4c5d6e7f8a",
-              "leftValue": "={{ $json.isValid }}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
+          "whatToSearch": "folders"
         },
         "options": {}
       },
-      "id": "e5f6a7b8-c9d0-4e5f-2a3b-4c5d6e7f8a9b",
-      "name": "Is Data Valid?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [1050, 300]
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2560,
+        -288
+      ],
+      "id": "567d7313-213e-479e-a318-5e8091654794",
+      "name": "Client Folders"
     },
     {
       "parameters": {
-        "resource": "contact",
-        "operation": "search",
-        "filterGroups": {
-          "values": [
-            {
-              "filters": [
-                {
-                  "propertyName": "email",
-                  "operator": "EQ",
-                  "value": "={{ $json.cleanedData.email }}"
-                }
-              ]
-            }
-          ]
-        },
-        "additionalFields": {}
-      },
-      "id": "f6a7b8c9-d0e1-4f5a-3b4c-5d6e7f8a9b0c",
-      "name": "Search HubSpot for Existing Contact",
-      "type": "n8n-nodes-base.hubspot",
-      "typeVersion": 2,
-      "position": [1450, 200]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": false,
-            "leftValue": ""
-          },
-          "conditions": [
-            {
-              "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5e",
-              "leftValue": "={{ $json.results?.length || 0 }}",
-              "rightValue": 0,
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
+        "httpMethod": "POST",
+        "path": "42252d0f-c253-43ea-b344-15bd5e25e234",
         "options": {}
       },
-      "id": "a7b8c9d0-e1f2-4a5b-4c5d-6e7f8a9b0c1d",
-      "name": "Is New Contact?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [1850, 200]
-    },
-    {
-      "parameters": {
-        "resource": "contact",
-        "operation": "create",
-        "email": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.email }}",
-        "additionalFields": {
-          "firstName": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.firstName }}",
-          "lastName": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.lastName }}",
-          "company": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.company }}",
-          "phone": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.phone }}",
-          "lifecycleStage": "lead",
-          "customPropertiesUi": {
-            "customPropertiesValues": [
-              {
-                "property": "message",
-                "value": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.message }}"
-              }
-            ]
-          }
-        }
-      },
-      "id": "b8c9d0e1-f2a3-4b5c-5d6e-7f8a9b0c1d2e",
-      "name": "Create HubSpot Contact",
-      "type": "n8n-nodes-base.hubspot",
-      "typeVersion": 2,
-      "position": [2250, 100]
-    },
-    {
-      "parameters": {
-        "resource": "contact",
-        "operation": "update",
-        "contactId": "={{ $json.results[0].id }}",
-        "updateFields": {
-          "customPropertiesUi": {
-            "customPropertiesValues": [
-              {
-                "property": "message",
-                "value": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.message }}"
-              }
-            ]
-          }
-        }
-      },
-      "id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
-      "name": "Update HubSpot Contact",
-      "type": "n8n-nodes-base.hubspot",
-      "typeVersion": 2,
-      "position": [2250, 300]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "e6f7a8b9-c0d1-4e2f-3a4b-5c6d7e8f9a0b",
-              "name": "contactId",
-              "value": "={{ $json.id || $('Is New Contact?').item.json.results?.[0]?.id }}",
-              "type": "string"
-            },
-            {
-              "id": "f7a8b9c0-d1e2-4f3a-4b5c-6d7e8f9a0b1c",
-              "name": "contactName",
-              "value": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.name }}",
-              "type": "string"
-            },
-            {
-              "id": "a8b9c0d1-e2f3-4a4b-5c6d-7e8f9a0b1c2d",
-              "name": "contactEmail",
-              "value": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.email }}",
-              "type": "string"
-            },
-            {
-              "id": "b9c0d1e2-f3a4-4b5c-6d7e-8f9a0b1c2d3e",
-              "name": "priority",
-              "value": "={{ $('Validate &amp; Score Lead').item.json.priority }}",
-              "type": "string"
-            },
-            {
-              "id": "c0d1e2f3-a4b5-4c6d-7e8f-9a0b1c2d3e4f",
-              "name": "leadScore",
-              "value": "={{ $('Validate &amp; Score Lead').item.json.leadScore }}",
-              "type": "number"
-            },
-            {
-              "id": "d0e1f2a3-b4c5-4d6e-7f8a-9a0b1c2d3e4f",
-              "name": "isNewContact",
-              "value": "={{ $('Is New Contact?').item.json.results?.length === 0 }}",
-              "type": "boolean"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a",
-      "name": "Prepare Contact Data",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [2650, 200]
-    },
-    {
-      "parameters": {
-        "sendTo": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.email }}",
-        "subject": "=Thanks for reaching out, {{ $('Validate &amp; Score Lead').item.json.cleanedData.firstName }}!",
-        "emailType": "html",
-        "message": "=&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;style&gt;\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }\n    .container { max-width: 600px; margin: 0 auto; padding: 20px; }\n    .header { background-color: #0066cc; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }\n    .content { padding: 20px; background-color: #f9f9f9; }\n    .button { display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 5px; margin: 20px 0; }\n    .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"header\"&gt;\n      &lt;h1&gt;Welcome!&lt;/h1&gt;\n    &lt;/div&gt;\n    &lt;div class=\"content\"&gt;\n      &lt;p&gt;Hi {{ $('Validate &amp; Score Lead').item.json.cleanedData.firstName }},&lt;/p&gt;\n      &lt;p&gt;Thank you for your interest! We've received your inquiry and one of our team members will review it shortly.&lt;/p&gt;\n      &lt;p&gt;&lt;strong&gt;What you submitted:&lt;/strong&gt;&lt;/p&gt;\n      &lt;ul&gt;\n        &lt;li&gt;&lt;strong&gt;Company:&lt;/strong&gt; {{ $('Validate &amp; Score Lead').item.json.cleanedData.company }}&lt;/li&gt;\n        &lt;li&gt;&lt;strong&gt;Message:&lt;/strong&gt; {{ $('Validate &amp; Score Lead').item.json.cleanedData.message || 'No message provided' }}&lt;/li&gt;\n      &lt;/ul&gt;\n      &lt;p&gt;We typically respond within 24 hours during business days.&lt;/p&gt;\n      &lt;p&gt;Best regards,&lt;br&gt;The Team&lt;/p&gt;\n    &lt;/div&gt;\n    &lt;div class=\"footer\"&gt;\n      &lt;p&gt;You received this email because you submitted a form on our website.&lt;/p&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;",
-        "options": {}
-      },
-      "id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
-      "name": "Send Welcome Email",
-      "type": "n8n-nodes-base.gmail",
+      "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
-      "position": [3050, 100]
+      "position": [
+        -2784,
+        -288
+      ],
+      "id": "5d8c1188-0c80-4d5a-b86a-9cba8c6a2831",
+      "name": "Webhook1"
     },
     {
       "parameters": {
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "value": "",
-          "mode": "id"
-        },
-        "text": "=:dart: *New Lead Alert!*\n\n*Name:* {{ $('Validate &amp; Score Lead').item.json.cleanedData.name }}\n*Company:* {{ $('Validate &amp; Score Lead').item.json.cleanedData.company }}\n*Email:* {{ $('Validate &amp; Score Lead').item.json.cleanedData.email }}\n*Phone:* {{ $('Validate &amp; Score Lead').item.json.cleanedData.phone || 'Not provided' }}\n\n*Lead Score:* {{ $('Validate &amp; Score Lead').item.json.leadScore }}/100\n*Priority:* {{ $('Validate &amp; Score Lead').item.json.priority.toUpperCase() }}\n\n*Message:*\n{{ $('Validate &amp; Score Lead').item.json.cleanedData.message || '_No message provided_' }}\n\n*Source:* {{ $('Validate &amp; Score Lead').item.json.cleanedData.source }}\n*Submitted:* {{ $('Validate &amp; Score Lead').item.json.cleanedData.submittedAt }}\n\n{{ $json.isNewContact ? ':sparkles: _New contact created in HubSpot_' : ':arrows_counterclockwise: _Existing contact updated in HubSpot_' }}",
-        "otherOptions": {}
+        "jsCode": "const input = $input.first().json;\nconst meetingTitle = $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title;\nconst transcriptUrl = $('Webhook1').first().json.body.share_url || '';\nconst callDateRaw = $('Webhook1').first().json.body.created_at || '';\nconst callDateFormatted = callDateRaw ? callDateRaw.split('T')[0] : new Date().toLocaleDateString();\n\n// Helper function to convert timestamp to seconds\nfunction timestampToSeconds(timestamp) {\n  const clean = timestamp.replace(/[\\[\\]]/g, '').trim();\n  const parts = clean.split(':').map(Number);\n  if (parts.length === 2) {\n    return parts[0] * 60 + parts[1];\n  } else if (parts.length === 3) {\n    return parts[0] * 3600 + parts[1] * 60 + parts[2];\n  }\n  return 0;\n}\n\n// Extract and parse Claude response\nlet parsedData;\ntry {\n  const rawText = input.content?.[0]?.text || input.text || input;\n  const cleanJson = rawText\n    .replace(/^```json\\n?/, '')\n    .replace(/\\n?```$/, '')\n    .trim();\n  parsedData = typeof cleanJson === 'string' ? JSON.parse(cleanJson) : cleanJson;\n} catch (e) {\n  return { error: \"Could not parse Claude response\", details: e.message };\n}\n\nconst briefs = parsedData.briefs;\nconst ideasToExplore = parsedData.ideas_to_explore || [];\nconst overlapAudit = parsedData.overlap_audit || null;\n\nif (!briefs || !briefs.length) {\n  return { error: \"No briefs found\", structure: parsedData };\n}\n\n// Track links to apply later\nconst linksToApply = [];\n\n// Format briefs\nconst formattedBriefs = briefs.map(brief =&gt; {\n  const supportingPoints = brief.supporting_points?.map((point, i) =&gt; {\n    return `   ${i + 1}. ${point}`;\n  }).join('\\n') || '';\n  \n  const hooks = brief.hooks?.map((hook, i) =&gt; `   ${i + 1}. ${hook}`).join('\\n') || '';\n  \n  const heroVillain = brief.hero_and_villain \n    ? `   Hero: ${brief.hero_and_villain.hero}\\n   Villain: ${brief.hero_and_villain.villain}`\n    : 'N/A';\n  \n  const isInferred = brief.pillar_source?.includes(\"INFERRED\");\n\nconst pillarDisplay = isInferred\n  ? `${brief.content_pillar}: ${brief.angle} (inferred)`\n  : `${brief.content_pillar}: ${brief.angle}`;\n  \n  return `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nBRIEF #${brief.id} | ${pillarDisplay} | Grade: ${brief.grade}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nPITCH:\n${brief.pitch}\n\nMAIN IDEA:\n${brief.main_idea}\n\nSUPPORTING POINTS:\n${supportingPoints}\n\nSTORY (${brief.story?.type || 'N/A'}):\n${brief.story?.summary || 'N/A'}\n\nSO WHAT:\n${brief.so_what || 'N/A'}\n\nHERO AND VILLAIN:\n${heroVillain}\n\nHOOKS:\n${hooks}\n\nCTA (${brief.cta?.type || 'N/A'}):\n${brief.cta?.text || 'N/A'}\n\nDIFFERENTIATION:\n${brief.differentiation_note || 'Standalone topic — no overlap.'}\n\nNOTES:\n${brief.notes}\n`;\n}).join('\\n\\n');\n\n// Format ideas to explore\nconst formattedIdeas = ideasToExplore.length &gt; 0 \n  ? `\\n\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nIDEAS TO EXPLORE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n${ideasToExplore.map((idea, i) =&gt; `${i + 1}. ${idea.idea} (${idea.source})`).join('\\n')}`\n  : '';\n\n// Format overlap audit (only if there are similar pairs)\nconst formattedOverlapAudit = overlapAudit &amp;&amp; overlapAudit.similar_pairs?.length &gt; 0\n  ? `\\n\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nOVERLAP AUDIT ${overlapAudit.audit_passed ? '✓ PASSED' : '⚠ REVIEW NEEDED'}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n${overlapAudit.similar_pairs.map(pair =&gt; \n  `Briefs #${pair.brief_ids.join(' &amp; #')}:\n   Similarity: ${pair.similarity}\n   Distinction: ${pair.distinction}`\n).join('\\n\\n')}`\n  : '';\n\n// Simple header\nconst header = `${meetingTitle}\n${callDateFormatted}\nTranscript: ${transcriptUrl}\n\n`;\n\nconst fullText = header + formattedBriefs + formattedIdeas + formattedOverlapAudit;\n\n// Find transcript URL in header and add to links\nif (transcriptUrl) {\n  const transcriptIndex = fullText.indexOf(transcriptUrl);\n  if (transcriptIndex !== -1) {\n    linksToApply.push({\n      startOffset: transcriptIndex,\n      endOffset: transcriptIndex + transcriptUrl.length,\n      url: transcriptUrl\n    });\n  }\n}\n\n// Find all SOUNDBITE [timestamp] patterns and their positions in the text\nconst soundbiteRegex = /SOUNDBITE \\[(\\d{1,2}:\\d{2}(?::\\d{2})?)\\]/g;\nlet match;\nwhile ((match = soundbiteRegex.exec(fullText)) !== null) {\n  const timestamp = match[1];\n  const seconds = timestampToSeconds(timestamp);\n  const momentUrl = `${transcriptUrl}?t=${seconds}`;\n  \n  linksToApply.push({\n    startOffset: match.index,\n    endOffset: match.index + match[0].length,\n    url: momentUrl\n  });\n}\n\nreturn {\n  text: fullText,\n  links: linksToApply,\n  briefCount: briefs.length,\n  callDate: callDateFormatted,\n  meetingTitle: meetingTitle,\n  transcriptUrl: transcriptUrl,\n  overlapAuditPassed: overlapAudit?.audit_passed ?? null\n};"
       },
-      "id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
-      "name": "Notify Sales Team via Slack",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [3050, 300]
-    },
-    {
-      "parameters": {
-        "operation": "appendOrUpdate",
-        "documentId": {
-          "__rl": true,
-          "value": "",
-          "mode": "id"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "",
-          "mode": "id"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Timestamp": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.submittedAt }}",
-            "Name": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.name }}",
-            "Email": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.email }}",
-            "Company": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.company }}",
-            "Phone": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.phone }}",
-            "Message": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.message }}",
-            "Company Size": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.companySize }}",
-            "Budget": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.budget }}",
-            "Timeline": "={{ $('Validate &amp; Score Lead').item.json.cleanedData.timeline }}",
-            "Lead Score": "={{ $('Validate &amp; Score Lead').item.json.leadScore }}",
-            "Priority": "={{ $('Validate &amp; Score Lead').item.json.priority }}",
-            "Status": "={{ $json.isNewContact ? 'New' : 'Updated' }}",
-            "HubSpot Contact ID": "={{ $json.contactId }}"
-          },
-          "matchingColumns": ["Email"],
-          "schema": []
-        },
-        "options": {}
-      },
-      "id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
-      "name": "Log Lead to Google Sheets",
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
-      "position": [3450, 200]
-    },
-    {
-      "parameters": {
-        "jsCode": "// Handle validation errors\nconst validationData = $input.item.json;\n\nreturn {\n  json: {\n    error: 'Validation Failed',\n    errorDetails: validationData.validationErrors,\n    submittedData: validationData.originalData,\n    timestamp: new Date().toISOString(),\n    action: 'rejected'\n  }\n};"
-      },
-      "id": "a2b3c4d5-e6f7-4a8b-9c0d-1e2f3a4b5c6d",
-      "name": "Format Validation Error",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1450, 500]
+      "position": [
+        1280,
+        -288
+      ],
+      "id": "07ff544c-3469-4238-866e-5920a10b253c",
+      "name": "Format Briefs1"
     },
     {
       "parameters": {
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "value": "",
-          "mode": "id"
-        },
-        "text": "=:warning: *Lead Validation Failed*\n\n*Timestamp:* {{ $json.timestamp }}\n\n*Validation Errors:*\n{{ $json.errorDetails.map(e =&gt; '• ' + e).join('\\n') }}\n\n*Submitted Data:*\n```\n{{ JSON.stringify($json.submittedData, null, 2) }}\n```\n\n_Please review and follow up manually if needed._",
-        "otherOptions": {}
+        "method": "POST",
+        "url": "=https://docs.googleapis.com/v1/documents/{{ $json.id }}:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDocsOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n(() =&gt; {\n  const text = $('Format Briefs1').first().json.text;\n  const links = $('Format Briefs1').first().json.links;\n  \n  // Fresh document, so content starts at index 1\n  const docStartIndex = 1;\n  \n  // Build requests array\n  const requests = [\n    {\n      insertText: {\n        endOfSegmentLocation: {\n          segmentId: \"\"\n        },\n        text: text\n      }\n    }\n  ];\n  \n  // Add link styling requests\n  links.forEach(link =&gt; {\n    requests.push({\n      updateTextStyle: {\n        range: {\n          startIndex: docStartIndex + link.startOffset,\n          endIndex: docStartIndex + link.endOffset\n        },\n        textStyle: {\n          link: {\n            url: link.url\n          }\n        },\n        fields: \"link\"\n      }\n    });\n  });\n  \n  return JSON.stringify({ requests });\n})()\n}}",
+        "options": {}
       },
-      "id": "b3c4d5e6-f7a8-4b9c-0d1e-2f3a4b5c6d7e",
-      "name": "Alert Operations Team via Slack",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [1850, 500]
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1728,
+        -288
+      ],
+      "id": "6cfd5dd9-1512-41ea-b7a1-a22f9bdc3620",
+      "name": "Append Text to Document"
     },
     {
       "parameters": {
-        "operation": "append",
-        "documentId": {
+        "modelId": {
           "__rl": true,
-          "value": "",
-          "mode": "id"
+          "value": "claude-opus-4-5-20251101",
+          "mode": "list",
+          "cachedResultName": "claude-opus-4-5-20251101"
         },
-        "sheetName": {
-          "__rl": true,
-          "value": "",
-          "mode": "id"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Timestamp": "={{ $json.timestamp }}",
-            "Error Type": "Validation Error",
-            "Error Details": "={{ $json.errorDetails.join(', ') }}",
-            "Raw Data": "={{ JSON.stringify($json.submittedData) }}"
-          },
-          "matchingColumns": [],
-          "schema": []
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a client matching system. Your task is to determine if the client mentioned in the meeting details matches any of the provided Client Folder names.\n\n## Instructions\n\n1. Extract the client/company name from the meeting details (look in title, description, summary, attendees, or organizer domain)\n2. Compare against each Client Folder name using these matching criteria:\n   - Exact match (case-insensitive)\n   - Partial match (folder contains client name or vice versa)\n   - Common abbreviations or variations (e.g., \"IBM\" = \"International Business Machines\")\n   - Domain matching (e.g., YOUR_EMAIL@example.com → \"Acme Corp\")\n\n3. Make a confident decision:\n   - If ONE folder clearly matches → return that folder name exactly as provided\n   - If MULTIPLE folders could match → return the most specific/likely match and it's  ID.\n   - If NO folder matches or the meeting has no identifiable client → return \"Undefined\"\n\n## Output\nReturn ONLY the matched folder ID exactly as it appears in the Client Folders list without it's name, OR \"Undefined\". No explanation needed.\n\n\n## Input data\n\nClient Folders: {{ JSON.stringify($(\"Client Folders\").all().map(item =&gt; item.json)) }}\nMeeting Details:  {{ JSON.stringify({\n  calendar_invitees: $('Webhook1').first().json.body.calendar_invitees,\n  default_summary: $('Webhook1').first().json.body.default_summary,\n  meeting_title: $('Webhook1').first().json.body.meeting_title\n}) }}"
+            }
+          ]
         },
         "options": {}
       },
-      "id": "c4d5e6f7-a8b9-4c0d-1e2f-3a4b5c6d7e8f",
-      "name": "Log Failed Submission to Sheets",
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
-      "position": [2250, 500]
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        -2336,
+        -288
+      ],
+      "id": "2474c925-cb31-4cfe-a981-ea86470591f3",
+      "name": "Client Folder",
+      "executeOnce": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
     },
     {
       "parameters": {
-        "content": "## Error Handling Path\n\nWhen lead data fails validation:\n\n1. **Validation errors captured** - Email format, required fields\n2. **Operations team notified** - Slack alert with error details\n3. **Failed submission logged** - Separate Google Sheet tab\n4. **Manual review enabled** - Raw data preserved\n\nThis ensures no leads are lost even with data quality issues.",
-        "height": 280,
-        "width": 380
+        "modelId": {
+          "__rl": true,
+          "value": "claude-opus-4-5-20251101",
+          "mode": "list",
+          "cachedResultName": "claude-opus-4-5-20251101"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an expert content strategist and LinkedIn ghostwriter.\n\nYour job is to read:\n1) the transcript of the client call\n2) all reference documents from the client's folder (which may include brand voice guidelines, LinkedIn strategy decks, past posts, and other relevant materials)\n\nAnalyze the reference documents to identify:\n- Brand voice/tone guidelines\n- Content pillars and strategy (CRITICAL: Extract the exact content pillar names from the strategy deck. If none exist, identify and name the thematic categories yourself based on recurring topics.)\n- Examples of past content and style\n- Any other relevant context\n\nUse all of this context to create UP TO 14 high-quality LinkedIn content briefs that match the client's voice, tone, and thinking style.\n\nQuality over quantity:\n- Only create a brief if there's a genuinely distinct insight worth a standalone post\n- If two potential briefs share the same core insight, keep the stronger one and drop the other\n- Do NOT rely on differentiation_note to justify near-duplicates—if you need to explain why two briefs are different, they're probably too similar\n- It's better to deliver 8-10 strong briefs than 14 with overlap\n- The overlap audit should ideally flag 0-2 similar pairs, not 5-6\n\nEach brief must be distinct, insightful, and anchored to themes that appear in the transcript or their strategy.\n\nHard rules:\n- Output MUST be valid JSON.\n- Produce 8-14 briefs depending on how many distinct insights exist. Never pad to hit 14.\n- No repeated ideas.\n- No filler content.\n- Use real details from the transcript when possible (no fictional claims).\n- Prioritize powerful soundbites, stories, emotional resonance, and sharp POV.\n\nIMPORTANT - SOUNDBITE &amp; QUOTE EXTRACTION:\n- For EVERY brief, extract ALL verbatim quotes from the transcript that directly support that topic.\n- Use EXACT QUOTES with timestamps (e.g., \"SOUNDBITE [12:34]: \\\"exact quote here\\\"\").\n- Do NOT paraphrase, summarize, or clean up the language — capture it exactly as spoken.\n- Aim for 3-5+ direct quotes per brief when the transcript supports it.\n- If a topic has rich transcript material, include EVERY relevant quote — more is better.\n- Quotes are the raw material for the final post. The writer needs options.\n\nIMPORTANT - CONTENT PILLAR ASSIGNMENT:\n- Each brief MUST be assigned to a content pillar.\n- Search reference documents for ANY of these indicators of content themes:\n  - Explicitly named \"content pillars\" or \"pillars\"\n  - \"Core themes\" or \"topic areas\" or \"content categories\"\n  - \"Narrative structure patterns\" or \"story frameworks\"\n  - \"Content types\" or \"post types\"\n  - Recurring topics mentioned in brand voice (e.g., \"AI waste\", \"vendor noise\", \"CFO relationship\")\n  - Any section headers that indicate thematic focus areas\n- If you find themed categories under ANY of these labels, use those exact names and mark as \"FROM STRATEGY DECK\"\n- ONLY mark as \"INFERRED FROM THEMES\" if you searched all reference documents and found NO thematic organization whatsoever.\n\nCRITICAL: If you find thematic categories in the reference docs (under ANY label like \"Narrative Structure Patterns\", \"Content Types\", \"Key Themes\", \"Topics\", \"Pillars\", \"Categories\", etc.), you MUST:\n1. Use those EXACT category names as your content pillars\n2. Set pillar_source to EXACTLY \"FROM STRATEGY DECK\" (not \"INFERRED FROM THEMES\")\n3. Do NOT rename or reinterpret them\n\n\"FROM STRATEGY DECK\" means: the category names came from the reference documents you were given — regardless of what section heading they appeared under.\n\n\"INFERRED FROM THEMES\" means: you searched all reference documents and found NO thematic categories at all, so you had to create your own from scratch.\n\nIf you found category names in the reference documents and are using them, set pillar_source to \"FROM STRATEGY DECK\".\n\nOnly create your own pillar names if the reference docs have NO thematic organization whatsoever.\n\nIMPORTANT - REDUNDANCY &amp; OVERLAP PREVENTION:\n- MAXIMUM 3 BRIEFS PER CONTENT PILLAR. If a pillar has more than 3 potential topics, pick the 3 strongest and move on.\n- Each of the 14 briefs must cover a DISTINCT idea, angle, or insight.\n- BEFORE generating any briefs, plan all 14 topics and consolidate similar ideas:\n  - If two ideas share the same core insight, MERGE them into one stronger brief.\n  - If two ideas target the same audience emotion, MERGE them.\n  - Two briefs on the same topic are ONLY allowed if they have completely different: (1) main takeaway, (2) target reader emotion, AND (3) hook angle.\n- After planning, verify: would a reader see these as two different posts, or the same post twice? If the same — merge.\n- For any briefs that remain on related themes, include a \"differentiation_note\" explaining specifically how this brief differs.\n\nIMPORTANT - ANONYMIZATION:\n- Never mention client names, team member names, company names, or any identifying details.\n- Replace specific people with generic roles (e.g., \"a founder,\" \"a strategist,\" \"a team member\").\n- Replace company names with generic descriptors (e.g., \"a marketing agency,\" \"a tech startup\").\n- Do NOT use initials, nicknames, or partially obscured names.\n- Completely scrub all identifying information.\n\n---\nHOOK GUIDELINES:\n\nStrong hooks share these traits:\n- First-person and specific (\"I did X\" not \"One should consider X\")\n- Create a curiosity gap — tease the insight without giving it away\n- Use contrast or tension (\"Everyone says X. I disagree.\")\n- Include vulnerability when relevant — failures, mistakes, surprises\n- Bold POV — take a stance, be opinionated\n- Relatable pain — start with a problem the reader recognizes\n\nAvoid:\n- Generic/formulaic patterns (\"X things I learned about Y\")\n- Vague questions without stakes (\"Ever wondered...?\")\n- Clickbait that the post can't deliver on\n- Buzzwords and safe, hedged language\n\n---\nHOOK LIBRARY:\n\nUse these templates as structural inspiration. Adapt the formula to fit the specific topic and client voice — never copy verbatim. Each template includes the emotional trigger and post type to help you match the right hook to the right content.\n\n**INDUSTRY TRENDS &amp; HOT TAKES**\n\n1. [Number] Trends in [Industry]\nTemplate: \"The [Industry] needs to take a HUGE step in [Year]. Here are 5 trends I'm tracking:\"\nOR: \"[Industry] is going through a MASSIVE shift. Here's what [Year] will look like.\"\nOR: \"[Industry] is going through a MASSIVE shift. Here are three trends that will make traditional [Industry] useless by [Season]:\"\nType: Hot Take, Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥🔥\n\n2. I Respectfully Disagree with [Industry Trend or Requirement]\nTemplate: \"I respectfully disagree with [Industry Leader] ([Leader's Title]). He/she says \"[X].\"\"\nType: Hot Take | Trigger: Curiosity, Surprise | Strength: 🔥🔥🔥\n\n3. The Industry Is at a Crossroads\nTemplate: \"The [Industry] profession is at a crossroads. We've seen the data. And it's not pointing where people think.\"\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity, Urgency | Strength: 🔥\n\n4. We're Never Going to Win With [Status Quo]\nTemplate: \"We're never going to attract [future] with [current approach]. Here are [Number] undeniable truths I keep coming back to when we talk about [problem]:\"\nType: Hot Take, Listicle, Thought Leadership | Trigger: Credibility, Urgency | Strength: 🔥\n\n5. [Hot Trend] Will Peak in 6 Months\nTemplate: \"[Hot Trend] will peak in 6 months. Here's why:\"\nType: Hot Take, Thought Leadership | Trigger: Curiosity, Urgency | Strength: 🔥🔥\n\n6. The Future of [Industry]\nTemplate: \"The future of [Industry] isn't what you think. And it's staring us right in the face. Undeniable truths: 1. 2. 3.\"\nType: Hot Take, Thought Leadership | Trigger: Curiosity, Urgency | Strength: 🔥🔥🔥\n\n7. Have You Seen [Company] Just [Did X]?\nTemplate: \"Have you seen [Company] just [did X]? At first, I thought it was a typo. Now, I think it changes how we think about [industry / function] — here's why:\"\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity, Surprise | Strength: 🔥🔥\n\n**STORYTELLING &amp; PERSONAL EXPERIENCE**\n\n8. Unexpected Client Meeting\nTemplate: \"I walked into a client meeting to talk about [Topic] and it did NOT go as expected. I walked out rethinking the future of [Industry]. Here's the story:\"\nType: Storytelling | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n9. Unexpected Sales Conversation\nTemplate: \"When we first pitched [Solution] to [Prospect Category, e.g. CFOs], I expected them to obsess over our [Feature or Tool]. Instead, this happened:\"\nType: Storytelling | Trigger: Curiosity, Surprise | Strength: 🔥🔥\n\n10. There's Got To Be a Better Way\nTemplate: \"It was 2 a.m. in a freezing [Location] office, and there I was — knee-deep in [X], chasing down \"[Y].\"\"\nType: Storytelling | Trigger: Curiosity, Urgency | Strength: 🔥🔥🔥\n\n11. A Mentor Once Told Me\nTemplate: \"A mentor once told me: \"[Blunt truth].\" And honestly? They were right.\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity, Empathy | Strength: 🔥🔥\n\n12. One Comment Changed My Career\nTemplate: \"One offhand comment from an experienced [Role] changed my entire career. Over lunch, she told me…\"\nType: Storytelling | Trigger: Curiosity, Empathy | Strength: 🔥\n\n13. Teachable Moment\nTemplate: \"[Person] told me to [blunt advice] years ago. Best \"teachable moment\" ever.\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Empathy | Strength: 🔥🔥\n\n14. Not Taking a Break\nTemplate: \"I just got off the phone with a [customer / user]. They're not taking a break. They're not going on sabbatical. They're done.\"\nType: Hot Take, Storytelling | Trigger: Empathy, Urgency | Strength: 🔥\n\n15. Unexpected Client Truth\nTemplate: \"Gotta love a brutally honest [Role]. At a recent [context], I started wading into a deep discussion about [what I thought mattered]. Then they cut me off and said…\"\nOR: \"Gotta love a brutally honest [Role]. When I asked about [topic], her reply was: \"[Exact quote].\" And the numbers back it up.\"\nType: Storytelling | Trigger: Credibility, Curiosity, Surprise | Strength: 🔥🔥\n\n16. When the CEO Notices\nTemplate: \"\"Hey, super impressed by your performance. Let's grab dinner.\" — [Title], after reviewing our [timeframe] results. When the CEO notices your [work], you're moving the actual business, not just moving metrics.\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n17. I Asked [Person] About the Hype\nTemplate: \"I asked [Person] about the [trend] hype. His answer: \"[unexpected quote].\"\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n**VULNERABILITY &amp; FAILURE**\n\n18. I Thought I Was Fired\nTemplate: \"I bombed my first [high-stakes moment]. When [leader] pulled me aside, I thought I was fired. Painful, but it taught me [number] lessons I'll never forget\"\nType: Storytelling | Trigger: Curiosity, Empathy | Strength: 🔥🔥🔥\n\n19. Feedback That Stung\nTemplate: \"In my first [Role], a colleague gave me feedback that stung. \"[Exact feedback].\" That stopped me cold.\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Empathy | Strength: 🔥🔥\n\n20. The First Time I Said [Aka Don't Do This]\nTemplate: \"I still remember the first time I said [sentence] as a [role] in [situation]. It was honest, but I could quickly see that this was not an acceptable answer.\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Empathy | Strength: 🔥\n\n21. The Mistakes That Hurt the Most\nTemplate: \"As a former [Role], I've made some big mistakes. I've seen great [peer group] make them too. Here are [Number] that hurt the most — and how to avoid them:\"\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n22. The Hardest Part Wasn't the Job\nTemplate: \"When I became [Role], I learned the hardest part wasn't [expected challenge]. It was [unexpected human or organizational reality]. After [experience], here's what I wish I'd known sooner:\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity, Empathy | Strength: 🔥🔥🔥\n\n23. I Used to Be Skeptical… Then This Happened\nTemplate: \"As [Role], I was always skeptical of [idea or spend]. Then this happened. (True story.)\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n24. The Shift That Changed Everything\nTemplate: \"I almost gave up on [approach] when I was [Role]. No matter what I tried, there was a wall because my [blocker]. Then I made one subtle shift… and the real conversations started.\"\nType: Storytelling, Thought Leadership | Trigger: Curiosity, Empathy | Strength: 🔥\n\n**ROLE &amp; LEADERSHIP INSIGHTS**\n\n25. Red Flags - Role Level\nTemplate: \"When I took my first [X] role, I expected to [Y]. Instead, I spent 6 months [Z]. Here are 5 red flags I wish I'd spotted earlier:\"\nType: Listicle, Storytelling, Thought Leadership | Trigger: Curiosity, Empathy | Strength: 🔥🔥🔥\n\n26. How We Need to Evolve\nTemplate: \"The [Role] of the past managed [X]. The [Role] of the future drives [Y]. Here's how we need to evolve in [Year]:\"\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n27. What Makes a GREAT [Role]?\nTemplate: \"The other day, a [Title] friend asked me, \"What makes someone a GREAT [Role]?\" My reply:\"\nType: Thought Leadership | Trigger: Curiosity | Strength: 🔥🔥\n\n28. Not Everyone Is Ready for the Role\nTemplate: \"Not every [Role] candidate is ready for the seat. Here are [Number] red flags I've learned to watch for after [experience]:\"\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n29. Surviving the Boardroom\nTemplate: \"Most [career paths] aren't made in the boardroom. But plenty end there. Here are my [Number] favorite lessons for surviving it:\"\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\n\n30. One Test I Use\nTemplate: \"There's one test I use to see if a [Role] is truly plugged in. And sadly, most people fail it.\"\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\n\n31. How Do You Stay Strategic When…\nTemplate: \"How can [team / function] be \"strategic\" when we're buried in [constraint 1], [constraint 2], and [constraint 3]? Here's my playbook to drive real impact (from a [experience marker]):\"\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n**PROBLEM-SOLVING &amp; LESSONS**\n\n32. How Do You Solve [X]?\nTemplate: \"How do you solve the [Known industry problem]? No one really knows, but here's my take:\"\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\n\n33. [Number] Common Mistakes\nTemplate: \"After [X] years in [Industry], I've seen every [Process] mistake. Here are [Number] common ones (and quick tips to fix them):\"\nType: Listicle | Trigger: Credibility, Curiosity | Strength: 🔥🔥🔥\n\n**COMPANY &amp; TEAM INSIGHTS**\n\n34. Watching New Hires Do It Differently\nTemplate: \"I've been watching new hires at [Company] crush it by leaning into [new approach] from day one. It's got me thinking about those of us who came up pre-[shift]:\"\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\n\n35. We Made a Different Call\nTemplate: \"While others raced to [popular move], we made a different call at [Company]: [Principled constraint or standard].\"\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\n\n36. [Industry] Deserves a Seat\nTemplate: \"[Industry] deserves a seat in [category]. We're [doing concrete work].\"\nType: Thought Leadership | Trigger: Credibility | Strength: 🔥\n\n37. We Had Two Choices\nTemplate: \"When we started building [thing], we had two choices: [Option one] [Option two]\"\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\n\n38. Why We Keep Winning\nTemplate: \"I won't name names. But there's a competitor we keep winning deals from. They're [quality that should make them win]. Here's why that's not enough:\"\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n39. Real Leader Conversation\nTemplate: \"The other day, I asked [fellow leader] if we should [proposal]. Their response was the polite version of \"terrible idea.\" Here's why:\"\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\n\n40. The Only KPIs That Matter\nTemplate: \"As a CEO, I don't want 30+ [industry] KPIs that just look good on paper. I want to know:\"\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\n\n41. When Metrics Lie\nTemplate: \"At my first [role] job, I saw something that still haunts me: [Group A] celebrating [metric] … while [Group B] watched [business outcome] flatline.\"\nType: Hot Take, Storytelling, Thought Leadership | Trigger: Credibility, Curiosity, Surprise | Strength: 🔥🔥\n\n---\n\nCALL DATE:\n{{ $('Webhook1').first().json.body.created_at.split('T')[0] }}\n\nLATEST TRANSCRIPT:\n{{ $('Format New Transcript').first().json.text }}\n\n---\nREFERENCE DOCUMENTS:\n{{ $('Merge1').all().filter(doc =&gt; doc.json.content).map(doc =&gt; { const title = doc.json.content.split('\\n')[0].substring(0, 50) || doc.json.documentId; return `\\n=== ${title} ===\\n${doc.json.content}`; }).join('\\n\\n') }}\n---\n\nUsing the context above, generate 8-14 LinkedIn content briefs (only as many as the transcript genuinely supports with distinct insights).\n\nBEFORE GENERATING:\n1. Search ALL reference documents for explicit content pillars. List any you find with the document they came from.\n2. If no explicit pillars exist, create 4-6 thematic pillar names based on the transcript and reference materials.\n3. Scan the transcript for ALL quotable moments — aim to extract 30-50+ potential soundbites before assigning them to briefs.\n4. Plan all 14 topics. CONSOLIDATE similar ideas — if two topics share the same core insight or target the same emotion, MERGE them into one brief.\n5. Verify: no pillar has more than 3 briefs. If it does, cut the weakest ones and find new topics.\n6. Final check: would a reader see any two briefs as \"the same post\"? If yes — merge them.\n\nEach brief must include:\n- \"id\": number 1–14\n- \"content_pillar\": the pillar name this post falls under\n- \"pillar_source\": \"FROM STRATEGY DECK\" (with document name) or \"INFERRED FROM THEMES\"\n- \"angle\": 2-5 word descriptor of this brief's specific angle (e.g., \"IDE vs Browser\", \"Superman vs Cartoon\", \"Crossing the Chasm\"). Used to differentiate briefs within the same pillar at a glance.\n- \"pitch\": 1 sentence pitch for the post\n- \"main_idea\": the one main takeaway/insight/reframe\n- \"supporting_points\": array of key points. PRIORITIZE VERBATIM QUOTES. For every quote, use the EXACT words from the transcript in quotation marks, prefixed with \"SOUNDBITE [timestamp]:\" — include the timestamp so the client can find the moment. Aim for 3-5+ direct quotes per brief when available. Other points can be insights, reframes, or details, but quotes should dominate when the transcript supports the topic.\n- \"story\": object with \"type\" (must be exactly \"REAL STORY\" if pulled directly from transcript, or \"SAMPLE STORY\" if AI-created based on topic) and \"summary\" (150 words max). If real, include key details from transcript. If sample, create a believable angle clearly marked as fabricated.\n- \"so_what\": 1-2 sentences explaining why a reader would care about this topic. What's in it for them? Why should they stop scrolling?\n- \"hero_and_villain\": object with \"hero\" (who or what is positioned as the hero/solution) and \"villain\" (who or what is positioned as the enemy/problem)\n- \"hooks\": array of 3 scroll-stopping hooks. Use the HOOK LIBRARY templates as structural inspiration — adapt them to the specific topic and match the client's voice. Prioritize: first-person, specific details, curiosity gaps, bold POV. No generic patterns.\n- \"cta\": object with \"type\" (\"FROM TRANSCRIPT\" or \"SUGGESTED\") and \"text\" (the call to action)\n- \"differentiation_note\": If this brief touches on a theme similar to another brief, explain in 1-2 sentences how this brief is distinct (different angle, different takeaway, different audience emotion). If fully unique, write \"Standalone topic — no overlap.\"\n- \"grade\": A/B/C grade based on strength and confidence\n- \"notes\": why this post matters to the client's audience\n\nRespond ONLY with valid JSON in this structure:\n{\n  \"call_date\": \"\",\n  \"briefs\": [\n    {\n      \"id\": 1,\n      \"content_pillar\": \"\",\n      \"pillar_source\": \"FROM STRATEGY DECK\" | \"INFERRED FROM THEMES\",\n      \"angle\":\"\",\n      \"pitch\": \"\",\n      \"main_idea\": \"\",\n      \"supporting_points\": [],\n      \"story\": {\n        \"type\": \"REAL STORY | SAMPLE STORY\",\n        \"summary\": \"\"\n      },\n      \"so_what\": \"\",\n      \"hero_and_villain\": {\n        \"hero\": \"\",\n        \"villain\": \"\"\n      },\n      \"hooks\": [],\n      \"cta\": {\n        \"type\": \"FROM TRANSCRIPT | SUGGESTED\",\n        \"text\": \"\"\n      },\n      \"differentiation_note\": \"\",\n      \"grade\": \"\",\n      \"notes\": \"\"\n    }\n  ],\n  \"ideas_to_explore\": [\n    {\n      \"idea\": \"\",\n      \"source\": \"TOUCHED ON IN CALL | ADDITIONAL SUGGESTION\"\n    }\n  ],\n  \"overlap_audit\": {\n    \"similar_pairs\": [\n      {\n        \"brief_ids\": [X, Y],\n        \"similarity\": \"What they share\",\n        \"distinction\": \"Why they're different enough to both exist\"\n      }\n    ],\n    \"audit_passed\": true\n  }\n}\n"
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 64000
+        }
       },
-      "id": "d5e6f7a8-b9c0-4d1e-2f3a-4b5c6d7e8f9a",
-      "name": "Error Handling Notes",
-      "type": "n8n-nodes-base.stickyNote",
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
       "typeVersion": 1,
-      "position": [1320, 620]
+      "position": [
+        928,
+        -288
+      ],
+      "id": "44c0e463-0d88-4c08-8fd7-d546f3007cdb",
+      "name": "Generate Briefs",
+      "executeOnce": true,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f1ade2c8-c0fa-47d6-a378-b5880997fa64",
+              "leftValue": "={{ $('Client Folder').item.json.content[0].text }}",
+              "rightValue": "Undefined",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1760,
+        -288
+      ],
+      "id": "e2cdf14b-ba92-48c0-adeb-603702c9a8e7",
+      "name": "Client Detected?"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -864,
+        -288
+      ],
+      "id": "eac0e76d-9de2-47cd-97e5-4080a3e80b6f",
+      "name": "Merge",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const webhookData = $('Webhook1').first().json.body;\nconst meetingTitle = webhookData.title || webhookData.meeting_title || 'Untitled Meeting';\nconst shareUrl = webhookData.share_url || '';\nconst recordingDate = webhookData.recording_start_time \n  ? new Date(webhookData.recording_start_time).toLocaleDateString('en-US', { \n      year: 'numeric', \n      month: 'long', \n      day: 'numeric' \n    })\n  : new Date().toLocaleDateString();\nconst transcript = webhookData.transcript\n  ?.map(entry =&gt; `[${entry.timestamp}] ${entry.speaker.display_name}: ${entry.text}`)\n  .join('\\n') || 'No transcript available';\n\n// Prepend share URL to transcript\nconst formattedText = shareUrl \n  ? `Fathom Recording: ${shareUrl}\\n\\n${transcript}`\n  : transcript;\n\nreturn {\n  text: formattedText,\n  meetingTitle: meetingTitle,\n  recordingDate: recordingDate,\n  shareUrl: shareUrl\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        -384
+      ],
+      "id": "47e0e312-854c-4565-96db-74e6e25e5788",
+      "name": "Format New Transcript"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        -192,
+        -192
+      ],
+      "id": "f9f672ea-8e89-4345-8945-edf6c119957f",
+      "name": "Get Files",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "9e063b06-69a6-44e6-960c-e1e245247953",
+              "leftValue": "={{ $(\"Get all Folders from Client Folder\").all().map(item =&gt; item.json).find(item =&gt; item.name?.toLowerCase().includes(\"transcripts\"))?.id ?? \"Undefined\" }}",
+              "rightValue": "Undefined",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1312,
+        -288
+      ],
+      "id": "8df8fca9-2270-4ca8-9870-e543cf6ec748",
+      "name": "Does it have a Transcripts Folder?",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "Transcripts",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Client Folder').first().json.content[0].text }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1088,
+        -224
+      ],
+      "id": "fc042db4-f122-45d0-b9eb-59cc525068bc",
+      "name": "Create folder"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $('Client Folder').first().json.content[0].text }}",
+            "mode": "id"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1536,
+        -288
+      ],
+      "id": "31746cf5-7e12-479a-8558-599cd807c739",
+      "name": "Get all Folders from Client Folder",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://docs.googleapis.com/v1/documents/{{ $json.id }}:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDocsOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"requests\": [\n    {\n      \"insertText\": {\n        \"endOfSegmentLocation\": {\n          \"segmentId\": \"\"\n        },\n        \"text\": {{ JSON.stringify($('Format New Transcript').first().json.text) }}\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -192,
+        -384
+      ],
+      "id": "be7833c7-39e3-440e-9084-f828fb225bde",
+      "name": "Append to new Transcript"
+    },
+    {
+      "parameters": {
+        "folderId": "={{ $('Get all Folders from Client Folder').all().find(item =&gt; item.json.name === 'Transcripts').json.id }}",
+        "title": "={{ $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title }} - {{ $now.format('LL.dd.yy') }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        -416,
+        -384
+      ],
+      "id": "4b7591f7-f295-4002-b9a7-cf3a0660412c",
+      "name": "Create Transcript Doc"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $('Client Folder').first().json.content[0].text }}",
+            "mode": "id"
+          },
+          "whatToSearch": "files",
+          "fileTypes": [
+            "application/vnd.google-apps.document"
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -416,
+        -192
+      ],
+      "id": "b83dc222-c303-4c7b-ab27-da229aaa6439",
+      "name": "Get all Documents from Client Folder",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        32,
+        -288
+      ],
+      "id": "37b42b08-b332-4d3d-a168-1cb6b9ac321d",
+      "name": "Merge1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "folderId": "={{ $('Get all Folders from Client Folder').all().find(item =&gt; item.json.name === 'Briefs')?.json?.id ?? $('Create folder1').first().json.id }}",
+        "title": "=Briefs {{ $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title }} - {{ $now.format('LL.dd.yy') }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        1504,
+        -288
+      ],
+      "id": "c45b8301-e4ab-4ea1-98a7-04024bfedfe1",
+      "name": "Create Briefs Doc"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "9e063b06-69a6-44e6-960c-e1e245247953",
+              "leftValue": "={{ $(\"Get all Folders from Client Folder\").all().map(item =&gt; item.json).find(item =&gt; item.name?.toLowerCase().includes(\"briefs\"))?.id ?? \"Undefined\" }}",
+              "rightValue": "Undefined",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        256,
+        -288
+      ],
+      "id": "56b3ecf7-c85f-455e-8571-c728c37ebefe",
+      "name": "Does it have a Briefs Folder?",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "Briefs",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Client Folder').first().json.content[0].text }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        480,
+        -224
+      ],
+      "id": "6d42e68d-8672-471f-bf28-93fe201d754c",
+      "name": "Create folder1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        704,
+        -288
+      ],
+      "id": "b83ada9f-06be-4d7a-8e10-1ae2eba4dcb9",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C01UD1K5GFQ",
+          "mode": "list",
+          "cachedResultName": "general"
+        },
+        "text": "=*New Brief for {{ $('Client Name').first().json.clientName }}* created in Google Drive from the _{{ $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title }}_ - {{ $now.format('LL.dd.yy') }}\n&lt;https://docs.google.com/document/d/{{ $('Create Briefs Doc').first().json.id }}|Link to Google Doc&gt;",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        2400,
+        -288
+      ],
+      "id": "85409248-29e2-4225-94a7-82c02de1077f",
+      "name": "Send a message"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the folder ID from 'Client Folder' node\nconst folderId = $('Client Folder').first().json.content[0].text;\n\n// Find matching client in 'Client Folders' array\nconst clientFolders = $('Client Folders').all().map(item =&gt; item.json);\nconst match = clientFolders.find(folder =&gt; folder.id === folderId);\n\nreturn {\n  clientName: match?.name || null\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1984,
+        -288
+      ],
+      "id": "e3852b25-e18b-4662-a2bd-2aa66b00f011",
+      "name": "Client Name"
+    },
+    {
+      "parameters": {
+        "operation": "share",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Create Briefs Doc').first().json.id }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "YOUR_EMAIL@example.com"
+          }
+        },
+        "options": {
+          "sendNotificationEmail": false
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1952,
+        -288
+      ],
+      "id": "5b1eee8e-bae2-46cc-98b9-e197249e15fb",
+      "name": "Share with Donna",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "share",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Create Briefs Doc').first().json.id }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "YOUR_EMAIL@example.com"
+          }
+        },
+        "options": {
+          "sendNotificationEmail": false
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2176,
+        -288
+      ],
+      "id": "d95b3c81-94fe-49ed-90e8-e6cf90b27fbc",
+      "name": "Share with Stephen"
+    },
+    {
+      "parameters": {
+        "description": "Use this tool to think through complex problems step-by-step. It doesn't retrieve new information or make changes — it just logs your reasoning. Use it when you need to: break down a complex task, weigh multiple options, plan before acting, or hold intermediate thoughts while working through a multi-step problem."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        1008,
+        -64
+      ],
+      "id": "f4c1435a-77d1-4373-a186-d43dbdd14c32",
+      "name": "Think"
     }
   ],
   "connections": {
-    "Lead Capture Form": {
+    "Client Folders": {
       "main": [
         [
           {
-            "node": "Validate &amp; Score Lead",
+            "node": "Client Folder",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Validate &amp; Score Lead": {
+    "Webhook1": {
       "main": [
         [
           {
-            "node": "Is Data Valid?",
+            "node": "Client Folders",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Is Data Valid?": {
+    "Format Briefs1": {
       "main": [
         [
           {
-            "node": "Search HubSpot for Existing Contact",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Format Validation Error",
+            "node": "Create Briefs Doc",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Search HubSpot for Existing Contact": {
+    "Append Text to Document": {
       "main": [
         [
           {
-            "node": "Is New Contact?",
+            "node": "Share with Donna",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Is New Contact?": {
+    "Client Folder": {
       "main": [
         [
           {
-            "node": "Create HubSpot Contact",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Update HubSpot Contact",
+            "node": "Client Name",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Create HubSpot Contact": {
+    "Generate Briefs": {
       "main": [
         [
           {
-            "node": "Prepare Contact Data",
+            "node": "Format Briefs1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Update HubSpot Contact": {
+    "Client Detected?": {
       "main": [
         [
           {
-            "node": "Prepare Contact Data",
+            "node": "Get all Folders from Client Folder",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Prepare Contact Data": {
+    "Merge": {
       "main": [
         [
           {
-            "node": "Send Welcome Email",
+            "node": "Format New Transcript",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Notify Sales Team via Slack",
+            "node": "Get all Documents from Client Folder",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Send Welcome Email": {
+    "Format New Transcript": {
       "main": [
         [
           {
-            "node": "Log Lead to Google Sheets",
+            "node": "Create Transcript Doc",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Notify Sales Team via Slack": {
+    "Get Files": {
       "main": [
         [
           {
-            "node": "Log Lead to Google Sheets",
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Does it have a Transcripts Folder?": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create folder",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Format Validation Error": {
+    "Create folder": {
       "main": [
         [
           {
-            "node": "Alert Operations Team via Slack",
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get all Folders from Client Folder": {
+      "main": [
+        [
+          {
+            "node": "Does it have a Transcripts Folder?",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Alert Operations Team via Slack": {
+    "Append to new Transcript": {
       "main": [
         [
           {
-            "node": "Log Failed Submission to Sheets",
+            "node": "Merge1",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Transcript Doc": {
+      "main": [
+        [
+          {
+            "node": "Append to new Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all Documents from Client Folder": {
+      "main": [
+        [
+          {
+            "node": "Get Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Does it have a Briefs Folder?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Briefs Doc": {
+      "main": [
+        [
+          {
+            "node": "Append Text to Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Does it have a Briefs Folder?": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create folder1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create folder1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Generate Briefs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        []
+      ]
+    },
+    "Client Name": {
+      "main": [
+        [
+          {
+            "node": "Client Detected?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Share with Donna": {
+      "main": [
+        [
+          {
+            "node": "Share with Stephen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Share with Stephen": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "Generate Briefs",
+            "type": "ai_tool",
             "index": 0
           }
         ]
       ]
     }
-  },
-  "settings": {
-    "executionOrder": "v1"
   }
-}
-```
-
-This workflow includes:
-
-**Main Flow:**
-1. **Lead Capture Form** - Native n8n form trigger with structured fields
-2. **Validate &amp; Score Lead** - JavaScript validation with lead scoring algorithm
-3. **Is Data Valid?** - Routes valid vs invalid submissions
-4. **Search HubSpot for Existing Contact** - Deduplication check
-5. **Is New Contact?** - Routes create vs update paths
-6. **Create/Update HubSpot Contact** - CRM integration
-7. **Prepare Contact Data** - Merges data for downstream nodes
-8. **Send Welcome Email** - Gmail integration with HTML template
-9. **Notify Sales Team via Slack** - Sales notification with lead details
-10. **Log Lead to Google Sheets** - Central tracking spreadsheet
-
-**Error Handling Path:**
-- Invalid submissions routed to error handler
-- Operations team notified via Slack
-- Failed submissions logged to separate sheet for manual review
-
-**Before using**, configure:
-- HubSpot credentials
-- Gmail credentials  
-- Slack credentials and channel IDs
-- Google Sheets document and sheet IDs
-</div><div class="mt-12 bg-white border-4 border-black p-8 shadow-comic"><h3 class="text-2xl font-black uppercase mb-4">How to Import This Workflow</h3><ol class="list-decimal list-inside space-y-3 text-base font-medium"><li>Copy the JSON above or download the .json file</li><li>Open your n8n instance</li><li>Click the + button then "Import from File" or "Import from URL"</li><li>Paste the JSON or upload the downloaded file</li><li>Configure any required credentials (API keys, OAuth connections)</li><li>Activate the workflow and test it</li></ol><div class="mt-6 p-4 bg-gray-50 border-2 border-black"><p class="font-bold mb-2">Note:</p><p class="text-sm">This workflow requires credentials that you will need to configure in your n8n instance. Credentials are not included for security reasons.</p></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This Workflow?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build custom n8n workflows and automation systems that save thousands of hours per year.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Book Strategy Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 text-sm text-gray-500 font-medium uppercase tracking-wide text-center"><p>&copy; 2026 All Rights Reserved.</p></div></div></footer><script>const wfData="Based on the research and workflow patterns, I'll generate a production-ready n8n workflow JSON for business automation. The provided example is already well-structured, but I'll create a refined version with proper formatting and ensure all best practices are followed.\n\n```json\n{\n  \"name\": \"Lead Management & Customer Onboarding Automation\",\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"formTitle\": \"Contact Us\",\n        \"formDescription\": \"Get in touch with our team\",\n        \"formFields\": {\n          \"values\": [\n            {\n              \"fieldLabel\": \"Full Name\",\n              \"fieldType\": \"text\",\n              \"requiredField\": true\n            },\n            {\n              \"fieldLabel\": \"Email\",\n              \"fieldType\": \"email\",\n              \"requiredField\": true\n            },\n            {\n              \"fieldLabel\": \"Company\",\n              \"fieldType\": \"text\",\n              \"requiredField\": false\n            },\n            {\n              \"fieldLabel\": \"Phone\",\n              \"fieldType\": \"text\",\n              \"requiredField\": false\n            },\n            {\n              \"fieldLabel\": \"Message\",\n              \"fieldType\": \"textarea\",\n              \"requiredField\": false\n            },\n            {\n              \"fieldLabel\": \"Company Size\",\n              \"fieldType\": \"dropdown\",\n              \"requiredField\": false,\n              \"fieldOptions\": {\n                \"values\": [\n                  {\"option\": \"1-10\"},\n                  {\"option\": \"11-50\"},\n                  {\"option\": \"50+\"}\n                ]\n              }\n            },\n            {\n              \"fieldLabel\": \"Budget\",\n              \"fieldType\": \"dropdown\",\n              \"requiredField\": false,\n              \"fieldOptions\": {\n                \"values\": [\n                  {\"option\": \"starter\"},\n                  {\"option\": \"professional\"},\n                  {\"option\": \"enterprise\"}\n                ]\n              }\n            },\n            {\n              \"fieldLabel\": \"Timeline\",\n              \"fieldType\": \"dropdown\",\n              \"requiredField\": false,\n              \"fieldOptions\": {\n                \"values\": [\n                  {\"option\": \"immediate\"},\n                  {\"option\": \"1-3 months\"},\n                  {\"option\": \"3+ months\"}\n                ]\n              }\n            }\n          ]\n        },\n        \"options\": {}\n      },\n      \"id\": \"a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d\",\n      \"name\": \"Lead Capture Form\",\n      \"type\": \"n8n-nodes-base.formTrigger\",\n      \"typeVersion\": 2.2,\n      \"position\": [250, 300],\n      \"webhookId\": \"lead-capture-form\"\n    },\n    {\n      \"parameters\": {\n        \"content\": \"## Lead Capture & Onboarding Workflow\\n\\nThis workflow automates lead capture and customer onboarding:\\n\\n1. **Form Submission** - Captures lead data\\n2. **Validation** - Validates email and required fields\\n3. **Lead Scoring** - Calculates priority based on company size, budget, timeline\\n4. **CRM Integration** - Creates/updates HubSpot contact\\n5. **Notifications** - Sends welcome email and Slack alert\\n6. **Logging** - Records all leads in Google Sheets\\n\\n**Error Handling**: Invalid submissions are logged separately and flagged for manual review.\",\n        \"height\": 380,\n        \"width\": 420\n      },\n      \"id\": \"b2c3d4e5-f6a7-4b5c-9d0e-1f2a3b4c5d6e\",\n      \"name\": \"Workflow Overview\",\n      \"type\": \"n8n-nodes-base.stickyNote\",\n      \"typeVersion\": 1,\n      \"position\": [100, 80]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Validate and enrich lead data\\nconst formData = $input.item.json;\\n\\n// Email validation\\nconst emailRegex = /^[^\\\\s@]+@[^\\\\s@]+\\\\.[^\\\\s@]+$/;\\nconst isValidEmail = emailRegex.test(formData['Email'] || '');\\n\\n// Phone number cleaning (remove non-digits)\\nconst cleanPhone = formData['Phone'] ? formData['Phone'].replace(/\\\\D/g, '') : '';\\n\\n// Validate required fields\\nconst hasName = formData['Full Name'] && formData['Full Name'].trim().length > 0;\\n\\n// Calculate lead score based on form data\\nlet leadScore = 0;\\nif (formData['Company Size'] === '50+') leadScore += 30;\\nif (formData['Budget'] === 'enterprise') leadScore += 40;\\nelse if (formData['Budget'] === 'professional') leadScore += 20;\\nif (formData['Timeline'] === 'immediate') leadScore += 30;\\nelse if (formData['Timeline'] === '1-3 months') leadScore += 15;\\n\\n// Create cleaned and enriched data object\\nreturn {\\n  json: {\\n    originalData: formData,\\n    isValid: isValidEmail && hasName,\\n    validationErrors: [\\n      ...(!isValidEmail ? ['Invalid email format'] : []),\\n      ...(!hasName ? ['Full Name is required'] : [])\\n    ],\\n    cleanedData: {\\n      email: (formData['Email'] || '').toLowerCase().trim(),\\n      name: (formData['Full Name'] || '').trim(),\\n      firstName: (formData['Full Name'] || '').trim().split(' ')[0],\\n      lastName: (formData['Full Name'] || '').trim().split(' ').slice(1).join(' ') || '',\\n      company: (formData['Company'] || '').trim() || 'Not Provided',\\n      phone: cleanPhone,\\n      message: (formData['Message'] || '').trim(),\\n      companySize: formData['Company Size'] || '',\\n      budget: formData['Budget'] || '',\\n      timeline: formData['Timeline'] || '',\\n      source: 'website_form',\\n      submittedAt: new Date().toISOString()\\n    },\\n    leadScore: leadScore,\\n    priority: leadScore >= 60 ? 'high' : leadScore >= 30 ? 'medium' : 'low'\\n  }\\n};\"\n      },\n      \"id\": \"c3d4e5f6-a7b8-4c5d-0e1f-2a3b4c5d6e7f\",\n      \"name\": \"Validate & Score Lead\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [650, 300]\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": false,\n            \"leftValue\": \"\"\n          },\n          \"conditions\": [\n            {\n              \"id\": \"d4e5f6a7-b8c9-4d5e-1f2a-3b4c5d6e7f8a\",\n              \"leftValue\": \"={{ $json.isValid }}\",\n              \"rightValue\": true,\n              \"operator\": {\n                \"type\": \"boolean\",\n                \"operation\": \"equals\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        },\n        \"options\": {}\n      },\n      \"id\": \"e5f6a7b8-c9d0-4e5f-2a3b-4c5d6e7f8a9b\",\n      \"name\": \"Is Data Valid?\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.2,\n      \"position\": [1050, 300]\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"contact\",\n        \"operation\": \"search\",\n        \"filterGroups\": {\n          \"values\": [\n            {\n              \"filters\": [\n                {\n                  \"propertyName\": \"email\",\n                  \"operator\": \"EQ\",\n                  \"value\": \"={{ $json.cleanedData.email }}\"\n                }\n              ]\n            }\n          ]\n        },\n        \"additionalFields\": {}\n      },\n      \"id\": \"f6a7b8c9-d0e1-4f5a-3b4c-5d6e7f8a9b0c\",\n      \"name\": \"Search HubSpot for Existing Contact\",\n      \"type\": \"n8n-nodes-base.hubspot\",\n      \"typeVersion\": 2,\n      \"position\": [1450, 200]\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": false,\n            \"leftValue\": \"\"\n          },\n          \"conditions\": [\n            {\n              \"id\": \"a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5e\",\n              \"leftValue\": \"={{ $json.results?.length || 0 }}\",\n              \"rightValue\": 0,\n              \"operator\": {\n                \"type\": \"number\",\n                \"operation\": \"equals\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        },\n        \"options\": {}\n      },\n      \"id\": \"a7b8c9d0-e1f2-4a5b-4c5d-6e7f8a9b0c1d\",\n      \"name\": \"Is New Contact?\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.2,\n      \"position\": [1850, 200]\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"contact\",\n        \"operation\": \"create\",\n        \"email\": \"={{ $('Validate & Score Lead').item.json.cleanedData.email }}\",\n        \"additionalFields\": {\n          \"firstName\": \"={{ $('Validate & Score Lead').item.json.cleanedData.firstName }}\",\n          \"lastName\": \"={{ $('Validate & Score Lead').item.json.cleanedData.lastName }}\",\n          \"company\": \"={{ $('Validate & Score Lead').item.json.cleanedData.company }}\",\n          \"phone\": \"={{ $('Validate & Score Lead').item.json.cleanedData.phone }}\",\n          \"lifecycleStage\": \"lead\",\n          \"customPropertiesUi\": {\n            \"customPropertiesValues\": [\n              {\n                \"property\": \"message\",\n                \"value\": \"={{ $('Validate & Score Lead').item.json.cleanedData.message }}\"\n              }\n            ]\n          }\n        }\n      },\n      \"id\": \"b8c9d0e1-f2a3-4b5c-5d6e-7f8a9b0c1d2e\",\n      \"name\": \"Create HubSpot Contact\",\n      \"type\": \"n8n-nodes-base.hubspot\",\n      \"typeVersion\": 2,\n      \"position\": [2250, 100]\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"contact\",\n        \"operation\": \"update\",\n        \"contactId\": \"={{ $json.results[0].id }}\",\n        \"updateFields\": {\n          \"customPropertiesUi\": {\n            \"customPropertiesValues\": [\n              {\n                \"property\": \"message\",\n                \"value\": \"={{ $('Validate & Score Lead').item.json.cleanedData.message }}\"\n              }\n            ]\n          }\n        }\n      },\n      \"id\": \"c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f\",\n      \"name\": \"Update HubSpot Contact\",\n      \"type\": \"n8n-nodes-base.hubspot\",\n      \"typeVersion\": 2,\n      \"position\": [2250, 300]\n    },\n    {\n      \"parameters\": {\n        \"assignments\": {\n          \"assignments\": [\n            {\n              \"id\": \"e6f7a8b9-c0d1-4e2f-3a4b-5c6d7e8f9a0b\",\n              \"name\": \"contactId\",\n              \"value\": \"={{ $json.id || $('Is New Contact?').item.json.results?.[0]?.id }}\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"f7a8b9c0-d1e2-4f3a-4b5c-6d7e8f9a0b1c\",\n              \"name\": \"contactName\",\n              \"value\": \"={{ $('Validate & Score Lead').item.json.cleanedData.name }}\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"a8b9c0d1-e2f3-4a4b-5c6d-7e8f9a0b1c2d\",\n              \"name\": \"contactEmail\",\n              \"value\": \"={{ $('Validate & Score Lead').item.json.cleanedData.email }}\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"b9c0d1e2-f3a4-4b5c-6d7e-8f9a0b1c2d3e\",\n              \"name\": \"priority\",\n              \"value\": \"={{ $('Validate & Score Lead').item.json.priority }}\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"c0d1e2f3-a4b5-4c6d-7e8f-9a0b1c2d3e4f\",\n              \"name\": \"leadScore\",\n              \"value\": \"={{ $('Validate & Score Lead').item.json.leadScore }}\",\n              \"type\": \"number\"\n            },\n            {\n              \"id\": \"d0e1f2a3-b4c5-4d6e-7f8a-9a0b1c2d3e4f\",\n              \"name\": \"isNewContact\",\n              \"value\": \"={{ $('Is New Contact?').item.json.results?.length === 0 }}\",\n              \"type\": \"boolean\"\n            }\n          ]\n        },\n        \"options\": {}\n      },\n      \"id\": \"d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a\",\n      \"name\": \"Prepare Contact Data\",\n      \"type\": \"n8n-nodes-base.set\",\n      \"typeVersion\": 3.4,\n      \"position\": [2650, 200]\n    },\n    {\n      \"parameters\": {\n        \"sendTo\": \"={{ $('Validate & Score Lead').item.json.cleanedData.email }}\",\n        \"subject\": \"=Thanks for reaching out, {{ $('Validate & Score Lead').item.json.cleanedData.firstName }}!\",\n        \"emailType\": \"html\",\n        \"message\": \"=<!DOCTYPE html>\\n<html>\\n<head>\\n  <style>\\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }\\n    .container { max-width: 600px; margin: 0 auto; padding: 20px; }\\n    .header { background-color: #0066cc; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }\\n    .content { padding: 20px; background-color: #f9f9f9; }\\n    .button { display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 5px; margin: 20px 0; }\\n    .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }\\n  </style>\\n</head>\\n<body>\\n  <div class=\\\"container\\\">\\n    <div class=\\\"header\\\">\\n      <h1>Welcome!</h1>\\n    </div>\\n    <div class=\\\"content\\\">\\n      <p>Hi {{ $('Validate & Score Lead').item.json.cleanedData.firstName }},</p>\\n      <p>Thank you for your interest! We've received your inquiry and one of our team members will review it shortly.</p>\\n      <p><strong>What you submitted:</strong></p>\\n      <ul>\\n        <li><strong>Company:</strong> {{ $('Validate & Score Lead').item.json.cleanedData.company }}</li>\\n        <li><strong>Message:</strong> {{ $('Validate & Score Lead').item.json.cleanedData.message || 'No message provided' }}</li>\\n      </ul>\\n      <p>We typically respond within 24 hours during business days.</p>\\n      <p>Best regards,<br>The Team</p>\\n    </div>\\n    <div class=\\\"footer\\\">\\n      <p>You received this email because you submitted a form on our website.</p>\\n    </div>\\n  </div>\\n</body>\\n</html>\",\n        \"options\": {}\n      },\n      \"id\": \"d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a\",\n      \"name\": \"Send Welcome Email\",\n      \"type\": \"n8n-nodes-base.gmail\",\n      \"typeVersion\": 2.1,\n      \"position\": [3050, 100]\n    },\n    {\n      \"parameters\": {\n        \"select\": \"channel\",\n        \"channelId\": {\n          \"__rl\": true,\n          \"value\": \"\",\n          \"mode\": \"id\"\n        },\n        \"text\": \"=:dart: *New Lead Alert!*\\n\\n*Name:* {{ $('Validate & Score Lead').item.json.cleanedData.name }}\\n*Company:* {{ $('Validate & Score Lead').item.json.cleanedData.company }}\\n*Email:* {{ $('Validate & Score Lead').item.json.cleanedData.email }}\\n*Phone:* {{ $('Validate & Score Lead').item.json.cleanedData.phone || 'Not provided' }}\\n\\n*Lead Score:* {{ $('Validate & Score Lead').item.json.leadScore }}/100\\n*Priority:* {{ $('Validate & Score Lead').item.json.priority.toUpperCase() }}\\n\\n*Message:*\\n{{ $('Validate & Score Lead').item.json.cleanedData.message || '_No message provided_' }}\\n\\n*Source:* {{ $('Validate & Score Lead').item.json.cleanedData.source }}\\n*Submitted:* {{ $('Validate & Score Lead').item.json.cleanedData.submittedAt }}\\n\\n{{ $json.isNewContact ? ':sparkles: _New contact created in HubSpot_' : ':arrows_counterclockwise: _Existing contact updated in HubSpot_' }}\",\n        \"otherOptions\": {}\n      },\n      \"id\": \"e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b\",\n      \"name\": \"Notify Sales Team via Slack\",\n      \"type\": \"n8n-nodes-base.slack\",\n      \"typeVersion\": 2.2,\n      \"position\": [3050, 300]\n    },\n    {\n      \"parameters\": {\n        \"operation\": \"appendOrUpdate\",\n        \"documentId\": {\n          \"__rl\": true,\n          \"value\": \"\",\n          \"mode\": \"id\"\n        },\n        \"sheetName\": {\n          \"__rl\": true,\n          \"value\": \"\",\n          \"mode\": \"id\"\n        },\n        \"columns\": {\n          \"mappingMode\": \"defineBelow\",\n          \"value\": {\n            \"Timestamp\": \"={{ $('Validate & Score Lead').item.json.cleanedData.submittedAt }}\",\n            \"Name\": \"={{ $('Validate & Score Lead').item.json.cleanedData.name }}\",\n            \"Email\": \"={{ $('Validate & Score Lead').item.json.cleanedData.email }}\",\n            \"Company\": \"={{ $('Validate & Score Lead').item.json.cleanedData.company }}\",\n            \"Phone\": \"={{ $('Validate & Score Lead').item.json.cleanedData.phone }}\",\n            \"Message\": \"={{ $('Validate & Score Lead').item.json.cleanedData.message }}\",\n            \"Company Size\": \"={{ $('Validate & Score Lead').item.json.cleanedData.companySize }}\",\n            \"Budget\": \"={{ $('Validate & Score Lead').item.json.cleanedData.budget }}\",\n            \"Timeline\": \"={{ $('Validate & Score Lead').item.json.cleanedData.timeline }}\",\n            \"Lead Score\": \"={{ $('Validate & Score Lead').item.json.leadScore }}\",\n            \"Priority\": \"={{ $('Validate & Score Lead').item.json.priority }}\",\n            \"Status\": \"={{ $json.isNewContact ? 'New' : 'Updated' }}\",\n            \"HubSpot Contact ID\": \"={{ $json.contactId }}\"\n          },\n          \"matchingColumns\": [\"Email\"],\n          \"schema\": []\n        },\n        \"options\": {}\n      },\n      \"id\": \"f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c\",\n      \"name\": \"Log Lead to Google Sheets\",\n      \"type\": \"n8n-nodes-base.googleSheets\",\n      \"typeVersion\": 4.5,\n      \"position\": [3450, 200]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Handle validation errors\\nconst validationData = $input.item.json;\\n\\nreturn {\\n  json: {\\n    error: 'Validation Failed',\\n    errorDetails: validationData.validationErrors,\\n    submittedData: validationData.originalData,\\n    timestamp: new Date().toISOString(),\\n    action: 'rejected'\\n  }\\n};\"\n      },\n      \"id\": \"a2b3c4d5-e6f7-4a8b-9c0d-1e2f3a4b5c6d\",\n      \"name\": \"Format Validation Error\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [1450, 500]\n    },\n    {\n      \"parameters\": {\n        \"select\": \"channel\",\n        \"channelId\": {\n          \"__rl\": true,\n          \"value\": \"\",\n          \"mode\": \"id\"\n        },\n        \"text\": \"=:warning: *Lead Validation Failed*\\n\\n*Timestamp:* {{ $json.timestamp }}\\n\\n*Validation Errors:*\\n{{ $json.errorDetails.map(e => '• ' + e).join('\\\\n') }}\\n\\n*Submitted Data:*\\n```\\n{{ JSON.stringify($json.submittedData, null, 2) }}\\n```\\n\\n_Please review and follow up manually if needed._\",\n        \"otherOptions\": {}\n      },\n      \"id\": \"b3c4d5e6-f7a8-4b9c-0d1e-2f3a4b5c6d7e\",\n      \"name\": \"Alert Operations Team via Slack\",\n      \"type\": \"n8n-nodes-base.slack\",\n      \"typeVersion\": 2.2,\n      \"position\": [1850, 500]\n    },\n    {\n      \"parameters\": {\n        \"operation\": \"append\",\n        \"documentId\": {\n          \"__rl\": true,\n          \"value\": \"\",\n          \"mode\": \"id\"\n        },\n        \"sheetName\": {\n          \"__rl\": true,\n          \"value\": \"\",\n          \"mode\": \"id\"\n        },\n        \"columns\": {\n          \"mappingMode\": \"defineBelow\",\n          \"value\": {\n            \"Timestamp\": \"={{ $json.timestamp }}\",\n            \"Error Type\": \"Validation Error\",\n            \"Error Details\": \"={{ $json.errorDetails.join(', ') }}\",\n            \"Raw Data\": \"={{ JSON.stringify($json.submittedData) }}\"\n          },\n          \"matchingColumns\": [],\n          \"schema\": []\n        },\n        \"options\": {}\n      },\n      \"id\": \"c4d5e6f7-a8b9-4c0d-1e2f-3a4b5c6d7e8f\",\n      \"name\": \"Log Failed Submission to Sheets\",\n      \"type\": \"n8n-nodes-base.googleSheets\",\n      \"typeVersion\": 4.5,\n      \"position\": [2250, 500]\n    },\n    {\n      \"parameters\": {\n        \"content\": \"## Error Handling Path\\n\\nWhen lead data fails validation:\\n\\n1. **Validation errors captured** - Email format, required fields\\n2. **Operations team notified** - Slack alert with error details\\n3. **Failed submission logged** - Separate Google Sheet tab\\n4. **Manual review enabled** - Raw data preserved\\n\\nThis ensures no leads are lost even with data quality issues.\",\n        \"height\": 280,\n        \"width\": 380\n      },\n      \"id\": \"d5e6f7a8-b9c0-4d1e-2f3a-4b5c6d7e8f9a\",\n      \"name\": \"Error Handling Notes\",\n      \"type\": \"n8n-nodes-base.stickyNote\",\n      \"typeVersion\": 1,\n      \"position\": [1320, 620]\n    }\n  ],\n  \"connections\": {\n    \"Lead Capture Form\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Validate & Score Lead\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Validate & Score Lead\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Is Data Valid?\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Is Data Valid?\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Search HubSpot for Existing Contact\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Format Validation Error\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Search HubSpot for Existing Contact\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Is New Contact?\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Is New Contact?\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Create HubSpot Contact\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Update HubSpot Contact\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Create HubSpot Contact\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Prepare Contact Data\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Update HubSpot Contact\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Prepare Contact Data\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Prepare Contact Data\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send Welcome Email\",\n            \"type\": \"main\",\n            \"index\": 0\n          },\n          {\n            \"node\": \"Notify Sales Team via Slack\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Send Welcome Email\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Log Lead to Google Sheets\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Notify Sales Team via Slack\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Log Lead to Google Sheets\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Format Validation Error\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Alert Operations Team via Slack\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Alert Operations Team via Slack\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Log Failed Submission to Sheets\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"settings\": {\n    \"executionOrder\": \"v1\"\n  }\n}\n```\n\nThis workflow includes:\n\n**Main Flow:**\n1. **Lead Capture Form** - Native n8n form trigger with structured fields\n2. **Validate & Score Lead** - JavaScript validation with lead scoring algorithm\n3. **Is Data Valid?** - Routes valid vs invalid submissions\n4. **Search HubSpot for Existing Contact** - Deduplication check\n5. **Is New Contact?** - Routes create vs update paths\n6. **Create/Update HubSpot Contact** - CRM integration\n7. **Prepare Contact Data** - Merges data for downstream nodes\n8. **Send Welcome Email** - Gmail integration with HTML template\n9. **Notify Sales Team via Slack** - Sales notification with lead details\n10. **Log Lead to Google Sheets** - Central tracking spreadsheet\n\n**Error Handling Path:**\n- Invalid submissions routed to error handler\n- Operations team notified via Slack\n- Failed submissions logged to separate sheet for manual review\n\n**Before using**, configure:\n- HubSpot credentials\n- Gmail credentials  \n- Slack credentials and channel IDs\n- Google Sheets document and sheet IDs\n";function copyJSON(){navigator.clipboard.writeText(wfData).then(()=>notify('Copied to clipboard')).catch(()=>notify('Copy failed'))}function downloadJSON(){const b=new Blob([wfData],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='workflow.json';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);notify('Downloaded')}function notify(m){const d=document.createElement('div');d.className='copy-notif';d.textContent=m;document.body.appendChild(d);setTimeout(()=>{d.classList.add('fade-out');setTimeout(()=>document.body.removeChild(d),300)},2000)}</script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,theme:"neutral",themeVariables:{primaryColor:"#00E676",primaryTextColor:"#000",primaryBorderColor:"#000",lineColor:"#000",secondaryColor:"#f0f0f0",tertiaryColor:"#fff"}});</script></body></html>
+}</div><div class="mt-12 bg-white border-4 border-black p-8 shadow-comic"><h3 class="text-2xl font-black uppercase mb-4">How to Import This Workflow</h3><ol class="list-decimal list-inside space-y-3 text-base font-medium"><li>Copy the JSON above or download the .json file</li><li>Open your n8n instance</li><li>Click the + button then "Import from File" or "Import from URL"</li><li>Paste the JSON or upload the downloaded file</li><li>Configure any required credentials (API keys, OAuth connections)</li><li>Activate the workflow and test it</li></ol><div class="mt-6 p-4 bg-gray-50 border-2 border-black"><p class="font-bold mb-2">Note:</p><p class="text-sm">This workflow requires credentials that you will need to configure in your n8n instance. Credentials are not included for security reasons.</p></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This Workflow?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build custom n8n workflows and automation systems that save thousands of hours per year.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Book Strategy Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 text-sm text-gray-500 font-medium uppercase tracking-wide text-center"><p>&copy; 2026 All Rights Reserved.</p></div></div></footer><script>const wfData="{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"content\": \"## Unnamed Workflow\\n\\nThis workflow automates the creation of LinkedIn content briefs from client meeting recordings. When a webhook receives meeting data (from Fathom), it identifies the client using Claude AI by matching meeting details to Google Drive folders, retrieves all reference documents (brand guidelines, past content, strategy decks) from the client's folder, creates a formatted transcript document, and uses Claude Opus 4.5 with extensive prompting to generate 8-14 high-quality, non-overlapping LinkedIn content briefs. These briefs include verbatim soundbites with timestamps, hook options, story frameworks, and CTAs aligned to the client's brand voice and content pillars. The workflow creates Google Docs for both the transcript and briefs, shares them with team members, and posts a Slack notification with the document link.\\n\\n### Setup Instructions\\n1. Import this workflow into your n8n instance\\n2. Configure all required credentials (look for nodes with missing credentials)\\n3. Replace any YOUR_*_HERE placeholder values with your actual values\\n4. Test the workflow with sample data before activating\\n\\n**Nodes:** 26 | **Types:** googleDrive, webhook, code, httpRequest, ai:anthropic, if, merge, googleDocs, slack, ai:toolThink\",\n        \"width\": 500,\n        \"height\": 320\n      },\n      \"id\": \"setup-note-1771441162399\",\n      \"name\": \"Setup Instructions\",\n      \"type\": \"n8n-nodes-base.stickyNote\",\n      \"typeVersion\": 1,\n      \"position\": [\n        -200,\n        -400\n      ]\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"fileFolder\",\n        \"filter\": {\n          \"folderId\": {\n            \"__rl\": true,\n            \"value\": \"18POaERzvk3Y5NdhiUxyVoA8OlCt-jK-v\",\n            \"mode\": \"list\",\n            \"cachedResultName\": \"Active Clients (maggie)\",\n            \"cachedResultUrl\": \"https://drive.google.com/drive/folders/18POaERzvk3Y5NdhiUxyVoA8OlCt-jK-v\"\n          },\n          \"whatToSearch\": \"folders\"\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.googleDrive\",\n      \"typeVersion\": 3,\n      \"position\": [\n        -2560,\n        -288\n      ],\n      \"id\": \"567d7313-213e-479e-a318-5e8091654794\",\n      \"name\": \"Client Folders\"\n    },\n    {\n      \"parameters\": {\n        \"httpMethod\": \"POST\",\n        \"path\": \"42252d0f-c253-43ea-b344-15bd5e25e234\",\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.webhook\",\n      \"typeVersion\": 2.1,\n      \"position\": [\n        -2784,\n        -288\n      ],\n      \"id\": \"5d8c1188-0c80-4d5a-b86a-9cba8c6a2831\",\n      \"name\": \"Webhook1\"\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"const input = $input.first().json;\\nconst meetingTitle = $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title;\\nconst transcriptUrl = $('Webhook1').first().json.body.share_url || '';\\nconst callDateRaw = $('Webhook1').first().json.body.created_at || '';\\nconst callDateFormatted = callDateRaw ? callDateRaw.split('T')[0] : new Date().toLocaleDateString();\\n\\n// Helper function to convert timestamp to seconds\\nfunction timestampToSeconds(timestamp) {\\n  const clean = timestamp.replace(/[\\\\[\\\\]]/g, '').trim();\\n  const parts = clean.split(':').map(Number);\\n  if (parts.length === 2) {\\n    return parts[0] * 60 + parts[1];\\n  } else if (parts.length === 3) {\\n    return parts[0] * 3600 + parts[1] * 60 + parts[2];\\n  }\\n  return 0;\\n}\\n\\n// Extract and parse Claude response\\nlet parsedData;\\ntry {\\n  const rawText = input.content?.[0]?.text || input.text || input;\\n  const cleanJson = rawText\\n    .replace(/^```json\\\\n?/, '')\\n    .replace(/\\\\n?```$/, '')\\n    .trim();\\n  parsedData = typeof cleanJson === 'string' ? JSON.parse(cleanJson) : cleanJson;\\n} catch (e) {\\n  return { error: \\\"Could not parse Claude response\\\", details: e.message };\\n}\\n\\nconst briefs = parsedData.briefs;\\nconst ideasToExplore = parsedData.ideas_to_explore || [];\\nconst overlapAudit = parsedData.overlap_audit || null;\\n\\nif (!briefs || !briefs.length) {\\n  return { error: \\\"No briefs found\\\", structure: parsedData };\\n}\\n\\n// Track links to apply later\\nconst linksToApply = [];\\n\\n// Format briefs\\nconst formattedBriefs = briefs.map(brief => {\\n  const supportingPoints = brief.supporting_points?.map((point, i) => {\\n    return `   ${i + 1}. ${point}`;\\n  }).join('\\\\n') || '';\\n  \\n  const hooks = brief.hooks?.map((hook, i) => `   ${i + 1}. ${hook}`).join('\\\\n') || '';\\n  \\n  const heroVillain = brief.hero_and_villain \\n    ? `   Hero: ${brief.hero_and_villain.hero}\\\\n   Villain: ${brief.hero_and_villain.villain}`\\n    : 'N/A';\\n  \\n  const isInferred = brief.pillar_source?.includes(\\\"INFERRED\\\");\\n\\nconst pillarDisplay = isInferred\\n  ? `${brief.content_pillar}: ${brief.angle} (inferred)`\\n  : `${brief.content_pillar}: ${brief.angle}`;\\n  \\n  return `\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\nBRIEF #${brief.id} | ${pillarDisplay} | Grade: ${brief.grade}\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n\\nPITCH:\\n${brief.pitch}\\n\\nMAIN IDEA:\\n${brief.main_idea}\\n\\nSUPPORTING POINTS:\\n${supportingPoints}\\n\\nSTORY (${brief.story?.type || 'N/A'}):\\n${brief.story?.summary || 'N/A'}\\n\\nSO WHAT:\\n${brief.so_what || 'N/A'}\\n\\nHERO AND VILLAIN:\\n${heroVillain}\\n\\nHOOKS:\\n${hooks}\\n\\nCTA (${brief.cta?.type || 'N/A'}):\\n${brief.cta?.text || 'N/A'}\\n\\nDIFFERENTIATION:\\n${brief.differentiation_note || 'Standalone topic — no overlap.'}\\n\\nNOTES:\\n${brief.notes}\\n`;\\n}).join('\\\\n\\\\n');\\n\\n// Format ideas to explore\\nconst formattedIdeas = ideasToExplore.length > 0 \\n  ? `\\\\n\\\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\nIDEAS TO EXPLORE\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n${ideasToExplore.map((idea, i) => `${i + 1}. ${idea.idea} (${idea.source})`).join('\\\\n')}`\\n  : '';\\n\\n// Format overlap audit (only if there are similar pairs)\\nconst formattedOverlapAudit = overlapAudit && overlapAudit.similar_pairs?.length > 0\\n  ? `\\\\n\\\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\nOVERLAP AUDIT ${overlapAudit.audit_passed ? '✓ PASSED' : '⚠ REVIEW NEEDED'}\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n${overlapAudit.similar_pairs.map(pair => \\n  `Briefs #${pair.brief_ids.join(' & #')}:\\n   Similarity: ${pair.similarity}\\n   Distinction: ${pair.distinction}`\\n).join('\\\\n\\\\n')}`\\n  : '';\\n\\n// Simple header\\nconst header = `${meetingTitle}\\n${callDateFormatted}\\nTranscript: ${transcriptUrl}\\n\\n`;\\n\\nconst fullText = header + formattedBriefs + formattedIdeas + formattedOverlapAudit;\\n\\n// Find transcript URL in header and add to links\\nif (transcriptUrl) {\\n  const transcriptIndex = fullText.indexOf(transcriptUrl);\\n  if (transcriptIndex !== -1) {\\n    linksToApply.push({\\n      startOffset: transcriptIndex,\\n      endOffset: transcriptIndex + transcriptUrl.length,\\n      url: transcriptUrl\\n    });\\n  }\\n}\\n\\n// Find all SOUNDBITE [timestamp] patterns and their positions in the text\\nconst soundbiteRegex = /SOUNDBITE \\\\[(\\\\d{1,2}:\\\\d{2}(?::\\\\d{2})?)\\\\]/g;\\nlet match;\\nwhile ((match = soundbiteRegex.exec(fullText)) !== null) {\\n  const timestamp = match[1];\\n  const seconds = timestampToSeconds(timestamp);\\n  const momentUrl = `${transcriptUrl}?t=${seconds}`;\\n  \\n  linksToApply.push({\\n    startOffset: match.index,\\n    endOffset: match.index + match[0].length,\\n    url: momentUrl\\n  });\\n}\\n\\nreturn {\\n  text: fullText,\\n  links: linksToApply,\\n  briefCount: briefs.length,\\n  callDate: callDateFormatted,\\n  meetingTitle: meetingTitle,\\n  transcriptUrl: transcriptUrl,\\n  overlapAuditPassed: overlapAudit?.audit_passed ?? null\\n};\"\n      },\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        1280,\n        -288\n      ],\n      \"id\": \"07ff544c-3469-4238-866e-5920a10b253c\",\n      \"name\": \"Format Briefs1\"\n    },\n    {\n      \"parameters\": {\n        \"method\": \"POST\",\n        \"url\": \"=https://docs.googleapis.com/v1/documents/{{ $json.id }}:batchUpdate\",\n        \"authentication\": \"predefinedCredentialType\",\n        \"nodeCredentialType\": \"googleDocsOAuth2Api\",\n        \"sendBody\": true,\n        \"specifyBody\": \"json\",\n        \"jsonBody\": \"={{\\n(() => {\\n  const text = $('Format Briefs1').first().json.text;\\n  const links = $('Format Briefs1').first().json.links;\\n  \\n  // Fresh document, so content starts at index 1\\n  const docStartIndex = 1;\\n  \\n  // Build requests array\\n  const requests = [\\n    {\\n      insertText: {\\n        endOfSegmentLocation: {\\n          segmentId: \\\"\\\"\\n        },\\n        text: text\\n      }\\n    }\\n  ];\\n  \\n  // Add link styling requests\\n  links.forEach(link => {\\n    requests.push({\\n      updateTextStyle: {\\n        range: {\\n          startIndex: docStartIndex + link.startOffset,\\n          endIndex: docStartIndex + link.endOffset\\n        },\\n        textStyle: {\\n          link: {\\n            url: link.url\\n          }\\n        },\\n        fields: \\\"link\\\"\\n      }\\n    });\\n  });\\n  \\n  return JSON.stringify({ requests });\\n})()\\n}}\",\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.3,\n      \"position\": [\n        1728,\n        -288\n      ],\n      \"id\": \"6cfd5dd9-1512-41ea-b7a1-a22f9bdc3620\",\n      \"name\": \"Append Text to Document\"\n    },\n    {\n      \"parameters\": {\n        \"modelId\": {\n          \"__rl\": true,\n          \"value\": \"claude-opus-4-5-20251101\",\n          \"mode\": \"list\",\n          \"cachedResultName\": \"claude-opus-4-5-20251101\"\n        },\n        \"messages\": {\n          \"values\": [\n            {\n              \"content\": \"=You are a client matching system. Your task is to determine if the client mentioned in the meeting details matches any of the provided Client Folder names.\\n\\n## Instructions\\n\\n1. Extract the client/company name from the meeting details (look in title, description, summary, attendees, or organizer domain)\\n2. Compare against each Client Folder name using these matching criteria:\\n   - Exact match (case-insensitive)\\n   - Partial match (folder contains client name or vice versa)\\n   - Common abbreviations or variations (e.g., \\\"IBM\\\" = \\\"International Business Machines\\\")\\n   - Domain matching (e.g., YOUR_EMAIL@example.com → \\\"Acme Corp\\\")\\n\\n3. Make a confident decision:\\n   - If ONE folder clearly matches → return that folder name exactly as provided\\n   - If MULTIPLE folders could match → return the most specific/likely match and it's  ID.\\n   - If NO folder matches or the meeting has no identifiable client → return \\\"Undefined\\\"\\n\\n## Output\\nReturn ONLY the matched folder ID exactly as it appears in the Client Folders list without it's name, OR \\\"Undefined\\\". No explanation needed.\\n\\n\\n## Input data\\n\\nClient Folders: {{ JSON.stringify($(\\\"Client Folders\\\").all().map(item => item.json)) }}\\nMeeting Details:  {{ JSON.stringify({\\n  calendar_invitees: $('Webhook1').first().json.body.calendar_invitees,\\n  default_summary: $('Webhook1').first().json.body.default_summary,\\n  meeting_title: $('Webhook1').first().json.body.meeting_title\\n}) }}\"\n            }\n          ]\n        },\n        \"options\": {}\n      },\n      \"type\": \"@n8n/n8n-nodes-langchain.anthropic\",\n      \"typeVersion\": 1,\n      \"position\": [\n        -2336,\n        -288\n      ],\n      \"id\": \"2474c925-cb31-4cfe-a981-ea86470591f3\",\n      \"name\": \"Client Folder\",\n      \"executeOnce\": true,\n      \"retryOnFail\": true,\n      \"waitBetweenTries\": 5000,\n      \"maxTries\": 5\n    },\n    {\n      \"parameters\": {\n        \"modelId\": {\n          \"__rl\": true,\n          \"value\": \"claude-opus-4-5-20251101\",\n          \"mode\": \"list\",\n          \"cachedResultName\": \"claude-opus-4-5-20251101\"\n        },\n        \"messages\": {\n          \"values\": [\n            {\n              \"content\": \"=You are an expert content strategist and LinkedIn ghostwriter.\\n\\nYour job is to read:\\n1) the transcript of the client call\\n2) all reference documents from the client's folder (which may include brand voice guidelines, LinkedIn strategy decks, past posts, and other relevant materials)\\n\\nAnalyze the reference documents to identify:\\n- Brand voice/tone guidelines\\n- Content pillars and strategy (CRITICAL: Extract the exact content pillar names from the strategy deck. If none exist, identify and name the thematic categories yourself based on recurring topics.)\\n- Examples of past content and style\\n- Any other relevant context\\n\\nUse all of this context to create UP TO 14 high-quality LinkedIn content briefs that match the client's voice, tone, and thinking style.\\n\\nQuality over quantity:\\n- Only create a brief if there's a genuinely distinct insight worth a standalone post\\n- If two potential briefs share the same core insight, keep the stronger one and drop the other\\n- Do NOT rely on differentiation_note to justify near-duplicates—if you need to explain why two briefs are different, they're probably too similar\\n- It's better to deliver 8-10 strong briefs than 14 with overlap\\n- The overlap audit should ideally flag 0-2 similar pairs, not 5-6\\n\\nEach brief must be distinct, insightful, and anchored to themes that appear in the transcript or their strategy.\\n\\nHard rules:\\n- Output MUST be valid JSON.\\n- Produce 8-14 briefs depending on how many distinct insights exist. Never pad to hit 14.\\n- No repeated ideas.\\n- No filler content.\\n- Use real details from the transcript when possible (no fictional claims).\\n- Prioritize powerful soundbites, stories, emotional resonance, and sharp POV.\\n\\nIMPORTANT - SOUNDBITE & QUOTE EXTRACTION:\\n- For EVERY brief, extract ALL verbatim quotes from the transcript that directly support that topic.\\n- Use EXACT QUOTES with timestamps (e.g., \\\"SOUNDBITE [12:34]: \\\\\\\"exact quote here\\\\\\\"\\\").\\n- Do NOT paraphrase, summarize, or clean up the language — capture it exactly as spoken.\\n- Aim for 3-5+ direct quotes per brief when the transcript supports it.\\n- If a topic has rich transcript material, include EVERY relevant quote — more is better.\\n- Quotes are the raw material for the final post. The writer needs options.\\n\\nIMPORTANT - CONTENT PILLAR ASSIGNMENT:\\n- Each brief MUST be assigned to a content pillar.\\n- Search reference documents for ANY of these indicators of content themes:\\n  - Explicitly named \\\"content pillars\\\" or \\\"pillars\\\"\\n  - \\\"Core themes\\\" or \\\"topic areas\\\" or \\\"content categories\\\"\\n  - \\\"Narrative structure patterns\\\" or \\\"story frameworks\\\"\\n  - \\\"Content types\\\" or \\\"post types\\\"\\n  - Recurring topics mentioned in brand voice (e.g., \\\"AI waste\\\", \\\"vendor noise\\\", \\\"CFO relationship\\\")\\n  - Any section headers that indicate thematic focus areas\\n- If you find themed categories under ANY of these labels, use those exact names and mark as \\\"FROM STRATEGY DECK\\\"\\n- ONLY mark as \\\"INFERRED FROM THEMES\\\" if you searched all reference documents and found NO thematic organization whatsoever.\\n\\nCRITICAL: If you find thematic categories in the reference docs (under ANY label like \\\"Narrative Structure Patterns\\\", \\\"Content Types\\\", \\\"Key Themes\\\", \\\"Topics\\\", \\\"Pillars\\\", \\\"Categories\\\", etc.), you MUST:\\n1. Use those EXACT category names as your content pillars\\n2. Set pillar_source to EXACTLY \\\"FROM STRATEGY DECK\\\" (not \\\"INFERRED FROM THEMES\\\")\\n3. Do NOT rename or reinterpret them\\n\\n\\\"FROM STRATEGY DECK\\\" means: the category names came from the reference documents you were given — regardless of what section heading they appeared under.\\n\\n\\\"INFERRED FROM THEMES\\\" means: you searched all reference documents and found NO thematic categories at all, so you had to create your own from scratch.\\n\\nIf you found category names in the reference documents and are using them, set pillar_source to \\\"FROM STRATEGY DECK\\\".\\n\\nOnly create your own pillar names if the reference docs have NO thematic organization whatsoever.\\n\\nIMPORTANT - REDUNDANCY & OVERLAP PREVENTION:\\n- MAXIMUM 3 BRIEFS PER CONTENT PILLAR. If a pillar has more than 3 potential topics, pick the 3 strongest and move on.\\n- Each of the 14 briefs must cover a DISTINCT idea, angle, or insight.\\n- BEFORE generating any briefs, plan all 14 topics and consolidate similar ideas:\\n  - If two ideas share the same core insight, MERGE them into one stronger brief.\\n  - If two ideas target the same audience emotion, MERGE them.\\n  - Two briefs on the same topic are ONLY allowed if they have completely different: (1) main takeaway, (2) target reader emotion, AND (3) hook angle.\\n- After planning, verify: would a reader see these as two different posts, or the same post twice? If the same — merge.\\n- For any briefs that remain on related themes, include a \\\"differentiation_note\\\" explaining specifically how this brief differs.\\n\\nIMPORTANT - ANONYMIZATION:\\n- Never mention client names, team member names, company names, or any identifying details.\\n- Replace specific people with generic roles (e.g., \\\"a founder,\\\" \\\"a strategist,\\\" \\\"a team member\\\").\\n- Replace company names with generic descriptors (e.g., \\\"a marketing agency,\\\" \\\"a tech startup\\\").\\n- Do NOT use initials, nicknames, or partially obscured names.\\n- Completely scrub all identifying information.\\n\\n---\\nHOOK GUIDELINES:\\n\\nStrong hooks share these traits:\\n- First-person and specific (\\\"I did X\\\" not \\\"One should consider X\\\")\\n- Create a curiosity gap — tease the insight without giving it away\\n- Use contrast or tension (\\\"Everyone says X. I disagree.\\\")\\n- Include vulnerability when relevant — failures, mistakes, surprises\\n- Bold POV — take a stance, be opinionated\\n- Relatable pain — start with a problem the reader recognizes\\n\\nAvoid:\\n- Generic/formulaic patterns (\\\"X things I learned about Y\\\")\\n- Vague questions without stakes (\\\"Ever wondered...?\\\")\\n- Clickbait that the post can't deliver on\\n- Buzzwords and safe, hedged language\\n\\n---\\nHOOK LIBRARY:\\n\\nUse these templates as structural inspiration. Adapt the formula to fit the specific topic and client voice — never copy verbatim. Each template includes the emotional trigger and post type to help you match the right hook to the right content.\\n\\n**INDUSTRY TRENDS & HOT TAKES**\\n\\n1. [Number] Trends in [Industry]\\nTemplate: \\\"The [Industry] needs to take a HUGE step in [Year]. Here are 5 trends I'm tracking:\\\"\\nOR: \\\"[Industry] is going through a MASSIVE shift. Here's what [Year] will look like.\\\"\\nOR: \\\"[Industry] is going through a MASSIVE shift. Here are three trends that will make traditional [Industry] useless by [Season]:\\\"\\nType: Hot Take, Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥🔥\\n\\n2. I Respectfully Disagree with [Industry Trend or Requirement]\\nTemplate: \\\"I respectfully disagree with [Industry Leader] ([Leader's Title]). He/she says \\\"[X].\\\"\\\"\\nType: Hot Take | Trigger: Curiosity, Surprise | Strength: 🔥🔥🔥\\n\\n3. The Industry Is at a Crossroads\\nTemplate: \\\"The [Industry] profession is at a crossroads. We've seen the data. And it's not pointing where people think.\\\"\\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity, Urgency | Strength: 🔥\\n\\n4. We're Never Going to Win With [Status Quo]\\nTemplate: \\\"We're never going to attract [future] with [current approach]. Here are [Number] undeniable truths I keep coming back to when we talk about [problem]:\\\"\\nType: Hot Take, Listicle, Thought Leadership | Trigger: Credibility, Urgency | Strength: 🔥\\n\\n5. [Hot Trend] Will Peak in 6 Months\\nTemplate: \\\"[Hot Trend] will peak in 6 months. Here's why:\\\"\\nType: Hot Take, Thought Leadership | Trigger: Curiosity, Urgency | Strength: 🔥🔥\\n\\n6. The Future of [Industry]\\nTemplate: \\\"The future of [Industry] isn't what you think. And it's staring us right in the face. Undeniable truths: 1. 2. 3.\\\"\\nType: Hot Take, Thought Leadership | Trigger: Curiosity, Urgency | Strength: 🔥🔥🔥\\n\\n7. Have You Seen [Company] Just [Did X]?\\nTemplate: \\\"Have you seen [Company] just [did X]? At first, I thought it was a typo. Now, I think it changes how we think about [industry / function] — here's why:\\\"\\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity, Surprise | Strength: 🔥🔥\\n\\n**STORYTELLING & PERSONAL EXPERIENCE**\\n\\n8. Unexpected Client Meeting\\nTemplate: \\\"I walked into a client meeting to talk about [Topic] and it did NOT go as expected. I walked out rethinking the future of [Industry]. Here's the story:\\\"\\nType: Storytelling | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n9. Unexpected Sales Conversation\\nTemplate: \\\"When we first pitched [Solution] to [Prospect Category, e.g. CFOs], I expected them to obsess over our [Feature or Tool]. Instead, this happened:\\\"\\nType: Storytelling | Trigger: Curiosity, Surprise | Strength: 🔥🔥\\n\\n10. There's Got To Be a Better Way\\nTemplate: \\\"It was 2 a.m. in a freezing [Location] office, and there I was — knee-deep in [X], chasing down \\\"[Y].\\\"\\\"\\nType: Storytelling | Trigger: Curiosity, Urgency | Strength: 🔥🔥🔥\\n\\n11. A Mentor Once Told Me\\nTemplate: \\\"A mentor once told me: \\\"[Blunt truth].\\\" And honestly? They were right.\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity, Empathy | Strength: 🔥🔥\\n\\n12. One Comment Changed My Career\\nTemplate: \\\"One offhand comment from an experienced [Role] changed my entire career. Over lunch, she told me…\\\"\\nType: Storytelling | Trigger: Curiosity, Empathy | Strength: 🔥\\n\\n13. Teachable Moment\\nTemplate: \\\"[Person] told me to [blunt advice] years ago. Best \\\"teachable moment\\\" ever.\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Empathy | Strength: 🔥🔥\\n\\n14. Not Taking a Break\\nTemplate: \\\"I just got off the phone with a [customer / user]. They're not taking a break. They're not going on sabbatical. They're done.\\\"\\nType: Hot Take, Storytelling | Trigger: Empathy, Urgency | Strength: 🔥\\n\\n15. Unexpected Client Truth\\nTemplate: \\\"Gotta love a brutally honest [Role]. At a recent [context], I started wading into a deep discussion about [what I thought mattered]. Then they cut me off and said…\\\"\\nOR: \\\"Gotta love a brutally honest [Role]. When I asked about [topic], her reply was: \\\"[Exact quote].\\\" And the numbers back it up.\\\"\\nType: Storytelling | Trigger: Credibility, Curiosity, Surprise | Strength: 🔥🔥\\n\\n16. When the CEO Notices\\nTemplate: \\\"\\\"Hey, super impressed by your performance. Let's grab dinner.\\\" — [Title], after reviewing our [timeframe] results. When the CEO notices your [work], you're moving the actual business, not just moving metrics.\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n17. I Asked [Person] About the Hype\\nTemplate: \\\"I asked [Person] about the [trend] hype. His answer: \\\"[unexpected quote].\\\"\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n**VULNERABILITY & FAILURE**\\n\\n18. I Thought I Was Fired\\nTemplate: \\\"I bombed my first [high-stakes moment]. When [leader] pulled me aside, I thought I was fired. Painful, but it taught me [number] lessons I'll never forget\\\"\\nType: Storytelling | Trigger: Curiosity, Empathy | Strength: 🔥🔥🔥\\n\\n19. Feedback That Stung\\nTemplate: \\\"In my first [Role], a colleague gave me feedback that stung. \\\"[Exact feedback].\\\" That stopped me cold.\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Empathy | Strength: 🔥🔥\\n\\n20. The First Time I Said [Aka Don't Do This]\\nTemplate: \\\"I still remember the first time I said [sentence] as a [role] in [situation]. It was honest, but I could quickly see that this was not an acceptable answer.\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Empathy | Strength: 🔥\\n\\n21. The Mistakes That Hurt the Most\\nTemplate: \\\"As a former [Role], I've made some big mistakes. I've seen great [peer group] make them too. Here are [Number] that hurt the most — and how to avoid them:\\\"\\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n22. The Hardest Part Wasn't the Job\\nTemplate: \\\"When I became [Role], I learned the hardest part wasn't [expected challenge]. It was [unexpected human or organizational reality]. After [experience], here's what I wish I'd known sooner:\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity, Empathy | Strength: 🔥🔥🔥\\n\\n23. I Used to Be Skeptical… Then This Happened\\nTemplate: \\\"As [Role], I was always skeptical of [idea or spend]. Then this happened. (True story.)\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n24. The Shift That Changed Everything\\nTemplate: \\\"I almost gave up on [approach] when I was [Role]. No matter what I tried, there was a wall because my [blocker]. Then I made one subtle shift… and the real conversations started.\\\"\\nType: Storytelling, Thought Leadership | Trigger: Curiosity, Empathy | Strength: 🔥\\n\\n**ROLE & LEADERSHIP INSIGHTS**\\n\\n25. Red Flags - Role Level\\nTemplate: \\\"When I took my first [X] role, I expected to [Y]. Instead, I spent 6 months [Z]. Here are 5 red flags I wish I'd spotted earlier:\\\"\\nType: Listicle, Storytelling, Thought Leadership | Trigger: Curiosity, Empathy | Strength: 🔥🔥🔥\\n\\n26. How We Need to Evolve\\nTemplate: \\\"The [Role] of the past managed [X]. The [Role] of the future drives [Y]. Here's how we need to evolve in [Year]:\\\"\\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n27. What Makes a GREAT [Role]?\\nTemplate: \\\"The other day, a [Title] friend asked me, \\\"What makes someone a GREAT [Role]?\\\" My reply:\\\"\\nType: Thought Leadership | Trigger: Curiosity | Strength: 🔥🔥\\n\\n28. Not Everyone Is Ready for the Role\\nTemplate: \\\"Not every [Role] candidate is ready for the seat. Here are [Number] red flags I've learned to watch for after [experience]:\\\"\\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n29. Surviving the Boardroom\\nTemplate: \\\"Most [career paths] aren't made in the boardroom. But plenty end there. Here are my [Number] favorite lessons for surviving it:\\\"\\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\\n\\n30. One Test I Use\\nTemplate: \\\"There's one test I use to see if a [Role] is truly plugged in. And sadly, most people fail it.\\\"\\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\\n\\n31. How Do You Stay Strategic When…\\nTemplate: \\\"How can [team / function] be \\\"strategic\\\" when we're buried in [constraint 1], [constraint 2], and [constraint 3]? Here's my playbook to drive real impact (from a [experience marker]):\\\"\\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n**PROBLEM-SOLVING & LESSONS**\\n\\n32. How Do You Solve [X]?\\nTemplate: \\\"How do you solve the [Known industry problem]? No one really knows, but here's my take:\\\"\\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\\n\\n33. [Number] Common Mistakes\\nTemplate: \\\"After [X] years in [Industry], I've seen every [Process] mistake. Here are [Number] common ones (and quick tips to fix them):\\\"\\nType: Listicle | Trigger: Credibility, Curiosity | Strength: 🔥🔥🔥\\n\\n**COMPANY & TEAM INSIGHTS**\\n\\n34. Watching New Hires Do It Differently\\nTemplate: \\\"I've been watching new hires at [Company] crush it by leaning into [new approach] from day one. It's got me thinking about those of us who came up pre-[shift]:\\\"\\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\\n\\n35. We Made a Different Call\\nTemplate: \\\"While others raced to [popular move], we made a different call at [Company]: [Principled constraint or standard].\\\"\\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\\n\\n36. [Industry] Deserves a Seat\\nTemplate: \\\"[Industry] deserves a seat in [category]. We're [doing concrete work].\\\"\\nType: Thought Leadership | Trigger: Credibility | Strength: 🔥\\n\\n37. We Had Two Choices\\nTemplate: \\\"When we started building [thing], we had two choices: [Option one] [Option two]\\\"\\nType: Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\\n\\n38. Why We Keep Winning\\nTemplate: \\\"I won't name names. But there's a competitor we keep winning deals from. They're [quality that should make them win]. Here's why that's not enough:\\\"\\nType: Hot Take, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n39. Real Leader Conversation\\nTemplate: \\\"The other day, I asked [fellow leader] if we should [proposal]. Their response was the polite version of \\\"terrible idea.\\\" Here's why:\\\"\\nType: Storytelling, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥🔥\\n\\n40. The Only KPIs That Matter\\nTemplate: \\\"As a CEO, I don't want 30+ [industry] KPIs that just look good on paper. I want to know:\\\"\\nType: Listicle, Thought Leadership | Trigger: Credibility, Curiosity | Strength: 🔥\\n\\n41. When Metrics Lie\\nTemplate: \\\"At my first [role] job, I saw something that still haunts me: [Group A] celebrating [metric] … while [Group B] watched [business outcome] flatline.\\\"\\nType: Hot Take, Storytelling, Thought Leadership | Trigger: Credibility, Curiosity, Surprise | Strength: 🔥🔥\\n\\n---\\n\\nCALL DATE:\\n{{ $('Webhook1').first().json.body.created_at.split('T')[0] }}\\n\\nLATEST TRANSCRIPT:\\n{{ $('Format New Transcript').first().json.text }}\\n\\n---\\nREFERENCE DOCUMENTS:\\n{{ $('Merge1').all().filter(doc => doc.json.content).map(doc => { const title = doc.json.content.split('\\\\n')[0].substring(0, 50) || doc.json.documentId; return `\\\\n=== ${title} ===\\\\n${doc.json.content}`; }).join('\\\\n\\\\n') }}\\n---\\n\\nUsing the context above, generate 8-14 LinkedIn content briefs (only as many as the transcript genuinely supports with distinct insights).\\n\\nBEFORE GENERATING:\\n1. Search ALL reference documents for explicit content pillars. List any you find with the document they came from.\\n2. If no explicit pillars exist, create 4-6 thematic pillar names based on the transcript and reference materials.\\n3. Scan the transcript for ALL quotable moments — aim to extract 30-50+ potential soundbites before assigning them to briefs.\\n4. Plan all 14 topics. CONSOLIDATE similar ideas — if two topics share the same core insight or target the same emotion, MERGE them into one brief.\\n5. Verify: no pillar has more than 3 briefs. If it does, cut the weakest ones and find new topics.\\n6. Final check: would a reader see any two briefs as \\\"the same post\\\"? If yes — merge them.\\n\\nEach brief must include:\\n- \\\"id\\\": number 1–14\\n- \\\"content_pillar\\\": the pillar name this post falls under\\n- \\\"pillar_source\\\": \\\"FROM STRATEGY DECK\\\" (with document name) or \\\"INFERRED FROM THEMES\\\"\\n- \\\"angle\\\": 2-5 word descriptor of this brief's specific angle (e.g., \\\"IDE vs Browser\\\", \\\"Superman vs Cartoon\\\", \\\"Crossing the Chasm\\\"). Used to differentiate briefs within the same pillar at a glance.\\n- \\\"pitch\\\": 1 sentence pitch for the post\\n- \\\"main_idea\\\": the one main takeaway/insight/reframe\\n- \\\"supporting_points\\\": array of key points. PRIORITIZE VERBATIM QUOTES. For every quote, use the EXACT words from the transcript in quotation marks, prefixed with \\\"SOUNDBITE [timestamp]:\\\" — include the timestamp so the client can find the moment. Aim for 3-5+ direct quotes per brief when available. Other points can be insights, reframes, or details, but quotes should dominate when the transcript supports the topic.\\n- \\\"story\\\": object with \\\"type\\\" (must be exactly \\\"REAL STORY\\\" if pulled directly from transcript, or \\\"SAMPLE STORY\\\" if AI-created based on topic) and \\\"summary\\\" (150 words max). If real, include key details from transcript. If sample, create a believable angle clearly marked as fabricated.\\n- \\\"so_what\\\": 1-2 sentences explaining why a reader would care about this topic. What's in it for them? Why should they stop scrolling?\\n- \\\"hero_and_villain\\\": object with \\\"hero\\\" (who or what is positioned as the hero/solution) and \\\"villain\\\" (who or what is positioned as the enemy/problem)\\n- \\\"hooks\\\": array of 3 scroll-stopping hooks. Use the HOOK LIBRARY templates as structural inspiration — adapt them to the specific topic and match the client's voice. Prioritize: first-person, specific details, curiosity gaps, bold POV. No generic patterns.\\n- \\\"cta\\\": object with \\\"type\\\" (\\\"FROM TRANSCRIPT\\\" or \\\"SUGGESTED\\\") and \\\"text\\\" (the call to action)\\n- \\\"differentiation_note\\\": If this brief touches on a theme similar to another brief, explain in 1-2 sentences how this brief is distinct (different angle, different takeaway, different audience emotion). If fully unique, write \\\"Standalone topic — no overlap.\\\"\\n- \\\"grade\\\": A/B/C grade based on strength and confidence\\n- \\\"notes\\\": why this post matters to the client's audience\\n\\nRespond ONLY with valid JSON in this structure:\\n{\\n  \\\"call_date\\\": \\\"\\\",\\n  \\\"briefs\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"content_pillar\\\": \\\"\\\",\\n      \\\"pillar_source\\\": \\\"FROM STRATEGY DECK\\\" | \\\"INFERRED FROM THEMES\\\",\\n      \\\"angle\\\":\\\"\\\",\\n      \\\"pitch\\\": \\\"\\\",\\n      \\\"main_idea\\\": \\\"\\\",\\n      \\\"supporting_points\\\": [],\\n      \\\"story\\\": {\\n        \\\"type\\\": \\\"REAL STORY | SAMPLE STORY\\\",\\n        \\\"summary\\\": \\\"\\\"\\n      },\\n      \\\"so_what\\\": \\\"\\\",\\n      \\\"hero_and_villain\\\": {\\n        \\\"hero\\\": \\\"\\\",\\n        \\\"villain\\\": \\\"\\\"\\n      },\\n      \\\"hooks\\\": [],\\n      \\\"cta\\\": {\\n        \\\"type\\\": \\\"FROM TRANSCRIPT | SUGGESTED\\\",\\n        \\\"text\\\": \\\"\\\"\\n      },\\n      \\\"differentiation_note\\\": \\\"\\\",\\n      \\\"grade\\\": \\\"\\\",\\n      \\\"notes\\\": \\\"\\\"\\n    }\\n  ],\\n  \\\"ideas_to_explore\\\": [\\n    {\\n      \\\"idea\\\": \\\"\\\",\\n      \\\"source\\\": \\\"TOUCHED ON IN CALL | ADDITIONAL SUGGESTION\\\"\\n    }\\n  ],\\n  \\\"overlap_audit\\\": {\\n    \\\"similar_pairs\\\": [\\n      {\\n        \\\"brief_ids\\\": [X, Y],\\n        \\\"similarity\\\": \\\"What they share\\\",\\n        \\\"distinction\\\": \\\"Why they're different enough to both exist\\\"\\n      }\\n    ],\\n    \\\"audit_passed\\\": true\\n  }\\n}\\n\"\n            }\n          ]\n        },\n        \"options\": {\n          \"maxTokens\": 64000\n        }\n      },\n      \"type\": \"@n8n/n8n-nodes-langchain.anthropic\",\n      \"typeVersion\": 1,\n      \"position\": [\n        928,\n        -288\n      ],\n      \"id\": \"44c0e463-0d88-4c08-8fd7-d546f3007cdb\",\n      \"name\": \"Generate Briefs\",\n      \"executeOnce\": true,\n      \"retryOnFail\": true,\n      \"maxTries\": 3,\n      \"waitBetweenTries\": 5000\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": true,\n            \"leftValue\": \"\",\n            \"typeValidation\": \"strict\",\n            \"version\": 3\n          },\n          \"conditions\": [\n            {\n              \"id\": \"f1ade2c8-c0fa-47d6-a378-b5880997fa64\",\n              \"leftValue\": \"={{ $('Client Folder').item.json.content[0].text }}\",\n              \"rightValue\": \"Undefined\",\n              \"operator\": {\n                \"type\": \"string\",\n                \"operation\": \"notEquals\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.3,\n      \"position\": [\n        -1760,\n        -288\n      ],\n      \"id\": \"e2cdf14b-ba92-48c0-adeb-603702c9a8e7\",\n      \"name\": \"Client Detected?\"\n    },\n    {\n      \"parameters\": {},\n      \"type\": \"n8n-nodes-base.merge\",\n      \"typeVersion\": 3.2,\n      \"position\": [\n        -864,\n        -288\n      ],\n      \"id\": \"eac0e76d-9de2-47cd-97e5-4080a3e80b6f\",\n      \"name\": \"Merge\",\n      \"alwaysOutputData\": true\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"const webhookData = $('Webhook1').first().json.body;\\nconst meetingTitle = webhookData.title || webhookData.meeting_title || 'Untitled Meeting';\\nconst shareUrl = webhookData.share_url || '';\\nconst recordingDate = webhookData.recording_start_time \\n  ? new Date(webhookData.recording_start_time).toLocaleDateString('en-US', { \\n      year: 'numeric', \\n      month: 'long', \\n      day: 'numeric' \\n    })\\n  : new Date().toLocaleDateString();\\nconst transcript = webhookData.transcript\\n  ?.map(entry => `[${entry.timestamp}] ${entry.speaker.display_name}: ${entry.text}`)\\n  .join('\\\\n') || 'No transcript available';\\n\\n// Prepend share URL to transcript\\nconst formattedText = shareUrl \\n  ? `Fathom Recording: ${shareUrl}\\\\n\\\\n${transcript}`\\n  : transcript;\\n\\nreturn {\\n  text: formattedText,\\n  meetingTitle: meetingTitle,\\n  recordingDate: recordingDate,\\n  shareUrl: shareUrl\\n};\"\n      },\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        -640,\n        -384\n      ],\n      \"id\": \"47e0e312-854c-4565-96db-74e6e25e5788\",\n      \"name\": \"Format New Transcript\"\n    },\n    {\n      \"parameters\": {\n        \"operation\": \"get\",\n        \"documentURL\": \"={{ $json.id }}\"\n      },\n      \"type\": \"n8n-nodes-base.googleDocs\",\n      \"typeVersion\": 2,\n      \"position\": [\n        -192,\n        -192\n      ],\n      \"id\": \"f9f672ea-8e89-4345-8945-edf6c119957f\",\n      \"name\": \"Get Files\",\n      \"retryOnFail\": true,\n      \"onError\": \"continueRegularOutput\"\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": true,\n            \"leftValue\": \"\",\n            \"typeValidation\": \"strict\",\n            \"version\": 3\n          },\n          \"conditions\": [\n            {\n              \"id\": \"9e063b06-69a6-44e6-960c-e1e245247953\",\n              \"leftValue\": \"={{ $(\\\"Get all Folders from Client Folder\\\").all().map(item => item.json).find(item => item.name?.toLowerCase().includes(\\\"transcripts\\\"))?.id ?? \\\"Undefined\\\" }}\",\n              \"rightValue\": \"Undefined\",\n              \"operator\": {\n                \"type\": \"string\",\n                \"operation\": \"notEquals\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.3,\n      \"position\": [\n        -1312,\n        -288\n      ],\n      \"id\": \"8df8fca9-2270-4ca8-9870-e543cf6ec748\",\n      \"name\": \"Does it have a Transcripts Folder?\",\n      \"executeOnce\": true\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"folder\",\n        \"name\": \"Transcripts\",\n        \"driveId\": {\n          \"__rl\": true,\n          \"mode\": \"list\",\n          \"value\": \"My Drive\"\n        },\n        \"folderId\": {\n          \"__rl\": true,\n          \"value\": \"={{ $('Client Folder').first().json.content[0].text }}\",\n          \"mode\": \"id\"\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.googleDrive\",\n      \"typeVersion\": 3,\n      \"position\": [\n        -1088,\n        -224\n      ],\n      \"id\": \"fc042db4-f122-45d0-b9eb-59cc525068bc\",\n      \"name\": \"Create folder\"\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"fileFolder\",\n        \"filter\": {\n          \"folderId\": {\n            \"__rl\": true,\n            \"value\": \"={{ $('Client Folder').first().json.content[0].text }}\",\n            \"mode\": \"id\"\n          },\n          \"whatToSearch\": \"folders\"\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.googleDrive\",\n      \"typeVersion\": 3,\n      \"position\": [\n        -1536,\n        -288\n      ],\n      \"id\": \"31746cf5-7e12-479a-8558-599cd807c739\",\n      \"name\": \"Get all Folders from Client Folder\",\n      \"alwaysOutputData\": true\n    },\n    {\n      \"parameters\": {\n        \"method\": \"POST\",\n        \"url\": \"=https://docs.googleapis.com/v1/documents/{{ $json.id }}:batchUpdate\",\n        \"authentication\": \"predefinedCredentialType\",\n        \"nodeCredentialType\": \"googleDocsOAuth2Api\",\n        \"sendBody\": true,\n        \"specifyBody\": \"json\",\n        \"jsonBody\": \"={\\n  \\\"requests\\\": [\\n    {\\n      \\\"insertText\\\": {\\n        \\\"endOfSegmentLocation\\\": {\\n          \\\"segmentId\\\": \\\"\\\"\\n        },\\n        \\\"text\\\": {{ JSON.stringify($('Format New Transcript').first().json.text) }}\\n      }\\n    }\\n  ]\\n}\",\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.3,\n      \"position\": [\n        -192,\n        -384\n      ],\n      \"id\": \"be7833c7-39e3-440e-9084-f828fb225bde\",\n      \"name\": \"Append to new Transcript\"\n    },\n    {\n      \"parameters\": {\n        \"folderId\": \"={{ $('Get all Folders from Client Folder').all().find(item => item.json.name === 'Transcripts').json.id }}\",\n        \"title\": \"={{ $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title }} - {{ $now.format('LL.dd.yy') }}\"\n      },\n      \"type\": \"n8n-nodes-base.googleDocs\",\n      \"typeVersion\": 2,\n      \"position\": [\n        -416,\n        -384\n      ],\n      \"id\": \"4b7591f7-f295-4002-b9a7-cf3a0660412c\",\n      \"name\": \"Create Transcript Doc\"\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"fileFolder\",\n        \"filter\": {\n          \"folderId\": {\n            \"__rl\": true,\n            \"value\": \"={{ $('Client Folder').first().json.content[0].text }}\",\n            \"mode\": \"id\"\n          },\n          \"whatToSearch\": \"files\",\n          \"fileTypes\": [\n            \"application/vnd.google-apps.document\"\n          ]\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.googleDrive\",\n      \"typeVersion\": 3,\n      \"position\": [\n        -416,\n        -192\n      ],\n      \"id\": \"b83dc222-c303-4c7b-ab27-da229aaa6439\",\n      \"name\": \"Get all Documents from Client Folder\",\n      \"alwaysOutputData\": true\n    },\n    {\n      \"parameters\": {},\n      \"type\": \"n8n-nodes-base.merge\",\n      \"typeVersion\": 3.2,\n      \"position\": [\n        32,\n        -288\n      ],\n      \"id\": \"37b42b08-b332-4d3d-a168-1cb6b9ac321d\",\n      \"name\": \"Merge1\",\n      \"alwaysOutputData\": true\n    },\n    {\n      \"parameters\": {\n        \"folderId\": \"={{ $('Get all Folders from Client Folder').all().find(item => item.json.name === 'Briefs')?.json?.id ?? $('Create folder1').first().json.id }}\",\n        \"title\": \"=Briefs {{ $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title }} - {{ $now.format('LL.dd.yy') }}\"\n      },\n      \"type\": \"n8n-nodes-base.googleDocs\",\n      \"typeVersion\": 2,\n      \"position\": [\n        1504,\n        -288\n      ],\n      \"id\": \"c45b8301-e4ab-4ea1-98a7-04024bfedfe1\",\n      \"name\": \"Create Briefs Doc\"\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": true,\n            \"leftValue\": \"\",\n            \"typeValidation\": \"strict\",\n            \"version\": 3\n          },\n          \"conditions\": [\n            {\n              \"id\": \"9e063b06-69a6-44e6-960c-e1e245247953\",\n              \"leftValue\": \"={{ $(\\\"Get all Folders from Client Folder\\\").all().map(item => item.json).find(item => item.name?.toLowerCase().includes(\\\"briefs\\\"))?.id ?? \\\"Undefined\\\" }}\",\n              \"rightValue\": \"Undefined\",\n              \"operator\": {\n                \"type\": \"string\",\n                \"operation\": \"notEquals\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.3,\n      \"position\": [\n        256,\n        -288\n      ],\n      \"id\": \"56b3ecf7-c85f-455e-8571-c728c37ebefe\",\n      \"name\": \"Does it have a Briefs Folder?\",\n      \"executeOnce\": true\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"folder\",\n        \"name\": \"Briefs\",\n        \"driveId\": {\n          \"__rl\": true,\n          \"mode\": \"list\",\n          \"value\": \"My Drive\"\n        },\n        \"folderId\": {\n          \"__rl\": true,\n          \"value\": \"={{ $('Client Folder').first().json.content[0].text }}\",\n          \"mode\": \"id\"\n        },\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.googleDrive\",\n      \"typeVersion\": 3,\n      \"position\": [\n        480,\n        -224\n      ],\n      \"id\": \"6d42e68d-8672-471f-bf28-93fe201d754c\",\n      \"name\": \"Create folder1\"\n    },\n    {\n      \"parameters\": {},\n      \"type\": \"n8n-nodes-base.merge\",\n      \"typeVersion\": 3.2,\n      \"position\": [\n        704,\n        -288\n      ],\n      \"id\": \"b83ada9f-06be-4d7a-8e10-1ae2eba4dcb9\",\n      \"name\": \"Merge2\"\n    },\n    {\n      \"parameters\": {\n        \"authentication\": \"oAuth2\",\n        \"select\": \"channel\",\n        \"channelId\": {\n          \"__rl\": true,\n          \"value\": \"C01UD1K5GFQ\",\n          \"mode\": \"list\",\n          \"cachedResultName\": \"general\"\n        },\n        \"text\": \"=*New Brief for {{ $('Client Name').first().json.clientName }}* created in Google Drive from the _{{ $('Webhook1').first().json.body.meeting_title || $('Webhook1').first().json.body.title }}_ - {{ $now.format('LL.dd.yy') }}\\n<https://docs.google.com/document/d/{{ $('Create Briefs Doc').first().json.id }}|Link to Google Doc>\",\n        \"otherOptions\": {}\n      },\n      \"type\": \"n8n-nodes-base.slack\",\n      \"typeVersion\": 2.4,\n      \"position\": [\n        2400,\n        -288\n      ],\n      \"id\": \"85409248-29e2-4225-94a7-82c02de1077f\",\n      \"name\": \"Send a message\"\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Get the folder ID from 'Client Folder' node\\nconst folderId = $('Client Folder').first().json.content[0].text;\\n\\n// Find matching client in 'Client Folders' array\\nconst clientFolders = $('Client Folders').all().map(item => item.json);\\nconst match = clientFolders.find(folder => folder.id === folderId);\\n\\nreturn {\\n  clientName: match?.name || null\\n};\"\n      },\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        -1984,\n        -288\n      ],\n      \"id\": \"e3852b25-e18b-4662-a2bd-2aa66b00f011\",\n      \"name\": \"Client Name\"\n    },\n    {\n      \"parameters\": {\n        \"operation\": \"share\",\n        \"fileId\": {\n          \"__rl\": true,\n          \"value\": \"={{ $('Create Briefs Doc').first().json.id }}\",\n          \"mode\": \"id\"\n        },\n        \"permissionsUi\": {\n          \"permissionsValues\": {\n            \"role\": \"writer\",\n            \"type\": \"user\",\n            \"emailAddress\": \"YOUR_EMAIL@example.com\"\n          }\n        },\n        \"options\": {\n          \"sendNotificationEmail\": false\n        }\n      },\n      \"type\": \"n8n-nodes-base.googleDrive\",\n      \"typeVersion\": 3,\n      \"position\": [\n        1952,\n        -288\n      ],\n      \"id\": \"5b1eee8e-bae2-46cc-98b9-e197249e15fb\",\n      \"name\": \"Share with Donna\",\n      \"executeOnce\": true\n    },\n    {\n      \"parameters\": {\n        \"operation\": \"share\",\n        \"fileId\": {\n          \"__rl\": true,\n          \"value\": \"={{ $('Create Briefs Doc').first().json.id }}\",\n          \"mode\": \"id\"\n        },\n        \"permissionsUi\": {\n          \"permissionsValues\": {\n            \"role\": \"writer\",\n            \"type\": \"user\",\n            \"emailAddress\": \"YOUR_EMAIL@example.com\"\n          }\n        },\n        \"options\": {\n          \"sendNotificationEmail\": false\n        }\n      },\n      \"type\": \"n8n-nodes-base.googleDrive\",\n      \"typeVersion\": 3,\n      \"position\": [\n        2176,\n        -288\n      ],\n      \"id\": \"d95b3c81-94fe-49ed-90e8-e6cf90b27fbc\",\n      \"name\": \"Share with Stephen\"\n    },\n    {\n      \"parameters\": {\n        \"description\": \"Use this tool to think through complex problems step-by-step. It doesn't retrieve new information or make changes — it just logs your reasoning. Use it when you need to: break down a complex task, weigh multiple options, plan before acting, or hold intermediate thoughts while working through a multi-step problem.\"\n      },\n      \"type\": \"@n8n/n8n-nodes-langchain.toolThink\",\n      \"typeVersion\": 1.1,\n      \"position\": [\n        1008,\n        -64\n      ],\n      \"id\": \"f4c1435a-77d1-4373-a186-d43dbdd14c32\",\n      \"name\": \"Think\"\n    }\n  ],\n  \"connections\": {\n    \"Client Folders\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Client Folder\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Webhook1\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Client Folders\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Format Briefs1\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Create Briefs Doc\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Append Text to Document\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Share with Donna\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Client Folder\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Client Name\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Generate Briefs\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Format Briefs1\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Client Detected?\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Get all Folders from Client Folder\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Merge\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Format New Transcript\",\n            \"type\": \"main\",\n            \"index\": 0\n          },\n          {\n            \"node\": \"Get all Documents from Client Folder\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Format New Transcript\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Create Transcript Doc\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Get Files\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Merge1\",\n            \"type\": \"main\",\n            \"index\": 1\n          }\n        ]\n      ]\n    },\n    \"Does it have a Transcripts Folder?\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Merge\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Create folder\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Create folder\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Merge\",\n            \"type\": \"main\",\n            \"index\": 1\n          }\n        ]\n      ]\n    },\n    \"Get all Folders from Client Folder\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Does it have a Transcripts Folder?\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Append to new Transcript\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Merge1\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Create Transcript Doc\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Append to new Transcript\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Get all Documents from Client Folder\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Get Files\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Merge1\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Does it have a Briefs Folder?\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Create Briefs Doc\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Append Text to Document\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Does it have a Briefs Folder?\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Merge2\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Create folder1\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Create folder1\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Merge2\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Merge2\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Generate Briefs\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Send a message\": {\n      \"main\": [\n        []\n      ]\n    },\n    \"Client Name\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Client Detected?\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Share with Donna\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Share with Stephen\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Share with Stephen\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send a message\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Think\": {\n      \"ai_tool\": [\n        [\n          {\n            \"node\": \"Generate Briefs\",\n            \"type\": \"ai_tool\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  }\n}";function copyJSON(){navigator.clipboard.writeText(wfData).then(()=>notify('Copied to clipboard')).catch(()=>notify('Copy failed'))}function downloadJSON(){const b=new Blob([wfData],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='workflow.json';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);notify('Downloaded')}function notify(m){const d=document.createElement('div');d.className='copy-notif';d.textContent=m;document.body.appendChild(d);setTimeout(()=>{d.classList.add('fade-out');setTimeout(()=>document.body.removeChild(d),300)},2000)}</script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,theme:"neutral",themeVariables:{primaryColor:"#00E676",primaryTextColor:"#000",primaryBorderColor:"#000",lineColor:"#000",secondaryColor:"#f0f0f0",tertiaryColor:"#fff"}});</script></body></html>
