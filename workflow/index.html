@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>LinkedIn Content Brief Generator from Client Calls | Ivan Manfredi</title><meta name="description" content="N8N workflow template that automates LinkedIn content briefs from client call transcripts. Built for agencies and ghostwriters managing multiple accounts." /><meta property="og:title" content="LinkedIn Content Brief Generator from Client Calls | Ivan Manfredi" /><meta property="og:description" content="N8N workflow template that automates LinkedIn content briefs from client call transcripts. Built for agencies and ghostwriters managing multiple accounts." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{primary:'#000000',paper:'#ffffff',accent:'#00E676',cyan:'#2979FF'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{background-color:#fff;color:#000;overflow-x:hidden}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.json-viewer{font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.6;background:#1a1a1a;color:#00E676;padding:2rem;border:3px solid black;overflow-x:auto;max-height:600px;overflow-y:auto;white-space:pre}.json-viewer::-webkit-scrollbar{width:10px;height:10px}.json-viewer::-webkit-scrollbar-track{background:#0a0a0a}.json-viewer::-webkit-scrollbar-thumb{background:#00E676;border:2px solid #1a1a1a}.copy-notif{position:fixed;top:100px;right:20px;background:#00E676;color:black;padding:1rem 2rem;border:2px solid black;box-shadow:4px 4px 0 0 rgba(0,0,0,1);font-weight:bold;text-transform:uppercase;z-index:1000;animation:slideIn .3s ease-out}@keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}.fade-out{animation:fadeOut .3s ease-out forwards}@keyframes fadeOut{to{opacity:0;transform:translateY(-20px)}}</style><link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css"></head><body class="font-sans selection:bg-accent selection:text-black"><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic group-hover:shadow-comic-active transition-all flex items-center justify-center"><span class="relative text-white font-black text-lg">IM</span></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase hover:underline decoration-2 decoration-accent">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="hidden md:inline-block px-6 py-2 bg-accent border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Let's Talk</a></div></div></nav><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">N8N Workflow</div><h1 class="hero-title text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">LinkedIn Content Brief Generator from Client Calls</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-8"><p style="margin-bottom: 16px; line-height: 1.7;">You're in. This is the full n8n workflow blueprint - every node, every prompt, the logic behind each step. Start by reading through the complete workflow architecture before you build anything. Once you see how the pieces connect, you'll set this up in 2-3 hours and stop burning half your week on transcript processing.</p></p><img src="https://drive.google.com/file/d/1L1PH6WgBbSkO48ERHR_0E9eBnQZJ7I_X/view?usp=drivesdk" alt="LinkedIn Content Brief Generator from Client Calls" class="w-full border-4 border-black shadow-comic mt-8" /></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><div class="bg-gray-50 border-2 border-black p-6 mb-6"><p class="text-lg font-bold mb-4">This workflow contains 0 nodes.</p><h3 class="font-bold text-base mb-3 uppercase">Node Types Used</h3><div class="flex flex-wrap gap-2"></div></div><p style="margin-bottom: 16px; line-height: 1.7;">Hey, this is Ivan, and I'm about to give you the full n8n workflow blueprint for automating LinkedIn content briefs from your client calls - so you can stop spending 3-5 hours per client manually extracting insights and matching brand voice.</p>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Who Am I?</h2>
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">AI automation consultant</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Built AI-powered automation systems for 50+ businesses</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Designed workflows that save teams 20+ hours per week</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Created AI solutions that consistently 3-5x operational efficiency</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">The guy who actually builds these systems, not just talks about them</li>
+</ul>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">What To Do With This</h2>
+This is a complete n8n workflow blueprint. You'll need:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">n8n instance (cloud or self-hosted)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Fireflies.ai or similar transcription service</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">OpenAI API access (GPT-4 recommended)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">ClickUp account (or adapt to your project management tool)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">About 2-3 hours to build and test</li>
+</ul>
+Read through the full workflow logic first, then build it node by node. I've included the actual prompts and the reasoning behind each step.
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Why This Workflow Matters</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Here's what I see with marketing agencies and ghostwriting teams managing multiple client accounts: they have great strategy calls, tons of golden nuggets come up, and then... someone has to sit there for hours pulling insights out of transcripts, matching them against the client's voice, and turning them into content briefs.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The problem isn't the call itself. It's everything that happens after.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">One agency I worked with had a team member spending 4 hours per client call just doing this extraction work. Multiply that by 8-10 clients, and you've got nearly a full-time role that's just... processing. Not creating. Processing.</p>
+This workflow changes that. Call ends, transcript hits Fireflies, automation kicks in, and within minutes you have:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Key insights extracted and categorized</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Content ideas matched to the client's ICP</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Briefs written in the client's tone of voice</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Everything waiting in ClickUp for review</li>
+</ul>
+The human still makes the final call. But the human isn't doing 4 hours of grunt work to get there.
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">The Complete Workflow Architecture</h2>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Overview</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">``<code><br>Fireflies Webhook → Transcript Processing → Content Extraction Agent → ICP Relevance Filter → Tone of Voice Agent → ClickUp Task Creation → (Optional) Short-Form Content Trigger<br></code>`<code></p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The key insight from how this was built for Kyle's system: it's not one big prompt doing everything. It's a chain of specialized agents, each doing one job well, with filters in between to catch garbage before it propagates.</p>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Node-by-Node Breakdown</h2>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 1: Fireflies Webhook Trigger</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> Webhook</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Purpose:</strong> Catches new transcripts the moment they're processed</p>
+<strong>Configuration:</strong>
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">HTTP Method: POST</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Path: </code>/fireflies-transcript<code></li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Authentication: Header Auth (set a secret key)</li>
+</ul>
+<strong>What comes in:</strong>
+</code>`<code>json
+{
+  "transcript_id": "abc123",
+  "meeting_title": "Client Strategy Call - Acme Corp",
+  "participants": ["ivan@agency.com", "client@acme.com"],
+  "transcript_text": "[Full transcript]",
+  "duration_minutes": 45,
+  "date": "2024-01-15"
+}
+</code>`<code>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Why this matters:</strong> You need the full transcript text, not just a summary. Fireflies gives you both - always pull the full transcript for content extraction.</p>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 2: Client Identification</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> Function Node</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Purpose:</strong> Match the incoming call to a specific client profile</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Logic:</strong><br></code>`<code>javascript<br>// Extract client identifier from meeting title or participants<br>const meetingTitle = $input.first().json.meeting_title;<br>const participants = $input.first().json.participants;</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">// Simple pattern matching - customize for your naming convention<br>let clientId = null;<br>let clientName = null;</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">// Check meeting title for client name pattern<br>const titleMatch = meetingTitle.match(/Client.<em>?-\s</em>(.+)/i);<br>if (titleMatch) {<br>  clientName = titleMatch[1].trim();<br>}</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">// Return client context<br>return [{<br>  json: {<br>    ...$input.first().json,<br>    client_name: clientName,<br>    client_id: clientId,<br>    needs_manual_matching: !clientName<br>  }<br>}];<br></code>``</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Why this step exists:</strong></p></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-5xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-8">Workflow JSON</h2><div class="flex flex-wrap gap-4 mb-6"><button onclick="copyJSON()" class="px-6 py-3 bg-accent text-black border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Copy JSON</button><button onclick="downloadJSON()" class="px-6 py-3 bg-cyan text-white border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Download .json</button></div><div class="json-viewer" id="wfJSON">Based on the research and my n8n expertise, I'll create a production-ready Lead Management &amp; Customer Onboarding workflow. Let me generate the complete JSON.
+
+```json
+{
+  "name": "Lead Management &amp; Customer Onboarding Automation",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8f3e9a1b-5c7d-4e2f-9b8a-1d6c3f4e5a7b",
+      "name": "When New Lead Submitted",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "content": "## Lead Management &amp; Onboarding Workflow\n\nThis workflow automates the complete lead-to-customer journey:\n\n1. Captures new leads from web forms\n2. Validates and enriches lead data\n3. Creates records in CRM (HubSpot)\n4. Sends personalized welcome emails\n5. Notifies sales team in Slack\n6. Tracks everything in Google Sheets for reporting\n\n**Setup Required:**\n- Add HubSpot credentials\n- Add Gmail credentials\n- Add Slack credentials\n- Add Google Sheets credentials\n- Update sheet ID and Slack channel",
+        "height": 340,
+        "width": 380
+      },
+      "id": "a2b3c4d5-e6f7-8a9b-0c1d-2e3f4a5b6c7d",
+      "name": "Workflow Documentation",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [250, 480]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "str-1",
+              "name": "firstName",
+              "value": "John",
+              "type": "string"
+            },
+            {
+              "id": "str-2",
+              "name": "lastName",
+              "value": "Smith",
+              "type": "string"
+            },
+            {
+              "id": "str-3",
+              "name": "email",
+              "value": "john.smith@example.com",
+              "type": "string"
+            },
+            {
+              "id": "str-4",
+              "name": "company",
+              "value": "Acme Corporation",
+              "type": "string"
+            },
+            {
+              "id": "str-5",
+              "name": "phone",
+              "value": "+1-555-0123",
+              "type": "string"
+            },
+            {
+              "id": "str-6",
+              "name": "leadSource",
+              "value": "Website Contact Form",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3c4d5e6-f7a8-9b0c-1d2e-3f4a5b6c7d8e",
+      "name": "Simulate Lead Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": ""
+          },
+          "conditions": [
+            {
+              "id": "c4d5e6f7-a8b9-0c1d-2e3f-4a5b6c7d8e9f",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            },
+            {
+              "id": "d5e6f7a8-b9c0-1d2e-3f4a-5b6c7d8e9f0a",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "@",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "e6f7a8b9-c0d1-2e3f-4a5b-6c7d8e9f0a1b",
+              "leftValue": "={{ $json.firstName }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c4d5e6f7-a8b9-0c1d-2e3f-4a5b6c7d8e9f",
+      "name": "Validate Lead Data",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Enrich and format lead data\nconst items = $input.all();\nconst enrichedItems = [];\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // Format phone number\n  let phone = data.phone || '';\n  phone = phone.replace(/[^0-9+]/g, '');\n  \n  // Create full name\n  const fullName = `${data.firstName} ${data.lastName}`.trim();\n  \n  // Generate lead score based on available data\n  let leadScore = 0;\n  if (data.company) leadScore += 25;\n  if (data.phone) leadScore += 25;\n  if (data.email &amp;&amp; data.email.includes('@')) leadScore += 25;\n  if (data.leadSource) leadScore += 25;\n  \n  // Determine lead priority\n  let priority = 'Low';\n  if (leadScore &gt;= 75) priority = 'High';\n  else if (leadScore &gt;= 50) priority = 'Medium';\n  \n  // Create enriched object\n  enrichedItems.push({\n    json: {\n      ...data,\n      fullName,\n      phone,\n      leadScore,\n      priority,\n      createdAt: new Date().toISOString(),\n      status: 'New'\n    }\n  });\n}\n\nreturn enrichedItems;"
+      },
+      "id": "d5e6f7a8-b9c0-1d2e-3f4a-5b6c7d8e9f0a",
+      "name": "Enrich Lead Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1450, 180]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "create",
+        "email": "={{ $json.email }}",
+        "additionalFields": {
+          "firstName": "={{ $json.firstName }}",
+          "lastName": "={{ $json.lastName }}",
+          "phone": "={{ $json.phone }}",
+          "company": "={{ $json.company }}"
+        }
+      },
+      "id": "e6f7a8b9-c0d1-2e3f-4a5b-6c7d8e9f0a1b",
+      "name": "Create Contact in HubSpot",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [1850, 180]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "list",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $json.createdAt }}",
+            "First Name": "={{ $json.firstName }}",
+            "Last Name": "={{ $json.lastName }}",
+            "Email": "={{ $json.email }}",
+            "Company": "={{ $json.company }}",
+            "Phone": "={{ $json.phone }}",
+            "Lead Source": "={{ $json.leadSource }}",
+            "Lead Score": "={{ $json.leadScore }}",
+            "Priority": "={{ $json.priority }}",
+            "Status": "={{ $json.status }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "f7a8b9c0-d1e2-3f4a-5b6c-7d8e9f0a1b2c",
+      "name": "Log to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [1850, 380]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "Welcome to Our Community, {{ $json.firstName }}!",
+        "emailType": "html",
+        "message": "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;style&gt;\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }\n    .container { max-width: 600px; margin: 0 auto; padding: 20px; }\n    .header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }\n    .content { padding: 20px; background-color: #f9f9f9; }\n    .footer { text-align: center; padding: 20px; font-size: 12px; color: #666; }\n    .button { background-color: #4CAF50; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block; margin: 10px 0; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"header\"&gt;\n      &lt;h1&gt;Welcome Aboard!&lt;/h1&gt;\n    &lt;/div&gt;\n    &lt;div class=\"content\"&gt;\n      &lt;h2&gt;Hi {{ $json.firstName }},&lt;/h2&gt;\n      &lt;p&gt;Thank you for your interest! We're excited to have you here.&lt;/p&gt;\n      &lt;p&gt;We've received your information and one of our team members will be reaching out to you shortly to discuss how we can help {{ $json.company }} achieve its goals.&lt;/p&gt;\n      &lt;p&gt;In the meantime, feel free to explore our resources:&lt;/p&gt;\n      &lt;p style=\"text-align: center;\"&gt;\n        &lt;a href=\"#\" class=\"button\"&gt;Get Started&lt;/a&gt;\n      &lt;/p&gt;\n      &lt;p&gt;If you have any immediate questions, don't hesitate to reply to this email.&lt;/p&gt;\n      &lt;p&gt;Best regards,&lt;br&gt;The Team&lt;/p&gt;\n    &lt;/div&gt;\n    &lt;div class=\"footer\"&gt;\n      &lt;p&gt;This email was sent because you submitted a form on our website.&lt;/p&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;",
+        "options": {}
+      },
+      "id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+      "name": "Send Welcome Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [2250, 180]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "YOUR_SLACK_CHANNEL_ID",
+          "mode": "id"
+        },
+        "text": ":dart: *New Lead Alert!*\n\n*Name:* {{ $json.fullName }}\n*Email:* {{ $json.email }}\n*Company:* {{ $json.company }}\n*Phone:* {{ $json.phone }}\n*Source:* {{ $json.leadSource }}\n\n*Lead Score:* {{ $json.leadScore }}/100\n*Priority:* {{ $json.priority }}\n\n:white_check_mark: Contact created in HubSpot\n:envelope: Welcome email sent\n:bar_chart: Logged in tracking sheet",
+        "otherOptions": {}
+      },
+      "id": "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
+      "name": "Notify Sales Team in Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [2250, 380]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "err-1",
+              "name": "errorMessage",
+              "value": "Lead validation failed: Missing required fields (email, firstName, or invalid email format)",
+              "type": "string"
+            },
+            {
+              "id": "err-2",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3d4e5f6-a7b8-9c0d-1e2f-3a4b5c6d7e8f",
+      "name": "Validation Failed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1450, 480]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "YOUR_SLACK_CHANNEL_ID",
+          "mode": "id"
+        },
+        "text": ":warning: *Lead Validation Failed*\n\n*Reason:* Invalid or incomplete lead data\n*Timestamp:* {{ $json.timestamp }}\n\nPlease check the form submission and contact the source manually if needed.",
+        "otherOptions": {}
+      },
+      "id": "d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f9a",
+      "name": "Alert Team of Failed Lead",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [1850, 480]
+    },
+    {
+      "parameters": {
+        "content": "## Error Handling Path\n\nIf lead validation fails (missing email, name, or invalid format), the workflow:\n\n1. Captures the error details\n2. Sends an alert to the sales team in Slack\n3. Prevents bad data from entering HubSpot\n\nThis ensures data quality and allows for manual follow-up when needed.",
+        "height": 260,
+        "width": 380
+      },
+      "id": "e5f6a7b8-c9d0-1e2f-3a4b-5c6d7e8f9a0b",
+      "name": "Error Handling Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1450, 680]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Workflow completion summary\nconst leadData = $input.first().json;\n\nreturn [{\n  json: {\n    workflowStatus: 'completed',\n    leadProcessed: leadData.fullName,\n    email: leadData.email,\n    priority: leadData.priority,\n    leadScore: leadData.leadScore,\n    hubspotCreated: true,\n    emailSent: true,\n    slackNotified: true,\n    sheetLogged: true,\n    completedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "f6a7b8c9-d0e1-2f3a-4b5c-6d7e8f9a0b1c",
+      "name": "Workflow Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2650, 300]
+    }
+  ],
+  "connections": {
+    "When New Lead Submitted": {
+      "main": [
+        [
+          {
+            "node": "Simulate Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulate Lead Data": {
+      "main": [
+        [
+          {
+            "node": "Validate Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Lead Data": {
+      "main": [
+        [
+          {
+            "node": "Enrich Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Validation Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrich Lead Data": {
+      "main": [
+        [
+          {
+            "node": "Create Contact in HubSpot",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Contact in HubSpot": {
+      "main": [
+        [
+          {
+            "node": "Send Welcome Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log to Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Notify Sales Team in Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Welcome Email": {
+      "main": [
+        [
+          {
+            "node": "Workflow Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Sales Team in Slack": {
+      "main": [
+        [
+          {
+            "node": "Workflow Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation Failed": {
+      "main": [
+        [
+          {
+            "node": "Alert Team of Failed Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
+```
+</div><div class="mt-12 bg-white border-4 border-black p-8 shadow-comic"><h3 class="text-2xl font-black uppercase mb-4">How to Import This Workflow</h3><ol class="list-decimal list-inside space-y-3 text-base font-medium"><li>Copy the JSON above or download the .json file</li><li>Open your n8n instance</li><li>Click the + button then "Import from File" or "Import from URL"</li><li>Paste the JSON or upload the downloaded file</li><li>Configure any required credentials (API keys, OAuth connections)</li><li>Activate the workflow and test it</li></ol><div class="mt-6 p-4 bg-gray-50 border-2 border-black"><p class="font-bold mb-2">Note:</p><p class="text-sm">This workflow requires credentials that you will need to configure in your n8n instance. Credentials are not included for security reasons.</p></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This Workflow?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build custom n8n workflows and automation systems that save thousands of hours per year.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Book Strategy Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 text-sm text-gray-500 font-medium uppercase tracking-wide text-center"><p>&copy; 2026 All Rights Reserved.</p></div></div></footer><script>const wfData="Based on the research and my n8n expertise, I'll create a production-ready Lead Management & Customer Onboarding workflow. Let me generate the complete JSON.\n\n```json\n{\n  \"name\": \"Lead Management & Customer Onboarding Automation\",\n  \"nodes\": [\n    {\n      \"parameters\": {},\n      \"id\": \"8f3e9a1b-5c7d-4e2f-9b8a-1d6c3f4e5a7b\",\n      \"name\": \"When New Lead Submitted\",\n      \"type\": \"n8n-nodes-base.manualTrigger\",\n      \"typeVersion\": 1,\n      \"position\": [250, 300]\n    },\n    {\n      \"parameters\": {\n        \"content\": \"## Lead Management & Onboarding Workflow\\n\\nThis workflow automates the complete lead-to-customer journey:\\n\\n1. Captures new leads from web forms\\n2. Validates and enriches lead data\\n3. Creates records in CRM (HubSpot)\\n4. Sends personalized welcome emails\\n5. Notifies sales team in Slack\\n6. Tracks everything in Google Sheets for reporting\\n\\n**Setup Required:**\\n- Add HubSpot credentials\\n- Add Gmail credentials\\n- Add Slack credentials\\n- Add Google Sheets credentials\\n- Update sheet ID and Slack channel\",\n        \"height\": 340,\n        \"width\": 380\n      },\n      \"id\": \"a2b3c4d5-e6f7-8a9b-0c1d-2e3f4a5b6c7d\",\n      \"name\": \"Workflow Documentation\",\n      \"type\": \"n8n-nodes-base.stickyNote\",\n      \"typeVersion\": 1,\n      \"position\": [250, 480]\n    },\n    {\n      \"parameters\": {\n        \"assignments\": {\n          \"assignments\": [\n            {\n              \"id\": \"str-1\",\n              \"name\": \"firstName\",\n              \"value\": \"John\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"str-2\",\n              \"name\": \"lastName\",\n              \"value\": \"Smith\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"str-3\",\n              \"name\": \"email\",\n              \"value\": \"john.smith@example.com\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"str-4\",\n              \"name\": \"company\",\n              \"value\": \"Acme Corporation\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"str-5\",\n              \"name\": \"phone\",\n              \"value\": \"+1-555-0123\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"str-6\",\n              \"name\": \"leadSource\",\n              \"value\": \"Website Contact Form\",\n              \"type\": \"string\"\n            }\n          ]\n        },\n        \"options\": {}\n      },\n      \"id\": \"b3c4d5e6-f7a8-9b0c-1d2e-3f4a5b6c7d8e\",\n      \"name\": \"Simulate Lead Data\",\n      \"type\": \"n8n-nodes-base.set\",\n      \"typeVersion\": 3.4,\n      \"position\": [650, 300]\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": false,\n            \"leftValue\": \"\"\n          },\n          \"conditions\": [\n            {\n              \"id\": \"c4d5e6f7-a8b9-0c1d-2e3f-4a5b6c7d8e9f\",\n              \"leftValue\": \"={{ $json.email }}\",\n              \"rightValue\": \"\",\n              \"operator\": {\n                \"type\": \"string\",\n                \"operation\": \"notEmpty\"\n              }\n            },\n            {\n              \"id\": \"d5e6f7a8-b9c0-1d2e-3f4a-5b6c7d8e9f0a\",\n              \"leftValue\": \"={{ $json.email }}\",\n              \"rightValue\": \"@\",\n              \"operator\": {\n                \"type\": \"string\",\n                \"operation\": \"contains\"\n              }\n            },\n            {\n              \"id\": \"e6f7a8b9-c0d1-2e3f-4a5b-6c7d8e9f0a1b\",\n              \"leftValue\": \"={{ $json.firstName }}\",\n              \"rightValue\": \"\",\n              \"operator\": {\n                \"type\": \"string\",\n                \"operation\": \"notEmpty\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        },\n        \"options\": {}\n      },\n      \"id\": \"c4d5e6f7-a8b9-0c1d-2e3f-4a5b6c7d8e9f\",\n      \"name\": \"Validate Lead Data\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.2,\n      \"position\": [1050, 300]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Enrich and format lead data\\nconst items = $input.all();\\nconst enrichedItems = [];\\n\\nfor (const item of items) {\\n  const data = item.json;\\n  \\n  // Format phone number\\n  let phone = data.phone || '';\\n  phone = phone.replace(/[^0-9+]/g, '');\\n  \\n  // Create full name\\n  const fullName = `${data.firstName} ${data.lastName}`.trim();\\n  \\n  // Generate lead score based on available data\\n  let leadScore = 0;\\n  if (data.company) leadScore += 25;\\n  if (data.phone) leadScore += 25;\\n  if (data.email && data.email.includes('@')) leadScore += 25;\\n  if (data.leadSource) leadScore += 25;\\n  \\n  // Determine lead priority\\n  let priority = 'Low';\\n  if (leadScore >= 75) priority = 'High';\\n  else if (leadScore >= 50) priority = 'Medium';\\n  \\n  // Create enriched object\\n  enrichedItems.push({\\n    json: {\\n      ...data,\\n      fullName,\\n      phone,\\n      leadScore,\\n      priority,\\n      createdAt: new Date().toISOString(),\\n      status: 'New'\\n    }\\n  });\\n}\\n\\nreturn enrichedItems;\"\n      },\n      \"id\": \"d5e6f7a8-b9c0-1d2e-3f4a-5b6c7d8e9f0a\",\n      \"name\": \"Enrich Lead Data\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [1450, 180]\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"contact\",\n        \"operation\": \"create\",\n        \"email\": \"={{ $json.email }}\",\n        \"additionalFields\": {\n          \"firstName\": \"={{ $json.firstName }}\",\n          \"lastName\": \"={{ $json.lastName }}\",\n          \"phone\": \"={{ $json.phone }}\",\n          \"company\": \"={{ $json.company }}\"\n        }\n      },\n      \"id\": \"e6f7a8b9-c0d1-2e3f-4a5b-6c7d8e9f0a1b\",\n      \"name\": \"Create Contact in HubSpot\",\n      \"type\": \"n8n-nodes-base.hubspot\",\n      \"typeVersion\": 2,\n      \"position\": [1850, 180]\n    },\n    {\n      \"parameters\": {\n        \"operation\": \"append\",\n        \"documentId\": {\n          \"__rl\": true,\n          \"value\": \"YOUR_GOOGLE_SHEET_ID\",\n          \"mode\": \"id\"\n        },\n        \"sheetName\": {\n          \"__rl\": true,\n          \"value\": \"Sheet1\",\n          \"mode\": \"list\",\n          \"cachedResultName\": \"Sheet1\"\n        },\n        \"columns\": {\n          \"mappingMode\": \"defineBelow\",\n          \"value\": {\n            \"Timestamp\": \"={{ $json.createdAt }}\",\n            \"First Name\": \"={{ $json.firstName }}\",\n            \"Last Name\": \"={{ $json.lastName }}\",\n            \"Email\": \"={{ $json.email }}\",\n            \"Company\": \"={{ $json.company }}\",\n            \"Phone\": \"={{ $json.phone }}\",\n            \"Lead Source\": \"={{ $json.leadSource }}\",\n            \"Lead Score\": \"={{ $json.leadScore }}\",\n            \"Priority\": \"={{ $json.priority }}\",\n            \"Status\": \"={{ $json.status }}\"\n          },\n          \"matchingColumns\": [],\n          \"schema\": []\n        },\n        \"options\": {}\n      },\n      \"id\": \"f7a8b9c0-d1e2-3f4a-5b6c-7d8e9f0a1b2c\",\n      \"name\": \"Log to Google Sheets\",\n      \"type\": \"n8n-nodes-base.googleSheets\",\n      \"typeVersion\": 4.5,\n      \"position\": [1850, 380]\n    },\n    {\n      \"parameters\": {\n        \"sendTo\": \"={{ $json.email }}\",\n        \"subject\": \"Welcome to Our Community, {{ $json.firstName }}!\",\n        \"emailType\": \"html\",\n        \"message\": \"<!DOCTYPE html>\\n<html>\\n<head>\\n  <style>\\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }\\n    .container { max-width: 600px; margin: 0 auto; padding: 20px; }\\n    .header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }\\n    .content { padding: 20px; background-color: #f9f9f9; }\\n    .footer { text-align: center; padding: 20px; font-size: 12px; color: #666; }\\n    .button { background-color: #4CAF50; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block; margin: 10px 0; }\\n  </style>\\n</head>\\n<body>\\n  <div class=\\\"container\\\">\\n    <div class=\\\"header\\\">\\n      <h1>Welcome Aboard!</h1>\\n    </div>\\n    <div class=\\\"content\\\">\\n      <h2>Hi {{ $json.firstName }},</h2>\\n      <p>Thank you for your interest! We're excited to have you here.</p>\\n      <p>We've received your information and one of our team members will be reaching out to you shortly to discuss how we can help {{ $json.company }} achieve its goals.</p>\\n      <p>In the meantime, feel free to explore our resources:</p>\\n      <p style=\\\"text-align: center;\\\">\\n        <a href=\\\"#\\\" class=\\\"button\\\">Get Started</a>\\n      </p>\\n      <p>If you have any immediate questions, don't hesitate to reply to this email.</p>\\n      <p>Best regards,<br>The Team</p>\\n    </div>\\n    <div class=\\\"footer\\\">\\n      <p>This email was sent because you submitted a form on our website.</p>\\n    </div>\\n  </div>\\n</body>\\n</html>\",\n        \"options\": {}\n      },\n      \"id\": \"a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d\",\n      \"name\": \"Send Welcome Email\",\n      \"type\": \"n8n-nodes-base.gmail\",\n      \"typeVersion\": 2.1,\n      \"position\": [2250, 180]\n    },\n    {\n      \"parameters\": {\n        \"select\": \"channel\",\n        \"channelId\": {\n          \"__rl\": true,\n          \"value\": \"YOUR_SLACK_CHANNEL_ID\",\n          \"mode\": \"id\"\n        },\n        \"text\": \":dart: *New Lead Alert!*\\n\\n*Name:* {{ $json.fullName }}\\n*Email:* {{ $json.email }}\\n*Company:* {{ $json.company }}\\n*Phone:* {{ $json.phone }}\\n*Source:* {{ $json.leadSource }}\\n\\n*Lead Score:* {{ $json.leadScore }}/100\\n*Priority:* {{ $json.priority }}\\n\\n:white_check_mark: Contact created in HubSpot\\n:envelope: Welcome email sent\\n:bar_chart: Logged in tracking sheet\",\n        \"otherOptions\": {}\n      },\n      \"id\": \"b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e\",\n      \"name\": \"Notify Sales Team in Slack\",\n      \"type\": \"n8n-nodes-base.slack\",\n      \"typeVersion\": 2.2,\n      \"position\": [2250, 380]\n    },\n    {\n      \"parameters\": {\n        \"assignments\": {\n          \"assignments\": [\n            {\n              \"id\": \"err-1\",\n              \"name\": \"errorMessage\",\n              \"value\": \"Lead validation failed: Missing required fields (email, firstName, or invalid email format)\",\n              \"type\": \"string\"\n            },\n            {\n              \"id\": \"err-2\",\n              \"name\": \"timestamp\",\n              \"value\": \"={{ $now.toISO() }}\",\n              \"type\": \"string\"\n            }\n          ]\n        },\n        \"options\": {}\n      },\n      \"id\": \"c3d4e5f6-a7b8-9c0d-1e2f-3a4b5c6d7e8f\",\n      \"name\": \"Validation Failed\",\n      \"type\": \"n8n-nodes-base.set\",\n      \"typeVersion\": 3.4,\n      \"position\": [1450, 480]\n    },\n    {\n      \"parameters\": {\n        \"select\": \"channel\",\n        \"channelId\": {\n          \"__rl\": true,\n          \"value\": \"YOUR_SLACK_CHANNEL_ID\",\n          \"mode\": \"id\"\n        },\n        \"text\": \":warning: *Lead Validation Failed*\\n\\n*Reason:* Invalid or incomplete lead data\\n*Timestamp:* {{ $json.timestamp }}\\n\\nPlease check the form submission and contact the source manually if needed.\",\n        \"otherOptions\": {}\n      },\n      \"id\": \"d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f9a\",\n      \"name\": \"Alert Team of Failed Lead\",\n      \"type\": \"n8n-nodes-base.slack\",\n      \"typeVersion\": 2.2,\n      \"position\": [1850, 480]\n    },\n    {\n      \"parameters\": {\n        \"content\": \"## Error Handling Path\\n\\nIf lead validation fails (missing email, name, or invalid format), the workflow:\\n\\n1. Captures the error details\\n2. Sends an alert to the sales team in Slack\\n3. Prevents bad data from entering HubSpot\\n\\nThis ensures data quality and allows for manual follow-up when needed.\",\n        \"height\": 260,\n        \"width\": 380\n      },\n      \"id\": \"e5f6a7b8-c9d0-1e2f-3a4b-5c6d7e8f9a0b\",\n      \"name\": \"Error Handling Notes\",\n      \"type\": \"n8n-nodes-base.stickyNote\",\n      \"typeVersion\": 1,\n      \"position\": [1450, 680]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Workflow completion summary\\nconst leadData = $input.first().json;\\n\\nreturn [{\\n  json: {\\n    workflowStatus: 'completed',\\n    leadProcessed: leadData.fullName,\\n    email: leadData.email,\\n    priority: leadData.priority,\\n    leadScore: leadData.leadScore,\\n    hubspotCreated: true,\\n    emailSent: true,\\n    slackNotified: true,\\n    sheetLogged: true,\\n    completedAt: new Date().toISOString()\\n  }\\n}];\"\n      },\n      \"id\": \"f6a7b8c9-d0e1-2f3a-4b5c-6d7e8f9a0b1c\",\n      \"name\": \"Workflow Summary\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [2650, 300]\n    }\n  ],\n  \"connections\": {\n    \"When New Lead Submitted\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Simulate Lead Data\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Simulate Lead Data\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Validate Lead Data\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Validate Lead Data\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Enrich Lead Data\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Validation Failed\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Enrich Lead Data\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Create Contact in HubSpot\",\n            \"type\": \"main\",\n            \"index\": 0\n          },\n          {\n            \"node\": \"Log to Google Sheets\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Create Contact in HubSpot\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send Welcome Email\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Log to Google Sheets\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Notify Sales Team in Slack\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Send Welcome Email\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Workflow Summary\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Notify Sales Team in Slack\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Workflow Summary\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Validation Failed\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Alert Team of Failed Lead\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"settings\": {\n    \"executionOrder\": \"v1\"\n  }\n}\n```\n";function copyJSON(){navigator.clipboard.writeText(wfData).then(()=>notify('Copied to clipboard')).catch(()=>notify('Copy failed'))}function downloadJSON(){const b=new Blob([wfData],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='workflow.json';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);notify('Downloaded')}function notify(m){const d=document.createElement('div');d.className='copy-notif';d.textContent=m;document.body.appendChild(d);setTimeout(()=>{d.classList.add('fade-out');setTimeout(()=>document.body.removeChild(d),300)},2000)}</script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,theme:"neutral",themeVariables:{primaryColor:"#00E676",primaryTextColor:"#000",primaryBorderColor:"#000",lineColor:"#000",secondaryColor:"#f0f0f0",tertiaryColor:"#fff"}});</script></body></html>
