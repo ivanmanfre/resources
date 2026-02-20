@@ -1,32 +1,10 @@
 <!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Client Content Brief Generator from Call Transcripts | Ivan Manfredi</title><meta name="description" content="N8n workflow template that extracts insights from client call transcripts and generates strategic content briefs automatically. Built for agency teams." /><meta property="og:title" content="Client Content Brief Generator from Call Transcripts | Ivan Manfredi" /><meta property="og:description" content="N8n workflow template that extracts insights from client call transcripts and generates strategic content briefs automatically. Built for agency teams." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{primary:'#000000',paper:'#ffffff',accent:'#00E676',cyan:'#2979FF'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{background-color:#fff;color:#000;overflow-x:hidden}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem;border-bottom:2px solid #000;padding-bottom:.5rem}.resource-content h3{font-size:1.25rem;font-weight:700;margin:1.5rem 0 .75rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.resource-content code{background:#f0f0f0;padding:2px 6px;font-family:'JetBrains Mono',monospace;font-size:.85em;border:1px solid #ddd}.resource-content pre{background:#1a1a1a;color:#00E676;padding:1rem;border:2px solid black;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.5;margin:1rem 0}.resource-content pre.mermaid{background:#fff;color:#000;border:none;padding:0;font-family:inherit;font-size:inherit;line-height:inherit}.resource-content blockquote{border-left:3px solid #00E676;padding-left:16px;margin:16px 0;font-style:italic;background:#f9f9f9;padding:12px 16px;border-radius:0}.resource-content hr{border:none;border-top:2px solid #e5e5e5;margin:32px 0}.resource-content strong{font-weight:700}.json-viewer{font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.6;background:#1a1a1a;color:#00E676;padding:2rem;border:3px solid black;overflow-x:auto;max-height:600px;overflow-y:auto;white-space:pre}.json-viewer::-webkit-scrollbar{width:10px;height:10px}.json-viewer::-webkit-scrollbar-track{background:#0a0a0a}.json-viewer::-webkit-scrollbar-thumb{background:#00E676;border:2px solid #1a1a1a}.copy-notif{position:fixed;top:100px;right:20px;background:#00E676;color:black;padding:1rem 2rem;border:2px solid black;box-shadow:4px 4px 0 0 rgba(0,0,0,1);font-weight:bold;text-transform:uppercase;z-index:1000;animation:slideIn .3s ease-out}@keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}.fade-out{animation:fadeOut .3s ease-out forwards}@keyframes fadeOut{to{opacity:0;transform:translateY(-20px)}}.mermaid{background:#fff;padding:1rem;overflow-x:auto}</style><link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css"></head><body class="font-sans selection:bg-accent selection:text-black"><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic group-hover:shadow-comic-active transition-all flex items-center justify-center"><span class="relative text-white font-black text-lg">IM</span></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase hover:underline decoration-2 decoration-accent">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="hidden md:inline-block px-6 py-2 bg-accent border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Let's Talk</a></div></div></nav><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">N8N Workflow</div><h1 class="hero-title text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">Client Content Brief Generator from Call Transcripts</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-4">You made the right call grabbing this one. This n8n workflow pulls the strategic insights from your client calls and turns them into briefs your team can actually execute - no more digging through transcripts trying to remember what mattered. Import it, customize the prompts to your content pillars, and test with a couple real transcripts before rolling it out to the whole team.</p><div class="mt-10 relative overflow-hidden bg-black p-8 md:p-12 border-4 border-black shadow-comic"><div class="absolute inset-0 opacity-[0.07]" style="background-size:30px 30px;background-image:linear-gradient(to right,#00E676 1px,transparent 1px),linear-gradient(to bottom,#00E676 1px,transparent 1px)"></div><div class="relative"><div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"><div class="text-center md:text-left"><div class="text-accent text-7xl md:text-8xl font-black leading-none">27</div><div class="text-white text-sm font-bold uppercase tracking-widest mt-2">Nodes</div></div><div class="flex-1"><div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-black text-xs font-bold uppercase tracking-wide">AI-Powered</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">Auto-Triggered</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">Error Handling</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Ready to Import</span></div><div class="flex flex-wrap gap-2"><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">stickyNote</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">googleDrive</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">webhook</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">code</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">httpRequest</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">anthropic</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">if</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">merge</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">googleDocs</span><span class="px-2 py-1 text-gray-400 text-xs font-mono border border-gray-700">slack</span></div></div></div></div></div></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="mermaid-wrapper my-8 p-6 bg-gray-50 border-2 border-black overflow-x-auto"><h3 class="text-xl font-black uppercase mb-4">Workflow Architecture</h3><pre class="mermaid">
 graph LR
-    N0["Client Folders"] --> N4["Client Folder"]
-    N1(["Webhook1"]) --> N0["Client Folders"]
-    N2["Format Briefs1"] --> N17["Create Briefs Doc"]
-    N3["Append Text to Document"] --> N23["Share with Donna"]
-    N4["Client Folder"] --> N22["Client Name"]
-    N5["Generate Briefs"] --> N2["Format Briefs1"]
-    N6["Client Detected?"] --> N12["Get all Folders from Client Folder"]
-    N7["Merge"] --> N8["Format New Transcript"]
-    N7["Merge"] --> N15["Get all Documents from Client Folde"]
-    N8["Format New Transcript"] --> N14["Create Transcript Doc"]
-    N9["Get Files"] --> N16["Merge1"]
-    N10["Does it have a Transcripts Folder?"] --> N7["Merge"]
-    N10["Does it have a Transcripts Folder?"] --> N11["Create folder"]
-    N11["Create folder"] --> N7["Merge"]
-    N12["Get all Folders from Client Folder"] --> N10["Does it have a Transcripts Folder?"]
-    N13["Append to new Transcript"] --> N16["Merge1"]
-    N14["Create Transcript Doc"] --> N13["Append to new Transcript"]
-    N15["Get all Documents from Client Folde"] --> N9["Get Files"]
-    N16["Merge1"] --> N18["Does it have a Briefs Folder?"]
-    N17["Create Briefs Doc"] --> N3["Append Text to Document"]
-    N18["Does it have a Briefs Folder?"] --> N20["Merge2"]
-    N18["Does it have a Briefs Folder?"] --> N19["Create folder1"]
-    N19["Create folder1"] --> N20["Merge2"]
-    N20["Merge2"] --> N5["Generate Briefs"]
-    N22["Client Name"] --> N6["Client Detected?"]
-    N23["Share with Donna"] --> N24["Share with Stephen"]
-    N24["Share with Stephen"] --> N21["Send a message"]
+    A["Webhook Trigger"] --> B["Identify Client"]
+    B --> C["Store Transcript"]
+    C --> D["Generate Briefs\n(AI Agent)"]
+    D --> E["Save to\nGoogle Docs"]
+    E --> F["Share & Notify\nvia Slack"]
 </pre></div><div class="resource-content text-base font-medium leading-relaxed"><p style="margin-bottom: 16px; line-height: 1.7;">Hey, this is Ivan, and I'm about to give you the <strong>AI-Powered Content Brief Generator Workflow</strong> so you can stop spending hours pulling insights from client calls and start generating strategic content briefs in minutes.</p>
 <p style="margin-bottom: 16px; line-height: 1.7;">If you're running a marketing agency or managing content for multiple clients, you know the drill: jump on a call, take notes (or don't), then spend another hour or two trying to remember what the client actually said, what matters for their content strategy, and how to translate that into briefs your team can actually execute.</p>
 <p style="margin-bottom: 16px; line-height: 1.7;">This n8n workflow does that extraction and brief creation for you. Automatically.</p>
@@ -52,172 +30,21 @@ graph LR
 <p style="margin-bottom: 16px; line-height: 1.7;">This workflow solves both problems. It extracts the insights programmatically, applies consistent brief formatting, and can even match the client's tone of voice if you've got that documented. The AI does the extraction and organization work. Your team focuses on the creative strategy.</p>
 <p style="margin-bottom: 16px; line-height: 1.7;">I built something similar for a consultant who was pulling content from his masterclass recordings and call transcripts. We embedded all that source material into a vector database so the AI had full context when generating briefs and lead magnets. Same principle applies here - you're giving the AI access to the actual words your client used, not your memory of what they said.</p>
 <hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Workflow Overview</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;"><pre><code><br>Trigger (New Transcript) <br>    → Transcript Preprocessing <br>    → Insight Extraction Agent <br>    → Anti-AI Filter Agent <br>    → Brief Generation <br>    → Task Management Integration <br>    → Notification<br></code><code></p>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Node-by-Node Breakdown</h2>
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 1: Trigger - New Transcript Available</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> Webhook or Polling Trigger</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Kicks off the workflow when a new call transcript lands in your system.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Options depending on your setup:</strong></p>
-<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>Transcription Tool: </strong>Fireflies.ai<strong> | Trigger Type: </strong>Webhook<strong> | Connection Method: </strong>Native webhook on meeting complete</li><li><strong>Transcription Tool: </strong>Otter.ai<strong> | Trigger Type: </strong>Polling<strong> | Connection Method: </strong>Check shared folder every 15 min</li><li><strong>Transcription Tool: </strong>Fathom<strong> | Trigger Type: </strong>Webhook<strong> | Connection Method: </strong>Native integration</li><li><strong>Transcription Tool: </strong>Manual Upload<strong> | Trigger Type: </strong>File Trigger<strong> | Connection Method: </strong>Watch Google Drive or Dropbox folder</li></ul></ul><strong>Configuration notes:</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">If you're using Fireflies, they send a webhook payload with the full transcript, attendee list, and meeting metadata. That's your richest option.</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">For Otter or manual uploads, you'll need a polling node that checks a designated folder. I usually set this to every 15 minutes - no need to check more frequently for call-based workflows.</li>
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">How It Works</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">The workflow follows a simple pipeline:</p>
+<ul style="padding-left: 24px; margin: 16px 0;">
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Trigger:</strong> A webhook fires when a new call transcript lands (works with Fireflies, Otter, Fathom, or manual upload to Google Drive)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Client Detection:</strong> AI identifies which client the call belongs to and pulls their folder structure from Google Drive</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Transcript Storage:</strong> The cleaned transcript gets saved as a Google Doc in the client's Transcripts folder (created automatically if it doesn't exist)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Brief Generation:</strong> Claude reads the full transcript and generates structured content briefs - extracting topics, language patterns, content opportunities, strategic context, and quotable moments</li>
+<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Output & Notify:</strong> Briefs are saved as formatted Google Docs, shared with your team, and a Slack notification goes out with a summary</li>
 </ul>
-<strong>Fields to capture:</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;"></code>transcript_text<code> - the full transcript</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"></code>meeting_date<code> - when the call happened</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"></code>attendees<code> - who was on the call</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"></code>client_name<code> - which client this belongs to (critical for applying the right voice profile)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"></code>meeting_type<code> - discovery call, strategy session, check-in, etc.</li>
-</ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 2: Transcript Preprocessing</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> Code Node (JavaScript) or Function Node</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Cleans up the transcript and structures it for the AI to process more effectively.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Why this matters:</strong> Raw transcripts are messy. Lots of "um," "you know," cross-talk, and the speaker labels are inconsistent. The AI will handle messy input, but cleaner input = better output.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Preprocessing steps:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code>javascript<br>// Sample preprocessing logic<br>function preprocessTranscript(rawTranscript) {<br>  let cleaned = rawTranscript<br>    // Remove filler words<br>    .replace(/\b(um|uh|like|you know|basically|actually|literally)\b/gi, '')<br>    // Normalize speaker labels<br>    .replace(/Speaker \d+:/g, match => match.toUpperCase())<br>    // Remove excessive whitespace<br>    .replace(/\s+/g, ' ')<br>    // Remove timestamps if present<br>    .replace(/\[\d{2}:\d{2}(:\d{2})?\]/g, '')<br>    .trim();<br>  <br>  return cleaned;<br>}<br></code><code></p>
-<strong>Also extract metadata:</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Total word count (helps estimate read time)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Unique speakers identified</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Approximate call duration based on transcript length</li>
-</ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 3: Insight Extraction Agent</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> AI Agent Node (or HTTP Request to OpenAI/Claude API)</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> This is where the magic happens. The AI reads the full transcript and extracts content-relevant insights.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Model recommendation:</strong> Claude or GPT-4. For transcripts, I lean toward Claude - it handles longer context windows well and is less likely to hallucinate details that weren't in the source material. If you're processing transcripts over 50k tokens, Gemini with its larger context window is worth testing.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>System prompt:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code><br>You are a content strategist assistant. Your job is to extract content-relevant insights from client call transcripts.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">For each transcript, identify and extract:</p>
-1. CONTENT TOPICS MENTIONED
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Specific subjects the client discussed</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Problems they're trying to solve</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Questions they asked or answered</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Industry trends they referenced</li>
-</ul>
-2. CLIENT LANGUAGE PATTERNS
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Specific phrases or terminology they use</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">How they describe their own business</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">How they describe their customers</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Jargon or industry-specific terms</li>
-</ul>
-3. CONTENT OPPORTUNITIES
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Pain points that could become content</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Success stories or case studies mentioned</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Objections or misconceptions to address</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Educational gaps their audience might have</li>
-</ul>
-4. STRATEGIC CONTEXT
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Business goals mentioned</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Upcoming initiatives or launches</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Competitive landscape comments</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Target audience descriptions</li>
-</ul>
-5. QUOTABLE MOMENTS
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Direct quotes that could be used in content</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Strong opinions or takes</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Memorable phrases</li>
-</ul>
-Format your response as structured JSON with these five categories.
-</code><code>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Output format:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code>json<br>{<br>  "content_topics": [<br>    {<br>      "topic": "Competitor pricing comparison",<br>      "context": "Client mentioned they do manual research to check competitor pricing",<br>      "content_angle": "How to systematically track competitor pricing"<br>    }<br>  ],<br>  "language_patterns": [<br>    {<br>      "phrase": "we're overpriced or underpriced",<br>      "usage_context": "When discussing market positioning"<br>    }<br>  ],<br>  "content_opportunities": [<br>    {<br>      "opportunity": "Dashboard for tracking competitor moves",<br>      "type": "educational",<br>      "priority": "high"<br>    }<br>  ],<br>  "strategic_context": {<br>    "goals": ["Scale sales process", "Automate content posting"],<br>    "initiatives": ["LinkedIn content automation"],<br>    "audience": "E-commerce business owners"<br>  },<br>  "quotable_moments": [<br>    {<br>      "quote": "We sell a lot more when we lower prices to match competitors",<br>      "potential_use": "Case study opening, social proof"<br>    }<br>  ]<br>}<br></code><code></p>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 4: Anti-AI Filter Agent</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> AI Agent Node</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Reviews the extracted insights and any draft content to strip out AI-sounding language before it goes anywhere.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Why this exists:</strong> I learned this the hard way. You can extract great insights, but if the brief reads like ChatGPT wrote it, your content team is going to rewrite everything anyway. Better to catch it at this stage.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>System prompt:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code><br>You are a content editor. Your job is to review extracted insights and ensure they sound natural and human.</p>
-Check for and rewrite:
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Generic phrases like "leverage," "utilize," "streamline"</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Corporate jargon that no human would say out loud</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Overly formal constructions</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Phrases that start with "It's worth noting" or "It's important to note"</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Any sentence that sounds like it came from a business textbook</li>
-</ul>
-The output should sound like notes a sharp strategist would write after a call - direct, specific, useful.
-<p style="margin-bottom: 16px; line-height: 1.7;">If the original extraction is fine, leave it alone. Only change what needs changing.<br></code><code></p>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 5: Brief Generation</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> AI Agent Node</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Takes the cleaned insights and generates a structured content brief.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>The brief template matters here.</strong> This is where you standardize across clients and team members.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>System prompt:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code><br>You are creating a content brief based on extracted insights from a client call.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">Generate a brief with this structure:</p>
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Content Brief: [Topic Title]</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Client:</strong> [Client name]<br><strong>Source Call:</strong> [Date]<br><strong>Brief Created:</strong> [Today's date]<br><strong>Priority:</strong> [High/Medium/Low based on strategic context]</p>
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Content Objective</h3>
-What this piece should accomplish for the client's business. One paragraph max.
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Target Audience</h3>
-Who this content is for. Be specific - not "business owners" but "e-commerce managers spending 5+ hours weekly on competitor research."
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Key Messages</h3>
-3-5 bullet points of what must be communicated.
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Content Angle</h3>
-The specific take or hook for this piece. What makes it different from generic content on this topic.
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Supporting Points</h3>
-Evidence, examples, or data points from the call that support the key messages.
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Client Voice Notes</h3>
-Specific language patterns or phrases from the call to incorporate. Include direct quotes where available.
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Content Format Recommendation</h3>
-Suggest the best format (long-form post, carousel, video script, etc.) and why.
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">SEO/Distribution Notes</h3>
-Keywords mentioned, platforms discussed, any distribution context from the call.
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Questions for Client</h3>
-Anything that needs clarification before writing.
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<p style="margin-bottom: 16px; line-height: 1.7;">Base all recommendations on the actual content of the call. Do not invent examples or data points that weren't mentioned.<br></code><code></p>
-<strong>Input variables:</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;"></code>extracted_insights<code> - from Node 3</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"></code>client_voice_profile<code> - if you have one stored (pull from a database or lookup table)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"></code>content_pillars<code> - the client's strategic content pillars if defined</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"></code>recent_content<code> - optional context on what they've published recently to avoid repetition</li>
-</ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 6: Task Management Integration</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> HTTP Request or Native Integration Node</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Creates the brief as a task in your project management system with all the context attached.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>ClickUp configuration (most common setup I see):</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code>json<br>{<br>  "name": "Content Brief: [Topic Title]",<br>  "description": "[Full brief content]",<br>  "custom_fields": {<br>    "client": "[Client name]",<br>    "source_call_date": "[Date]",<br>    "priority": "[Priority level]",<br>    "content_type": "[Format recommendation]"<br>  },<br>  "assignees": ["content_team_id"],<br>  "due_date": "[Call date + 5 business days]",<br>  "status": "To Review"<br>}<br></code><code></p>
-<strong>Alternative integrations:</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;"><strong>Notion:</strong> Create a new page in the content briefs database</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Asana:</strong> Create task with custom fields</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Google Docs:</strong> Generate a formatted doc in a shared folder</li>
-<li style="margin-bottom: 8px; line-height: 1.6;"><strong>Airtable:</strong> Add record to content calendar base</li>
-</ul>
-<strong>Pro tip:</strong> Set up a "To Review" status that requires human approval before the brief goes to writers. The AI is good, but you want eyes on it before your team spends hours executing.
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Node 7: Notification</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Type:</strong> Slack/Email/Teams Node</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What it does:</strong> Alerts the relevant team member that a new brief is ready for review.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Slack message template:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code><br>📋 New content brief generated</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><em>Client:</em> [Client name]<br><em>Topic:</em> [Topic title]<br><em>Priority:</em> [Priority level]<br><em>Source:</em> [Meeting date] call</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">[Link to ClickUp task]</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">Key insight: [One-line summary of the main content opportunity]</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">Needs review within 48 hours.<br></code><code></p>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Workflow Diagram</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code><br>┌─────────────────┐<br>│  New Transcript │<br>│    (Trigger)    │<br>└────────┬────────┘<br>         │<br>         ▼<br>┌─────────────────┐<br>│  Preprocess &   │<br>│     Clean       │<br>└────────┬────────┘<br>         │<br>         ▼<br>┌─────────────────┐<br>│    Extract      │<br>│    Insights     │<br>│   (AI Agent)    │<br>└────────┬────────┘<br>         │<br>         ▼<br>┌─────────────────┐<br>│   Anti-AI       │<br>│    Filter       │<br>│   (AI Agent)    │<br>└────────┬────────┘<br>         │<br>         ▼<br>┌─────────────────┐<br>│   Generate      │<br>│     Brief       │<br>│   (AI Agent)    │<br>└────────┬────────┘<br>         │<br>         ▼<br>┌─────────────────┐<br>│  Create Task    │<br>│  in ClickUp     │<br>└────────┬────────┘<br>         │<br>         ▼<br>┌─────────────────┐<br>│  Notify Team    │<br>│  via Slack      │<br>└─────────────────┘<br></code><code></p>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Adding Performance-Based Filtering (Advanced)</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;">If you want the workflow to get smarter over time, add a feedback loop that tracks which content performs well.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>The concept:</strong> Scrape your posted content performance (impressions, engagement, comments), feed that back into your insight extraction, and weight recommendations toward formats and topics that actually work.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>How to implement:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;">1. <strong>Add a LinkedIn scraper</strong> (or whatever platform you're posting to) that pulls performance metrics weekly<br>2. <strong>Store performance data</strong> in a database with content type, topic, format, and metrics<br>3. <strong>Feed top performers</strong> into the brief generation prompt as examples</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Updated system prompt addition:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;"></code><code><br>Based on recent content performance for this client, these formats are working best:<br>[Top 3 performing formats with metrics]</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">These topics have driven the most engagement:<br>[Top 3 topics with metrics]</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">Weight your recommendations toward proven performers while still testing new angles.<br></code></pre></p>
-<p style="margin-bottom: 16px; line-height: 1.7;">This is the "pattern recognition" piece that helps you understand which formats - long-form, short-form, hook at the beginning - are actually working for each specific client.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Each brief includes: content objective, target audience, key messages, content angle, supporting points, client voice notes, format recommendation, and open questions for the client. Everything grounded in what was actually said on the call - no hallucinated data points.</p>
 <hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
 <h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Making It Multi-Client Ready</h2>
 <p style="margin-bottom: 16px; line-height: 1.7;">If you're running this for multiple clients, you need a lookup system for client-specific context.</p>
 <p style="margin-bottom: 16px; line-height: 1.7;"><strong>Set up a client database with:</strong></p>
-<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>Field: </strong>client_id<strong> | Description: </strong>Unique identifier</li><li><strong>Field: </strong>client_name<strong> | Description: </strong>Display name</li><li><strong>Field: </strong>voice_profile<strong> | Description: </strong>Tone, vocabulary, style notes</li><li><strong>Field: </strong>content_pillars<strong> | Description: </strong>3-5 strategic themes</li><li><strong>Field: </strong>posting_cadence<strong> | Description: </strong>How often they post</li><li><strong>Field: </strong>platform_focus<strong> | Description: </strong>LinkedIn, Twitter, blog, etc.</li><li><strong>Field: </strong>recent_topics<strong> | Description: </strong>Last 10 content pieces (to avoid repetition)</li></ul></ul><strong>Add a lookup node</strong> after the trigger that pulls this context based on the client name in the transcript metadata.
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;"><strong>client_id</strong> - Unique identifier</li><li style="margin-bottom: 8px; line-height: 1.6;"><strong>client_name</strong> - Display name</li><li style="margin-bottom: 8px; line-height: 1.6;"><strong>voice_profile</strong> - Tone, vocabulary, style notes</li><li style="margin-bottom: 8px; line-height: 1.6;"><strong>content_pillars</strong> - 3-5 strategic themes</li><li style="margin-bottom: 8px; line-height: 1.6;"><strong>posting_cadence</strong> - How often they post</li><li style="margin-bottom: 8px; line-height: 1.6;"><strong>platform_focus</strong> - LinkedIn, Twitter, blog, etc.</li><li style="margin-bottom: 8px; line-height: 1.6;"><strong>recent_topics</strong> - Last 10 content pieces (to avoid repetition)</li></ul><strong>Add a lookup node</strong> after the trigger that pulls this context based on the client name in the transcript metadata.
 <hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
 <h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Error Handling</h2>
 <p style="margin-bottom: 16px; line-height: 1.7;">Things will break. Here's how to handle it:</p>
@@ -265,7 +92,7 @@ Anything that needs clarification before writing.
 <p style="margin-bottom: 16px; line-height: 1.7;"><strong>Day 7:</strong> Run it on 2-3 real calls. Review the output quality. Make prompt adjustments based on what's missing or off.</p>
 <hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
 <h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Need Help Building This?</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;">If you want help implementing this workflow for your agency - or you've got a different automation challenge you're trying to solve - reach out: <a href="https://ivanmanfredi.com/contact" target="_blank" rel="noopener noreferrer">Get in Touch</a></p>
+<p style="margin-bottom: 16px; line-height: 1.7;">If you want help implementing this workflow for your agency - or you've got a different automation challenge you're trying to solve - reach out: <a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer">Get in Touch</a></p>
 <p style="margin-bottom: 16px; line-height: 1.7;">I build these systems for a living. Happy to look at your specific setup and tell you what's possible.</p></div></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-5xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-8">Workflow JSON</h2><div class="flex flex-wrap gap-4 mb-6"><button onclick="copyJSON()" class="px-6 py-3 bg-accent text-black border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Copy JSON</button><button onclick="downloadJSON()" class="px-6 py-3 bg-cyan text-white border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Download .json</button></div><div class="json-viewer" id="wfJSON">{
   "nodes": [
     {
