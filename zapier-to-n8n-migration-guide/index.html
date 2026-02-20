@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Zapier to n8n Migration Guide | Ivan Manfredi</title><meta name="description" content="Step-by-step guide to migrating from Zapier to n8n. Audit your workflows, prioritize the move, and stop paying per-task pricing." /><meta property="og:title" content="Zapier to n8n Migration Guide | Ivan Manfredi" /><meta property="og:description" content="Step-by-step guide to migrating from Zapier to n8n. Audit your workflows, prioritize the move, and stop paying per-task pricing." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],display:['Space Grotesk','sans-serif'],mono:['monospace']},colors:{primary:'#000000',paper:'#ffffff',accent:'#00E676',cyan:'#2979FF',pink:'#FF4081'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"><style>body{background-color:#fff;color:#000;overflow-x:hidden}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem}.resource-content h3{font-size:1.25rem;font-weight:700;margin:1.5rem 0 .75rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content ol{list-style:decimal;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.resource-content blockquote{border-left:4px solid #00E676;padding:1rem 1.5rem;margin:1.5rem 0;background:#f9f9f9;font-weight:500}.resource-content a{color:#2979FF;text-decoration:underline}.resource-content strong{font-weight:700}.resource-content code{background:#f4f4f4;padding:.15rem .4rem;border-radius:2px;font-family:monospace;font-size:.9em}.resource-content pre{background:#1a1a1a;color:#00E676;padding:1.5rem;border:2px solid black;overflow-x:auto;margin:1.5rem 0;font-family:monospace}.resource-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;border:2px solid black}.resource-content th{background:black;color:white;padding:.75rem 1rem;text-align:left;font-weight:700;text-transform:uppercase;font-size:.85rem}.resource-content td{padding:.75rem 1rem;border-bottom:1px solid #e5e7eb}.resource-content tr:hover td{background:#f9f9f9}.resource-content hr{border:none;border-top:2px solid #e5e5e5;margin:32px 0}</style><link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css"></head><body class="font-sans selection:bg-accent selection:text-black"><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic group-hover:shadow-comic-active group-hover:translate-x-[1px] group-hover:translate-y-[1px] transition-all flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-cyan/20"></div><span class="relative text-white font-black text-lg tracking-tight">IM</span></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700 group-hover:text-black transition-colors">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase tracking-wide hover:underline decoration-2 decoration-accent underline-offset-4">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block px-6 py-2 bg-accent border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">Let's Talk</a></div></div></nav><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">Guide</div><h1 class="hero-title text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">Zapier to n8n Migration Guide</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-8">You made the right call. This guide walks you through auditing your current Zapier workflows, prioritizing what to migrate first, and executing the move without breaking the automations your team depends on. Block 2-3 hours, keep your Zapier dashboard open in another tab, and let's get you off per-task pricing for good.</p><div class="mt-10 relative overflow-hidden bg-black p-8 md:p-12 border-4 border-black shadow-comic">
+<div class="absolute inset-0 opacity-[0.07]" style="background-size:30px 30px;background-image:linear-gradient(to right,#00E676 1px,transparent 1px),linear-gradient(to bottom,#00E676 1px,transparent 1px)"></div>
+<div class="relative"><div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
+<div class="text-center md:text-left flex flex-col items-center md:items-start gap-3">
+<div class="w-20 h-20 border-2 border-accent/30 flex items-center justify-center"><svg width="48" height="48" fill="none" stroke="#00E676" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+<div class="text-accent text-5xl md:text-6xl font-black leading-none">2,101</div>
+<div class="text-white text-sm font-bold uppercase tracking-widest">Words</div>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-black text-xs font-bold uppercase tracking-wide">In-Depth Guide</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">11 Min Read</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">42 Sections</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Free Resource</span></div>
+<p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">A comprehensive resource you can reference anytime. Scroll down to read the full content below.</p>
+</div>
+</div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><p style="margin-bottom: 16px; line-height: 1.7;">Hey, this is Ivan, and I'm about to give you the Zapier to n8n Migration Guide so you can finally stop paying per-task pricing and start building automations that actually scale with your business.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">So who am I and why should you trust me? I'll keep this quick so we can get to the good stuff...</p>
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">AI & Automation Architect - designed and deployed systems for 100+ companies</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Built AI agents and n8n workflows that save teams 20+ hours every single week</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Helped businesses 3-5x their operational efficiency through smart automation</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Building and shipping AI solutions before most people knew what an LLM was</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Fueled by espresso and mass amounts of automation nodes</li>
+</ul>
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">What To Do With This</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Spend 2-3 hours working through this guide, ideally with whoever manages your current Zapier workflows open in another tab. You'll audit what you have, prioritize what to migrate, and execute the move without breaking the automations your team depends on.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Why This Migration Matters</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Here's the thing about Zapier: it's great for getting started. Point, click, connect two apps, done. But once you're running a real operation - dozens of zaps, multi-step workflows, data transformations - you start hitting walls.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The per-task pricing model means your costs scale linearly with your success. More customers, more operations, more tasks, bigger bill. I've seen companies paying $500-800/month on Zapier for workflows that cost $20/month to run on n8n.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Then there's the flexibility issue. Zapier works until you need to do something it doesn't support out of the box. Custom API calls, complex branching logic, error handling that actually makes sense - you either can't do it or you're fighting the platform.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">n8n flips this model. Self-hosted means you pay for infrastructure, not tasks. The visual workflow builder is more powerful than Zapier's, and when you need to drop into code, you can. Plus, it's where AI agent workflows actually work - something I build for clients constantly.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The migration isn't complicated, but it does require planning. Let's break it down.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 1: Audit Your Current Zapier Setup</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Before you migrate anything, you need to know what you're working with.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Step 1: Export Your Zap Inventory</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Go to your Zapier dashboard and list every active zap. For each one, document:</p>
+<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>Zap Name: </strong>New Lead to Slack<strong> | Trigger App: </strong>HubSpot<strong> | Action Apps: </strong>Slack, Google Sheets<strong> | Task Volume (Monthly): </strong>~200<strong> | Business Criticality: </strong>High</li><li><strong>Zap Name: </strong>Invoice Created<strong> | Trigger App: </strong>Xero<strong> | Action Apps: </strong>Gmail, Notion<strong> | Task Volume (Monthly): </strong>~50<strong> | Business Criticality: </strong>High</li><li><strong>Zap Name: </strong>Form to CRM<strong> | Trigger App: </strong>Typeform<strong> | Action Apps: </strong>HubSpot<strong> | Task Volume (Monthly): </strong>~300<strong> | Business Criticality: </strong>Medium</li></ul></ul><h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Step 2: Identify Your Core Integrations</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Look for patterns. Which apps show up most frequently? These are your core integrations - they need to work perfectly in n8n before you migrate anything else.</p>
+Common ones I see:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">CRM (HubSpot, Salesforce, Pipedrive)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Accounting (Xero, QuickBooks)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Communication (Slack, Gmail, Teams)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Project management (ClickUp, Notion, Asana)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Forms (Typeform, Tally, Google Forms)</li>
+</ul>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Step 3: Flag the Complex Ones</h3>
+Some zaps will migrate easily. Others won't. Flag any zap that:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Uses Zapier-specific features like Paths, Formatter, or Filter</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Has more than 5 steps</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Connects to apps you're not sure n8n supports</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Handles critical business processes (invoicing, customer onboarding)</li>
+</ul>
+<blockquote style="border-left: 3px solid #00E676; padding-left: 16px; margin: 16px 0; font-style: italic; opacity: 1;"><strong>Tip:</strong> Don't skip this audit. I've seen teams start migrating randomly and break critical workflows because they didn't map dependencies first.</blockquote>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 2: Set Up Your n8n Environment</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">You have two options here: n8n Cloud or self-hosted. Both work, and the choice depends on your technical comfort level.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Option A: n8n Cloud</h3>
+Easiest path. Go to n8n.io, sign up, done. You get:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Managed hosting</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Automatic updates</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">No server maintenance</li>
+</ul>
+Cost runs about $20-50/month depending on usage. Still way cheaper than Zapier at scale.
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Option B: Self-Hosted</h3>
+More setup, more control, lower ongoing costs. You'll need:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">A server (DigitalOcean droplet, AWS EC2, or similar)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Docker installed</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Basic comfort with command line</li>
+</ul>
+I typically recommend self-hosted for clients who:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Run high-volume workflows (1000+ executions/day)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Need to keep data on their own infrastructure</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Have someone technical on staff</li>
+</ul>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Your First 30 Minutes in n8n</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Once you're in, don't try to migrate anything yet. Instead:</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">1. Build a simple test workflow - Webhook trigger to Slack message<br>2. Understand the node concept - each step is a node, nodes connect left to right<br>3. Find the credentials section - you'll be spending time here</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The interface looks different from Zapier, but the logic is similar. Triggers start workflows, actions do things, data flows between them.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 3: The Integration Compatibility Check</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Before migrating a zap, verify n8n has the integrations you need.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Native n8n Nodes vs. HTTP Requests</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">n8n has 400+ native integrations. For most common apps, you'll find a dedicated node. For others, you'll use the HTTP Request node to call APIs directly.</p>
+Here's the reality: about 80% of Zapier integrations have n8n equivalents. The other 20% either:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Work via HTTP Request (most cases)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Need a workaround</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Genuinely don't work (rare)</li>
+</ul>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Quick Compatibility Table</h3>
+<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>App Category: </strong>CRM<strong> | Common Apps: </strong>HubSpot, Salesforce, Pipedrive<strong> | n8n Support: </strong>Native nodes</li><li><strong>App Category: </strong>Accounting<strong> | Common Apps: </strong>Xero, QuickBooks<strong> | n8n Support: </strong>Native nodes</li><li><strong>App Category: </strong>Communication<strong> | Common Apps: </strong>Slack, Gmail, Discord<strong> | n8n Support: </strong>Native nodes</li><li><strong>App Category: </strong>Project Mgmt<strong> | Common Apps: </strong>ClickUp, Notion, Asana<strong> | n8n Support: </strong>Native nodes</li><li><strong>App Category: </strong>Forms<strong> | Common Apps: </strong>Typeform, Google Forms, Tally<strong> | n8n Support: </strong>Native or webhook</li><li><strong>App Category: </strong>Spreadsheets<strong> | Common Apps: </strong>Google Sheets, Airtable<strong> | n8n Support: </strong>Native nodes</li><li><strong>App Category: </strong>Payment<strong> | Common Apps: </strong>Stripe, PayPal<strong> | n8n Support: </strong>Native nodes</li></ul></ul><h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">When There's No Native Node</h3>
+No native integration? No panic. The HTTP Request node handles most cases. You'll need:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">The app's API documentation</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">API credentials (usually in the app's settings)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">15-30 minutes to configure</li>
+</ul>
+I've built integrations for apps that don't have native support in either platform. It's actually easier in n8n because the HTTP Request node is more flexible than Zapier's Webhooks by Zapier.
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 4: Migration Strategy - The Right Order</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Don't migrate everything at once. That's how you break things and stress yourself out.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Phase 1: Low-Risk, High-Value (Week 1)</h3>
+Start with workflows that:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Are simple (2-3 steps)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Run frequently (so you can verify they work)</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Aren't business-critical (notifications, logging)</li>
+</ul>
+Examples:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Form submission to Slack notification</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">New row in Google Sheet to email alert</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Social mention to Notion database</li>
+</ul>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Phase 2: Medium Complexity (Week 2-3)</h3>
+Move to workflows with:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">4-6 steps</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Some data transformation</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Moderate business impact</li>
+</ul>
+Examples:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">New lead to CRM with enrichment</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Invoice created to accounting sync</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Support ticket to assignment workflow</li>
+</ul>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Phase 3: Critical Workflows (Week 4+)</h3>
+Save these for last:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Multi-branch logic</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Financial operations</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Customer-facing automations</li>
+</ul>
+<blockquote style="border-left: 3px solid #00E676; padding-left: 16px; margin: 16px 0; font-style: italic; opacity: 1;"><strong>Important:</strong> Keep Zapier running in parallel during migration. Don't turn off a zap until the n8n equivalent has run successfully for at least a week.</blockquote>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 5: Rebuilding Your First Workflow</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Let's walk through migrating a real workflow. Say you have a Zapier zap that:</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">1. Triggers when a form is submitted (Typeform)<br>2. Creates a contact in HubSpot<br>3. Sends a Slack notification<br>4. Adds a row to Google Sheets</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Step 1: Create the Trigger</h3>
+In n8n, add a Typeform trigger node. You'll need to:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Connect your Typeform credentials</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Select the form</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Test the connection</li>
+</ul>
+n8n pulls in sample data so you can see what fields are available.
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Step 2: Build the Action Chain</h3>
+Add nodes for each action:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">HubSpot node → Create/Update Contact</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Slack node → Send Message</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Google Sheets node → Append Row</li>
+</ul>
+Connect them in sequence. Each node's output becomes the next node's input.
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Step 3: Map the Data</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">This is where Zapier's "Insert Data" becomes n8n's expressions. Instead of clicking to insert a field, you'll reference it like:</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><code>{{ $json.answers[0].text }}</code></p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Looks scarier than it is. n8n has an expression editor that shows available fields - you click to insert them, similar to Zapier.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Step 4: Test and Activate</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Run the workflow manually with test data. Check each node's output. If something breaks, the error tells you which node failed and why.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Once it works, activate the workflow and monitor it for a few days before turning off the Zapier equivalent.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 6: Handling Zapier-Specific Features</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Some Zapier features don't have direct n8n equivalents. Here's how to handle the common ones.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Paths (Branching Logic)</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Zapier Paths → n8n IF Node</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The IF node in n8n is actually more powerful. You can create multiple branches based on conditions, and unlike Zapier, nested conditions don't get weird.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Formatter</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Zapier Formatter → n8n Function Node or Set Node</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">For simple transformations (dates, text), use the Set node with expressions. For complex stuff, the Function node lets you write JavaScript.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Example: Converting a date format<br><pre><code>javascript<br>{{ DateTime.fromISO($json.date).toFormat('MM/dd/yyyy') }}<br></code></pre></p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Filter</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Zapier Filter → n8n IF Node</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Same concept. IF node checks a condition, only passes data through if it matches.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Delay</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Zapier Delay → n8n Wait Node</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Works identically. Set minutes, hours, or specific times.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Lookup Tables</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Zapier Tables → Google Sheets or n8n Database Nodes</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">This came up in a client call recently. They wanted easy-to-modify mapping tables - account codes, category assignments, that kind of thing.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The solution: use a Google Sheet as your lookup table. Two columns - the key and the value. Your workflow reads from the sheet, so anyone can modify the mappings without touching the automation.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 7: The Features You Gain</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Migration isn't just about cost savings. n8n gives you capabilities Zapier doesn't.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Error Handling That Makes Sense</h3>
+In n8n, you can add error handling to any node. If something fails, you can:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Retry automatically</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Route to an error-handling branch</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Send yourself a notification with the actual error details</li>
+</ul>
+Zapier's error handling is basically "it failed, here's a vague message, good luck."
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Loops and Batching</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Need to process 500 records? n8n handles it natively. Zapier charges you per task, so 500 records = 500 tasks = bigger bill.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Code When You Need It</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">The Function node accepts JavaScript. The Execute Command node runs shell commands. You can do literally anything.</p>
+I've built workflows that:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Run Python scripts for data analysis</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Execute database queries directly</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Call custom APIs with complex authentication</li>
+</ul>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">AI Agent Integration</h3>
+This is the big one for my clients. n8n has native AI nodes for OpenAI, Anthropic, and others. You can build actual AI agents that:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Analyze incoming data</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Make decisions based on context</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Generate content with your tone of voice</li>
+</ul>
+One client system I handed off pulls content from Fireflies call transcripts, runs it through an analysis agent to check ICP relevance, applies tone of voice, and schedules it - all automated.
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Section 8: Common Migration Mistakes</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">I've helped enough teams migrate that I know where people trip up.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Mistake 1: Migrating Everything at Once</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">You'll break things. Guaranteed. Migrate in phases, verify each workflow works, then move to the next.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Mistake 2: Not Running Parallel</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Keep your Zapier zaps running until n8n workflows are proven. Yes, you'll pay for both briefly. It's cheaper than breaking customer-facing automation.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Mistake 3: Copy-Pasting Logic Exactly</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Sometimes the Zapier way isn't the best way. n8n might have a more elegant solution. Rebuild thoughtfully, don't just recreate.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Mistake 4: Ignoring Error Handling</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Zapier hides errors. n8n shows them. Add error handling from the start - it'll save you debugging time later.</p>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Mistake 5: Not Documenting</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;">Future you will forget how the workflow works. Add notes to complex nodes. Name your workflows clearly. Your ops person will thank you.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Putting It All Together</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Here's the migration in a nutshell:</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">1. <strong>Audit</strong> - Know what you have before you move it<br>2. <strong>Set up n8n</strong> - Cloud or self-hosted, get comfortable with the interface<br>3. <strong>Verify integrations</strong> - Check that your apps are supported<br>4. <strong>Migrate in phases</strong> - Low-risk first, critical last<br>5. <strong>Run parallel</strong> - Don't kill Zapier until n8n proves itself<br>6. <strong>Document everything</strong> - Notes, naming conventions, error handling</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The goal isn't to replicate Zapier exactly. It's to build better automations that cost less and scale with your business.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Your Next 7 Days</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Day 1:</strong> Complete your Zapier audit using the table format above. Export your zap list and categorize by complexity.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Day 2:</strong> Set up your n8n environment. Build that first test workflow - webhook to Slack.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Day 3:</strong> Run the integration compatibility check for your top 10 apps.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Day 4-5:</strong> Migrate your first 3-5 simple workflows. Keep Zapier versions running.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Day 6:</strong> Verify the migrated workflows are working. Check execution logs, confirm data is flowing correctly.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Day 7:</strong> Plan your Phase 2 migrations. Identify which medium-complexity workflows are next.</p>
+<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
+<p style="margin-bottom: 16px; line-height: 1.7;">If you want help mapping this out for your specific setup, or you've got complex workflows that need custom handling, <a href="https://ivanmanfredi.com/contact" target="_blank" rel="noopener noreferrer">Get in Touch</a>.</p></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build AI systems and workflow automation that actually work. Let's talk about your use case.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">Book a Free Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium uppercase tracking-wide"><p>&copy; 2026 All Rights Reserved.</p><div class="flex gap-6 mt-4 md:mt-0"><a href="mailto:ivan@intelligents.agency" class="hover:text-white">Contact</a></div></div></div></footer></body></html>
