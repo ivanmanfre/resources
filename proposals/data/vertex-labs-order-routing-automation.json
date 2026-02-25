@@ -67,6 +67,7 @@
       "included": false
     }
   ],
+  "out_of_scope": "3PL account setup and Shopify theme changes are not included in this engagement.",
   "phases": [
     {
       "name": "Integration Setup",
@@ -82,10 +83,15 @@
       "name": "Testing & Launch",
       "duration": "3 days",
       "deliverable": "End-to-end testing completed and system goes live"
+    },
+    {
+      "name": "Optimization",
+      "duration": "2 days",
+      "deliverable": "Performance tuning and monitoring setup"
     }
   ],
   "total_timeline": "2 weeks",
-  "quoted_price": "3500",
+  "quoted_price": "4200",
   "currency": "$",
   "pricing_model_details": "Fixed project fee",
   "payment_terms": "50% upfront, 50% on completion",
@@ -95,7 +101,6 @@
   "roi_details": "Saves 20-25 hours/week in manual processing, eliminates the current ~8% order routing error rate, enables same-day fulfillment instead of 24-hour delays, and allows scaling to 500+ orders/day without hiring additional staff.",
   "hours_saved": "20-25",
   "scale_factor": "5",
-  "case_studies": [],
   "access_requirements": [
     "Shopify admin API credentials and webhook configuration access",
     "API credentials and documentation for both 3PL providers",
@@ -103,12 +108,14 @@
     "Product type and shipping zone routing rules documentation",
     "Exception criteria definitions for manual review flagging"
   ],
+  "agreement_terms": [],
   "upsell_opportunities": "Future automations could include inventory sync across 3PLs with low-stock alerts, automated returns/exchange processing, and a real-time fulfillment analytics dashboard.",
-  "out_of_scope": "3PL account setup and Shopify theme changes are not included in this engagement.",
+  "case_studies": [],
   "slug": "vertex-labs-order-routing-automation",
-  "task_id": "86afqwkkb",
+  "task_id": "86afqwkv3",
   "proposal_url": "https://ivanmanfre.github.io/resources/proposals/vertex-labs-order-routing-automation.html",
-  "_source": "new",
-  "stripe_payment_url": "https://buy.stripe.com/5kQaEP62nfI5dFk91xfEk0m",
-  "proposalUrl": "https://ivanmanfre.github.io/resources/proposals/vertex-labs-order-routing-automation.html"
+  "_source": "regen",
+  "stripe_payment_url": "https://buy.stripe.com/dRmdR162nbrP8l0cdJfEk0n",
+  "proposalUrl": "https://ivanmanfre.github.io/resources/proposals/vertex-labs-order-routing-automation.html",
+  "_feedback": "Change the quoted price to 4200 and add a 4th phase: Optimization (2 days) - Performance tuning and monitoring setup"
 }
