@@ -1088,6 +1088,66 @@
     color: var(--green);
   }
 
+  /* ===== EXAMPLE OUTPUT GALLERY ===== */
+  .example-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .example-gallery-item {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .example-gallery-item:hover {
+    border-color: var(--green);
+    transform: translateY(-2px);
+  }
+
+  .example-gallery-item img {
+    width: 100%;
+    display: block;
+    transition: opacity 0.3s;
+  }
+
+  .example-gallery-item:hover img {
+    opacity: 0.85;
+  }
+
+  .example-gallery-item .expand-hint {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    letter-spacing: 1px;
+  }
+
+  .example-gallery-item:hover .expand-hint {
+    opacity: 1;
+  }
+
+  .example-gallery-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .cover { padding: 40px; }
@@ -1101,6 +1161,7 @@
     .steps-grid { grid-template-columns: repeat(2, 1fr); }
     .visual-grid { grid-template-columns: 1fr; }
     .showcase-image img { border-radius: 6px; }
+    .example-gallery { grid-template-columns: 1fr; }
     .cover-details { flex-direction: column; gap: 20px; }
     .footer { flex-direction: column; gap: 16px; padding: 40px; }
     .timeline-vertical::before { left: 20px; }
@@ -1692,18 +1753,27 @@ graph TD
   </table>
 
   <h3 style="margin-top: 48px;">Example Outputs</h3>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px;">
+  <div class="example-gallery">
     <div>
-      <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Guide Format</p>
-      <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/guide.png" alt="Guide Lead Magnet Example" style="width: 100%; border-radius: 6px; border: 1px solid var(--border);">
+      <p class="example-gallery-label">Guide Format</p>
+      <a href="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/guide.png" target="_blank" class="example-gallery-item">
+        <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/guide.png" alt="Guide Lead Magnet Example">
+        <span class="expand-hint">CLICK TO EXPAND</span>
+      </a>
     </div>
     <div>
-      <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Interactive Assessment</p>
-      <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/interactive-assessment.png" alt="Interactive Assessment Example" style="width: 100%; border-radius: 6px; border: 1px solid var(--border);">
+      <p class="example-gallery-label">Interactive Assessment</p>
+      <a href="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/interactive-assessment.png" target="_blank" class="example-gallery-item">
+        <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/interactive-assessment.png" alt="Interactive Assessment Example">
+        <span class="expand-hint">CLICK TO EXPAND</span>
+      </a>
     </div>
     <div>
-      <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Landing Page</p>
-      <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/landing-page.png" alt="Landing Page Example" style="width: 100%; border-radius: 6px; border: 1px solid var(--border);">
+      <p class="example-gallery-label">Landing Page</p>
+      <a href="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/landing-page.png" target="_blank" class="example-gallery-item">
+        <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/landing-page.png" alt="Landing Page Example">
+        <span class="expand-hint">CLICK TO EXPAND</span>
+      </a>
     </div>
   </div>
 </div>
@@ -1823,18 +1893,27 @@ graph TD
   </div>
 
   <h3 style="margin-top: 48px;">Example Outputs</h3>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px;">
+  <div class="example-gallery">
     <div>
-      <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Carousel CTA with AI Portrait</p>
-      <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/carousel-cta.png" alt="Carousel CTA with AI-generated portrait" style="width: 100%; border-radius: 6px; border: 1px solid var(--border);">
+      <p class="example-gallery-label">Carousel CTA with AI Portrait</p>
+      <a href="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/carousel-cta.png" target="_blank" class="example-gallery-item">
+        <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/carousel-cta.png" alt="Carousel CTA with AI-generated portrait">
+        <span class="expand-hint">CLICK TO EXPAND</span>
+      </a>
     </div>
     <div>
-      <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Lead Magnet Cover Image</p>
-      <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/cover-lead-magnet.jpeg" alt="Lead magnet cover image" style="width: 100%; border-radius: 6px; border: 1px solid var(--border);">
+      <p class="example-gallery-label">Lead Magnet Cover Image</p>
+      <a href="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/cover-lead-magnet.jpeg" target="_blank" class="example-gallery-item">
+        <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/cover-lead-magnet.jpeg" alt="Lead magnet cover image">
+        <span class="expand-hint">CLICK TO EXPAND</span>
+      </a>
     </div>
     <div>
-      <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Framework Diagram (Brand Tone)</p>
-      <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/framework-image.jpeg" alt="Framework diagram in brand tone" style="width: 100%; border-radius: 6px; border: 1px solid var(--border);">
+      <p class="example-gallery-label">Framework Diagram (Brand Tone)</p>
+      <a href="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/framework-image.jpeg" target="_blank" class="example-gallery-item">
+        <img src="https://raw.githubusercontent.com/ivanmanfre/resources/main/proposals/images/content-system/framework-image.jpeg" alt="Framework diagram in brand tone">
+        <span class="expand-hint">CLICK TO EXPAND</span>
+      </a>
     </div>
   </div>
 </div>
