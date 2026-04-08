@@ -11,13 +11,330 @@
 <div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-black text-xs font-bold uppercase tracking-wide">Interactive Assessment</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">Self-Scoring</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">Instant Results</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Free Resource</span></div>
 <p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">Answer the questions below to get your personalized score and actionable recommendations. Takes about 3-5 minutes to complete.</p>
 </div>
-</div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"></div></div></section><section class="py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto">
-I see you've shared the full content for a Staffing Firm Placement Capacity Score assessment. What would you like me to do with this? A few possibilities:
+</div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"></div></div></section><section class="py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><style>
+  .assessment-widget *{box-sizing:border-box;margin:0;padding:0}
+  .assessment-widget{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:680px;margin:0 auto;background:#fff;color:#111;border-radius:16px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.10)}
+  .aw-screen{display:none;padding:48px 40px;animation:aw-fadein 0.3s ease}
+  .aw-screen.active{display:block}
+  @keyframes aw-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .aw-badge{display:inline-block;background:#f1f1f1;border-radius:100px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#666;margin-bottom:20px}
+  .aw-title{font-size:26px;font-weight:800;line-height:1.2;color:#0a0a0a;margin-bottom:12px}
+  .aw-sub{font-size:15px;color:#555;line-height:1.7;margin-bottom:28px}
+  .aw-meta{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px}
+  .aw-meta li{display:flex;align-items:center;gap:10px;font-size:13px;color:#333;background:#f8f8f8;border-radius:10px;padding:12px 14px;font-weight:500}
+  .aw-meta li span{font-size:18px}
+  .aw-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#0a0a0a;color:#fff;border:none;border-radius:10px;padding:15px 30px;font-size:15px;font-weight:700;cursor:pointer;transition:background .15s,transform .1s}
+  .aw-btn:hover{background:#222;transform:translateY(-1px)}
+  .aw-btn:active{transform:translateY(0)}
+  .aw-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .aw-btn.sec{background:#f0f0f0;color:#0a0a0a}
+  .aw-btn.sec:hover{background:#e2e2e2}
+  .aw-prog-meta{display:flex;justify-content:space-between;font-size:13px;color:#888;margin-bottom:8px}
+  .aw-prog-meta strong{color:#333;font-weight:700}
+  .aw-prog-wrap{background:#efefef;border-radius:100px;height:6px;margin-bottom:28px;overflow:hidden}
+  .aw-prog-bar{height:100%;background:#0a0a0a;border-radius:100px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+  .aw-cat-chip{display:inline-flex;align-items:center;border-radius:100px;padding:5px 14px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:18px}
+  .aw-q-text{font-size:20px;font-weight:700;line-height:1.45;color:#0a0a0a;margin-bottom:26px}
+  .aw-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:32px}
+  .aw-opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border:2px solid #eee;border-radius:10px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+  .aw-opt:hover{border-color:#ccc;background:#fafafa}
+  .aw-opt.sel{border-color:#0a0a0a;background:#f5f5f5}
+  .aw-opt input{width:17px;height:17px;accent-color:#0a0a0a;flex-shrink:0;cursor:pointer}
+  .aw-opt-lbl{font-size:14px;color:#333;flex:1}
+  .aw-opt-num{font-size:12px;font-weight:700;color:#bbb;min-width:18px;text-align:right}
+  .aw-opt.sel .aw-opt-num{color:#0a0a0a}
+  .aw-nav{display:flex;justify-content:space-between;align-items:center}
+  /* Results */
+  .aw-score-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid #f0f0f0}
+  .aw-ring{width:148px;height:148px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:18px;background:conic-gradient(#0a0a0a var(--deg,0deg),#efefef 0deg)}
+  .aw-ring-inner{width:114px;height:114px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+  .aw-ring-pct{font-size:30px;font-weight:800;color:#0a0a0a;line-height:1}
+  .aw-ring-lbl{font-size:11px;color:#aaa;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .aw-tier{display:inline-block;padding:8px 22px;border-radius:100px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+  .tier-nw{background:#fff1f0;color:#c0392b;border:2px solid #f5c6c2}
+  .tier-gt{background:#fff8e6;color:#c87f0a;border:2px solid #f9e4a1}
+  .tier-str{background:#edfdf3;color:#1a7a40;border:2px solid #b2eacc}
+  .aw-tier-txt{font-size:14px;color:#555;text-align:center;line-height:1.65;max-width:480px}
+  .aw-sec-title{font-size:17px;font-weight:800;color:#0a0a0a;margin-bottom:18px}
+  .aw-breakdown{display:flex;flex-direction:column;gap:16px;margin-bottom:36px}
+  .aw-cat-card{background:#f8f8f8;border-radius:12px;padding:18px 20px}
+  .aw-cat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .aw-cat-ttl{font-size:14px;font-weight:700;color:#0a0a0a}
+  .aw-cat-pct{font-size:14px;font-weight:700;color:#555}
+  .aw-bar-bg{background:#e5e5e5;border-radius:100px;height:7px;overflow:hidden;margin-bottom:12px}
+  .aw-bar-fill{height:100%;border-radius:100px;transition:width .8s cubic-bezier(.4,0,.2,1);width:0%}
+  .aw-rec{font-size:13px;color:#555;line-height:1.6;padding-top:10px;border-top:1px solid #e8e8e8}
+  .aw-rec strong{color:#0a0a0a}
+  .aw-restart{text-align:center}
+  @media(max-width:520px){
+    .assessment-widget{border-radius:0}
+    .aw-screen{padding:28px 20px}
+    .aw-title{font-size:21px}
+    .aw-meta{grid-template-columns:1fr}
+    .aw-q-text{font-size:17px}
+  }
+</style>
+<style>
+  .assessment-widget *{box-sizing:border-box;margin:0;padding:0}
+  .assessment-widget{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:680px;margin:0 auto;background:#fff;color:#111;border-radius:16px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.10)}
+  .aw-screen{display:none;padding:48px 40px;animation:aw-fadein 0.3s ease}
+  .aw-screen.active{display:block}
+  @keyframes aw-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .aw-badge{display:inline-block;background:#f1f1f1;border-radius:100px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#666;margin-bottom:20px}
+  .aw-title{font-size:26px;font-weight:800;line-height:1.2;color:#0a0a0a;margin-bottom:12px}
+  .aw-sub{font-size:15px;color:#555;line-height:1.7;margin-bottom:28px}
+  .aw-meta{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px}
+  .aw-meta li{display:flex;align-items:center;gap:10px;font-size:13px;color:#333;background:#f8f8f8;border-radius:10px;padding:12px 14px;font-weight:500}
+  .aw-meta li span{font-size:18px}
+  .aw-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#0a0a0a;color:#fff;border:none;border-radius:10px;padding:15px 30px;font-size:15px;font-weight:700;cursor:pointer;transition:background .15s,transform .1s}
+  .aw-btn:hover{background:#222;transform:translateY(-1px)}
+  .aw-btn:active{transform:translateY(0)}
+  .aw-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .aw-btn.sec{background:#f0f0f0;color:#0a0a0a}
+  .aw-btn.sec:hover{background:#e2e2e2}
+  .aw-prog-meta{display:flex;justify-content:space-between;font-size:13px;color:#888;margin-bottom:8px}
+  .aw-prog-meta strong{color:#333;font-weight:700}
+  .aw-prog-wrap{background:#efefef;border-radius:100px;height:6px;margin-bottom:28px;overflow:hidden}
+  .aw-prog-bar{height:100%;background:#0a0a0a;border-radius:100px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+  .aw-cat-chip{display:inline-flex;align-items:center;border-radius:100px;padding:5px 14px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:18px}
+  .aw-q-text{font-size:20px;font-weight:700;line-height:1.45;color:#0a0a0a;margin-bottom:26px}
+  .aw-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:32px}
+  .aw-opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border:2px solid #eee;border-radius:10px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+  .aw-opt:hover{border-color:#ccc;background:#fafafa}
+  .aw-opt.sel{border-color:#0a0a0a;background:#f5f5f5}
+  .aw-opt input{width:17px;height:17px;accent-color:#0a0a0a;flex-shrink:0;cursor:pointer}
+  .aw-opt-lbl{font-size:14px;color:#333;flex:1}
+  .aw-opt-num{font-size:12px;font-weight:700;color:#bbb;min-width:18px;text-align:right}
+  .aw-opt.sel .aw-opt-num{color:#0a0a0a}
+  .aw-nav{display:flex;justify-content:space-between;align-items:center}
+  /* Results */
+  .aw-score-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid #f0f0f0}
+  .aw-ring{width:148px;height:148px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:18px;background:conic-gradient(#0a0a0a var(--deg,0deg),#efefef 0deg)}
+  .aw-ring-inner{width:114px;height:114px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+  .aw-ring-pct{font-size:30px;font-weight:800;color:#0a0a0a;line-height:1}
+  .aw-ring-lbl{font-size:11px;color:#aaa;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .aw-tier{display:inline-block;padding:8px 22px;border-radius:100px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+  .tier-nw{background:#fff1f0;color:#c0392b;border:2px solid #f5c6c2}
+  .tier-gt{background:#fff8e6;color:#c87f0a;border:2px solid #f9e4a1}
+  .tier-str{background:#edfdf3;color:#1a7a40;border:2px solid #b2eacc}
+  .aw-tier-txt{font-size:14px;color:#555;text-align:center;line-height:1.65;max-width:480px}
+  .aw-sec-title{font-size:17px;font-weight:800;color:#0a0a0a;margin-bottom:18px}
+  .aw-breakdown{display:flex;flex-direction:column;gap:16px;margin-bottom:36px}
+  .aw-cat-card{background:#f8f8f8;border-radius:12px;padding:18px 20px}
+  .aw-cat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .aw-cat-ttl{font-size:14px;font-weight:700;color:#0a0a0a}
+  .aw-cat-pct{font-size:14px;font-weight:700;color:#555}
+  .aw-bar-bg{background:#e5e5e5;border-radius:100px;height:7px;overflow:hidden;margin-bottom:12px}
+  .aw-bar-fill{height:100%;border-radius:100px;transition:width .8s cubic-bezier(.4,0,.2,1);width:0%}
+  .aw-rec{font-size:13px;color:#555;line-height:1.6;padding-top:10px;border-top:1px solid #e8e8e8}
+  .aw-rec strong{color:#0a0a0a}
+  .aw-restart{text-align:center}
+  @media(max-width:520px){
+    .assessment-widget{border-radius:0}
+    .aw-screen{padding:28px 20px}
+    .aw-title{font-size:21px}
+    .aw-meta{grid-template-columns:1fr}
+    .aw-q-text{font-size:17px}
+  }
+</style>
 
-1. **Build it into an interactive HTML page** — with clickable scoring, auto-tallying, tier results, etc.
-2. **Polish/update the existing `assessment.html`** file already in the repo
-3. **Create a styled landing page** with the assessment embedded
-4. **Something else entirely**
+<div class="assessment-widget">
 
-What's the goal here?
-</div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build AI systems and workflow automation that actually work. Let's talk about your use case.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">Book a Free Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium uppercase tracking-wide"><p>&copy; 2026 All Rights Reserved.</p><div class="flex gap-6 mt-4 md:mt-0"><a href="mailto:ivan@intelligents.agency" class="hover:text-white">Contact</a></div></div></div></footer></body></html>
+  <div class="aw-screen active" id="aws-start">
+    <div class="aw-badge">Self-Assessment</div>
+    <h1 class="aw-title">Staffing Firm Placement Capacity Score</h1>
+    <p class="aw-sub">Find the exact bottleneck between your team size and your placement volume. 25 questions across 5 core areas of your operation.</p>
+    <ul class="aw-meta">
+      <li><span>📋</span> 25 questions total</li>
+      <li><span>🏷️</span> 5 core categories</li>
+      <li><span>⏱️</span> About 10 minutes</li>
+      <li><span>📊</span> Instant score & action plan</li>
+    </ul>
+    <button class="aw-btn" onclick="awGo()">Start Assessment &rarr;</button>
+  </div>
+
+  <div class="aw-screen" id="aws-q">
+    <div class="aw-prog-meta">
+      <span id="aw-qcount">Question 1 of 25</span>
+      <strong id="aw-qcat"></strong>
+    </div>
+    <div class="aw-prog-wrap"><div class="aw-prog-bar" id="aw-pbar" style="width:0%"></div></div>
+    <div class="aw-cat-chip" id="aw-chip"></div>
+    <div class="aw-q-text" id="aw-qtxt"></div>
+    <div class="aw-opts" id="aw-opts"></div>
+    <div class="aw-nav">
+      <button class="aw-btn sec" id="aw-back" onclick="awBack()">&#8592; Back</button>
+      <button class="aw-btn" id="aw-next" onclick="awNext()" disabled>Next &rarr;</button>
+    </div>
+  </div>
+
+  <div class="aw-screen" id="aws-results">
+    <div class="aw-score-wrap">
+      <div class="aw-ring" id="aw-ring">
+        <div class="aw-ring-inner">
+          <span class="aw-ring-pct" id="aw-rpct">0%</span>
+          <span class="aw-ring-lbl">Overall</span>
+        </div>
+      </div>
+      <div class="aw-tier" id="aw-tier"></div>
+      <p class="aw-tier-txt" id="aw-tier-txt"></p>
+    </div>
+    <div class="aw-sec-title">Breakdown by Category</div>
+    <div class="aw-breakdown" id="aw-bdown"></div>
+    <div class="aw-restart">
+      <button class="aw-btn sec" onclick="awRestart()">&#8592; Retake Assessment</button>
+    </div>
+  </div>
+
+</div>
+<script>
+(function(){
+  var CATS=[
+    {name:"Candidate Pipeline & Sourcing",color:"#2563eb",
+     rec:"Your sourcing machine needs a rebuild. <strong>Action:</strong> Identify your top 3 placement types and create a dedicated sourcing lane for each — specific job boards, boolean strings, and automated re-engagement sequences for passive candidates already in your ATS. Don't source reactively; build a standing pipeline that runs weekly regardless of open orders."},
+    {name:"Recruiter Efficiency & Tools",color:"#7c3aed",
+     rec:"Your team is burning hours on work that shouldn't require humans. <strong>Action:</strong> Run a one-week activity audit. Find the top 3 recurring manual tasks (scheduling, follow-up emails, status updates) and automate them. Even a 15–20% time savings per recruiter compounds significantly across the team within 90 days."},
+    {name:"Client Relationships & BD",color:"#059669",
+     rec:"Client expansion is a revenue lever you're likely underleveraging. <strong>Action:</strong> Build a structured 30/60/90-day touchpoint cadence for every active client. Make sure each account has a named owner and a standing monthly check-in — not just outreach when you need a new order. Proactive relationships generate proactive job orders."},
+    {name:"Placement Speed & Process",color:"#d97706",
+     rec:"Speed-to-submit often determines whether you win or lose a placement. <strong>Action:</strong> Time your last 20 job orders through each pipeline stage. Identify the slowest stage and redesign that handoff. A 24–48 hour submit SLA is achievable for most roles with the right intake form and a pre-vetted bench ready to go."},
+    {name:"Reporting & Operations",color:"#dc2626",
+     rec:"Without visibility, you're flying blind. <strong>Action:</strong> Build one weekly dashboard: submits, interviews, offers, placements, and falloffs — cut by recruiter and by client. Review it every Monday morning as a team. Once you can see the numbers clearly, the right decisions become obvious."}
+  ];
+
+  var QS=[
+    {c:0,t:"We have a consistent, repeatable process for sourcing qualified candidates every week — not just when a new job order comes in."},
+    {c:0,t:"Our candidate database is current, well-organized, and easy to search by skill set, availability, and location."},
+    {c:0,t:"We rarely lose a placement because we couldn't find a qualified candidate fast enough after receiving a job order."},
+    {c:0,t:"We have automated alerts or workflows that surface relevant candidates as soon as a new job order is created."},
+    {c:0,t:"Our sourcing channels (job boards, LinkedIn, referrals) reliably produce enough volume to fill open roles on time."},
+    {c:1,t:"Our recruiters spend the majority of their time on high-value activities like interviews and client calls — not administrative work."},
+    {c:1,t:"We use automation or AI tools to handle repetitive tasks like resume screening, interview scheduling, or status follow-ups."},
+    {c:1,t:"Our ATS or CRM is actively used by the whole team and is considered a time-saver, not a burden to maintain."},
+    {c:1,t:"Recruiters can access everything they need for a placement in one place, without toggling between multiple disconnected tools."},
+    {c:1,t:"A new recruiter can ramp up and make their first placement within 60–90 days using our current onboarding process."},
+    {c:2,t:"We have a structured, consistent process for staying in contact with existing clients — not just when we need something from them."},
+    {c:2,t:"We consistently convert active job orders into placements without frequently losing them to competing staffing firms."},
+    {c:2,t:"Our best clients proactively reach out with new job orders, rather than us always initiating contact to generate business."},
+    {c:2,t:"We have a clear onboarding process for new clients that sets expectations and reduces friction in the first 30 days."},
+    {c:2,t:"We actively track client satisfaction and use that feedback to improve the quality and speed of our service."},
+    {c:3,t:"We can typically submit qualified, pre-screened candidates within 24–48 hours of receiving a new job order."},
+    {c:3,t:"Our interview-to-offer ratio has been stable or improving over the past six months."},
+    {c:3,t:"We rarely lose placements due to slow internal response times, poor communication, or process delays."},
+    {c:3,t:"Internal handoffs between sales, recruiting, and operations are smooth and rarely the cause of a lost placement."},
+    {c:3,t:"We have clear SLAs or benchmarks for each stage of the placement process — and we actively track against them."},
+    {c:4,t:"We have real-time visibility into our team's pipeline activity, submission volume, and placement metrics at all times."},
+    {c:4,t:"We can quickly identify which recruiters, clients, or job types are generating the most revenue and act on that data."},
+    {c:4,t:"Our team holds regular structured meetings to review performance metrics and address bottlenecks before they become costly."},
+    {c:4,t:"We use data — not gut feel — to decide where to focus our recruiting capacity and business development effort."},
+    {c:4,t:"Our back-office processes (contracts, paperwork, timesheets, invoicing) rarely slow down or jeopardize a placement."}
+  ];
+
+  var SCALE=[
+    {l:"Strongly Disagree",v:1},
+    {l:"Disagree",v:2},
+    {l:"Neutral",v:3},
+    {l:"Agree",v:4},
+    {l:"Strongly Agree",v:5}
+  ];
+
+  var answers=new Array(QS.length).fill(null);
+  var cur=0;
+
+  function show(id){
+    document.querySelectorAll('.assessment-widget .aw-screen').forEach(function(s){s.classList.remove('active')});
+    document.getElementById(id).classList.add('active');
+  }
+
+  window.awGo=function(){cur=0;answers=new Array(QS.length).fill(null);render();show('aws-q')};
+  window.awRestart=function(){show('aws-start')};
+
+  function render(){
+    var q=QS[cur];
+    var cat=CATS[q.c];
+    var pct=(cur/QS.length)*100;
+    document.getElementById('aw-pbar').style.width=pct+'%';
+    document.getElementById('aw-qcount').textContent='Question '+(cur+1)+' of '+QS.length;
+    document.getElementById('aw-qcat').textContent=cat.name;
+    var chip=document.getElementById('aw-chip');
+    chip.textContent=cat.name;
+    chip.style.background=cat.color+'18';
+    chip.style.color=cat.color;
+    chip.style.border='1.5px solid '+cat.color+'44';
+    document.getElementById('aw-qtxt').textContent=q.t;
+    var opts=document.getElementById('aw-opts');
+    opts.innerHTML='';
+    SCALE.forEach(function(s){
+      var lbl=document.createElement('label');
+      lbl.className='aw-opt'+(answers[cur]===s.v?' sel':'');
+      lbl.innerHTML='<input type="radio" name="awq" value="'+s.v+'"'+(answers[cur]===s.v?' checked':'')+
+        '><span class="aw-opt-lbl">'+s.l+'</span><span class="aw-opt-num">'+s.v+'</span>';
+      lbl.addEventListener('click',function(){pick(s.v)});
+      opts.appendChild(lbl);
+    });
+    document.getElementById('aw-back').style.visibility=cur===0?'hidden':'visible';
+    var nxt=document.getElementById('aw-next');
+    nxt.disabled=answers[cur]===null;
+    nxt.textContent=cur===QS.length-1?'See My Results →':'Next →';
+  }
+
+  function pick(v){
+    answers[cur]=v;
+    document.querySelectorAll('.assessment-widget .aw-opt').forEach(function(o){
+      var iv=parseInt(o.querySelector('input').value);
+      o.classList.toggle('sel',iv===v);
+      o.querySelector('input').checked=iv===v;
+    });
+    document.getElementById('aw-next').disabled=false;
+  }
+
+  window.awBack=function(){if(cur>0){cur--;render()}};
+  window.awNext=function(){
+    if(answers[cur]===null)return;
+    if(cur<QS.length-1){cur++;render();}else{results();}
+  };
+
+  function results(){
+    var total=answers.reduce(function(a,b){return a+(b||0)},0);
+    var pct=Math.round((total/(QS.length*5))*100);
+    var deg=Math.round((pct/100)*360);
+    document.getElementById('aw-ring').style.setProperty('--deg',deg+'deg');
+    document.getElementById('aw-rpct').textContent=pct+'%';
+    var tier,tc,td;
+    if(pct<=40){
+      tier='Needs Work';tc='tier-nw';
+      td='There are clear gaps holding your firm back from its placement potential. The bottlenecks are fixable — but only once you know where they are. Start with your lowest-scoring category below. That\'s your biggest revenue lever right now.';
+    }else if(pct<=70){
+      tier='Getting There';tc='tier-gt';
+      td='You have solid foundations but there\'s friction in specific parts of your placement machine. Targeted improvements in your weakest categories will have an outsized compounding effect on your output — without needing to hire.';
+    }else{
+      tier='Strong';tc='tier-str';
+      td='Your operations are running well. You\'re in a strong position to scale. The opportunity now is systematizing what\'s working and layering in automation so you can grow placement volume without growing headcount proportionally.';
+    }
+    var tb=document.getElementById('aw-tier');
+    tb.textContent=tier;tb.className='aw-tier '+tc;
+    document.getElementById('aw-tier-txt').textContent=td;
+
+    var bd=document.getElementById('aw-bdown');
+    bd.innerHTML='';
+    CATS.forEach(function(cat,ci){
+      var qs=QS.map(function(q,qi){return{q:q,qi:qi}}).filter(function(x){return x.q.c===ci});
+      var sum=qs.reduce(function(a,x){return a+(answers[x.qi]||0)},0);
+      var cp=Math.round((sum/(qs.length*5))*100);
+      var card=document.createElement('div');
+      card.className='aw-cat-card';
+      card.innerHTML='<div class="aw-cat-head"><span class="aw-cat-ttl">'+cat.name+'</span><span class="aw-cat-pct">'+cp+'%</span></div>'+
+        '<div class="aw-bar-bg"><div class="aw-bar-fill" data-w="'+cp+'%" style="background:'+cat.color+'"></div></div>'+
+        '<div class="aw-rec">'+cat.rec+'</div>';
+      bd.appendChild(card);
+    });
+
+    show('aws-results');
+    setTimeout(function(){
+      document.querySelectorAll('.assessment-widget .aw-bar-fill').forEach(function(b){
+        b.style.width=b.getAttribute('data-w');
+      });
+    },120);
+  }
+})();
+</script></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build AI systems and workflow automation that actually work. Let's talk about your use case.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">Book a Free Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium uppercase tracking-wide"><p>&copy; 2026 All Rights Reserved.</p><div class="flex gap-6 mt-4 md:mt-0"><a href="mailto:ivan@intelligents.agency" class="hover:text-white">Contact</a></div></div></div></footer></body></html>
