@@ -12,127 +12,285 @@
 <p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">Answer the questions below to get your personalized score and actionable recommendations. Takes about 3-5 minutes to complete.</p>
 </div>
 </div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"></div></div></section><section class="py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><style>
-.aw*{box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,sans-serif}
-.aw{max-width:640px;margin:0 auto;background:#fff;color:#111;border-radius:16px;box-shadow:0 4px 40px rgba(0,0,0,.1);overflow:hidden}
-.aw .opt input{display:none}
-.aw .opt input:checked~.ob{background:#111;color:#fff;border-color:#111}
-.aw .opt:hover .ob{border-color:#444}
-.aw .ob{display:flex;align-items:center;gap:14px;padding:12px 16px;border:1.5px solid #e2e2e2;border-radius:10px;cursor:pointer;transition:all .15s;margin-bottom:9px;user-select:none}
-.aw .num{width:26px;height:26px;min-width:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#f0f0f0;font-weight:700;font-size:12px;transition:all .15s}
-.aw .opt input:checked~.ob .num{background:rgba(255,255,255,.15);color:#fff}
-.aw .fade{animation:aw-in .3s ease}
-@keyframes aw-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.aw .btn{background:#111;color:#fff;padding:13px 26px;border-radius:10px;border:none;cursor:pointer;font-size:15px;font-weight:600;transition:background .15s}
-.aw .btn:hover{background:#333}
-.aw .btn:disabled{opacity:.35;cursor:not-allowed}
-.aw .prog{height:4px;background:#f0f0f0;border-radius:2px;overflow:hidden;margin-bottom:28px}
-.aw .pf{height:100%;background:#111;border-radius:2px;transition:width .5s}
-.aw .rec{border-left:3px solid #111;padding:10px 14px;margin-bottom:10px;background:#f9f9f9;border-radius:0 8px 8px 0;font-size:14px;line-height:1.65;color:#333}
+.assessment-widget{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:720px;margin:0 auto;background:#fff;color:#1a1a2e;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.assessment-widget *{box-sizing:border-box;margin:0;padding:0}
+.assessment-widget .aw-header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:48px 40px;text-align:center;color:#fff}
+.assessment-widget .aw-header h1{font-size:28px;font-weight:800;line-height:1.25;margin-bottom:8px;letter-spacing:-.5px}
+.assessment-widget .aw-header .aw-subtitle{font-size:18px;font-weight:400;opacity:.85;margin-bottom:24px}
+.assessment-widget .aw-header p{font-size:15px;line-height:1.7;opacity:.7;max-width:540px;margin:0 auto 32px}
+.assessment-widget .aw-cred{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
+.assessment-widget .aw-cred span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.8)}
+.assessment-widget .aw-btn{display:inline-flex;align-items:center;gap:8px;background:#e94560;color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;transition:all .25s;letter-spacing:.3px}
+.assessment-widget .aw-btn:hover{background:#d63051;transform:translateY(-2px);box-shadow:0 8px 24px rgba(233,69,96,.35)}
+.assessment-widget .aw-btn:active{transform:translateY(0)}
+.assessment-widget .aw-body{padding:36px 40px 40px}
+.assessment-widget .aw-progress-wrap{margin-bottom:28px}
+.assessment-widget .aw-progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;font-weight:600;color:#64748b}
+.assessment-widget .aw-progress-bar{height:8px;background:#e2e8f0;border-radius:8px;overflow:hidden}
+.assessment-widget .aw-progress-fill{height:100%;background:linear-gradient(90deg,#e94560,#0f3460);border-radius:8px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.assessment-widget .aw-category-badge{display:inline-block;background:#eef2ff;color:#4338ca;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.8px}
+.assessment-widget .aw-question{font-size:19px;font-weight:700;line-height:1.45;margin-bottom:28px;color:#1a1a2e}
+.assessment-widget .aw-options{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.assessment-widget .aw-option{position:relative;display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s}
+.assessment-widget .aw-option:hover{border-color:#c7d2fe;background:#f8f9ff}
+.assessment-widget .aw-option.selected{border-color:#4338ca;background:#eef2ff}
+.assessment-widget .aw-option input{display:none}
+.assessment-widget .aw-radio{width:22px;height:22px;min-width:22px;border-radius:50%;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px}
+.assessment-widget .aw-option.selected .aw-radio{border-color:#4338ca;background:#4338ca}
+.assessment-widget .aw-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff;opacity:0;transition:opacity .2s}
+.assessment-widget .aw-option.selected .aw-radio::after{opacity:1}
+.assessment-widget .aw-option-text .aw-score{font-weight:700;color:#4338ca;margin-right:6px}
+.assessment-widget .aw-option-text{font-size:14px;line-height:1.5;color:#374151}
+.assessment-widget .aw-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.assessment-widget .aw-nav-btn{padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none}
+.assessment-widget .aw-back{background:#f1f5f9;color:#475569}
+.assessment-widget .aw-back:hover{background:#e2e8f0}
+.assessment-widget .aw-next{background:#1a1a2e;color:#fff}
+.assessment-widget .aw-next:hover{background:#16213e;transform:translateY(-1px)}
+.assessment-widget .aw-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.assessment-widget .aw-finish{background:#e94560;color:#fff}
+.assessment-widget .aw-finish:hover{background:#d63051}
+.assessment-widget .aw-screen{animation:awFadeIn .35s ease}
+@keyframes awFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.assessment-widget .aw-results-header{text-align:center;padding:48px 40px 32px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff}
+.assessment-widget .aw-score-ring{width:160px;height:160px;margin:0 auto 20px;position:relative}
+.assessment-widget .aw-score-ring svg{transform:rotate(-90deg)}
+.assessment-widget .aw-score-ring .aw-ring-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.assessment-widget .aw-ring-pct{font-size:40px;font-weight:800;display:block;line-height:1}
+.assessment-widget .aw-ring-label{font-size:12px;opacity:.7;margin-top:2px}
+.assessment-widget .aw-tier{display:inline-block;padding:8px 24px;border-radius:24px;font-size:14px;font-weight:700;margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase}
+.assessment-widget .aw-tier-1{background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
+.assessment-widget .aw-tier-2{background:rgba(245,158,11,.2);color:#fcd34d;border:1px solid rgba(245,158,11,.3)}
+.assessment-widget .aw-tier-3{background:rgba(16,185,129,.2);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)}
+.assessment-widget .aw-tier-desc{font-size:15px;opacity:.8;max-width:500px;margin:12px auto 0;line-height:1.6}
+.assessment-widget .aw-categories{padding:32px 40px 40px}
+.assessment-widget .aw-cat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin-bottom:16px}
+.assessment-widget .aw-cat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.assessment-widget .aw-cat-name{font-size:15px;font-weight:700;color:#1a1a2e}
+.assessment-widget .aw-cat-score{font-size:14px;font-weight:700;color:#4338ca}
+.assessment-widget .aw-cat-bar{height:10px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-bottom:14px}
+.assessment-widget .aw-cat-fill{height:100%;border-radius:10px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.assessment-widget .aw-cat-rec{font-size:13px;line-height:1.6;color:#475569;padding:12px 16px;background:#fff;border-left:3px solid #e94560;border-radius:0 8px 8px 0}
+.assessment-widget .aw-cat-rec strong{color:#1a1a2e}
+.assessment-widget .aw-retake{text-align:center;padding:0 40px 40px}
+.assessment-widget .aw-retake .aw-btn{background:#1a1a2e}
+.assessment-widget .aw-retake .aw-btn:hover{background:#16213e;box-shadow:0 8px 24px rgba(26,26,46,.25)}
+.assessment-widget .aw-meta{display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.assessment-widget .aw-meta span{font-size:13px;opacity:.6}
+@media(max-width:600px){
+.assessment-widget .aw-header,.assessment-widget .aw-body,.assessment-widget .aw-categories,.assessment-widget .aw-results-header{padding-left:20px;padding-right:20px}
+.assessment-widget .aw-header h1{font-size:22px}
+.assessment-widget .aw-question{font-size:17px}
+.assessment-widget .aw-retake{padding:0 20px 32px}
+}
 </style>
 <style>
-.aw*{box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,sans-serif}
-.aw{max-width:640px;margin:0 auto;background:#fff;color:#111;border-radius:16px;box-shadow:0 4px 40px rgba(0,0,0,.1);overflow:hidden}
-.aw .opt input{display:none}
-.aw .opt input:checked~.ob{background:#111;color:#fff;border-color:#111}
-.aw .opt:hover .ob{border-color:#444}
-.aw .ob{display:flex;align-items:center;gap:14px;padding:12px 16px;border:1.5px solid #e2e2e2;border-radius:10px;cursor:pointer;transition:all .15s;margin-bottom:9px;user-select:none}
-.aw .num{width:26px;height:26px;min-width:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#f0f0f0;font-weight:700;font-size:12px;transition:all .15s}
-.aw .opt input:checked~.ob .num{background:rgba(255,255,255,.15);color:#fff}
-.aw .fade{animation:aw-in .3s ease}
-@keyframes aw-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.aw .btn{background:#111;color:#fff;padding:13px 26px;border-radius:10px;border:none;cursor:pointer;font-size:15px;font-weight:600;transition:background .15s}
-.aw .btn:hover{background:#333}
-.aw .btn:disabled{opacity:.35;cursor:not-allowed}
-.aw .prog{height:4px;background:#f0f0f0;border-radius:2px;overflow:hidden;margin-bottom:28px}
-.aw .pf{height:100%;background:#111;border-radius:2px;transition:width .5s}
-.aw .rec{border-left:3px solid #111;padding:10px 14px;margin-bottom:10px;background:#f9f9f9;border-radius:0 8px 8px 0;font-size:14px;line-height:1.65;color:#333}
-</style><div class='assessment-widget'><div class='aw' id='aw'></div></div>
+.assessment-widget{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:720px;margin:0 auto;background:#fff;color:#1a1a2e;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.assessment-widget *{box-sizing:border-box;margin:0;padding:0}
+.assessment-widget .aw-header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:48px 40px;text-align:center;color:#fff}
+.assessment-widget .aw-header h1{font-size:28px;font-weight:800;line-height:1.25;margin-bottom:8px;letter-spacing:-.5px}
+.assessment-widget .aw-header .aw-subtitle{font-size:18px;font-weight:400;opacity:.85;margin-bottom:24px}
+.assessment-widget .aw-header p{font-size:15px;line-height:1.7;opacity:.7;max-width:540px;margin:0 auto 32px}
+.assessment-widget .aw-cred{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
+.assessment-widget .aw-cred span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.8)}
+.assessment-widget .aw-btn{display:inline-flex;align-items:center;gap:8px;background:#e94560;color:#fff;border:none;padding:16px 40px;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;transition:all .25s;letter-spacing:.3px}
+.assessment-widget .aw-btn:hover{background:#d63051;transform:translateY(-2px);box-shadow:0 8px 24px rgba(233,69,96,.35)}
+.assessment-widget .aw-btn:active{transform:translateY(0)}
+.assessment-widget .aw-body{padding:36px 40px 40px}
+.assessment-widget .aw-progress-wrap{margin-bottom:28px}
+.assessment-widget .aw-progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;font-weight:600;color:#64748b}
+.assessment-widget .aw-progress-bar{height:8px;background:#e2e8f0;border-radius:8px;overflow:hidden}
+.assessment-widget .aw-progress-fill{height:100%;background:linear-gradient(90deg,#e94560,#0f3460);border-radius:8px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.assessment-widget .aw-category-badge{display:inline-block;background:#eef2ff;color:#4338ca;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.8px}
+.assessment-widget .aw-question{font-size:19px;font-weight:700;line-height:1.45;margin-bottom:28px;color:#1a1a2e}
+.assessment-widget .aw-options{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.assessment-widget .aw-option{position:relative;display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s}
+.assessment-widget .aw-option:hover{border-color:#c7d2fe;background:#f8f9ff}
+.assessment-widget .aw-option.selected{border-color:#4338ca;background:#eef2ff}
+.assessment-widget .aw-option input{display:none}
+.assessment-widget .aw-radio{width:22px;height:22px;min-width:22px;border-radius:50%;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px}
+.assessment-widget .aw-option.selected .aw-radio{border-color:#4338ca;background:#4338ca}
+.assessment-widget .aw-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff;opacity:0;transition:opacity .2s}
+.assessment-widget .aw-option.selected .aw-radio::after{opacity:1}
+.assessment-widget .aw-option-text .aw-score{font-weight:700;color:#4338ca;margin-right:6px}
+.assessment-widget .aw-option-text{font-size:14px;line-height:1.5;color:#374151}
+.assessment-widget .aw-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.assessment-widget .aw-nav-btn{padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none}
+.assessment-widget .aw-back{background:#f1f5f9;color:#475569}
+.assessment-widget .aw-back:hover{background:#e2e8f0}
+.assessment-widget .aw-next{background:#1a1a2e;color:#fff}
+.assessment-widget .aw-next:hover{background:#16213e;transform:translateY(-1px)}
+.assessment-widget .aw-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.assessment-widget .aw-finish{background:#e94560;color:#fff}
+.assessment-widget .aw-finish:hover{background:#d63051}
+.assessment-widget .aw-screen{animation:awFadeIn .35s ease}
+@keyframes awFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.assessment-widget .aw-results-header{text-align:center;padding:48px 40px 32px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff}
+.assessment-widget .aw-score-ring{width:160px;height:160px;margin:0 auto 20px;position:relative}
+.assessment-widget .aw-score-ring svg{transform:rotate(-90deg)}
+.assessment-widget .aw-score-ring .aw-ring-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.assessment-widget .aw-ring-pct{font-size:40px;font-weight:800;display:block;line-height:1}
+.assessment-widget .aw-ring-label{font-size:12px;opacity:.7;margin-top:2px}
+.assessment-widget .aw-tier{display:inline-block;padding:8px 24px;border-radius:24px;font-size:14px;font-weight:700;margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase}
+.assessment-widget .aw-tier-1{background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
+.assessment-widget .aw-tier-2{background:rgba(245,158,11,.2);color:#fcd34d;border:1px solid rgba(245,158,11,.3)}
+.assessment-widget .aw-tier-3{background:rgba(16,185,129,.2);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)}
+.assessment-widget .aw-tier-desc{font-size:15px;opacity:.8;max-width:500px;margin:12px auto 0;line-height:1.6}
+.assessment-widget .aw-categories{padding:32px 40px 40px}
+.assessment-widget .aw-cat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin-bottom:16px}
+.assessment-widget .aw-cat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.assessment-widget .aw-cat-name{font-size:15px;font-weight:700;color:#1a1a2e}
+.assessment-widget .aw-cat-score{font-size:14px;font-weight:700;color:#4338ca}
+.assessment-widget .aw-cat-bar{height:10px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-bottom:14px}
+.assessment-widget .aw-cat-fill{height:100%;border-radius:10px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.assessment-widget .aw-cat-rec{font-size:13px;line-height:1.6;color:#475569;padding:12px 16px;background:#fff;border-left:3px solid #e94560;border-radius:0 8px 8px 0}
+.assessment-widget .aw-cat-rec strong{color:#1a1a2e}
+.assessment-widget .aw-retake{text-align:center;padding:0 40px 40px}
+.assessment-widget .aw-retake .aw-btn{background:#1a1a2e}
+.assessment-widget .aw-retake .aw-btn:hover{background:#16213e;box-shadow:0 8px 24px rgba(26,26,46,.25)}
+.assessment-widget .aw-meta{display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.assessment-widget .aw-meta span{font-size:13px;opacity:.6}
+@media(max-width:600px){
+.assessment-widget .aw-header,.assessment-widget .aw-body,.assessment-widget .aw-categories,.assessment-widget .aw-results-header{padding-left:20px;padding-right:20px}
+.assessment-widget .aw-header h1{font-size:22px}
+.assessment-widget .aw-question{font-size:17px}
+.assessment-widget .aw-retake{padding:0 20px 32px}
+}
+</style>
+
+<div class="assessment-widget">
+<div id="aw-start" class="aw-screen">
+<div class="aw-header">
+<h1>The Agency Efficiency Score</h1>
+<div class="aw-subtitle">How Much Profit Are You Leaving on the Table?</div>
+<p>Answer 25 honest questions about how your agency actually operates. Get your score, see where the gaps are, and find out what to fix first.</p>
+<div class="aw-cred">
+<span>100+ companies served</span>
+<span>20+ hrs/week saved per team</span>
+<span>3-5x efficiency gains</span>
+</div>
+<button class="aw-btn" onclick="awStart()">Start Assessment <span>→</span></button>
+<div class="aw-meta">
+<span>25 questions</span>
+<span>15-20 minutes</span>
+<span>5 categories</span>
+</div>
+</div>
+</div>
+<div id="aw-quiz" class="aw-screen" style="display:none">
+<div class="aw-body">
+<div class="aw-progress-wrap">
+<div class="aw-progress-info">
+<span id="aw-qcount">Question 1 of 25</span>
+<span id="aw-pct">0%</span>
+</div>
+<div class="aw-progress-bar"><div class="aw-progress-fill" id="aw-pfill" style="width:0%"></div></div>
+</div>
+<div id="aw-cat-badge" class="aw-category-badge"></div>
+<div id="aw-q-text" class="aw-question"></div>
+<div id="aw-opts" class="aw-options"></div>
+<div class="aw-nav">
+<button class="aw-nav-btn aw-back" id="aw-prev" onclick="awPrev()">← Back</button>
+<button class="aw-nav-btn aw-next" id="aw-nextbtn" onclick="awNext()" disabled>Next →</button>
+</div>
+</div>
+</div>
+<div id="aw-results" class="aw-screen" style="display:none"></div>
+</div>
 <script>
 (function(){
-const qs=[
-  {q:"How much of your team's weekly time goes toward manual, repetitive tasks — reporting, status updates, data entry, file management?",
-   o:["50%+ of hours — it's constant","30–50% — a big chunk","15–30% — noticeable but manageable","5–15% — relatively minor","Under 5% — barely noticeable"]},
-  {q:"How automated is your client reporting and project status communication?",
-   o:["100% manual — someone builds every report","Mostly manual, a few templates","Mix of manual and automated","Mostly automated, light human review","Fully automated — humans only approve"]},
-  {q:"How often do projects go over deadline or scope due to internal process gaps?",
-   o:["Most projects — it's just the norm","More than half","About half the time","Occasionally — a few per quarter","Rarely or never"]},
-  {q:"How fast can you spin up a new client or service line without dropping quality?",
-   o:["Months of setup and chaos","Weeks with significant friction","1–2 weeks with coordination","A few days with some coordination","Days — smooth and repeatable"]},
-  {q:"How clearly do you know your actual profit margin per client or project — right now?",
-   o:["Guessing at best","Check quarterly","Monthly reviews, rough picture","Weekly with reasonable accuracy","Real-time — always accurate"]}
+const D=document,Q=[
+{c:"Client Onboarding & Project Kickoff",q:"How long does it typically take from signing a new client to having them fully onboarded with access, briefs, and kickoff complete?",o:["More than 2 weeks with lots of back-and-forth emails","About 1-2 weeks, mostly manual coordination","Around 1 week with some templates in place","3-5 days with a semi-automated process","Under 3 days with a fully systematized onboarding flow"]},
+{c:"Client Onboarding & Project Kickoff",q:"When a new project kicks off, how clear is your team on deliverables, timelines, roles, and client expectations?",o:["It's usually chaos — people figure it out as they go","There's a brief but it often lacks key details","We have a standard brief template that covers most things","Briefs are thorough and reviewed in a structured kickoff call","Every project launches with a complete brief, assigned roles, timeline, and approval workflow"]},
+{c:"Client Onboarding & Project Kickoff",q:"How much of your onboarding process is automated (welcome emails, folder creation, tool access, intake forms)?",o:["Nothing — it's all done manually each time","Maybe one or two things are templated","A few steps are automated but most are still manual","Most of the process is automated with some manual touchpoints","Fully automated end-to-end with triggered workflows"]},
+{c:"Client Onboarding & Project Kickoff",q:"How often do projects start late or get delayed due to missing information from the client?",o:["Almost every project — we're always chasing info","Frequently, at least half the time","Sometimes, maybe 1 in 4 projects","Rarely — our intake process catches most gaps","Almost never — automated intake ensures everything is collected upfront"]},
+{c:"Client Onboarding & Project Kickoff",q:"Do you have a standardized way to estimate project scope and hours before work begins?",o:["No — we wing it every time and often underestimate","We have rough guidelines but they're not consistently used","There's a template but it requires a lot of manual adjustment","We use a structured estimating process with historical data","Scope estimation is systematized with templates, historical benchmarks, and buffer calculations"]},
+{c:"Workflow & Process Automation",q:"How many of your recurring internal tasks (status updates, reporting, file organization, reminders) are automated?",o:["None — everything is done manually","A few things are automated but most are manual","About half our recurring tasks have some automation","Most recurring tasks are automated with a few exceptions","Nearly everything recurring runs on autopilot"]},
+{c:"Workflow & Process Automation",q:"When a deliverable is completed, how does it get to the client for review and approval?",o:["Someone emails it manually with no standard format","We have a rough process but it varies by person/project","There's a standard process but it requires manual steps","Semi-automated — deliverables route through an approval workflow","Fully automated: completion triggers review request, client portal access, and follow-up reminders"]},
+{c:"Workflow & Process Automation",q:"How do you handle revision requests and feedback loops with clients?",o:["Back-and-forth emails with no tracking — things get lost constantly","Email-based but someone tries to track changes in a spreadsheet","We use a project tool but feedback still comes in via email","Feedback is centralized in one tool with clear revision tracking","Automated feedback capture, version control, and revision-limit enforcement"]},
+{c:"Workflow & Process Automation",q:"How much time does your team spend each week on tasks that could realistically be automated?",o:["15+ hours per person — we're drowning in busywork","10-15 hours — lots of repetitive manual work","5-10 hours — some automation but room for more","2-5 hours — most of the easy stuff is handled","Under 2 hours — we've automated everything we can"]},
+{c:"Workflow & Process Automation",q:"Do you have documented SOPs (Standard Operating Procedures) for your core service delivery processes?",o:["No documentation — knowledge lives in people's heads","A few things are written down but nothing is maintained","We have SOPs for some processes but they're outdated","Most core processes are documented and reasonably current","Comprehensive, regularly updated SOPs with video walkthroughs and automation triggers"]},
+{c:"Team Communication & Collaboration",q:"How does your team communicate about project status and blockers day-to-day?",o:["Random messages in various channels — nothing is centralized","Mostly Slack/chat but things get buried and lost","We have a project tool but people still default to chat for updates","Project tool is the single source of truth with daily async updates","Automated status dashboards pull from project tools — manual updates are rare"]},
+{c:"Team Communication & Collaboration",q:"When someone is out sick or leaves, how easily can another team member pick up their work?",o:["It's a disaster every time — no documentation, no handoff","Very difficult — takes days to figure out where things stand","Possible but painful — some documentation exists","Fairly smooth — project tools and SOPs make handoffs manageable","Seamless — all work is documented in systems, handoff is near-instant"]},
+{c:"Team Communication & Collaboration",q:"How many tools does your team actively use for communication, project management, and file sharing?",o:["7+ tools with massive overlap and no clear system","5-6 tools — we keep adding new ones without retiring old ones","4-5 tools with some integration between them","3-4 well-integrated tools with clear purposes","2-3 tightly integrated tools with automated data flow between them"]},
+{c:"Team Communication & Collaboration",q:"How often do things fall through the cracks — missed deadlines, forgotten tasks, duplicated work?",o:["Weekly — it's a constant fire drill","Every couple of weeks — we catch most things but not all","Monthly — occasionally something slips","Rarely — maybe once a quarter something small gets missed","Almost never — our systems catch everything before it becomes an issue"]},
+{c:"Team Communication & Collaboration",q:"How do you run internal meetings — standups, project reviews, retrospectives?",o:["Meetings happen randomly with no agenda or follow-up","We have regular meetings but they often run long with no clear outcomes","Meetings are scheduled with basic agendas","Structured meetings with agendas, time limits, and action items tracked","Lean meeting culture — most updates are async, meetings are short and action-driven"]},
+{c:"Financial Operations & Profitability",q:"How do you track time spent on client projects versus what was scoped/budgeted?",o:["We don't track time at all","Sporadic tracking — some people do it, most don't","Most people track time but it's not reviewed against budgets","Time is tracked consistently and compared against budgets monthly","Real-time tracking with automated alerts when projects approach budget limits"]},
+{c:"Financial Operations & Profitability",q:"How quickly can you tell if a project is profitable or not?",o:["We have no idea until the project is done (if then)","We can figure it out but it takes significant manual analysis","We have a rough sense during the project but no hard numbers","We review profitability monthly with reasonable accuracy","Real-time profitability dashboards updated automatically"]},
+{c:"Financial Operations & Profitability",q:"How do you handle invoicing and payment collection?",o:["Completely manual — someone creates invoices from scratch each time","Templates exist but someone manually inputs details and sends","Semi-automated invoicing with manual payment follow-up","Mostly automated invoicing with some manual oversight","Fully automated: invoices generate from project data, send automatically, and payment reminders are triggered"]},
+{c:"Financial Operations & Profitability",q:"How do you price your services?",o:["We guess based on what feels right for each client","Rough hourly estimates based on gut feel","Standardized packages with some customization","Data-informed pricing based on historical project costs and margins","Dynamic pricing models informed by real-time cost data, market rates, and profitability targets"]},
+{c:"Financial Operations & Profitability",q:"How much of your revenue comes from retainer/recurring work versus one-off projects?",o:["Almost all one-off — every month we start from near zero","Mostly project-based with a few retainers","About 50/50 mix","Majority retainer with strategic project work","80%+ predictable recurring revenue with systematized upsell paths"]},
+{c:"AI & Technology Adoption",q:"How is your agency currently using AI tools (ChatGPT, Claude, Midjourney, etc.) in day-to-day work?",o:["Not at all — no one is using AI tools","A few individuals experiment on their own but nothing is standard","Some teams use AI tools for specific tasks informally","AI tools are integrated into several workflows with guidelines","AI is systematically embedded across content, strategy, operations, and client delivery"]},
+{c:"AI & Technology Adoption",q:"Do you have any automated workflows or integrations connecting your tools (Zapier, Make, n8n, custom APIs)?",o:["None — all our tools are disconnected silos","One or two basic automations someone set up once","A handful of automations for specific processes","A solid automation layer connecting most core tools","Comprehensive automation architecture with monitoring, error handling, and continuous optimization"]},
+{c:"AI & Technology Adoption",q:"How does your team approach learning and adopting new tools or technologies?",o:["We don't — we stick with what we know even when it's painful","Ad hoc — people try things individually but nothing gets adopted","Occasional team evaluations when something clearly isn't working","Regular quarterly reviews of our tech stack with structured rollouts","Dedicated innovation time, systematic evaluation framework, and fast adoption cycles"]},
+{c:"AI & Technology Adoption",q:"How do you use data and analytics to make decisions about operations and service delivery?",o:["We don't — decisions are based on gut feel","We look at some numbers occasionally but nothing systematic","Basic reporting exists but it's manual and not always reviewed","Regular data reviews inform most major decisions","Automated dashboards and AI-powered insights drive continuous operational improvement"]},
+{c:"AI & Technology Adoption",q:"If you could wave a magic wand and automate one area of your agency overnight, how much impact would it have?",o:["Transformative — we'd probably save 30%+ of total labor hours","Huge — easily 20-30% efficiency gain in a major area","Significant — 10-20% improvement in a meaningful area","Moderate — 5-10%, we've already picked the low-hanging fruit","Minimal — under 5%, we're already highly optimized"]}
 ];
-const tiers=[
-  {min:0,max:39,label:"Efficiency Crisis",c:"#dc2626",
-   sum:"You're leaving serious money on the table. Your agency runs on hustle, not systems — and hustle doesn't scale.",
-   rec:["Audit your top 3 most time-consuming manual processes and automate them first — every hour spent on repetitive work is margin out the door","Implement automated client reporting immediately; it's one of the highest-ROI wins available to any agency","Build a standardized client onboarding SOP before taking on another client — chaos at intake compounds downstream"]},
-  {min:40,max:69,label:"Efficiency Gap",c:"#d97706",
-   sum:"You've built some structure, but manual work is still quietly eating your margins. The gaps are costing more than you realize.",
-   rec:["Map every manual handoff in your delivery process — these are where projects stall and profit quietly bleeds","Automate your most repetitive deliverables: weekly reports, status updates, and client intake forms","Build a profit visibility dashboard so pricing and hiring decisions are driven by data, not instinct"]},
-  {min:70,max:100,label:"Efficiency Leader",c:"#16a34a",
-   sum:"Your operations are genuinely solid. You're in the top tier of agency efficiency — now it's about finding the last 20%.",
-   rec:["Audit for remaining manual touchpoints — even high-performing agencies have hidden friction in handoffs","Explore AI-augmented delivery to scale output per team member without adding headcount","Document your systems rigorously so they survive team changes and can be replicated as you grow"]}
+const CATS=["Client Onboarding & Project Kickoff","Workflow & Process Automation","Team Communication & Collaboration","Financial Operations & Profitability","AI & Technology Adoption"];
+const RECS=[
+["Your onboarding process is costing you time and client confidence from day one.","Build a single automated onboarding workflow: trigger on signed contract to auto-create folders, send intake form, schedule kickoff, and grant tool access. Start with one automation tool (n8n or Make) and a templated intake form — you'll cut onboarding time by 60% within a month."],
+["Manual processes are eating your margins alive.","Map your top 5 most time-consuming recurring tasks this week. Pick the one with the most repetition and least judgment required, and automate it first. Document the rest as SOPs — even a Google Doc with screenshots beats tribal knowledge. Aim to eliminate 10+ hours of busywork per person within 90 days."],
+["Communication gaps are creating invisible waste across your team.","Consolidate to one project management source of truth and enforce a rule: if it's not in the tool, it didn't happen. Set up automated status updates that pull from your PM tool so nobody has to manually report progress. Reduce your tool count by 2 within the next quarter."],
+["You're likely losing money on projects without knowing it.","Implement mandatory time tracking against budgets this week — no exceptions. Set up a simple dashboard that shows estimated vs. actual hours per project in real time. Then review your pricing against actual cost data quarterly. Most agencies find 15-25% of projects are unprofitable once they start measuring."],
+["You're leaving massive efficiency gains on the table by not leveraging AI and automation.","Start with a structured AI pilot: pick one high-volume, repeatable task (first drafts, data entry, reporting) and run AI-assisted vs. manual for 2 weeks. Measure the time savings. Then build one end-to-end automation connecting your core tools. The agencies adopting AI now are building a compounding advantage."]
 ];
-let step=0,ans=[];
-const el=document.getElementById('aw');
-function render(){if(step===0)return start();if(step<=qs.length)return question(step-1);result();}
-function start(){
-  el.innerHTML=`<div class="fade" style="padding:44px 40px">
-    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;margin-bottom:20px">5-Question Self-Assessment</div>
-    <h1 style="font-size:27px;font-weight:900;line-height:1.25;margin:0 0 10px">The Agency Efficiency Score</h1>
-    <p style="font-size:17px;font-weight:600;color:#555;margin:0 0 20px;line-height:1.45">How Much Profit Are You Leaving on the Table?</p>
-    <p style="font-size:14px;color:#666;line-height:1.75;margin:0 0 10px">Built from patterns across dozens of agency operations — this isn't a generic quiz. You'll walk away with a clear picture of where you're bleeding profit and exactly what to fix first.</p>
-    <p style="font-size:13px;color:#aaa;margin:0 0 36px">Takes under 2 minutes.</p>
-    <button class="btn" onclick="awNext()">Start the Assessment →</button>
-  </div>`;
+const TIERS=[
+{max:40,label:"Critical",cls:"aw-tier-1",title:"Danger Zone — Your Agency Is Bleeding Profit",desc:"Your agency is running on manual effort, tribal knowledge, and heroic individual performance. You're likely losing 25-40% of potential profit to inefficiency. The good news: the biggest gains come from fixing the basics — and the basics are very fixable."},
+{max:75,label:"Growth Stage",cls:"aw-tier-2",title:"Growth Stage — Strong Foundation, Big Upside",desc:"You've got some systems in place and your agency isn't in chaos, but there are clear gaps where time and money leak out. You're probably leaving 15-25% of potential profit on the table. Targeted automation and process improvements could transform your margins."},
+{max:100,label:"Optimized",cls:"aw-tier-3",title:"Optimized — You're Ahead of 90% of Agencies",desc:"Your operations are solid. Systems are in place, automation is working, and your team isn't drowning in busywork. Focus on the remaining 5-10% gains through AI integration, predictive analytics, and continuous optimization. You're in a position to scale."}
+];
+let cur=0,ans=new Array(Q.length).fill(null);
+window.awStart=function(){D.getElementById('aw-start').style.display='none';D.getElementById('aw-quiz').style.display='block';render()};
+function render(){
+const wrap=D.getElementById('aw-quiz').querySelector('.aw-body');
+wrap.classList.remove('aw-screen');void wrap.offsetWidth;wrap.classList.add('aw-screen');
+const pct=Math.round((cur/Q.length)*100);
+D.getElementById('aw-qcount').textContent=`Question ${cur+1} of ${Q.length}`;
+D.getElementById('aw-pct').textContent=pct+'%';
+D.getElementById('aw-pfill').style.width=pct+'%';
+D.getElementById('aw-cat-badge').textContent=Q[cur].c;
+D.getElementById('aw-q-text').textContent=Q[cur].q;
+let h='';
+Q[cur].o.forEach((o,i)=>{
+const sel=ans[cur]===i?' selected':'';
+h+=`<label class="aw-option${sel}" onclick="awSel(${i})"><input type="radio" name="aw-r" value="${i}" ${ans[cur]===i?'checked':''}><span class="aw-radio"></span><span class="aw-option-text"><span class="aw-score">${i+1}.</span>${o}</span></label>`;
+});
+D.getElementById('aw-opts').innerHTML=h;
+D.getElementById('aw-prev').style.visibility=cur===0?'hidden':'visible';
+const nb=D.getElementById('aw-nextbtn');
+if(cur===Q.length-1){nb.textContent='See Results →';nb.className='aw-nav-btn aw-finish'}
+else{nb.textContent='Next →';nb.className='aw-nav-btn aw-next'}
+nb.disabled=ans[cur]===null;
 }
-function question(i){
-  const pct=Math.round((i/qs.length)*100);
-  el.innerHTML=`<div class="fade" style="padding:36px 36px 32px">
-    <div class="prog"><div class="pf" style="width:${pct}%"></div></div>
-    <div style="font-size:11px;color:#999;font-weight:700;margin-bottom:14px;text-transform:uppercase;letter-spacing:.6px">Question ${i+1} of ${qs.length}</div>
-    <p style="font-size:17px;font-weight:700;line-height:1.5;margin:0 0 22px">${qs[i].q}</p>
-    ${qs[i].o.map((o,j)=>`<label class="opt"><input type="radio" name="q" value="${j+1}" onchange="awSel(${j+1})"><div class="ob"><div class="num">${j+1}</div><span style="font-size:14px;line-height:1.5">${o}</span></div></label>`).join('')}
-    <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:center">
-      ${i>0?`<button class="btn" style="background:#f2f2f2;color:#111;padding:12px 20px" onclick="awBack()">← Back</button>`:'<span></span>'}
-      <button class="btn" id="nxt" disabled onclick="awNext()">${i===qs.length-1?'See My Score →':'Next →'}</button>
-    </div>
-  </div>`;
-  if(ans[i]){const inp=el.querySelector(`input[value="${ans[i]}"]`);if(inp){inp.checked=true;document.getElementById('nxt').disabled=false;}}
+window.awSel=function(i){
+ans[cur]=i;
+const opts=D.querySelectorAll('.assessment-widget .aw-option');
+opts.forEach((el,idx)=>{el.classList.toggle('selected',idx===i)});
+D.getElementById('aw-nextbtn').disabled=false;
+};
+window.awNext=function(){if(ans[cur]===null)return;if(cur<Q.length-1){cur++;render()}else{showResults()}};
+window.awPrev=function(){if(cur>0){cur--;render()}};
+function showResults(){
+D.getElementById('aw-quiz').style.display='none';
+const res=D.getElementById('aw-results');res.style.display='block';
+const catScores=CATS.map((c,ci)=>{
+const qs=Q.map((q,qi)=>({q,qi})).filter(x=>x.q.c===c);
+const sum=qs.reduce((a,x)=>a+(ans[x.qi]+1),0);
+const max=qs.length*5;
+return{name:c,score:sum,max,pct:Math.round((sum/max)*100)};
+});
+const total=catScores.reduce((a,c)=>a+c.score,0);
+const totalMax=catScores.reduce((a,c)=>a+c.max,0);
+const totalPct=Math.round((total/totalMax)*100);
+const tier=TIERS.find(t=>totalPct<=t.max)||TIERS[2];
+const strokePct=totalPct*2.51327;
+let catHtml=catScores.map((c,i)=>{
+const color=c.pct<=40?'#ef4444':c.pct<=75?'#f59e0b':'#10b981';
+return`<div class="aw-cat-card"><div class="aw-cat-top"><span class="aw-cat-name">${c.name}</span><span class="aw-cat-score">${c.score}/${c.max} (${c.pct}%)</span></div><div class="aw-cat-bar"><div class="aw-cat-fill" style="width:${c.pct}%;background:${color}"></div></div><div class="aw-cat-rec"><strong>Key Action:</strong> ${RECS[i][1]}</div></div>`;
+}).join('');
+const ringColor=totalPct<=40?'#ef4444':totalPct<=75?'#f59e0b':'#10b981';
+res.innerHTML=`<div class="aw-results-header aw-screen"><div class="aw-score-ring"><svg width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12"/><circle cx="80" cy="80" r="70" fill="none" stroke="${ringColor}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${strokePct} 999" class="aw-ring-anim"/></svg><div class="aw-ring-text"><span class="aw-ring-pct">${totalPct}%</span><span class="aw-ring-label">${total}/${totalMax}</span></div></div><span class="aw-tier ${tier.cls}">${tier.label}</span><h2 style="font-size:22px;font-weight:800;margin:12px 0 0">${tier.title}</h2><p class="aw-tier-desc">${tier.desc}</p></div><div class="aw-categories"><h3 style="font-size:18px;font-weight:700;margin-bottom:20px;color:#1a1a2e">Category Breakdown</h3>${catHtml}</div><div class="aw-retake"><button class="aw-btn" onclick="awRetake()">Retake Assessment</button></div>`;
 }
-function result(){
-  const total=ans.reduce((a,b)=>a+b,0);
-  const pct=Math.round((total/25)*100);
-  const tier=tiers.find(t=>pct>=t.min&&pct<=t.max)||tiers[tiers.length-1];
-  el.innerHTML=`<div class="fade" style="padding:36px 36px 32px">
-    <div class="prog"><div class="pf" style="width:100%"></div></div>
-    <div style="margin-bottom:26px">
-      <span style="display:inline-block;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;background:${tier.c}18;color:${tier.c};margin-bottom:14px">${tier.label}</span>
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
-        <span style="font-size:58px;font-weight:900;line-height:1">${pct}%</span>
-        <span style="font-size:15px;color:#888">efficiency score</span>
-      </div>
-      <div style="height:8px;background:#f0f0f0;border-radius:4px;overflow:hidden;margin-bottom:18px">
-        <div id="sbar" style="height:100%;width:0;background:${tier.c};border-radius:4px;transition:width 1.2s cubic-bezier(.4,0,.2,1)"></div>
-      </div>
-      <p style="font-size:15px;color:#444;line-height:1.7;margin:0">${tier.sum}</p>
-    </div>
-    <div style="margin-bottom:24px">
-      <div style="font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#bbb;margin-bottom:12px">Your Top 3 Priorities</div>
-      ${tier.rec.map((r,i)=>`<div class="rec"><span style="font-weight:800;color:#111">#${i+1}&nbsp;&nbsp;</span>${r}</div>`).join('')}
-    </div>
-    <div style="background:#f7f7f7;border-radius:12px;padding:22px;text-align:center;margin-bottom:14px">
-      <p style="font-size:15px;font-weight:800;margin:0 0 6px">Want to know exactly where to start?</p>
-      <p style="font-size:13px;color:#666;margin:0 0 16px;line-height:1.6">Book a free 30-min audit with Ivan — walk away with a specific automation roadmap for your agency.</p>
-      <button class="btn">Book Free Audit Call</button>
-    </div>
-    <div style="text-align:center"><button style="background:none;border:none;color:#bbb;cursor:pointer;font-size:13px;text-decoration:underline" onclick="awReset()">Retake the assessment</button></div>
-  </div>`;
-  setTimeout(()=>{const b=document.getElementById('sbar');if(b)b.style.width=pct+'%';},80);
-}
-window.awSel=v=>{ans[step-1]=v;const n=document.getElementById('nxt');if(n)n.disabled=false;};
-window.awNext=()=>{if(step===0){step=1;render();return;}if(step<=qs.length&&!ans[step-1])return;step++;render();};
-window.awBack=()=>{step--;render();};
-window.awReset=()=>{step=0;ans=[];render();};
-render();
+window.awRetake=function(){cur=0;ans=new Array(Q.length).fill(null);D.getElementById('aw-results').style.display='none';D.getElementById('aw-start').style.display='block'};
 })();
 </script></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build AI systems and workflow automation that actually work. Let's talk about your use case.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">Book a Free Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium uppercase tracking-wide"><p>&copy; 2026 All Rights Reserved.</p><div class="flex gap-6 mt-4 md:mt-0"><a href="mailto:ivan@intelligents.agency" class="hover:text-white">Contact</a></div></div></div></footer></body></html>
