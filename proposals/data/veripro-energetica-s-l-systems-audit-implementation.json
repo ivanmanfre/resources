@@ -194,5 +194,6 @@
     }
   },
   "_qa_pass": true,
-  "_qa_note": "Unparseable QA response, passing"
+  "_qa_issues": [],
+  "_qa_severity": "none"
 }
