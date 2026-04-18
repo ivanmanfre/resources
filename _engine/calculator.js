@@ -49,6 +49,45 @@
     return { name: thresholds.low_label || "Critical", class: "low" };
   }
 
+
+  function buildIntro(data, startTargetSelector, opts) {
+    opts = opts || {};
+    var intro = data.intro || {};
+    var welcomeLine = intro.paragraph || (data.subtitle ? "You just grabbed " + (data.title || "this resource") + ". " + String(data.subtitle).replace(/\.$/, "") + "." : "You just grabbed " + (data.title || "this resource") + ". Here's the quickest way to use it.");
+    var pointA = intro.point_time || (data.estimated_minutes ? data.estimated_minutes + " min, at your pace" : "At your own pace");
+    var pointB = intro.point_value || opts.defaultValueBullet || "Built to give you the sharpest observation on your team's gaps";
+    var pointC = intro.point_next || opts.defaultNextBullet || "Your progress auto-saves to this browser. Email only if you want the full report.";
+    var startLabel = (opts.startLabel || "Start");
+    var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
+    var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
+    var inner = make("div", { class: "lmc-intro-inner" });
+    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" });
+    var body = make("div", { class: "lmc-intro-body" });
+    body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
+    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
+    body.appendChild(make("p", { class: "lmc-intro-p" }, escapeHtml(welcomeLine)));
+    var ul = make("ul", { class: "lmc-intro-points" });
+    [["a", "\u23F1", pointA], ["b", "\u2192", pointB], ["c", "\u2713", pointC]].forEach(function (p) {
+      var li = make("li");
+      li.appendChild(make("span", { class: "lmc-intro-icon " + p[0], "aria-hidden": "true" }, p[1]));
+      li.appendChild(make("span", null, escapeHtml(p[2])));
+      ul.appendChild(li);
+    });
+    body.appendChild(ul);
+    var startBtn = make("button", { class: "lmc-intro-start", type: "button", "aria-label": startLabel }, escapeHtml(startLabel) + " <span aria-hidden=\"true\">\u2193</span>");
+    startBtn.addEventListener("click", function () {
+      var target = document.querySelector(startTargetSelector);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      beacon("cta_click", { answers: { target: "intro_start" } });
+    });
+    body.appendChild(startBtn);
+    if (note) body.appendChild(make("p", { class: "lmc-intro-note" }, escapeHtml(note)));
+    inner.appendChild(img);
+    inner.appendChild(body);
+    sec.appendChild(inner);
+    return sec;
+  }
+
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
@@ -67,6 +106,14 @@
     inner.appendChild(meta);
     hero.appendChild(inner);
     root.appendChild(hero);
+
+    var introSection = buildIntro(data, ".lmc-grid", {
+      defaultValueBullet: "Plug in your numbers; live math shows payback window + top 3 priorities",
+      defaultNextBullet: "Email only to get a PDF with your numbers plus the n8n workflows I'd build",
+      startLabel: "Run the calculator",
+      defaultNote: "Nothing is stored until you submit. Tweak freely."
+    });
+    root.appendChild(introSection);
 
     // Content grid
     var container = make("div", { class: "lmc-container" });
