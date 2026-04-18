@@ -1,7 +1,7 @@
 {
   "slug": "ai-roi-calculator-for-operations-teams",
   "title": "AI ROI Calculator for Operations Teams",
-  "subtitle": "Stop guessing whether automation is worth it. Build a business case with real numbers and a real payback period.",
+  "subtitle": "Stop guessing whether automation is worth it. Build a business case with real numbers.",
   "brand": {
     "accent": "#00E676",
     "hero_badge": "Interactive Calculator"
@@ -11,36 +11,48 @@
     {
       "id": "volume_per_month",
       "label": "Volume per Month",
-      "type": "number",
-      "suffix": "units",
-      "min": 1,
-      "max": 100000,
-      "step": 1,
+      "type": "range",
+      "suffix": " units",
+      "min": 50,
+      "max": 20000,
+      "step": 50,
       "default": 2400,
-      "hint": "How many times this process runs monthly (orders, invoices, onboarding tasks)."
+      "slider": true,
+      "hint": "Orders, invoices, onboarding tasks, etc."
+    },
+    {
+      "id": "people_involved",
+      "label": "People Involved per Unit",
+      "type": "range",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "slider": true,
+      "hint": "Count every handoff across the workflow"
     },
     {
       "id": "time_per_unit",
       "label": "Time per Unit",
       "type": "range",
-      "suffix": "min",
+      "suffix": " min",
       "min": 1,
-      "max": 240,
+      "max": 120,
       "step": 1,
       "default": 15,
       "slider": true,
-      "hint": "Total human time across all handoffs, not just one person's touch."
+      "hint": "Sum of all human touches, not one person's time"
     },
     {
       "id": "hourly_cost",
       "label": "Fully Loaded Hourly Cost",
       "type": "number",
       "prefix": "$",
-      "min": 10,
-      "max": 500,
+      "min": 15,
+      "max": 250,
       "step": 1,
       "default": 35,
-      "hint": "Salary plus benefits plus overhead. If unsure, use 1.3x base hourly rate."
+      "hint": "If unknown, use 1.3x base hourly rate"
     },
     {
       "id": "error_rate",
@@ -48,11 +60,11 @@
       "type": "range",
       "suffix": "%",
       "min": 0,
-      "max": 50,
-      "step": 0.5,
+      "max": 40,
+      "step": 1,
       "default": 8,
       "slider": true,
-      "hint": "Percent of units that need rework. Most teams undercount this."
+      "hint": "Be honest, most teams undercount this"
     },
     {
       "id": "cost_per_error",
@@ -60,10 +72,10 @@
       "type": "number",
       "prefix": "$",
       "min": 0,
-      "max": 5000,
-      "step": 5,
+      "max": 2000,
+      "step": 10,
       "default": 50,
-      "hint": "Rework time, customer impact, refunds, and goodwill."
+      "hint": "Include rework time, customer impact, refunds"
     },
     {
       "id": "build_cost",
@@ -71,94 +83,89 @@
       "type": "number",
       "prefix": "$",
       "min": 500,
-      "max": 250000,
+      "max": 100000,
       "step": 100,
       "default": 3500,
-      "hint": "One-time cost to design, build, and deploy the automation."
+      "hint": "One-time vendor or internal build estimate"
     },
     {
       "id": "monthly_maintenance",
-      "label": "Monthly Maintenance Cost",
+      "label": "Monthly Maintenance",
       "type": "number",
       "prefix": "$",
       "min": 0,
-      "max": 10000,
-      "step": 10,
+      "max": 5000,
+      "step": 25,
       "default": 200,
-      "hint": "Ongoing support, hosting, model usage, and tweaks."
+      "hint": "Support, hosting, model usage"
     }
   ],
   "outputs": [
     {
-      "id": "annual_net_savings",
+      "id": "annual_savings",
       "label": "Annual Net Savings",
       "format": "currency",
       "primary": true,
-      "formula": "((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) * 12 - (monthly_maintenance * 12)",
+      "formula": "(((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 12 * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 12 * 0.80) - (monthly_maintenance * 12)",
       "tier_thresholds": {
-        "low": 15000,
-        "medium": 60000,
-        "high": 150000
+        "low": 25000,
+        "medium": 100000,
+        "high": 250000
       }
     },
     {
       "id": "payback_months",
       "label": "Payback Period",
       "format": "decimal",
-      "formula": "build_cost / Math.max(1, (((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) - monthly_maintenance))",
-      "tier_thresholds": {
-        "fast": 6,
-        "acceptable": 12,
-        "slow": 18
-      }
+      "formula": "build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))"
     },
     {
-      "id": "hours_recaptured",
-      "label": "Hours Recaptured Annually",
+      "id": "hours_reclaimed",
+      "label": "Hours Reclaimed Annually",
       "format": "hours",
-      "formula": "volume_per_month * (time_per_unit / 60) * 0.75 * 12"
+      "formula": "((volume_per_month * time_per_unit * people_involved) / 60) * 12 * 0.75"
     },
     {
       "id": "first_year_roi",
-      "label": "First-Year ROI",
+      "label": "First Year ROI",
       "format": "percent",
-      "formula": "((((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) * 12 - (monthly_maintenance * 12) - build_cost) / Math.max(1, build_cost)) * 100"
+      "formula": "((((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 12 * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 12 * 0.80) - (monthly_maintenance * 12)) - build_cost) / build_cost) * 100"
     }
   ],
   "recommendations": [
     {
       "tag": "green_light",
-      "when": "build_cost / Math.max(1, (((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) - monthly_maintenance)) <= 6",
-      "text": "Green light. Payback under 6 months puts this in the top tier of automation projects. Scope it, build it, and move to the next workflow on your list."
+      "when": "(build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) < 6",
+      "text": "Green light. Payback under 6 months means this workflow is a priority build. Lock in a vendor or your internal team this quarter before the opportunity cost compounds."
     },
     {
-      "tag": "solid_case",
-      "when": "build_cost / Math.max(1, (((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) - monthly_maintenance)) > 6 && build_cost / Math.max(1, (((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) - monthly_maintenance)) <= 12",
-      "text": "Solid business case. Payback inside 12 months is worth building. Tighten the scope so the first version ships in 30 days and you start compounding savings."
+      "tag": "yellow_light",
+      "when": "(build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) >= 6 && (build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) <= 18",
+      "text": "Worth building, but sharpen the numbers first. Validate your error rate and time per unit with a one-week audit so leadership cannot pick apart the business case."
     },
     {
-      "tag": "marginal",
-      "when": "build_cost / Math.max(1, (((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) - monthly_maintenance)) > 12 && build_cost / Math.max(1, (((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) - monthly_maintenance)) <= 18",
-      "text": "Marginal. Payback between 12 and 18 months means you need a cheaper build or a higher-volume process. Look for a similar workflow that runs 2x more often."
+      "tag": "red_light",
+      "when": "(build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) > 18",
+      "text": "Shelf this one and pick a higher volume or higher error workflow. Payback over 18 months usually means the process is too small or the build scope is too large."
     },
     {
-      "tag": "wrong_process",
-      "when": "build_cost / Math.max(1, (((volume_per_month * (time_per_unit / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.85)) - monthly_maintenance)) > 18",
-      "text": "Wrong process to start with. Payback over 18 months rarely survives the first year. Pick a workflow with higher volume or a more expensive error profile."
+      "tag": "high_error_process",
+      "when": "error_rate >= 10",
+      "text": "Your error rate is doing a lot of the lifting in this ROI. Automating this workflow is really a quality play, frame the business case around customer impact and compliance, not just labor savings."
     },
     {
-      "tag": "error_heavy",
-      "when": "(volume_per_month * (error_rate / 100) * cost_per_error) > (volume_per_month * (time_per_unit / 60) * hourly_cost)",
-      "text": "Error cost is beating labor cost. Automation ROI here is really about quality control. Prioritize validation, schema checks, and human-in-the-loop review gates over raw speed."
+      "tag": "thin_volume",
+      "when": "volume_per_month < 500",
+      "text": "Volume is low for a custom build. Consider a lightweight no code approach with n8n or Zapier first to keep build cost under $1,500 and protect your payback window."
     },
     {
-      "tag": "capacity_unlock",
-      "when": "(volume_per_month * (time_per_unit / 60) * 0.75 * 12) >= 2000",
-      "text": "You are freeing up more than one full-time equivalent of capacity. Decide now whether those hours get reinvested into growth work or taken out as cost savings. Drifting on that call kills the ROI."
+      "tag": "heavy_handoffs",
+      "when": "people_involved >= 4",
+      "text": "Four plus handoffs per unit is a coordination tax, not a task problem. Map the workflow end to end before automating so you do not just speed up a broken process."
     }
   ],
   "capture_cta": {
-    "headline": "Want help building the automation, not just the business case?",
-    "description": "Send me your top 3 workflows and the numbers you just ran. I will tell you which one to build first, what it should cost, and how fast it can ship."
+    "headline": "Want me to pressure test your numbers?",
+    "description": "Send me your calculator results and I will tell you which workflow to automate first, what it should cost to build, and where the ROI is hiding in your ops data. No pitch, just a straight read."
   }
 }
