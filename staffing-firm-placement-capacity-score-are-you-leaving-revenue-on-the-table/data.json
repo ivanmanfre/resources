@@ -1,0 +1,759 @@
+{
+  "slug": "staffing-firm-placement-capacity-score-are-you-leaving-revenue-on-the-table",
+  "title": "Staffing Firm Placement Capacity Score",
+  "subtitle": "Find the bottleneck between your team size and your placement volume",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 18,
+  "persona_selector": {
+    "id": "persona",
+    "text": "Which best describes your staffing firm right now?",
+    "answers": [
+      {
+        "label": "Boutique firm, 10-20 employees, founder still in daily ops",
+        "tag": "boutique"
+      },
+      {
+        "label": "Growing firm, 21-40 employees, building out management layer",
+        "tag": "growing"
+      },
+      {
+        "label": "Established firm, 41-75 employees, multiple desks or verticals",
+        "tag": "established"
+      },
+      {
+        "label": "Multi-location or multi-vertical firm scaling aggressively",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "intake",
+      "name": "Lead & Client Intake",
+      "questions": [
+        {
+          "id": "intake_q1",
+          "text": "When a new job order comes in, how long before a recruiter is actively working it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 24 hours, often longer",
+              "score": 1
+            },
+            {
+              "label": "Within 12 to 24 hours most of the time",
+              "score": 2
+            },
+            {
+              "label": "Within 4 to 8 hours on a good day",
+              "score": 3
+            },
+            {
+              "label": "Within 1 to 2 hours consistently",
+              "score": 4
+            },
+            {
+              "label": "Under 30 minutes, automated routing in place",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_q2",
+          "text": "How is job order information captured from clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Phone calls and notes scattered across inboxes",
+              "score": 1
+            },
+            {
+              "label": "Email threads that someone manually transcribes later",
+              "score": 2
+            },
+            {
+              "label": "A form or template, filled out inconsistently",
+              "score": 3
+            },
+            {
+              "label": "A standard intake form feeding our ATS directly",
+              "score": 4
+            },
+            {
+              "label": "Structured intake with auto parsing into ATS fields",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_q3",
+          "text": "How do you qualify whether a new client or job order is worth pursuing?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We take almost everything, sort it out later",
+              "score": 1
+            },
+            {
+              "label": "Gut feel from whoever picks up the call",
+              "score": 2
+            },
+            {
+              "label": "A rough checklist the team mostly follows",
+              "score": 3
+            },
+            {
+              "label": "A documented scoring rubric applied to every order",
+              "score": 4
+            },
+            {
+              "label": "Automated scoring on fit, fee, urgency, and fill probability",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_q4",
+          "text": "How often do job orders get dropped, forgotten, or worked twice?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Weekly, it is a known problem",
+              "score": 1
+            },
+            {
+              "label": "A few times a month",
+              "score": 2
+            },
+            {
+              "label": "Occasionally, usually during busy weeks",
+              "score": 3
+            },
+            {
+              "label": "Rarely, our tracking catches most of it",
+              "score": 4
+            },
+            {
+              "label": "Never, every order has a clear owner and status",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your intake is leaking orders before they ever reach a recruiter",
+          "text": "Right now, new job orders are stuck in inboxes, voicemails, and informal conversations. By the time a recruiter starts sourcing, the client has already called your competitor. This is the single fastest fix in most firms because it does not require new clients, just faster handling of the ones you already have.",
+          "steps": [
+            "Build one standardized intake form that every client request flows into, regardless of channel",
+            "Assign a single owner to every new order within 30 minutes of receipt with an automated routing rule",
+            "Create a simple qualification rubric covering fee, urgency, and fillability, and apply it to every order before work begins"
+          ]
+        },
+        "mid": {
+          "headline": "Intake works but it is not fast or consistent enough to scale",
+          "text": "You have the basics in place, but inconsistency is costing you placements. Recruiters are still chasing down missing information, and qualification varies by whoever handles the call. Tightening this stage will unlock capacity your team already has without hiring anyone new.",
+          "steps": [
+            "Audit the last 30 days of intake and identify which fields are missing most often, then make them required",
+            "Automate order routing based on desk, vertical, or recruiter specialty instead of manual assignment",
+            "Standardize your qualification rubric into a scorecard that surfaces priority orders at the top of every recruiter queue"
+          ]
+        },
+        "high": {
+          "headline": "Intake is a strength, now make it a competitive weapon",
+          "text": "Your intake process is already faster than most competitors. The next level is using speed and structure to win more of the orders you pursue and capture better data for every downstream decision.",
+          "steps": [
+            "Add client-facing intake confirmation that sets expectations on timelines and next steps automatically",
+            "Layer predictive fill probability scoring onto every new order so recruiters focus on the highest yield work first",
+            "Feed intake data into quarterly client scorecards to drive renewal conversations and fee increases"
+          ]
+        }
+      }
+    },
+    {
+      "id": "sourcing",
+      "name": "Candidate Sourcing & Pipeline Health",
+      "questions": [
+        {
+          "id": "sourcing_q1",
+          "text": "When a new job order lands, where do you look for candidates first?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We start sourcing from scratch on job boards",
+              "score": 1
+            },
+            {
+              "label": "We check LinkedIn and our ATS, but data is stale",
+              "score": 2
+            },
+            {
+              "label": "We search our ATS first, then supplement with boards",
+              "score": 3
+            },
+            {
+              "label": "We have curated talent pools by role and skill",
+              "score": 4
+            },
+            {
+              "label": "We already have qualified candidates pre-matched to common roles",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "sourcing_q2",
+          "text": "How fresh is the data in your candidate database?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Most records are over a year out of date",
+              "score": 1
+            },
+            {
+              "label": "We refresh contact info when we reach out",
+              "score": 2
+            },
+            {
+              "label": "We update active candidates quarterly",
+              "score": 3
+            },
+            {
+              "label": "Automated reminders keep top candidates current",
+              "score": 4
+            },
+            {
+              "label": "Database is continuously enriched and verified by automation",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "sourcing_q3",
+          "text": "How do you stay in touch with placed and passive candidates?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We do not, we contact them when we need them",
+              "score": 1
+            },
+            {
+              "label": "Occasional check-ins when a recruiter remembers",
+              "score": 2
+            },
+            {
+              "label": "A quarterly email blast to the full list",
+              "score": 3
+            },
+            {
+              "label": "Segmented nurture campaigns by skill or industry",
+              "score": 4
+            },
+            {
+              "label": "Automated personalized touchpoints with engagement tracking",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "sourcing_q4",
+          "text": "How long does it typically take to present the first qualified candidate on a new role?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Over a week, sometimes longer",
+              "score": 1
+            },
+            {
+              "label": "3 to 5 business days",
+              "score": 2
+            },
+            {
+              "label": "Around 48 hours",
+              "score": 3
+            },
+            {
+              "label": "Within 24 hours",
+              "score": 4
+            },
+            {
+              "label": "Same day, from existing pipeline",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Every new order is a cold start, and that is killing your speed",
+          "text": "Starting from scratch on every role means you are competing on sourcing effort instead of relationships. Firms that win on speed have a pipeline before the order arrives. This is where recruiters burn the most time with the least leverage.",
+          "steps": [
+            "Identify your 5 most placed roles and build evergreen talent pools for each one with at least 20 pre-qualified candidates",
+            "Implement a monthly database hygiene process to flag stale records and trigger re-engagement outreach",
+            "Start a lightweight nurture campaign to placed candidates and silver medalists so they stay warm between opportunities"
+          ]
+        },
+        "mid": {
+          "headline": "Your pipeline exists but it is not doing enough work for you",
+          "text": "You have candidates on file, but too much of the value stays locked in individual recruiters' heads and inboxes. The goal is making your database behave like a living asset that produces ready candidates before a recruiter even looks.",
+          "steps": [
+            "Segment your candidate database by skill cluster and engagement recency so sourcing queries return usable results in under 60 seconds",
+            "Automate data enrichment on top candidates to keep contact info, current role, and skills current without recruiter effort",
+            "Launch segmented nurture sequences tied to candidate specialty so passive talent stays engaged month to month"
+          ]
+        },
+        "high": {
+          "headline": "Pipeline is a real asset, now compound it",
+          "text": "You are already presenting candidates faster than competitors. The next move is turning that advantage into predictable revenue by measuring pipeline health as carefully as you measure billings.",
+          "steps": [
+            "Track pipeline coverage ratio by role type so you know which verticals are under-supplied before clients ask",
+            "Build automated candidate-to-job matching suggestions that surface the top 5 matches the moment an order is created",
+            "Layer AI-powered candidate scoring on engagement signals to predict which passive candidates will respond this quarter"
+          ]
+        }
+      }
+    },
+    {
+      "id": "matching",
+      "name": "Matching & Qualification Speed",
+      "questions": [
+        {
+          "id": "matching_q1",
+          "text": "How long does a recruiter spend qualifying a single candidate for a role?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "45 minutes or more per candidate",
+              "score": 1
+            },
+            {
+              "label": "Around 30 minutes per candidate",
+              "score": 2
+            },
+            {
+              "label": "15 to 20 minutes per candidate",
+              "score": 3
+            },
+            {
+              "label": "Under 10 minutes with a structured process",
+              "score": 4
+            },
+            {
+              "label": "Under 5 minutes, supported by automated pre-screens",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "matching_q2",
+          "text": "How do you match candidates to open roles?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Recruiter memory and manual keyword searches",
+              "score": 1
+            },
+            {
+              "label": "Boolean searches in the ATS, run fresh every time",
+              "score": 2
+            },
+            {
+              "label": "Saved searches and tagged candidate pools",
+              "score": 3
+            },
+            {
+              "label": "Structured match scoring on skills, comp, and location",
+              "score": 4
+            },
+            {
+              "label": "AI-assisted matching surfaces top candidates automatically",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "matching_q3",
+          "text": "How consistent is the quality of candidates you submit to clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Highly variable, depends entirely on the recruiter",
+              "score": 1
+            },
+            {
+              "label": "Mostly okay, with frequent client pushback",
+              "score": 2
+            },
+            {
+              "label": "Reasonable, with occasional misses",
+              "score": 3
+            },
+            {
+              "label": "Strong, with a clear submission standard",
+              "score": 4
+            },
+            {
+              "label": "Consistently high, backed by a scoring rubric",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "matching_q4",
+          "text": "How do you pre-screen candidates before presenting them?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We rarely pre-screen, we submit and see",
+              "score": 1
+            },
+            {
+              "label": "Quick phone call, unstructured",
+              "score": 2
+            },
+            {
+              "label": "Phone screen with a rough set of questions",
+              "score": 3
+            },
+            {
+              "label": "Structured intake with documented criteria",
+              "score": 4
+            },
+            {
+              "label": "Automated intake plus structured recruiter interview",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Qualification is eating your recruiters alive",
+          "text": "If every candidate takes 30 to 45 minutes to qualify, your team is capped at a handful of real conversations per day. That is a ceiling on placements that no amount of hustle can break through. Cut qualification time and you immediately add capacity.",
+          "steps": [
+            "Build a standard pre-screen questionnaire that candidates complete before the recruiter call, covering must-have criteria",
+            "Create a submission rubric so every candidate submitted to a client hits the same baseline of qualification",
+            "Replace open-ended recruiter calls with a 10-minute structured interview script tied to the job order requirements"
+          ]
+        },
+        "mid": {
+          "headline": "Your qualification process works but it is not fast enough to scale",
+          "text": "Recruiters have a process, but it is still doing work that automation and structure could handle. The goal is to let humans focus on judgment calls and relationships, not data collection.",
+          "steps": [
+            "Automate the first layer of pre-screening with a candidate-facing form that captures availability, comp, and hard requirements",
+            "Standardize match scoring across skills, location, comp, and culture so every candidate gets a comparable score",
+            "Build a submission quality checklist that every recruiter applies before sending candidates to clients"
+          ]
+        },
+        "high": {
+          "headline": "You are fast and accurate, now lock in the advantage",
+          "text": "Your qualification speed is a real differentiator. The next step is layering intelligence on top so your best recruiters' judgment scales across the whole team.",
+          "steps": [
+            "Deploy AI-assisted matching that surfaces the top 5 candidates ranked by fit score the moment an order opens",
+            "Capture structured interview data that feeds back into your matching model to improve recommendations over time",
+            "Benchmark time-to-submit and interview-to-hire ratios weekly so you can spot process drift before it costs placements"
+          ]
+        }
+      }
+    },
+    {
+      "id": "backoffice",
+      "name": "Back Office & Operational Drag",
+      "questions": [
+        {
+          "id": "backoffice_q1",
+          "text": "How are onboarding documents, contracts, and compliance handled?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Manually, email back and forth with PDFs",
+              "score": 1
+            },
+            {
+              "label": "Shared drive with templates, manual tracking",
+              "score": 2
+            },
+            {
+              "label": "E-signature tools, manual reminders",
+              "score": 3
+            },
+            {
+              "label": "Automated onboarding workflow with status tracking",
+              "score": 4
+            },
+            {
+              "label": "Fully automated compliance with audit trails",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "backoffice_q2",
+          "text": "How much recruiter or admin time is spent on data entry each week?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "10 or more hours per person",
+              "score": 1
+            },
+            {
+              "label": "5 to 10 hours per person",
+              "score": 2
+            },
+            {
+              "label": "2 to 5 hours per person",
+              "score": 3
+            },
+            {
+              "label": "Under 2 hours per person",
+              "score": 4
+            },
+            {
+              "label": "Near zero, systems sync automatically",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "backoffice_q3",
+          "text": "How do invoicing, timesheets, and payroll flow through your firm?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Manual collection and chasing every pay period",
+              "score": 1
+            },
+            {
+              "label": "Spreadsheets with manual review",
+              "score": 2
+            },
+            {
+              "label": "Dedicated tool but heavy manual reconciliation",
+              "score": 3
+            },
+            {
+              "label": "Integrated systems with automated approvals",
+              "score": 4
+            },
+            {
+              "label": "End-to-end automation with exception-only review",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "backoffice_q4",
+          "text": "How often do back office errors cause client or candidate issues?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Weekly, it is a constant firefight",
+              "score": 1
+            },
+            {
+              "label": "Several times a month",
+              "score": 2
+            },
+            {
+              "label": "Once a month or so",
+              "score": 3
+            },
+            {
+              "label": "A few times a year",
+              "score": 4
+            },
+            {
+              "label": "Very rarely, caught before they escalate",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Back office drag is stealing hours from your highest paid people",
+          "text": "When recruiters and admins spend 10 plus hours a week on data entry and paper chasing, you are paying placement-quality people to do entry-level work. Every hour here is an hour not spent on clients, candidates, or revenue.",
+          "steps": [
+            "Move onboarding, contracts, and e-signatures into a single automated workflow with status visibility for every stakeholder",
+            "Audit the top 5 data entry tasks consuming recruiter time and automate or delegate each one within 60 days",
+            "Integrate your ATS, invoicing, and timesheet tools so data flows without manual re-entry between systems"
+          ]
+        },
+        "mid": {
+          "headline": "Your back office is functional but still too hands on",
+          "text": "You have tools in place, but they are not talking to each other well enough. The cost shows up in small errors, manual reconciliation, and a constant low level of admin work that never quite ends.",
+          "steps": [
+            "Map every manual handoff between systems and replace the top 3 with direct integrations or automated workflows",
+            "Implement automated compliance tracking with alerts for expiring documents, licenses, and certifications",
+            "Build an exception-based review process for invoicing and payroll so staff only touch what actually needs attention"
+          ]
+        },
+        "high": {
+          "headline": "Back office is efficient, turn it into a margin advantage",
+          "text": "You have controlled the drag most firms live with. The upside now is using that efficiency to support faster growth without proportional headcount increases.",
+          "steps": [
+            "Track operational cost per placement monthly and set targets that tighten as volume grows",
+            "Build self-service dashboards for clients and contractors to cut inbound admin questions by at least half",
+            "Redeploy saved admin capacity into account management and candidate experience, where it drives new revenue"
+          ]
+        }
+      }
+    },
+    {
+      "id": "visibility",
+      "name": "Data Visibility & Decision Making",
+      "questions": [
+        {
+          "id": "visibility_q1",
+          "text": "How quickly can you see real-time placement activity across your team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "I ask people and wait for answers",
+              "score": 1
+            },
+            {
+              "label": "Weekly meeting recaps and manual reports",
+              "score": 2
+            },
+            {
+              "label": "ATS reports, run on request",
+              "score": 3
+            },
+            {
+              "label": "Live dashboards updated daily",
+              "score": 4
+            },
+            {
+              "label": "Real-time dashboards with alerting on key metrics",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "visibility_q2",
+          "text": "Do you know your cost per placement and recruiter profitability?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we estimate revenue and hope",
+              "score": 1
+            },
+            {
+              "label": "Roughly, based on annual totals",
+              "score": 2
+            },
+            {
+              "label": "We calculate quarterly",
+              "score": 3
+            },
+            {
+              "label": "Monthly with reasonable accuracy",
+              "score": 4
+            },
+            {
+              "label": "Real-time, per recruiter and per desk",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "visibility_q3",
+          "text": "How do you forecast placements and revenue for next month?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Gut feel and last month's numbers",
+              "score": 1
+            },
+            {
+              "label": "Open order count times a rough close rate",
+              "score": 2
+            },
+            {
+              "label": "Pipeline review with each recruiter",
+              "score": 3
+            },
+            {
+              "label": "Weighted pipeline with stage-based probabilities",
+              "score": 4
+            },
+            {
+              "label": "Data-driven forecast using historical close rates per stage",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "visibility_q4",
+          "text": "When something slips, how fast do you know about it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "When a client calls upset",
+              "score": 1
+            },
+            {
+              "label": "When a recruiter finally flags it",
+              "score": 2
+            },
+            {
+              "label": "Next weekly team meeting",
+              "score": 3
+            },
+            {
+              "label": "Within 24 hours via dashboards",
+              "score": 4
+            },
+            {
+              "label": "Immediately, automated alerts trigger on risk signals",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are flying blind, and it is costing you placements you never see",
+          "text": "Without real-time visibility, you are making decisions on gut feel and last month's memory. By the time you notice a slipping order or an underperforming recruiter, the damage is already done. Visibility is cheap compared to what you lose without it.",
+          "steps": [
+            "Build a single placement activity dashboard covering submissions, interviews, offers, and placements updated at least daily",
+            "Calculate cost per placement and revenue per recruiter monthly, and share the numbers with your leadership team",
+            "Set automated alerts for stalled orders, aging candidates, and missed client follow-ups so issues surface the day they appear"
+          ]
+        },
+        "mid": {
+          "headline": "You have data but it is not driving decisions fast enough",
+          "text": "You know roughly how the business is doing, but the reporting cycle is too slow to change outcomes in the current month. Tightening the loop between data and action is where growth firms break away from stagnating ones.",
+          "steps": [
+            "Move from monthly reporting to weekly live dashboards with activity, pipeline, and close rate metrics by recruiter",
+            "Implement a weighted pipeline forecast with stage-based close probabilities tied to 12 months of historical data",
+            "Create recruiter scorecards so individual performance trends are visible within the week, not after the quarter closes"
+          ]
+        },
+        "high": {
+          "headline": "Data is a strength, now use it to make bigger bets",
+          "text": "You have the visibility most firms lack. The advantage now is using that data to decide faster and bigger than competitors on hiring, pricing, and vertical expansion.",
+          "steps": [
+            "Build predictive models on which orders are most likely to close and which candidates are most likely to accept",
+            "Run quarterly profitability reviews by vertical and desk to redirect investment toward highest return segments",
+            "Use data to justify premium pricing by showing clients placement speed, quality, and retention benchmarks versus market"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Ready to turn your weakest category into your biggest revenue lever?",
+    "description": "Book a 30-minute strategy call and we will walk through your score, pinpoint the biggest bottleneck, and map out a concrete automation plan to unlock placement capacity with the team you already have.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
+}
