@@ -56,6 +56,13 @@ h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; text-transform: 
 .refresh:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000; }
 .auto-note { font-size: .72rem; color: #888; margin-left: .75rem; }
 .loading { color: #888; font-style: italic; }
+.weekly-digest { background: #000; color: #fff; border: 4px solid #000; box-shadow: 6px 6px 0 #00E676; padding: 1.5rem; margin: 2rem 0; white-space: pre-wrap; font-family: 'Space Grotesk', monospace; font-size: .9rem; line-height: 1.5; }
+.weekly-digest strong { color: #00E676; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; font-size: 1rem; display: block; margin-top: .5rem; }
+.tabs { display: flex; gap: .25rem; margin-bottom: 1rem; border-bottom: 4px solid #000; }
+.tab { padding: .6rem 1.25rem; background: #fff; border: 2px solid #000; border-bottom: none; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; font-size: .8rem; cursor: pointer; font-family: inherit; }
+.tab.active { background: #00E676; }
+.tab-body { display: none; }
+.tab-body.active { display: block; }
 @media (prefers-reduced-motion: reduce) { .refresh { transition: none !important; } }
 </style>
 </head>
@@ -70,50 +77,66 @@ h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; text-transform: 
 </header>
 
 <main class="wrap">
-  <section class="totals" id="totals">
-    <div class="stat"><div class="num" id="t-views">—</div><div class="lbl">Views · 30 days</div></div>
-    <div class="stat"><div class="num" id="t-captures">—</div><div class="lbl">Email captures · 30 days</div></div>
-    <div class="stat"><div class="num" id="t-completions">—</div><div class="lbl">Assessment completions · all time</div></div>
-    <div class="stat alt"><div class="num" id="t-rate">—</div><div class="lbl">Avg capture rate</div></div>
-    <div class="stat alt"><div class="num" id="t-lm">—</div><div class="lbl">Live lead magnets</div></div>
+  <div class="tabs">
+    <button class="tab active" data-tab="live">Live (30-day)</button>
+    <button class="tab" data-tab="weekly">Weekly digest</button>
+  </div>
+
+  <section class="tab-body active" id="tab-live">
+    <section class="totals" id="totals">
+      <div class="stat"><div class="num" id="t-views">—</div><div class="lbl">Views · 30 days</div></div>
+      <div class="stat"><div class="num" id="t-captures">—</div><div class="lbl">Email captures · 30 days</div></div>
+      <div class="stat"><div class="num" id="t-completions">—</div><div class="lbl">Assessment completions · all time</div></div>
+      <div class="stat alt"><div class="num" id="t-rate">—</div><div class="lbl">Avg capture rate</div></div>
+      <div class="stat alt"><div class="num" id="t-lm">—</div><div class="lbl">Live lead magnets</div></div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Per-LM performance (30-day)</h2>
+        <table class="table" id="per-lm-table">
+          <thead><tr><th>Lead magnet</th><th>Format</th><th>Quality</th><th class="num-cell">Views</th><th class="num-cell">Captures</th><th class="num-cell">Rate</th></tr></thead>
+          <tbody><tr><td colspan="6" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Today's activity</h2>
+        <div class="feed" id="feed"><div class="empty loading">Loading…</div></div>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:2rem">
+      <div class="card">
+        <h2>Assessment weakest-category rollup</h2>
+        <table class="table" id="weakest-table">
+          <thead><tr><th>Assessment</th><th>Weakest category</th><th class="num-cell">Completions</th><th class="num-cell">Avg score</th></tr></thead>
+          <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Comment-gate ROI</h2>
+        <table class="table" id="gate-table">
+          <thead><tr><th>Keyword</th><th>LM</th><th class="num-cell">Matched</th><th class="num-cell">DM'd</th></tr></thead>
+          <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
   </section>
 
-  <section class="grid">
+  <section class="tab-body" id="tab-weekly">
     <div class="card">
-      <h2>Per-LM performance (30-day)</h2>
-      <table class="table" id="per-lm-table">
-        <thead><tr><th>Lead magnet</th><th>Format</th><th>Quality</th><th class="num-cell">Views</th><th class="num-cell">Captures</th><th class="num-cell">Rate</th></tr></thead>
-        <tbody><tr><td colspan="6" class="empty loading">Loading…</td></tr></tbody>
-      </table>
+      <h2>This week vs last week</h2>
+      <div id="weekly-totals" class="loading">Loading…</div>
     </div>
-
-    <div class="card">
-      <h2>Today's activity</h2>
-      <div class="feed" id="feed"><div class="empty loading">Loading…</div></div>
-    </div>
-  </section>
-
-  <section class="grid" style="margin-top:2rem">
-    <div class="card">
-      <h2>Assessment weakest-category rollup</h2>
-      <table class="table" id="weakest-table">
-        <thead><tr><th>Assessment</th><th>Weakest category</th><th class="num-cell">Completions</th><th class="num-cell">Avg score</th></tr></thead>
-        <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h2>Comment-gate ROI</h2>
-      <table class="table" id="gate-table">
-        <thead><tr><th>Keyword</th><th>LM</th><th class="num-cell">Matched</th><th class="num-cell">DM'd</th></tr></thead>
-        <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
+    <div class="weekly-digest" id="weekly-md">Loading weekly digest…</div>
   </section>
 </main>
 
 <script>
-const ENDPOINT = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-metrics";
+const METRICS_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-metrics";
+const WEEKLY_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-weekly";
 
 function esc(s) { return String(s == null ? "" : s).replace(/[&<>\"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function fmt(n) { return (n == null || isNaN(n)) ? "—" : Number(n).toLocaleString(); }
@@ -131,19 +154,30 @@ function timeAgo(iso) {
   return d.toLocaleDateString();
 }
 
-async function load() {
+async function loadLive() {
   try {
-    const r = await fetch(ENDPOINT);
+    const r = await fetch(METRICS_URL);
     if (!r.ok) throw new Error("status " + r.status);
     const d = await r.json();
-    render(d);
+    renderLive(d);
     document.getElementById("updated").textContent = "updated " + new Date().toLocaleTimeString();
   } catch (e) {
     document.getElementById("updated").textContent = "error: " + e.message;
   }
 }
 
-function render(d) {
+async function loadWeekly() {
+  try {
+    const r = await fetch(WEEKLY_URL);
+    if (!r.ok) throw new Error("status " + r.status);
+    const d = await r.json();
+    renderWeekly(d);
+  } catch (e) {
+    document.getElementById("weekly-md").textContent = "error: " + e.message;
+  }
+}
+
+function renderLive(d) {
   const t = d.totals || {};
   document.getElementById("t-views").textContent = fmt(t.views_30d);
   document.getElementById("t-captures").textContent = fmt(t.captures_30d);
@@ -214,9 +248,33 @@ function render(d) {
   }
 }
 
-document.getElementById("refresh").addEventListener("click", load);
-load();
-setInterval(load, 60000);
+function renderWeekly(d) {
+  const t = d.totals || {};
+  document.getElementById("weekly-totals").innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:.5rem">
+      <div><div class="num" style="font-size:1.8rem;font-weight:900;color:#00E676">${fmt(t.views)}</div><div class="lbl" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#444">Views (${t.view_delta >= 0 ? '+' : ''}${t.view_delta})</div></div>
+      <div><div class="num" style="font-size:1.8rem;font-weight:900;color:#00E676">${fmt(t.captures)}</div><div class="lbl" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#444">Captures (${t.capture_delta >= 0 ? '+' : ''}${t.capture_delta})</div></div>
+      <div><div class="num" style="font-size:1.8rem;font-weight:900;color:#000">${fmt(t.completions)}</div><div class="lbl" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#444">Completions</div></div>
+    </div>
+  `;
+  // Render markdown digest with **bold** → <strong>
+  const md = (d.markdown_digest || "").replace(/\*([^*]+)\*/g, '<strong>$1</strong>');
+  document.getElementById("weekly-md").innerHTML = md;
+}
+
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    document.querySelectorAll(".tab-body").forEach(x => x.classList.remove("active"));
+    document.getElementById("tab-" + t.dataset.tab).classList.add("active");
+    if (t.dataset.tab === "weekly") loadWeekly();
+  });
+});
+
+document.getElementById("refresh").addEventListener("click", () => { loadLive(); loadWeekly(); });
+loadLive();
+setInterval(loadLive, 60000);
 </script>
 </body>
 </html>
