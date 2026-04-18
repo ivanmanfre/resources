@@ -1,0 +1,165 @@
+{
+  "slug": "ai-roi-calculator-for-operations-teams",
+  "title": "AI ROI Calculator for Operations Teams",
+  "subtitle": "Stop guessing whether automation is worth it. Build a business case with real numbers and prioritize the workflows that actually pay back fastest.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 10,
+  "inputs": [
+    {
+      "id": "volume_per_month",
+      "label": "Volume per Month",
+      "type": "number",
+      "suffix": "units",
+      "min": 10,
+      "max": 100000,
+      "step": 10,
+      "default": 2400,
+      "hint": "How many times does this process run monthly? Orders, invoices, onboarding tasks, etc."
+    },
+    {
+      "id": "time_per_unit",
+      "label": "Time per Unit",
+      "type": "range",
+      "suffix": "min",
+      "min": 1,
+      "max": 240,
+      "step": 1,
+      "default": 15,
+      "slider": true,
+      "hint": "Total human time across every handoff, not just one person's touch."
+    },
+    {
+      "id": "hourly_cost",
+      "label": "Fully Loaded Hourly Cost",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 15,
+      "max": 300,
+      "step": 1,
+      "default": 35,
+      "hint": "Salary + benefits + overhead. If unsure, use 1.3x base hourly rate."
+    },
+    {
+      "id": "error_rate",
+      "label": "Current Error Rate",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 8,
+      "slider": true,
+      "hint": "Percentage of units that need rework. Most people undercount this."
+    },
+    {
+      "id": "cost_per_error",
+      "label": "Cost per Error",
+      "type": "number",
+      "prefix": "$",
+      "min": 0,
+      "max": 5000,
+      "step": 10,
+      "default": 50,
+      "hint": "Rework time, customer impact, refunds, lost trust."
+    },
+    {
+      "id": "build_cost",
+      "label": "Automation Build Cost",
+      "type": "number",
+      "prefix": "$",
+      "min": 500,
+      "max": 250000,
+      "step": 500,
+      "default": 3500,
+      "hint": "One-time cost to design, build, and deploy the automation."
+    },
+    {
+      "id": "maintenance_cost",
+      "label": "Monthly Maintenance Cost",
+      "type": "number",
+      "prefix": "$",
+      "min": 0,
+      "max": 10000,
+      "step": 50,
+      "default": 200,
+      "hint": "Ongoing hosting, support, and model or API costs."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "annual_savings",
+      "label": "Net Annual Savings",
+      "format": "currency",
+      "primary": true,
+      "formula": "((volume_per_month * (time_per_unit / 60) * hourly_cost) + (volume_per_month * (error_rate / 100) * cost_per_error)) * 12 - (maintenance_cost * 12)",
+      "tier_thresholds": {
+        "low": 15000,
+        "mid": 60000,
+        "high": 150000
+      }
+    },
+    {
+      "id": "payback_months",
+      "label": "Payback Period",
+      "format": "decimal",
+      "formula": "build_cost / Math.max(1, ((volume_per_month * (time_per_unit / 60) * hourly_cost) + (volume_per_month * (error_rate / 100) * cost_per_error)) - maintenance_cost)",
+      "tier_thresholds": {
+        "low": 6,
+        "mid": 12,
+        "high": 18
+      }
+    },
+    {
+      "id": "hours_unlocked",
+      "label": "Hours Unlocked per Year",
+      "format": "hours",
+      "formula": "volume_per_month * (time_per_unit / 60) * 12"
+    },
+    {
+      "id": "first_year_roi",
+      "label": "First Year ROI",
+      "format": "percent",
+      "formula": "(((((volume_per_month * (time_per_unit / 60) * hourly_cost) + (volume_per_month * (error_rate / 100) * cost_per_error)) * 12) - (maintenance_cost * 12) - build_cost) / Math.max(1, build_cost)) * 100"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "Green Light",
+      "when": "(build_cost / Math.max(1, ((volume_per_month * (time_per_unit / 60) * hourly_cost) + (volume_per_month * (error_rate / 100) * cost_per_error)) - maintenance_cost)) < 6",
+      "text": "Payback under 6 months. This is a green light project. Scope it, get a build quote this week, and start drafting the requirements doc before the window closes."
+    },
+    {
+      "tag": "Solid Bet",
+      "when": "(build_cost / Math.max(1, ((volume_per_month * (time_per_unit / 60) * hourly_cost) + (volume_per_month * (error_rate / 100) * cost_per_error)) - maintenance_cost)) >= 6 && (build_cost / Math.max(1, ((volume_per_month * (time_per_unit / 60) * hourly_cost) + (volume_per_month * (error_rate / 100) * cost_per_error)) - maintenance_cost)) <= 12",
+      "text": "Payback between 6 and 12 months. Still a strong investment. Validate your volume and error inputs, then move forward if the numbers hold up."
+    },
+    {
+      "tag": "Rethink Scope",
+      "when": "(build_cost / Math.max(1, ((volume_per_month * (time_per_unit / 60) * hourly_cost) + (volume_per_month * (error_rate / 100) * cost_per_error)) - maintenance_cost)) > 18",
+      "text": "Payback over 18 months. Find a different workflow first. Either the volume is too low, the build is too expensive, or the process is not painful enough yet to justify the effort."
+    },
+    {
+      "tag": "Fix Quality First",
+      "when": "error_rate >= 15 && cost_per_error >= 100",
+      "text": "Error rate above 15 percent with meaningful rework cost. Most of your savings are hiding in error reduction, not time savings. Prioritize automations that enforce validation and structured data over ones that just speed up tasks."
+    },
+    {
+      "tag": "Scale Play",
+      "when": "volume_per_month >= 5000 && hourly_cost >= 30",
+      "text": "High volume and loaded labor cost. Even small per-unit time savings compound fast. Push to automate end to end rather than partial steps, and reinvest the capacity into revenue generating work."
+    },
+    {
+      "tag": "Low Volume Warning",
+      "when": "volume_per_month < 200",
+      "text": "Volume under 200 per month. Automation still works, but payback will be slow unless hourly cost or error cost is very high. Consider batching similar low volume processes into one build to share the fixed cost."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Want help building the automation behind these numbers?",
+    "description": "Send me your top two workflows and the numbers you plugged in. I will send back a prioritized build plan, a realistic quote range, and the exact n8n or agent architecture I would use to hit the payback you just calculated."
+  }
+}
