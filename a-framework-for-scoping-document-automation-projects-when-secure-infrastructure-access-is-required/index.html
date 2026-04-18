@@ -1,153 +1,221 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>The 3-Layer Checklist for Document Automation Projects | Ivan Manfredi</title><meta name="description" content="A scoping framework for document automation projects requiring secure infrastructure access. Diagnose access layer issues before they blow your timeline and budget." /><meta property="og:title" content="The 3-Layer Checklist for Document Automation Projects | Ivan Manfredi" /><meta property="og:description" content="A scoping framework for document automation projects requiring secure infrastructure access. Diagnose access layer issues before they blow your timeline and budget." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],display:['Space Grotesk','sans-serif'],mono:['monospace']},colors:{primary:'#000000',paper:'#ffffff',accent:'#00E676',cyan:'#2979FF',pink:'#FF4081'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"><style>body{background-color:#fff;color:#000;overflow-x:hidden}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem}.resource-content h3{font-size:1.25rem;font-weight:700;margin:1.5rem 0 .75rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content ol{list-style:decimal;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.resource-content blockquote{border-left:4px solid #00E676;padding:1rem 1.5rem;margin:1.5rem 0;background:#f9f9f9;font-weight:500}.resource-content a{color:#2979FF;text-decoration:underline}.resource-content strong{font-weight:700}.resource-content code{background:#f4f4f4;padding:.15rem .4rem;border-radius:2px;font-family:monospace;font-size:.9em}.resource-content pre{background:#1a1a1a;color:#00E676;padding:1.5rem;border:2px solid black;overflow-x:auto;margin:1.5rem 0;font-family:monospace}.resource-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;border:2px solid black}.resource-content th{background:black;color:white;padding:.75rem 1rem;text-align:left;font-weight:700;text-transform:uppercase;font-size:.85rem}.resource-content td{padding:.75rem 1rem;border-bottom:1px solid #e5e7eb}.resource-content tr:hover td{background:#f9f9f9}.resource-content hr{border:none;border-top:2px solid #e5e5e5;margin:32px 0}</style><link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css"></head><body class="font-sans selection:bg-accent selection:text-black"><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic group-hover:shadow-comic-active group-hover:translate-x-[1px] group-hover:translate-y-[1px] transition-all flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-cyan/20"></div><span class="relative text-white font-black text-lg tracking-tight">IM</span></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700 group-hover:text-black transition-colors">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase tracking-wide hover:underline decoration-2 decoration-accent underline-offset-4">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block px-6 py-2 bg-accent border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">Let's Talk</a></div></div></nav><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">Guide</div><h1 class="hero-title text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">The 3-Layer Checklist for Document Automation Projects</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-8">You made the right call grabbing this. Most document automation projects don't stall because the automation is hard - they stall because nobody scoped the access layer properly. Spend 30-45 minutes with this checklist before your next project kicks off. It'll save you weeks of discovery headaches and budget overruns.</p><div class="mt-10 relative overflow-hidden bg-black p-8 md:p-12 border-4 border-black shadow-comic">
-<div class="absolute inset-0 opacity-[0.07]" style="background-size:30px 30px;background-image:linear-gradient(to right,#00E676 1px,transparent 1px),linear-gradient(to bottom,#00E676 1px,transparent 1px)"></div>
-<div class="relative"><div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
-<div class="text-center md:text-left flex flex-col items-center md:items-start gap-3">
-<div class="w-20 h-20 border-2 border-accent/30 flex items-center justify-center"><svg width="48" height="48" fill="none" stroke="#00E676" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-<div class="text-accent text-5xl md:text-6xl font-black leading-none">1,404</div>
-<div class="text-white text-sm font-bold uppercase tracking-widest">Words</div>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-black text-xs font-bold uppercase tracking-wide">In-Depth Guide</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">7 Min Read</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">10 Sections</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Free Resource</span></div>
-<p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">A comprehensive resource you can reference anytime. Scroll down to read the full content below.</p>
-</div>
-</div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><p style="margin-bottom: 16px; line-height: 1.7;">Hey, this is Ivan, and I'm about to give you the 3-Layer Checklist for Document Automation Projects That Don't Stall at Week Two.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">If you've ever had an automation project blow past deadline and budget, and the automation itself only took a few days to build, this is for you.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">So who am I and why should you trust me? I'll keep this quick so we can get to the good stuff...</p>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">AI & Automation Architect - designed and deployed systems for 100+ companies</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Built AI agents and n8n workflows that save teams 20+ hours every single week</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Helped businesses 3-5x their operational efficiency through smart automation</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Building and shipping AI solutions before most people knew what an LLM was</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Fueled by espresso and mass amounts of automation nodes</li>
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>A framework for scoping document automation projects when secure infrastructure access is required. | Ivan Manfredi</title><meta name="description" content="## Resource Page Copy
+
+**Headline:** The 3-Layer Checklist for Document Automation Projects
+
+**Resource Type:** Guide
+
+**Introduction:** You made the right call"><meta name="author" content="Iván Manfredi"><meta name="theme-color" content="#00E676"><link rel="canonical" href="https://resources.ivanmanfredi.com/a-framework-for-scoping-document-automation-projects-when-secure-infrastructure-access-is-required/"><meta property="og:title" content="A framework for scoping document automation projects when secure infrastructure access is required."><meta property="og:description" content="## Resource Page Copy
+
+**Headline:** The 3-Layer Checklist for Document Automation Projects
+
+**Resource Type:** Guide
+
+**Introduction:** You made the right call"><meta property="og:type" content="article"><meta property="og:url" content="https://resources.ivanmanfredi.com/a-framework-for-scoping-document-automation-projects-when-secure-infrastructure-access-is-required/"><meta property="og:image" content="https://resources.ivanmanfredi.com/assets/og/a-framework-for-scoping-document-automation-projects-when-secure-infrastructure-access-is-required.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:site_name" content="Ivan Manfredi"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="A framework for scoping document automation projects when secure infrastructure access is required."><meta name="twitter:description" content="## Resource Page Copy
+
+**Headline:** The 3-Layer Checklist for Document Automation Projects
+
+**Resource Type:** Guide
+
+**Introduction:** You made the right call"><meta name="twitter:image" content="https://resources.ivanmanfredi.com/assets/og/a-framework-for-scoping-document-automation-projects-when-secure-infrastructure-access-is-required.png"><link rel="icon" type="image/png" sizes="32x32" href="https://resources.ivanmanfredi.com/assets/favicon-32.png"><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif']},colors:{primary:'#000000',paper:'#ffffff',accent:'#00E676',cyan:'#2979FF',pink:'#FF4081'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"><style>body{background:#fff;color:#000;overflow-x:hidden;font-family:'Space Grotesk',sans-serif}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem}.resource-content h3{font-size:1.25rem;font-weight:700;margin:1.5rem 0 .75rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content ol{list-style:decimal;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.resource-content blockquote{border-left:4px solid #00E676;padding:1rem 1.5rem;margin:1.5rem 0;background:#f9f9f9;font-weight:500}.resource-content a{color:#2979FF;text-decoration:underline}.resource-content strong{font-weight:700}.resource-content code{background:#f4f4f4;padding:.15rem .4rem;border-radius:2px;font-family:monospace;font-size:.9em}.resource-content pre{background:#1a1a1a;color:#00E676;padding:1.5rem;border:2px solid black;overflow-x:auto;margin:1.5rem 0;font-family:monospace}.resource-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;border:2px solid black}.resource-content th{background:black;color:white;padding:.75rem 1rem;text-align:left;font-weight:700;text-transform:uppercase;font-size:.85rem}.resource-content td{padding:.75rem 1rem;border-bottom:1px solid #e5e7eb}.resource-content hr{border:none;border-top:2px solid #e5e5e5;margin:32px 0}</style></head><body class="font-sans selection:bg-accent selection:text-black"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-accent focus:text-black focus:px-4 focus:py-2 focus:border-2 focus:border-black focus:z-[100]">Skip to content</a><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic overflow-hidden"><img src="https://ivanmanfredi.com/profile.jpg" alt="Ivan Manfredi" class="relative w-full h-full object-cover" /></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase tracking-wide hover:underline decoration-2 decoration-accent underline-offset-4">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" class="inline-block px-3 py-2 md:px-6 text-xs md:text-sm bg-accent border-2 border-black shadow-comic font-bold uppercase">Let's Talk</a></div></div></nav><main id="main"><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">GUIDE</div><h1 class="text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">A framework for scoping document automation projects when secure infrastructure access is required.</h1><p class="text-xl font-medium max-w-2xl leading-relaxed mb-8">## Resource Page Copy
+
+**Headline:** The 3-Layer Checklist for Document Automation Projects
+
+**Resource Type:** Guide
+
+**Introduction:** You made the right call grabbing this. Most document automation projects don't stall because the automation is hard - they stall because nobody</p><div class="mt-10 relative overflow-hidden bg-black p-8 md:p-12 border-4 border-black shadow-comic"><div class="absolute inset-0 opacity-[0.07]" style="background-size:30px 30px;background-image:linear-gradient(to right,#00E676 1px,transparent 1px),linear-gradient(to bottom,#00E676 1px,transparent 1px)"></div><div class="relative"><div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"><div class="text-center md:text-left flex flex-col items-center md:items-start gap-3"><div class="w-20 h-20 border-2 border-accent/30 flex items-center justify-center"><svg width="48" height="48" fill="none" stroke="#00E676" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="text-accent text-5xl md:text-6xl font-black leading-none">1,757</div><div class="text-white text-sm font-bold uppercase tracking-widest">Words</div></div><div class="flex-1"><div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-black text-xs font-bold uppercase tracking-wide">In-Depth Guide</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">9 Min Read</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">12 Sections</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Free Resource</span></div><p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">A comprehensive resource you can reference anytime. Scroll down for the full content.</p></div></div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><h2>40% over budget. 3 weeks behind schedule. The automation itself? Two days of work.</h2>
+
+<p>That's the autopsy on almost every document automation project that stalls at service businesses between 11 and 100 employees. The build was never the problem. The access layer was.</p>
+
+<h3>One line on the author:</h3>
+
+<ul>
+<li><strong>AI &amp; Automation Architect</strong> — 40+ systems deployed for service businesses</li>
+<li><strong>Built n8n + Claude workflows</strong> that have automated 6,000+ hours of repeat work</li>
+<li><strong>Work spans 8+ industries</strong> (construction, manufacturing, staffing, property management, agencies)</li>
+<li><strong>Systems run on self-hosted n8n + Supabase</strong>, not Zapier glue</li>
 </ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Why This Matters</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;">Here's a scenario I see constantly: Your document automation project is 3 weeks behind and 40% over budget. The automation itself took 2 days. The other 3 weeks? Getting access to the damn files.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">I've worked with insurance companies signing 50+ documents a day, construction firms dealing with 300-page PDFs nobody can open, and professional services teams drowning in approval workflows. The pattern is always the same.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">The actual automation - the triggers, the signing flow, the notifications - that's the easy part. What kills projects is the access layer. VPNs, cloud servers, security protocols, file permissions. Nobody scopes this properly because it's not the "exciting" part of the project.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">So teams quote based on the automation work, then discover they need VPN access, remote desktop setups, or API integrations just to reach the documents. That discovery phase alone adds 2-4 weeks to typical project timelines. Sometimes more.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;">This checklist exists so you can diagnose these issues before you commit budget and timeline. Run through it with your team before any document automation project kicks off.</p>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">What To Do With This</h2>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Spend 30-45 minutes going through this checklist with whoever owns your infrastructure and whoever owns the workflow</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Fill in every section honestly - gaps here become blown timelines later</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Use the output to get realistic quotes from vendors (or to scope your internal build)</li>
+
+<h2>Why This Matters</h2>
+
+<p>Here's the pattern I see constantly across insurance firms signing 50+ documents a day, construction outfits dealing with 300-page PDFs nobody can open, and professional services teams drowning in approval workflows. The automation work — triggers, signing flow, notifications, routing — typically takes 2 to 5 build days. The surrounding project drags on for 4 to 7 weeks. The gap is almost entirely the access layer.</p>
+
+<p>Teams quote based on the visible automation work, then discover they need VPN credentials, remote desktop provisioning, API tokens the vendor won't release, or IT tickets that sit in a queue for 11 business days. That discovery phase alone adds 2 to 4 weeks to a typical project. Sometimes it doubles the original timeline. I've watched a $12,000 project balloon into a $28,000 project because nobody asked where the PDFs actually lived until the day the build was supposed to start.</p>
+
+<blockquote>
+<p>The automation is not the project. The access path to the documents is the project. Everything else is 15% of the work.</p>
+</blockquote>
+
+<p>This guide is the scoping framework I use before quoting any document automation work. Run it before you sign a statement of work, before you commit a timeline, and before you tell your team it'll be done by end of quarter.</p>
+
+<h2>1. Map Where Documents Actually Live (Not Where You Think They Live)</h2>
+
+<p>The first scoping failure is assuming documents live in one place. In 40+ deployments, I have never once found a service business where documents lived in a single system. There's always a "but also" — contracts in SharePoint but signed copies in a shared drive, invoices in QuickBooks but approvals in email, job files in a proprietary construction platform but submittals on a field tablet.</p>
+
+<p>Before anything else, build a document inventory. Walk the actual workflow and list every location a document touches from creation to archive.</p>
+
+<table>
+<thead>
+<tr><th>Document Type</th><th>Origin System</th><th>Transit Location</th><th>Final Archive</th><th>Access Difficulty (1-5)</th></tr>
+</thead>
+<tbody>
+<tr><td>Signed client contract</td><td>DocuSign</td><td>Shared inbox</td><td>SharePoint</td><td>2</td></tr>
+<tr><td>Job submittal package</td><td>Procore</td><td>Email attachment</td><td>On-prem file server</td><td>5</td></tr>
+<tr><td>Insurance COI</td><td>Broker portal</td><td>PDF download</td><td>Dropbox</td><td>4</td></tr>
+<tr><td>Internal approval memo</td><td>Word doc</td><td>Teams message</td><td>Personal laptop</td><td>5</td></tr>
+</tbody>
+</table>
+
+<p>Anything rated 4 or 5 is a scoping red flag. Those are the items that extend timelines. Flag them before committing a delivery date, not after.</p>
+
+<h2>2. Classify The Access Path For Each Document Stream</h2>
+
+<p>Once you know where documents live, you classify how automation can reach them. There are five realistic access paths, and they are not equal in effort, reliability, or cost.</p>
+
+<ul>
+<li><strong>Direct API access:</strong> Cleanest path. Credentials, rate limits, documented endpoints. Build time stays predictable.</li>
+<li><strong>Cloud storage with OAuth:</strong> Google Drive, SharePoint, Dropbox, Box. Usually solvable in a day once permissions are granted.</li>
+<li><strong>VPN-gated file share:</strong> Requires a persistent machine on the VPN. Adds infrastructure cost and a second point of failure.</li>
+<li><strong>Remote desktop / RPA:</strong> Used when the source system has no API. Fragile, slow, and expensive to maintain.</li>
+<li><strong>Manual export + upload:</strong> Not automation. It's a scheduled human task with a nicer wrapper.</li>
 </ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">The 3-Layer Checklist</h2>
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Layer 1: Document Access (The Hidden Timeline Killer)</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;">This is where 80% of document automation projects stall. Before you think about the automation logic, you need to know: can the automation actually reach the documents?</p>
-<strong>1.1 Where do your documents live?</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Local network server (on-premise)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Cloud server with VPN requirement</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Cloud storage (Google Drive, SharePoint, Dropbox)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Inside a proprietary software system (insurance software, ERP, etc.)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Multiple locations (specify: _______________)</li>
+
+<table>
+<thead>
+<tr><th>Access Path</th><th>Typical Build Days</th><th>Monthly Infra Cost (USD)</th><th>Reliability</th><th>Scales With Volume?</th></tr>
+</thead>
+<tbody>
+<tr><td>Direct API</td><td>2-4</td><td>$0-50</td><td>High</td><td>Yes</td></tr>
+<tr><td>Cloud storage OAuth</td><td>1-3</td><td>$0-30</td><td>High</td><td>Yes</td></tr>
+<tr><td>VPN + file share</td><td>5-10</td><td>$40-150</td><td>Medium</td><td>Partial</td></tr>
+<tr><td>Remote desktop / RPA</td><td>8-20</td><td>$80-300</td><td>Low</td><td>No</td></tr>
+<tr><td>Manual export + upload</td><td>1</td><td>$0</td><td>Depends on humans</td><td>No</td></tr>
+</tbody>
+</table>
+
+<p>If three of your document streams require remote desktop because the source software has no API, you are not scoping a document automation project. You are scoping an infrastructure project that happens to include automation. Price it that way.</p>
+
+<h2>2.5. The Security And Compliance Layer Most Teams Skip</h2>
+
+<p>Before the automation can touch a document, somebody has to approve the automation's right to touch it. At service businesses in the 11-100 employee range, this is usually the owner, an external MSP, or a compliance officer. All three are slow.</p>
+
+<p>Run this checklist before you start building, not after:</p>
+
+<ul>
+<li><strong>Data residency:</strong> Where is the automation server located? Some contracts mandate in-country processing.</li>
+<li><strong>Credential storage:</strong> Are API keys and service account passwords stored in a secrets manager, not a workflow variable?</li>
+<li><strong>Audit logging:</strong> Can you produce a log of every document the automation touched in the last 90 days?</li>
+<li><strong>Access scope:</strong> Is the service account limited to the exact folder it needs, or does it have tenant-wide read access?</li>
+<li><strong>Termination procedure:</strong> If you fire the vendor tomorrow, can you revoke access in under 10 minutes?</li>
 </ul>
-<strong>1.2 What's required to access them?</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Just username and password (office network)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] VPN + username/password (remote access)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Specific IP whitelisting</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Multi-factor authentication</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Physical security token or hardware key</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Must be on a specific machine</li>
+
+<blockquote>
+<p>If your vendor's answer to "where are the credentials stored" is a shrug or a screenshot of a workflow, walk away. That is the exact failure mode that turns a small automation into a breach notification.</p>
+</blockquote>
+
+<h2>3. Score The Project Before You Commit A Timeline</h2>
+
+<p>I use a simple scoring rubric on every scoping call. Ten questions, one point each. The score tells you whether the project is a 2-week build or a 2-month build.</p>
+
+<table>
+<thead>
+<tr><th>Question</th><th>Yes = 1 Point</th></tr>
+</thead>
+<tbody>
+<tr><td>Does the source system have a documented API?</td><td>+1</td></tr>
+<tr><td>Are credentials already provisioned or provisioned within 3 days?</td><td>+1</td></tr>
+<tr><td>Can the automation run from a cloud server (not on-prem)?</td><td>+1</td></tr>
+<tr><td>Is the document format consistent (same template, same fields)?</td><td>+1</td></tr>
+<tr><td>Is there a single owner for the workflow on the client side?</td><td>+1</td></tr>
+<tr><td>Is the volume under 500 documents per day?</td><td>+1</td></tr>
+<tr><td>Are approvals digital (not wet signatures)?</td><td>+1</td></tr>
+<tr><td>Is there an existing staging environment or test account?</td><td>+1</td></tr>
+<tr><td>Does the client have an IT contact who responds in under 48 hours?</td><td>+1</td></tr>
+<tr><td>Is the success metric written down and measurable?</td><td>+1</td></tr>
+</tbody>
+</table>
+
+<p>Score interpretation:</p>
+
+<ul>
+<li><strong>8-10 points:</strong> Standard build, 2-3 weeks, fixed-fee quote is safe.</li>
+<li><strong>5-7 points:</strong> Discovery phase required. Quote the discovery separately, then the build.</li>
+<li><strong>0-4 points:</strong> Do not fixed-fee this. Time and materials, or decline the scope.</li>
 </ul>
-<strong>1.3 Access path mapping</strong>
-<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>Access Method: </strong>VPN from office<strong> | Works for Automation?: </strong>Maybe - needs RPA or remote machine</li><li><strong>Access Method: </strong>VPN from home<strong> | Works for Automation?: </strong>Maybe - same constraints</li><li><strong>Access Method: </strong>Direct API<strong> | Works for Automation?: </strong>Best option if available</li><li><strong>Access Method: </strong>Remote desktop/machine<strong> | Works for Automation?: </strong>Good workaround</li><li><strong>Access Method: </strong>Export + upload<strong> | Works for Automation?: </strong>Works but adds manual steps</li></ul></ul><strong>1.4 Critical questions to answer:</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Does your IT team allow third-party tools to connect via VPN?</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Can you provision a dedicated remote machine for automation?</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Does your document system have an API? (Check this - many do, people just don't know)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Who approves infrastructure access changes, and what's their typical turnaround?</li>
+
+<p>I have turned down three projects this year that scored under 4. In all three cases, the client came back 3 months later after trying someone else and hitting exactly the wall the score predicted.</p>
+
+<h2>4. Separate The Discovery Phase From The Build Phase</h2>
+
+<p>The single biggest scoping improvement I've made in the last two years is splitting the engagement into two contracts. Discovery is one fixed-fee deliverable. Build is a second fixed-fee deliverable that's only quoted after discovery closes.</p>
+
+<p>Discovery produces five artifacts:</p>
+
+<ol>
+<li><strong>Document inventory:</strong> Every document type, location, volume, and owner.</li>
+<li><strong>Access path map:</strong> How the automation will reach each document, with credentials verified.</li>
+<li><strong>Security signoff:</strong> Written approval from whoever owns risk at the client.</li>
+<li><strong>Test environment:</strong> A sandbox or staging account where the build can happen without production risk.</li>
+<li><strong>Success metric:</strong> One sentence, one number, one deadline.</li>
+</ol>
+
+<p>Typical discovery cost for a 11-100 employee service business runs $2,500 to $6,000 USD and takes 5 to 10 business days. That's cheap compared to the $15,000+ overruns that happen when you skip it.</p>
+
+<blockquote>
+<p>If a vendor quotes the full build without doing discovery first, they are either pricing in a massive risk buffer or they are about to miss the deadline. Both are worse than a paid discovery phase.</p>
+</blockquote>
+
+<h2>5. Build For The Volume You Have, Not The Volume You Wish You Had</h2>
+
+<p>A recurring failure mode is over-engineering for volume that never materializes. A construction firm processing 40 submittals a week does not need a queue-based microservice architecture. They need a reliable n8n workflow running on a $20/month Hetzner box with Supabase for state.</p>
+
+<p>Match the infrastructure to actual document volume:</p>
+
+<ul>
+<li><strong>Under 100 docs/day:</strong> Single n8n instance, SQLite or Supabase free tier, one webhook endpoint. Total infra: $20-40/month.</li>
+<li><strong>100-500 docs/day:</strong> n8n with queue mode, Postgres backend, Redis for queues. Total infra: $60-120/month.</li>
+<li><strong>500-2,000 docs/day:</strong> Horizontally scaled workers, dedicated Postgres, observability stack. Total infra: $200-500/month.</li>
+<li><strong>2,000+ docs/day:</strong> Custom infrastructure conversation. n8n still works, but architecture decisions matter more than tool choice.</li>
 </ul>
-<blockquote style="border-left: 3px solid #00E676; padding-left: 16px; margin: 16px 0; font-style: italic; opacity: 1;"><strong>Timeline Impact:</strong> If you need VPN access or a remote machine setup, add 2-4 weeks to your project timeline. If you need IT security review, add another 1-2 weeks. Build this into your quote from day one.</blockquote>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Layer 2: Document Workflow (The Actual Process)</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;">Once you know you can reach the documents, map what happens to them.</p>
-<strong>2.1 Document types involved</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Policy schedules</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Contracts</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Invoices</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Drawings/plans (specify typical size: _____ MB/pages)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Reports</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Other: _______________</li>
+
+<p>The mistake I see vendors make is quoting tier 3 infrastructure for a tier 1 problem, then billing ongoing management fees against infrastructure the client never needed. Scope to volume.</p>
+
+<h2>6. Make The Handoff Document Boring And Complete</h2>
+
+<p>The final deliverable is not the automation. It's the handoff document that lets the client's team run, audit, and extend the system without calling you every Tuesday. A good handoff document has six sections:</p>
+
+<ul>
+<li><strong>Architecture diagram:</strong> One page, every system and data flow labeled.</li>
+<li><strong>Credential inventory:</strong> What exists, where it's stored, who owns rotation.</li>
+<li><strong>Runbook:</strong> How to restart the workflow, where to find logs, what to do when a document fails to process.</li>
+<li><strong>Monitoring setup:</strong> What alerts fire, who gets paged, what the thresholds mean.</li>
+<li><strong>Change log template:</strong> How to document future modifications without breaking the audit trail.</li>
+<li><strong>Escalation contact:</strong> Who to call and under what conditions.</li>
 </ul>
-<strong>2.2 What triggers the workflow?</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Document created in system</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Email received with attachment</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Document moved to specific folder</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Manual request/approval</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Scheduled batch processing</li>
-</ul>
-<strong>2.3 What needs to happen to the document?</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Extract data from document</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Add signature(s)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Merge multiple documents</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Convert format (PDF, Word, etc.)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Route for approval</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Store/archive after processing</li>
-</ul>
-<strong>2.4 Signature requirements (if applicable)</strong>
-<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>Question: </strong>How many people sign?</li><li><strong>Question: </strong>Do all signers sign every page?</li><li><strong>Question: </strong>Same pages for each signer?</li><li><strong>Question: </strong>Current signing tool</li><li><strong>Question: </strong>Does current tool have an API?</li></ul></ul>> <strong>The Adobe Acrobat Sign API exists.</strong> So does DocuSign's. If you're currently using these tools manually, there's a good chance you can automate without switching platforms. Worth 10 minutes of research before assuming you need a new tool.
-<strong>2.5 File size and volume reality check</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Typical document size: _____ MB</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Documents processed per day: _____</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Largest document you handle: _____ MB / _____ pages</li>
-</ul>
-<blockquote style="border-left: 3px solid #00E676; padding-left: 16px; margin: 16px 0; font-style: italic; opacity: 1;"><strong>Warning:</strong> Documents over 100MB or 300+ pages cause problems. AI can't process them efficiently, computers crash opening them, and most automation tools time out. If this is your reality, you'll need a pre-processing step to extract only the pages you need.</blockquote>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Layer 3: Post-Processing (Where It Goes After)</h3>
-<p style="margin-bottom: 16px; line-height: 1.7;">This is usually the simplest layer, but skip it and you'll have automated documents sitting in limbo.</p>
-<strong>3.1 Where does the completed document go?</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Back to the original folder</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] New folder (specify naming convention: _______________)</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Customer portal</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Email to customer</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Archive system</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Multiple destinations</li>
-</ul>
-<strong>3.2 Naming and versioning</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Overwrite original file</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Save with suffix (e.g., "_signed")</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Save with date stamp</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Save with version number</li>
-</ul>
-<strong>3.3 Notifications</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Email to internal team</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Email to customer</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Slack/Teams notification</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Update in CRM/project management tool</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] No notification needed</li>
-</ul>
-<strong>3.4 Compliance and audit requirements</strong>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] Need to maintain record of who signed and when</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Need both digital and physical copies</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Specific retention requirements</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Industry-specific compliance (specify: _______________)</li>
-</ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Implementation Priority</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;">Before you start building, rank these by effort and impact:</p>
-<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>Priority: </strong>1<strong> | Item: </strong>Solve the access layer first<strong> | Why It Matters: </strong>Everything else depends on this. Don't build automation you can't connect.</li><li><strong>Priority: </strong>2<strong> | Item: </strong>Map the signature requirements<strong> | Why It Matters: </strong>Multi-signer workflows with page-by-page signatures are 3x more complex than single-signer. Know what you're dealing with.</li><li><strong>Priority: </strong>3<strong> | Item: </strong>Handle the file size problem<strong> | Why It Matters: </strong>If you're dealing with massive PDFs, build the extraction step before the automation step.</li></ul></ul><hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Red Flags That Mean "Stop and Reassess"</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;">If any of these are true, pause before committing budget:</p>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">[ ] IT can't give you a clear answer on automation access within 1 week</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] You need VPN access but haven't confirmed you can provision a remote machine</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Your documents are 100MB+ and you don't have a plan to extract relevant pages</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] Multiple systems are involved and none of them have APIs</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">[ ] The signature requirements are "it depends" - nail this down before scoping</li>
-</ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Your Next Steps</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Before your next vendor call or internal kickoff:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;">1. Fill out Layer 1 completely. If you can't answer every question, that's your first action item.<br>2. Get a definitive answer from IT on automation access options. Remote machine? API? VPN for third-party tools?<br>3. Check if your current signing tool has an API. 5 minutes on Google could save you from buying a new tool.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>When getting quotes:</strong></p>
-<p style="margin-bottom: 16px; line-height: 1.7;">Share this checklist with your vendor. Any vendor who quotes without understanding your access layer is either padding for unknowns or about to blow your timeline.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Rough timeline math:</strong></p>
-<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">Access layer sorted + simple signature flow: 1-2 weeks to build</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Access layer needs remote machine setup: add 2-4 weeks</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Complex multi-signer workflow: add 1-2 weeks</li>
-<li style="margin-bottom: 8px; line-height: 1.6;">Large file pre-processing needed: add 1 week</li>
-</ul>
-<hr style="border: none; border-top: 2px solid #e5e5e5; margin: 32px 0;">
-<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Questions? Need Help Scoping This?</h2>
-<p style="margin-bottom: 16px; line-height: 1.7;">If you've filled out this checklist and you're still not sure how to approach the build, or you want someone to review your setup before you commit budget, reach out.</p>
-<p style="margin-bottom: 16px; line-height: 1.7;"><a href="https://ivanmanfredi.com/contact" target="_blank" rel="noopener noreferrer">Get in Touch</a></p></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build AI systems and workflow automation that actually work. Let's talk about your use case.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">Book a Free Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium uppercase tracking-wide"><p>&copy; 2026 All Rights Reserved.</p><div class="flex gap-6 mt-4 md:mt-0"><a href="mailto:ivan@intelligents.agency" class="hover:text-white">Contact</a></div></div></div></footer></body></html>
+
+<p>Clients who get this document stay clients for years. Clients who don't get this document call you at 11pm on a Sunday when the workflow breaks, then blame you for the fact that they can't fix it themselves.</p>
+
+<h2>7. Price For The Ongoing Relationship, Not The One-Time Build</h2>
+
+<p>Document automation projects have a tail. Source systems update their APIs, vendors change authentication methods, document templates get tweaked by someone in operations who didn't tell anyone. Budget for 8-15% of the build cost per year in maintenance, minimum.</p>
+
+<table>
+<thead>
+<tr><th>Project Type</th><th>Typical Build Cost (USD)</th><th>Annual Maintenance (USD)</th><th>Expected Lifespan</th></tr>
+</thead>
+<tbody>
+<tr><td>Single document stream, API-accessible</td><td>$4,000-8,000</td><td>$400-800</td><td>3-5 years</td></tr>
+<tr><td>Multi-stream, mixed access paths</td><td>$10,000-25,000</td><td>$1,200-3,000</td><td>3-4 years</td></tr>
+<tr><td>RPA-dependent workflow</td><td>$15,000-40,000</td><td>$3,000-8,000</td><td>1-2 years</td></tr>
+<tr><td>Enterprise integration with compliance</td><td>$30,000-80,000</td><td>$5,000-12,000</td><td>4-6 years</td></tr>
+</tbody>
+</table>
+
+<p>RPA-dependent workflows look cheaper upfront until you model the 5-year cost. Source systems break RPA constantly. An API integration with a 4-year lifespan and $600/year maintenance is almost always cheaper than an RPA build with a 1-year lifespan and $5,000/year maintenance, even if the RPA build quote is lower.</p>
+
+<blockquote>
+<p>The cheapest automation at signing is rarely the cheapest automation at renewal. Model the 3-year total cost before picking an access path.</p>
+</blockquote>
+
+<h2>Run This Before Your Next Scoping Call</h2>
+
+<p>If you're evaluating a document automation project in the next 30 days, spend 45 minutes running through these seven sections with your operations lead and whoever owns IT. If you'd rather do it together, I run paid scoping sessions for service businesses between 11 and 100 employees. You leave with the document inventory, access path map, scoring rubric filled in, and a realistic timeline you can take to any vendor — including ones that aren't me. Book a strategy call and we'll work through your specific document streams on the call.</p></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Want This Built For Your Business?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I design AI automation systems for service businesses (11-100 employees). 40+ systems shipped, 6,000+ hours automated across 8+ industries. Let's see if we fit.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic">Book Strategy Call</a></div></div></section></main><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a aria-label="LinkedIn (opens in new tab)" href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener" class="w-12 h-12 border-2 border-white flex items-center justify-center"><svg aria-hidden="true" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex justify-between items-center text-sm text-gray-400 uppercase tracking-wide"><p>&copy; 2026 Ivan Manfredi</p></div></div></footer><script>(function(){try{var q=new URLSearchParams(location.search);var p={event_type:"view",lm_slug:"a-framework-for-scoping-document-automation-projects-when-secure-infrastructure-access-is-required",src:q.get("src")||"direct",utm:{source:q.get("utm_source"),medium:q.get("utm_medium"),campaign:q.get("utm_campaign")},prospect_id:q.get("pid")||null,referrer:document.referrer||""};fetch("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p),keepalive:true}).catch(function(){});document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(/calendly.com/.test(href)){try{navigator.sendBeacon("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",new Blob([JSON.stringify({event_type:"cta_click",lm_slug:"a-framework-for-scoping-document-automation-projects-when-secure-infrastructure-access-is-required",src:q.get("src")||"direct",answers:{cta_href:href}})],{type:"application/json"}))}catch(_){}}},{passive:true})}catch(_){}})();</script></body></html>
