@@ -74,3 +74,23 @@
 
 @media (prefers-reduced-motion: reduce) { .lmc-progress-fill, .lmc-opt, .lmc-btn, .lmc-cat-fill, .lmc-score-ring .arc, .lmc-toast { transition: none !important; } }
 @media (max-width: 640px) { .lmc-hero { padding: 2rem 1.25rem; } .lmc-card { padding: 1.5rem 1.25rem; } .lmc-nav { flex-direction: column; } .lmc-btn { width: 100%; } }
+
+/* LM intro block — added between hero and widget */
+.lmc-intro { position: relative; background: #000; color: #fff; padding: 3rem 1.5rem; overflow: hidden; border-bottom: 4px solid #000; }
+.lmc-intro::before { content: ""; position: absolute; inset: 0; opacity: .08; background-size: 30px 30px; background-image: linear-gradient(to right, #00E676 1px, transparent 1px), linear-gradient(to bottom, #00E676 1px, transparent 1px); pointer-events: none; }
+.lmc-intro-inner { position: relative; max-width: 860px; margin: 0 auto; display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+.lmc-intro-avatar { flex-shrink: 0; width: 128px; height: 128px; border: 4px solid #00E676; object-fit: cover; box-shadow: 6px 6px 0 #00E676; }
+.lmc-intro-body { flex: 1 1 320px; min-width: 0; }
+.lmc-intro-badge { display: inline-block; padding: .25rem 1rem; background: #00E676; color: #000; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 1rem; }
+.lmc-intro-h { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin: 0 0 .75rem; color: #fff; }
+.lmc-intro-p { font-size: 1rem; font-weight: 500; line-height: 1.6; max-width: 38rem; margin: 0 0 1.5rem; color: #ccc; }
+.lmc-intro-points { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: .5rem; font-size: .9rem; color: #fff; }
+.lmc-intro-points li { display: flex; gap: .75rem; align-items: center; }
+.lmc-intro-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #fff; color: #000; border: 2px solid #fff; font-size: .8rem; font-weight: 900; flex-shrink: 0; }
+.lmc-intro-icon.a { background: #00E676; }
+.lmc-intro-icon.b { background: #2979FF; color: #fff; }
+.lmc-intro-icon.c { background: #FF4081; color: #fff; }
+.lmc-intro-start { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.75rem; background: #00E676; color: #000; font-size: 1rem; font-weight: 900; text-transform: uppercase; border: 3px solid #fff; box-shadow: 6px 6px 0 #fff; cursor: pointer; font-family: inherit; letter-spacing: .05em; transition: transform .1s, box-shadow .1s; text-decoration: none; }
+.lmc-intro-start:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 #fff; }
+.lmc-intro-note { font-size: .78rem; color: #888; margin-top: .75rem; max-width: 32rem; }
+@media (prefers-reduced-motion: reduce) { .lmc-intro-start { transition: none !important; } }
