@@ -1,7 +1,7 @@
 {
   "slug": "5-manual-processes-costing-your-construction-company-10-hours-a-week-and-how-to-fix-them",
   "title": "5 Manual Processes Costing Your Construction Company 10+ Hours a Week",
-  "subtitle": "Self-audit to spot where your team is bleeding time and prioritize what to fix first",
+  "subtitle": "Self-audit checklist to spot where your team is bleeding time and prioritize what to automate first",
   "brand": {
     "accent": "#00E676",
     "hero_badge": "Action Checklist"
@@ -11,137 +11,137 @@
     {
       "id": "document-signing",
       "title": "Document Signing and Certification",
-      "description": "Manual page-by-page signing on SWPPPs, invoices, and debit notes is a compliance risk on top of a time sink.",
+      "description": "Manual page-by-page signing of PDFs, certificates, and invoices is a massive time sink and a compliance risk when pages get skipped.",
       "items": [
         {
           "id": "sign-page-by-page",
-          "text": "Audit whether someone manually signs each PDF page individually with e-sign, clicks, and password entry",
-          "tip": "Watch your signer work for 10 minutes and count the clicks per document",
+          "text": "Audit how many PDFs your team signs page-by-page in Adobe each day and log the total click count for one week",
+          "tip": "If the number tops 200 clicks per signer per day, batch signing will pay for itself in under 30 days",
           "impact": "high"
         },
         {
-          "id": "high-volume-signing",
-          "text": "Count documents requiring multi-page signatures per day and flag if the total exceeds 10",
-          "tip": "Include invoices, certifications, and debit notes in the count",
+          "id": "count-daily-volume",
+          "text": "Count every signer on your team handling 10+ multi-page documents per day across SWPPPs, invoices, and debit notes",
+          "tip": "List each signer by name so you know who to free up first",
           "impact": "high"
         },
         {
-          "id": "missed-signatures",
-          "text": "Check recent signed documents for skipped pages or missed signature fields",
-          "tip": "Pull 20 random completed files and spot-check every page",
+          "id": "flag-skipped-pages",
+          "text": "Pull the last 20 signed documents and flag any with missed signatures or skipped pages",
+          "tip": "Even one skipped SWPPP page can trigger a compliance issue, so treat misses as data, not blame",
           "impact": "high"
         },
         {
-          "id": "batch-signing-workflow",
-          "text": "Deploy a folder-triggered workflow that auto-signs designated pages and returns a batch summary for single approval",
-          "tip": "One approval replaces 200 clicks per session",
+          "id": "deploy-batch-signing",
+          "text": "Deploy a batch PDF signing workflow that auto-signs designated pages from a watch folder and routes completed files to an approval summary",
+          "tip": "Use a single approval per batch instead of clicking through every page individually",
           "impact": "high"
         }
       ]
     },
     {
-      "id": "job-order-entry",
+      "id": "job-order-data-entry",
       "title": "Job Order and Project Data Entry",
-      "description": "Re-typing the same project data across PM tools, Trello cards, and bid docs burns hours per job.",
+      "description": "Retyping the same project info into your PM tool, Trello cards, job orders, and bid docs wastes hours and introduces typos that cascade downstream.",
       "items": [
         {
-          "id": "duplicate-data-entry",
-          "text": "Map every system where new-job data (address, scope, client, area) gets manually re-typed",
-          "tip": "Draw the flow on paper, count the touchpoints",
+          "id": "map-data-flow",
+          "text": "Map every system where new job data is entered (PM tool, Trello, job order forms, bid docs) and mark every duplicate field",
+          "tip": "Each duplicate field is a sync point that should be one entry, not many",
           "impact": "high"
         },
         {
           "id": "single-source-intake",
-          "text": "Build one intake form that pushes job data to every downstream tool automatically",
-          "tip": "Use webhooks to sync to Trello, PM tool, and bid templates simultaneously",
+          "text": "Create one intake form that captures project description, area, site address, and client info as the single source of truth",
+          "tip": "Tools like Tally or Fillout connect to n8n in under 10 minutes",
           "impact": "high"
         },
         {
-          "id": "standardize-job-fields",
-          "text": "Define required fields once so every system pulls from the same schema",
-          "tip": "Lock the field list with your ops manager before building automation",
+          "id": "automate-card-creation",
+          "text": "Automate Trello card and job order creation from the intake form using an n8n workflow triggered on submission",
+          "tip": "Push the same payload to all downstream systems so nothing drifts",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "bid-and-proposal-prep",
+      "title": "Bid and Proposal Preparation",
+      "description": "Hand-copying scope, pricing, and boilerplate from old proposals into new bids burns estimator hours and produces inconsistent documents.",
+      "items": [
+        {
+          "id": "inventory-bid-templates",
+          "text": "Inventory the last 10 bids your team produced and identify which sections were copy-pasted from prior proposals",
+          "tip": "If 60%+ of content is recycled, a template engine will cut bid prep by half",
+          "impact": "medium"
+        },
+        {
+          "id": "build-template-library",
+          "text": "Build a structured template library with reusable scope blocks, pricing tables, and terms in a single source",
+          "tip": "Store blocks in ClickUp or Notion so estimators pull from one place, not 30 old PDFs",
+          "impact": "high"
+        },
+        {
+          "id": "automate-proposal-assembly",
+          "text": "Set up an automated proposal assembly that pulls intake data and template blocks into a finished PDF in under 5 minutes",
+          "tip": "Send the draft to the estimator for review, not creation",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "field-to-office-reporting",
+      "title": "Field-to-Office Reporting",
+      "description": "Daily logs, photos, and timesheets that crews fill out by hand and ops re-enters into spreadsheets is double work for everyone.",
+      "items": [
+        {
+          "id": "audit-daily-logs",
+          "text": "Audit how crews currently submit daily logs, photos, and timesheets and time how long re-entry takes in the office",
+          "tip": "If office staff spends 30+ minutes per crew per day on re-entry, mobile capture pays back in week one",
+          "impact": "medium"
+        },
+        {
+          "id": "deploy-mobile-capture",
+          "text": "Deploy a mobile form crews fill once on-site that pushes structured data straight to your PM tool and accounting system",
+          "tip": "Require photo and GPS stamp so logs are audit-ready without office cleanup",
+          "impact": "high"
+        },
+        {
+          "id": "automate-summary-reports",
+          "text": "Automate a daily project summary that emails the PM and owner each evening with logs, photos, and hours rolled up",
+          "tip": "Replaces the morning standup spreadsheet review",
           "impact": "medium"
         }
       ]
     },
     {
-      "id": "estimating-bids",
-      "title": "Estimating and Bid Preparation",
-      "description": "Spreadsheet-driven bids with manual markup calculations slow response time and introduce errors.",
+      "id": "vendor-and-invoice-processing",
+      "title": "Vendor and Invoice Processing",
+      "description": "Manually keying vendor invoices into accounting, matching POs, and chasing approvals is one of the slowest workflows in the business.",
       "items": [
         {
-          "id": "bid-template-library",
-          "text": "Build a reusable bid template library keyed by project type and scope",
-          "tip": "Start with your 3 most common job types",
-          "impact": "high"
-        },
-        {
-          "id": "auto-markup-calc",
-          "text": "Automate labor, material, and markup calculations from a single input sheet",
-          "tip": "Protect formula cells so field staff cannot overwrite them",
-          "impact": "high"
-        },
-        {
-          "id": "bid-turnaround-tracking",
-          "text": "Track time from RFP received to bid delivered and set a target under 48 hours",
-          "tip": "Faster bids win more jobs at better margins",
-          "impact": "medium"
-        }
-      ]
-    },
-    {
-      "id": "field-reporting",
-      "title": "Daily Field Reports and Progress Updates",
-      "description": "Foremen texting photos and updates to office staff who re-type them into reports is pure waste.",
-      "items": [
-        {
-          "id": "mobile-report-form",
-          "text": "Deploy a mobile form for foremen to submit daily reports with photos directly from the field",
-          "tip": "Voice-to-text fields remove typing friction for crews",
-          "impact": "high"
-        },
-        {
-          "id": "auto-pdf-reports",
-          "text": "Generate client-ready PDF daily reports automatically from submitted field data",
-          "tip": "Schedule delivery to clients at 6pm each workday",
+          "id": "count-monthly-invoices",
+          "text": "Count vendor invoices processed last month and the average minutes spent per invoice from receipt to payment",
+          "tip": "Multiply minutes by hourly rate to get the true cost per invoice",
           "impact": "medium"
         },
         {
-          "id": "progress-dashboard",
-          "text": "Centralize progress photos and notes in one dashboard searchable by job and date",
-          "tip": "Eliminates the 'find that photo from last Tuesday' scramble",
-          "impact": "medium"
-        }
-      ]
-    },
-    {
-      "id": "invoicing-collections",
-      "title": "Invoicing and Collections Follow-Up",
-      "description": "Manual invoice creation and payment chasing costs billable hours and delays cash flow.",
-      "items": [
-        {
-          "id": "invoice-from-completion",
-          "text": "Trigger invoice drafts automatically when project milestones hit completed status",
-          "tip": "Connect PM tool completion events to your accounting system",
+          "id": "automate-invoice-extraction",
+          "text": "Set up automated invoice extraction that reads vendor PDFs and pushes line items into your accounting system",
+          "tip": "Claude or GPT-4 vision handles non-standard layouts that OCR alone misses",
           "impact": "high"
         },
         {
-          "id": "automated-reminders",
-          "text": "Schedule automated payment reminders at 7, 14, and 30 days past due",
-          "tip": "Include a one-click payment link in every reminder",
-          "impact": "high"
-        },
-        {
-          "id": "aging-report-review",
-          "text": "Review an automated weekly aging report every Monday with your bookkeeper",
-          "tip": "Flag anything over 45 days for a personal call",
+          "id": "route-approvals",
+          "text": "Route approvals through a single channel (Slack or email) with one-click approve and auto-post to accounting",
+          "tip": "Set a dollar threshold so small invoices auto-approve and PMs only see what matters",
           "impact": "medium"
         }
       ]
     }
   ],
   "completion_cta": {
-    "headline": "You Found the Leaks. Now Plug Them.",
-    "description": "Take the section with the most checked boxes and book a 30-minute automation audit. We will map the exact workflow, estimate hours saved, and scope a fix you can deploy in under 30 days."
+    "headline": "You found the leaks. Now plug them.",
+    "description": "Take the section with the most checked boxes and book a 30-minute automation audit. We'll scope the fix, estimate the hours saved, and tell you if it's worth building before you spend a dollar."
   }
 }
