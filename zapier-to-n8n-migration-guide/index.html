@@ -22,246 +22,215 @@
 
 **Resource Type:** Guide
 
-**Introduction:** You made the right call. This guide walks you through auditing your current Zapier workflows, prioritizing what to migrate first, and executing the move without breakin</p><div class="mt-10 relative overflow-hidden bg-black p-8 md:p-12 border-4 border-black shadow-comic"><div class="absolute inset-0 opacity-[0.07]" style="background-size:30px 30px;background-image:linear-gradient(to right,#00E676 1px,transparent 1px),linear-gradient(to bottom,#00E676 1px,transparent 1px)"></div><div class="relative"><div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"><div class="text-center md:text-left flex flex-col items-center md:items-start gap-3"><div class="w-20 h-20 border-2 border-accent/30 flex items-center justify-center"><svg width="48" height="48" fill="none" stroke="#00E676" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="text-accent text-5xl md:text-6xl font-black leading-none">1,886</div><div class="text-white text-sm font-bold uppercase tracking-widest">Words</div></div><div class="flex-1"><div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-black text-xs font-bold uppercase tracking-wide">In-Depth Guide</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">9 Min Read</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">27 Sections</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Free Resource</span></div><p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">A comprehensive resource you can reference anytime. Scroll down for the full content.</p></div></div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><h2>The Zapier Bill That Broke The Camel's Back</h2>
+**Introduction:** You made the right call. This guide walks you through auditing your current Zapier workflows, prioritizing what to migrate first, and executing the move without breakin</p><div class="mt-10 relative overflow-hidden bg-black p-8 md:p-12 border-4 border-black shadow-comic"><div class="absolute inset-0 opacity-[0.07]" style="background-size:30px 30px;background-image:linear-gradient(to right,#00E676 1px,transparent 1px),linear-gradient(to bottom,#00E676 1px,transparent 1px)"></div><div class="relative"><div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"><div class="text-center md:text-left flex flex-col items-center md:items-start gap-3"><div class="w-20 h-20 border-2 border-accent/30 flex items-center justify-center"><svg width="48" height="48" fill="none" stroke="#00E676" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="text-accent text-5xl md:text-6xl font-black leading-none">1,565</div><div class="text-white text-sm font-bold uppercase tracking-widest">Words</div></div><div class="flex-1"><div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-black text-xs font-bold uppercase tracking-wide">In-Depth Guide</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">8 Min Read</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">18 Sections</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Free Resource</span></div><p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">A comprehensive resource you can reference anytime. Scroll down for the full content.</p></div></div></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><h2>The average mid-market service business I audit is paying $487/month on Zapier to run workflows that would cost $34/month on a self-hosted n8n instance. That's a 14x markup for a tool you've outgrown.</h2>
 
-<p>Last quarter I audited a 34-person staffing firm paying <strong>$847/month</strong> to Zapier for 47 zaps. We rebuilt the same logic on n8n in nine days. Their new monthly cost: <strong>$31</strong> in DigitalOcean droplet fees. That's a 96% reduction, and the new system does things their old one couldn't — branching logic, AI enrichment, retries that actually retry.</p>
-
-<p>This guide walks you through the same migration, step by step, without breaking the automations your team relies on every morning at 8 AM.</p>
-
-<h3>Quick on who's talking:</h3>
+<p>Quick on who's talking:</p>
 
 <ul>
 <li><strong>AI &amp; Automation Architect</strong> — 40+ systems deployed for service businesses</li>
-<li>Built n8n + Claude workflows that have automated <strong>6,000+ hours</strong> of repeat work</li>
+<li>Built n8n + Claude workflows that have automated 6,000+ hours of repeat work</li>
 <li>Work spans 8+ industries (construction, manufacturing, staffing, property management, agencies)</li>
 <li>Focus on mid-market 11-100 employees, not enterprise, not solo founders</li>
 </ul>
 
 <h2>Why This Migration Matters Right Now</h2>
 
-<p>Zapier's per-task pricing was designed for a world where your business ran 500 automated tasks a month. Once you're past 10,000 tasks — which happens fast at 11-100 employees — every new customer makes your automation bill grow. That's backwards. Infrastructure should get cheaper per unit as you scale, not more expensive.</p>
+<p>Zapier's per-task pricing is brilliantly designed to punish success. The more your business grows, the more your automation bill grows, and the math gets ugly fast. A workflow firing 10,000 tasks a month on Zapier's Professional plan costs you roughly $73/month before you add any teammates or premium apps. Run that same workflow on a $20/month Hetzner box with n8n and your marginal cost per task is functionally zero.</p>
 
-<p>The second problem is structural. Zapier's Paths, Filters, and Formatter steps each consume tasks, so a single "lead routing" zap can burn 4-6 tasks per execution. I've watched a property management company hit their 50,000-task plan limit on the 19th of every month, then frantically upgrade mid-cycle at premium pricing. That's not a tooling problem. That's a business model problem.</p>
+<p>But the cost is only half the story. The bigger problem is what you can't build on Zapier. Real branching logic, AI agent workflows, custom database queries, webhook orchestration with retries, multi-tenant routing — these either don't exist on Zapier or they exist as crippled versions that make you fight the platform. n8n removes the ceiling.</p>
 
 <blockquote>
-<p>Zapier charges you more as you succeed. n8n charges you the same whether you run 1,000 tasks or 1,000,000. At mid-market volume, that gap pays for an entire ops hire within 18 months.</p>
+<p>If you're running more than 15 active Zaps or paying over $200/month, you're past the breakeven point. Migration pays for itself inside 60 days.</p>
 </blockquote>
 
-<h2>1. Audit Your Current Zapier Setup</h2>
+<h2>1. Audit What You Actually Have</h2>
 
-<p>Before you migrate anything, you need a complete picture of what you're running. Most teams I work with underestimate their zap count by 30-40%. They remember the important ones and forget the cron-job zaps that quietly sync data at 3 AM.</p>
+<p>Before you migrate a single workflow, you need a clean inventory. Most teams I work with discover they have Zaps running that nobody owns, nobody monitors, and that haven't done anything useful in eight months.</p>
 
-<h3>Export Your Zap Inventory</h3>
+<h3>Build Your Zap Inventory Spreadsheet</h3>
 
-<p>Open your Zapier dashboard, filter by "On" status, and document every active zap. Use this template:</p>
+<p>Open Zapier, go to your dashboard, and document every active Zap. Don't skip the ones you assume are simple — those are usually the ones with hidden Formatter steps that take an hour to rebuild.</p>
 
 <table>
 <thead>
-<tr><th>Zap Name</th><th>Trigger App</th><th>Action Apps</th><th>Monthly Tasks</th><th>Criticality</th><th>Complexity</th></tr>
+<tr><th>Zap Name</th><th>Trigger</th><th>Actions</th><th>Monthly Tasks</th><th>Criticality</th><th>Owner</th></tr>
 </thead>
 <tbody>
-<tr><td>New Lead to Slack + CRM</td><td>HubSpot</td><td>Slack, Sheets</td><td>~2,400</td><td>High</td><td>Low</td></tr>
-<tr><td>Invoice Created Notification</td><td>Xero</td><td>Gmail, Notion</td><td>~600</td><td>High</td><td>Medium</td></tr>
-<tr><td>Form to CRM Routing</td><td>Typeform</td><td>HubSpot, Slack</td><td>~3,600</td><td>Medium</td><td>High (Paths)</td></tr>
-<tr><td>Daily Pipeline Digest</td><td>Schedule</td><td>HubSpot, Gmail</td><td>~30</td><td>Low</td><td>Medium</td></tr>
+<tr><td>New Lead → CRM</td><td>Typeform</td><td>HubSpot, Slack</td><td>320</td><td>High</td><td>Sales</td></tr>
+<tr><td>Invoice Paid → Ops</td><td>Stripe</td><td>Xero, Gmail, Notion</td><td>180</td><td>High</td><td>Finance</td></tr>
+<tr><td>Form → Onboarding</td><td>Tally</td><td>ClickUp, Gmail, Drive</td><td>95</td><td>High</td><td>Delivery</td></tr>
+<tr><td>Calendar → Reminder</td><td>Google Calendar</td><td>WhatsApp, Slack</td><td>540</td><td>Medium</td><td>CS</td></tr>
+<tr><td>Slack → Archive</td><td>Slack</td><td>Notion</td><td>2,100</td><td>Low</td><td>None</td></tr>
 </tbody>
 </table>
 
-<h3>Identify Your Core Integrations</h3>
-
-<p>Look at the trigger and action columns. Which apps appear in 5+ zaps? Those are your core integrations. They need to work flawlessly in n8n before you migrate anything secondary. For most service businesses, the list looks like this:</p>
+<h3>Score Each Workflow on Migration Difficulty</h3>
 
 <ul>
-<li><strong>CRM:</strong> HubSpot, Salesforce, Pipedrive, Close</li>
-<li><strong>Accounting:</strong> Xero, QuickBooks, Stripe</li>
-<li><strong>Communication:</strong> Slack, Gmail, Outlook, Teams</li>
-<li><strong>Project management:</strong> ClickUp, Notion, Asana, Monday</li>
-<li><strong>Forms &amp; intake:</strong> Typeform, Tally, Jotform, Google Forms</li>
+<li><strong>Easy (1 point):</strong> Single trigger, 1-2 actions, standard apps (Gmail, Slack, Sheets, HubSpot).</li>
+<li><strong>Medium (3 points):</strong> 3-5 steps, includes Formatter or Filter, uses common but slightly niche apps.</li>
+<li><strong>Hard (5 points):</strong> Paths logic, Code by Zapier blocks, webhooks with custom auth, anything chaining 6+ steps.</li>
 </ul>
 
-<h3>Flag The Complex Ones</h3>
+<p>Total your scores. Anything under 30 total points is a one-weekend migration. Anything over 80 points needs a phased plan with rollback windows.</p>
 
-<p>Roughly 70% of zaps migrate in under an hour. The other 30% need real engineering. Flag any zap that:</p>
+<h2>2. Run the Real Cost Comparison</h2>
 
-<ul>
-<li><strong>Uses Zapier-native features:</strong> Paths, Formatter, Filter, Sub-Zaps, Storage by Zapier</li>
-<li><strong>Has 5+ steps:</strong> these usually hide branching logic that needs careful translation</li>
-<li><strong>Connects to obscure apps:</strong> if the app isn't in n8n's 400+ node library, you'll need an HTTP Request node and the API docs</li>
-<li><strong>Touches money or contracts:</strong> invoicing, payments, MSA generation — test these in staging for at least a week before flipping over</li>
-</ul>
-
-<blockquote>
-<p>The audit isn't optional. I've seen migrations stall for six weeks because someone forgot the zap that emails the bookkeeper every Friday. Write it all down before you touch n8n.</p>
-</blockquote>
-
-<h2>2. Set Up Your n8n Instance</h2>
-
-<p>You have three deployment paths, and the right answer depends on your team's technical comfort.</p>
+<p>This is where the business case lives. Don't quote Zapier's marketing pricing — quote what you actually pay, including overage tiers and premium app fees.</p>
 
 <table>
 <thead>
-<tr><th>Option</th><th>Monthly Cost</th><th>Setup Time</th><th>Best For</th><th>Watch Out For</th></tr>
+<tr><th>Setup</th><th>Monthly Cost</th><th>Task Limit</th><th>Effective Cost / 10K tasks</th></tr>
 </thead>
 <tbody>
-<tr><td>n8n Cloud</td><td>$20-$667</td><td>5 minutes</td><td>Teams without DevOps</td><td>Execution caps, less control</td></tr>
-<tr><td>Self-hosted (DigitalOcean, Hetzner)</td><td>$12-$48</td><td>2-4 hours</td><td>Teams with one technical person</td><td>You manage backups &amp; updates</td></tr>
-<tr><td>Self-hosted + Supabase + Redis (production)</td><td>$50-$150</td><td>1-2 days</td><td>Mid-market with critical workflows</td><td>Worth hiring help for initial setup</td></tr>
+<tr><td>Zapier Professional (2K tasks)</td><td>$73</td><td>2,000</td><td>$365</td></tr>
+<tr><td>Zapier Team (50K tasks)</td><td>$103</td><td>50,000</td><td>$21</td></tr>
+<tr><td>Zapier Company (100K tasks)</td><td>$733</td><td>100,000</td><td>$73</td></tr>
+<tr><td>n8n self-hosted (Hetzner CX22)</td><td>$8</td><td>Unlimited*</td><td>~$0.80</td></tr>
+<tr><td>n8n Cloud Pro</td><td>$50</td><td>10,000 executions</td><td>$50</td></tr>
 </tbody>
 </table>
 
-<p>For most service businesses in the 11-100 range, I recommend self-hosted on a $24/month Hetzner CX22 with PostgreSQL backing. It handles 50,000+ executions per month without breaking a sweat, and it gives you full control over data residency — which matters if you're in healthcare, legal, or financial services.</p>
+<p><em>*Unlimited within hardware constraints. A $20 box handles 50K-100K executions/month comfortably for most service-business workloads.</em></p>
 
-<h3>Production Hardening Checklist</h3>
+<blockquote>
+<p>The hidden Zapier cost is premium app fees. HubSpot, Salesforce, and most enterprise CRMs are gated behind the $103+ tier — even if you only use them in one Zap.</p>
+</blockquote>
+
+<h2>3. Choose Your Hosting Path</h2>
+
+<p>You have three real options, and the right one depends on whether your team has any sysadmin capacity at all.</p>
+
+<table>
+<thead>
+<tr><th>Option</th><th>Best For</th><th>Setup Time</th><th>Monthly Cost</th><th>Tradeoff</th></tr>
+</thead>
+<tbody>
+<tr><td>n8n Cloud</td><td>Zero infra appetite, &lt;10K executions</td><td>10 min</td><td>$20-$50</td><td>Capped executions, no custom nodes</td></tr>
+<tr><td>Hetzner + Docker Compose</td><td>Most service businesses, 11-100 employees</td><td>2-3 hrs</td><td>$8-$20</td><td>You own backups and updates</td></tr>
+<tr><td>Railway / Render</td><td>Want managed infra, hate servers</td><td>30 min</td><td>$25-$60</td><td>Pricier than Hetzner, easier than DIY</td></tr>
+</tbody>
+</table>
+
+<p>For mid-market service businesses, Hetzner CX22 ($8/month, 4GB RAM, 2 vCPU) plus Supabase free tier for the database is the sweet spot. It handles every workload I've ever migrated for a sub-100-employee team and leaves headroom.</p>
+
+<h3>The Stack I Deploy For Clients</h3>
 
 <ul>
-<li><strong>Enable queue mode:</strong> separates main and worker processes so heavy workflows don't block the UI</li>
-<li><strong>Use external PostgreSQL:</strong> SQLite is fine for testing, terrible for production</li>
-<li><strong>Set up automated backups:</strong> daily database dumps to S3 or Backblaze B2</li>
-<li><strong>Configure SSL via Caddy or Nginx:</strong> never expose n8n on plain HTTP</li>
-<li><strong>Enable basic auth or SSO:</strong> n8n's built-in user management works fine for teams under 20</li>
+<li><strong>Compute:</strong> Hetzner Cloud, CX22 in Falkenstein or Ashburn</li>
+<li><strong>Container:</strong> Docker Compose with n8n, Postgres, and Caddy for HTTPS</li>
+<li><strong>Database:</strong> Supabase for application data, separate Postgres for n8n itself</li>
+<li><strong>Backups:</strong> Nightly pg_dump pushed to Backblaze B2 ($0.005/GB)</li>
+<li><strong>Monitoring:</strong> Uptime Kuma on the same box, alerts to Slack</li>
 </ul>
 
-<h2>3. Migrate Your Credentials First</h2>
+<h2>4. Translate Zapier Concepts to n8n</h2>
 
-<p>This is the step everyone underestimates. In Zapier, every zap stores its own connection. In n8n, credentials are reusable across workflows — which is better, but means you need to set them all up once before migrating any zaps.</p>
+<p>The single biggest reason migrations stall is that teams try to rebuild Zapier inside n8n. They're not the same paradigm. Once you internalize the translation layer, rebuilds get 3x faster.</p>
 
-<p>Pull up your audit table from Section 1 and create n8n credentials for every unique app. For OAuth services like HubSpot or Google Workspace, you'll need to create your own OAuth app in their developer console. This adds 15-30 minutes per integration but eliminates Zapier's rate limiting and gives you a dedicated quota.</p>
+<table>
+<thead>
+<tr><th>Zapier Concept</th><th>n8n Equivalent</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Zap</td><td>Workflow</td><td>n8n workflows can have multiple triggers</td></tr>
+<tr><td>Trigger</td><td>Trigger node</td><td>Webhook, Schedule, app-specific triggers</td></tr>
+<tr><td>Action</td><td>Action node</td><td>Same idea, more options per node</td></tr>
+<tr><td>Path</td><td>Switch or IF node</td><td>Switch supports unlimited branches</td></tr>
+<tr><td>Formatter</td><td>Set, Code, or Edit Fields node</td><td>Code node = full JavaScript or Python</td></tr>
+<tr><td>Filter</td><td>IF node or Filter node</td><td>IF stops the branch, Filter drops items</td></tr>
+<tr><td>Sub-Zap</td><td>Execute Workflow node</td><td>Cleaner than Zapier sub-Zaps</td></tr>
+<tr><td>Storage by Zapier</td><td>Postgres, Redis, or Supabase</td><td>Use a real database, not key-value hacks</td></tr>
+<tr><td>Code by Zapier</td><td>Code node</td><td>No timeouts, no row limits</td></tr>
+</tbody>
+</table>
 
-<h3>Credentials Setup Order</h3>
+<h3>The Mental Model Shift</h3>
+
+<p>Zapier thinks in single records. Each Zap run handles one item. n8n thinks in arrays — every node receives a list of items and processes them in parallel. This trips up new users constantly.</p>
+
+<ul>
+<li><strong>Zapier mindset:</strong> "When a new lead arrives, send a Slack message and add to HubSpot."</li>
+<li><strong>n8n mindset:</strong> "When leads arrive, transform the array, route by region, batch the HubSpot calls, fan out the Slack notifications."</li>
+</ul>
+
+<p>Once you stop fighting the array model, you start writing one workflow that replaces five Zaps.</p>
+
+<h2>5. Migrate in Three Waves, Never All At Once</h2>
+
+<p>The single biggest mistake I see: teams try to migrate everything in a weekend. Then a critical workflow breaks on Monday morning, the CEO loses faith, and the project gets shelved for six months.</p>
+
+<h3>Wave 1: Low-Risk Workflows (Week 1)</h3>
+
+<ul>
+<li><strong>What to migrate:</strong> Internal notifications, archival jobs, anything where a 24-hour outage costs nothing.</li>
+<li><strong>Why first:</strong> You build platform muscle without business risk.</li>
+<li><strong>Examples:</strong> Slack-to-Notion archive, daily metric digests, internal birthday reminders.</li>
+</ul>
+
+<h3>Wave 2: Operational Workflows (Weeks 2-3)</h3>
+
+<ul>
+<li><strong>What to migrate:</strong> Lead routing, form processing, calendar reminders, customer success touchpoints.</li>
+<li><strong>Why second:</strong> A short outage is recoverable, but you need monitoring in place.</li>
+<li><strong>Run both in parallel</strong> for 7 days. Compare execution logs. Flip the trigger source only after a clean week.</li>
+</ul>
+
+<h3>Wave 3: Revenue-Critical Workflows (Weeks 4+)</h3>
+
+<ul>
+<li><strong>What to migrate:</strong> Invoicing, payment confirmations, contract delivery, anything tied to cash.</li>
+<li><strong>Why last:</strong> By now you trust the platform and have a runbook for failures.</li>
+<li><strong>Always run in parallel for 14 days minimum</strong> with reconciliation reports.</li>
+</ul>
+
+<blockquote>
+<p>The parallel-run period is non-negotiable. Pause your Zapier task counter, leave the Zap active, and compare outputs daily. The cost of two weeks of overlap is a rounding error compared to a missed invoice.</p>
+</blockquote>
+
+<h2>6. Build the Migration Runbook</h2>
+
+<p>For every workflow you migrate, document the same five things. This is what separates a clean migration from a six-month death march.</p>
 
 <ol>
-<li><strong>Communication tools first</strong> (Slack, Gmail) — you'll use these for migration testing notifications</li>
-<li><strong>Core data sources next</strong> (CRM, database, forms) — these power the most workflows</li>
-<li><strong>Action services last</strong> (accounting, document generation, payment) — highest blast radius if misconfigured</li>
+<li><strong>Trigger source:</strong> Where data enters. Webhook URL, polling schedule, or app event.</li>
+<li><strong>Data shape:</strong> Sample payload from a real Zapier run. Paste it into the n8n trigger as test data.</li>
+<li><strong>Side effects:</strong> Every external system the workflow writes to. Track these for the parallel-run reconciliation.</li>
+<li><strong>Failure mode:</strong> What happens when an API errors out. Retry policy, dead-letter queue, alert channel.</li>
+<li><strong>Owner:</strong> Named human who gets paged when it breaks. Not a team alias. A person.</li>
 </ol>
 
-<blockquote>
-<p>Test every credential with a simple "fetch one record" workflow before you build anything real. Catching a bad OAuth scope now saves you debugging a broken production workflow at 11 PM on a Tuesday.</p>
-</blockquote>
-
-<h2>4. Rebuild Workflows In Priority Order</h2>
-
-<p>Don't migrate alphabetically. Don't migrate the ones you understand best. Migrate in the order that minimizes business risk and maximizes early wins.</p>
-
-<h3>The Migration Priority Rubric</h3>
+<h3>Example: Migrating a Lead-Routing Zap</h3>
 
 <table>
 <thead>
-<tr><th>Score</th><th>Criticality</th><th>Complexity</th><th>Action</th></tr>
+<tr><th>Field</th><th>Value</th></tr>
 </thead>
 <tbody>
-<tr><td>1</td><td>Low</td><td>Low</td><td>Migrate first — risk-free practice</td></tr>
-<tr><td>2</td><td>Medium</td><td>Low</td><td>Migrate second — quick wins</td></tr>
-<tr><td>3</td><td>High</td><td>Low</td><td>Migrate third — high ROI, low risk</td></tr>
-<tr><td>4</td><td>Medium</td><td>High</td><td>Migrate fourth — needs design time</td></tr>
-<tr><td>5</td><td>High</td><td>High</td><td>Migrate last — staging + parallel run required</td></tr>
+<tr><td>Trigger</td><td>Typeform webhook → n8n Webhook node</td></tr>
+<tr><td>Sample payload</td><td>Pasted from Typeform "Resend webhook" feature</td></tr>
+<tr><td>Side effects</td><td>HubSpot contact create, Slack #sales-leads post, Google Sheet append</td></tr>
+<tr><td>Failure mode</td><td>3 retries with exponential backoff, then Slack alert to ops channel</td></tr>
+<tr><td>Owner</td><td>Maria (Sales Ops)</td></tr>
 </tbody>
 </table>
 
-<h3>Translating Zapier Concepts To n8n</h3>
+<h2>7. Avoid the Five Migration Traps I See Most Often</h2>
 
-<p>Most one-to-one translations are obvious. The tricky ones are below:</p>
-
-<ul>
-<li><strong>Zapier Paths → n8n Switch or IF nodes:</strong> Switch handles 4+ branches cleanly, IF for binary splits</li>
-<li><strong>Zapier Formatter → n8n Set, Code, or Date &amp; Time nodes:</strong> the Set node handles 90% of cases without writing code</li>
-<li><strong>Zapier Filter → n8n IF node with the "false" branch left empty:</strong> the workflow simply stops on that path</li>
-<li><strong>Zapier Sub-Zaps → n8n Execute Workflow node:</strong> better than Zapier's version because you can pass complex objects</li>
-<li><strong>Zapier Storage → Supabase, Postgres, or n8n's static data API:</strong> for anything more than 10MB, use Supabase</li>
-<li><strong>Zapier Webhooks → n8n Webhook trigger:</strong> identical concept, but n8n gives you the full URL with no plan-based throttling</li>
-</ul>
-
-<h3>Run Both Systems In Parallel</h3>
-
-<p>For high-criticality workflows, run the n8n version alongside the Zapier version for 7-14 days. Send the n8n output to a Slack channel called <code>#migration-shadow</code> instead of taking real action. Compare the outputs every morning. When you've gone five business days with zero discrepancies, kill the Zap.</p>
-
-<h2>5. Handle The Edge Cases Zapier Hides From You</h2>
-
-<p>Zapier silently handles a lot of things you'll need to think about explicitly in n8n. This is good — it means you'll actually understand your workflows — but it's a learning curve.</p>
-
-<h3>Error Handling</h3>
-
-<p>In Zapier, a failed task shows up in your task history and maybe sends an email. In n8n, you build error handling into the workflow itself. Use the <strong>Error Trigger</strong> node to create a single error-handling workflow that catches failures from any other workflow. Route those errors to Slack with workflow name, node name, error message, and execution URL. You'll catch problems hours or days before your team would have noticed.</p>
-
-<h3>Rate Limiting</h3>
-
-<p>Zapier throttles you transparently. In n8n, when you hammer an API, you get the API's actual rate limit error. Use the <strong>Wait</strong> node, the <strong>Loop Over Items</strong> node with batch size, or the built-in retry logic on HTTP Request nodes. For HubSpot, that means batches of 100 with 200ms delays. For Notion, batches of 3 with 350ms delays.</p>
-
-<h3>Data Type Strictness</h3>
-
-<p>Zapier coerces types aggressively. n8n respects them. If a webhook sends a number as a string, n8n keeps it as a string until you explicitly convert it. Use the <strong>Edit Fields (Set)</strong> node with the type-conversion toggles, or a small <strong>Code</strong> node with <code>Number(item.json.amount)</code>.</p>
-
-<blockquote>
-<p>The first month on n8n, you'll find three or four zaps that have been silently dropping or corrupting data for years. Zapier hid the failures. n8n surfaces them. Treat this as a feature, not a bug.</p>
-</blockquote>
-
-<h2>6. Cost Analysis: What You Actually Save</h2>
-
-<p>Here's a real before/after from a 62-person commercial cleaning company I migrated last year:</p>
-
-<table>
-<thead>
-<tr><th>Line Item</th><th>Zapier (Before)</th><th>n8n (After)</th></tr>
-</thead>
-<tbody>
-<tr><td>Platform / Hosting</td><td>$599/mo (Team plan, 50K tasks)</td><td>$28/mo (Hetzner CX22)</td></tr>
-<tr><td>Database / Storage</td><td>Included (limited)</td><td>$25/mo (Supabase Pro)</td></tr>
-<tr><td>Backup &amp; Monitoring</td><td>Included</td><td>$8/mo (Backblaze + UptimeRobot)</td></tr>
-<tr><td>Overage / Upgrades</td><td>$180/mo average</td><td>$0</td></tr>
-<tr><td><strong>Monthly Total</strong></td><td><strong>$779</strong></td><td><strong>$61</strong></td></tr>
-<tr><td><strong>Annual Total</strong></td><td><strong>$9,348</strong></td><td><strong>$732</strong></td></tr>
-</tbody>
-</table>
-
-<p>That's <strong>$8,616 per year</strong> back in the budget. They reinvested it into a part-time ops contractor who maintains the workflows and builds new ones — work that previously sat in a "someday" backlog.</p>
-
-<h3>The Hidden Savings Nobody Talks About</h3>
+<p>Every migration I've done for a service business hits at least one of these. Knowing them in advance saves a week of debugging.</p>
 
 <ul>
-<li><strong>Faster builds:</strong> n8n's UI is denser; experienced builders ship workflows 30-40% faster than in Zapier</li>
-<li><strong>Better debugging:</strong> per-execution logs with full input/output JSON cut troubleshooting time roughly in half</li>
-<li><strong>AI workflows actually work:</strong> n8n's native AI agent and LangChain nodes let you build things that would require 8+ Zapier steps and a Code by Zapier node</li>
-<li><strong>No vendor lock-in:</strong> your workflows are JSON files you own; export, version control, redeploy anywhere</li>
-</ul>
-
-<h2>7. The 30-Day Migration Plan</h2>
-
-<p>If you're staring at 40+ zaps and wondering where to start, here's the calendar I give clients.</p>
-
-<h3>Week 1: Foundation</h3>
-
-<ul>
-<li><strong>Days 1-2:</strong> Complete the audit table from Section 1</li>
-<li><strong>Days 3-4:</strong> Stand up the n8n instance and harden it</li>
-<li><strong>Day 5:</strong> Set up all credentials and test each one with a hello-world workflow</li>
-</ul>
-
-<h3>Week 2: Easy Wins</h3>
-
-<ul>
-<li><strong>Days 6-10:</strong> Migrate every workflow scoring 1-3 on the priority rubric</li>
-<li><strong>Goal:</strong> 50-60% of zap count migrated, 20-30% of cost saved</li>
-</ul>
-
-<h3>Week 3: The Hard Stuff</h3>
-
-<ul>
-<li><strong>Days 11-15:</strong> Tackle Paths, multi-step workflows, and anything with custom Code by Zapier steps</li>
-<li><strong>Build the Error Trigger workflow and connect it to every migrated workflow</strong></li>
-</ul>
-
-<h3>Week 4: Parallel Run + Cutover</h3>
-
-<ul>
-<li><strong>Days 16-22:</strong> Run high-criticality workflows in shadow mode</li>
-<li><strong>Days 23-27:</strong> Flip workflows over one at a time, starting Monday morning so you have the full week to catch issues</li>
-<li><strong>Days 28-30:</strong> Downgrade or cancel Zapier, document the new system, train one backup person</li>
+<li><strong>Webhook URL drift:</strong> Zapier webhook URLs are baked into upstream apps (Typeform, Stripe, Calendly). When you migrate, you have to update every upstream config — and the team that owns those apps usually isn't the team running the migration.</li>
+<li><strong>Credential reuse:</strong> Don't reuse OAuth tokens between Zapier and n8n. Create fresh app connections in n8n with their own tokens. Otherwise revoking access in one platform kills the other.</li>
+<li><strong>Timezone defaults:</strong> Zapier defaults to your account timezone. n8n defaults to UTC. Schedule triggers fire at the wrong hour and nobody notices until a Monday morning report goes out at 3am.</li>
+<li><strong>Rate limits:</strong> n8n is fast enough to hit API rate limits that Zapier was naturally throttling. Use the n8n "Loop Over Items" node with a wait or the built-in batching options on HTTP Request.</li>
+<li><strong>Silent failures:</strong> Zapier emails you when a Zap turns off. n8n doesn't. Set up a workflow that pings every active workflow's status weekly and posts to Slack. Took me getting burned twice to make this standard.</li>
 </ul>
 
 <blockquote>
-<p>The teams that fail at this migration try to do it in a weekend. The teams that succeed treat it like a real project with milestones, owners, and a rollback plan. Budget the calendar time, not just the labor hours.</p>
+<p>The credential trap is the most expensive one. I've seen a team revoke a Zapier HubSpot connection while decommissioning, not realize the n8n connection used the same OAuth grant, and lose four hours of inbound leads on a Tuesday.</p>
 </blockquote>
 
-<h2>What To Do Next</h2>
+<h2>Closing</h2>
 
-<p>Start with the audit. Don't open n8n, don't price out servers, don't read more migration guides. Open Zapier, list every active zap with its task volume and criticality, and you'll know within 90 minutes whether this migration saves you $2,000 a year or $20,000. If you'd like a second set of eyes on your audit before you commit, I review them for free for service businesses in the 11-100 range — bring the spreadsheet and I'll mark up the priority order, the gotchas, and the rough timeline based on what I've seen across 40+ migrations.</p></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Want This Built For Your Business?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I design AI automation systems for service businesses (11-100 employees). 40+ systems shipped, 6,000+ hours automated across 8+ industries. Let's see if we fit.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic">Book Strategy Call</a></div></div></section></main><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a aria-label="LinkedIn (opens in new tab)" href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener" class="w-12 h-12 border-2 border-white flex items-center justify-center"><svg aria-hidden="true" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex justify-between items-center text-sm text-gray-400 uppercase tracking-wide"><p>&copy; 2026 Ivan Manfredi</p></div></div></footer><script>(function(){try{var q=new URLSearchParams(location.search);var p={event_type:"view",lm_slug:"zapier-to-n8n-migration-guide",src:q.get("src")||"direct",utm:{source:q.get("utm_source"),medium:q.get("utm_medium"),campaign:q.get("utm_campaign")},prospect_id:q.get("pid")||null,referrer:document.referrer||""};fetch("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p),keepalive:true}).catch(function(){});document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(/calendly.com/.test(href)){try{navigator.sendBeacon("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",new Blob([JSON.stringify({event_type:"cta_click",lm_slug:"zapier-to-n8n-migration-guide",src:q.get("src")||"direct",answers:{cta_href:href}})],{type:"application/json"}))}catch(_){}}},{passive:true})}catch(_){}})();</script></body></html>
+<p>If you've made it this far, you have a real plan. The migration isn't hard — it's just unforgiving of shortcuts. Audit, score, host, translate, wave, runbook, watch the traps. Most service businesses I work with finish a 30-Zap migration inside three weekends and start saving $300-$600/month immediately, with the bigger win being the workflows they couldn't build before. If you'd rather not eat the learning curve, I migrate Zapier estates for a flat fee and hand back a documented n8n stack with monitoring already wired up — happy to scope yours.</p></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Want This Built For Your Business?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I design AI automation systems for service businesses (11-100 employees). 40+ systems shipped, 6,000+ hours automated across 8+ industries. Let's see if we fit.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic">Book Strategy Call</a></div></div></section></main><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a aria-label="LinkedIn (opens in new tab)" href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" rel="noopener" class="w-12 h-12 border-2 border-white flex items-center justify-center"><svg aria-hidden="true" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 flex justify-between items-center text-sm text-gray-400 uppercase tracking-wide"><p>&copy; 2026 Ivan Manfredi</p></div></div></footer><script>(function(){try{var q=new URLSearchParams(location.search);var p={event_type:"view",lm_slug:"zapier-to-n8n-migration-guide",src:q.get("src")||"direct",utm:{source:q.get("utm_source"),medium:q.get("utm_medium"),campaign:q.get("utm_campaign")},prospect_id:q.get("pid")||null,referrer:document.referrer||""};fetch("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p),keepalive:true}).catch(function(){});document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(/calendly.com/.test(href)){try{navigator.sendBeacon("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",new Blob([JSON.stringify({event_type:"cta_click",lm_slug:"zapier-to-n8n-migration-guide",src:q.get("src")||"direct",answers:{cta_href:href}})],{type:"application/json"}))}catch(_){}}},{passive:true})}catch(_){}})();</script></body></html>
