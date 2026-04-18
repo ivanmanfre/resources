@@ -1,0 +1,894 @@
+{
+  "slug": "the-agency-efficiency-score-how-much-profit-are-you-leaving-on-the-table",
+  "title": "The Agency Efficiency Score",
+  "subtitle": "How Much Profit Are You Leaving on the Table?",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 18,
+  "persona_selector": {
+    "id": "agency_size",
+    "text": "What size is your agency right now?",
+    "answers": [
+      {
+        "label": "Boutique team of 10-20 people",
+        "tag": "boutique"
+      },
+      {
+        "label": "Mid-sized shop of 21-40 people",
+        "tag": "midsize"
+      },
+      {
+        "label": "Established agency of 41-75 people",
+        "tag": "established"
+      },
+      {
+        "label": "Solo founder or under 10, planning to scale",
+        "tag": "prescale"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "lead_qualification",
+      "name": "Lead Qualification & Sales Pipeline",
+      "questions": [
+        {
+          "id": "lq1",
+          "text": "How are inbound leads currently qualified before they hit a sales call?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A team member manually reviews and calls every lead",
+              "score": 1
+            },
+            {
+              "label": "We use a basic intake form, then someone reviews manually",
+              "score": 2
+            },
+            {
+              "label": "Form plus some scoring rules, but humans still triage most",
+              "score": 3
+            },
+            {
+              "label": "Automated scoring routes most leads, humans handle edge cases",
+              "score": 4
+            },
+            {
+              "label": "Fully automated qualification with AI scoring and routing",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "lq2",
+          "text": "How long does it take from a lead submitting a form to getting a response?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 24 hours, sometimes days",
+              "score": 1
+            },
+            {
+              "label": "Usually within a business day",
+              "score": 2
+            },
+            {
+              "label": "Within 2-4 hours during business hours",
+              "score": 3
+            },
+            {
+              "label": "Under 30 minutes most of the time",
+              "score": 4
+            },
+            {
+              "label": "Instant automated reply with personalized next steps",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "lq3",
+          "text": "How is your sales pipeline data tracked and updated?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Spreadsheets and memory",
+              "score": 1
+            },
+            {
+              "label": "CRM exists but updates are inconsistent",
+              "score": 2
+            },
+            {
+              "label": "CRM is updated manually after each touchpoint",
+              "score": 3
+            },
+            {
+              "label": "CRM auto-syncs with calendar, email, and forms",
+              "score": 4
+            },
+            {
+              "label": "Fully automated pipeline with AI summaries and next-step suggestions",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "lq4",
+          "text": "How are discovery call notes captured and turned into proposals?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Handwritten or memory, proposal built from scratch each time",
+              "score": 1
+            },
+            {
+              "label": "Typed notes, proposal cobbled together from old templates",
+              "score": 2
+            },
+            {
+              "label": "Recorded calls with manual transcripts, template-based proposals",
+              "score": 3
+            },
+            {
+              "label": "AI transcribes and summarizes, proposal partially auto-generated",
+              "score": 4
+            },
+            {
+              "label": "AI generates a custom proposal draft from the call automatically",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "lq5",
+          "text": "How much of your founder or sales lead's week is spent on unqualified leads?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 15 hours, it eats most of the week",
+              "score": 1
+            },
+            {
+              "label": "8-15 hours weekly",
+              "score": 2
+            },
+            {
+              "label": "4-8 hours weekly",
+              "score": 3
+            },
+            {
+              "label": "1-4 hours weekly",
+              "score": 4
+            },
+            {
+              "label": "Almost zero, only qualified leads reach them",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your sales pipeline is leaking time and revenue",
+          "text": "Right now your team is doing the work of a basic automation system. Every hour spent qualifying cold leads is an hour not spent closing warm ones. The fix is sequencing, not more headcount.",
+          "steps": [
+            "Add an intake form with 5-7 qualifying questions and route submissions into a CRM automatically",
+            "Set up an instant auto-reply with calendar booking for leads above a scoring threshold",
+            "Implement an AI call summarizer that drafts the first version of every proposal from discovery notes"
+          ]
+        },
+        "mid": {
+          "headline": "You have the foundations, now tighten the loop",
+          "text": "Your pipeline works but still depends on humans for the connective tissue between stages. That is where time leaks. Closing those gaps usually frees up 10-15 hours a week for your sales lead.",
+          "steps": [
+            "Auto-score leads on intake and route only the top tier to your sales team",
+            "Connect your CRM to email, calendar, and form tools so updates happen without manual entry",
+            "Use AI to generate proposal first drafts directly from call transcripts within 24 hours"
+          ]
+        },
+        "high": {
+          "headline": "Your pipeline is already a competitive edge",
+          "text": "You are running ahead of most agencies your size. The play now is depth, not patching gaps. Use the time you have freed up to invest in offer design, retention, and higher-leverage outbound.",
+          "steps": [
+            "Layer in predictive lead scoring using historical close-rate data",
+            "Add AI-driven account research that enriches every qualified lead with context",
+            "Build a feedback loop that improves your scoring model from won and lost deals each quarter"
+          ]
+        }
+      }
+    },
+    {
+      "id": "client_onboarding",
+      "name": "Client Onboarding & Setup",
+      "questions": [
+        {
+          "id": "co1",
+          "text": "How long does it take from contract signed to work officially starting?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 3 weeks, often longer",
+              "score": 1
+            },
+            {
+              "label": "2-3 weeks",
+              "score": 2
+            },
+            {
+              "label": "1-2 weeks",
+              "score": 3
+            },
+            {
+              "label": "3-7 days",
+              "score": 4
+            },
+            {
+              "label": "Under 72 hours",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "co2",
+          "text": "How are onboarding documents and asset requests sent to new clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Custom email written from scratch each time",
+              "score": 1
+            },
+            {
+              "label": "Email template that someone manually personalizes",
+              "score": 2
+            },
+            {
+              "label": "Standard onboarding packet sent manually after signing",
+              "score": 3
+            },
+            {
+              "label": "Triggered automatically after contract signing, with reminders",
+              "score": 4
+            },
+            {
+              "label": "Fully automated onboarding portal with progress tracking",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "co3",
+          "text": "How is the brand audit or strategy doc created for each new client?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Built from scratch by a strategist over several days",
+              "score": 1
+            },
+            {
+              "label": "Strategist uses old docs as inspiration, builds manually",
+              "score": 2
+            },
+            {
+              "label": "Template exists but most sections are still hand-written",
+              "score": 3
+            },
+            {
+              "label": "AI drafts most sections from intake data, strategist refines",
+              "score": 4
+            },
+            {
+              "label": "AI generates a complete first draft within hours of onboarding",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "co4",
+          "text": "How are project management tools and folders set up for new clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "PM creates everything manually each time",
+              "score": 1
+            },
+            {
+              "label": "Copy-paste from a previous client, then edit",
+              "score": 2
+            },
+            {
+              "label": "Template project that gets duplicated and renamed",
+              "score": 3
+            },
+            {
+              "label": "One-click or trigger-based project setup with all assets",
+              "score": 4
+            },
+            {
+              "label": "Fully automated provisioning the moment a contract is signed",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "co5",
+          "text": "How often do clients complain or churn early because onboarding felt slow or messy?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "It happens regularly, we have lost clients in the first 60 days",
+              "score": 1
+            },
+            {
+              "label": "Occasionally, usually one or two per quarter",
+              "score": 2
+            },
+            {
+              "label": "Rarely, but feedback mentions it",
+              "score": 3
+            },
+            {
+              "label": "Almost never, onboarding is a strength",
+              "score": 4
+            },
+            {
+              "label": "Clients consistently praise our onboarding experience",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Onboarding is silently costing you clients",
+          "text": "The first 30 days set the tone for the entire engagement. Slow, manual onboarding does not just waste your team's hours, it shakes client confidence before you have done any real work. This is one of the highest-ROI areas to fix first.",
+          "steps": [
+            "Build a standardized onboarding workflow that triggers the moment a contract is signed",
+            "Create a templated brand audit that AI can populate from intake form responses",
+            "Set up automated PM project provisioning so no setup work is done by hand"
+          ]
+        },
+        "mid": {
+          "headline": "Solid onboarding, but inconsistent execution",
+          "text": "Your team has the right pieces, they just are not chained together. The handoffs between sales, ops, and delivery are where time and quality slip. Tightening this saves days per client and protects margin.",
+          "steps": [
+            "Connect your contract signing tool to automatically kick off onboarding tasks",
+            "Use AI to draft the strategy and brand audit docs from existing client intake data",
+            "Add a client-facing portal that shows onboarding progress and required actions"
+          ]
+        },
+        "high": {
+          "headline": "Onboarding is a real differentiator for you",
+          "text": "Most agencies cannot say this. You are starting engagements with clear momentum. Now use that as a sales asset and continue to refine the experience for retention.",
+          "steps": [
+            "Showcase your onboarding process in sales conversations as proof of operational maturity",
+            "Add post-onboarding NPS surveys and feed responses back into refinement cycles",
+            "Identify the one remaining manual step and automate it this quarter"
+          ]
+        }
+      }
+    },
+    {
+      "id": "production",
+      "name": "Content & Deliverable Production",
+      "questions": [
+        {
+          "id": "pr1",
+          "text": "How much of your team's content production is fully manual?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Nearly all of it, every asset is built from scratch",
+              "score": 1
+            },
+            {
+              "label": "Most of it, with some templated sections",
+              "score": 2
+            },
+            {
+              "label": "About half manual, half templated or AI-assisted",
+              "score": 3
+            },
+            {
+              "label": "Mostly AI-assisted with human polish",
+              "score": 4
+            },
+            {
+              "label": "Fully systemized production with AI doing first drafts and humans approving",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pr2",
+          "text": "How are content briefs created for each client deliverable?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Written from scratch by a strategist or PM",
+              "score": 1
+            },
+            {
+              "label": "Brief template filled out manually each time",
+              "score": 2
+            },
+            {
+              "label": "Template plus reference docs, partially copy-pasted",
+              "score": 3
+            },
+            {
+              "label": "AI generates the brief from client strategy and past assets",
+              "score": 4
+            },
+            {
+              "label": "Briefs auto-generate from project data with full client context",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pr3",
+          "text": "How is creative quality reviewed and approved internally?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Founder or senior reviews everything personally",
+              "score": 1
+            },
+            {
+              "label": "Senior reviews most things, with email back-and-forth",
+              "score": 2
+            },
+            {
+              "label": "Defined review checklist, but execution varies",
+              "score": 3
+            },
+            {
+              "label": "Structured QA workflow with assigned roles and clear criteria",
+              "score": 4
+            },
+            {
+              "label": "Automated QA pre-checks plus a human approval step",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pr4",
+          "text": "How long does an average deliverable spend in revisions or rework?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 5 rounds is common",
+              "score": 1
+            },
+            {
+              "label": "3-5 rounds typical",
+              "score": 2
+            },
+            {
+              "label": "2-3 rounds typical",
+              "score": 3
+            },
+            {
+              "label": "Usually 1-2 rounds",
+              "score": 4
+            },
+            {
+              "label": "Most deliverables are approved on the first or second pass",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pr5",
+          "text": "How is repeat work like reporting, recap decks, or social variations handled?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Built from scratch each time",
+              "score": 1
+            },
+            {
+              "label": "Templates exist but require heavy manual updates",
+              "score": 2
+            },
+            {
+              "label": "Templates plus copy-paste of recurring data",
+              "score": 3
+            },
+            {
+              "label": "Mostly auto-generated from data sources with minor edits",
+              "score": 4
+            },
+            {
+              "label": "Fully automated reports and variations delivered on schedule",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your team is rebuilding the wheel every week",
+          "text": "Production is where agency margin lives or dies. If your team is doing manual work that could be templated or AI-assisted, you are paying senior salaries for junior tasks. Fix this and you free up your most expensive hours.",
+          "steps": [
+            "Audit the last 10 deliverables and identify the 3 most repeated tasks to systemize first",
+            "Build AI-assisted brief generation from client strategy docs and past assets",
+            "Templatize recurring deliverables like reports and recap decks with auto-populated data"
+          ]
+        },
+        "mid": {
+          "headline": "You have systems, now scale them",
+          "text": "Production is no longer chaos but it still consumes more senior time than it should. The next move is shifting first drafts to AI and reserving humans for judgment, polish, and client-facing strategy.",
+          "steps": [
+            "Move first drafts of routine content to AI with structured human QA",
+            "Define a clear review workflow with role-specific checklists",
+            "Automate any deliverable that uses the same data inputs every cycle"
+          ]
+        },
+        "high": {
+          "headline": "Production is a profit engine, not a cost center",
+          "text": "You have built the rare agency where output scales without proportional headcount. The risk now is complacency. Keep finding the slowest 10 percent of your process and improving it.",
+          "steps": [
+            "Run a quarterly production audit to find the slowest workflows",
+            "Invest in custom AI agents trained on your house style and client voices",
+            "Use saved capacity to launch a productized service with predictable margin"
+          ]
+        }
+      }
+    },
+    {
+      "id": "client_communication",
+      "name": "Client Communication & Reporting",
+      "questions": [
+        {
+          "id": "cc1",
+          "text": "How are weekly or monthly client status updates created?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Account manager writes each one from scratch",
+              "score": 1
+            },
+            {
+              "label": "Email template that gets manually filled in each time",
+              "score": 2
+            },
+            {
+              "label": "Template plus pulled data, manually assembled",
+              "score": 3
+            },
+            {
+              "label": "Auto-generated draft pulled from PM and analytics tools",
+              "score": 4
+            },
+            {
+              "label": "Fully automated client updates sent on schedule with AI summaries",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cc2",
+          "text": "How are performance reports built for clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Built manually in slides each reporting cycle",
+              "score": 1
+            },
+            {
+              "label": "Template deck with manually pasted data",
+              "score": 2
+            },
+            {
+              "label": "Template plus dashboard screenshots",
+              "score": 3
+            },
+            {
+              "label": "Auto-generated reports with AI-written commentary",
+              "score": 4
+            },
+            {
+              "label": "Live dashboards plus auto-generated executive summaries",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cc3",
+          "text": "How are client questions and requests captured and routed?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Email and Slack DMs, no central tracking",
+              "score": 1
+            },
+            {
+              "label": "Some go to PM tool, others get lost in inboxes",
+              "score": 2
+            },
+            {
+              "label": "Standard intake channel, manually triaged",
+              "score": 3
+            },
+            {
+              "label": "Centralized intake routed automatically by topic",
+              "score": 4
+            },
+            {
+              "label": "AI categorizes and routes every request with SLA tracking",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cc4",
+          "text": "How quickly does the team respond to a client message?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Often more than 24 hours",
+              "score": 1
+            },
+            {
+              "label": "Within one business day, but inconsistent",
+              "score": 2
+            },
+            {
+              "label": "Within 4-8 hours reliably",
+              "score": 3
+            },
+            {
+              "label": "Within 1-2 hours during business time",
+              "score": 4
+            },
+            {
+              "label": "Acknowledged instantly with AI, resolved within hours",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cc5",
+          "text": "How is internal context shared across the account team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "It mostly lives in one person's head",
+              "score": 1
+            },
+            {
+              "label": "Scattered across email, Slack, and notes",
+              "score": 2
+            },
+            {
+              "label": "Documented in PM tool but inconsistent",
+              "score": 3
+            },
+            {
+              "label": "Centralized client knowledge base, kept current",
+              "score": 4
+            },
+            {
+              "label": "AI-searchable knowledge base with full account history",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your client experience depends on heroics",
+          "text": "When communication relies on individual account managers remembering things and writing from scratch, every vacation, sick day, or staff change creates risk. Clients feel inconsistency even when they cannot name it.",
+          "steps": [
+            "Centralize all client communication into one tool with clear ownership",
+            "Build a templated weekly update auto-populated from PM and analytics data",
+            "Create a shared client knowledge base that any team member can reference"
+          ]
+        },
+        "mid": {
+          "headline": "Communication works, but it is fragile",
+          "text": "You have systems, but they still depend on humans showing up consistently. Automating the routine pieces lets your team spend their attention on strategic conversations rather than status updates.",
+          "steps": [
+            "Automate weekly status emails using PM and analytics data",
+            "Add AI-generated executive summaries to performance reports",
+            "Implement a centralized request intake with auto-routing by topic"
+          ]
+        },
+        "high": {
+          "headline": "Clients feel the difference, even if they cannot name it",
+          "text": "Your communication systems are quietly elite. The opportunity now is using that strength to expand accounts and earn referrals from clients who cannot believe how organized you are.",
+          "steps": [
+            "Use response time and reporting quality as proof points in renewal conversations",
+            "Layer AI-driven account insights into QBRs and strategy reviews",
+            "Train every new hire on the system before they touch a client account"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ops_finance",
+      "name": "Operations, Admin & Finance",
+      "questions": [
+        {
+          "id": "of1",
+          "text": "How is time tracking handled across the team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "It is not, or only at month-end from memory",
+              "score": 1
+            },
+            {
+              "label": "Tracked manually in spreadsheets",
+              "score": 2
+            },
+            {
+              "label": "Time tracking tool exists but adoption is patchy",
+              "score": 3
+            },
+            {
+              "label": "Automated tracking integrated with PM tool",
+              "score": 4
+            },
+            {
+              "label": "Fully automated with AI categorization and profitability reporting",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "of2",
+          "text": "How are invoices created and sent each month?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Manually built in a spreadsheet or doc",
+              "score": 1
+            },
+            {
+              "label": "Accounting tool, but invoices created manually",
+              "score": 2
+            },
+            {
+              "label": "Recurring invoices set up but require manual review",
+              "score": 3
+            },
+            {
+              "label": "Auto-generated from project data with one-click send",
+              "score": 4
+            },
+            {
+              "label": "Fully automated billing tied to project milestones",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "of3",
+          "text": "How visible is project profitability across active accounts?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We rarely know which accounts are profitable",
+              "score": 1
+            },
+            {
+              "label": "We calculate it once or twice a year",
+              "score": 2
+            },
+            {
+              "label": "Quarterly profitability reviews, manually built",
+              "score": 3
+            },
+            {
+              "label": "Monthly profitability dashboards per account",
+              "score": 4
+            },
+            {
+              "label": "Real-time profitability visibility per account and team member",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "of4",
+          "text": "How are recurring admin tasks like contracts, NDAs, and renewals handled?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Founder or admin handles each one manually",
+              "score": 1
+            },
+            {
+              "label": "Templates exist but are filled out by hand",
+              "score": 2
+            },
+            {
+              "label": "Templates plus contract automation tool",
+              "score": 3
+            },
+            {
+              "label": "Triggered automatically from CRM or PM events",
+              "score": 4
+            },
+            {
+              "label": "Fully automated lifecycle from quote to renewal",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "of5",
+          "text": "How much of your operations team's time is spent on repeatable admin work?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 60 percent of their week",
+              "score": 1
+            },
+            {
+              "label": "40-60 percent",
+              "score": 2
+            },
+            {
+              "label": "20-40 percent",
+              "score": 3
+            },
+            {
+              "label": "10-20 percent",
+              "score": 4
+            },
+            {
+              "label": "Under 10 percent, they focus on improvement work",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You cannot manage what you cannot see",
+          "text": "Without time, profitability, and admin systems in place, you are running your agency on intuition. Some accounts are subsidizing others, and you do not know which. This is the foundation everything else sits on.",
+          "steps": [
+            "Implement automated time tracking integrated with your PM tool this month",
+            "Build a profitability dashboard per active account using real time and revenue data",
+            "Automate contracts, invoices, and renewals through a single connected stack"
+          ]
+        },
+        "mid": {
+          "headline": "Operations are functional but underleveraged",
+          "text": "You have visibility, but not the kind that drives decisions weekly. The next step is moving from monthly reporting to real-time signals so problems are caught before they cost a quarter of margin.",
+          "steps": [
+            "Move profitability reporting to a live dashboard refreshed daily",
+            "Auto-generate invoices from project milestones and tracked time",
+            "Identify the top 3 admin tasks consuming the most time and automate them"
+          ]
+        },
+        "high": {
+          "headline": "Your back office runs like a SaaS business",
+          "text": "Few agencies operate at this level of operational maturity. You can scale revenue without scaling overhead at the same rate. Now use that financial clarity to make sharper portfolio decisions.",
+          "steps": [
+            "Use real-time profitability data to fire or restructure the bottom 10 percent of accounts",
+            "Build a quarterly ops review focused on automating one more layer of admin",
+            "Reinvest saved time into productizing services and building IP"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Ready to stop bleeding profit on manual work?",
+    "description": "You just saw exactly where your agency is losing time and money. The next step is mapping a clear plan to fix the highest-impact gaps first. Book a 30-minute strategy call and I will walk you through the specific automations that match your score and your stack.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
+}
