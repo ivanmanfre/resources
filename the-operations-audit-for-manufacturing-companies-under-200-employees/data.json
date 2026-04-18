@@ -1,7 +1,7 @@
 {
   "slug": "the-operations-audit-for-manufacturing-companies-under-200-employees",
-  "title": "The Operations Audit for Manufacturing Companies Under 200 Employees",
-  "subtitle": "Map what's working, what's duct-taped, and what's bleeding time before you spend a dollar on new tools",
+  "title": "The Operations Audit Checklist for Manufacturing Companies Under 200 Employees",
+  "subtitle": "A 15-point walkthrough to find where your floor, office, and shipping are bleeding time and money before you buy a single tool",
   "brand": {
     "accent": "#00E676",
     "hero_badge": "Action Checklist"
@@ -9,132 +9,126 @@
   "estimated_minutes": 150,
   "sections": [
     {
-      "id": "order-intake-routing",
+      "id": "order-intake-and-job-routing",
       "title": "Order Intake and Job Routing",
-      "description": "Where most manufacturers lose time without realizing it. Audit how orders land, get logged, and reach the floor.",
+      "description": "Where most manufacturers quietly lose hours. Audit how orders arrive, get logged, and reach the floor before any work starts.",
       "items": [
         {
-          "id": "1-1",
-          "text": "Consolidate order intake into one channel instead of email, phone, text, and walk-ins",
-          "tip": "Pick the channel 80% of orders already flow through and route the rest into it for 30 days",
+          "id": "single-intake-channel",
+          "text": "Consolidate every order into one consistent intake channel instead of email, phone, text, and walk-ins",
+          "tip": "Pick one system of record and route all other channels into it within 24 hours",
           "impact": "high"
         },
         {
-          "id": "1-2",
-          "text": "Log every order in one system before any work begins",
-          "tip": "Kill sticky notes and verbal jobs. If it isn't in the system, it doesn't run",
+          "id": "log-before-work",
+          "text": "Log every order in one system before any production work begins",
+          "tip": "Kill verbal jobs and sticky-note orders, even for your top 3 customers",
           "impact": "high"
         },
         {
-          "id": "1-3",
-          "text": "Route jobs to the right department or machine using written rules, not tribal knowledge",
-          "tip": "Document the routing logic your senior operator uses in their head",
+          "id": "rule-based-routing",
+          "text": "Route jobs to departments, machines, or teams using documented rules, not tribal knowledge",
+          "tip": "Write the routing logic down so it survives a vacation or a resignation",
           "impact": "high"
         },
         {
-          "id": "1-4",
-          "text": "Count how many times a single order is manually re-entered across systems",
-          "tip": "Shadow one order end-to-end and tally each copy-paste moment",
+          "id": "count-manual-reentry",
+          "text": "Document how many times a single order is manually re-entered or copied between systems",
+          "tip": "Shadow one order end to end and count every retype, export, and paste",
           "impact": "medium"
         }
       ]
     },
     {
-      "id": "production-tracking",
+      "id": "production-tracking-and-floor-visibility",
       "title": "Production Tracking and Floor Visibility",
-      "description": "If you can't see the floor in real time, you're managing by gut feel. Past 50 employees, that breaks.",
+      "description": "If you cannot see the floor in real time, you are managing by gut feel. Confirm you have live signals, not end-of-shift guesses.",
       "items": [
         {
-          "id": "2-1",
-          "text": "Install a live view showing jobs in progress, queued, and blocked",
-          "tip": "A shared digital board or even a TV with a Google Sheet beats a clipboard",
+          "id": "live-job-board",
+          "text": "Display a live board showing jobs in progress, queued, and blocked",
+          "tip": "A shop-floor TV pulling from your system beats a whiteboard that lies by lunch",
           "impact": "high"
         },
         {
-          "id": "2-2",
-          "text": "Have operators log status changes as they happen, not at end of shift",
-          "tip": "Put a tablet or scanner at each station so logging takes under 10 seconds",
+          "id": "realtime-status-logging",
+          "text": "Require operators to log job status changes as they happen, not at end of shift",
+          "tip": "Put a tablet or scanner at each workstation so logging takes under 10 seconds",
           "impact": "high"
         },
         {
-          "id": "2-3",
-          "text": "Track downtime events with reason codes instead of vague gaps",
-          "tip": "Start with 6 codes: breakdown, material, QC wait, changeover, staffing, other",
+          "id": "downtime-reason-codes",
+          "text": "Track every downtime event with a reason code, not a vague time gap",
+          "tip": "Start with 8 reason codes max so operators actually use them",
           "impact": "medium"
         },
         {
-          "id": "2-4",
-          "text": "Pull actual vs. estimated production time for any recent job in under 5 minutes",
-          "tip": "If it takes three people and a phone call, your data lives in silos",
+          "id": "actual-vs-estimated-report",
+          "text": "Pull an actual vs estimated production time report for any job in the last 30 days on demand",
+          "tip": "If it takes more than 5 minutes or 3 people, your data is not trustworthy yet",
           "impact": "medium"
         }
       ]
     },
     {
-      "id": "data-systems",
-      "title": "Data, Systems, and Handoffs",
-      "description": "The hidden tax of disconnected tools. Every handoff between systems is a place errors hide and hours disappear.",
+      "id": "data-and-systems-integration",
+      "title": "Data and Systems Integration",
+      "description": "Disconnected tools are the silent tax on every small manufacturer. Map where data lives and how it moves before you automate anything.",
       "items": [
         {
-          "id": "3-1",
-          "text": "List every system that touches an order from quote to shipment",
-          "tip": "Include spreadsheets and personal inboxes. Shadow IT counts",
+          "id": "system-inventory",
+          "text": "List every system touching an order from quote to cash in one document",
+          "tip": "Include spreadsheets and shared drives, they count as systems",
           "impact": "high"
         },
         {
-          "id": "3-2",
-          "text": "Identify which handoffs between systems are manual copy-paste",
-          "tip": "Circle each one in red. These are your automation candidates",
+          "id": "source-of-truth",
+          "text": "Designate a single source of truth for customers, parts, and inventory",
+          "tip": "Every other system should read from it, not hold its own version",
           "impact": "high"
         },
         {
-          "id": "3-3",
-          "text": "Confirm one source of truth exists for inventory counts",
-          "tip": "If the floor, office, and shipping each have their own number, you have zero",
-          "impact": "high"
-        },
-        {
-          "id": "3-4",
-          "text": "Verify customer data is consistent across CRM, quoting, and shipping",
-          "tip": "Pull 10 random customers and compare addresses across systems",
+          "id": "integration-map",
+          "text": "Map which systems talk to each other automatically and which require human copy-paste",
+          "tip": "Circle the manual handoffs in red, those are your first automation targets",
           "impact": "medium"
         }
       ]
     },
     {
-      "id": "people-process",
-      "title": "People, Process, and Knowledge",
-      "description": "The stuff that walks out the door when someone quits. Audit what only lives in your team's heads.",
+      "id": "quality-and-shipping",
+      "title": "Quality Control and Shipping",
+      "description": "The last mile is where margin quietly disappears through rework, chargebacks, and missed ship dates.",
       "items": [
         {
-          "id": "4-1",
-          "text": "Document the 3 processes that would break if your most senior operator left tomorrow",
-          "tip": "Ask them to narrate while they work. Record it. Transcribe later",
+          "id": "qc-checkpoints",
+          "text": "Define QC checkpoints with pass/fail criteria documented for every product line",
+          "tip": "If QC lives in one inspector's head, you do not have QC, you have a dependency",
           "impact": "high"
         },
         {
-          "id": "4-2",
-          "text": "Confirm every critical role has a written backup or cross-trained operator",
-          "tip": "Single points of failure are single points of bankruptcy",
-          "impact": "high"
-        },
-        {
-          "id": "4-3",
-          "text": "Review whether SOPs reflect how work is actually done, not how it was done 5 years ago",
-          "tip": "Walk the floor with the SOP in hand. Mark every deviation",
+          "id": "rework-tracking",
+          "text": "Track rework and scrap by job, reason, and dollar cost every week",
+          "tip": "Review the top 3 reasons monthly with the floor lead, not just the controller",
           "impact": "medium"
         },
         {
-          "id": "4-4",
-          "text": "Audit which recurring meetings could be replaced by a dashboard or status update",
-          "tip": "Cancel one meeting for 2 weeks and see if anyone notices",
-          "impact": "low"
+          "id": "on-time-ship-rate",
+          "text": "Report on-time ship rate against promised date, not rescheduled date",
+          "tip": "Rescheduling to hit 100% is how you lose customers quietly",
+          "impact": "high"
+        },
+        {
+          "id": "shipping-handoff",
+          "text": "Confirm shipping receives job completion and packing data without manual re-entry",
+          "tip": "A printed traveler retyped into ShipStation is a bug, not a workflow",
+          "impact": "medium"
         }
       ]
     }
   ],
   "completion_cta": {
-    "headline": "You have the map. Now fix the right thing first.",
-    "description": "Pick the 3 highest-impact items you flagged as broken and tackle those before buying any new software. Audit first, fix second, automate third."
+    "headline": "You have the map. Now fix the right things first.",
+    "description": "Take your flagged items, rank them by dollar impact, and tackle the top 3 before you buy any software. If you want a second set of eyes on the audit, book a call and we will walk through it together."
   }
 }
