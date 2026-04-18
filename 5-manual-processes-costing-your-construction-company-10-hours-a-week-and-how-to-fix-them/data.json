@@ -1,0 +1,147 @@
+{
+  "slug": "5-manual-processes-costing-your-construction-company-10-hours-a-week-and-how-to-fix-them",
+  "title": "5 Manual Processes Costing Your Construction Company 10+ Hours a Week",
+  "subtitle": "Self-audit to spot where your team is bleeding time and prioritize what to fix first",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 30,
+  "sections": [
+    {
+      "id": "document-signing",
+      "title": "Document Signing and Certification",
+      "description": "Manual page-by-page signing on SWPPPs, invoices, and debit notes is a compliance risk on top of a time sink.",
+      "items": [
+        {
+          "id": "sign-page-by-page",
+          "text": "Audit whether someone manually signs each PDF page individually with e-sign, clicks, and password entry",
+          "tip": "Watch your signer work for 10 minutes and count the clicks per document",
+          "impact": "high"
+        },
+        {
+          "id": "high-volume-signing",
+          "text": "Count documents requiring multi-page signatures per day and flag if the total exceeds 10",
+          "tip": "Include invoices, certifications, and debit notes in the count",
+          "impact": "high"
+        },
+        {
+          "id": "missed-signatures",
+          "text": "Check recent signed documents for skipped pages or missed signature fields",
+          "tip": "Pull 20 random completed files and spot-check every page",
+          "impact": "high"
+        },
+        {
+          "id": "batch-signing-workflow",
+          "text": "Deploy a folder-triggered workflow that auto-signs designated pages and returns a batch summary for single approval",
+          "tip": "One approval replaces 200 clicks per session",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "job-order-entry",
+      "title": "Job Order and Project Data Entry",
+      "description": "Re-typing the same project data across PM tools, Trello cards, and bid docs burns hours per job.",
+      "items": [
+        {
+          "id": "duplicate-data-entry",
+          "text": "Map every system where new-job data (address, scope, client, area) gets manually re-typed",
+          "tip": "Draw the flow on paper, count the touchpoints",
+          "impact": "high"
+        },
+        {
+          "id": "single-source-intake",
+          "text": "Build one intake form that pushes job data to every downstream tool automatically",
+          "tip": "Use webhooks to sync to Trello, PM tool, and bid templates simultaneously",
+          "impact": "high"
+        },
+        {
+          "id": "standardize-job-fields",
+          "text": "Define required fields once so every system pulls from the same schema",
+          "tip": "Lock the field list with your ops manager before building automation",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "estimating-bids",
+      "title": "Estimating and Bid Preparation",
+      "description": "Spreadsheet-driven bids with manual markup calculations slow response time and introduce errors.",
+      "items": [
+        {
+          "id": "bid-template-library",
+          "text": "Build a reusable bid template library keyed by project type and scope",
+          "tip": "Start with your 3 most common job types",
+          "impact": "high"
+        },
+        {
+          "id": "auto-markup-calc",
+          "text": "Automate labor, material, and markup calculations from a single input sheet",
+          "tip": "Protect formula cells so field staff cannot overwrite them",
+          "impact": "high"
+        },
+        {
+          "id": "bid-turnaround-tracking",
+          "text": "Track time from RFP received to bid delivered and set a target under 48 hours",
+          "tip": "Faster bids win more jobs at better margins",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "field-reporting",
+      "title": "Daily Field Reports and Progress Updates",
+      "description": "Foremen texting photos and updates to office staff who re-type them into reports is pure waste.",
+      "items": [
+        {
+          "id": "mobile-report-form",
+          "text": "Deploy a mobile form for foremen to submit daily reports with photos directly from the field",
+          "tip": "Voice-to-text fields remove typing friction for crews",
+          "impact": "high"
+        },
+        {
+          "id": "auto-pdf-reports",
+          "text": "Generate client-ready PDF daily reports automatically from submitted field data",
+          "tip": "Schedule delivery to clients at 6pm each workday",
+          "impact": "medium"
+        },
+        {
+          "id": "progress-dashboard",
+          "text": "Centralize progress photos and notes in one dashboard searchable by job and date",
+          "tip": "Eliminates the 'find that photo from last Tuesday' scramble",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "invoicing-collections",
+      "title": "Invoicing and Collections Follow-Up",
+      "description": "Manual invoice creation and payment chasing costs billable hours and delays cash flow.",
+      "items": [
+        {
+          "id": "invoice-from-completion",
+          "text": "Trigger invoice drafts automatically when project milestones hit completed status",
+          "tip": "Connect PM tool completion events to your accounting system",
+          "impact": "high"
+        },
+        {
+          "id": "automated-reminders",
+          "text": "Schedule automated payment reminders at 7, 14, and 30 days past due",
+          "tip": "Include a one-click payment link in every reminder",
+          "impact": "high"
+        },
+        {
+          "id": "aging-report-review",
+          "text": "Review an automated weekly aging report every Monday with your bookkeeper",
+          "tip": "Flag anything over 45 days for a personal call",
+          "impact": "medium"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "You Found the Leaks. Now Plug Them.",
+    "description": "Take the section with the most checked boxes and book a 30-minute automation audit. We will map the exact workflow, estimate hours saved, and scope a fix you can deploy in under 30 days."
+  }
+}
