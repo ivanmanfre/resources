@@ -185,7 +185,7 @@
     var pointC = (data.intro && data.intro.point_next) || "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes.";
     var sec = make("section", { class: "lmc-intro" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    inner.appendChild(make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" }));
+    inner.appendChild(make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" }));
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
@@ -413,36 +413,18 @@
       }
       card.appendChild(wrap);
 
-      if (!captured) {
-        var gate = make("div", { class: "lmc-capture", id: "lmc-capture" });
-        gate.innerHTML =
-          '<h3>Unlock your full report</h3>' +
-          '<p>Enter your email and we\'ll reveal your per-category breakdown, personalized recommendations, and the 3 fixes I\'d prioritize based on your actual inputs.</p>' +
-          '<form class="lmc-form" id="lmc-capture-form">' +
-          '<input class="lmc-form-input" id="lmc-email" type="email" autocomplete="email" required placeholder="you@company.com" />' +
-          '<button class="lmc-btn" type="submit">Unlock report</button>' +
-          '</form>' +
-          '<p class="lmc-note">No spam. One email with your report, then you decide.</p>';
-        card.appendChild(gate);
-        $("#lmc-capture-form").addEventListener("submit", function (e) {
-          e.preventDefault();
-          var em = ($("#lmc-email") || {}).value || "";
-          if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
-          try { localStorage.setItem(key + ".email", em); } catch (_) {}
-          captured = true;
-          beacon("complete", {
-            email: em,
-            overall_score: res.overall,
-            tier: res.tier.name,
-            per_category: res.per_category,
-            weakest_category: res.weakest && res.weakest.id,
-            persona: res.persona,
-            computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
-            answers: res.ctx
-          });
-          renderUnlocked(res);
-        });
-      } else { renderUnlocked(res); }
+      // No gate — show the full report unconditionally
+      beacon("complete", {
+        email: null,
+        overall_score: res.overall,
+        tier: res.tier.name,
+        per_category: res.per_category,
+        weakest_category: res.weakest && res.weakest.id,
+        persona: res.persona,
+        computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
+        answers: res.ctx
+      });
+      renderUnlocked(res);
     }
 
     function renderUnlocked(res) {
@@ -484,6 +466,35 @@
       });
       share.appendChild(retake);
       unl.appendChild(share);
+      // Optional email opt-in — NOT a gate. Pure additive.
+      var optin = make("div", { class: "lmc-optin" });
+      optin.innerHTML =
+        '<h4>Save this for later?</h4>' +
+        '<p>If you want a PDF version of this report emailed to you, drop your address. Otherwise feel free to close the tab or bookmark the page.</p>' +
+        '<form class="lmc-form" id="lmc-optin-form">' +
+        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional — your email" />' +
+        '<button class="lmc-btn lmc-btn-secondary" type="submit">Send me a copy</button>' +
+        '</form>';
+      unl.appendChild(optin);
+      var of = optin.querySelector("form");
+      of.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var em = (optin.querySelector("#lmc-optin-email") || {}).value || "";
+        if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
+        try { localStorage.setItem(key + ".email", em); } catch (_) {}
+        beacon("capture", {
+          email: em,
+          overall_score: res.overall,
+          tier: res.tier.name,
+          per_category: res.per_category,
+          weakest_category: res.weakest && res.weakest.id,
+          persona: res.persona,
+          computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
+          answers: res.ctx
+        });
+        optin.innerHTML = '<h4>Sent.</h4><p>Look for "your ' + esc(data.title || "report") + '" in your inbox. If it doesn\'t show in 2 min, check Promotions or Spam.</p>';
+      });
+
       if (data.cta && data.cta.url) {
         var cta = make("div", { class: "lmc-cta-box" });
         cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
