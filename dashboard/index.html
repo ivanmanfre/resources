@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LM Intelligence | Ivan Manfredi</title>
+<meta name="description" content="Live metrics for Ivan Manfredi's lead magnet library — views, captures, completions, share rate, top performers.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#00E676">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: #000; font-family: 'Space Grotesk', sans-serif; min-height: 100vh; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+.hero { border-bottom: 4px solid #000; padding: 2rem 1.5rem; background: #fff; background-size: 40px 40px; background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px); }
+.hero-inner { max-width: 1280px; margin: 0 auto; }
+.badge { display: inline-block; padding: .25rem 1rem; background: #000; color: #fff; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; }
+h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; text-transform: uppercase; line-height: 1.05; margin: 0 0 .5rem; }
+.sub { font-size: 1rem; color: #444; margin: 0 0 .5rem; max-width: 42rem; }
+.updated { font-size: .78rem; color: #777; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+.totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.stat { background: #fff; border: 4px solid #000; box-shadow: 6px 6px 0 #000; padding: 1.25rem; }
+.stat .num { font-size: 2.5rem; font-weight: 900; line-height: 1; color: #00E676; font-variant-numeric: tabular-nums; }
+.stat .lbl { font-size: .72rem; color: #444; text-transform: uppercase; letter-spacing: .1em; font-weight: 800; margin-top: .5rem; }
+.stat.alt .num { color: #000; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 860px) { .grid { grid-template-columns: 2fr 1fr; } }
+.card { background: #fff; border: 4px solid #000; box-shadow: 6px 6px 0 #000; padding: 1.5rem; }
+.card h2 { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 1rem; padding-bottom: .75rem; border-bottom: 2px solid #000; }
+.table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.table th { text-align: left; padding: .5rem .25rem; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; color: #444; border-bottom: 2px solid #000; }
+.table td { padding: .55rem .25rem; border-bottom: 1px solid #eee; vertical-align: top; }
+.table tr:hover td { background: #fafafa; }
+.table .slug { font-weight: 700; max-width: 340px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.table .slug a { color: #000; text-decoration: none; }
+.table .slug a:hover { text-decoration: underline; text-decoration-color: #00E676; }
+.chip { display: inline-block; padding: .1rem .4rem; background: #f4f4f4; border: 1px solid #000; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.chip.high { background: #00E676; }
+.chip.mid { background: #FFD93D; }
+.chip.low { background: #FF4081; color: #fff; }
+.num-cell { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.feed { max-height: 420px; overflow-y: auto; }
+.feed-item { padding: .5rem 0; border-bottom: 1px dashed #ddd; font-size: .85rem; }
+.feed-item:last-child { border: 0; }
+.feed-evt { display: inline-block; padding: 0 .4rem; background: #f4f4f4; border: 1px solid #000; font-size: .68rem; font-weight: 800; text-transform: uppercase; margin-right: .5rem; }
+.feed-evt.view { background: #e0f2ff; }
+.feed-evt.capture { background: #00E676; }
+.feed-evt.complete { background: #2979FF; color: #fff; }
+.feed-evt.share { background: #FF4081; color: #fff; }
+.feed-evt.cta_click { background: #FFD93D; }
+.feed-time { color: #888; font-size: .72rem; }
+.empty { padding: 2rem 0; text-align: center; color: #888; font-style: italic; }
+.refresh { padding: .5rem 1rem; background: #00E676; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0 #000; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; cursor: pointer; font-family: inherit; font-size: .8rem; }
+.refresh:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000; }
+.auto-note { font-size: .72rem; color: #888; margin-left: .75rem; }
+.loading { color: #888; font-style: italic; }
+@media (prefers-reduced-motion: reduce) { .refresh { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">LM Intelligence</div>
+    <h1>Lead Magnet Intelligence</h1>
+    <p class="sub">Live metrics across every live lead magnet. Beacon-fed from resources.ivanmanfredi.com. Auto-refreshes every 60 seconds.</p>
+    <div style="margin-top:1rem"><button class="refresh" id="refresh">Refresh now</button><span class="auto-note" id="updated">loading…</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="totals" id="totals">
+    <div class="stat"><div class="num" id="t-views">—</div><div class="lbl">Views · 30 days</div></div>
+    <div class="stat"><div class="num" id="t-captures">—</div><div class="lbl">Email captures · 30 days</div></div>
+    <div class="stat"><div class="num" id="t-completions">—</div><div class="lbl">Assessment completions · all time</div></div>
+    <div class="stat alt"><div class="num" id="t-rate">—</div><div class="lbl">Avg capture rate</div></div>
+    <div class="stat alt"><div class="num" id="t-lm">—</div><div class="lbl">Live lead magnets</div></div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Per-LM performance (30-day)</h2>
+      <table class="table" id="per-lm-table">
+        <thead><tr><th>Lead magnet</th><th>Format</th><th>Quality</th><th class="num-cell">Views</th><th class="num-cell">Captures</th><th class="num-cell">Rate</th></tr></thead>
+        <tbody><tr><td colspan="6" class="empty loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Today's activity</h2>
+      <div class="feed" id="feed"><div class="empty loading">Loading…</div></div>
+    </div>
+  </section>
+
+  <section class="grid" style="margin-top:2rem">
+    <div class="card">
+      <h2>Assessment weakest-category rollup</h2>
+      <table class="table" id="weakest-table">
+        <thead><tr><th>Assessment</th><th>Weakest category</th><th class="num-cell">Completions</th><th class="num-cell">Avg score</th></tr></thead>
+        <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Comment-gate ROI</h2>
+      <table class="table" id="gate-table">
+        <thead><tr><th>Keyword</th><th>LM</th><th class="num-cell">Matched</th><th class="num-cell">DM'd</th></tr></thead>
+        <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+const ENDPOINT = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-metrics";
+
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>\"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function fmt(n) { return (n == null || isNaN(n)) ? "—" : Number(n).toLocaleString(); }
+function qualityChip(s) {
+  if (s == null) return '<span class="chip">—</span>';
+  if (s >= 7) return `<span class="chip high">${s}</span>`;
+  if (s >= 5) return `<span class="chip mid">${s}</span>`;
+  return `<span class="chip low">${s}</span>`;
+}
+function timeAgo(iso) {
+  const d = new Date(iso); const diff = (Date.now() - d.getTime()) / 1000;
+  if (diff < 60) return Math.floor(diff) + "s ago";
+  if (diff < 3600) return Math.floor(diff / 60) + "m ago";
+  if (diff < 86400) return Math.floor(diff / 3600) + "h ago";
+  return d.toLocaleDateString();
+}
+
+async function load() {
+  try {
+    const r = await fetch(ENDPOINT);
+    if (!r.ok) throw new Error("status " + r.status);
+    const d = await r.json();
+    render(d);
+    document.getElementById("updated").textContent = "updated " + new Date().toLocaleTimeString();
+  } catch (e) {
+    document.getElementById("updated").textContent = "error: " + e.message;
+  }
+}
+
+function render(d) {
+  const t = d.totals || {};
+  document.getElementById("t-views").textContent = fmt(t.views_30d);
+  document.getElementById("t-captures").textContent = fmt(t.captures_30d);
+  document.getElementById("t-completions").textContent = fmt(t.completions_all);
+  document.getElementById("t-rate").textContent = (t.avg_capture_rate_pct != null ? t.avg_capture_rate_pct + "%" : "—");
+  document.getElementById("t-lm").textContent = fmt(t.lm_count);
+
+  const pl = document.querySelector("#per-lm-table tbody");
+  const rows = d.per_lm || [];
+  if (rows.length === 0) {
+    pl.innerHTML = '<tr><td colspan="6" class="empty">No LMs yet</td></tr>';
+  } else {
+    pl.innerHTML = rows.map(r => `
+      <tr>
+        <td class="slug"><a href="${esc(r.resource_page_url || '#')}" target="_blank" rel="noopener">${esc((r.title || r.slug || '').slice(0, 70))}</a></td>
+        <td>${esc(r.format || '')}</td>
+        <td>${qualityChip(r.content_quality_score)}</td>
+        <td class="num-cell">${fmt(r.views_30d)}</td>
+        <td class="num-cell">${fmt(r.captures_30d)}</td>
+        <td class="num-cell">${r.capture_rate_pct != null ? r.capture_rate_pct + "%" : "—"}</td>
+      </tr>
+    `).join("");
+  }
+
+  const feed = document.getElementById("feed");
+  const activity = d.recent_activity || [];
+  if (activity.length === 0) {
+    feed.innerHTML = '<div class="empty">No events yet. Fire a page view to see activity stream.</div>';
+  } else {
+    feed.innerHTML = activity.slice(0, 60).map(a => `
+      <div class="feed-item">
+        <span class="feed-evt ${esc(a.event_type || '')}">${esc(a.event_type || 'event')}</span>
+        ${esc((a.title || a.lm_slug || '').slice(0, 55))}
+        ${a.email ? `<div style="color:#00863D;font-size:.78rem;font-weight:700">→ ${esc(a.email)}</div>` : ''}
+        <div class="feed-time">${esc(timeAgo(a.created_at))} · ${esc(a.src || 'direct')}</div>
+      </div>
+    `).join("");
+  }
+
+  const weak = d.assessment_weakest_rollup || [];
+  const wtb = document.querySelector("#weakest-table tbody");
+  if (weak.length === 0) {
+    wtb.innerHTML = '<tr><td colspan="4" class="empty">No assessment completions yet</td></tr>';
+  } else {
+    wtb.innerHTML = weak.map(w => `
+      <tr>
+        <td class="slug">${esc((w.assessment_slug || '').slice(0, 50))}</td>
+        <td><span class="chip">${esc(w.weakest_category || '—')}</span></td>
+        <td class="num-cell">${fmt(w.n)}</td>
+        <td class="num-cell">${fmt(w.avg_score)}</td>
+      </tr>
+    `).join("");
+  }
+
+  const gate = d.gate_keyword_performance || [];
+  const gtb = document.querySelector("#gate-table tbody");
+  if (gate.length === 0) {
+    gtb.innerHTML = '<tr><td colspan="4" class="empty">No comment-gate activity yet</td></tr>';
+  } else {
+    gtb.innerHTML = gate.map(g => `
+      <tr>
+        <td><strong>${esc(g.gate_keyword || '—')}</strong></td>
+        <td class="slug">${esc((g.slug || '').slice(0, 50))}</td>
+        <td class="num-cell">${fmt(g.comments_matched)}</td>
+        <td class="num-cell">${fmt(g.dms_sent)}</td>
+      </tr>
+    `).join("");
+  }
+}
+
+document.getElementById("refresh").addEventListener("click", load);
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>
