@@ -134,7 +134,7 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" });
+    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
@@ -192,9 +192,9 @@
 
     var introSection = buildIntro(data, ".lmc-widget", {
       defaultValueBullet: "15-20 questions, 5 categories. Honest answers = honest result",
-      defaultNextBullet: "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes",
+      defaultNextBullet: "Full report shown \u2014 score, tier, per-category breakdown, the 3 fixes I'd prioritize, and a tiered next step based on your answers",
       startLabel: "Start the assessment",
-      defaultNote: "No signup to take it. Results stay private until you unlock the full report."
+      defaultNote: "No signup required. Results stay on this device; the email opt-in at the end is optional."
     });
     root.appendChild(introSection);
 
@@ -291,47 +291,23 @@
       wrap.appendChild(make("p", { class: "lmc-result-lead" }, lead));
       card.appendChild(wrap);
 
-      if (!captured) {
-        var gate = make("div", { class: "lmc-capture", id: "lmc-capture" });
-        gate.innerHTML =
-          '<h3>Unlock your full report</h3>' +
-          '<p>Enter your email and we\'ll reveal your per-category breakdown, personalized recommendations, and the 3 fixes I\'d prioritize based on your weakest category.</p>' +
-          '<form class="lmc-form" id="lmc-capture-form">' +
-          '<label class="sr-only" for="lmc-email">Email</label>' +
-          '<input class="lmc-form-input" id="lmc-email" type="email" autocomplete="email" required placeholder="you@company.com" />' +
-          '<button class="lmc-btn" type="submit">Unlock report</button>' +
-          '</form>' +
-          '<p class="lmc-note">No spam. One email with your report, then you decide.</p>';
-        card.appendChild(gate);
-        var form = $("#lmc-capture-form");
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var em = ($("#lmc-email") || {}).value || "";
-          if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
-          saveEmail(data.slug, em);
-          captured = true;
-          beacon("complete", {
-            email: em,
-            overall_score: res.overall,
-            tier: res.tier.name,
-            per_category: res.per_category,
-            weakest_category: res.weakest && res.weakest.id,
-            persona: typeof res.persona === "number" && data.persona_selector && data.persona_selector.answers ? (data.persona_selector.answers[res.persona] || {}).tag || null : null,
-            answers: answers
-          });
-          renderUnlocked(res);
-        });
-      } else {
-        // Already captured on this device
-        renderUnlocked(res);
-      }
+      // No gate — full result shown unconditionally. Optional email opt-in lives inside renderUnlocked.
+      beacon("complete", {
+        overall_score: res.overall,
+        tier: res.tier.name,
+        per_category: res.per_category,
+        weakest_category: res.weakest && res.weakest.id,
+        persona: typeof res.persona === "number" && data.persona_selector && data.persona_selector.answers ? (data.persona_selector.answers[res.persona] || {}).tag || null : null,
+        answers: answers
+      });
+      renderUnlocked(res);
     }
 
     function renderUnlocked(res) {
       // Remove any gate
       var gate = $("#lmc-capture"); if (gate) gate.parentNode.removeChild(gate);
       var unl = make("div", { class: "lmc-unlocked" });
-      unl.appendChild(make("h3", { style: "font-size:1.5rem;font-weight:900;text-transform:uppercase;margin:1rem 0 0.5rem;" }, "Per-Category Breakdown"));
+      unl.appendChild(make("h3", null, "Your full report"));
 
       (data.categories || []).forEach(function (cat) {
         var key = cat.id || cat.name;
@@ -357,20 +333,8 @@
         unl.appendChild(block);
       });
 
-      // Share row
+      // Retake only — no social share on interactive widget
       var share = make("div", { class: "lmc-share" });
-      var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the 10 min:";
-      var currentUrl = location.href.split("?")[0];
-      var liUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(currentUrl) + "&summary=" + encodeURIComponent(shareText);
-      var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
-      liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });
-      share.appendChild(liBtn);
-      var copy = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Copy result link");
-      copy.addEventListener("click", function () {
-        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(currentUrl).then(function () { toast("Link copied"); });
-        beacon("share", { answers: { target: "copy_link", score: res.overall } });
-      });
-      share.appendChild(copy);
       var retake = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Retake");
       retake.addEventListener("click", function () {
         if (!confirm("Clear your answers and retake?")) return;
@@ -380,13 +344,38 @@
       share.appendChild(retake);
       unl.appendChild(share);
 
+      // Optional email opt-in — NOT a gate. Pure additive.
+      var optin = make("div", { class: "lmc-optin" });
+      optin.innerHTML =
+        '<h4>Want me to email you this breakdown?</h4>' +
+        '<p>Drop your address and I\u2019ll send you the full scoring summary plus a personalized note on which fix I\u2019d tackle first. Usually within 24h. Pure opt-in \u2014 bookmark the page if you\u2019d rather not.</p>' +
+        '<form class="lmc-form" id="lmc-optin-form">' +
+        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional \u2014 your email" />' +
+        '<button class="lmc-btn lmc-btn-secondary" type="submit">Email me this</button>' +
+        '</form>';
+      unl.appendChild(optin);
+      var of = optin.querySelector("form");
+      of.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var em = (optin.querySelector("#lmc-optin-email") || {}).value || "";
+        if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
+        try { saveEmail(data.slug, em); } catch (_) {}
+        beacon("capture", {
+          email: em,
+          overall_score: res.overall,
+          tier: res.tier.name,
+          per_category: res.per_category,
+          weakest_category: res.weakest && res.weakest.id,
+          answers: answers
+        });
+        optin.innerHTML = '<h4>Got it.</h4><p>I\u2019ll review your answers and send a personalized breakdown to <strong>' + esc(em) + '</strong> within 24h. Watch Promotions/Spam if nothing lands.</p>';
+      });
+
       // Bottom CTA — qualification-gated via data.ctas[] or legacy data.cta
       var chosenCta = pickCtaV1(data, res, answers);
       if (chosenCta && chosenCta.url) {
-        var ctaBox = make("div", { style: "margin-top:2rem;padding:1.5rem;border:4px solid #000;background:#fff;box-shadow:8px 8px 0 #00E676;text-align:center;" });
-        ctaBox.innerHTML = '<div style="font-size:1.25rem;font-weight:900;text-transform:uppercase;margin:0 0 .5rem;">' + esc(chosenCta.headline || "Want help closing these gaps?") + '</div>' +
-          '<p style="margin:0 0 1rem;">' + esc(chosenCta.description || "") + '</p>' +
-          '<a class="lmc-btn" href="' + esc(chosenCta.url) + '" target="_blank" rel="noopener">' + esc(chosenCta.button || "Book Strategy Call") + '</a>';
+        var ctaBox = make("div", { class: "lmc-cta-box" });
+        ctaBox.innerHTML = '<h3>' + esc(chosenCta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(chosenCta.description || "") + '</p><a class="lmc-btn" href="' + esc(chosenCta.url) + '" target="_blank" rel="noopener">' + esc(chosenCta.button || "Book Strategy Call") + '</a>';
         unl.appendChild(ctaBox);
         ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, cta_id: chosenCta.id || "default" } }); });
       }
