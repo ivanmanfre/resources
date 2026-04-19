@@ -115,9 +115,10 @@
         ctx[q.id + "_score"] = norm;
       });
     });
-    // persona
+    // persona — saved under persona_selector.id (e.g. "role") or legacy "__persona"
     if (data.persona_selector) {
-      var pAns = answers["__persona"];
+      var pKey = data.persona_selector.id || "__persona";
+      var pAns = answers[pKey] != null ? answers[pKey] : answers["__persona"];
       if (typeof pAns === "number" && data.persona_selector.answers && data.persona_selector.answers[pAns]) {
         ctx.persona = data.persona_selector.answers[pAns].tag || null;
       }
