@@ -360,15 +360,36 @@
         var em = (optin.querySelector("#lmc-optin-email") || {}).value || "";
         if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
         try { saveEmail(data.slug, em); } catch (_) {}
+        var personaTag = null;
+        try { if (data.persona_selector && typeof res.persona === "number") personaTag = (data.persona_selector.answers[res.persona] || {}).tag || null; } catch (_) {}
         beacon("capture", {
           email: em,
           overall_score: res.overall,
           tier: res.tier.name,
           per_category: res.per_category,
           weakest_category: res.weakest && res.weakest.id,
+          persona: personaTag,
           answers: answers
         });
-        optin.innerHTML = '<h4>Got it.</h4><p>I\u2019ll review your answers and send a personalized breakdown to <strong>' + esc(em) + '</strong> within 24h. Watch Promotions/Spam if nothing lands.</p>';
+        optin.innerHTML = '<h4>Sending your report\u2026</h4><p>One moment \u2014 generating the PDF and emailing it to <strong>' + esc(em) + '</strong>.</p>';
+        fetch("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/send-lm-report", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: em, slug: data.slug, title: data.title, subtitle: data.subtitle,
+            result: { overall: res.overall, tier: res.tier, persona: personaTag, weakest: res.weakest, per_category: res.per_category, answers: answers }
+          })
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, body: j }; }); })
+          .then(function (r) {
+            if (r.ok) {
+              optin.innerHTML = '<h4>Check your inbox.</h4><p>PDF report sent to <strong>' + esc(em) + '</strong>. Look in Promotions if it didn\u2019t land in the main inbox. I\u2019ll also personally review and reply within 24h.</p>';
+            } else {
+              optin.innerHTML = '<h4>Got it.</h4><p>Saved your address \u2014 <strong>' + esc(em) + '</strong>. I\u2019ll review personally and send a breakdown within 24h.</p>';
+            }
+          })
+          .catch(function () {
+            optin.innerHTML = '<h4>Got it.</h4><p>Saved your address \u2014 <strong>' + esc(em) + '</strong>. I\u2019ll review personally and send a breakdown within 24h.</p>';
+          });
       });
 
       // Bottom CTA — qualification-gated via data.ctas[] or legacy data.cta
