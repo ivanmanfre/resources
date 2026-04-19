@@ -50,9 +50,9 @@
 .lmc-intro-points { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-direction: column; gap: .5rem; font-size: .92rem; color: var(--ink); }
 .lmc-intro-points li { display: flex; gap: .75rem; align-items: baseline; }
 .lmc-intro-points li::before { content: ""; width: .4rem; height: .4rem; background: var(--sage); flex-shrink: 0; position: relative; top: 0.5rem; }
-.lmc-intro-start { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.5rem; background: var(--ink); color: var(--paper); font-size: .92rem; font-weight: 700; letter-spacing: .02em; border: none; cursor: pointer; font-family: inherit; box-shadow: var(--shadow-card); transition: transform .15s ease, box-shadow .15s ease; }
-.lmc-intro-start:hover { transform: translateY(-1px); box-shadow: var(--shadow-card-hover); }
-.lmc-intro-start span { color: var(--sage); font-family: monospace; }
+.lmc-intro-start { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 1.6rem; background: var(--sage); color: var(--ink); font-size: .95rem; font-weight: 700; letter-spacing: .02em; border: 1px solid var(--line); cursor: pointer; font-family: inherit; box-shadow: var(--shadow-card); transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s cubic-bezier(.2,.8,.2,1); }
+.lmc-intro-start:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.lmc-intro-start span { color: var(--ink); font-family: monospace; }
 
 /* --- Widget + card --- */
 .lmc-widget { padding: 3rem 1.5rem; background: var(--paper); }
@@ -101,12 +101,12 @@
 
 /* --- Nav buttons --- */
 .lmc-nav { display: flex; justify-content: space-between; gap: .75rem; padding-top: 1.25rem; border-top: 1px solid var(--line-soft); }
-.lmc-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.35rem; background: var(--ink); color: var(--paper); font-size: .88rem; font-weight: 700; letter-spacing: .02em; border: none; cursor: pointer; font-family: inherit; box-shadow: var(--shadow-card-sm); transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease; text-decoration: none; }
-.lmc-btn:hover:not([disabled]) { transform: translateY(-1px); box-shadow: var(--shadow-card); }
-.lmc-btn[disabled] { opacity: .3; cursor: not-allowed; box-shadow: none; }
+.lmc-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.5rem; background: var(--sage); color: var(--ink); font-size: .92rem; font-weight: 700; letter-spacing: .02em; border: 1px solid var(--line); cursor: pointer; font-family: inherit; box-shadow: var(--shadow-card); transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s cubic-bezier(.2,.8,.2,1), opacity .15s ease; text-decoration: none; }
+.lmc-btn:hover:not([disabled]) { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.lmc-btn[disabled] { opacity: .35; cursor: not-allowed; box-shadow: none; transform: none; }
 .lmc-btn-secondary { background: #fff; color: var(--ink); border: 1px solid var(--line); }
 .lmc-btn-secondary:hover:not([disabled]) { border-color: var(--sage); background: var(--sage-faint); }
-.lmc-btn .accent { color: var(--sage); }
+.lmc-btn .accent { color: var(--ink); font-family: monospace; }
 
 /* --- Result --- */
 .lmc-result { text-align: center; padding: 1rem 0 0; }
