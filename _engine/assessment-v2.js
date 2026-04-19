@@ -449,17 +449,8 @@
         }
         unl.appendChild(block);
       });
-      // Share + retake
+      // Retake only — no social share on interactive widget
       var share = make("div", { class: "lmc-share" });
-      var currentUrl = location.href.split("?")[0];
-      var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the time:";
-      var liUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(currentUrl) + "&summary=" + encodeURIComponent(shareText);
-      var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
-      liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });
-      share.appendChild(liBtn);
-      var copy = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Copy link");
-      copy.addEventListener("click", function () { if (navigator.clipboard) navigator.clipboard.writeText(currentUrl).then(function () { toast("Link copied"); }); beacon("share", { answers: { target: "copy_link" } }); });
-      share.appendChild(copy);
       var retake = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Retake");
       retake.addEventListener("click", function () {
         if (!confirm("Clear answers and retake?")) return;
@@ -471,11 +462,11 @@
       // Optional email opt-in — NOT a gate. Pure additive.
       var optin = make("div", { class: "lmc-optin" });
       optin.innerHTML =
-        '<h4>Save this for later?</h4>' +
-        '<p>If you want a PDF version of this report emailed to you, drop your address. Otherwise feel free to close the tab or bookmark the page.</p>' +
+        '<h4>Want me to email you this breakdown?</h4>' +
+        '<p>Drop your address and I&rsquo;ll send you the full scoring summary plus a personalized note on which fix I&rsquo;d tackle first. Usually within 24h. Pure opt-in &mdash; bookmark the page if you&rsquo;d rather not.</p>' +
         '<form class="lmc-form" id="lmc-optin-form">' +
-        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional — your email" />' +
-        '<button class="lmc-btn lmc-btn-secondary" type="submit">Send me a copy</button>' +
+        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional &mdash; your email" />' +
+        '<button class="lmc-btn lmc-btn-secondary" type="submit">Email me this</button>' +
         '</form>';
       unl.appendChild(optin);
       var of = optin.querySelector("form");
@@ -494,7 +485,7 @@
           computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
           answers: res.ctx
         });
-        optin.innerHTML = '<h4>Sent.</h4><p>Look for "your ' + esc(data.title || "report") + '" in your inbox. If it doesn\'t show in 2 min, check Promotions or Spam.</p>';
+        optin.innerHTML = '<h4>Got it.</h4><p>I&rsquo;ll review your answers and send a personalized breakdown to <strong>' + esc(em) + '</strong> within 24h. Watch Promotions/Spam if nothing lands.</p>';
       });
 
       if (data.cta && data.cta.url) {
