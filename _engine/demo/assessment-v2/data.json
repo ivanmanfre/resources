@@ -3,8 +3,8 @@
   "title": "The Property Management Ops Leak Audit",
   "subtitle": "A 5-minute diagnostic for 50-1,000-door PM firms. Find where your team is actually losing hours \u2014 with real numbers, not Likert guesses.",
   "brand": {
-    "accent": "#00E676",
-    "hero_badge": "Interactive Assessment v2"
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
   },
   "estimated_minutes": 5,
   "persona_selector": {
