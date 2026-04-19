@@ -778,10 +778,36 @@
     "low": 40,
     "mid": 70
   },
-  "cta": {
-    "headline": "Ready to turn your score into 20+ hours back every week?",
-    "description": "Book a 30-minute strategy call and I will map your top 3 automation opportunities based on your score, show you what the fix looks like, and give you a clear order of operations. No pitch, just a plan you can run with or hand to your team.",
-    "button": "Book Strategy Call",
-    "url": "https://calendly.com/ivan-intelligents/30min"
-  }
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === \"mid\" || persona === \"large\" || persona === \"enterprise\") && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your operation?",
+      "description": "Drop your email + I'll review your exact answers, stack them against firms your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "small_firm",
+      "when": "persona === \"small\"",
+      "headline": "Under 250 units? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer. Follow me on LinkedIn — I post tactical PM automation breakdowns 3x/week. When you cross 300 units, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight — here's what PM firms your size miss next.",
+      "description": "At your score, the low-hanging fruit is already picked. The next gains come from vendor-accountability telemetry, owner-reporting personalization, and pre-emptive retention signals. I'm writing teardowns on each — follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "headline": "Get the weekly PM ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. No fluff, no pitch — just the wiring behind how mid-market PM firms run lean.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    }
+  ]
 }
