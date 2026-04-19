@@ -54,7 +54,7 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" });
+    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
@@ -209,7 +209,7 @@
         (data.sections || []).forEach(function (s) { (s.items || []).forEach(function (it) { if (!st.checked[it.id]) unchecked.push({ section: s.id, item_id: it.id, impact: it.impact || null, text: (it.text || "").slice(0, 200) }); }); });
         beacon("capture", { email: email, answers: { unchecked: unchecked, completion_pct: Math.round(((Object.keys(st.checked).filter(function (k) { return st.checked[k]; }).length) / (function(){var n=0;(data.sections||[]).forEach(function(s){n+=(s.items||[]).length;});return n||1;})()) * 100) } });
         toast("Got it. Check your inbox in the next few minutes.");
-        form.innerHTML = '<p style="font-weight:700;color:#00E676">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
+        form.innerHTML = '<p style="font-weight:700;color:#2A8F65">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
       });
     }
 
