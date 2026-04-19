@@ -61,7 +61,7 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" });
+    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
@@ -258,7 +258,7 @@
         var snap = compute();
         beacon("capture", { email: email, answers: { inputs: snap.ctx, outputs: snap.results, matched_recs: snap.matched_recs } });
         toast("Got it. Check your inbox.");
-        form.innerHTML = '<p style="font-weight:700;color:#00E676">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
+        form.innerHTML = '<p style="font-weight:700;color:#2A8F65">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
       });
     }
 
