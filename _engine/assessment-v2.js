@@ -249,8 +249,10 @@
     function save() { try { localStorage.setItem(key + ".answers", JSON.stringify(answers)); } catch (_) {} }
 
     function renderQuestion() {
+      if (idx >= questions.length) { renderResult(); return; }
       card.innerHTML = "";
       var q = questions[idx];
+      if (!q) { renderResult(); return; }
       var pct = Math.round((idx / questions.length) * 100);
       var prog = make("div", { class: "lmc-progress-row" });
       prog.innerHTML = '<span>Question <strong>' + (idx + 1) + '</strong> of ' + questions.length + '</span><div class="lmc-progress-bar"><div class="lmc-progress-fill" style="width:' + pct + '%"></div></div><span>' + pct + '%</span>';
