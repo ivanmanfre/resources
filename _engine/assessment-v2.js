@@ -486,7 +486,37 @@
           computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
           answers: res.ctx
         });
-        optin.innerHTML = '<h4>Got it.</h4><p>I&rsquo;ll review your answers and send a personalized breakdown to <strong>' + esc(em) + '</strong> within 24h. Watch Promotions/Spam if nothing lands.</p>';
+        optin.innerHTML = '<h4>Sending your report\u2026</h4><p>One moment \u2014 generating the PDF and emailing it to <strong>' + esc(em) + '</strong>.</p>';
+        // Fire-and-await: PDF report via edge function → scroll-recorder → Resend
+        fetch("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/send-lm-report", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: em,
+            slug: data.slug,
+            title: data.title,
+            subtitle: data.subtitle,
+            result: {
+              overall: res.overall,
+              tier: res.tier,
+              persona: res.persona,
+              weakest: res.weakest,
+              per_category: res.per_category,
+              computed: res.computed,
+              answers: res.ctx
+            }
+          })
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, body: j }; }); })
+          .then(function (r) {
+            if (r.ok) {
+              optin.innerHTML = '<h4>Check your inbox.</h4><p>PDF report sent to <strong>' + esc(em) + '</strong>. Look in Promotions if it didn\u2019t land in the main inbox. I\u2019ll also personally review your answers and reply within 24h.</p>';
+            } else {
+              optin.innerHTML = '<h4>Got it.</h4><p>Saved your address \u2014 <strong>' + esc(em) + '</strong>. I\u2019ll review personally and send a breakdown within 24h. (Automated PDF had a hiccup: ' + esc((r.body && r.body.detail) || (r.body && r.body.error) || "unknown") + ')</p>';
+            }
+          })
+          .catch(function (e) {
+            optin.innerHTML = '<h4>Got it.</h4><p>Saved your address \u2014 <strong>' + esc(em) + '</strong>. I\u2019ll review personally and send a breakdown within 24h.</p>';
+          });
       });
 
       var chosenCta = pickCta(data, res);
