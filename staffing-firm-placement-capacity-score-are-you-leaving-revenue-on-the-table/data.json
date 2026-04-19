@@ -750,10 +750,36 @@
     "low": 40,
     "mid": 70
   },
-  "cta": {
-    "headline": "Want help fixing your weakest category in the next 30 days?",
-    "description": "Book a 30 minute strategy call with Ivan. We will review your scores, pinpoint the highest revenue lever, and map a concrete automation and operations plan tailored to your firm. No pitch deck, just the playbook.",
-    "button": "Book Strategy Call",
-    "url": "https://calendly.com/ivan-intelligents/30min"
-  }
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === \"growing\" || persona === \"established\" || persona === \"scaling\") && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your placement engine?",
+      "description": "Drop your email + I'll review your exact answers, stack them against staffing firms your size, and send a 5-minute Loom within 48h with the ONE capacity bottleneck I'd clear first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "boutique",
+      "when": "persona === \"boutique\"",
+      "headline": "Founder-in-the-deals shop? You're early for a custom audit.",
+      "description": "At 10-20 people most of the bottleneck is still you, not the system. Follow me on LinkedIn for tactical breakdowns — when you cross 25 employees, retake this and the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight — here's what staffing firms your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next placement gains come from candidate-to-client matching signal, automated compliance tracking, and post-placement retention telemetry. I'm writing teardowns on each — follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "headline": "Get the weekly staffing ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market staffing firms scale placements without burning recruiters — no fluff.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    }
+  ]
 }
