@@ -229,9 +229,52 @@
           "default": 30,
           "invert": true,
           "normalize_formula": "Math.max(0, 100 - (x * 1.5))"
+        },
+        {
+          "id": "reporting_format",
+          "type": "likert",
+          "text": "How are owner reports currently assembled?",
+          "hint": "Pick the closest match.",
+          "answers": [
+            { "label": "Fully automated from PM tool \u2014 owner logs in or gets scheduled PDF/email", "score": 5 },
+            { "label": "Semi-automated \u2014 scheduled export + manual commentary on top", "score": 4 },
+            { "label": "Manual copy-paste from PM tool into a template we built", "score": 2 },
+            { "label": "Rebuild from scratch each month in Excel / Sheets", "score": 1 }
+          ]
         }
       ],
-      "scoring_formula": "reporting_hours_score"
+      "scoring_formula": "(reporting_hours_score + reporting_format_score) / 2"
+    },
+    {
+      "id": "accountability",
+      "name": "Vendor & SLA Accountability",
+      "questions": [
+        {
+          "id": "sla_tracking",
+          "type": "likert",
+          "text": "How do you track whether vendors hit their promised turnaround times?",
+          "hint": "Be honest about what you actually measure vs. what you *say* you measure.",
+          "answers": [
+            { "label": "Automated SLA dashboard \u2014 we see breaches before the tenant complains", "score": 5 },
+            { "label": "Manual spot-checks + complaint-driven escalation", "score": 3 },
+            { "label": "We trust our vendors and only step in when something blows up", "score": 2 },
+            { "label": "We don't track it formally", "score": 1 }
+          ]
+        },
+        {
+          "id": "avg_close_days",
+          "type": "number",
+          "text": "Average number of days from tenant-reported issue to verified close-out?",
+          "hint": "Best guess is fine. Industry benchmark for non-emergency is 5-7 days.",
+          "suffix": "days",
+          "min": 0,
+          "max": 60,
+          "default": 7,
+          "invert": true,
+          "normalize_formula": "Math.max(0, 100 - (x * 6))"
+        }
+      ],
+      "scoring_formula": "(sla_tracking_score + avg_close_days_score) / 2"
     }
   ],
   "computed_outputs": [
