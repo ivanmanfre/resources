@@ -81,6 +81,40 @@
     return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: personaAnswer };
   }
 
+  function safeEvalExpr(expr, ctx) {
+    try {
+      if (!expr) return null;
+      if (!/^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\[\]\'"\$]+$/.test(expr)) return null;
+      var fn = new Function("ctx", "Math", "with (ctx) { return (" + expr + "); }");
+      var v = fn(ctx, Math);
+      return typeof v === "boolean" ? v : (typeof v === "number" && isFinite(v) ? v : null);
+    } catch (_) { return null; }
+  }
+
+  function pickCtaV1(data, res, answers) {
+    var ctas = Array.isArray(data.ctas) ? data.ctas : null;
+    if (!ctas && data.cta) return data.cta;
+    if (!ctas) return null;
+    var personaTag = null;
+    if (data.persona_selector && data.persona_selector.answers && typeof res.persona === "number") {
+      personaTag = (data.persona_selector.answers[res.persona] || {}).tag || null;
+    }
+    var ctx = Object.assign({}, answers || {}, {
+      overall_score: res.overall,
+      tier: res.tier && res.tier.class,
+      tier_name: res.tier && res.tier.name,
+      persona: personaTag,
+      weakest_category: res.weakest && res.weakest.id
+    });
+    Object.entries(res.per_category || {}).forEach(function (e) { ctx[e[0] + "_score"] = e[1].score; });
+    for (var i = 0; i < ctas.length; i++) {
+      var c = ctas[i];
+      if (!c.when) return c;
+      if (safeEvalExpr(c.when, ctx)) return c;
+    }
+    return null;
+  }
+
   function pickRec(cat, score) {
     var recs = cat.recommendations || {};
     if (score <= 40) return recs.low || recs.critical || null;
@@ -346,14 +380,15 @@
       share.appendChild(retake);
       unl.appendChild(share);
 
-      // Bottom CTA if defined
-      if (data.cta && data.cta.url) {
+      // Bottom CTA — qualification-gated via data.ctas[] or legacy data.cta
+      var chosenCta = pickCtaV1(data, res, answers);
+      if (chosenCta && chosenCta.url) {
         var ctaBox = make("div", { style: "margin-top:2rem;padding:1.5rem;border:4px solid #000;background:#fff;box-shadow:8px 8px 0 #00E676;text-align:center;" });
-        ctaBox.innerHTML = '<div style="font-size:1.25rem;font-weight:900;text-transform:uppercase;margin:0 0 .5rem;">' + esc(data.cta.headline || "Want help closing these gaps?") + '</div>' +
-          '<p style="margin:0 0 1rem;">' + esc(data.cta.description || "Book a 20-min working session. Free, no pitch.") + '</p>' +
-          '<a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
+        ctaBox.innerHTML = '<div style="font-size:1.25rem;font-weight:900;text-transform:uppercase;margin:0 0 .5rem;">' + esc(chosenCta.headline || "Want help closing these gaps?") + '</div>' +
+          '<p style="margin:0 0 1rem;">' + esc(chosenCta.description || "") + '</p>' +
+          '<a class="lmc-btn" href="' + esc(chosenCta.url) + '" target="_blank" rel="noopener">' + esc(chosenCta.button || "Book Strategy Call") + '</a>';
         unl.appendChild(ctaBox);
-        ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
+        ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, cta_id: chosenCta.id || "default" } }); });
       }
 
       card.appendChild(unl);
