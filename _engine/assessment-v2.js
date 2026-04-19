@@ -488,13 +488,37 @@
         optin.innerHTML = '<h4>Got it.</h4><p>I&rsquo;ll review your answers and send a personalized breakdown to <strong>' + esc(em) + '</strong> within 24h. Watch Promotions/Spam if nothing lands.</p>';
       });
 
-      if (data.cta && data.cta.url) {
+      var chosenCta = pickCta(data, res);
+      if (chosenCta && chosenCta.url) {
         var cta = make("div", { class: "lmc-cta-box" });
-        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
+        cta.innerHTML = '<h3>' + esc(chosenCta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(chosenCta.description || "") + '</p><a class="lmc-btn" href="' + esc(chosenCta.url) + '" target="_blank" rel="noopener">' + esc(chosenCta.button || "Book Strategy Call") + '</a>';
         unl.appendChild(cta);
-        cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
+        cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, cta_id: chosenCta.id || "default" } }); });
       }
       card.appendChild(unl);
+    }
+
+    function pickCta(data, res) {
+      // New: data.ctas[] evaluated against merged ctx — first match wins, bare (no `when`) entry = fallback
+      // Legacy: data.cta single object still works
+      var ctas = Array.isArray(data.ctas) ? data.ctas : null;
+      if (!ctas && data.cta) return data.cta;
+      if (!ctas) return null;
+      var mergedCtx = Object.assign({}, res.ctx || {}, {
+        overall_score: res.overall,
+        tier: res.tier && res.tier.class,
+        tier_name: res.tier && res.tier.name,
+        persona: res.persona,
+        weakest_category: res.weakest && res.weakest.id
+      });
+      Object.entries(res.computed || {}).forEach(function (e) { mergedCtx[e[0]] = e[1].value; });
+      Object.entries(res.per_category || {}).forEach(function (e) { mergedCtx[e[0] + "_score"] = e[1].score; });
+      for (var i = 0; i < ctas.length; i++) {
+        var c = ctas[i];
+        if (!c.when) return c; // fallback
+        if (safeEval(c.when, mergedCtx)) return c;
+      }
+      return null;
     }
 
     function pickRec(cat, score, ctx) {
