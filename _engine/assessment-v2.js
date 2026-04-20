@@ -115,10 +115,9 @@
         ctx[q.id + "_score"] = norm;
       });
     });
-    // persona — saved under persona_selector.id (e.g. "role") or legacy "__persona"
+    // persona
     if (data.persona_selector) {
-      var pKey = data.persona_selector.id || "__persona";
-      var pAns = answers[pKey] != null ? answers[pKey] : answers["__persona"];
+      var pAns = answers["__persona"];
       if (typeof pAns === "number" && data.persona_selector.answers && data.persona_selector.answers[pAns]) {
         ctx.persona = data.persona_selector.answers[pAns].tag || null;
       }
@@ -250,10 +249,8 @@
     function save() { try { localStorage.setItem(key + ".answers", JSON.stringify(answers)); } catch (_) {} }
 
     function renderQuestion() {
-      if (idx >= questions.length) { renderResult(); return; }
       card.innerHTML = "";
       var q = questions[idx];
-      if (!q) { renderResult(); return; }
       var pct = Math.round((idx / questions.length) * 100);
       var prog = make("div", { class: "lmc-progress-row" });
       prog.innerHTML = '<span>Question <strong>' + (idx + 1) + '</strong> of ' + questions.length + '</span><div class="lmc-progress-bar"><div class="lmc-progress-fill" style="width:' + pct + '%"></div></div><span>' + pct + '%</span>';
@@ -450,8 +447,17 @@
         }
         unl.appendChild(block);
       });
-      // Retake only — no social share on interactive widget
+      // Share + retake
       var share = make("div", { class: "lmc-share" });
+      var currentUrl = location.href.split("?")[0];
+      var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the time:";
+      var liUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(currentUrl) + "&summary=" + encodeURIComponent(shareText);
+      var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
+      liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });
+      share.appendChild(liBtn);
+      var copy = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Copy link");
+      copy.addEventListener("click", function () { if (navigator.clipboard) navigator.clipboard.writeText(currentUrl).then(function () { toast("Link copied"); }); beacon("share", { answers: { target: "copy_link" } }); });
+      share.appendChild(copy);
       var retake = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Retake");
       retake.addEventListener("click", function () {
         if (!confirm("Clear answers and retake?")) return;
@@ -463,11 +469,11 @@
       // Optional email opt-in — NOT a gate. Pure additive.
       var optin = make("div", { class: "lmc-optin" });
       optin.innerHTML =
-        '<h4>Want me to email you this breakdown?</h4>' +
-        '<p>Drop your address and I&rsquo;ll send you the full scoring summary plus a personalized note on which fix I&rsquo;d tackle first. Usually within 24h. Pure opt-in &mdash; bookmark the page if you&rsquo;d rather not.</p>' +
+        '<h4>Save this for later?</h4>' +
+        '<p>If you want a PDF version of this report emailed to you, drop your address. Otherwise feel free to close the tab or bookmark the page.</p>' +
         '<form class="lmc-form" id="lmc-optin-form">' +
-        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional &mdash; your email" />' +
-        '<button class="lmc-btn lmc-btn-secondary" type="submit">Email me this</button>' +
+        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional — your email" />' +
+        '<button class="lmc-btn lmc-btn-secondary" type="submit">Send me a copy</button>' +
         '</form>';
       unl.appendChild(optin);
       var of = optin.querySelector("form");
@@ -486,70 +492,16 @@
           computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
           answers: res.ctx
         });
-        optin.innerHTML = '<h4>Sending your report\u2026</h4><p>One moment \u2014 generating the PDF and emailing it to <strong>' + esc(em) + '</strong>.</p>';
-        // Fire-and-await: PDF report via edge function → scroll-recorder → Resend
-        fetch("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/send-lm-report", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: em,
-            slug: data.slug,
-            title: data.title,
-            subtitle: data.subtitle,
-            result: {
-              overall: res.overall,
-              tier: res.tier,
-              persona: res.persona,
-              weakest: res.weakest,
-              per_category: res.per_category,
-              computed: res.computed,
-              answers: res.ctx
-            }
-          })
-        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, body: j }; }); })
-          .then(function (r) {
-            if (r.ok) {
-              optin.innerHTML = '<h4>Check your inbox.</h4><p>PDF report sent to <strong>' + esc(em) + '</strong>. Look in Promotions if it didn\u2019t land in the main inbox. I\u2019ll also personally review your answers and reply within 24h.</p>';
-            } else {
-              optin.innerHTML = '<h4>Got it.</h4><p>Saved your address \u2014 <strong>' + esc(em) + '</strong>. I\u2019ll review personally and send a breakdown within 24h. (Automated PDF had a hiccup: ' + esc((r.body && r.body.detail) || (r.body && r.body.error) || "unknown") + ')</p>';
-            }
-          })
-          .catch(function (e) {
-            optin.innerHTML = '<h4>Got it.</h4><p>Saved your address \u2014 <strong>' + esc(em) + '</strong>. I\u2019ll review personally and send a breakdown within 24h.</p>';
-          });
+        optin.innerHTML = '<h4>Sent.</h4><p>Look for "your ' + esc(data.title || "report") + '" in your inbox. If it doesn\'t show in 2 min, check Promotions or Spam.</p>';
       });
 
-      var chosenCta = pickCta(data, res);
-      if (chosenCta && chosenCta.url) {
+      if (data.cta && data.cta.url) {
         var cta = make("div", { class: "lmc-cta-box" });
-        cta.innerHTML = '<h3>' + esc(chosenCta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(chosenCta.description || "") + '</p><a class="lmc-btn" href="' + esc(chosenCta.url) + '" target="_blank" rel="noopener">' + esc(chosenCta.button || "Book Strategy Call") + '</a>';
+        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
         unl.appendChild(cta);
-        cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, cta_id: chosenCta.id || "default" } }); });
+        cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
       }
       card.appendChild(unl);
-    }
-
-    function pickCta(data, res) {
-      // New: data.ctas[] evaluated against merged ctx — first match wins, bare (no `when`) entry = fallback
-      // Legacy: data.cta single object still works
-      var ctas = Array.isArray(data.ctas) ? data.ctas : null;
-      if (!ctas && data.cta) return data.cta;
-      if (!ctas) return null;
-      var mergedCtx = Object.assign({}, res.ctx || {}, {
-        overall_score: res.overall,
-        tier: res.tier && res.tier.class,
-        tier_name: res.tier && res.tier.name,
-        persona: res.persona,
-        weakest_category: res.weakest && res.weakest.id
-      });
-      Object.entries(res.computed || {}).forEach(function (e) { mergedCtx[e[0]] = e[1].value; });
-      Object.entries(res.per_category || {}).forEach(function (e) { mergedCtx[e[0] + "_score"] = e[1].score; });
-      for (var i = 0; i < ctas.length; i++) {
-        var c = ctas[i];
-        if (!c.when) return c; // fallback
-        if (safeEval(c.when, mergedCtx)) return c;
-      }
-      return null;
     }
 
     function pickRec(cat, score, ctx) {
