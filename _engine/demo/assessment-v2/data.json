@@ -3,8 +3,8 @@
   "title": "The Property Management Ops Leak Audit",
   "subtitle": "A 5-minute diagnostic for 50-1,000-door PM firms. Find where your team is actually losing hours \u2014 with real numbers, not Likert guesses.",
   "brand": {
-    "accent": "#2A8F65",
-    "hero_badge": "Interactive Assessment"
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment v2"
   },
   "estimated_minutes": 5,
   "persona_selector": {
@@ -229,52 +229,9 @@
           "default": 30,
           "invert": true,
           "normalize_formula": "Math.max(0, 100 - (x * 1.5))"
-        },
-        {
-          "id": "reporting_format",
-          "type": "likert",
-          "text": "How are owner reports currently assembled?",
-          "hint": "Pick the closest match.",
-          "answers": [
-            { "label": "Fully automated from PM tool \u2014 owner logs in or gets scheduled PDF/email", "score": 5 },
-            { "label": "Semi-automated \u2014 scheduled export + manual commentary on top", "score": 4 },
-            { "label": "Manual copy-paste from PM tool into a template we built", "score": 2 },
-            { "label": "Rebuild from scratch each month in Excel / Sheets", "score": 1 }
-          ]
         }
       ],
-      "scoring_formula": "(reporting_hours_score + reporting_format_score) / 2"
-    },
-    {
-      "id": "accountability",
-      "name": "Vendor & SLA Accountability",
-      "questions": [
-        {
-          "id": "sla_tracking",
-          "type": "likert",
-          "text": "How do you track whether vendors hit their promised turnaround times?",
-          "hint": "Be honest about what you actually measure vs. what you *say* you measure.",
-          "answers": [
-            { "label": "Automated SLA dashboard \u2014 we see breaches before the tenant complains", "score": 5 },
-            { "label": "Manual spot-checks + complaint-driven escalation", "score": 3 },
-            { "label": "We trust our vendors and only step in when something blows up", "score": 2 },
-            { "label": "We don't track it formally", "score": 1 }
-          ]
-        },
-        {
-          "id": "avg_close_days",
-          "type": "number",
-          "text": "Average number of days from tenant-reported issue to verified close-out?",
-          "hint": "Best guess is fine. Industry benchmark for non-emergency is 5-7 days.",
-          "suffix": "days",
-          "min": 0,
-          "max": 60,
-          "default": 7,
-          "invert": true,
-          "normalize_formula": "Math.max(0, 100 - (x * 6))"
-        }
-      ],
-      "scoring_formula": "(sla_tracking_score + avg_close_days_score) / 2"
+      "scoring_formula": "reporting_hours_score"
     }
   ],
   "computed_outputs": [
@@ -308,44 +265,10 @@
     "mid_label": "Growth Stage",
     "high_label": "Dialed"
   },
-  "ctas": [
-    {
-      "id": "qualified_loom",
-      "when": "door_count >= 100 && (persona === \"owner\" || persona === \"ops\") && overall_score < 70",
-      "headline": "Want a personalized Loom breakdown of your numbers?",
-      "description": "Drop your email + I review your exact answers, run a few sanity checks against firms your size, and send back a 5-minute Loom within 48h with the ONE fix I'd prioritize. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
-      "button": "Request a personalized Loom \u2192",
-      "url": "https://calendly.com/ivan-intelligents/30min"
-    },
-    {
-      "id": "small_firm_content",
-      "when": "door_count < 100",
-      "headline": "Under 100 doors? You're too early for a custom audit.",
-      "description": "Automation ROI at your scale is real but narrower. Follow me on LinkedIn \u2014 I post tactical PM automation breakdowns 3x/week. When you cross 150 doors, come back and retake this; the CTA will change.",
-      "button": "Follow on LinkedIn \u2192",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/"
-    },
-    {
-      "id": "ic_content",
-      "when": "persona === \"ic\"",
-      "headline": "You're in the trenches \u2014 this needs to land with your principal.",
-      "description": "Forward your owner/ops lead this URL and they can retake with your team's numbers. In the meantime, the weekly newsletter covers how PMs who aren't decision-makers get their ops lead to actually listen.",
-      "button": "Send them the assessment \u2192",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/"
-    },
-    {
-      "id": "dialed_content",
-      "when": "overall_score >= 70",
-      "headline": "You're running tight \u2014 here's what firms like yours miss next.",
-      "description": "At your score, the low-hanging fruit is picked. The next gains come from vendor-accountability telemetry, owner-reporting personalization, and pre-emptive retention signals \u2014 I'm writing a teardown on each. Drop your email in the opt-in above and I'll send them as they land.",
-      "button": "Follow for the teardowns \u2192",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/"
-    },
-    {
-      "headline": "Get the weekly PM ops teardown",
-      "description": "One tactical case study + one n8n workflow breakdown per week. No fluff, no pitch \u2014 just the wiring behind how mid-market PM firms run lean.",
-      "button": "Follow on LinkedIn \u2192",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/"
-    }
-  ]
+  "cta": {
+    "headline": "Want me to validate your numbers live?",
+    "description": "20-min screen-share. I look at your actual PM tool + reporting flow, rerun this scoring with real data, and tell you which fix to attack first. Free, no pitch.",
+    "button": "Book a 20-min working session",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
 }
