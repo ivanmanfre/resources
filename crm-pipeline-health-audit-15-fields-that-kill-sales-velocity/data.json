@@ -1,0 +1,135 @@
+{
+  "slug": "crm-pipeline-health-audit-15-fields-that-kill-sales-velocity",
+  "title": "15 CRM Fields That Kill Sales Velocity",
+  "subtitle": "A pipeline health audit for RevOps managers at 10-200 employee B2B companies. Run it against one stage and find the fields that make your forecast lie.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 30,
+  "sections": [
+    {
+      "id": "stage-gate-fields",
+      "title": "Stage Gate Fields — The 5 That Move Deals",
+      "description": "These are the fields that decide whether a stage change means anything at all.",
+      "items": [
+        {
+          "id": "exit-criteria-required",
+          "text": "Require Exit Criteria Met (Y/N) to advance each stage",
+          "tip": "If a rep can drag a deal to Proposal without checking this, the stage means nothing — enforce with HubSpot required-field logic or Salesforce validation rules",
+          "impact": "high"
+        },
+        {
+          "id": "next-step-date-populated",
+          "text": "Populate Next Step Date on every open opportunity",
+          "tip": "Flag anything blank or more than 14 days out — no date = no deal",
+          "impact": "high"
+        },
+        {
+          "id": "decision-maker-confirmed",
+          "text": "Confirm Decision Maker (Y/N) before Proposal stage",
+          "tip": "Attended a call doesn't count — require explicit rep confirmation, not inferred attendance",
+          "impact": "high"
+        },
+        {
+          "id": "validated-budget-range",
+          "text": "Fill Validated Budget Range before pricing goes out",
+          "tip": "Free-text TBD fails the check — use a picklist with USD bands ($0-25k, $25-100k, $100k+)",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "data-hygiene-fields",
+      "title": "Data Hygiene Fields — The 4 That Kill Forecast Accuracy",
+      "description": "Stale contact data is the silent forecast killer nobody audits until Q3.",
+      "items": [
+        {
+          "id": "email-verification-7-days",
+          "text": "Refresh email verification status every 7 days, not every 6 weeks",
+          "tip": "Prospeo hits 98% verified accuracy on a 7-day cycle — industry average of 6 weeks is why your sequences bounce",
+          "impact": "high"
+        },
+        {
+          "id": "phone-and-email-verified",
+          "text": "Verify both phone AND email on the primary contact, not one or the other",
+          "tip": "Single-channel contacts are the #1 source of ghost pipeline",
+          "impact": "medium"
+        },
+        {
+          "id": "firmographics-auto-enriched",
+          "text": "Auto-enrich employee count, industry, and revenue band — never rep-typed",
+          "tip": "Rep-typed firmographics fail at 30%+ — use Clearbit, Apollo, or ZoomInfo enrichment on contact create",
+          "impact": "medium"
+        },
+        {
+          "id": "duplicate-detection-weekly",
+          "text": "Run duplicate detection weekly with auto-merge rules for 95%+ matches",
+          "tip": "Manual dedupe never happens — automate it with HubSpot Operations Hub or a scheduled n8n workflow",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "governance-fields",
+      "title": "Governance Fields — The 3 That Stop Rep Gaming",
+      "description": "Without these locks, reps will quietly reshape the pipeline to hit quota.",
+      "items": [
+        {
+          "id": "stage-history-locked",
+          "text": "Lock stage history from manual edits — zero exceptions",
+          "tip": "Reps should never be able to backdate a stage change — use field-level permissions or audit log enforcement",
+          "impact": "high"
+        },
+        {
+          "id": "close-date-reason-codes",
+          "text": "Log Close Date changes with a required reason code picklist",
+          "tip": "If a deal slips three times with no reason code, it's not a deal — it's wishful thinking",
+          "impact": "high"
+        },
+        {
+          "id": "amount-change-approval",
+          "text": "Trigger manager approval on Amount changes over 20%",
+          "tip": "Silent pricing drops are how forecasts break mid-quarter — build the approval flow in HubSpot or Salesforce Flow",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "activity-fields",
+      "title": "Activity Fields — The 2 That Show Real Progress",
+      "description": "Opens and clicks don't move deals. These two fields separate real motion from noise.",
+      "items": [
+        {
+          "id": "last-meaningful-activity",
+          "text": "Auto-update Last Meaningful Activity only from logged calls, meetings, or replied emails",
+          "tip": "Opens and clicks don't count — this is the single best stale deal filter you can build",
+          "impact": "high"
+        },
+        {
+          "id": "multithreading-count",
+          "text": "Track Multithreading Count (distinct contacts engaged per deal) at every stage gate",
+          "tip": "Single-threaded deals past Discovery are a forecast risk flag",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "weekly-scorecard-fields",
+      "title": "Weekly Scorecard Fields — The 1 That Keeps Everyone Honest",
+      "description": "Data quality only improves when reps hear about it from their manager, not from RevOps.",
+      "items": [
+        {
+          "id": "field-completeness-score",
+          "text": "Publish Field Completeness Score per rep weekly, not monthly",
+          "tip": "RevOps owns the flag, managers own the conversation — reps should hear it from their manager using your scorecard",
+          "impact": "high"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "Want the fix for your top 3 gaps?",
+    "description": "Send me the fields that failed this audit and I'll return the specific enforcement rules — required-field logic, validation rules, and refresh cadence — matched to your CRM. One reply, no call required."
+  }
+}
