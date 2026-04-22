@@ -1,0 +1,731 @@
+{
+  "slug": "ai-roi-readiness-scorecard-will-your-project-join-the-95-that-fail",
+  "title": "AI ROI Readiness Scorecard: Will Your Project Join the 95% That Fail?",
+  "subtitle": "For CFOs and Operations Directors at 10-200 employee companies evaluating an AI build. Find the cracks in your readiness before you spend a dollar on tooling.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 12,
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your company?",
+    "answers": [
+      {
+        "label": "Under 10 employees — founder-led, pre-ops",
+        "tag": "pre_ops"
+      },
+      {
+        "label": "10-40 employees — lean ops team forming",
+        "tag": "lean_ops"
+      },
+      {
+        "label": "41-100 employees — mid-market with defined functions",
+        "tag": "mid_market"
+      },
+      {
+        "label": "101-200 employees — scaling with multi-department workflows",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "workflow-redesign-readiness",
+      "name": "Workflow Redesign Readiness",
+      "questions": [
+        {
+          "id": "workflow-mapped",
+          "text": "How thoroughly have you mapped the end-to-end workflow this AI will touch, including handoffs and exceptions?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No map exists, it lives in people's heads",
+              "score": 1
+            },
+            {
+              "label": "2 — High-level diagram, no detail",
+              "score": 2
+            },
+            {
+              "label": "3 — Steps documented but no owners",
+              "score": 3
+            },
+            {
+              "label": "4 — Mapped with owners per step",
+              "score": 4
+            },
+            {
+              "label": "5 — Mapped with exception rates quantified",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "human-steps-removed",
+          "text": "How clearly can you name the specific steps a human will stop doing once AI is deployed?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Unclear, we'll figure it out post-launch",
+              "score": 1
+            },
+            {
+              "label": "2 — Vague theory of time savings",
+              "score": 2
+            },
+            {
+              "label": "3 — Some steps identified",
+              "score": 3
+            },
+            {
+              "label": "4 — Explicit list of tasks being removed",
+              "score": 4
+            },
+            {
+              "label": "5 — Explicit list with hours-per-week attached",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "decision-boundaries",
+          "text": "How well-documented is the split between decisions AI owns and decisions humans own?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Not discussed",
+              "score": 1
+            },
+            {
+              "label": "2 — Informal understanding",
+              "score": 2
+            },
+            {
+              "label": "3 — Drafted but not signed off",
+              "score": 3
+            },
+            {
+              "label": "4 — Documented and reviewed with ops",
+              "score": 4
+            },
+            {
+              "label": "5 — Documented with escalation rules and audit trail",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "exception-handling",
+          "text": "How explicitly have you designed what happens when AI is uncertain or wrong?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No fallback plan",
+              "score": 1
+            },
+            {
+              "label": "2 — Assume humans will catch it",
+              "score": 2
+            },
+            {
+              "label": "3 — Basic confidence threshold",
+              "score": 3
+            },
+            {
+              "label": "4 — Confidence threshold plus human review queue",
+              "score": 4
+            },
+            {
+              "label": "5 — Threshold, review queue, and retraining loop wired in",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're bolting AI onto a process you haven't mapped",
+          "text": "This is the #1 killer of AI ROI. You cannot automate what you haven't documented. Before you scope tooling, spend two weeks mapping the current workflow end-to-end and quantifying which exceptions break it today.",
+          "steps": [
+            "Run a 90-minute workflow mapping session with every handoff owner in the room",
+            "List every decision in the process and label it human-owned or AI-candidate",
+            "Quantify exception rate per step so you know what AI must handle beyond the happy path"
+          ]
+        },
+        "mid": {
+          "headline": "Map exists, but the AI-vs-human boundary is fuzzy",
+          "text": "You've done the structural work. The gap is the handoff logic. Until you can name exactly what a human stops doing and what happens when AI is uncertain, the system will drift back to manual within 60 days.",
+          "steps": [
+            "Write the explicit list of tasks a human will no longer perform, with hours-per-week",
+            "Define confidence thresholds for AI decisions and the escalation path when breached",
+            "Build a human-in-the-loop review queue before you build the AI, not after"
+          ]
+        },
+        "high": {
+          "headline": "Workflow is agent-ready — sharpen the feedback loop",
+          "text": "You're in the 5% that actually did the prep work. Keep sharpening — here's the frontier. The next gain comes from tightening how the system learns from its own mistakes over time.",
+          "steps": [
+            "Instrument exception rates per decision type so you can spot model drift",
+            "Build a weekly review cadence where flagged cases feed prompt or rule updates",
+            "Document the retraining trigger so a single owner drives improvement, not a committee"
+          ]
+        }
+      }
+    },
+    {
+      "id": "data-foundations",
+      "name": "Data Foundations",
+      "questions": [
+        {
+          "id": "structured-inputs",
+          "text": "How structured and machine-readable is the input data this AI will consume?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Mostly unstructured, lives in emails and PDFs",
+              "score": 1
+            },
+            {
+              "label": "2 — Mixed, some structured exports possible",
+              "score": 2
+            },
+            {
+              "label": "3 — Structured in a system but not clean",
+              "score": 3
+            },
+            {
+              "label": "4 — Structured, clean, accessible via API or export",
+              "score": 4
+            },
+            {
+              "label": "5 — Structured, clean, versioned, and documented",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "data-accessibility",
+          "text": "How easily can the AI system pull the data it needs without manual intervention?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Requires manual export every time",
+              "score": 1
+            },
+            {
+              "label": "2 — Scheduled exports but fragile",
+              "score": 2
+            },
+            {
+              "label": "3 — API exists but rate-limited or undocumented",
+              "score": 3
+            },
+            {
+              "label": "4 — Reliable API access with clear documentation",
+              "score": 4
+            },
+            {
+              "label": "5 — Real-time access with monitoring and fallback",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "data-quality",
+          "text": "How confident are you that the underlying data is accurate and current?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Known to be messy and out of date",
+              "score": 1
+            },
+            {
+              "label": "2 — Trusted for some fields, not others",
+              "score": 2
+            },
+            {
+              "label": "3 — Generally trusted but no validation",
+              "score": 3
+            },
+            {
+              "label": "4 — Validated with periodic quality checks",
+              "score": 4
+            },
+            {
+              "label": "5 — Validated in real time with ownership per field",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your data is the bottleneck, not the model",
+          "text": "No AI model compensates for messy or inaccessible inputs. You will spend 80% of the project timeline on data plumbing if you start now. Fix the foundation before you pick a vendor.",
+          "steps": [
+            "Audit every input the AI will consume and rate each one structured or unstructured",
+            "Identify the three dirtiest fields and assign cleanup owners with a 30-day deadline",
+            "Build or buy the integration layer so data pulls are automated, not manual"
+          ]
+        },
+        "mid": {
+          "headline": "Data is usable but fragile under load",
+          "text": "You have the raw ingredients. The risk is that your pipelines weren't built for the volume or latency AI will demand. Harden access before you build on top of it.",
+          "steps": [
+            "Document every data source the AI touches including refresh cadence and owner",
+            "Set up monitoring and alerts for API failures and data freshness",
+            "Run a load test simulating AI pull volume so you find breakpoints in advance"
+          ]
+        },
+        "high": {
+          "headline": "Data layer is production-grade — now instrument it",
+          "text": "Your foundations are stronger than most enterprise stacks. Keep sharpening — here's the frontier. The next gain is treating data quality as a continuous observability problem, not a quarterly audit.",
+          "steps": [
+            "Add field-level quality metrics to your monitoring stack",
+            "Version datasets so you can roll back when upstream changes break AI behavior",
+            "Publish an internal data contract between AI system and source-of-truth systems"
+          ]
+        }
+      }
+    },
+    {
+      "id": "roi-economics",
+      "name": "ROI Economics",
+      "questions": [
+        {
+          "id": "cost-baseline",
+          "text": "How precisely have you baselined the current cost of the work the AI will replace or augment?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No baseline, just a hunch it's expensive",
+              "score": 1
+            },
+            {
+              "label": "2 — Rough estimate in a slide deck",
+              "score": 2
+            },
+            {
+              "label": "3 — Calculated but not validated with ops",
+              "score": 3
+            },
+            {
+              "label": "4 — Validated baseline with hours and fully-loaded cost",
+              "score": 4
+            },
+            {
+              "label": "5 — Validated baseline plus seasonality and variance",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "payback-model",
+          "text": "How credible is your payback model, including tooling, integration, and maintenance costs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No model, just vendor promises",
+              "score": 1
+            },
+            {
+              "label": "2 — Software cost only, ignores build and change mgmt",
+              "score": 2
+            },
+            {
+              "label": "3 — Total cost but optimistic on adoption",
+              "score": 3
+            },
+            {
+              "label": "4 — Total cost with conservative adoption curve",
+              "score": 4
+            },
+            {
+              "label": "5 — Model with sensitivity analysis and 90-day payback check",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "success-metrics",
+          "text": "How clearly are the success metrics defined that will prove or kill the project at 90 days?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No metrics agreed",
+              "score": 1
+            },
+            {
+              "label": "2 — Vague goals like efficiency or time savings",
+              "score": 2
+            },
+            {
+              "label": "3 — Metrics named but not instrumented",
+              "score": 3
+            },
+            {
+              "label": "4 — Metrics instrumented with baseline and target",
+              "score": 4
+            },
+            {
+              "label": "5 — Metrics tied to P&L with a kill criterion",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "opportunity-reinvestment",
+          "text": "How concrete is your plan for what freed-up human capacity will do instead?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Not discussed",
+              "score": 1
+            },
+            {
+              "label": "2 — Assume people will find other work",
+              "score": 2
+            },
+            {
+              "label": "3 — General idea of reinvestment",
+              "score": 3
+            },
+            {
+              "label": "4 — Specific higher-value tasks identified",
+              "score": 4
+            },
+            {
+              "label": "5 — Reinvestment plan with revenue or margin targets",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're buying on vibes, not economics",
+          "text": "If you cannot defend the baseline cost and the 90-day payback number, the project dies the first time finance questions it. Get the numbers right before you get the tool.",
+          "steps": [
+            "Timebox a two-week exercise to baseline the current fully-loaded cost of the target workflow",
+            "Build a total cost of ownership model including build, integration, and first-year maintenance",
+            "Define a kill criterion: the specific metric and date at which you shut the project down"
+          ]
+        },
+        "mid": {
+          "headline": "Numbers exist but won't survive finance scrutiny",
+          "text": "You've done the math, but the assumptions on adoption and maintenance are usually where ROI dies. Tighten the model now and you protect the project when the CFO asks hard questions.",
+          "steps": [
+            "Add a conservative adoption curve to your model, not a straight line to full usage",
+            "Include maintenance and drift costs at 20-30% of build cost annually",
+            "Apply the 90-Day Payback Rule: if it doesn't clear cost in 90 days post-launch, cut scope"
+          ]
+        },
+        "high": {
+          "headline": "Economics are airtight — now pressure-test reinvestment",
+          "text": "Your model would survive a board review. Keep sharpening — here's the frontier. The highest-ROI AI projects don't just save hours, they scale without scaling payroll by redirecting freed capacity into revenue work.",
+          "steps": [
+            "Map freed hours to specific revenue-generating activities with owners",
+            "Set a reinvestment target in dollars, not just hours saved",
+            "Report ROI quarterly as both cost saved and revenue enabled"
+          ]
+        }
+      }
+    },
+    {
+      "id": "change-management",
+      "name": "Change Management",
+      "questions": [
+        {
+          "id": "executive-sponsor",
+          "text": "How active and accountable is the executive sponsor for this AI project?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No named sponsor",
+              "score": 1
+            },
+            {
+              "label": "2 — Sponsor named but disengaged",
+              "score": 2
+            },
+            {
+              "label": "3 — Sponsor attends milestone reviews",
+              "score": 3
+            },
+            {
+              "label": "4 — Sponsor owns the outcome and blocks removal",
+              "score": 4
+            },
+            {
+              "label": "5 — Sponsor tied to the metric in their comp plan",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "end-user-buy-in",
+          "text": "How engaged are the end users whose work will change when this ships?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Not consulted, will hear about it at launch",
+              "score": 1
+            },
+            {
+              "label": "2 — Informed but not involved in design",
+              "score": 2
+            },
+            {
+              "label": "3 — Interviewed during discovery",
+              "score": 3
+            },
+            {
+              "label": "4 — Participating in design and pilot feedback",
+              "score": 4
+            },
+            {
+              "label": "5 — Co-designing with veto power on UX decisions",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "training-plan",
+          "text": "How complete is your plan to train users on the new AI-augmented workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No plan",
+              "score": 1
+            },
+            {
+              "label": "2 — One-time rollout deck",
+              "score": 2
+            },
+            {
+              "label": "3 — Training session at launch",
+              "score": 3
+            },
+            {
+              "label": "4 — Training plus documentation plus office hours",
+              "score": 4
+            },
+            {
+              "label": "5 — Training, docs, office hours, and 30-day adoption tracking",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're set up for a pilot nobody uses",
+          "text": "The technical build will finish and adoption will flatline. That's not a model problem, it's a change problem. Fix sponsorship and user involvement before you kick off the build.",
+          "steps": [
+            "Name an executive sponsor with the outcome tied to their quarterly goals",
+            "Recruit 3-5 end users as co-designers before any technical scoping",
+            "Write the adoption plan before the build plan: who trains, when, and how you measure use"
+          ]
+        },
+        "mid": {
+          "headline": "Sponsorship is there, adoption risk is still real",
+          "text": "You have top-cover but the team on the ground is one bad week away from reverting to the old way. Invest in the last mile or watch the project stall in month two.",
+          "steps": [
+            "Schedule weekly office hours for the first 60 days post-launch",
+            "Build an adoption dashboard showing daily active users of the AI workflow",
+            "Identify one power user per team and make them accountable for peer enablement"
+          ]
+        },
+        "high": {
+          "headline": "Change is handled — now institutionalize it",
+          "text": "You're treating this like the organizational change it is. Keep sharpening — here's the frontier. The firms that compound AI ROI are the ones that turn adoption into a repeatable system, not a one-time launch.",
+          "steps": [
+            "Turn your rollout playbook into a template for the next AI project",
+            "Add AI workflow mastery to relevant role descriptions and onboarding",
+            "Run a quarterly adoption audit to catch silent regression before it compounds"
+          ]
+        }
+      }
+    },
+    {
+      "id": "governance-risk",
+      "name": "Governance & Risk",
+      "questions": [
+        {
+          "id": "human-in-loop",
+          "text": "How clearly is human-in-the-loop oversight designed into the AI workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No oversight designed",
+              "score": 1
+            },
+            {
+              "label": "2 — Spot checks by whoever has time",
+              "score": 2
+            },
+            {
+              "label": "3 — Review queue exists but no SLA",
+              "score": 3
+            },
+            {
+              "label": "4 — Review queue with SLA and named reviewer",
+              "score": 4
+            },
+            {
+              "label": "5 — Tiered review by risk level with audit logging",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "failure-modes",
+          "text": "How rigorously have you identified the ways this AI can fail and what it costs you when it does?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Haven't thought about it",
+              "score": 1
+            },
+            {
+              "label": "2 — General awareness AI can hallucinate",
+              "score": 2
+            },
+            {
+              "label": "3 — List of failure modes but no cost attached",
+              "score": 3
+            },
+            {
+              "label": "4 — Failure modes with business impact quantified",
+              "score": 4
+            },
+            {
+              "label": "5 — Quantified failure modes with mitigations and monitoring",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "compliance-scope",
+          "text": "How confident are you that the AI workflow meets your compliance, privacy, and data handling obligations?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Not reviewed",
+              "score": 1
+            },
+            {
+              "label": "2 — Assumed fine because vendor said so",
+              "score": 2
+            },
+            {
+              "label": "3 — Legal aware, not formally signed off",
+              "score": 3
+            },
+            {
+              "label": "4 — Legal signed off with documented scope",
+              "score": 4
+            },
+            {
+              "label": "5 — Legal signed off plus ongoing audit schedule",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "vendor-lock-in",
+          "text": "How well have you protected the business from vendor or model lock-in?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Fully dependent on one vendor's black box",
+              "score": 1
+            },
+            {
+              "label": "2 — Aware of the risk, no mitigation",
+              "score": 2
+            },
+            {
+              "label": "3 — Prompts and data exportable",
+              "score": 3
+            },
+            {
+              "label": "4 — Architecture abstracts the model provider",
+              "score": 4
+            },
+            {
+              "label": "5 — Architecture plus tested failover to an alternative model",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your risk surface is bigger than your ROI case",
+          "text": "An AI failure without oversight doesn't just waste the investment, it creates legal and reputational exposure. Get governance basics in place before the model ever sees production data.",
+          "steps": [
+            "Design the human review queue as part of the workflow, not an afterthought",
+            "List the top 5 ways this AI can fail and what each one costs in dollars",
+            "Get legal and privacy sign-off in writing before the pilot, not after"
+          ]
+        },
+        "mid": {
+          "headline": "Governance exists on paper, not in the runtime",
+          "text": "You've thought about the risks but the controls aren't wired into the actual system. Close that gap now; it's far cheaper than discovering it during an incident.",
+          "steps": [
+            "Instrument the AI with audit logging for every decision, input, and output",
+            "Define review SLAs by risk tier and assign named reviewers with backups",
+            "Schedule a quarterly compliance review tied to the workflow, not the vendor"
+          ]
+        },
+        "high": {
+          "headline": "Governance is mature — now build for model portability",
+          "text": "You're already running this like an auditable system of record. Keep sharpening — here's the frontier. The next risk is concentration in one model provider; architecture-level portability is how top operators future-proof.",
+          "steps": [
+            "Abstract the model call behind an internal interface so providers are swappable",
+            "Run a quarterly drill failing over to an alternative model on non-critical workloads",
+            "Treat prompts, evals, and data pipelines as first-class IP with version control"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === \"lean_ops\" || persona === \"mid_market\" || persona === \"scaling\") && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your AI readiness gaps?",
+      "description": "Drop your email and I'll review your exact answers, stack them against mid-market companies your size planning similar AI builds, and send a 5-minute Loom within 48h with the ONE readiness fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === \"pre_ops\"",
+      "headline": "Under 10 employees? You're early for a custom AI audit.",
+      "description": "AI ROI at your scale is real but the 90-Day Payback Rule gets tighter the smaller you are. Follow me on LinkedIn — I post tactical AI and automation breakdowns 3x/week for growing service businesses. When you cross 10 employees and have defined ops, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight — here's what mid-market firms your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from model portability architecture, AI-enabled revenue reinvestment (not just cost savings), and treating prompts and evals as versioned IP. I'm writing teardowns on each — follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "headline": "Get the weekly mid-market AI ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How 10-200 employee companies hire a system instead of scaling payroll — no fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    }
+  ]
+}
