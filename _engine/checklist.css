@@ -195,60 +195,74 @@
 .lmc-section-title em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
 .lmc-section-desc { font-size: 1rem; font-weight: 500; color: var(--ink-soft); margin: 0 0 1.5rem; max-width: 40rem; line-height: 1.55; }
 
-/* ── Items ────────────────────────────────────────────────────────────── */
+/* ── Items (tri-state audit) ──────────────────────────────────────────── */
 .lmc-item {
-  display: flex;
-  gap: 1.1rem;
-  align-items: flex-start;
-  padding: 1.15rem 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.1rem 1.25rem;
   border: 1px solid var(--hairline);
   background: var(--paper-raise);
-  margin-bottom: .6rem;
+  margin-bottom: .65rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-subtle);
-  cursor: pointer;
   transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
   opacity: 0;
   transform: translateY(8px);
 }
 .lmc-item.in-view { opacity: 1; transform: translateY(0); }
 .lmc-item:hover { transform: translateY(-1px); box-shadow: var(--shadow-lift); border-color: var(--hairline-bold); }
-.lmc-item.checked { background: var(--accent-soft); border-color: rgba(76, 110, 61, 0.25); }
-.lmc-item.checked .lmc-text > span:first-child { text-decoration: line-through; text-decoration-color: rgba(76, 110, 61, 0.4); text-decoration-thickness: 1px; color: var(--ink-soft); }
-.lmc-checkbox {
-  flex-shrink: 0;
-  width: 1.9rem;
-  height: 1.9rem;
-  border: 1.5px solid var(--hairline-bold);
-  background: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 900;
-  color: var(--paper);
-  border-radius: var(--radius-sm);
-  transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
-  user-select: none;
-  position: relative;
-}
-.lmc-checkbox:hover { border-color: var(--accent); }
-.lmc-checkbox.checked {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--paper);
-  animation: check-pop .3s var(--ease);
-}
-@keyframes check-pop { 0% { transform: scale(1); } 40% { transform: scale(1.15); } 100% { transform: scale(1); } }
+.lmc-item.state-done { background: var(--accent-soft); border-color: rgba(76, 110, 61, 0.25); }
+.lmc-item.state-done .lmc-text > span:first-child { color: var(--ink-soft); }
+.lmc-item.state-partial { border-color: rgba(76, 110, 61, 0.18); border-left: 3px solid var(--accent-light); padding-left: calc(1.25rem - 2px); }
 
-.lmc-text { flex: 1 1 auto; font-size: 1.02rem; line-height: 1.5; }
+.lmc-text { font-size: 1.02rem; line-height: 1.5; min-width: 0; }
 .lmc-text > span:first-child { font-weight: 600; color: var(--ink); display: block; }
 .lmc-tip { display: block; font-size: .88rem; font-weight: 400; color: var(--ink-mute); margin-top: .45rem; line-height: 1.5; }
 .lmc-impact { display: inline-block; padding: .22rem .6rem; font-size: .68rem; font-weight: 700; font-family: 'IBM Plex Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: .12em; margin-top: .6rem; margin-right: .4rem; border-radius: 2px; }
 .lmc-impact-high { background: var(--accent); color: var(--paper); }
 .lmc-impact-medium { background: var(--ink); color: var(--paper); }
 .lmc-impact-low { background: transparent; color: var(--ink-mute); border: 1px solid var(--hairline-bold); }
+
+/* Tri-state toggle pills */
+.lmc-state-group {
+  display: inline-flex;
+  gap: 0;
+  padding: 3px;
+  background: var(--paper-sunk);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+.lmc-state-btn {
+  padding: .5rem .9rem;
+  background: transparent;
+  color: var(--ink-mute);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: calc(var(--radius-md) - 2px);
+  cursor: pointer;
+  transition: background .2s var(--ease), color .2s var(--ease), transform .15s var(--ease);
+  white-space: nowrap;
+}
+.lmc-state-btn:hover { color: var(--ink); }
+.lmc-state-btn.selected { background: var(--paper-raise); color: var(--ink); box-shadow: var(--shadow-subtle); }
+.lmc-state-btn.state-done.selected { background: var(--accent); color: var(--paper); }
+.lmc-state-btn.state-partial.selected { background: var(--accent-light); color: var(--paper); }
+.lmc-state-btn.state-not_yet.selected { background: var(--ink); color: var(--paper); }
+.lmc-state-btn.selected { animation: state-pop .3s var(--ease); }
+@keyframes state-pop { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+
+@media (max-width: 720px) {
+  .lmc-item { grid-template-columns: 1fr; }
+  .lmc-state-group { width: 100%; }
+  .lmc-state-btn { flex: 1; text-align: center; }
+}
 
 /* ── Capture ──────────────────────────────────────────────────────────── */
 .lmc-capture {
@@ -327,22 +341,134 @@
 }
 .lmc-toast.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-/* ── Completion flourish ──────────────────────────────────────────────── */
-.lmc-complete-banner {
-  display: none;
-  margin: 2rem 0;
-  padding: 1.75rem 1.5rem;
+/* ── Results panel (tier + top-3 gaps + next move) ────────────────────── */
+.lmc-results { margin: 3rem 0 2rem; padding: 0; }
+.lmc-results-pending {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .82rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-align: center;
+  padding: 2rem 1rem;
+  border: 1px dashed var(--hairline-bold);
+  border-radius: var(--radius-md);
+  background: var(--paper-sunk);
+}
+.lmc-results.ready .lmc-results-inner { animation: fade-slide .5s var(--ease); }
+@keyframes fade-slide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Tier card */
+.lmc-tier {
+  display: grid;
+  gap: .85rem;
+  padding: 2rem 1.75rem;
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+  margin-bottom: 2rem;
+}
+.lmc-tier-critical { border-left-color: var(--ink); }
+.lmc-tier-growth { border-left-color: var(--accent-light); }
+.lmc-tier-optimized { border-left-color: var(--accent); }
+.lmc-tier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.lmc-tier-label {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .82rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink);
+}
+.lmc-tier-score { display: inline-flex; align-items: baseline; gap: .15rem; color: var(--ink); }
+.lmc-tier-score em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; font-size: 3.25rem; line-height: 1; color: var(--accent); letter-spacing: -0.02em; }
+.lmc-tier-score span { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .85rem; color: var(--ink-mute); font-weight: 700; }
+.lmc-tier-note { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+
+/* Top-gaps list */
+.lmc-results-h {
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.lmc-results-h em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
+.lmc-gap-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .85rem; }
+.lmc-gap {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  padding: 1.15rem 1.25rem;
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.lmc-gap:hover { transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+.lmc-gap.state-partial { border-left: 3px solid var(--accent-light); }
+.lmc-gap.state-not_yet { border-left: 3px solid var(--ink); }
+.lmc-gap-rank {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  min-width: 1.5ch;
+}
+.lmc-gap-body { min-width: 0; }
+.lmc-gap-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.lmc-gap-text { font-weight: 600; color: var(--ink); font-size: 1.02rem; line-height: 1.45; }
+.lmc-gap-fix { margin-top: .6rem; font-size: .92rem; line-height: 1.55; color: var(--ink-soft); padding-left: .9rem; border-left: 2px solid rgba(76, 110, 61, 0.35); }
+.lmc-gap-fix-label {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: .5rem;
+}
+
+/* "What to do Monday" call-out */
+.lmc-next-move {
+  display: block;
+  padding: 1rem 1.25rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+  box-shadow: var(--shadow-subtle);
+}
+.lmc-next-label {
+  display: block;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: .35rem;
+}
+.lmc-gap-empty {
+  padding: 1.25rem 1.5rem;
   background: var(--accent-soft);
   border: 1px solid rgba(76, 110, 61, 0.25);
   border-left: 4px solid var(--accent);
   border-radius: var(--radius-md);
-  animation: fade-slide .5s var(--ease);
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0 0 2rem;
 }
-.lmc-root.complete .lmc-complete-banner { display: block; }
-.lmc-complete-banner h3 { font-size: 1.25rem; font-weight: 900; margin: 0 0 .4rem; color: var(--ink); letter-spacing: -0.01em; }
-.lmc-complete-banner h3 em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
-.lmc-complete-banner p { font-size: .98rem; margin: 0; color: var(--ink-soft); line-height: 1.55; }
-@keyframes fade-slide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ── Motion-safe ──────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
