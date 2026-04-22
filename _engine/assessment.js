@@ -171,8 +171,10 @@
     root.appendChild(widget);
 
     function renderQuestion() {
+      if (idx >= questions.length) { renderResult(); return; }
       card.innerHTML = "";
       var q = questions[idx];
+      if (!q) { renderResult(); return; }
       // Progress
       var prog = make("div", { class: "lmc-progress-row" });
       var pct = Math.round((idx / questions.length) * 100);
