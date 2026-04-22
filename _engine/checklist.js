@@ -139,6 +139,13 @@
       content.appendChild(sec);
     });
 
+    // Completion banner — appears when all items are checked
+    var completeBanner = make("div", { class: "lmc-complete-banner", "aria-live": "polite" });
+    completeBanner.innerHTML =
+      '<h3>Every box checked. <em>Now ship it.</em></h3>' +
+      '<p>You just mapped the full gap set. Pick the 3 highest-impact items, assign them this week, and re-run this audit in 30 days to verify they stuck.</p>';
+    content.appendChild(completeBanner);
+
     // Capture (collapsed until 50% done)
     var cta = data.completion_cta || {};
     var capture = make("section", { class: "lmc-capture", id: "lmc-capture", "aria-hidden": "false" });
@@ -177,8 +184,27 @@
       var pctEl = $("#lmc-prog-pct"); if (pctEl) pctEl.textContent = pct + "%";
       var lbl = $("#lmc-prog-label"); if (lbl) lbl.textContent = done + " / " + totalItems + " complete" + (highGaps ? " · " + highGaps + " high-impact gap" + (highGaps === 1 ? "" : "s") : "");
       var bar = document.querySelector(".lmc-progress-bar"); if (bar) bar.setAttribute("aria-valuenow", done);
+      // Completion flourish
+      root.classList.toggle("complete", pct === 100 && totalItems > 0);
     }
     update();
+
+    // Scroll-triggered entrance for sections + items (editorial reveal)
+    try {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add("in-view"); io.unobserve(entry.target); }
+        });
+      }, { root: null, rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+      root.querySelectorAll(".lmc-section, .lmc-item").forEach(function (el, i) {
+        // Tiny stagger so rows don't all pop at once
+        el.style.transitionDelay = Math.min(i, 8) * 40 + "ms";
+        io.observe(el);
+      });
+    } catch (_) {
+      // Older browsers without IntersectionObserver — just reveal everything immediately.
+      root.querySelectorAll(".lmc-section, .lmc-item").forEach(function (el) { el.classList.add("in-view"); });
+    }
 
     // Checkbox toggles
     root.querySelectorAll(".lmc-item").forEach(function (row) {
