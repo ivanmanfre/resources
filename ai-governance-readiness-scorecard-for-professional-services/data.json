@@ -1,0 +1,731 @@
+{
+  "slug": "ai-governance-readiness-scorecard-for-professional-services",
+  "title": "AI Governance Readiness Scorecard: The 4-Gate Score for Professional Services",
+  "subtitle": "For operations leaders at mid-market accounting and legal firms. Score your firm against the 4 gates that separate the 6% cutting costs from the 94% collecting subscriptions.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 12,
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your firm's size today?",
+    "answers": [
+      {
+        "label": "Boutique (under 10 employees / fee earners)",
+        "tag": "boutique"
+      },
+      {
+        "label": "Growing (11–30 employees)",
+        "tag": "growing"
+      },
+      {
+        "label": "Established mid-market (31–75 employees)",
+        "tag": "established"
+      },
+      {
+        "label": "Scaling (76–150 employees, multi-office)",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "data-foundation",
+      "name": "Gate 1: Data Foundation",
+      "questions": [
+        {
+          "id": "unified-client-data",
+          "text": "How unified is the system where your client data actually lives?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — 6+ systems and nobody fully trusts any of them",
+              "score": 1
+            },
+            {
+              "label": "2 — 3–5 systems with manual reconciliation",
+              "score": 2
+            },
+            {
+              "label": "3 — 3 systems, reconciled weekly by someone",
+              "score": 3
+            },
+            {
+              "label": "4 — Two systems that sync reliably",
+              "score": 4
+            },
+            {
+              "label": "5 — One unified system with clean records",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cross-system-lookup-speed",
+          "text": "How fast can you pull every active matter for one client across billing, documents, and email?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Hours, and someone has to assemble it manually",
+              "score": 1
+            },
+            {
+              "label": "2 — 30–60 minutes across several tools",
+              "score": 2
+            },
+            {
+              "label": "3 — 10–30 minutes of digging across tools",
+              "score": 3
+            },
+            {
+              "label": "4 — Under 10 minutes via a combined search",
+              "score": 4
+            },
+            {
+              "label": "5 — Under 2 minutes via unified search",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "structured-intake",
+          "text": "How structured is the data your intake forms actually collect?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Mostly free-text or paper",
+              "score": 1
+            },
+            {
+              "label": "2 — A few dropdowns, mostly free-text",
+              "score": 2
+            },
+            {
+              "label": "3 — Roughly half structured, half free-text",
+              "score": 3
+            },
+            {
+              "label": "4 — 60–80% structured fields",
+              "score": 4
+            },
+            {
+              "label": "5 — 80%+ structured with defined fields and dropdowns",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "record-hygiene-audits",
+          "text": "How recently have you audited duplicate or conflicting client records?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Never, or we don't know how",
+              "score": 1
+            },
+            {
+              "label": "2 — Once, years ago",
+              "score": 2
+            },
+            {
+              "label": "3 — Within the last 2 years",
+              "score": 3
+            },
+            {
+              "label": "4 — Within the last 12 months",
+              "score": 4
+            },
+            {
+              "label": "5 — Within the last 6 months, on a recurring cadence",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your data is the ceiling on every AI project you'll ever run",
+          "text": "AI can't reason over 6 disconnected systems and free-text fields. Every pilot will stall here until the foundation is fixed. The first 90 days of payback live in data consolidation, not in buying tools.",
+          "steps": [
+            "Map every system holding client data and rank each by trust level",
+            "Pick one system of record per data type (client, matter, billing) and stop dual-entry",
+            "Convert your top 3 intake forms to structured fields before touching any AI tool"
+          ]
+        },
+        "mid": {
+          "headline": "The plumbing mostly works — the leaks are in reconciliation",
+          "text": "You have systems that sync, but manual reconciliation is still eating hours and introducing errors AI will amplify. The gap between 'mostly clean' and 'agent-ready' is closed by structured input data and scheduled dedup.",
+          "steps": [
+            "Automate the reconciliation you're doing manually between your 2–3 core systems",
+            "Instrument a quarterly duplicate-record audit with a defined owner",
+            "Raise structured-field coverage on intake forms to 80%+"
+          ]
+        },
+        "high": {
+          "headline": "Your foundation is agent-ready — now use it",
+          "text": "Keep sharpening — here's the frontier. With clean, unified data you can deploy narrow-scope AI agents that actually read your source of truth instead of guessing. Most firms your size don't get here; don't waste it.",
+          "steps": [
+            "Layer a semantic search index on top of your unified client record",
+            "Deploy a matter-lookup assistant scoped to one practice group first",
+            "Run a quarterly data-drift check so foundation gains don't erode"
+          ]
+        }
+      }
+    },
+    {
+      "id": "process-documentation",
+      "name": "Gate 2: Process Documentation",
+      "questions": [
+        {
+          "id": "sop-coverage",
+          "text": "How much of your repeatable work is actually documented in a written SOP?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Nothing is written down; it lives in people's heads",
+              "score": 1
+            },
+            {
+              "label": "2 — A handful of tasks have notes in Google Docs",
+              "score": 2
+            },
+            {
+              "label": "3 — Roughly half of core processes have SOPs",
+              "score": 3
+            },
+            {
+              "label": "4 — Most core processes are documented and current",
+              "score": 4
+            },
+            {
+              "label": "5 — 90%+ of repeatable work has versioned, current SOPs",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "decision-logic-clarity",
+          "text": "How clearly is the decision logic spelled out in your documented processes?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Decisions are pure judgment, never written down",
+              "score": 1
+            },
+            {
+              "label": "2 — SOPs say 'use your best judgment' at key steps",
+              "score": 2
+            },
+            {
+              "label": "3 — Some decision rules exist but are inconsistent",
+              "score": 3
+            },
+            {
+              "label": "4 — Most decisions have written criteria",
+              "score": 4
+            },
+            {
+              "label": "5 — Every repeatable decision has if/then rules a new hire could follow",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "sop-freshness",
+          "text": "How consistently are your SOPs updated when a process changes?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Never; the doc and reality don't match",
+              "score": 1
+            },
+            {
+              "label": "2 — Updated once in the last 2 years",
+              "score": 2
+            },
+            {
+              "label": "3 — Updated when someone complains loudly enough",
+              "score": 3
+            },
+            {
+              "label": "4 — Reviewed annually with a defined owner",
+              "score": 4
+            },
+            {
+              "label": "5 — Quarterly review cycle with version history",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "new-hire-rampup",
+          "text": "How independently can a new hire ramp on a core process using documentation alone?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — They can't; shadowing is the only way",
+              "score": 1
+            },
+            {
+              "label": "2 — Docs get them 20% of the way",
+              "score": 2
+            },
+            {
+              "label": "3 — Docs cover the basics, tribal knowledge covers the rest",
+              "score": 3
+            },
+            {
+              "label": "4 — Docs get them 80% there with minimal shadowing",
+              "score": 4
+            },
+            {
+              "label": "5 — Fully ramped from docs alone on defined workflows",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You can't automate what you can't describe",
+          "text": "Documentable decision logic is a precondition for any AI system. If your processes live in partners' heads, you're not buying AI — you're buying confusion. Start by writing down the decisions, not the clicks.",
+          "steps": [
+            "Pick your top 3 revenue-touching processes and map the decision points",
+            "Write if/then rules for the 5 most common judgment calls per process",
+            "Assign an owner for each SOP and lock in a quarterly review cadence"
+          ]
+        },
+        "mid": {
+          "headline": "Docs exist — decision logic is the gap",
+          "text": "You've got SOPs, but AI stalls when the rules are fuzzy. The next unlock is converting 'use your best judgment' lines into explicit criteria. That's the difference between a doc and an agent-ready spec.",
+          "steps": [
+            "Audit existing SOPs for every 'use your best judgment' phrase and replace with rules",
+            "Add a decision-log field to your top processes so edge cases get captured",
+            "Run a new-hire dry-run: can they execute from docs alone? Fix the gaps they hit"
+          ]
+        },
+        "high": {
+          "headline": "Your ops are a spec — AI can read them",
+          "text": "Keep sharpening — here's the frontier. Firms with real process docs can point narrow-scope agents at them and get leverage fast. The trap now is letting docs drift while you build on top.",
+          "steps": [
+            "Turn your tightest SOP into a prompted workflow an agent can execute",
+            "Instrument exception logging so doc drift surfaces inside weeks, not quarters",
+            "Pilot an internal assistant trained on your SOPs for junior staff Q&A"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workflow-automation",
+      "name": "Gate 3: Workflow Automation",
+      "questions": [
+        {
+          "id": "intake-automation",
+          "text": "How automated is your client intake from first contact to engagement letter?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Fully manual; someone retypes everything",
+              "score": 1
+            },
+            {
+              "label": "2 — Forms collect data, humans do everything else",
+              "score": 2
+            },
+            {
+              "label": "3 — Some steps automated, handoffs still manual",
+              "score": 3
+            },
+            {
+              "label": "4 — Mostly automated with human review at key gates",
+              "score": 4
+            },
+            {
+              "label": "5 — Fully automated intake with human-in-the-loop sign-off",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "billing-workflow",
+          "text": "How automated is your time capture, billing, and invoice cycle?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Time entered manually, invoices assembled by hand",
+              "score": 1
+            },
+            {
+              "label": "2 — Time tracked in a tool, billing still manual",
+              "score": 2
+            },
+            {
+              "label": "3 — Invoices auto-generate but require heavy cleanup",
+              "score": 3
+            },
+            {
+              "label": "4 — Mostly automated, partners review and send",
+              "score": 4
+            },
+            {
+              "label": "5 — End-to-end automated with exception-only human review",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "document-assembly",
+          "text": "How automated is your document drafting and assembly for repeat matters?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Every doc is copy-pasted from a prior file",
+              "score": 1
+            },
+            {
+              "label": "2 — We use Word templates with fill-in blanks",
+              "score": 2
+            },
+            {
+              "label": "3 — Templates with merge fields from one system",
+              "score": 3
+            },
+            {
+              "label": "4 — Automated assembly from structured data on most repeat work",
+              "score": 4
+            },
+            {
+              "label": "5 — Automated drafting with AI review on 80%+ of routine documents",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Manual work is the tax you're paying to avoid automation",
+          "text": "At this level, every hour of growth equals an hour of headcount. That's the opposite of scale without scaling payroll. Pick the highest-volume workflow and automate its skeleton before adding any AI layer on top.",
+          "steps": [
+            "Identify your top 3 highest-volume repeat workflows by hours consumed",
+            "Build the automation skeleton (intake → routing → output) before adding AI",
+            "Protect every automation with a human-in-the-loop checkpoint at the output stage"
+          ]
+        },
+        "mid": {
+          "headline": "Automation exists — it just stops at the hard parts",
+          "text": "You've automated the easy steps. The 20% cost cut lives in the handoffs and judgment calls you're still doing manually. Close the gaps between steps before buying new tools.",
+          "steps": [
+            "Map every manual handoff between existing automations and close them one by one",
+            "Add AI review to routine document drafts before partner sign-off",
+            "Instrument each workflow with a cycle-time metric so regressions are visible"
+          ]
+        },
+        "high": {
+          "headline": "You're running a Hire a System operation",
+          "text": "Keep sharpening — here's the frontier. Fully automated workflows with human-in-the-loop gates are exactly the setup narrow-scope agents thrive in. Protect the leverage and push into the next tier of work.",
+          "steps": [
+            "Push automation into the next category of work (complex matters, multi-party)",
+            "Benchmark your cycle times against firms 2x your size and find the deltas",
+            "Layer analytics on workflow exceptions to surface the next automation target"
+          ]
+        }
+      }
+    },
+    {
+      "id": "human-oversight",
+      "name": "Gate 4: Human Oversight & Controls",
+      "questions": [
+        {
+          "id": "review-gates",
+          "text": "How consistently do automated outputs pass through a defined human review gate?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No review; outputs ship directly to clients",
+              "score": 1
+            },
+            {
+              "label": "2 — Review happens sometimes, depends on the person",
+              "score": 2
+            },
+            {
+              "label": "3 — Review exists but is inconsistent across teams",
+              "score": 3
+            },
+            {
+              "label": "4 — Every automated output has a named reviewer",
+              "score": 4
+            },
+            {
+              "label": "5 — Defined review gates with logged sign-off on every output",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "exception-handling",
+          "text": "How clearly defined is the escalation path when an automated workflow hits an edge case?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Things just break and nobody knows who owns it",
+              "score": 1
+            },
+            {
+              "label": "2 — Someone eventually figures it out informally",
+              "score": 2
+            },
+            {
+              "label": "3 — Escalation rules exist but aren't always followed",
+              "score": 3
+            },
+            {
+              "label": "4 — Named owners and defined escalation paths",
+              "score": 4
+            },
+            {
+              "label": "5 — Logged exceptions, named owners, and SLA on resolution",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ai-usage-policy",
+          "text": "How clearly does your firm define what AI tools can and cannot touch?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No policy; staff use whatever they want",
+              "score": 1
+            },
+            {
+              "label": "2 — Verbal guidance only; nothing written",
+              "score": 2
+            },
+            {
+              "label": "3 — A basic policy exists but is rarely referenced",
+              "score": 3
+            },
+            {
+              "label": "4 — Written policy with defined approved tools and data rules",
+              "score": 4
+            },
+            {
+              "label": "5 — Policy plus training, audit log, and quarterly review",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "audit-trail",
+          "text": "How reliably can you reconstruct who approved what on an automated output 6 months later?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We can't; there's no log",
+              "score": 1
+            },
+            {
+              "label": "2 — Maybe through email, with effort",
+              "score": 2
+            },
+            {
+              "label": "3 — Partial logs across disconnected tools",
+              "score": 3
+            },
+            {
+              "label": "4 — Centralized logs with searchable history",
+              "score": 4
+            },
+            {
+              "label": "5 — Full audit trail with immutable approval records",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You have no governance — just tools and hope",
+          "text": "Without human-in-the-loop design, AI in a professional services firm is a malpractice risk, not an asset. Before any further automation, stand up the review gates and the policy. This is non-negotiable.",
+          "steps": [
+            "Write a one-page AI usage policy naming approved tools and data rules",
+            "Assign a named reviewer for every automated output touching a client",
+            "Stand up a simple approval log that captures who signed off on what"
+          ]
+        },
+        "mid": {
+          "headline": "Controls exist on paper — consistency is the gap",
+          "text": "You've got the outlines of governance, but enforcement is uneven across teams. That's where risk hides. Tighten the review loops and make the audit trail the default, not the exception.",
+          "steps": [
+            "Move approval sign-offs into a single system with logged history",
+            "Define SLAs on exception resolution and assign owners per workflow",
+            "Run a quarterly review of AI usage against your written policy"
+          ]
+        },
+        "high": {
+          "headline": "Your governance is a moat",
+          "text": "Keep sharpening — here's the frontier. Mid-market firms with real AI controls can say yes to work larger competitors can't safely touch. Make it visible in pitches and procurement responses.",
+          "steps": [
+            "Package your AI governance posture as a pitch asset for enterprise clients",
+            "Add anomaly detection on approval patterns to catch drift early",
+            "Extend the audit trail to cover vendor AI usage across your stack"
+          ]
+        }
+      }
+    },
+    {
+      "id": "economics-payback",
+      "name": "Gate 5: Economics & Payback Discipline",
+      "questions": [
+        {
+          "id": "roi-tracking",
+          "text": "How rigorously do you track the ROI of AI and automation investments?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We don't; we just feel like it's helping",
+              "score": 1
+            },
+            {
+              "label": "2 — We track spend but not return",
+              "score": 2
+            },
+            {
+              "label": "3 — Some workflows have before/after metrics",
+              "score": 3
+            },
+            {
+              "label": "4 — Every investment has a defined ROI target and review",
+              "score": 4
+            },
+            {
+              "label": "5 — Quarterly ROI review with kill criteria for under-performers",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "payback-horizon",
+          "text": "How disciplined is your firm about expected payback window on new automation?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We buy tools hoping they'll pay off someday",
+              "score": 1
+            },
+            {
+              "label": "2 — We expect payback within a year or two",
+              "score": 2
+            },
+            {
+              "label": "3 — We target 6–12 month payback loosely",
+              "score": 3
+            },
+            {
+              "label": "4 — We require payback inside 6 months",
+              "score": 4
+            },
+            {
+              "label": "5 — We enforce a 90-day payback rule before scaling",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "subscription-sprawl",
+          "text": "How consistently do you audit SaaS and AI subscriptions against actual usage?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Never; we don't even know what's active",
+              "score": 1
+            },
+            {
+              "label": "2 — Rarely, when finance complains",
+              "score": 2
+            },
+            {
+              "label": "3 — Annual review, sometimes skipped",
+              "score": 3
+            },
+            {
+              "label": "4 — Quarterly review with usage data",
+              "score": 4
+            },
+            {
+              "label": "5 — Monthly review with auto-flagging of underused tools",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're buying tools, not outcomes",
+          "text": "94% of firms pilot AI. Only the ones who enforce payback discipline hit the 20% cost cut. Without ROI rails, you'll keep stacking subscriptions and wondering why margins aren't moving.",
+          "steps": [
+            "Attach a dollar-value target to every automation project before it starts",
+            "Enforce the 90-Day Payback Rule on new tools: no payback, no renewal",
+            "Run a one-time audit of every active SaaS tool and kill the unused ones"
+          ]
+        },
+        "mid": {
+          "headline": "You track spend — now track the return",
+          "text": "You've got the basics of financial hygiene, but payback discipline is inconsistent. Firms that scale without scaling payroll treat every tool like a hire: quarterly performance review, clear kill criteria.",
+          "steps": [
+            "Define ROI targets per workflow and review them every quarter",
+            "Add kill criteria so under-performers get cut, not renewed by default",
+            "Tie automation spend to headcount avoidance in your P&L reporting"
+          ]
+        },
+        "high": {
+          "headline": "You're running AI like an operating discipline, not a trend",
+          "text": "Keep sharpening — here's the frontier. Firms at this level have the governance and the economics to compound. The next lever is portfolio-level ROI: treating automations like a book of assets.",
+          "steps": [
+            "Build a portfolio view of all automations with ROI trends over time",
+            "Reallocate budget quarterly from low-return to high-return workflows",
+            "Benchmark your cost-to-serve per matter against top-quartile peers"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === \"growing\" || persona === \"established\" || persona === \"scaling\") && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your 4-Gate score?",
+      "description": "Drop your email and I'll review your exact answers, stack them against accounting and legal firms your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === \"boutique\"",
+      "headline": "Under 10 people? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer and the governance overhead is harder to justify. Follow me on LinkedIn — I post tactical accounting and legal automation breakdowns 3x/week. When you cross 10 fee earners, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight — here's what mid-market firms your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from portfolio-level ROI discipline, narrow-scope agents pointed at your SOPs, and packaging your governance posture as a procurement asset. I'm writing teardowns on each — follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "headline": "Get the weekly professional services ops teardown",
+      "description": "One tactical case study plus one n8n workflow breakdown per week. How mid-market accounting and legal firms run lean and hit the 20% cost cut. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    }
+  ]
+}
