@@ -54,7 +54,7 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" });
+    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));

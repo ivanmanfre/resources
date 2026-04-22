@@ -24,7 +24,7 @@
 .lmc-output-ring { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0; }
 .lmc-big-num { font-size: clamp(2.75rem, 7vw, 4rem); font-weight: 900; line-height: 1; }
 .lmc-big-unit { font-size: .95rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-top: .35rem; color: #444; }
-.lmc-tier-pill { display: inline-block; margin-top: 1rem; padding: .45rem 1rem; font-size: .8rem; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; border: 1px solid #e4e4e7; background: #4C6E3D; color: #1A1A1A; }
+.lmc-tier-pill { display: inline-block; margin-top: 1rem; padding: .45rem 1rem; font-size: .8rem; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; border: 1px solid #e4e4e7; background: #4C6E3D; color: #F7F4EF; }
 .lmc-tier-pill.medium { background: #1A1A1A; color: #F7F4EF; }
 .lmc-tier-pill.low { background: #1A1A1A; color: #F7F4EF; }
 .lmc-output-row { display: flex; justify-content: space-between; align-items: baseline; padding: .75rem 0; border-bottom: 1px dashed #ddd; font-size: .95rem; }
@@ -42,11 +42,11 @@
 .lmc-form-input { flex: 1 1 260px; min-width: 0; padding: .75rem 1rem; border: 2px solid #F7F4EF; background: #1A1A1A; color: #F7F4EF; font-size: 1rem; font-family: inherit; }
 .lmc-form-input::placeholder { color: #71717a; }
 .lmc-form-input:focus { outline: 3px solid #4C6E3D; outline-offset: 2px; }
-.lmc-btn { padding: .75rem 1.5rem; background: #4C6E3D; color: #1A1A1A; font-size: .9rem; font-weight: 900; text-transform: uppercase; border: 1px solid #e4e4e7; cursor: pointer; font-family: inherit; letter-spacing: .05em; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform .1s, box-shadow .1s; }
+.lmc-btn { padding: .75rem 1.5rem; background: #4C6E3D; color: #F7F4EF; font-size: .9rem; font-weight: 900; text-transform: uppercase; border: 1px solid #e4e4e7; cursor: pointer; font-family: inherit; letter-spacing: .05em; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform .1s, box-shadow .1s; }
 .lmc-btn:hover { transform: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 .lmc-footer-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e4e4e7; }
 .lmc-btn-secondary { background: #F7F4EF; color: #1A1A1A; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.lmc-toast { position: fixed; bottom: 1rem; right: 1rem; padding: .75rem 1.25rem; background: #4C6E3D; color: #1A1A1A; font-weight: 700; border: 1px solid #e4e4e7; box-shadow: 0 2px 8px rgba(0,0,0,0.08); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; transform: translateY(10px); }
+.lmc-toast { position: fixed; bottom: 1rem; right: 1rem; padding: .75rem 1.25rem; background: #4C6E3D; color: #F7F4EF; font-weight: 700; border: 1px solid #e4e4e7; box-shadow: 0 2px 8px rgba(0,0,0,0.08); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; transform: translateY(10px); }
 .lmc-toast.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .lmc-note { font-size: .85rem; color: #777; margin-top: 1rem; }
 @media (prefers-reduced-motion: reduce) { .lmc-btn, .lmc-toast { transition: none !important; } }
@@ -55,9 +55,9 @@
 .lmc-intro { position: relative; background: #1A1A1A; color: #F7F4EF; padding: 3rem 1.5rem; overflow: hidden; border-bottom: 1px solid #e4e4e7; }
 .lmc-intro::before { content: ""; position: absolute; inset: 0; opacity: .08; background-size: 30px 30px; background-image: linear-gradient(to right, #4C6E3D 1px, transparent 1px), linear-gradient(to bottom, #4C6E3D 1px, transparent 1px); pointer-events: none; }
 .lmc-intro-inner { position: relative; max-width: 860px; margin: 0 auto; display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
-.lmc-intro-avatar { flex-shrink: 0; width: 128px; height: 128px; border: 4px solid #4C6E3D; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.lmc-intro-avatar { flex-shrink: 0; width: 128px; height: 128px; border: 1px solid rgba(26,26,26,0.15); border-radius: 12px; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 .lmc-intro-body { flex: 1 1 320px; min-width: 0; }
-.lmc-intro-badge { display: inline-block; padding: .25rem 1rem; background: #4C6E3D; color: #1A1A1A; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 1rem; }
+.lmc-intro-badge { display: inline-block; padding: .25rem 1rem; background: #4C6E3D; color: #F7F4EF; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 1rem; }
 .lmc-intro-h { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 900; line-height: 1.1; margin: 0 0 .75rem; color: #F7F4EF; }
 .lmc-intro-p { font-size: 1rem; font-weight: 500; line-height: 1.6; max-width: 38rem; margin: 0 0 1.5rem; color: #d4d4d8; }
 .lmc-intro-points { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: .5rem; font-size: .9rem; color: #F7F4EF; }
@@ -66,7 +66,7 @@
 .lmc-intro-icon.a { background: #4C6E3D; }
 .lmc-intro-icon.b { background: #1A1A1A; color: #F7F4EF; }
 .lmc-intro-icon.c { background: #1A1A1A; color: #F7F4EF; }
-.lmc-intro-start { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.75rem; background: #4C6E3D; color: #1A1A1A; font-size: 1rem; font-weight: 900; text-transform: uppercase; border: 3px solid #F7F4EF; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor: pointer; font-family: inherit; letter-spacing: .05em; transition: transform .1s, box-shadow .1s; text-decoration: none; }
+.lmc-intro-start { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.75rem; background: #4C6E3D; color: #F7F4EF; font-size: 1rem; font-weight: 900; text-transform: uppercase; border: 3px solid #F7F4EF; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor: pointer; font-family: inherit; letter-spacing: .05em; transition: transform .1s, box-shadow .1s; text-decoration: none; }
 .lmc-intro-start:hover { transform: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 .lmc-intro-note { font-size: .78rem; color: #71717a; margin-top: .75rem; max-width: 32rem; }
 @media (prefers-reduced-motion: reduce) { .lmc-intro-start { transition: none !important; } }
