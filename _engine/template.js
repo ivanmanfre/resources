@@ -1,0 +1,203 @@
+/* Template engine — renders the Template LM format: hero + intro + stack-fit check
+ * + static content + personalized-download block. Reads data.json which has a
+ * `stack_questions` array and a `variants` map keyed on answer combos, plus
+ * the usual title/subtitle/sections. */
+(function () {
+  "use strict";
+  if (!window.LM) { console.error("shared.js not loaded"); return; }
+  var L = window.LM;
+
+  function render(data, root) {
+    window.__lm_slug = data.slug;
+    window.__lm_data = data;
+    var slug = data.slug;
+    var persisted = L.readKV("template", slug, "answers", {}) || {};
+    var selected = Object.assign({}, persisted);
+    var captured = !!L.readKV("template", slug, "email", null);
+
+    root.className = "lmc-root lmt-root";
+    root.innerHTML = "";
+    root.appendChild(L.buildHero(data, {
+      badge: (data.brand && data.brand.hero_badge) || "Template",
+      metaChips: [
+        (data.stack_questions || []).length + " stack inputs",
+        (data.estimated_minutes || 5) + " min",
+        "Personalized export"
+      ]
+    }));
+    root.appendChild(L.buildIntro(data, ".lmt-stack", {
+      tool_type: "template",
+      defaultValueBullet: "Walk through 4 stack questions → get a personalized artifact export",
+      defaultNextBullet: "Download gated by email; artifact generated client-side from your answers",
+      startLabel: "Start the fit check",
+      defaultNote: "Your answers auto-save in this browser."
+    }));
+
+    var main = L.make("main", { class: "lmc-container" });
+
+    // Stack-fit questions
+    var stackSection = L.make("section", { class: "lmt-stack", id: "lmt-stack" });
+    var stackHeadline = data.stack_headline || "Match the template to your stack";
+    stackSection.innerHTML = '<h2>' + L.esc(stackHeadline) + '</h2>' +
+      '<p>' + L.esc(data.stack_subtitle || "Answer these so we tailor the downloadable artifact to your tools.") + '</p>';
+    (data.stack_questions || []).forEach(function (q) {
+      var block = L.make("div", { class: "lmt-question", "data-qid": q.id });
+      block.appendChild(L.make("span", { class: "lmt-q-label" }, L.esc(q.label || q.text || q.id)));
+      var opts = L.make("div", { class: "lmt-q-options", role: "radiogroup", "aria-label": q.label || q.id });
+      (q.options || []).forEach(function (opt) {
+        var btn = L.make("button", {
+          type: "button",
+          class: "lmt-q-opt" + (selected[q.id] === opt.value ? " selected" : ""),
+          role: "radio",
+          "aria-checked": selected[q.id] === opt.value ? "true" : "false",
+          "data-value": opt.value
+        }, L.esc(opt.label || opt.value));
+        opts.appendChild(btn);
+      });
+      block.appendChild(opts);
+      stackSection.appendChild(block);
+    });
+    main.appendChild(stackSection);
+
+    // Result (download) panel
+    var result = L.make("section", { class: "lmt-result", id: "lmt-result", "aria-live": "polite" });
+    result.innerHTML = '<h3>Your personalized template is <em>ready</em></h3>' +
+      '<p id="lmt-result-note">Click to download — we\'ll swap the nodes/types to match your stack.</p>' +
+      '<div class="lmt-download-wrap">' +
+        '<button type="button" class="lmt-download" id="lmt-download">Download personalized artifact</button>' +
+        '<span class="lmt-download-meta" id="lmt-download-meta"></span>' +
+      '</div>';
+    main.appendChild(result);
+
+    // Email gate (shared CSS)
+    var gate = L.make("section", { class: "lmc-capture", id: "lmt-capture" });
+    gate.innerHTML = '<h2>Send the artifact <em>to your inbox</em></h2>' +
+      '<p>We\'ll also include the 3 gotchas most teams hit when deploying this.</p>' +
+      '<form class="lmc-form" id="lmt-form">' +
+        '<label class="sr-only" for="lmt-email">Email</label>' +
+        '<input class="lmc-input" type="email" id="lmt-email" autocomplete="email" required placeholder="you@company.com" />' +
+        '<button class="lmc-btn" type="submit">Email me the artifact</button>' +
+      '</form>' +
+      '<p class="lmc-note">One email. Unsubscribe any time.</p>';
+    main.appendChild(gate);
+
+    // Static content (sections)
+    if ((data.sections || []).length) {
+      var body = L.make("section", { class: "lmt-content" });
+      (data.sections || []).forEach(function (s) {
+        if (s.title) body.appendChild(L.make("h2", null, L.esc(s.title)));
+        if (s.html) {
+          var h = L.make("div");
+          h.innerHTML = s.html;
+          body.appendChild(h);
+        } else if (s.text) {
+          body.appendChild(L.make("p", null, L.esc(s.text)));
+        }
+      });
+      main.appendChild(body);
+    }
+
+    root.appendChild(main);
+
+    // State + wiring
+    function allAnswered() {
+      return (data.stack_questions || []).every(function (q) { return selected[q.id] != null; });
+    }
+    function refreshResult() {
+      L.writeKV("template", slug, "answers", selected);
+      root.classList.toggle("ready", allAnswered());
+      var meta = document.getElementById("lmt-download-meta");
+      if (meta) {
+        var fragments = (data.stack_questions || []).map(function (q) {
+          var opt = (q.options || []).find(function (o) { return o.value === selected[q.id]; });
+          return opt ? (opt.short || opt.value) : null;
+        }).filter(Boolean);
+        meta.textContent = fragments.length ? fragments.join(" · ") : "";
+      }
+    }
+    refreshResult();
+
+    // Tri-option click
+    stackSection.querySelectorAll(".lmt-q-opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var qid = btn.closest(".lmt-question").getAttribute("data-qid");
+        var val = btn.getAttribute("data-value");
+        selected[qid] = val;
+        // Re-sync all options in this question
+        btn.closest(".lmt-q-options").querySelectorAll(".lmt-q-opt").forEach(function (b) {
+          var isMe = b === btn;
+          b.classList.toggle("selected", isMe);
+          b.setAttribute("aria-checked", isMe ? "true" : "false");
+        });
+        refreshResult();
+        L.beacon("template", "stack_answer", { answers: { qid: qid, value: val } });
+      });
+    });
+
+    // Download
+    function buildArtifact() {
+      // Produce a personalized artifact by substituting selected answers into the base template.
+      var base = (data.artifact && data.artifact.base) || {};
+      var variants = (data.artifact && data.artifact.variants) || {};
+      // Start with a deep clone of the base
+      var artifact = JSON.parse(JSON.stringify(base));
+      // Apply each selected answer's variant patch in order
+      Object.keys(selected).forEach(function (qid) {
+        var key = qid + "." + selected[qid];
+        var patch = variants[key];
+        if (!patch) return;
+        // Shallow-merge — for nested patches, caller passes full subtree
+        Object.keys(patch).forEach(function (k) { artifact[k] = patch[k]; });
+      });
+      // Attribution footer
+      artifact.__source = "Ivan Manfredi — " + (data.title || "Template") + " · " + location.href;
+      artifact.__personalized_for = selected;
+      return artifact;
+    }
+    function downloadArtifact() {
+      if (!allAnswered()) { L.toast("Answer all stack questions first"); return; }
+      if (!captured) { L.toast("Enter your email to unlock"); document.getElementById("lmt-email").focus(); return; }
+      var artifact = buildArtifact();
+      var blob = new Blob([JSON.stringify(artifact, null, 2)], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var fname = (slug || "template") + "--" + Object.values(selected).join("-") + ".json";
+      var a = document.createElement("a");
+      a.href = url; a.download = fname; a.click();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      L.beacon("template", "download", { answers: { file: fname, stack: selected } });
+      L.toast("Downloaded. Setup steps on their way to your inbox.");
+    }
+    var downloadBtn = document.getElementById("lmt-download");
+    if (downloadBtn) downloadBtn.addEventListener("click", downloadArtifact);
+
+    // Email gate
+    var form = document.getElementById("lmt-form");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var em = (document.getElementById("lmt-email") || {}).value || "";
+        if (!L.emailIsValid(em)) { L.toast("Enter a valid email"); return; }
+        L.writeKV("template", slug, "email", em);
+        L.updateReader({ email: em });
+        captured = true;
+        L.beacon("template", "capture", { email: em, answers: { stack: selected } });
+        form.innerHTML = '<p style="font-weight:700;color:var(--accent-light)">&#10003; Sent. Downloading your artifact now.</p>';
+        setTimeout(downloadArtifact, 400);
+      });
+    }
+
+    L.beacon("template", "view");
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var root = document.querySelector("[data-lm-template-src]") || document.querySelector("#lmc-root");
+    if (!root) return;
+    var src = root.getAttribute("data-lm-template-src") || "./data.json";
+    fetch(src, { credentials: "same-origin" })
+      .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+      .then(function (data) { render(data, root); })
+      .catch(function (e) {
+        root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading template:</strong> ' + L.esc(e.message) + '</div>';
+      });
+  });
+})();

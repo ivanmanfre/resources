@@ -1,0 +1,39 @@
+/* Template Engine — stack fit check + personalized artifact download */
+@import url("./shared.css");
+
+.lmt-root { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+/* Reuse hero / intro / container from shared */
+
+.lmt-stack { margin: 2.5rem 0; padding: 2rem 1.75rem; background: var(--paper-raise); border: 1px solid var(--hairline); border-radius: var(--radius-lg); box-shadow: var(--shadow-subtle); }
+.lmt-stack h2 { font-size: 1.4rem; font-weight: 900; margin: 0 0 .35rem; color: var(--ink); letter-spacing: -0.02em; }
+.lmt-stack h2 em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
+.lmt-stack p { margin: 0 0 1.75rem; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; max-width: 38rem; }
+.lmt-question { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--hairline); }
+.lmt-question:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.lmt-q-label { display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); font-weight: 700; margin-bottom: .6rem; }
+.lmt-q-options { display: flex; flex-wrap: wrap; gap: .55rem; }
+.lmt-q-opt { padding: .55rem 1rem; background: var(--paper); color: var(--ink); font-size: .92rem; font-weight: 600; border: 1px solid var(--hairline-bold); border-radius: var(--radius-md); cursor: pointer; transition: background .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease); font-family: inherit; }
+.lmt-q-opt:hover { background: var(--paper-sunk); border-color: var(--accent-light); }
+.lmt-q-opt.selected { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+
+.lmt-result { display: none; margin: 2.5rem 0; padding: 2rem 1.75rem; background: var(--paper-raise); border: 1px solid var(--hairline); border-left: 4px solid var(--accent); border-radius: var(--radius-lg); box-shadow: var(--shadow-lift); }
+.lmt-root.ready .lmt-result { display: block; }
+.lmt-result h3 { font-size: 1.25rem; font-weight: 900; margin: 0 0 .5rem; color: var(--ink); }
+.lmt-result h3 em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
+.lmt-result p { margin: 0 0 1.25rem; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+
+.lmt-download-wrap { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.lmt-download { padding: .9rem 1.75rem; background: var(--ink); color: var(--paper); font-weight: 700; text-decoration: none; border-radius: var(--radius-md); font-size: .95rem; letter-spacing: .02em; transition: transform .25s var(--ease), background .25s var(--ease); border: none; cursor: pointer; font-family: inherit; }
+.lmt-download:hover { transform: translateY(-2px); background: var(--accent-ink); }
+.lmt-download[disabled] { opacity: 0.4; cursor: not-allowed; }
+.lmt-download-meta { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .78rem; color: var(--ink-mute); letter-spacing: .05em; }
+
+.lmt-content { padding: 2.5rem 0; }
+.lmt-content h2, .lmt-content h3 { color: var(--ink); margin: 2rem 0 .75rem; letter-spacing: -0.02em; }
+.lmt-content h2 { font-size: 1.75rem; font-weight: 900; }
+.lmt-content h3 { font-size: 1.3rem; font-weight: 800; }
+.lmt-content h2 em, .lmt-content h3 em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
+.lmt-content p { font-size: 1.02rem; line-height: 1.7; color: var(--ink-soft); margin: 0 0 1rem; }
+.lmt-content pre { background: var(--paper-sunk); border: 1px solid var(--hairline); padding: 1.25rem; border-radius: var(--radius-md); overflow-x: auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .85rem; line-height: 1.55; }
+.lmt-content code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .9em; background: var(--paper-sunk); padding: .15rem .35rem; border-radius: 2px; }

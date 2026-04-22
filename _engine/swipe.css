@@ -1,0 +1,53 @@
+/* Swipe File Engine — filterable list of copy-ready examples with "Take" mechanic. */
+@import url("./shared.css");
+
+.lms-root { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+/* Tag filter bar */
+.lms-filters { position: sticky; top: 0; z-index: 30; background: rgba(247, 244, 239, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--hairline); padding: 1rem 1.5rem; }
+.lms-filters-inner { max-width: 860px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.lms-filter-label { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--ink-mute); margin-right: .75rem; }
+.lms-filter { padding: .4rem .9rem; background: var(--paper); color: var(--ink-soft); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--hairline-bold); border-radius: var(--radius-md); cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease); }
+.lms-filter:hover { background: var(--paper-sunk); }
+.lms-filter.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.lms-taken-count { margin-left: auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .78rem; color: var(--ink-mute); letter-spacing: .08em; text-transform: uppercase; }
+.lms-taken-count strong { color: var(--accent); font-weight: 700; }
+
+/* Example list */
+.lms-list { display: grid; gap: 1rem; padding: 2.5rem 0; }
+.lms-example {
+  padding: 1.5rem 1.75rem;
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  transition: opacity .3s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+  opacity: 0;
+  transform: translateY(8px);
+}
+.lms-example.in-view { opacity: 1; transform: translateY(0); }
+.lms-example:hover { transform: translateY(-1px); box-shadow: var(--shadow-lift); border-color: var(--hairline-bold); }
+.lms-example.dimmed { opacity: .35; }
+.lms-example.taken { background: var(--accent-soft); border-color: rgba(76, 110, 61, 0.25); border-left: 3px solid var(--accent); }
+.lms-ex-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: .85rem; flex-wrap: wrap; }
+.lms-ex-title { font-size: 1.15rem; font-weight: 800; color: var(--ink); margin: 0; letter-spacing: -0.01em; line-height: 1.3; }
+.lms-ex-title em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
+.lms-ex-tags { display: flex; gap: .35rem; flex-wrap: wrap; }
+.lms-ex-tag { padding: .22rem .55rem; background: transparent; color: var(--ink-mute); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--hairline-bold); border-radius: 2px; }
+.lms-ex-body { background: var(--paper-sunk); padding: 1rem 1.25rem; border-radius: var(--radius-sm); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .92rem; line-height: 1.6; color: var(--ink); margin: 0 0 .85rem; white-space: pre-wrap; word-break: break-word; }
+.lms-ex-why { font-size: .92rem; color: var(--ink-soft); line-height: 1.55; padding-left: .9rem; border-left: 2px solid rgba(76,110,61,0.35); margin: 0 0 1rem; }
+.lms-ex-why::before { content: "Why it works"; display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: .25rem; }
+.lms-ex-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.lms-take-btn { padding: .55rem 1rem; background: var(--ink); color: var(--paper); font-size: .8rem; font-weight: 700; letter-spacing: .05em; border: none; border-radius: var(--radius-md); cursor: pointer; font-family: inherit; transition: transform .2s var(--ease), background .2s var(--ease); }
+.lms-take-btn:hover { background: var(--accent-ink); transform: translateY(-1px); }
+.lms-example.taken .lms-take-btn { background: var(--accent); }
+.lms-example.taken .lms-take-btn::before { content: "\u2713  "; }
+
+/* Export footer bar (appears when at least one taken) */
+.lms-export-bar { display: none; position: sticky; bottom: 1rem; z-index: 40; background: var(--paper-raise); border: 1px solid var(--hairline); border-radius: var(--radius-md); box-shadow: var(--shadow-lift); padding: 1rem 1.25rem; margin: 2rem auto; max-width: 860px; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.lms-root.has-taken .lms-export-bar { display: flex; animation: slide-up .3s var(--ease); }
+@keyframes slide-up { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.lms-export-text { flex: 1 1 auto; font-size: .92rem; color: var(--ink-soft); }
+.lms-export-text strong { color: var(--ink); }
+.lms-export-btn { padding: .65rem 1.25rem; background: var(--accent); color: var(--paper); font-weight: 700; border: none; border-radius: var(--radius-md); cursor: pointer; font-size: .85rem; font-family: inherit; letter-spacing: .02em; transition: background .2s var(--ease); }
+.lms-export-btn:hover { background: var(--accent-ink); }
