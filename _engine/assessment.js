@@ -100,7 +100,7 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" });
+    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
@@ -171,8 +171,10 @@
     root.appendChild(widget);
 
     function renderQuestion() {
+      if (idx >= questions.length) { renderResult(); return; }
       card.innerHTML = "";
       var q = questions[idx];
+      if (!q) { renderResult(); return; }
       // Progress
       var prog = make("div", { class: "lmc-progress-row" });
       var pct = Math.round((idx / questions.length) * 100);
@@ -239,23 +241,76 @@
 
     function renderResult() {
       var res = computeResult(data, answers);
-      // Partial reveal: show overall + tier + one-line, gate categories behind email
       card.innerHTML = "";
-      var wrap = make("div", { class: "lmc-result" });
-      // Score ring
-      var circ = 2 * Math.PI * 70;
-      var offset = circ - (res.overall / 100) * circ;
-      var ringHtml = '<div class="lmc-score-ring">' +
-        '<svg width="180" height="180" viewBox="0 0 180 180" aria-hidden="true"><circle class="track" cx="90" cy="90" r="70"/><circle class="arc" cx="90" cy="90" r="70" stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + offset.toFixed(2) + '"/></svg>' +
-        '<div class="score-num"><div class="num">' + res.overall + '</div><div class="suffix">out of 100</div></div></div>';
-      wrap.innerHTML = ringHtml;
-      var tierEl = make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name));
-      wrap.appendChild(tierEl);
-      var lead = res.weakest
-        ? "Your weakest area is <strong>" + esc(res.weakest.name) + "</strong> (" + res.weakest.score + "/100). That's where the biggest hours-per-week leak usually lives."
+
+      // ── Tier card (shared component) ───────────────────────────────
+      var tierKey = res.tier.class === "low" ? "critical"
+                   : res.tier.class === "medium" ? "growth"
+                   : "optimized";
+      var tierNote = res.weakest
+        ? "Your weakest area is " + res.weakest.name + " (" + res.weakest.score + "/100). That's where the biggest leak usually lives."
         : "Your overall score tells the story; the category breakdown points to the specific fix.";
-      wrap.appendChild(make("p", { class: "lmc-result-lead" }, lead));
-      card.appendChild(wrap);
+      var tierBlock = make("div", { class: "lmc-tier lmc-tier-" + tierKey });
+      tierBlock.innerHTML =
+        '<div class="lmc-tier-head">' +
+          '<span class="lmc-tier-label">' + esc(res.tier.name || "Tier") + '</span>' +
+          '<span class="lmc-tier-score"><em>' + res.overall + '</em><span>/100</span></span>' +
+        '</div>' +
+        '<p class="lmc-tier-note">' + esc(tierNote) + '</p>';
+      card.appendChild(tierBlock);
+
+      // ── Top-3 gap questions (the 3 lowest-scoring answered items) ───
+      var gaps = [];
+      (data.categories || []).forEach(function (cat) {
+        (cat.questions || []).forEach(function (q) {
+          var a = answers[q.id];
+          if (a == null) return;
+          var val = null;
+          if (q.answers && q.answers[a] && typeof q.answers[a].score === "number") val = q.answers[a].score;
+          else if (typeof a === "number") val = a;
+          else if (!isNaN(Number(a))) val = Number(a);
+          if (val == null || isNaN(val)) return;
+          var maxScore = q.max_score || 5;
+          var pct = val / maxScore;
+          var rec = pickRec(cat, Math.round(pct * 100));
+          var firstFix = null;
+          if (rec && Array.isArray(rec.fixes) && rec.fixes.length) firstFix = rec.fixes[0];
+          else if (rec && typeof rec === "string") firstFix = rec;
+          else if (q.answers && q.answers[a] && q.answers[a].feedback) firstFix = q.answers[a].feedback;
+          gaps.push({
+            question: q.text || q.label || "",
+            category: cat.name || cat.id,
+            score: pct,
+            gapScore: (1 - pct),
+            fix: firstFix
+          });
+        });
+      });
+      gaps.sort(function (a, b) { return b.gapScore - a.gapScore; });
+      var topGaps = gaps.filter(function (g) { return g.gapScore > 0.2; }).slice(0, 3);
+      if (topGaps.length) {
+        var h = make("h3", { class: "lmc-results-h" });
+        h.innerHTML = "Top " + topGaps.length + " gap" + (topGaps.length === 1 ? "" : "s") + " to close <em>this week</em>";
+        card.appendChild(h);
+
+        var list = make("ol", { class: "lmc-gap-list" });
+        list.innerHTML = topGaps.map(function (g, i) {
+          return '<li class="lmc-gap">' +
+            '<div class="lmc-gap-rank">' + (i + 1) + '</div>' +
+            '<div class="lmc-gap-body">' +
+              '<div class="lmc-gap-head"><span class="lmc-gap-text">' + esc(g.question) + '</span></div>' +
+              (g.fix ? '<div class="lmc-gap-fix"><span class="lmc-gap-fix-label">Fix</span>' + esc(g.fix) + '</div>' : '') +
+            '</div>' +
+          '</li>';
+        }).join("");
+        card.appendChild(list);
+
+        // "What to do Monday" — top-gap fix, or the fallback weakest-cat rec
+        var mondayTxt = (topGaps[0] && topGaps[0].fix) || tierNote;
+        var nm = make("p", { class: "lmc-next-move" });
+        nm.innerHTML = '<span class="lmc-next-label">What to do Monday</span>' + esc(mondayTxt);
+        card.appendChild(nm);
+      }
 
       if (!captured) {
         var gate = make("div", { class: "lmc-capture", id: "lmc-capture" });
