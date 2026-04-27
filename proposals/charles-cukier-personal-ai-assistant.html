@@ -229,7 +229,7 @@ a{color:inherit}
     
       <div class="stack-group">
         <div class="stack-cat">Built with</div>
-        <ul class="stack-list"><li>Claude Sonnet 4.6 + Opus 4.7 — the brain, via the Anthropic API</li><li>n8n — orchestration and cron, hosted on my instance</li><li>Railway — long-running Claude calls and async jobs, hosted on my instance</li><li>Whapi — WhatsApp inbound and outbound on a new dedicated number we provision</li><li>Groq Whisper — sub-second voice-note transcription</li><li>Supabase — your private memory database (people, properties, captures, follow-ups, memos)</li><li>Apify — Centris and realtor.ca listing data for property research</li><li>ZenRows — Cloudflare bypass for property research discovery</li><li>Firecrawl + Perplexity Sonar Pro — deep web research and citation-backed lookups</li></ul>
+        <ul class="stack-list"><li>Claude Sonnet 4.6 + Opus 4.7 — the brain, via the Anthropic API</li><li>n8n — orchestration, cron, and tool routing</li><li>Whapi — WhatsApp inbound and outbound on a new dedicated number we provision</li><li>Groq Whisper — sub-second voice-note transcription</li><li>Supabase — your private memory database (people, properties, captures, follow-ups, memos)</li><li>Apify — Centris and realtor.ca listing data for property research</li><li>ZenRows — Cloudflare bypass for property research discovery</li><li>Firecrawl + Perplexity Sonar Pro — deep web research and citation-backed lookups</li></ul>
       </div>
       <div class="stack-group">
         <div class="stack-cat">Connects to</div>
@@ -262,7 +262,7 @@ a{color:inherit}
         <div class="scope-group">
           <div class="scope-group-label">Operations</div>
           <div class="scope-grid">
-            <div class="scope-item"><div class="scope-check"></div><div>Approval gate on every outbound action  -  no message sends, no spend, no record changes without your yes</div></div><div class="scope-item"><div class="scope-check"></div><div>Same stack as the Woodland GEM engine (Claude + Supabase + n8n) so future glue to GEM data is days of work, not a rewrite</div></div><div class="scope-item"><div class="scope-check"></div><div>30 days of post-launch support: bug fixes, prompt tuning, small adjustments</div></div>
+            <div class="scope-item"><div class="scope-check"></div><div>Approval gate on every outbound action  -  no message sends, no spend, no record changes without your yes</div></div><div class="scope-item"><div class="scope-check"></div><div>30 days of post-launch support: bug fixes, prompt tuning, small adjustments</div></div>
           </div>
         </div>
         <div class="scope-group">
@@ -279,7 +279,7 @@ a{color:inherit}
       <div class="table-scroll">
         <table class="timeline-table">
           <thead><tr><th>Phase</th><th>Duration</th><th>Deliverable</th></tr></thead>
-          <tbody><tr><td class="phase-name">Foundation</td><td class="phase-duration">Week 1, Days 1 to 4</td><td class="phase-deliverable">New dedicated WhatsApp number provisioned via Whapi, Claude brain wired up on Railway, Supabase memory deployed, voice transcription live, capture skill working end-to-end so text and voice both file under the right person or property.</td></tr><tr><td class="phase-name">Skills + Tools</td><td class="phase-duration">Week 1 to 2, Days 5 to 10</td><td class="phase-deliverable">Pre-meeting brief, reminders, waiting-on tracker, daily morning digest, research skill (all 6 topic types from your brief), document parser, HubSpot chat-ops, and Calendar + Gmail + Fireflies + Drive integrations all online and tested.</td></tr><tr><td class="phase-name">Polish + Handoff</td><td class="phase-duration">Week 2, Days 11 to 14</td><td class="phase-deliverable">Approval gates verified across every outbound action, edge cases ironed out, async walkthrough video sent over, written reference card for how to talk to the assistant. 30-day support window begins.</td></tr></tbody>
+          <tbody><tr><td class="phase-name">Foundation</td><td class="phase-duration">Week 1, Days 1 to 4</td><td class="phase-deliverable">New dedicated WhatsApp number provisioned via Whapi, Claude brain wired up in n8n, Supabase memory deployed, voice transcription live, capture skill working end-to-end so text and voice both file under the right person or property.</td></tr><tr><td class="phase-name">Skills + Tools</td><td class="phase-duration">Week 1 to 2, Days 5 to 10</td><td class="phase-deliverable">Pre-meeting brief, reminders, waiting-on tracker, daily morning digest, research skill (all 6 topic types from your brief), document parser, HubSpot chat-ops, and Calendar + Gmail + Fireflies + Drive integrations all online and tested.</td></tr><tr><td class="phase-name">Polish + Handoff</td><td class="phase-duration">Week 2, Days 11 to 14</td><td class="phase-deliverable">Approval gates verified across every outbound action, edge cases ironed out, async walkthrough video sent over, written reference card for how to talk to the assistant. 30-day support window begins.</td></tr></tbody>
         </table>
       </div>
       <div class="timeline-total">Total: 2 Weeks</div>
@@ -300,8 +300,8 @@ a{color:inherit}
     </div>
     <div class="investment-recurring">
         <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
-        <p class="investment-recurring-lead">Estimated $165 to $260 per month at typical usage.</p>
-        <ul class="investment-recurring-list"><li>Whapi (WhatsApp infrastructure with new dedicated number) ~$30 to $50.</li><li>Claude API (the brain) ~$20 to $80 depending on volume.</li><li>Groq Whisper (voice transcription) ~$5 to $15.</li><li>Apify (Centris listing detail + realtor.ca actors) ~$40.</li><li>ZenRows (Cloudflare bypass for property research) $69.</li><li>Supabase (memory database) typically $0 to $25.</li><li>All other research APIs (Polymarket, Kalshi, Manifold, Données Québec, CanadaBuys, Montreal open data, SEAO Quebec mirror) are free public APIs.</li><li>Existing subscriptions you already pay for (HubSpot, Google Workspace, Fireflies) are unchanged.</li></ul>
+        <p class="investment-recurring-lead">Estimated $195 to $265 per month at typical usage.</p>
+        <ul class="investment-recurring-list"><li>n8n (orchestration, self-hosted on a small instance) ~$60.</li><li>Claude API (the brain) ~$20 to $80 depending on volume.</li><li>Apify (Centris listing detail + realtor.ca actors) ~$40.</li><li>ZenRows (Cloudflare bypass for property research) $69.</li><li>Groq Whisper (voice transcription) ~$5 to $15.</li><li>Whapi (WhatsApp infrastructure) free at our usage tier.</li><li>Supabase (memory database) free tier covers it.</li><li>Research APIs (Polymarket, Kalshi, Manifold, Données Québec, CanadaBuys, Montreal open data, SEAO Quebec mirror) are free public APIs.</li><li>Existing subscriptions you already pay for (HubSpot, Google Workspace, Fireflies) are unchanged.</li></ul>
       </div>
   </div>
 <div class="section">
@@ -324,7 +324,7 @@ a{color:inherit}
       <h2>Let’s build this</h2>
       <p>Reply on Upwork to get started, or send any questions through the platform.</p>
     
-    <div class="upsell-box"><h3>Future Opportunities</h3><p>Phase 2 Live Meeting Coach (auto-joins Zoom/Meet, whispers real-time hints to a second screen, post-call summary and action items in WhatsApp). Direct read-only hook to the Woodland GEM pipeline so the morning digest includes overnight GEM moves (1 to 2 days of glue work, same stack). Specialized recurring scan modules: daily density-arbitrage monitor for a fixed target zone, daily SEAO Quebec keyword monitor for matching tenders.</p></div>
+    <div class="upsell-box"><h3>Future Opportunities</h3><p>Phase 2 Live Meeting Coach (auto-joins Zoom/Meet, whispers real-time hints to a second screen, post-call summary and action items in WhatsApp). Specialized recurring scan modules: daily density-arbitrage monitor for a fixed target zone, daily SEAO Quebec keyword monitor for matching tenders. Direct CRM-to-memo flows: 'next 5 deals to chase' digest on demand, deal-stage-stuck alerts.</p></div>
   </div>
 <div class="footer">
   <div class="footer-left">Iván Manfredi • AI &amp; Automation Architect</div>
