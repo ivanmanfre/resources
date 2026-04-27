@@ -1,0 +1,195 @@
+{
+  "slug": "agency-ai-agent-roi-calculator-50k-investment-vs-billable-hours",
+  "title": "The Agency AI Agent ROI Calculator: Payback Period and 3-Year Net on a $50K Build",
+  "subtitle": "For agency owners and ops directors at 10–200 person firms. Plug in your build quote and workflow hours, get payback in months and 3-year net return in 30 seconds.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 4,
+  "inputs": [
+    {
+      "id": "build_cost",
+      "label": "AI Agent Build Cost",
+      "type": "number",
+      "prefix": "$",
+      "min": 10000,
+      "max": 250000,
+      "step": 1000,
+      "default": 50000,
+      "slider": true,
+      "hint": "Fixed-price quote from your build partner. Domain-trained agents run $40K–$120K; agentic with retrieval $60K–$200K."
+    },
+    {
+      "id": "annual_maintenance",
+      "label": "Annual Maintenance & API Cost",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/yr",
+      "min": 0,
+      "max": 80000,
+      "step": 500,
+      "default": 9000,
+      "slider": true,
+      "hint": "Hosting, model API spend, monitoring, retainer. Default to 15–25% of build cost if unknown."
+    },
+    {
+      "id": "hours_per_week",
+      "label": "Hours per Week on the Workflow",
+      "type": "number",
+      "suffix": "hrs/wk",
+      "min": 1,
+      "max": 120,
+      "step": 1,
+      "default": 14,
+      "slider": true,
+      "hint": "Total team hours, not one person. Add up everyone who touches the workflow."
+    },
+    {
+      "id": "loaded_hourly_cost",
+      "label": "Loaded Hourly Cost of the Team",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 30,
+      "max": 300,
+      "step": 5,
+      "default": 85,
+      "slider": true,
+      "hint": "Salary + benefits + overhead. Account managers and ops $65–$120; senior strategists $150–$250."
+    },
+    {
+      "id": "billable_rate",
+      "label": "Billable Rate for That Hour",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 0,
+      "max": 600,
+      "step": 5,
+      "default": 175,
+      "slider": true,
+      "hint": "What you charge clients, or the rate freed hours get redeployed at. Set to 0 if hours stay internal."
+    },
+    {
+      "id": "redeployment_rate",
+      "label": "Realistic Redeployment Rate",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "slider": true,
+      "hint": "Percent of saved hours that actually become billable work. Most firms land at 50–70%; 100% is fantasy."
+    },
+    {
+      "id": "error_rate_reduction",
+      "label": "Expected Error Rate Reduction",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 10,
+      "slider": true,
+      "hint": "Share of rework and missed deliverables the system removes. Default to 8% if unsure."
+    },
+    {
+      "id": "build_timeline_months",
+      "label": "Build Timeline Until Live",
+      "type": "number",
+      "suffix": "months",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 3,
+      "slider": true,
+      "hint": "The window where you're paying without saving anything yet. Most builds ship in 2–4 months."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "three_year_net_return",
+      "label": "3-Year Net Return",
+      "format": "currency",
+      "primary": true,
+      "formula": "(((hours_per_week * 52) * loaded_hourly_cost) + ((hours_per_week * 52) * (redeployment_rate / 100) * billable_rate) + ((hours_per_week * 52) * loaded_hourly_cost * (error_rate_reduction / 100))) * 3 - build_cost - (annual_maintenance * 3)",
+      "tier_thresholds": {
+        "low": 0,
+        "mid": 50000,
+        "high": 150000,
+        "very_high": 400000,
+        "low_label": "Don't build it",
+        "mid_label": "Build it, narrow the scope",
+        "high_label": "Build it, standard scope",
+        "very_high_label": "Build it, expand scope"
+      }
+    },
+    {
+      "id": "annual_hours_recovered",
+      "label": "Annual Hours Recovered",
+      "format": "hours",
+      "formula": "hours_per_week * 52"
+    },
+    {
+      "id": "total_annual_value",
+      "label": "Total Annual Value",
+      "format": "currency",
+      "formula": "(annual_hours_recovered * loaded_hourly_cost) + (annual_hours_recovered * (redeployment_rate / 100) * billable_rate) + (annual_hours_recovered * loaded_hourly_cost * (error_rate_reduction / 100))"
+    },
+    {
+      "id": "payback_period_months",
+      "label": "Payback Period",
+      "format": "decimal",
+      "formula": "(total_annual_value - annual_maintenance) > 0 ? (build_cost / ((total_annual_value - annual_maintenance) / 12)) + build_timeline_months : 999"
+    },
+    {
+      "id": "first_year_multiple",
+      "label": "First-Year Return Multiple",
+      "format": "decimal",
+      "formula": "build_cost > 0 ? total_annual_value / build_cost : 0"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "Don't build it",
+      "when": "three_year_net_return < 50000",
+      "text": "The workflow isn't bleeding enough hours to justify a custom build. Either volume is too low or loaded cost is too low — look elsewhere or revisit when you've grown into the spend."
+    },
+    {
+      "tag": "Narrow the scope",
+      "when": "three_year_net_return >= 50000 && three_year_net_return < 150000",
+      "text": "Math works but margins are thin. Cut the build cost by tightening scope to your 2–3 highest-volume deliverables, not all five. Re-run the calculator with the lower quote."
+    },
+    {
+      "tag": "Standard scope",
+      "when": "three_year_net_return >= 150000 && three_year_net_return < 400000",
+      "text": "Solid ROI. Build the full workflow but enforce the 90-Day Payback Rule on phase 1 — if phase 1 doesn't clear in 90 days, don't fund phase 2."
+    },
+    {
+      "tag": "Expand scope",
+      "when": "three_year_net_return >= 400000",
+      "text": "The workflow is hemorrhaging value. Consider expanding to adjacent processes (reporting, renewals, intake) in the same build to compress fixed costs across more recovered hours."
+    },
+    {
+      "tag": "90-Day Payback Rule fails",
+      "when": "payback_period_months > 9 && three_year_net_return >= 50000",
+      "text": "Payback is over 9 months. The 3-year math still works, but you're carrying the cost a long time. Consider phasing the build or negotiating milestone-based payment to shorten cash exposure."
+    },
+    {
+      "tag": "Redeployment check",
+      "when": "redeployment_rate > 75",
+      "text": "You're assuming over 75% of saved hours convert to billable work. Sales pipeline doesn't expand just because capacity does. Re-run at 60% — if the math still clears, you're safe; if it collapses, you've found the soft assumption."
+    },
+    {
+      "tag": "Maintenance looks light",
+      "when": "annual_maintenance < (build_cost * 0.15)",
+      "text": "Your maintenance budget is under 15% of build cost. Agentic workflows with retrieval can hit $500–$2,000/month in API alone at agency volume. Pad the number before you sign."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Want me to pressure-test your numbers?",
+    "description": "Send me your inputs — build quote, hours/week, loaded cost, billable rate — and I'll run the calculator with you and flag the assumptions that look soft before you sign the SOW."
+  }
+}
