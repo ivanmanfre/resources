@@ -123,16 +123,54 @@
     "30-minute kickoff call to map the people, properties, and follow-up patterns the brain should know on day one",
     "Availability for 2 to 3 short check-ins during the build"
   ],
+  "agreement_terms": [
+    {
+      "title": "Scope of Work",
+      "text": "This proposal defines the complete scope. Any work beyond what is described requires a separate agreement or amendment."
+    },
+    {
+      "title": "Payment Terms",
+      "text": "Payment is due as outlined in the Investment section (50% upfront ($2,750) to start, 50% on delivery ($2,750)). Invoices are due within 14 days of issuance."
+    },
+    {
+      "title": "Intellectual Property",
+      "text": "Upon full payment, all deliverables and custom code become the exclusive property of the Client. Ivan Manfredi retains the right to reference the project in portfolios and case studies (without disclosing confidential data)."
+    },
+    {
+      "title": "Post-Delivery Support",
+      "text": "This engagement includes 30 days of post-delivery support after final handoff. Issues, adjustments, and questions related to delivered work are covered within this period at no additional cost."
+    },
+    {
+      "title": "Cancellation",
+      "text": "Either party may terminate this agreement with 7 days written notice. Work completed up to the cancellation date will be invoiced proportionally."
+    },
+    {
+      "title": "Confidentiality",
+      "text": "Both parties agree to keep confidential any proprietary information shared during this engagement. This obligation survives termination of the agreement."
+    },
+    {
+      "title": "Liability",
+      "text": "Total liability under this engagement is limited to the total fees paid by the Client. Neither party shall be liable for indirect, incidental, or consequential damages."
+    },
+    {
+      "title": "Data Protection",
+      "text": "The Service Provider will handle all client data accessed during the engagement in accordance with applicable data protection regulations, including GDPR. Access credentials will be used solely for the purposes described in this proposal and will not be retained after the engagement concludes."
+    }
+  ],
+  "client_email": "im@ivanmanfredi.com",
   "upsell_opportunities": "Phase 2 Live Meeting Coach (auto-joins Zoom/Meet, real-time whispered hints on second screen, post-call summary and action items in WhatsApp). Future glue to the Woodland GEM pipeline so the assistant can read GEM data directly is 1 to 2 days of work, not a rewrite, because we are using the same database pattern, AI platform, and language.",
   "skip_stripe": true,
   "slug": "personal-personal-ai-assistant",
-  "_source": "new",
+  "_source": "regen",
   "_from_direct": true,
-  "task_id": "",
-  "proposal_url": "https://resources.ivanmanfredi.com/proposals/personal-personal-ai-assistant.html",
+  "task_id": "86ah42ha7",
+  "proposal_url": "https://ivanmanfre.github.io/resources/proposals/personal-personal-ai-assistant.html",
   "_skip_stripe": true,
   "stripe_payment_url": "",
   "proposalUrl": "https://ivanmanfre.github.io/resources/proposals/personal-personal-ai-assistant.html",
+  "_qa_pass": true,
+  "_qa_note": "Unparseable QA response, passing",
+  "_feedback": "Proposal: https://ivanmanfre.github.io/resources/proposals/personal-personal-ai-assistant.html",
   "gemini_body": {
     "contents": [
       {
@@ -151,6 +189,6 @@
       "maxOutputTokens": 1024
     }
   },
-  "_qa_pass": true,
-  "_qa_note": "Unparseable QA response, passing"
+  "_qa_issues": [],
+  "_qa_severity": "none"
 }
