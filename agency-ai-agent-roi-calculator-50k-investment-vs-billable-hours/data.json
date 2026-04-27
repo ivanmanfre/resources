@@ -1,7 +1,7 @@
 {
   "slug": "agency-ai-agent-roi-calculator-50k-investment-vs-billable-hours",
-  "title": "The Agency AI Agent ROI Calculator: Payback Period and 3-Year Net on a $50K Build",
-  "subtitle": "For agency owners and ops directors at 10–200 person firms. Plug in your build quote and workflow hours, get payback in months and 3-year net return in 30 seconds.",
+  "title": "The Agency AI Agent ROI Calculator: Payback Period and 3-Year Net for Your Build",
+  "subtitle": "For agency owners and ops directors at 10\u2013200 person firms. Plug in your build quote and workflow hours, get payback in months and 3-year net return in 30 seconds.",
   "brand": {
     "accent": "#00E676",
     "hero_badge": "Interactive Calculator"
@@ -16,9 +16,9 @@
       "min": 10000,
       "max": 250000,
       "step": 1000,
-      "default": 50000,
+      "default": 12000,
       "slider": true,
-      "hint": "Fixed-price quote from your build partner. Domain-trained agents run $40K–$120K; agentic with retrieval $60K–$200K."
+      "hint": "Fixed-price quote from your build partner. Most agency builds run $10K\u2013$25K for a single workflow. Multi-step domain agents push $25K\u2013$60K; agentic systems with retrieval and approvals can hit $60K+."
     },
     {
       "id": "annual_maintenance",
@@ -29,9 +29,9 @@
       "min": 0,
       "max": 80000,
       "step": 500,
-      "default": 9000,
+      "default": 2400,
       "slider": true,
-      "hint": "Hosting, model API spend, monitoring, retainer. Default to 15–25% of build cost if unknown."
+      "hint": "Hosting, model API spend, monitoring, light retainer. Plan 15\u201325% of build cost. Most agency-scale workflows land $150\u2013$500/month."
     },
     {
       "id": "hours_per_week",
@@ -56,7 +56,7 @@
       "step": 5,
       "default": 85,
       "slider": true,
-      "hint": "Salary + benefits + overhead. Account managers and ops $65–$120; senior strategists $150–$250."
+      "hint": "Salary + benefits + overhead. Account managers and ops $65\u2013$120; senior strategists $150\u2013$250. Use blended team cost for the workflow."
     },
     {
       "id": "billable_rate",
@@ -81,7 +81,7 @@
       "step": 5,
       "default": 60,
       "slider": true,
-      "hint": "Percent of saved hours that actually become billable work. Most firms land at 50–70%; 100% is fantasy."
+      "hint": "Percent of saved hours that actually become billable work. Most firms land at 50\u201370%; 100% is fantasy."
     },
     {
       "id": "error_rate_reduction",
@@ -105,7 +105,7 @@
       "step": 1,
       "default": 3,
       "slider": true,
-      "hint": "The window where you're paying without saving anything yet. Most builds ship in 2–4 months."
+      "hint": "The window where you're paying without saving anything yet. Most builds ship in 2\u20134 months."
     }
   ],
   "outputs": [
@@ -155,17 +155,17 @@
     {
       "tag": "Don't build it",
       "when": "three_year_net_return < 50000",
-      "text": "The workflow isn't bleeding enough hours to justify a custom build. Either volume is too low or loaded cost is too low — look elsewhere or revisit when you've grown into the spend."
+      "text": "The workflow isn't bleeding enough hours to justify a custom build. Either volume is too low or loaded cost is too low \u2014 look elsewhere or revisit when you've grown into the spend."
     },
     {
       "tag": "Narrow the scope",
       "when": "three_year_net_return >= 50000 && three_year_net_return < 150000",
-      "text": "Math works but margins are thin. Cut the build cost by tightening scope to your 2–3 highest-volume deliverables, not all five. Re-run the calculator with the lower quote."
+      "text": "Math works but margins are thin. Cut the build cost by tightening scope to your 2\u20133 highest-volume deliverables, not all five. Re-run the calculator with the lower quote."
     },
     {
       "tag": "Standard scope",
       "when": "three_year_net_return >= 150000 && three_year_net_return < 400000",
-      "text": "Solid ROI. Build the full workflow but enforce the 90-Day Payback Rule on phase 1 — if phase 1 doesn't clear in 90 days, don't fund phase 2."
+      "text": "Solid ROI. Build the full workflow but enforce the 90-Day Payback Rule on phase 1 \u2014 if phase 1 doesn't clear in 90 days, don't fund phase 2."
     },
     {
       "tag": "Expand scope",
@@ -180,16 +180,16 @@
     {
       "tag": "Redeployment check",
       "when": "redeployment_rate > 75",
-      "text": "You're assuming over 75% of saved hours convert to billable work. Sales pipeline doesn't expand just because capacity does. Re-run at 60% — if the math still clears, you're safe; if it collapses, you've found the soft assumption."
+      "text": "You're assuming over 75% of saved hours convert to billable work. Sales pipeline doesn't expand just because capacity does. Re-run at 60% \u2014 if the math still clears, you're safe; if it collapses, you've found the soft assumption."
     },
     {
       "tag": "Maintenance looks light",
       "when": "annual_maintenance < (build_cost * 0.15)",
-      "text": "Your maintenance budget is under 15% of build cost. Agentic workflows with retrieval can hit $500–$2,000/month in API alone at agency volume. Pad the number before you sign."
+      "text": "Your maintenance budget is under 15% of build cost. Account for hosting, model API spend, and monitoring \u2014 most agency workflows land $150\u2013$500/month, with retrieval-heavy or high-volume systems running higher. Pad the number before you sign."
     }
   ],
   "capture_cta": {
     "headline": "Want me to pressure-test your numbers?",
-    "description": "Send me your inputs — build quote, hours/week, loaded cost, billable rate — and I'll run the calculator with you and flag the assumptions that look soft before you sign the SOW."
+    "description": "Send me your inputs \u2014 build quote, hours/week, loaded cost, billable rate \u2014 and I'll run the calculator with you and flag the assumptions that look soft before you sign the SOW."
   }
 }
