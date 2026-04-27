@@ -59,6 +59,14 @@ a{color:inherit}
 .scope-item.excluded{opacity:.45;color:var(--ink-mute)}
 .scope-item.excluded .scope-check{background:transparent;border:1px solid var(--hairline-bold)}
 
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+@media(max-width:1100px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.skill-card{padding:32px 28px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:48px;line-height:.95;color:var(--accent);display:block;margin-bottom:14px;letter-spacing:-.02em}
+.skill-name{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em;line-height:1.25}
+.skill-outcome{font-size:14px;color:var(--ink-soft);line-height:1.65}
+
 /* STACK */
 .stack-group{margin:24px 0 32px}
 .stack-cat{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
@@ -148,6 +156,7 @@ a{color:inherit}
 
 /* RESPONSIVE */
 @media(max-width:900px){
+  .skills-grid{grid-template-columns:1fr}
   .cover{grid-template-columns:1fr;padding:120px 32px 48px;gap:32px}
   .cover-nav{left:32px;right:32px;top:24px;flex-wrap:wrap;gap:8px}
   .cover h1{font-size:44px}
@@ -239,19 +248,75 @@ a{color:inherit}
     
   </div>
 <div class="section">
-      <span class="section-number">03 • Scope of Work</span>
+      <span class="section-number">03 • The Skills</span>
+      <h2>What it actually does</h2>
+      <p>Nine skills, one brain. The assistant knows when each one fires  -  you don't pick which to use, you just text or talk.</p>
+      <div class="skills-grid">
+        
+          <div class="skill-card">
+            <span class="skill-num">01</span>
+            <div class="skill-name">Capture</div>
+            <div class="skill-outcome">Voice or text → auto-filed by person, property, idea, or follow-up. Searchable on demand.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">02</span>
+            <div class="skill-name">Pre-meeting brief</div>
+            <div class="skill-outcome">Text 'walking to Evan' and get back 5 to 15 bullets in seconds  -  open follow-ups, recent activity, last meeting.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">03</span>
+            <div class="skill-name">Reminders</div>
+            <div class="skill-outcome">Timed reminders that include the why, not just the what. 'Call Peter  -  papers (waiting 9 days).'</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">04</span>
+            <div class="skill-name">Waiting-on tracker</div>
+            <div class="skill-outcome">Live list of every chase, Monday digest of overdue items, auto-drafted follow-ups, tap-to-confirm closure.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">05</span>
+            <div class="skill-name">Daily morning digest</div>
+            <div class="skill-outcome">7 AM brief: today's meetings with one-line context, overdue chases, research ready, yesterday's captures.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">06</span>
+            <div class="skill-name">Research memos</div>
+            <div class="skill-outcome">Topic in, structured memo out within 1 to 6 hours. Summary, key facts, opportunities, risks, sources.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">07</span>
+            <div class="skill-name">Document parsing</div>
+            <div class="skill-outcome">Contract → key-terms summary. Rent roll → proforma in a Google Sheet. Broker PDF → clean contacts ready for HubSpot.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">08</span>
+            <div class="skill-name">HubSpot chat-ops</div>
+            <div class="skill-outcome">Paste contacts and it prepares the import, tags, and sequence queue. You reply yes and it runs.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">09</span>
+            <div class="skill-name">Bilingual EN/FR</div>
+            <div class="skill-outcome">Text or voice-note in English, French, or franglais. Replies come back in the language you used.</div>
+          </div>
+        
+      </div>
+    </div>
+<div class="section">
+      <span class="section-number">04 • Scope of Work</span>
       <h2>What’s included</h2>
       
         <div class="scope-group">
           <div class="scope-group-label">Channel &amp; Memory</div>
           <div class="scope-grid">
             <div class="scope-item"><div class="scope-check"></div><div>WhatsApp inbound + outbound on a new dedicated Whapi number we provision (no SIM or phone needed on your side)</div></div><div class="scope-item"><div class="scope-check"></div><div>Voice-note transcription, sub-second on most messages</div></div><div class="scope-item"><div class="scope-check"></div><div>Single Claude-based brain with tool routing</div></div><div class="scope-item"><div class="scope-check"></div><div>Private memory database in your Supabase account (people, properties, ideas, follow-ups, captures, research memos)</div></div><div class="scope-item"><div class="scope-check"></div><div>Database export endpoint so you can pull all your data any time, any format</div></div>
-          </div>
-        </div>
-        <div class="scope-group">
-          <div class="scope-group-label">Skills</div>
-          <div class="scope-grid">
-            <div class="scope-item"><div class="scope-check"></div><div>Capture: any text or voice note auto-filed under the right person, property, idea, or follow-up. Searchable on demand.</div></div><div class="scope-item"><div class="scope-check"></div><div>Pre-meeting brief: text 'walking to Evan' and get back 5 to 15 bullet points in seconds. Pulls open follow-ups, recent deal activity, last meeting notes.</div></div><div class="scope-item"><div class="scope-check"></div><div>Reminders: timed reminders that include the why, not just the what. Example: 'Call Peter, Drummondville papers (waiting 9 days).'</div></div><div class="scope-item"><div class="scope-check"></div><div>Waiting-on tracker: live list of every chase, weekly Monday digest of overdue items, auto-drafted follow-up messages, tap-to-confirm closure when something arrives in your inbox or HubSpot.</div></div><div class="scope-item"><div class="scope-check"></div><div>Daily morning digest at 7 AM: today's meetings (one-line context each), overdue chases, research ready, yesterday's captures you might have forgotten.</div></div><div class="scope-item"><div class="scope-check"></div><div>Research memos: topic in (text or voice), structured memo out within 1 to 6 hours. Summary, key facts, opportunities, risks, sources. Handles Section 8 grants, density-arbitrage candidates, airport infrastructure, Guyana intel, prediction markets, government bidding.</div></div><div class="scope-item"><div class="scope-check"></div><div>Document parsing: contract PDF returns key-terms summary, rent roll PDF returns proforma in a Google Sheet, broker contact PDF returns clean structured contacts ready for HubSpot.</div></div><div class="scope-item"><div class="scope-check"></div><div>HubSpot chat-ops: paste contacts and the assistant prepares the import + tags + sequence queue. You reply yes and it runs.</div></div><div class="scope-item"><div class="scope-check"></div><div>Bilingual EN/FR: text or voice-note in English or French (or franglais). Replies come back in the language you used.</div></div>
           </div>
         </div>
         <div class="scope-group">
@@ -269,7 +334,7 @@ a{color:inherit}
       
     </div>
 <div class="section">
-      <span class="section-number">04 • Timeline</span>
+      <span class="section-number">05 • Timeline</span>
       <h2>Delivery schedule</h2>
       <div class="table-scroll">
         <table class="timeline-table">
@@ -280,7 +345,7 @@ a{color:inherit}
       <div class="timeline-total">Total: 2 Weeks</div>
     </div>
 <div class="section">
-    <span class="section-number">05 • Expected ROI</span>
+    <span class="section-number">06 • Expected ROI</span>
     <h2>What you get back</h2>
     <p>The real return is reclaimed cognitive load: nothing slips, nothing gets re-asked, follow-ups fire themselves, the list of properties and grants you've asked yourself to look into actually clears. On pure time, voice-note capture plus chat-ops HubSpot work alone returns a clear 10 to 15 hours a month. The compounding value is in deals you don't drop and ideas you don't lose.</p>
     <div class="roi-grid">
@@ -290,7 +355,7 @@ a{color:inherit}
     </div>
   </div>
 <div class="section">
-    <span class="section-number">06 • Investment</span>
+    <span class="section-number">07 • Investment</span>
     <h2>Pricing</h2>
     <div class="investment-box">
       <div class="investment-price"><span class="investment-currency">$</span>5500</div>
@@ -310,7 +375,7 @@ a{color:inherit}
       </div>
   </div>
 <div class="section">
-      <span class="section-number">07 • Requirements</span>
+      <span class="section-number">08 • Requirements</span>
       <h2>What I need from you</h2>
       <ul class="access-list"><li>Anthropic API key (for Claude) — created in your account at console.anthropic.com so you own the billing</li><li>HubSpot admin access or admin-level API token</li><li>One Google sign-in click — I send you a single link, you click it once to give the assistant permission to read your Calendar, Gmail, and Drive (takes 30 seconds)</li><li>Fireflies API key</li><li>Apify account (or I create one in your name) for property listing data</li><li>ZenRows account (or I create one in your name) — only used as a fallback for property research</li><li>Supabase project — I provision and deploy the schema, the project lives under your account</li><li>Whapi account — I set up the new dedicated WhatsApp number on your account so the number and billing stay yours</li></ul>
     </div>
