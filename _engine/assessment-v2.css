@@ -11,9 +11,9 @@
   --ink-faint: rgba(26, 26, 26, 0.35);
   --line: rgba(26, 26, 26, 0.15);
   --line-soft: rgba(26, 26, 26, 0.08);
-  --sage: #2A8F65;
-  --sage-soft: rgba(42, 143, 101, 0.12);
-  --sage-faint: rgba(42, 143, 101, 0.04);
+  --sage: #4C6E3D;
+  --sage-soft: rgba(76, 110, 61, 0.12);
+  --sage-faint: rgba(76, 110, 61, 0.04);
   --cyan: #1E40AF;
   --pink: #E8366D;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -32,7 +32,7 @@
 .lmc-badge { display: inline-block; padding: .35rem .9rem; background: var(--ink); color: var(--sage); font-family: monospace; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2em; margin-bottom: 1.25rem; }
 .lmc-h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 1rem; color: var(--ink); max-width: 42rem; }
 .lmc-h1-drama { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--sage); letter-spacing: 0; }
-.lmc-sub { font-size: 1.1rem; line-height: 1.6; color: var(--ink-soft); max-width: 34rem; margin: 0 0 1.5rem; padding-left: 1.25rem; border-left: 2px solid rgba(42,143,101,0.4); }
+.lmc-sub { font-size: 1.1rem; line-height: 1.6; color: var(--ink-soft); max-width: 34rem; margin: 0 0 1.5rem; padding-left: 1.25rem; border-left: 2px solid rgba(76,110,61,0.4); }
 .lmc-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: .8rem; color: var(--ink-faint); }
 .lmc-meta-chip { display: inline-flex; align-items: center; gap: .4rem; }
 .lmc-meta-chip::before { content: ""; width: .4rem; height: .4rem; background: var(--sage); display: inline-block; }
