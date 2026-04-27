@@ -176,6 +176,18 @@ a{color:inherit}
   .footer{flex-direction:column;align-items:flex-start;padding:32px}
 }
 
+/* MOBILE TIMELINE: stack table rows into cards */
+@media(max-width:600px){
+  .timeline-table thead{display:none}
+  .timeline-table,.timeline-table tbody,.timeline-table tr,.timeline-table td{display:block;width:100%}
+  .timeline-table tr{padding:24px 0;border-bottom:1px solid var(--hairline)}
+  .timeline-table tr:last-child{border-bottom:none}
+  .timeline-table td{padding:0;border:none;margin:0}
+  .timeline-table .phase-name{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.2}
+  .timeline-table .phase-duration{display:inline-block;background:var(--paper-sunk);padding:4px 10px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;margin-bottom:10px;color:var(--accent);white-space:nowrap}
+  .timeline-table .phase-deliverable{font-size:14px;line-height:1.7;color:var(--ink-soft)}
+}
+
 /* PRINT */
 @media print{
   *{background:transparent !important;box-shadow:none !important}
