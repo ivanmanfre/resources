@@ -76,8 +76,12 @@ a{color:inherit}
 .investment-term{display:flex;flex-direction:column;gap:8px;min-width:160px}
 .investment-term-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
 .investment-term-value{font-size:14px;font-weight:600;color:var(--ink);line-height:1.5}
-.investment-recurring{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:24px 32px;margin-top:32px;font-size:15px;color:var(--ink);line-height:1.75;max-width:none}
-.investment-recurring-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:12px}
+.investment-recurring{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:28px 32px;margin-top:32px;color:var(--ink);max-width:none}
+.investment-recurring-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
+.investment-recurring-lead{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin-bottom:16px;max-width:none}
+.investment-recurring-list{list-style:none;padding:0;margin:0}
+.investment-recurring-list li{padding:10px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft);line-height:1.6}
+.investment-recurring-list li:last-child{border-bottom:none}
 
 /* ROI */
 .roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
@@ -244,7 +248,11 @@ a{color:inherit}
         </div>
       </div>
     </div>
-    <div class="investment-recurring"><span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>Estimated $165 to $260 per month at typical usage. Whapi (WhatsApp infrastructure) ~$30 to $50. Claude API (the brain) ~$20 to $80. Groq Whisper (voice transcription) ~$5 to $15. Apify (Centris listing detail + realtor.ca) ~$40. ZenRows (Cloudflare bypass for property research) $69. Supabase (memory database) typically $0 to $25. All other research APIs (Polymarket, Kalshi, Manifold, Données Québec, CanadaBuys, Montreal open data, SEAO Quebec mirror) are free public APIs. Existing subscriptions you already pay for (HubSpot, Google Workspace, Fireflies) are unchanged.</div>
+    <div class="investment-recurring">
+        <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
+        <p class="investment-recurring-lead">Estimated $165 to $260 per month at typical usage.</p>
+        <ul class="investment-recurring-list"><li>Whapi (WhatsApp infrastructure) ~$30 to $50.</li><li>Claude API (the brain) ~$20 to $80.</li><li>Groq Whisper (voice transcription) ~$5 to $15.</li><li>Apify (Centris listing detail + realtor.ca) ~$40.</li><li>ZenRows (Cloudflare bypass for property research) $69.</li><li>Supabase (memory database) typically $0 to $25.</li><li>All other research APIs (Polymarket, Kalshi, Manifold, Données Québec, CanadaBuys, Montreal open data, SEAO Quebec mirror) are free public APIs.</li><li>Existing subscriptions you already pay for (HubSpot, Google Workspace, Fireflies) are unchanged.</li></ul>
+      </div>
   </div>
 <div class="section">
     <span class="section-number">06 • Expected ROI</span>
