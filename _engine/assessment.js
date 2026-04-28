@@ -19,9 +19,28 @@
 
   function storageKey(slug, suf) { return "ivan.assessment." + slug + "." + suf; }
   function loadAnswers(slug) { try { return JSON.parse(localStorage.getItem(storageKey(slug, "answers")) || "{}"); } catch (_) { return {}; } }
-  function saveAnswers(slug, a) { try { localStorage.setItem(storageKey(slug, "answers"), JSON.stringify(a)); } catch (_) {} }
+  function saveAnswers(slug, a) {
+    try { localStorage.setItem(storageKey(slug, "answers"), JSON.stringify(a)); } catch (_) {}
+    // Also encode to URL ?p=<base64> for shareable progress + ITP resilience
+    try {
+      var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(a))));
+      var url = new URL(location.href);
+      url.searchParams.set("p", encoded);
+      history.replaceState(null, "", url.toString());
+    } catch (_) {}
+  }
+  function loadAnswersFromUrl() {
+    try {
+      var q = new URLSearchParams(location.search);
+      var p = q.get("p");
+      if (!p) return null;
+      return JSON.parse(decodeURIComponent(escape(atob(p))));
+    } catch (_) { return null; }
+  }
   function loadEmail(slug) { try { return localStorage.getItem(storageKey(slug, "email")) || ""; } catch (_) { return ""; } }
   function saveEmail(slug, e) { try { localStorage.setItem(storageKey(slug, "email"), e); } catch (_) {} }
+  function recoveryDismissed(slug) { try { return localStorage.getItem("lmc_dismissed_recovery_" + slug) === "1"; } catch (_) { return false; } }
+  function dismissRecovery(slug) { try { localStorage.setItem("lmc_dismissed_recovery_" + slug, "1"); } catch (_) {} }
 
   function flattenQuestions(data) {
     // Build a linear question list across all categories; prepend persona classifier if present
@@ -60,7 +79,11 @@
           name: cat.name || cat.id,
           score: Math.round(scores.reduce(function (a, b) { return a + b; }, 0) / scores.length),
           answered: scores.length,
-          total: (cat.questions || []).length
+          total: (cat.questions || []).length,
+          // surface optional brief fields for the Operator's Brief 1-pager
+          lever: cat.lever || null,
+          talking_points: cat.talking_points || null,
+          proof_of_concept: cat.proof_of_concept || null
         };
       }
     });
@@ -72,13 +95,35 @@
     var tier = overall <= th.low ? { name: "Critical", class: "low" } :
                overall <= th.mid ? { name: "Growth Stage", class: "medium" } :
                { name: "Optimized", class: "" };
+    // Optional headline_number on the tier (computed or passed-through)
+    if (data.tier_headline_numbers && data.tier_headline_numbers[tier.class]) {
+      tier.headline_number = data.tier_headline_numbers[tier.class];
+    }
 
     // Weakest category
     var weakest = null;
     var sortedCats = Object.entries(perCategory).sort(function (a, b) { return a[1].score - b[1].score; });
-    if (sortedCats.length) weakest = { id: sortedCats[0][0], name: sortedCats[0][1].name, score: sortedCats[0][1].score };
+    if (sortedCats.length) {
+      var w = sortedCats[0][1];
+      weakest = {
+        id: sortedCats[0][0],
+        name: w.name,
+        score: w.score,
+        lever: w.lever,
+        talking_points: w.talking_points,
+        proof_of_concept: w.proof_of_concept
+      };
+    }
 
-    return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: personaAnswer };
+    // Resolve persona tag (string) for CTA matching
+    var personaTag = null;
+    if (typeof personaAnswer === "number" && data.persona_selector && data.persona_selector.answers) {
+      personaTag = (data.persona_selector.answers[personaAnswer] || {}).tag || null;
+    } else if (typeof personaAnswer === "string") {
+      personaTag = personaAnswer;
+    }
+
+    return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: personaAnswer, persona_tag: personaTag };
   }
 
   function pickRec(cat, score) {
@@ -86,6 +131,37 @@
     if (score <= 40) return recs.low || recs.critical || null;
     if (score <= 70) return recs.mid || recs.growth || null;
     return recs.high || recs.optimized || null;
+  }
+
+  // Sandboxed evaluator for CTA `when` expressions. Uses Function (not eval) with explicit args.
+  function evalWhen(expr, ctx) {
+    try {
+      var fn = new Function("persona", "overall_score", "weakest_category",
+        '"use strict"; return (' + String(expr) + ');');
+      return !!fn(ctx.persona, ctx.overall_score, ctx.weakest_category);
+    } catch (_) { return false; }
+  }
+
+  // Pick the matching CTA from data.ctas[] with `when` expressions; first match wins; last entry is fallback.
+  function pickCta(data, res) {
+    if (Array.isArray(data.ctas) && data.ctas.length) {
+      var ctx = {
+        persona: res.persona_tag,
+        overall_score: res.overall,
+        weakest_category: res.weakest && res.weakest.id
+      };
+      for (var i = 0; i < data.ctas.length; i++) {
+        var c = data.ctas[i];
+        if (!c) continue;
+        if (c.when) {
+          if (evalWhen(c.when, ctx)) return c;
+        }
+      }
+      // No match — fallback = last entry (regardless of `when`)
+      return data.ctas[data.ctas.length - 1];
+    }
+    if (data.cta && data.cta.url) return data.cta;
+    return null;
   }
 
 
@@ -127,13 +203,139 @@
     return sec;
   }
 
+  // Build a small "Hey, I'm Ivan" 1/3-column bio block (demoted from co-equal hero card)
+  function buildIvanColumn() {
+    var col = make("aside", { class: "lmc-ivan-col", "aria-label": "About Ivan" });
+    var img = make("img", { class: "lmc-ivan-portrait", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
+    col.appendChild(img);
+    var p = make("p", { class: "lmc-ivan-bio" }, "I built this to surface the leaks in operator-led teams \u2014 not to sell you anything. Honest answers in, honest scorecard out.");
+    col.appendChild(p);
+    var more = make("a", { class: "lmc-ivan-link", href: "https://ivanmanfredi.com", target: "_blank", rel: "noopener" }, "more about Ivan \u2192");
+    col.appendChild(more);
+    return col;
+  }
+
+  // Vertical → person-count band map (placeholder until lm_events backs this)
+  function inferCountBand(vertical) {
+    var v = String(vertical || "").toLowerCase();
+    if (v.indexOf("account") !== -1 || v.indexOf("cpa") !== -1) return "20-80";
+    if (v.indexOf("agency") !== -1 || v.indexOf("agencies") !== -1) return "11-50";
+    if (v.indexOf("law") !== -1 || v.indexOf("legal") !== -1) return "10-40";
+    if (v.indexOf("consult") !== -1) return "8-30";
+    if (v.indexOf("saas") !== -1 || v.indexOf("software") !== -1) return "20-100";
+    return "10-50";
+  }
+
+  // Build the credential bar above the hero headline
+  function buildCredentialBar(data) {
+    var aud = data.audience || {};
+    var vertical = aud.vertical || aud.verticals || data.vertical || "operator-led";
+    if (Array.isArray(vertical)) vertical = vertical.join(" / ");
+    var locations = aud.locations || aud.location || data.locations || "the US, UK, and Canada";
+    if (Array.isArray(locations)) locations = locations.join(", ");
+    var band = aud.count_band || inferCountBand(vertical);
+    var txt = "Used by " + band + "-person " + vertical + " firms in " + locations;
+    return make("div", { class: "lmc-credential-bar" }, esc(txt));
+  }
+
+  // Build a static sample-output preview tile for the hero
+  function buildSampleTile(data) {
+    var tile = make("div", { class: "lmc-sample-tile", "aria-label": "Sample result preview" });
+    var label = make("div", { class: "lmc-sample-label" }, "Sample result");
+    var body = make("div", { class: "lmc-sample-body" });
+    body.innerHTML =
+      '<div class="lmc-sample-row">' +
+        '<span class="lmc-sample-num"><em>58</em><span>/100</span></span>' +
+        '<span class="lmc-sample-tag">Capacity Score</span>' +
+      '</div>' +
+      '<div class="lmc-sample-leak">Top leak: client intake (~11 hrs/week recoverable)</div>';
+    tile.appendChild(label);
+    tile.appendChild(body);
+    return tile;
+  }
+
+  // Build a hero meta chip whose numeral is rendered in DM Serif italic + sage
+  function buildMetaChip(numeral, unit) {
+    var chip = make("div", { class: "lmc-meta-chip lmc-meta-chip-numeral" });
+    chip.innerHTML = '<em class="lmc-meta-num">' + esc(String(numeral)) + '</em>' +
+                     '<span class="lmc-meta-unit">' + esc(String(unit)) + '</span>';
+    return chip;
+  }
+
+  // Open the Operator's Brief 1-pager in a new window (printable HTML)
+  function openOperatorsBrief(data, res) {
+    var w = res.weakest || {};
+    var headline = (res.tier && res.tier.headline_number) || (res.overall + "/100");
+    var lever = w.lever || "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]";
+    var tps = (w.talking_points && w.talking_points.length === 3)
+      ? w.talking_points
+      : ["[brief content not generated for this assessment \u2014 regenerate via the LM workflow]",
+         "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]",
+         "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]"];
+    var poc = w.proof_of_concept || "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]";
+    var title = (data.title || "Assessment") + " \u2014 Operator's Brief";
+
+    var html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
+      '<title>' + esc(title) + '</title>' +
+      '<link rel="preconnect" href="https://fonts.googleapis.com">' +
+      '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
+      '<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">' +
+      '<style>' +
+        '@page { margin: 0.6in; }' +
+        'body { font-family: "Space Grotesk", sans-serif; color: #1A1A1A; background: #F7F4EF; padding: 2.5rem; max-width: 740px; margin: 0 auto; line-height: 1.5; }' +
+        'h1 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 .25rem; }' +
+        '.eyebrow { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: #4C6E3D; font-weight: 700; margin-bottom: 1rem; }' +
+        '.headline-row { display: flex; align-items: baseline; gap: 1rem; padding: 1.5rem 0; border-top: 4px solid #1A1A1A; border-bottom: 1px solid rgba(26,26,26,0.15); margin-bottom: 1.5rem; }' +
+        '.headline-num { font-family: "DM Serif Display", serif; font-style: italic; font-size: 96px; line-height: 1; color: #2A8F65; padding-left: 1rem; border-left: 4px solid #2A8F65; }' +
+        '.headline-cap { font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; color: #555; }' +
+        'h2 { font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; margin: 1.5rem 0 .5rem; color: #4C6E3D; }' +
+        '.lever { font-size: 1.25rem; font-weight: 700; line-height: 1.35; }' +
+        'ol { padding-left: 1.25rem; margin: 0; }' +
+        'ol li { margin-bottom: .5rem; }' +
+        '.poc { background: #fff; border: 1px solid rgba(26,26,26,0.15); padding: 1rem 1.25rem; border-left: 4px solid #2A8F65; margin-top: .5rem; }' +
+        '.footer { margin-top: 2rem; font-size: .75rem; color: #555; border-top: 1px solid rgba(26,26,26,0.15); padding-top: .75rem; display: flex; justify-content: space-between; }' +
+        '@media print { body { background: #fff; } }' +
+      '</style></head><body>' +
+      '<div class="eyebrow">Ivan Manfredi \u00B7 ' + esc(data.title || "Assessment") + '</div>' +
+      '<h1>Operator\u2019s Brief</h1>' +
+      '<div class="headline-row">' +
+        '<span class="headline-num">' + esc(String(headline)) + '</span>' +
+        '<span class="headline-cap">Bring this number to leadership</span>' +
+      '</div>' +
+      '<h2>The named lever</h2>' +
+      '<p class="lever">' + esc(lever) + '</p>' +
+      '<h2>3 talking points for leadership</h2>' +
+      '<ol>' + tps.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join("") + '</ol>' +
+      '<h2>1-week proof of concept</h2>' +
+      '<div class="poc">' + esc(poc) + '</div>' +
+      '<div class="footer"><span>Run before requesting budget.</span><span>ivanmanfredi.com</span></div>' +
+      '<script>setTimeout(function(){try{window.print();}catch(e){}}, 400);<\/script>' +
+      '</body></html>';
+
+    var win = window.open("", "_blank");
+    if (!win) { toast("Pop-up blocked \u2014 allow pop-ups to open the brief"); return; }
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
+  }
+
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
     root.innerHTML = "";
 
     var questions = flattenQuestions(data);
+    // Hydrate answers: prefer URL ?p= then localStorage; merge with localStorage taking precedence on conflict
     var answers = loadAnswers(data.slug);
+    var urlAnswers = loadAnswersFromUrl();
+    if (urlAnswers && typeof urlAnswers === "object") {
+      // Only adopt URL answers for keys not already in localStorage
+      Object.keys(urlAnswers).forEach(function (k) {
+        if (answers[k] == null) answers[k] = urlAnswers[k];
+      });
+      // Persist merged state immediately so URL stays in sync
+      saveAnswers(data.slug, answers);
+    }
     var idx = 0;
     // Resume from last unanswered question
     for (var i = 0; i < questions.length; i++) {
@@ -142,33 +344,81 @@
     }
     var captured = !!loadEmail(data.slug);
 
-    // Hero
+    // ── Hero (2-column: 2/3 headline + CTA, 1/3 Ivan bio) ───────────
     var hero = make("section", { class: "lmc-hero" });
-    var hi = make("div", { class: "lmc-container" });
-    hi.appendChild(make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment")));
-    hi.appendChild(make("h1", { class: "lmc-h1" }, esc(data.title || "Assessment")));
-    if (data.subtitle) hi.appendChild(make("p", { class: "lmc-sub" }, esc(data.subtitle)));
+    var hi = make("div", { class: "lmc-container lmc-hero-grid" });
+    var heroMain = make("div", { class: "lmc-hero-main" });
+
+    // Credential bar (small caps eyebrow above headline)
+    heroMain.appendChild(buildCredentialBar(data));
+
+    heroMain.appendChild(make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment")));
+    heroMain.appendChild(make("h1", { class: "lmc-h1" }, esc(data.title || "Assessment")));
+    if (data.subtitle) heroMain.appendChild(make("p", { class: "lmc-sub" }, esc(data.subtitle)));
+
+    // Hero meta with italic-numeral chips
     var meta = make("div", { class: "lmc-meta" });
-    meta.appendChild(make("div", { class: "lmc-meta-chip" }, questions.length + " questions"));
-    if (data.estimated_minutes) meta.appendChild(make("div", { class: "lmc-meta-chip" }, data.estimated_minutes + " min"));
-    meta.appendChild(make("div", { class: "lmc-meta-chip" }, "Auto-saves"));
-    hi.appendChild(meta);
+    meta.appendChild(buildMetaChip(questions.length, "questions"));
+    if (data.estimated_minutes) meta.appendChild(buildMetaChip(data.estimated_minutes, "min"));
+    var freeChip = make("div", { class: "lmc-meta-chip" }, "Auto-saves \u00B7 free");
+    meta.appendChild(freeChip);
+    heroMain.appendChild(meta);
+
+    // Sample-output preview tile, then the big "Start the assessment" CTA — both inside the headline column
+    heroMain.appendChild(buildSampleTile(data));
+    var heroStartBtn = make("button", { class: "lmc-btn lmc-hero-start", type: "button" }, "Start the assessment \u2193");
+    heroStartBtn.addEventListener("click", function () {
+      var t = document.querySelector(".lmc-widget");
+      if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+      beacon("cta_click", { answers: { target: "hero_start" } });
+    });
+    heroMain.appendChild(heroStartBtn);
+
+    hi.appendChild(heroMain);
+    hi.appendChild(buildIvanColumn());
     hero.appendChild(hi);
     root.appendChild(hero);
-
-    var introSection = buildIntro(data, ".lmc-widget", {
-      defaultValueBullet: "15-20 questions, 5 categories. Honest answers = honest result",
-      defaultNextBullet: "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes",
-      startLabel: "Start the assessment",
-      defaultNote: "No signup to take it. Results stay private until you unlock the full report."
-    });
-    root.appendChild(introSection);
 
     // Widget area
     var widget = make("div", { class: "lmc-widget" });
     var card = make("div", { class: "lmc-card", id: "lmc-card" });
     widget.appendChild(card);
     root.appendChild(widget);
+
+    function maybeRenderRecoveryPrompt(parentEl) {
+      // Mid-form email recovery: render once, at q index >= 8 OR >= 50% through, only if no email yet & not dismissed
+      if (captured) return;
+      if (loadEmail(data.slug)) return;
+      if (recoveryDismissed(data.slug)) return;
+      var threshold = Math.min(8, Math.floor(questions.length / 2));
+      if (idx < threshold) return;
+      var box = make("div", { class: "lmc-recovery", role: "region", "aria-label": "Save your progress" });
+      box.innerHTML =
+        '<div class="lmc-recovery-row">' +
+          '<p class="lmc-recovery-text">Save your progress to your inbox? You\'ll get the same scorecard at the end either way.</p>' +
+          '<button class="lmc-recovery-dismiss" type="button" aria-label="Dismiss">\u00D7</button>' +
+        '</div>' +
+        '<form class="lmc-recovery-form">' +
+          '<label class="sr-only" for="lmc-recovery-email">Email</label>' +
+          '<input class="lmc-recovery-input" id="lmc-recovery-email" type="email" autocomplete="email" placeholder="you@company.com" required>' +
+          '<button class="lmc-btn lmc-recovery-save" type="submit">Save</button>' +
+        '</form>';
+      parentEl.appendChild(box);
+      box.querySelector(".lmc-recovery-dismiss").addEventListener("click", function () {
+        dismissRecovery(data.slug);
+        if (box.parentNode) box.parentNode.removeChild(box);
+      });
+      box.querySelector(".lmc-recovery-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var em = (box.querySelector(".lmc-recovery-input") || {}).value || "";
+        if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
+        saveEmail(data.slug, em);
+        beacon("partial_progress", { email: em, q_index: idx, total: questions.length });
+        toast("Saved \u2014 we\u2019ll email your scorecard");
+        dismissRecovery(data.slug);
+        if (box.parentNode) box.parentNode.removeChild(box);
+      });
+    }
 
     function renderQuestion() {
       if (idx >= questions.length) { renderResult(); return; }
@@ -180,6 +430,9 @@
       var pct = Math.round((idx / questions.length) * 100);
       prog.innerHTML = '<span>Question <strong>' + (idx + 1) + '</strong> of ' + questions.length + '</span><div class="lmc-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + questions.length + '" aria-valuenow="' + idx + '"><div class="lmc-progress-fill" style="width:' + pct + '%"></div></div><span>' + pct + '%</span>';
       card.appendChild(prog);
+
+      // Mid-form email recovery (rendered above the question text per spec)
+      maybeRenderRecoveryPrompt(card);
 
       if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
       card.appendChild(make("h2", { class: "lmc-question", id: "lmc-question-" + idx, tabindex: "-1" }, esc(q.text || q.label || "")));
@@ -197,34 +450,78 @@
       }
 
       var ul = make("ul", { class: "lmc-options", role: "radiogroup", "aria-labelledby": "lmc-question-" + idx });
+      var optRefs = [];
       options.forEach(function (opt, ix) {
         var li = make("li");
         var inputId = "lmc-q" + idx + "-opt" + ix;
         var checked = (answers[q.id || "__persona"] === ix);
-        var label = make("label", { class: "lmc-opt" + (checked ? " selected" : ""), for: inputId });
+        var label = make("label", { class: "lmc-opt" + (checked ? " selected" : ""), for: inputId, role: "radio", "aria-checked": checked ? "true" : "false", tabindex: checked || (ix === 0 && answers[q.id || "__persona"] == null) ? "0" : "-1" });
         var input = make("input", { type: "radio", name: "q" + idx, id: inputId, value: String(ix) });
         if (checked) input.setAttribute("checked", "checked");
         label.appendChild(input);
         label.appendChild(make("span", null, esc(opt.label || opt.text || String(opt))));
         ul.appendChild(li);
         li.appendChild(label);
+        optRefs.push(label);
 
-        label.addEventListener("click", function () {
+        function selectOption() {
           answers[q.id || "__persona"] = ix;
           if (opt.tag) answers[(q.id || "__persona") + "__tag"] = opt.tag;
           saveAnswers(data.slug, answers);
+          // Update aria-checked on all siblings
+          optRefs.forEach(function (lab, j) {
+            var isMe = (j === ix);
+            lab.classList.toggle("selected", isMe);
+            lab.setAttribute("aria-checked", isMe ? "true" : "false");
+            lab.setAttribute("tabindex", isMe ? "0" : "-1");
+          });
           setTimeout(function () { goNext(); }, 200);
+        }
+        label.addEventListener("click", function (e) {
+          // Prevent double-fire from native radio
+          e.preventDefault();
+          selectOption();
+        });
+        label.addEventListener("keydown", function (e) {
+          var key = e.key;
+          if (key === " " || key === "Enter") { e.preventDefault(); selectOption(); return; }
+          if (key === "ArrowDown" || key === "ArrowRight") {
+            e.preventDefault();
+            var nextIx = (ix + 1) % optRefs.length;
+            optRefs[nextIx].focus();
+            return;
+          }
+          if (key === "ArrowUp" || key === "ArrowLeft") {
+            e.preventDefault();
+            var prevIx = (ix - 1 + optRefs.length) % optRefs.length;
+            optRefs[prevIx].focus();
+            return;
+          }
         });
       });
       card.appendChild(ul);
 
       var nav = make("div", { class: "lmc-nav" });
       var back = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Back");
-      if (idx === 0) back.setAttribute("disabled", "disabled");
+      function setDisabledA11y(btn, disabled) {
+        if (disabled) {
+          btn.setAttribute("aria-disabled", "true");
+          btn.style.opacity = "0.4";
+          btn.style.pointerEvents = "none";
+        } else {
+          btn.removeAttribute("aria-disabled");
+          btn.style.opacity = "";
+          btn.style.pointerEvents = "";
+        }
+      }
+      setDisabledA11y(back, idx === 0);
       back.addEventListener("click", function () { if (idx > 0) { idx--; renderQuestion(); } });
       var next = make("button", { class: "lmc-btn", type: "button", id: "lmc-next" }, idx === questions.length - 1 ? "See result →" : "Next →");
-      if (answers[q.id || "__persona"] == null) next.setAttribute("disabled", "disabled");
-      next.addEventListener("click", goNext);
+      setDisabledA11y(next, answers[q.id || "__persona"] == null);
+      next.addEventListener("click", function () {
+        if (next.getAttribute("aria-disabled") === "true") return;
+        goNext();
+      });
       nav.appendChild(back); nav.appendChild(next);
       card.appendChild(nav);
 
@@ -242,6 +539,18 @@
     function renderResult() {
       var res = computeResult(data, answers);
       card.innerHTML = "";
+
+      // ── Result header with italic numeral signature ────────────────
+      var headerBlock = make("div", { class: "lmc-result-header" });
+      headerBlock.innerHTML =
+        '<div class="lmc-result-header-row">' +
+          '<span class="lmc-result-num">' + res.overall + '</span>' +
+          '<div class="lmc-result-header-meta">' +
+            '<span class="lmc-result-cap">Your score</span>' +
+            '<span class="lmc-result-tier-name">' + esc(res.tier.name || "") + '</span>' +
+          '</div>' +
+        '</div>';
+      card.appendChild(headerBlock);
 
       // ── Tier card (shared component) ───────────────────────────────
       var tierKey = res.tier.class === "low" ? "critical"
@@ -337,7 +646,7 @@
             tier: res.tier.name,
             per_category: res.per_category,
             weakest_category: res.weakest && res.weakest.id,
-            persona: typeof res.persona === "number" && data.persona_selector && data.persona_selector.answers ? (data.persona_selector.answers[res.persona] || {}).tag || null : null,
+            persona: res.persona_tag,
             answers: answers
           });
           renderUnlocked(res);
@@ -378,6 +687,16 @@
         unl.appendChild(block);
       });
 
+      // ── Operator's Brief 1-pager download button ───────────────────
+      var briefRow = make("div", { class: "lmc-brief-row" });
+      var briefBtn = make("button", { class: "lmc-btn lmc-btn-secondary lmc-brief-btn", type: "button" }, "Download the 1-page Brief for your team");
+      briefBtn.addEventListener("click", function () {
+        beacon("brief_download", { answers: { score: res.overall, tier: res.tier.name } });
+        openOperatorsBrief(data, res);
+      });
+      briefRow.appendChild(briefBtn);
+      unl.appendChild(briefRow);
+
       // Share row
       var share = make("div", { class: "lmc-share" });
       var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the 10 min:";
@@ -388,7 +707,9 @@
       share.appendChild(liBtn);
       var copy = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Copy result link");
       copy.addEventListener("click", function () {
-        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(currentUrl).then(function () { toast("Link copied"); });
+        // Copy with progress payload so a colleague can resume from same point
+        var shareUrl = location.href;
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(shareUrl).then(function () { toast("Link copied"); });
         beacon("share", { answers: { target: "copy_link", score: res.overall } });
       });
       share.appendChild(copy);
@@ -396,19 +717,24 @@
       retake.addEventListener("click", function () {
         if (!confirm("Clear your answers and retake?")) return;
         try { localStorage.removeItem(storageKey(data.slug, "answers")); localStorage.removeItem(storageKey(data.slug, "email")); } catch (_) {}
+        // Clean ?p= from URL
+        try { var u = new URL(location.href); u.searchParams.delete("p"); history.replaceState(null, "", u.toString()); } catch (_) {}
         location.reload();
       });
       share.appendChild(retake);
       unl.appendChild(share);
 
-      // Bottom CTA if defined
-      if (data.cta && data.cta.url) {
+      // ── Bottom CTA: data.ctas[] (with `when` matching) preferred; data.cta single is backward-compat ──
+      var cta = pickCta(data, res);
+      if (cta && cta.url) {
         var ctaBox = make("div", { style: "margin-top:2rem;padding:1.5rem;border:4px solid #000;background:#fff;box-shadow:8px 8px 0 #00E676;text-align:center;" });
-        ctaBox.innerHTML = '<div style="font-size:1.25rem;font-weight:900;text-transform:uppercase;margin:0 0 .5rem;">' + esc(data.cta.headline || "Want help closing these gaps?") + '</div>' +
-          '<p style="margin:0 0 1rem;">' + esc(data.cta.description || "Book a 20-min working session. Free, no pitch.") + '</p>' +
-          '<a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
+        ctaBox.innerHTML = '<div style="font-size:1.25rem;font-weight:900;text-transform:uppercase;margin:0 0 .5rem;">' + esc(cta.headline || "Want help closing these gaps?") + '</div>' +
+          '<p style="margin:0 0 1rem;">' + esc(cta.description || "Book a 20-min working session. Free, no pitch.") + '</p>' +
+          '<a class="lmc-btn" href="' + esc(cta.url) + '" target="_blank" rel="noopener">' + esc(cta.button || "Book Strategy Call") + '</a>';
         unl.appendChild(ctaBox);
-        ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
+        ctaBox.querySelector("a").addEventListener("click", function () {
+          beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, persona: res.persona_tag, cta_when: cta.when || null } });
+        });
       }
 
       card.appendChild(unl);
