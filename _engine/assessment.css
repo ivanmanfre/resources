@@ -253,3 +253,37 @@
 .lmc-brief-row{margin:1.75rem 0 1rem;padding:1.15rem;background:var(--paper-sunk);border:1px solid var(--hairline);border-left:3px solid var(--accent);text-align:center;border-radius:4px;}
 .lmc-brief-btn{background:var(--paper-raise);color:var(--ink);border-color:var(--hairline-bold);}
 .lmc-brief-btn:hover:not([disabled]){background:var(--paper);color:var(--accent-ink);border-color:var(--accent);}
+
+/* ── Result page: tier head, top-gaps list, what-to-do-monday ── */
+.lmc-results-h{font-family:var(--font-sans);font-size:1.15rem;font-weight:600;color:var(--ink);margin:2rem 0 1rem;letter-spacing:-0.005em;}
+.lmc-results-h em{font-family:var(--font-drama);font-style:italic;font-weight:400;color:var(--accent);}
+
+.lmc-tier-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1.25rem 0;border-bottom:1px solid var(--hairline);margin-bottom:1rem;}
+.lmc-tier-label{font-family:var(--font-mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-mute);}
+.lmc-tier-score{display:inline-flex;align-items:baseline;gap:.15rem;}
+.lmc-tier-score em{font-family:var(--font-drama);font-style:italic;font-weight:400;font-size:2.5rem;line-height:1;color:var(--accent);}
+.lmc-tier-score > span{font-family:var(--font-mono);font-size:.85rem;color:var(--ink-mute);}
+.lmc-tier-note{font-size:.95rem;line-height:1.55;color:var(--ink-soft);margin:0 0 2rem;}
+
+.lmc-gap-list{list-style:none;margin:0 0 1.5rem;padding:0;display:flex;flex-direction:column;gap:.75rem;}
+.lmc-gap{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.15rem;background:var(--paper-sunk);border:1px solid var(--hairline);border-left:3px solid var(--accent);border-radius:4px;}
+.lmc-gap-rank{font-family:var(--font-drama);font-style:italic;font-weight:400;font-size:2rem;line-height:1;color:var(--accent);min-width:1.75rem;text-align:center;flex-shrink:0;}
+.lmc-gap-body{flex:1 1 auto;min-width:0;}
+.lmc-gap-head{margin-bottom:.4rem;}
+.lmc-gap-text{font-size:.95rem;font-weight:600;color:var(--ink);line-height:1.4;}
+.lmc-gap-fix{font-size:.88rem;line-height:1.5;color:var(--ink-soft);}
+.lmc-gap-fix-label{font-family:var(--font-mono);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent-ink);background:rgba(76,110,61,0.1);padding:.15rem .4rem;border-radius:3px;margin-right:.5rem;display:inline-block;}
+
+.lmc-next-move{margin:1.5rem 0 1rem;padding:1.15rem 1.35rem;background:var(--accent);color:#fff;border-radius:4px;font-size:.95rem;line-height:1.5;}
+.lmc-next-label{display:block;font-family:var(--font-mono);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,0.75);margin-bottom:.45rem;}
+
+/* Email gate (.lmc-capture) — already styled, ensure form polish */
+.lmc-form{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem;}
+.lmc-form-input{flex:1 1 240px;padding:.65rem .9rem;border:1px solid var(--hairline-bold);background:var(--paper-raise);font-family:inherit;font-size:.95rem;border-radius:4px;color:var(--ink);}
+.lmc-form-input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.lmc-note{font-size:.78rem;color:var(--ink-mute);margin:.65rem 0 0;font-family:var(--font-mono);}
+
+/* Per-category breakdown bars (after unlock) */
+.lmc-cat-track{height:.4rem;background:var(--paper-sunk);border:1px solid var(--hairline);border-radius:4px;overflow:hidden;flex:1 1 auto;}
+.lmc-cat-fill{height:100%;background:var(--accent);transition:width .25s ease;}
+.lmc-cat-pct{font-family:var(--font-mono);font-size:.78rem;font-weight:500;color:var(--ink-mute);min-width:3.5rem;text-align:right;}
