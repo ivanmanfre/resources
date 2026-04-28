@@ -1,0 +1,731 @@
+{
+  "slug": "accounting-workflow-capacity-score-where-are-your-hours-actually-leaking",
+  "title": "Accounting Workflow Capacity Score — Where Are Your Hours Actually Leaking?",
+  "subtitle": "An 18-question diagnostic for founders, managing partners, and COOs at boutique accounting, tax, and CPA firms (11–100 employees) in the US, UK, AU, and NZ. Surfaces where your hours are actually leaking in under 12 minutes.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 12,
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your firm?",
+    "answers": [
+      {
+        "label": "Boutique solo-plus (1–10 staff, founder still in delivery)",
+        "tag": "boutique_solo_plus"
+      },
+      {
+        "label": "Growing firm (11–25 staff, partner-led with one ops hire)",
+        "tag": "growing_firm"
+      },
+      {
+        "label": "Established firm (26–60 staff, multiple partners, dedicated ops function)",
+        "tag": "established_firm"
+      },
+      {
+        "label": "Scaling firm (61–100 staff, multi-office or multi-service line)",
+        "tag": "scaling_firm"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "client-intake-onboarding",
+      "name": "Client Intake & Onboarding",
+      "questions": [
+        {
+          "id": "intake-time-to-ready",
+          "text": "How quickly does a newly signed client become production-ready across your tax software, document portal, and PM tool?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — A week or more, fully manual setup",
+              "score": 1
+            },
+            {
+              "label": "2 — 3–5 days with several manual steps",
+              "score": 2
+            },
+            {
+              "label": "3 — 2–3 days, partly templated",
+              "score": 3
+            },
+            {
+              "label": "4 — 1–2 days, mostly templated",
+              "score": 4
+            },
+            {
+              "label": "5 — Same day, fully automated",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake-data-capture",
+          "text": "How is new client intake data captured at the front door?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Phone call, then someone types it up later",
+              "score": 1
+            },
+            {
+              "label": "2 — Email back-and-forth with a checklist",
+              "score": 2
+            },
+            {
+              "label": "3 — A form, but someone re-keys it into other tools",
+              "score": 3
+            },
+            {
+              "label": "4 — A form that pre-fills most downstream tools with light review",
+              "score": 4
+            },
+            {
+              "label": "5 — Structured form that auto-populates every downstream system",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake-source-of-truth",
+          "text": "How often does the same client info get re-entered into more than two systems?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Always, every system has its own copy",
+              "score": 1
+            },
+            {
+              "label": "2 — Frequently, three or more systems duplicated",
+              "score": 2
+            },
+            {
+              "label": "3 — Sometimes, two systems duplicated",
+              "score": 3
+            },
+            {
+              "label": "4 — Rarely, mostly one source with light syncing",
+              "score": 4
+            },
+            {
+              "label": "5 — Never, single source of truth feeds everything",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake-engagement-letter",
+          "text": "How automated is engagement letter generation, sending, and signed-copy filing?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Drafted from scratch each time, manually filed",
+              "score": 1
+            },
+            {
+              "label": "2 — Word template edited by hand, emailed manually",
+              "score": 2
+            },
+            {
+              "label": "3 — Templated in e-sign tool but variables typed in manually",
+              "score": 3
+            },
+            {
+              "label": "4 — Mostly auto-generated, light review before send",
+              "score": 4
+            },
+            {
+              "label": "5 — Fully generated, sent, signed, and filed without human touch",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your front door is leaking the most hours",
+          "text": "Manual intake is silently eating 4–8 hours per new client before any billable work begins. Every keystroke re-entered into a second tool is one you'll re-do at every renewal. Fix the entry point first — the rest of the firm inherits its mess.",
+          "steps": [
+            "Replace email/phone intake with one structured form that captures every field downstream tools need",
+            "Wire that form to auto-create the client record in your tax software, portal, and PM tool — no re-keying",
+            "Generate, send, and file engagement letters from the same form in one flow"
+          ]
+        },
+        "mid": {
+          "headline": "You've templated intake but humans still bridge the gaps",
+          "text": "You've removed the worst of the chaos but staff still re-key data between systems and chase signatures. The cost shows up as 2–3 days of lag and inconsistent client records. Close the integration gaps so intake runs end-to-end without human relay.",
+          "steps": [
+            "Audit every field re-entered between intake form, tax software, and PM tool — eliminate the duplication",
+            "Automate engagement letter generation and filing the moment intake form submits",
+            "Add a status dashboard so the team sees exactly where each new client sits in the onboarding flow"
+          ]
+        },
+        "high": {
+          "headline": "Intake is dialed — now sharpen what runs after",
+          "text": "Keep sharpening — here's the frontier. Same-day onboarding is rare in this segment; the next gain is using intake data to pre-stage the first deliverable before the client logs in. Treat onboarding as the first production run, not an admin task.",
+          "steps": [
+            "Use intake data to auto-draft the first client request list before kickoff",
+            "Pre-populate workpapers and document-request templates from intake fields",
+            "Track onboarding-to-first-deliverable cycle time as a KPI alongside utilization"
+          ]
+        }
+      }
+    },
+    {
+      "id": "document-request-collection",
+      "name": "Document Request & Collection",
+      "questions": [
+        {
+          "id": "doc-request-list-build",
+          "text": "How are client document request lists built each engagement?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — From scratch every time, partner builds it manually",
+              "score": 1
+            },
+            {
+              "label": "2 — Copied from last year's email and edited",
+              "score": 2
+            },
+            {
+              "label": "3 — Static template in a spreadsheet or PDF",
+              "score": 3
+            },
+            {
+              "label": "4 — Templated by service type and pre-filled per client",
+              "score": 4
+            },
+            {
+              "label": "5 — Auto-generated per client from prior-year data and current engagement scope",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "doc-chase-cadence",
+          "text": "How consistently are clients chased for missing documents?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Whenever someone remembers to follow up",
+              "score": 1
+            },
+            {
+              "label": "2 — Manual follow-ups, often dropped during busy season",
+              "score": 2
+            },
+            {
+              "label": "3 — Calendar reminders the preparer sets per client",
+              "score": 3
+            },
+            {
+              "label": "4 — Scheduled reminders triggered from the PM tool",
+              "score": 4
+            },
+            {
+              "label": "5 — Automated reminders that escalate based on missing items and deadline proximity",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "doc-status-visibility",
+          "text": "How visible is real-time document collection status across the firm?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Nobody knows without asking the preparer",
+              "score": 1
+            },
+            {
+              "label": "2 — Lives in one person's inbox or head",
+              "score": 2
+            },
+            {
+              "label": "3 — A shared spreadsheet someone updates weekly",
+              "score": 3
+            },
+            {
+              "label": "4 — A dashboard partners can pull but staff update manually",
+              "score": 4
+            },
+            {
+              "label": "5 — Live dashboard auto-updated as documents arrive in the portal",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "doc-classification",
+          "text": "When documents land, how are they classified, named, and routed to the right workpaper?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Staff opens, renames, and files every PDF by hand",
+              "score": 1
+            },
+            {
+              "label": "2 — Naming convention exists but compliance is patchy",
+              "score": 2
+            },
+            {
+              "label": "3 — Portal auto-files into client folder but humans label types",
+              "score": 3
+            },
+            {
+              "label": "4 — Documents are auto-classified by type with light human review",
+              "score": 4
+            },
+            {
+              "label": "5 — Auto-classified, named, and routed into the correct workpaper section",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Document collection is your hidden tax-season tax",
+          "text": "You're losing entire days to chasing missing documents and re-typing PDF contents. The bottleneck isn't the work — it's getting the inputs ready to do the work. This is the highest-ROI area in the entire firm to fix first.",
+          "steps": [
+            "Standardize document request lists by service type and prior-year carryforward",
+            "Set up scheduled, escalating reminders that trigger from the PM tool — not from a preparer's memory",
+            "Centralize collection status in one dashboard everyone sees without asking"
+          ]
+        },
+        "mid": {
+          "headline": "You collect, but humans still touch every PDF",
+          "text": "Reminders go out and documents arrive, but classification, naming, and routing still consume staff hours. AI document classification is mature enough now that this is a solved problem — you just haven't deployed it yet.",
+          "steps": [
+            "Add automated document classification that tags each upload by type and tax year",
+            "Auto-route classified documents into the correct workpaper section",
+            "Add an exception queue for the small percentage that need human eyes — not every document"
+          ]
+        },
+        "high": {
+          "headline": "Collection runs itself — now use it as production fuel",
+          "text": "Keep sharpening — here's the frontier. The next move is treating completed document collection as the trigger that auto-stages workpapers and assigns prep work. The collection layer becomes a production planner, not just a folder.",
+          "steps": [
+            "Trigger workpaper auto-population the moment document collection hits a defined threshold",
+            "Use collection-velocity data to forecast which engagements will miss deadline two weeks ahead",
+            "Score clients on document-readiness behavior and price next year's engagement accordingly"
+          ]
+        }
+      }
+    },
+    {
+      "id": "production-workflow",
+      "name": "Production Workflow & Review",
+      "questions": [
+        {
+          "id": "prod-workpaper-prep",
+          "text": "How automated is initial workpaper preparation from source documents?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Staff types every number into the workpaper by hand",
+              "score": 1
+            },
+            {
+              "label": "2 — Spreadsheet templates exist but are populated manually",
+              "score": 2
+            },
+            {
+              "label": "3 — Some line items pull from source documents, most are typed",
+              "score": 3
+            },
+            {
+              "label": "4 — Most workpapers auto-populate, staff verifies",
+              "score": 4
+            },
+            {
+              "label": "5 — Workpapers fully populated from source data, staff only handles exceptions",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "prod-review-routing",
+          "text": "How does work move from preparer to reviewer to partner?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Verbal handoffs and email — easy to lose track",
+              "score": 1
+            },
+            {
+              "label": "2 — A shared folder convention with status in the file name",
+              "score": 2
+            },
+            {
+              "label": "3 — PM tool tasks updated manually at each handoff",
+              "score": 3
+            },
+            {
+              "label": "4 — Workflow stages auto-advance when the preparer marks complete",
+              "score": 4
+            },
+            {
+              "label": "5 — Stages auto-advance with reviewer assignment, SLA tracking, and bottleneck alerts",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "prod-review-checklist",
+          "text": "How standardized is the review checklist preparers and reviewers use?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Every reviewer has their own mental checklist",
+              "score": 1
+            },
+            {
+              "label": "2 — Documented per partner but not enforced",
+              "score": 2
+            },
+            {
+              "label": "3 — Standardized checklist exists but lives in a Word doc",
+              "score": 3
+            },
+            {
+              "label": "4 — Embedded in the workflow tool with sign-offs",
+              "score": 4
+            },
+            {
+              "label": "5 — Embedded, enforced, and informed by AI flagging anomalies before review",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your production line runs on heroics, not systems",
+          "text": "Manual workpaper prep and ad-hoc handoffs are why busy season feels like chaos. The senior staff doing the work are the bottleneck, and there's no visibility until something slips. Standardize the production line before adding more capacity.",
+          "steps": [
+            "Standardize workpaper templates by engagement type and start auto-populating high-volume line items",
+            "Move handoffs out of email into a workflow tool with explicit stages",
+            "Document a single review checklist and make sign-offs mandatory before stage advance"
+          ]
+        },
+        "mid": {
+          "headline": "The line moves but you can't see where it stalls",
+          "text": "You have stages and templates but bottlenecks still surprise partners three days before deadline. Add visibility and SLAs so problems surface 10 days early, not 3 — that's the difference between a fix and a fire.",
+          "steps": [
+            "Add SLA timers to each workflow stage with automatic escalation when breached",
+            "Auto-route work to reviewers based on capacity and specialization, not partner preference",
+            "Build a live bottleneck dashboard partners check daily, not weekly"
+          ]
+        },
+        "high": {
+          "headline": "Production runs clean — now compress the cycle",
+          "text": "Keep sharpening — here's the frontier. The next gain is using AI to pre-flag anomalies before reviewer time, and using cycle-time data to price engagements based on actual production cost. This is how firms scale without scaling payroll.",
+          "steps": [
+            "Deploy anomaly detection that flags unusual numbers before reviewer touches the file",
+            "Track preparer-to-reviewer-to-partner cycle time per engagement type as a core KPI",
+            "Use cycle-time data to reprice next year's engagements based on actual production hours"
+          ]
+        }
+      }
+    },
+    {
+      "id": "client-communication",
+      "name": "Client Communication & Status",
+      "questions": [
+        {
+          "id": "comm-status-updates",
+          "text": "How proactively do clients receive status updates on their engagements?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Only when the client emails to ask",
+              "score": 1
+            },
+            {
+              "label": "2 — Partner sends an update when they remember",
+              "score": 2
+            },
+            {
+              "label": "3 — Scheduled email updates the team sends manually",
+              "score": 3
+            },
+            {
+              "label": "4 — Automated milestone emails triggered from the workflow",
+              "score": 4
+            },
+            {
+              "label": "5 — Real-time client portal plus automated milestone updates",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "comm-question-handling",
+          "text": "How are routine client questions (status, document status, deadlines) handled?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Partner answers every question personally",
+              "score": 1
+            },
+            {
+              "label": "2 — Staff answers but pulls partner in often",
+              "score": 2
+            },
+            {
+              "label": "3 — Staff handles routine questions from a shared inbox",
+              "score": 3
+            },
+            {
+              "label": "4 — Self-service portal answers most routine questions",
+              "score": 4
+            },
+            {
+              "label": "5 — AI assistant handles routine questions with human escalation for nuance",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "comm-meeting-prep",
+          "text": "How prepared is the firm for client meetings — is context pulled together automatically?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Partner scrambles to gather context 10 minutes before",
+              "score": 1
+            },
+            {
+              "label": "2 — Junior staff manually assembles a brief",
+              "score": 2
+            },
+            {
+              "label": "3 — Standard meeting prep checklist filled in by hand",
+              "score": 3
+            },
+            {
+              "label": "4 — Auto-generated brief with engagement status and recent activity",
+              "score": 4
+            },
+            {
+              "label": "5 — Auto-generated brief with status, financial context, prior issues, and suggested talking points",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "comm-followup-execution",
+          "text": "How reliably do post-meeting action items and follow-ups get executed?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Whoever remembers, does it",
+              "score": 1
+            },
+            {
+              "label": "2 — Notes in a notebook, hit-or-miss execution",
+              "score": 2
+            },
+            {
+              "label": "3 — Action items captured in PM tool but not always assigned",
+              "score": 3
+            },
+            {
+              "label": "4 — Auto-captured from meeting notes and assigned with deadlines",
+              "score": 4
+            },
+            {
+              "label": "5 — Auto-captured, assigned, tracked to closure with client visibility",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're the firm's communication bottleneck",
+          "text": "Every client question routes through the partner because nobody else has the context. That's why you're working evenings answering 'where's my return at?' This is the cheapest leak to plug — context shouldn't live in your head.",
+          "steps": [
+            "Set up automated milestone emails so clients never have to ask 'where's my return?'",
+            "Create a shared inbox protocol so staff handle routine questions without partner involvement",
+            "Document and templatize the 10 most common client questions and answer patterns"
+          ]
+        },
+        "mid": {
+          "headline": "Clients are informed but partners still bottleneck the nuance",
+          "text": "You've automated the easy stuff but high-context conversations still pull partners in cold. The gap is meeting prep and follow-up execution — that's where partner time leaks invisibly.",
+          "steps": [
+            "Auto-generate pre-meeting briefs pulling status, financials, and prior issues into one page",
+            "Capture action items directly from meeting notes and auto-assign with deadlines",
+            "Give clients a portal view so 70% of 'status' questions never get asked"
+          ]
+        },
+        "high": {
+          "headline": "Communication is tight — now make it a growth lever",
+          "text": "Keep sharpening — here's the frontier. At this score, communication is no longer a leak; it's a competitive moat. The next move is using your communication data to spot expansion signals and at-risk clients before they churn.",
+          "steps": [
+            "Mine communication patterns to identify expansion-ready clients (frequency, topic shifts)",
+            "Build at-risk client signals from drop in proactive engagement and missed deadlines",
+            "Use AI assistant for after-hours routine questions with seamless human handoff"
+          ]
+        }
+      }
+    },
+    {
+      "id": "capacity-decision-systems",
+      "name": "Capacity, Pricing & Decision Systems",
+      "questions": [
+        {
+          "id": "cap-utilization-visibility",
+          "text": "How clearly do partners see real-time staff utilization and capacity?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Gut feel only — we know when people are 'slammed'",
+              "score": 1
+            },
+            {
+              "label": "2 — Monthly retrospective in a spreadsheet",
+              "score": 2
+            },
+            {
+              "label": "3 — Weekly utilization report pulled manually",
+              "score": 3
+            },
+            {
+              "label": "4 — Live dashboard from time entries",
+              "score": 4
+            },
+            {
+              "label": "5 — Live dashboard with forward-looking capacity forecast",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cap-pricing-logic",
+          "text": "How systematic is engagement pricing based on actual production cost?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We charge what we charged last year, plus a bit",
+              "score": 1
+            },
+            {
+              "label": "2 — Partner gut feel based on perceived complexity",
+              "score": 2
+            },
+            {
+              "label": "3 — Price list by service type, partner adjusts",
+              "score": 3
+            },
+            {
+              "label": "4 — Pricing model uses prior-year hours and complexity factors",
+              "score": 4
+            },
+            {
+              "label": "5 — Pricing recommendations from a model fed by actual cycle-time and complexity data",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cap-deadline-forecasting",
+          "text": "How early do you know which engagements will miss deadline?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We find out when they miss",
+              "score": 1
+            },
+            {
+              "label": "2 — A week before, when partners review status",
+              "score": 2
+            },
+            {
+              "label": "3 — Two weeks out from a manual status review",
+              "score": 3
+            },
+            {
+              "label": "4 — Three to four weeks out from workflow-stage tracking",
+              "score": 4
+            },
+            {
+              "label": "5 — Predictive forecast surfaces at-risk engagements 4+ weeks ahead",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're flying blind on capacity and price",
+          "text": "Without real utilization and pricing data, every decision is a guess and busy season is a survival exercise. You can't fix what you can't measure — this is foundational before any automation effort.",
+          "steps": [
+            "Get utilization on a dashboard pulled from time entries — weekly minimum",
+            "Document standard pricing per service type with explicit complexity multipliers",
+            "Run a monthly status review where every engagement's deadline risk is explicit"
+          ]
+        },
+        "mid": {
+          "headline": "You see capacity but can't forecast it",
+          "text": "You have data but it's backward-looking. Forward-looking forecasts are the difference between scaling and scrambling. The data already exists in your time and PM tools — it just isn't connected.",
+          "steps": [
+            "Build a forward-looking capacity forecast pulling from current engagements and historical cycle time",
+            "Reprice next year's engagements using actual hours data, not last year's invoice",
+            "Surface at-risk engagements 3–4 weeks before deadline, not 3–4 days"
+          ]
+        },
+        "high": {
+          "headline": "You run a real operating system — now widen the moat",
+          "text": "Keep sharpening — here's the frontier. Most firms your size will never reach this layer. The frontier is using capacity and pricing data to actively shape your client mix toward the most profitable segments and shed the rest.",
+          "steps": [
+            "Score every client on profitability and shed the bottom 10–15% each year",
+            "Use predictive capacity to decide which engagements to take on next year, not just price",
+            "Run the firm to the 90-Day Payback Rule on every system investment — kill anything that misses"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === \"growing_firm\" || persona === \"established_firm\" || persona === \"scaling_firm\") && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your capacity leaks?",
+      "description": "Drop your email and I'll review your exact answers, stack them against accounting firms your size in the US, UK, AU, and NZ, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === \"boutique_solo_plus\"",
+      "headline": "1–10 staff? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer when the founder is still in delivery. Follow me on LinkedIn — I post tactical accounting and service-firm automation breakdowns 3x/week. When you cross 10 staff and start hiring an ops person, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight — here's what accounting firms your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from AI-driven document classification at the workpaper layer, predictive deadline forecasting that runs 4+ weeks ahead, and pricing models fed by actual cycle-time data. I'm writing teardowns on each — follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "headline": "Get the weekly accounting ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market accounting firms run lean and scale without scaling payroll — no fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    }
+  ]
+}
