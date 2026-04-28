@@ -569,8 +569,31 @@
           '<span class="lmc-tier-label">' + esc(res.tier.name || "Tier") + '</span>' +
           '<span class="lmc-tier-score"><em>' + res.overall + '</em><span>/100</span></span>' +
         '</div>' +
-        '<p class="lmc-tier-note">' + esc(tierNote) + '</p>';
+        '<p class="lmc-tier-note">' + esc(tierNote) + '</p>' +
+        '<div class="lmc-cohort" id="lmc-cohort" style="display:none"></div>';
       card.appendChild(tierBlock);
+
+      // Fetch cohort stats and render comparison line if cohort >= MIN_N
+      (function () {
+        try {
+          var cohortUrl = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-cohort-stats?slug=" + encodeURIComponent(data.slug || window.__lm_slug || "");
+          if (res.persona_tag) cohortUrl += "&persona=" + encodeURIComponent(res.persona_tag);
+          fetch(cohortUrl, { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
+            if (!s) return;
+            var box = document.getElementById("lmc-cohort"); if (!box) return;
+            var pick = s.persona_block || s.overall;
+            if (!pick) return; // below MIN_N
+            var label = s.persona_block ? "firms like yours" : "firms";
+            var diff = res.overall - pick.avg;
+            var delta = diff === 0 ? "right at the average" : (diff > 0 ? "+" + diff + " above average" : diff + " below average");
+            box.innerHTML =
+              '<span class="lmc-cohort-label">Vs cohort</span>' +
+              'You are <strong>' + delta + '</strong> for ' + esc(label) + ' (cohort avg ' +
+              '<em>' + pick.avg + '</em>, n=' + pick.n + ').';
+            box.style.display = "block";
+          }).catch(function () {});
+        } catch (_) {}
+      })();
 
       // ── Top-3 gap questions (the 3 lowest-scoring answered items) ───
       var gaps = [];

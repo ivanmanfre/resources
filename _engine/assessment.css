@@ -304,3 +304,9 @@
 .lmc-cta-block p{font-size:.92rem;line-height:1.55;color:var(--ink-soft);margin:0 0 1rem;}
 .lmc-share-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;}
 .lmc-share-row .lmc-btn{flex:0 0 auto;}
+
+/* Cohort comparison line (under tier head) */
+.lmc-cohort{margin:.65rem 0 0;padding:.85rem 1rem;background:var(--paper-sunk);border:1px solid var(--hairline);border-left:3px solid var(--accent);border-radius:4px;font-size:.92rem;line-height:1.5;color:var(--ink-soft);}
+.lmc-cohort-label{display:inline-block;font-family:var(--font-mono);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent-ink);margin-right:.6rem;background:rgba(76,110,61,0.1);padding:.15rem .45rem;border-radius:3px;}
+.lmc-cohort strong{color:var(--ink);font-weight:600;}
+.lmc-cohort em{font-family:var(--font-drama);font-style:italic;font-weight:400;color:var(--accent);}
