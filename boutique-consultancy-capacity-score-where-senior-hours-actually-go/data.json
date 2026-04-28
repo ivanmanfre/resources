@@ -1,0 +1,801 @@
+{
+  "slug": "boutique-consultancy-capacity-score-where-senior-hours-actually-go",
+  "title": "Boutique Consultancy Capacity Score: Where Senior Hours Actually Go",
+  "subtitle": "For founders, managing partners, and COOs at 8-30 person strategy and management consultancies. Find where the 1,800 missing senior hours go each year and what to do about it.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "boutique strategy and management consulting",
+    "locations": "the US, UK, Australia, and Canada",
+    "count_band": "8-30"
+  },
+  "estimated_minutes": 7,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your client records, scoping notes, and engagement docs are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules a senior consultant follows during scoping, QA, or status updates can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep across the practice.",
+      "Human-in-the-loop by design. Every output touches a partner or senior before it ships to a client."
+    ],
+    "intro": "This assessment scores your firm against the four preconditions for Agent-Ready Ops. Hit all four in a workflow and AI can carry real weight there. Miss one and any AI build will leak senior hours back out the side."
+  },
+  "proof_card": {
+    "score_label": "Capacity Score",
+    "sample_score": 52,
+    "sample_top_leak": "deck assembly and status updates (~14 hrs/week of partner time recoverable)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your consultancy?",
+    "answers": [
+      {
+        "label": "Solo or under 8 staff. Pre-boutique stage.",
+        "tag": "pre_boutique"
+      },
+      {
+        "label": "8 to 15 staff. Partner-led, lean bench.",
+        "tag": "early_boutique"
+      },
+      {
+        "label": "16 to 24 staff. Two or more partners, structured practice.",
+        "tag": "established_boutique"
+      },
+      {
+        "label": "25 to 30 plus staff. Multiple practice areas, COO in seat.",
+        "tag": "scaling_boutique"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "intake-and-scoping",
+      "name": "Intake and Scoping",
+      "questions": [
+        {
+          "id": "intake-qualification",
+          "text": "How consistently do you qualify a prospect before a partner spends time on a scoping call?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Every inbound gets a partner call. No filter.",
+              "score": 1
+            },
+            {
+              "label": "2. We sometimes triage by gut, no written rules.",
+              "score": 2
+            },
+            {
+              "label": "3. We have a checklist but it is not always used.",
+              "score": 3
+            },
+            {
+              "label": "4. Written qualification criteria, applied most of the time.",
+              "score": 4
+            },
+            {
+              "label": "5. Structured intake form plus async qualification before any partner time.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scope-doc-time",
+          "text": "How long does it take to produce a scoping document or proposal after a discovery call?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Several days, partner writes from scratch each time.",
+              "score": 1
+            },
+            {
+              "label": "2. One to two days, mostly partner-authored.",
+              "score": 2
+            },
+            {
+              "label": "3. Half a day with a rough template.",
+              "score": 3
+            },
+            {
+              "label": "4. Two to three hours using a structured template plus past examples.",
+              "score": 4
+            },
+            {
+              "label": "5. Under an hour with a templated, semi-automated draft a partner edits.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scope-clarity",
+          "text": "How clearly are deliverables, exclusions, and decision rights defined before kickoff?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We figure it out as we go. Frequent scope creep.",
+              "score": 1
+            },
+            {
+              "label": "2. Deliverables listed, exclusions and decision rights skipped.",
+              "score": 2
+            },
+            {
+              "label": "3. Standard scope language, lightly customized.",
+              "score": 3
+            },
+            {
+              "label": "4. Detailed scope with exclusions and a change-order process.",
+              "score": 4
+            },
+            {
+              "label": "5. Every engagement opens with a documented scope, RACI, and change protocol.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake-handoff",
+          "text": "How clean is the handoff from sale to delivery team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Partner re-explains everything to the team verbally.",
+              "score": 1
+            },
+            {
+              "label": "2. Email forward plus a short Slack message.",
+              "score": 2
+            },
+            {
+              "label": "3. Kickoff doc exists but is inconsistent.",
+              "score": 3
+            },
+            {
+              "label": "4. Standard internal kickoff brief, completed most engagements.",
+              "score": 4
+            },
+            {
+              "label": "5. Structured handoff doc auto-populated from the scoping artifact.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Intake is eating your most expensive hours",
+          "text": "Partners are doing first-call qualification, scoping, and proposal drafting from scratch. That is a 6 to 12 hour leak per opportunity, most of which is patternable. Honest take: you do not need a sales hire here, you need a structured intake layer.",
+          "steps": [
+            "Build a written qualification rubric with 5 to 7 disqualifiers and apply it before any partner call.",
+            "Move discovery into a structured intake form that captures budget band, timeline, and decision-maker upfront.",
+            "Template your three most common engagement types so a proposal draft takes under 60 minutes."
+          ]
+        },
+        "mid": {
+          "headline": "Intake works, scoping still bleeds",
+          "text": "You have qualification and a template, but each proposal still pulls a partner for half a day because past examples are not retrievable in a useful way. The fix is making your back catalog of scopes and pricing actually queryable.",
+          "steps": [
+            "Centralize past scopes, pricing, and outcomes in one searchable repository.",
+            "Add a change-order protocol so scope creep is priced, not absorbed.",
+            "Auto-generate the internal kickoff brief from the signed scope so partners stop re-briefing the team."
+          ]
+        },
+        "high": {
+          "headline": "Intake is dialed. Push into scoping intelligence.",
+          "text": "Keep sharpening. The frontier here is using past engagement data to predict scope risk before you sign, not after.",
+          "steps": [
+            "Tag closed engagements with overrun cause and feed it into your scoping checklist.",
+            "Build a pricing intelligence view by engagement type, sector, and partner.",
+            "Pilot AI-assisted scope drafting trained on your own won proposals."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~9 hrs/week of partner time recoverable from intake and scoping",
+        "lever": "Push qualification and first-draft scoping out of partner heads and into a structured, templated intake layer.",
+        "talking_points": [
+          "Every unqualified discovery call costs us roughly 2 partner hours of fully-loaded time.",
+          "Proposal turnaround time correlates with close rate. Slow proposals leak warm pipeline.",
+          "A structured intake form is the single highest-ROI ops investment we can make this quarter."
+        ],
+        "proof_of_concept": "In one week, build a 7-question intake form, write a disqualification rubric, and route the next 5 inbounds through it before any partner call is booked."
+      }
+    },
+    {
+      "id": "delivery-and-pm",
+      "name": "Delivery and Project Management",
+      "questions": [
+        {
+          "id": "status-updates",
+          "text": "How automated is your client status update process?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Partners write each one from scratch on Friday afternoons.",
+              "score": 1
+            },
+            {
+              "label": "2. Loose template, manually filled.",
+              "score": 2
+            },
+            {
+              "label": "3. Template plus PM compiles inputs from team.",
+              "score": 3
+            },
+            {
+              "label": "4. Structured update assembled from PM tool data with light editing.",
+              "score": 4
+            },
+            {
+              "label": "5. Auto-drafted from project tool, partner reviews and ships.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "internal-meetings",
+          "text": "How disciplined is your firm about internal meeting load?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Calendars are 70 percent plus internal meetings.",
+              "score": 1
+            },
+            {
+              "label": "2. We try to block focus time but rarely hold the line.",
+              "score": 2
+            },
+            {
+              "label": "3. Meeting-free mornings or similar norm exists, partially observed.",
+              "score": 3
+            },
+            {
+              "label": "4. Clear meeting hygiene rules, mostly held.",
+              "score": 4
+            },
+            {
+              "label": "5. Meetings require an agenda and named decision. Async-by-default culture.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "deliverable-templates",
+          "text": "How standardized are your core deliverable formats (decks, models, frameworks)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Every deck is built from a blank slide.",
+              "score": 1
+            },
+            {
+              "label": "2. We copy from the last project and rework it.",
+              "score": 2
+            },
+            {
+              "label": "3. We have a template library but it is out of date.",
+              "score": 3
+            },
+            {
+              "label": "4. Maintained component library covering 70 percent of slides.",
+              "score": 4
+            },
+            {
+              "label": "5. Modular slide and model library that assembles 80 percent of a deliverable.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "client-questions",
+          "text": "How well do you handle the steady drip of \"quick\" client questions outside of scope?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Partners answer everything, day or night, free of charge.",
+              "score": 1
+            },
+            {
+              "label": "2. We push back sometimes. No system.",
+              "score": 2
+            },
+            {
+              "label": "3. We log them but do not bill or batch them.",
+              "score": 3
+            },
+            {
+              "label": "4. Office-hours model or batched response window in place.",
+              "score": 4
+            },
+            {
+              "label": "5. Defined client comms SLA, batched response windows, scope-creep flags.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Delivery is run on hero hours",
+          "text": "Status updates, decks, and ad-hoc client questions are eating partner evenings. None of those tasks require partner judgment. The first move is making them systematic, not delegating them blindly.",
+          "steps": [
+            "Standardize a weekly status update template assembled from your PM tool, not a blank doc.",
+            "Build a slide and framework library covering the top 10 reusable components.",
+            "Set a written client comms SLA so 9pm questions stop arriving as emergencies."
+          ]
+        },
+        "mid": {
+          "headline": "Delivery is steady, but partner time still drains in low-leverage tasks",
+          "text": "You have templates and norms but they are inconsistently held. The leak is in the in-between work: status comms, follow-ups, and quick-question creep. My read: codify it, then automate the assembly layer.",
+          "steps": [
+            "Move status updates to an auto-drafted format pulled from project data.",
+            "Audit the last 30 client emails for scope creep and convert recurring asks into paid retainer slots.",
+            "Run a quarterly template-library refresh so the kit stays current."
+          ]
+        },
+        "high": {
+          "headline": "Delivery is tight. Push into deliverable intelligence.",
+          "text": "Keep sharpening. The frontier is making your deliverable library smart, not just present.",
+          "steps": [
+            "Tag deliverable components by sector and outcome to surface the right starting point per engagement.",
+            "Pilot AI-assisted first-draft deck assembly from project notes.",
+            "Measure partner editing time per deliverable as a leading indicator."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~14 hrs/week of partner time recoverable from delivery overhead",
+        "lever": "Pull status updates, deck assembly, and quick-question handling off partners and into structured systems.",
+        "talking_points": [
+          "Hero-hours culture caps growth at the partners' personal endurance, not the firm's economics.",
+          "A modular deliverable library is durable IP. Hours of partner work compound into reusable assets.",
+          "Client comms SLAs are not a hostility move. They protect quality on the work we are paid to do."
+        ],
+        "proof_of_concept": "In one week, replace the next status update with an auto-drafted version pulled from your PM tool and run a 5-day batched response window for non-urgent client comms."
+      }
+    },
+    {
+      "id": "knowledge-and-ip",
+      "name": "Knowledge and IP Capture",
+      "questions": [
+        {
+          "id": "engagement-archive",
+          "text": "How searchable is your archive of past engagements, frameworks, and outputs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Files live in partners' personal drives. No central library.",
+              "score": 1
+            },
+            {
+              "label": "2. Shared drive, no naming convention.",
+              "score": 2
+            },
+            {
+              "label": "3. Shared drive with folders, partial conventions.",
+              "score": 3
+            },
+            {
+              "label": "4. Centralized knowledge base, search works for most cases.",
+              "score": 4
+            },
+            {
+              "label": "5. Tagged, searchable repository with engagement, sector, and outcome metadata.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "frameworks-codified",
+          "text": "How well are your firm's signature frameworks and methods documented?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They live in the founders' heads.",
+              "score": 1
+            },
+            {
+              "label": "2. A few decks describe them, no formal write-up.",
+              "score": 2
+            },
+            {
+              "label": "3. Internal wiki page exists, partially complete.",
+              "score": 3
+            },
+            {
+              "label": "4. Documented playbooks for top 3 frameworks.",
+              "score": 4
+            },
+            {
+              "label": "5. Every signature method has a playbook, training module, and example library.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "post-engagement",
+          "text": "How consistently do you run post-engagement reviews and capture lessons?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We never do them.",
+              "score": 1
+            },
+            {
+              "label": "2. Sometimes, when something goes wrong.",
+              "score": 2
+            },
+            {
+              "label": "3. Informal debrief at the end of most projects.",
+              "score": 3
+            },
+            {
+              "label": "4. Structured retro, written up, stored centrally.",
+              "score": 4
+            },
+            {
+              "label": "5. Structured retro feeds directly into updated playbooks and templates.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your IP walks out the door at 6pm",
+          "text": "The firm's actual product, your frameworks and engagement learnings, lives in partner heads and personal drives. That makes everything you do harder to repeat, train, or automate. Step one is making it findable.",
+          "steps": [
+            "Centralize the last 12 months of deliverables into one shared, tagged repository.",
+            "Pick the three frameworks you sell most and write a one-page playbook each.",
+            "Make a post-engagement debrief mandatory before invoicing the final tranche."
+          ]
+        },
+        "mid": {
+          "headline": "Knowledge is documented, not yet operational",
+          "text": "You have a wiki and some playbooks but they are not the default starting point for new engagements. The fix is making the library load-bearing in delivery, not optional reference.",
+          "steps": [
+            "Require new engagements to start from a playbook, not a blank deck.",
+            "Tag every deliverable with sector, outcome, and partner for retrievability.",
+            "Convert post-engagement retros into specific updates to playbooks, not just notes."
+          ]
+        },
+        "high": {
+          "headline": "IP is captured. Push into agent-readiness.",
+          "text": "Keep sharpening. The frontier is making your IP queryable by an AI layer that supports the team in real time.",
+          "steps": [
+            "Build a structured taxonomy across sectors, methods, and outcomes.",
+            "Pilot an internal RAG layer over your engagement archive for senior staff.",
+            "Track time-to-first-draft as a measure of how well the library is doing its job."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~$180K of annual partner time captured back as reusable IP",
+        "lever": "Treat your archive of frameworks and engagements as the firm's product, not a side effect of delivery.",
+        "talking_points": [
+          "Undocumented IP means every new hire ramps from zero on the same lessons.",
+          "A searchable engagement archive is the single biggest unlock for AI-assisted delivery later.",
+          "Post-engagement retros that feed playbooks are how the firm gets smarter without the partners working more."
+        ],
+        "proof_of_concept": "In one week, centralize the last 10 engagements into one shared repository, tag them by sector and method, and require the next new project to start from that library."
+      }
+    },
+    {
+      "id": "financial-visibility",
+      "name": "Financial Visibility and Pricing",
+      "questions": [
+        {
+          "id": "hour-tracking",
+          "text": "How clearly do you know where senior hours actually go each week?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We do not track time at the partner level.",
+              "score": 1
+            },
+            {
+              "label": "2. Partners log time loosely, mostly to billable codes.",
+              "score": 2
+            },
+            {
+              "label": "3. Time tracked, but no rollup by activity type.",
+              "score": 3
+            },
+            {
+              "label": "4. Weekly view of billable vs. non-billable partner time.",
+              "score": 4
+            },
+            {
+              "label": "5. Activity-level breakdown of partner hours by intake, delivery, internal, and BD.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "engagement-margin",
+          "text": "How accurately do you know per-engagement margin after delivery?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We do not calculate it.",
+              "score": 1
+            },
+            {
+              "label": "2. Rough gut estimate per project.",
+              "score": 2
+            },
+            {
+              "label": "3. Margin calculated for big engagements only.",
+              "score": 3
+            },
+            {
+              "label": "4. Margin tracked per engagement, reviewed quarterly.",
+              "score": 4
+            },
+            {
+              "label": "5. Live engagement P and L, reviewed monthly per partner.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pricing-discipline",
+          "text": "How disciplined is your pricing across new engagements?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Every quote feels custom. Wide variance for similar work.",
+              "score": 1
+            },
+            {
+              "label": "2. Rough partner gut, no banded pricing.",
+              "score": 2
+            },
+            {
+              "label": "3. Banded pricing exists for some engagement types.",
+              "score": 3
+            },
+            {
+              "label": "4. Banded pricing for all core engagements, occasionally overridden.",
+              "score": 4
+            },
+            {
+              "label": "5. Banded pricing tied to scope tiers, with documented override rules.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "forecasting",
+          "text": "How reliable is your 90-day pipeline and capacity forecast?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We do not forecast.",
+              "score": 1
+            },
+            {
+              "label": "2. Partner-level guesses, not written down.",
+              "score": 2
+            },
+            {
+              "label": "3. Monthly pipeline review, no capacity overlay.",
+              "score": 3
+            },
+            {
+              "label": "4. 90-day pipeline plus capacity review, monthly cadence.",
+              "score": 4
+            },
+            {
+              "label": "5. Live pipeline plus capacity model, weekly review, drives staffing decisions.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are flying without instruments",
+          "text": "Without partner time data, engagement margin, or banded pricing, every commercial decision is gut. That is workable at 8 staff and dangerous at 20. Honest take: this is the leak that masks every other leak.",
+          "steps": [
+            "Start partner time tracking at activity level (intake, delivery, internal, BD) for 30 days.",
+            "Calculate margin on the last 10 engagements and rank them.",
+            "Create banded pricing for your top 3 engagement types based on actuals."
+          ]
+        },
+        "mid": {
+          "headline": "You see the numbers, you do not yet act on them",
+          "text": "Time tracking and margin exist but pricing and staffing decisions are still made on instinct. The gap is closing the loop between the data and weekly operating decisions.",
+          "steps": [
+            "Move pricing reviews to monthly, anchored on margin data.",
+            "Add a capacity overlay to your 90-day pipeline view.",
+            "Create override rules so banded pricing has discipline, not exceptions."
+          ]
+        },
+        "high": {
+          "headline": "Financials are clear. Push into commercial intelligence.",
+          "text": "Keep sharpening. The frontier is using your data to price and staff predictively, not reactively.",
+          "steps": [
+            "Build a per-partner P and L view reviewed monthly.",
+            "Use historical actuals to price next quarter's engagements with margin floors.",
+            "Forecast capacity 12 weeks out and let it drive staffing and BD intensity."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~12 to 18 percent margin recoverable from priced-by-gut engagements",
+        "lever": "Make banded pricing, engagement margin, and partner time visibility the spine of the weekly operating rhythm.",
+        "talking_points": [
+          "We cannot fix what we do not measure. Activity-level partner time is the unlock.",
+          "Banded pricing protects margin without relying on partner negotiation skill on every deal.",
+          "A 90-day pipeline plus capacity model is how we stop the boom-bust staffing cycle."
+        ],
+        "proof_of_concept": "In one week, run activity-level partner time tracking across all partners, then calculate margin on the last 5 engagements and review the gap on Friday."
+      }
+    },
+    {
+      "id": "team-and-leverage",
+      "name": "Team and Leverage",
+      "questions": [
+        {
+          "id": "delegation-depth",
+          "text": "How effectively do partners delegate work to senior consultants and ICs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Partners do most of the actual work themselves.",
+              "score": 1
+            },
+            {
+              "label": "2. We delegate analysis but partners still write all client-facing output.",
+              "score": 2
+            },
+            {
+              "label": "3. Senior consultants own first drafts, partners heavily edit.",
+              "score": 3
+            },
+            {
+              "label": "4. Senior consultants own most deliverables, partners review.",
+              "score": 4
+            },
+            {
+              "label": "5. Partners are pulled in only at named decision points by design.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "hiring-clarity",
+          "text": "How clear are role definitions and progression paths in the firm?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Everyone does everything. No defined roles.",
+              "score": 1
+            },
+            {
+              "label": "2. Loose roles, no documented expectations.",
+              "score": 2
+            },
+            {
+              "label": "3. Role definitions exist but progression is unclear.",
+              "score": 3
+            },
+            {
+              "label": "4. Documented roles and progression, partially used in reviews.",
+              "score": 4
+            },
+            {
+              "label": "5. Clear roles, levels, and progression criteria, used in hiring and reviews.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "onboarding-speed",
+          "text": "How fast does a new senior consultant become productive on a live engagement?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Three months plus, mostly shadowing.",
+              "score": 1
+            },
+            {
+              "label": "2. Two to three months, ad-hoc onboarding.",
+              "score": 2
+            },
+            {
+              "label": "3. Six to eight weeks with a loose plan.",
+              "score": 3
+            },
+            {
+              "label": "4. Four to six weeks with a structured onboarding program.",
+              "score": 4
+            },
+            {
+              "label": "5. Three to four weeks. Documented playbooks plus paired delivery.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The firm is the partners",
+          "text": "Without delegation depth and clear roles, growth is capped by partner hours. Hiring more seniors will not fix this until the system around them is built. The fix is making partner judgment a checkpoint, not the engine.",
+          "steps": [
+            "Map the last 5 engagements and mark every task only a partner could have done.",
+            "Build a role definition for senior consultant with first-draft ownership of deliverables.",
+            "Document the top 3 onboarding paths so a new senior is productive in 6 weeks, not 12."
+          ]
+        },
+        "mid": {
+          "headline": "Leverage is partial. Partners still gate too much.",
+          "text": "You have roles and delegation but partners are still the bottleneck on client-facing output. The frontier is moving partners from doer to reviewer at named decision points.",
+          "steps": [
+            "Define which deliverables require partner sign-off and which do not.",
+            "Pair every senior with a playbook-driven onboarding path tied to live work.",
+            "Run a quarterly review of where partner time actually went and adjust."
+          ]
+        },
+        "high": {
+          "headline": "Leverage is real. Push into compounding leverage.",
+          "text": "Keep sharpening. The frontier is treating each new hire as a multiplier on systems already built, not a fresh ramp.",
+          "steps": [
+            "Track partner hours per engagement as a leading indicator of leverage.",
+            "Use playbooks plus AI-assisted drafting to compress senior consultant ramp further.",
+            "Build a clear path from senior consultant to partner so retention compounds."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~30 to 50 percent more partner billable capacity unlocked at full leverage",
+        "lever": "Move partners from doer to named-checkpoint reviewer by giving senior consultants playbooks and first-draft ownership.",
+        "talking_points": [
+          "The firm cannot grow past the partners' calendars without delegation depth.",
+          "Onboarding speed is a strategic metric. Every week shaved is real margin.",
+          "Playbooks are how we make senior consultants partner-grade faster."
+        ],
+        "proof_of_concept": "In one week, pick one current engagement and rewire it so partners only touch named decision points, not every deliverable, and measure the partner hour delta."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === \"early_boutique\" || persona === \"established_boutique\" || persona === \"scaling_boutique\") && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your capacity leaks?",
+      "description": "Drop your email and I will review your exact answers, stack them against boutique consultancies your size, and send a 5-minute Loom within 48h with the ONE fix I would prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === \"pre_boutique\"",
+      "headline": "Under 8 staff? You are early for a custom audit.",
+      "description": "Automation ROI at solo or pre-boutique scale is real but the payback window is longer. Follow me on LinkedIn. I post tactical consultancy ops breakdowns 3x/week. When you cross 8 staff, come back and retake the assessment. The CTA will change.",
+      "button": "Follow on LinkedIn",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You are running tight. Here is what boutique consultancies your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from agent-ready scoping intelligence, AI-assisted deliverable assembly, and predictive capacity forecasting. I am writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly boutique consultancy ops teardown",
+      "description": "One tactical case study plus one n8n workflow breakdown per week. How mid-market consultancies scale without scaling payroll. No fluff, no pitch.",
+      "button": "Follow on LinkedIn",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ]
+}
