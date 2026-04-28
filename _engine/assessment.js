@@ -207,11 +207,11 @@
   }
 
   // Build a small "Hey, I'm Ivan" 1/3-column bio block (demoted from co-equal hero card)
-  function buildIvanColumn() {
+  function buildIvanColumn(data) {
     var col = make("aside", { class: "lmc-ivan-col", "aria-label": "About Ivan" });
     var img = make("img", { class: "lmc-ivan-portrait", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     col.appendChild(img);
-    var bioText = (data.ivan_bio) || "I'm Ivan. I build Agent-Ready Ops systems for boutique knowledge-service firms. Honest answers in, honest scorecard out. No pitch on this page.";
+    var bioText = (data && data.ivan_bio) || "I'm Ivan. I build Agent-Ready Ops systems for boutique knowledge-service firms. Honest answers in, honest scorecard out. No pitch on this page.";
     var p = make("p", { class: "lmc-ivan-bio" }, bioText);
     col.appendChild(p);
     var more = make("a", { class: "lmc-ivan-link", href: "https://ivanmanfredi.com", target: "_blank", rel: "noopener" }, "more about Ivan \u2192");
@@ -379,7 +379,7 @@
     heroMain.appendChild(heroStartBtn);
 
     hi.appendChild(heroMain);
-    hi.appendChild(buildIvanColumn());
+    hi.appendChild(buildIvanColumn(data));
     hero.appendChild(hi);
     root.appendChild(hero);
 
