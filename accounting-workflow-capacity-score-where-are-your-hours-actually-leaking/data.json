@@ -1,116 +1,158 @@
 {
   "slug": "accounting-workflow-capacity-score-where-are-your-hours-actually-leaking",
-  "title": "Accounting Workflow Capacity Score — Where Are Your Hours Actually Leaking?",
-  "subtitle": "A 7-minute diagnostic for managing partners and COOs at boutique CPA, tax, and bookkeeping firms (11–100 employees) across the US, UK, AU, and NZ. Score where intake, prep, review, client comms, and admin are bleeding partner hours.",
+  "title": "Accounting Workflow Capacity Score: Where Are Your Hours Actually Leaking?",
+  "subtitle": "An 18-question diagnostic for founders, managing partners, and COOs at boutique accounting, tax, and CPA firms (11 to 100 staff). Locates where the hours leak, names the fix, and tells you what returns its cost in 90 days.",
   "brand": {
     "accent": "#2A8F65",
     "hero_badge": "Interactive Assessment"
   },
-  "estimated_minutes": 7,
+  "estimated_minutes": 8,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your data sources are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules a human follows can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep.",
+      "Human-in-the-loop by design. Every output touches a person before it ships externally."
+    ],
+    "intro": "This assessment scores against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready for AI to carry weight. Miss one and any AI build will leak."
+  },
+  "proof_card": {
+    "score_label": "Capacity Score",
+    "sample_score": 58,
+    "sample_top_leak": "client document collection (~14 hrs/week recoverable on senior staff time)"
+  },
   "persona_selector": {
     "id": "size",
-    "text": "Which best describes your firm's headcount today?",
+    "text": "Which best describes your firm today?",
     "answers": [
       {
-        "label": "Solo or under 10 staff (founder plus a few juniors or contractors)",
-        "tag": "micro"
+        "label": "Solo or micro firm (1 to 10 staff)",
+        "tag": "solo_micro"
       },
       {
-        "label": "Boutique: 11–25 staff (1–3 partners, starting to formalize ops)",
+        "label": "Boutique firm (11 to 25 staff)",
         "tag": "boutique"
       },
       {
-        "label": "Growing: 26–60 staff (multi-partner, defined departments, mid-market clients)",
+        "label": "Growing firm (26 to 50 staff)",
         "tag": "growing"
       },
       {
-        "label": "Established: 61–100+ staff (full leadership team, multi-office or multi-state)",
+        "label": "Established firm (51 to 100 staff)",
         "tag": "established"
       }
     ]
   },
   "categories": [
     {
-      "id": "client-intake-onboarding",
-      "name": "Client Intake & Onboarding",
+      "id": "client-intake",
+      "name": "Client Intake and Onboarding",
       "questions": [
         {
-          "id": "engagement-to-workspace-time",
-          "text": "How quickly does a signed engagement turn into a fully provisioned workspace, folder structure, and document request list?",
+          "id": "intake-system-flow",
+          "text": "How automated is moving a signed engagement letter into your practice management, billing, and document portal systems?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — A week or more, or it slips through the cracks regularly",
+              "label": "1. Manual data entry into every system after every signing",
               "score": 1
             },
             {
-              "label": "2 — 1–3 days depending on who is available",
+              "label": "2. Some copy and paste templates, mostly manual",
               "score": 2
             },
             {
-              "label": "3 — Same day, but a person clicks through 4–6 systems manually",
+              "label": "3. PM system populates, billing and portal still manual",
               "score": 3
             },
             {
-              "label": "4 — Under 2 hours, partially automated with a manual review step",
+              "label": "4. PM, billing, and portal sync from one source on signing",
               "score": 4
             },
             {
-              "label": "5 — Under 30 minutes, mostly automated end to end",
+              "label": "5. Fully automated. Signing triggers full client setup across the stack",
               "score": 5
             }
           ]
         },
         {
-          "id": "intake-data-flow",
-          "text": "How automated is the flow of client information from intake form into your practice management, document portal, and accounting software?",
+          "id": "intake-rekeying",
+          "text": "How often is the same client information re-entered across your tools?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Re-keyed by hand into every system",
+              "label": "1. Every system requires its own entry",
               "score": 1
             },
             {
-              "label": "2 — Copy-pasted into 2–3 systems by an admin",
+              "label": "2. Most systems are re-keyed by hand",
               "score": 2
             },
             {
-              "label": "3 — One sync works, the rest are manual",
+              "label": "3. About half the stack syncs, the rest is manual",
               "score": 3
             },
             {
-              "label": "4 — Most systems auto-sync, with one human checkpoint",
+              "label": "4. Mostly synced, one or two manual touches remain",
               "score": 4
             },
             {
-              "label": "5 — Single source of truth flows automatically into every downstream system",
+              "label": "5. Single source of truth. No re-entry anywhere",
               "score": 5
             }
           ]
         },
         {
-          "id": "document-request-cadence",
-          "text": "How consistently are clients sent (and reminded about) their document request list without a person manually nudging?",
+          "id": "intake-kickoff",
+          "text": "How structured is your new-client kickoff (prior year files, system access, initial data requests)?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Staff manually email reminders when they remember",
+              "label": "1. Ad hoc. Each manager runs it their own way",
               "score": 1
             },
             {
-              "label": "2 — Initial list is templated, follow-ups are ad hoc",
+              "label": "2. Loose checklist that gets skipped under pressure",
               "score": 2
             },
             {
-              "label": "3 — Scheduled reminders go out, but tracking who replied is manual",
+              "label": "3. Documented checklist, inconsistent execution",
               "score": 3
             },
             {
-              "label": "4 — Automated reminders plus dashboard of outstanding items",
+              "label": "4. Standard kickoff playbook followed every time",
               "score": 4
             },
             {
-              "label": "5 — Fully automated chase sequence with status visible to client and team in real time",
+              "label": "5. Automated kickoff. Tasks, requests, and access fire from a single trigger",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake-quote-speed",
+          "text": "How quickly can you produce an accurate, scoped quote for a new engagement?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Days. Requires partner review every time",
+              "score": 1
+            },
+            {
+              "label": "2. Same week. Custom quote built from scratch",
+              "score": 2
+            },
+            {
+              "label": "3. 24 to 48 hours, partly templated",
+              "score": 3
+            },
+            {
+              "label": "4. Same day from a productized menu",
+              "score": 4
+            },
+            {
+              "label": "5. Near instant. Pricing tiers are self-serve",
               "score": 5
             }
           ]
@@ -118,142 +160,125 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Onboarding is your hidden capacity sink",
-          "text": "Every new client costs you 3–6 partner hours before any real work starts. That is not a tooling problem, it is a structured-input problem. The fastest fix is a single intake form that becomes the source of truth for every downstream system.",
+          "headline": "Intake is bleeding senior hours that never get billed",
+          "text": "When the engagement letter is the finish line for a salesperson and the starting line for a manual data-entry job, you are paying senior staff to be a data clerk for the first 48 hours of every relationship. The fix is making the signature itself the trigger for system setup, kickoff tasks, and the first data request.",
           "steps": [
-            "Map every system that needs a new client record (PM, portal, GL, CRM, billing) and pick one as the master",
-            "Replace email and PDF intake with a structured form (Typeform, Jotform, or your portal's native form) that captures every field downstream systems require",
-            "Wire one automation that provisions the workspace, folders, and document request list the moment the engagement is signed"
+            "Map every system that needs a record created when a client signs (PM, billing, portal, file storage, kickoff tasks)",
+            "Build one trigger flow (n8n, Zapier, or PM-native automation) that fires on engagement-letter signing",
+            "Productize 3 quote tiers so 80% of new work skips the custom-quote loop"
           ]
         },
         "mid": {
-          "headline": "Intake works, but a person is still the glue",
-          "text": "You have templates and a process, but a human is clicking through 4–6 systems on every new client. That is 60–90 minutes per onboarding, every time. Move the glue from a person to a workflow.",
+          "headline": "Intake works but leaks at the seams",
+          "text": "You have automation in places, but the seams between tools still need a human. That human is usually expensive. Tightening the handoffs is where the next 6 to 8 hours per week come back.",
           "steps": [
-            "Audit one full onboarding end to end and time every manual click — the result is your automation backlog",
-            "Replace the human-glue steps with an n8n flow triggered by engagement signature in your PM system",
-            "Add automated document request reminders with response tracking so nobody chases by hand"
+            "Audit which intake steps still require copy and paste between two tools, then automate the top three",
+            "Move quote turnaround under 24 hours by templating the bottom 80% of pricing",
+            "Add a kickoff SLA (e.g., first data request out within 4 business hours of signing)"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — the frontier is pre-engagement triage",
-          "text": "Your onboarding is tight. The next leak is upstream: which prospects should you have said no to before they hit intake? Top-decile firms triage clients before they consume hours.",
+          "headline": "Intake is dialed. Now compress the quote",
+          "text": "Keep sharpening. Here is the frontier: most firms at this score still treat pricing as artisanal. Productizing it is the next 5x on time-to-revenue.",
           "steps": [
-            "Add a structured pre-engagement scoring step that flags fit, complexity, and capacity load before you sign",
-            "Auto-route low-fit prospects to a referral partner instead of consuming a partner discovery call",
-            "Tag every signed client with predicted hours so capacity planning starts at engagement, not at delivery"
+            "Publish self-serve pricing for the bottom 60% of services",
+            "Add a pre-signing diagnostic that auto-routes the prospect to the right tier",
+            "Track time-from-inquiry-to-signed-engagement as a board-level metric"
           ]
         }
+      },
+      "operator_brief": {
+        "headline_number": "~9 hrs/week recoverable on intake re-keying and kickoff drag",
+        "lever": "Honest take: make the signed engagement letter the trigger for the entire downstream stack, not a baton for a human to carry across five tools.",
+        "talking_points": [
+          "Every re-keyed field is a senior hour we are not billing for",
+          "The longer kickoff drags, the worse first-month document return rates get",
+          "Productized pricing tiers cut quote turnaround from days to minutes and protect partner time"
+        ],
+        "proof_of_concept": "Pick the next 3 new engagements. Wire one signing trigger that auto-creates the PM job, billing record, portal folder, and kickoff task list, then time the savings against your manual baseline."
       }
     },
     {
-      "id": "document-prep-workpaper-workflow",
-      "name": "Document Prep & Workpaper Workflow",
+      "id": "document-collection",
+      "name": "Document and Data Collection",
       "questions": [
         {
-          "id": "prep-standardization",
-          "text": "How consistently does every preparer follow the same workpaper structure and prep procedures across the firm?",
+          "id": "docs-request-process",
+          "text": "How automated is your client document request process at the start of an engagement or filing cycle?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Every preparer has their own way of doing it",
+              "label": "1. We email each client manually with a custom list",
               "score": 1
             },
             {
-              "label": "2 — Templates exist but adherence is uneven",
+              "label": "2. Email templates we copy and personalize",
               "score": 2
             },
             {
-              "label": "3 — Standards are documented, partners enforce them per engagement",
+              "label": "3. Portal sends standard request lists",
               "score": 3
             },
             {
-              "label": "4 — Templates plus checklists are mandatory and audited",
+              "label": "4. Portal sends, tracks, and auto-reminds",
               "score": 4
             },
             {
-              "label": "5 — Standardized, version-controlled, and the system rejects non-compliant workpapers",
+              "label": "5. Personalized request lists generated from prior-year filing data, with full reminder cadence",
               "score": 5
             }
           ]
         },
         {
-          "id": "data-extraction-automation",
-          "text": "How automated is data extraction from source documents (bank statements, invoices, K-1s, brokerage statements) into your working files?",
+          "id": "docs-chasing",
+          "text": "How much manual chasing does your team do to get source documents in?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Manually keyed by staff",
+              "label": "1. Weekly chase calls. We are always behind",
               "score": 1
             },
             {
-              "label": "2 — OCR for some documents, manual for the rest",
+              "label": "2. Heavy email chasing through busy season",
               "score": 2
             },
             {
-              "label": "3 — OCR plus a human reconciliation pass on every doc",
+              "label": "3. Automated reminders plus selective human follow-up",
               "score": 3
             },
             {
-              "label": "4 — AI extraction with exception-only human review",
+              "label": "4. Reminders handle 80% or more of follow-up",
               "score": 4
             },
             {
-              "label": "5 — Automated extraction, classification, and direct posting with confidence scoring",
+              "label": "5. No human chasing. Status is visible to client and team in real time",
               "score": 5
             }
           ]
         },
         {
-          "id": "missing-document-chase",
-          "text": "How much partner or manager time per week is spent chasing missing client documents?",
+          "id": "docs-structure",
+          "text": "How structured is the data you actually receive (bank feeds, receipts, payroll exports)?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Multiple hours a week, it is a constant fire",
+              "label": "1. Mix of paper, phone scans, screenshots, and emailed PDFs",
               "score": 1
             },
             {
-              "label": "2 — A few hours, mostly during busy season",
+              "label": "2. Mostly digital but unstructured",
               "score": 2
             },
             {
-              "label": "3 — Admin handles most of it, partners step in for stuck cases",
+              "label": "3. Bank feeds connected, source docs still messy",
               "score": 3
             },
             {
-              "label": "4 — Automated reminders cover 80%+, humans handle escalations",
+              "label": "4. Most clients on standardized inputs (live feeds, receipt apps)",
               "score": 4
             },
             {
-              "label": "5 — Almost zero — the system chases, escalates, and surfaces blockers",
-              "score": 5
-            }
-          ]
-        },
-        {
-          "id": "prior-year-rollforward",
-          "text": "How automated is your prior-year rollforward and anomaly detection at the start of an engagement?",
-          "max_score": 5,
-          "answers": [
-            {
-              "label": "1 — Manual rebuild every year",
-              "score": 1
-            },
-            {
-              "label": "2 — Templates roll forward, but anomalies are caught only at review",
-              "score": 2
-            },
-            {
-              "label": "3 — Rollforward is automated, variance analysis is manual",
-              "score": 3
-            },
-            {
-              "label": "4 — Automated rollforward plus flagged variances against prior year",
-              "score": 4
-            },
-            {
-              "label": "5 — System auto-flags anomalies, missing items, and unusual activity before prep starts",
+              "label": "5. All clients on a standard data layer. Inputs are queryable, not just stored",
               "score": 5
             }
           ]
@@ -261,115 +286,152 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Prep is where your margin dies",
-          "text": "When every preparer works differently and data is rekeyed, you are paying twice: once in prep hours and once in review hours catching inconsistencies. Standardize before you automate.",
+          "headline": "Document chasing is the single biggest leak in most boutique firms",
+          "text": "When source documents arrive late, in random formats, and through random channels, the entire production line slips. The fix is not nagging clients harder. It is making the request smarter and the inbound channel narrower.",
           "steps": [
-            "Pick one engagement type (1040, monthly close, audit) and document the canonical workpaper structure for it",
-            "Roll out OCR plus structured extraction for your three highest-volume document types first",
-            "Replace email-based document chasing with an automated reminder workflow tied to your portal"
+            "Replace the email request with a portal request list pre-populated from last year's filing",
+            "Set automatic reminder cadence (day 3, day 7, day 14) before any human chases",
+            "Standardize one inbound channel per data type (bank feed for transactions, receipt app for receipts, signed PDF for legal)"
           ]
         },
         "mid": {
-          "headline": "Good bones, leaky execution",
-          "text": "Your standards exist but adherence is uneven and humans are still doing low-value reconciliation. The win is moving humans from data entry to exception handling.",
+          "headline": "You stopped most of the chasing. Now standardize the input",
+          "text": "Reminders are doing the work of a junior, which is good. The next gain is making sure what comes back is actually usable on day one, not on day three after a staffer reformats it.",
           "steps": [
-            "Audit which document types still hit a human keyboard and rank them by annual volume",
-            "Layer AI extraction on top of OCR with confidence thresholds — humans only see flagged items",
-            "Build a rollforward template that auto-flags variances above a threshold against prior year"
+            "Force receipt and bank data through a standard tool (Hubdoc, Dext, Ledgible, or equivalent)",
+            "Reject non-standard submissions automatically with a one-line explanation back to the client",
+            "Build a pre-filing data-completeness check that runs before staff opens the file"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — make the system catch what reviewers do",
-          "text": "You have eliminated most of the manual prep load. The frontier is moving review-tier judgment earlier, so issues get caught at prep, not at partner review.",
+          "headline": "You are running at the top of the vertical here",
+          "text": "Keep sharpening. Here is the frontier: most firms at this score still treat document collection as a one-shot at engagement start. The next gain is treating it as continuous.",
           "steps": [
-            "Train the extraction layer to flag the specific anomalies your reviewers catch most often",
-            "Add a pre-review automated quality pass that blocks workpapers from advancing until checks pass",
-            "Build cross-engagement intelligence — flag when a client's pattern this year diverges from their three-year baseline"
+            "Move from annual-cycle data collection to always-on bank feeds and rolling reconciliation",
+            "Auto-flag clients whose data flow degrades, before the next deadline",
+            "Productize a data-quality score you share back to the client quarterly"
           ]
         }
+      },
+      "operator_brief": {
+        "headline_number": "~14 hrs/week recoverable on document chasing during peak weeks",
+        "lever": "What I would do: stop treating chasing as a staff job. Make the system chase, and reserve human follow-up only for the 10% who do not respond to automated cadence.",
+        "talking_points": [
+          "Document delay is the upstream cause of about 60% of deadline fire drills",
+          "Standardized inputs cut bookkeeping prep time by 30 to 50% per file",
+          "Continuous data flow turns annual compliance into year-round advisory revenue"
+        ],
+        "proof_of_concept": "Pick your top 10 clients by revenue. Move all of them to one standard data tool and one portal request list for 30 days. Measure document return time and staff hours spent chasing, before and after."
       }
     },
     {
-      "id": "review-quality-control",
-      "name": "Review & Quality Control",
+      "id": "compliance-production",
+      "name": "Compliance Production Workflow",
       "questions": [
         {
-          "id": "review-checklist-consistency",
-          "text": "How consistently does every reviewer use the same checklist and sign-off structure?",
+          "id": "prod-standardization",
+          "text": "How standardized are your tax return and bookkeeping workflows across staff?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Reviewers use their own judgment with no formal checklist",
+              "label": "1. Every staffer does it their own way",
               "score": 1
             },
             {
-              "label": "2 — A checklist exists in a shared doc but is rarely opened",
+              "label": "2. Loose templates with heavy variance",
               "score": 2
             },
             {
-              "label": "3 — Checklists are used per engagement type, enforcement varies by reviewer",
+              "label": "3. Documented workflows that are not always followed",
               "score": 3
             },
             {
-              "label": "4 — Checklists are mandatory and tracked per engagement",
+              "label": "4. Standard workflows enforced inside the PM system",
               "score": 4
             },
             {
-              "label": "5 — Workflow blocks engagement progression until each checklist item is signed off",
+              "label": "5. Workflows are encoded. Deviations require explicit approval",
               "score": 5
             }
           ]
         },
         {
-          "id": "review-bottleneck",
-          "text": "How often does work sit in a partner or senior manager review queue for more than 48 hours?",
+          "id": "prod-review",
+          "text": "How automated is review and quality assurance before filing or sending a deliverable?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Constantly — review is the firm's permanent bottleneck",
+              "label": "1. A senior eyeballs every file cold, no checklist",
               "score": 1
             },
             {
-              "label": "2 — Frequently during busy season",
+              "label": "2. Manual review without a structured checklist",
               "score": 2
             },
             {
-              "label": "3 — Sometimes, on complex engagements",
+              "label": "3. Checklist-driven manual review",
               "score": 3
             },
             {
-              "label": "4 — Rarely — review SLAs are tracked and mostly hit",
+              "label": "4. Tooling flags anomalies, senior reviews exceptions only",
               "score": 4
             },
             {
-              "label": "5 — Almost never — review queues are visible, prioritized, and managed in real time",
+              "label": "5. Layered review: tooling, checklist, and sample partner sign-off",
               "score": 5
             }
           ]
         },
         {
-          "id": "review-issue-tracking",
-          "text": "How systematically are review notes captured, resolved, and learned from across engagements?",
+          "id": "prod-wip-visibility",
+          "text": "How clearly do you see WIP and bottlenecks during busy season?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Verbal feedback or scattered email threads",
+              "label": "1. We find out at the deadline",
               "score": 1
             },
             {
-              "label": "2 — Notes live in the workpaper, no firm-wide visibility",
+              "label": "2. Weekly partner-meeting visibility",
               "score": 2
             },
             {
-              "label": "3 — Logged per engagement, occasionally reviewed in team meetings",
+              "label": "3. Daily PM dashboard, mostly accurate",
               "score": 3
             },
             {
-              "label": "4 — Centrally tracked with categorized issue types and resolution status",
+              "label": "4. Real-time WIP, accurate to the hour",
               "score": 4
             },
             {
-              "label": "5 — Pattern analysis feeds back into prep training and checklist updates quarterly",
+              "label": "5. Real-time and predictive. We see bottlenecks before they form",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "prod-senior-dependency",
+          "text": "How dependent is final delivery on senior staff personally pushing files over the line?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Partners push every file. Nothing ships without them",
+              "score": 1
+            },
+            {
+              "label": "2. Seniors carry most files, partners only on complex work",
+              "score": 2
+            },
+            {
+              "label": "3. Mid-level can ship standard files, seniors handle edge cases",
+              "score": 3
+            },
+            {
+              "label": "4. Standardized files ship without senior touch",
+              "score": 4
+            },
+            {
+              "label": "5. Senior time is reserved for advisory and exceptions only",
               "score": 5
             }
           ]
@@ -377,115 +439,251 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Review is the firm's silent partner tax",
-          "text": "When every reviewer uses their own judgment and notes live in their head, you pay for the same mistakes every year. The first fix is making review consistent before making it faster.",
+          "headline": "You are paying senior staff to do junior work",
+          "text": "When every file needs a partner to push it over the line, capacity caps long before payroll does. The fix is encoding the workflow so junior staff can finish 80% of files without escalation.",
           "steps": [
-            "Document the review checklist for your top 2 engagement types and make it the only path to sign-off",
-            "Track review queue age in a shared dashboard so bottlenecks are visible, not anecdotal",
-            "Capture every review note in a structured log so patterns surface across engagements"
+            "Pick your three highest-volume engagement types and write the step-by-step workflow for each",
+            "Move those workflows into your PM system as enforced task templates with required checkpoints",
+            "Define a written escalation rule (what triggers a senior review vs. an automatic pass)"
           ]
         },
         "mid": {
-          "headline": "Review is structured, not yet leveraged",
-          "text": "You catch most issues, but partners are still the bottleneck and learnings are not feeding back into prep. Move from catching mistakes to preventing them.",
+          "headline": "Workflows exist on paper. Now make the system enforce them",
+          "text": "The gap between documented and enforced is where variance lives, and variance is what eats partner time. Move the workflow from a Notion page into the PM system, and review becomes an exception process instead of a default.",
           "steps": [
-            "Categorize review notes by issue type for one quarter to find your top 5 recurring leaks",
-            "Push the top recurring issues upstream into prep checklists and automated quality checks",
-            "Set a hard SLA on review queue age and surface breaches to leadership weekly"
+            "Convert documented checklists into mandatory PM task gates",
+            "Add an anomaly check (variance from prior year, missing schedules, unbalanced trial balance) before the file is reviewable",
+            "Track senior touchpoints per file as a metric. Drive it down quarter over quarter"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — turn review into a learning loop",
-          "text": "You have controls. The frontier is using review data to continuously upgrade your prep layer so reviewers spend time on judgment, not on catching the same issues every year.",
+          "headline": "You have built a real production line",
+          "text": "Keep sharpening. Here is the frontier: at this maturity, the next gain is not in compliance speed. It is in turning the production line into a sensor that surfaces advisory work.",
           "steps": [
-            "Run a quarterly issue-pattern analysis and update the prep checklist and automated checks accordingly",
-            "Tier engagements by review complexity so partner time goes to the engagements that need it",
-            "Use review issue rates per preparer as a leading indicator for training, not just performance"
+            "Wire your file data into an advisory-trigger layer (cash flow flags, tax-law changes, multi-entity events)",
+            "Move partner time from review into client-facing advisory built on those triggers",
+            "Productize the production line itself as a service for new partners or acquired books"
           ]
         }
+      },
+      "operator_brief": {
+        "headline_number": "~$180K annual partner-time leak when seniors review every file cold",
+        "lever": "My read: the partner becoming the last line of defense on every file is the most expensive failure mode in a boutique firm, and the easiest to design out.",
+        "talking_points": [
+          "Encoded workflows cut variance, which is the upstream cause of partner rework",
+          "Exception-based review frees roughly one full partner day per week during peak",
+          "Senior time recovered here is the single largest source of advisory capacity"
+        ],
+        "proof_of_concept": "Pick one engagement type (e.g., 1040 individual returns or monthly bookkeeping close). Encode it as a PM template with required gates and an anomaly checklist for two weeks. Measure partner touch per file before and after."
+      }
+    },
+    {
+      "id": "capacity-management",
+      "name": "Practice Management and Capacity",
+      "questions": [
+        {
+          "id": "cap-visibility",
+          "text": "How visible is real-time capacity and utilization across the team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We guess. There is no real number",
+              "score": 1
+            },
+            {
+              "label": "2. Quarterly review of utilization",
+              "score": 2
+            },
+            {
+              "label": "3. Monthly dashboard",
+              "score": 3
+            },
+            {
+              "label": "4. Weekly and accurate",
+              "score": 4
+            },
+            {
+              "label": "5. Real-time. Allocation decisions are made live",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cap-budgeting",
+          "text": "How structured is your engagement budgeting and tracking against budget?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We do not budget engagements",
+              "score": 1
+            },
+            {
+              "label": "2. Rough budget set at the start, no tracking",
+              "score": 2
+            },
+            {
+              "label": "3. Budgets set, tracked at end of engagement",
+              "score": 3
+            },
+            {
+              "label": "4. Budgets tracked weekly, variance flagged",
+              "score": 4
+            },
+            {
+              "label": "5. Live variance alerts. Re-quotes are triggered automatically when scope creeps",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cap-deadline-risk",
+          "text": "How early do you know a deadline is at risk before it becomes a fire drill?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We learn at the deadline",
+              "score": 1
+            },
+            {
+              "label": "2. A few days out",
+              "score": 2
+            },
+            {
+              "label": "3. About a week out",
+              "score": 3
+            },
+            {
+              "label": "4. Two-plus weeks out, with mitigation plans",
+              "score": 4
+            },
+            {
+              "label": "5. Risk surfaces the moment a leading indicator slips",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You cannot price what you cannot see",
+          "text": "Without real capacity and engagement-budget data, every pricing and hiring decision is a coin flip. The fix is not a fancier dashboard. It is making the data the team already produces (timesheets, task completion, deadlines) actually drive decisions.",
+          "steps": [
+            "Set engagement budgets in hours and dollars at quote time, not after",
+            "Build a weekly capacity review with one number per staffer: utilization vs. target",
+            "Define what triggers a re-quote conversation with the client (e.g., 20% scope variance)"
+          ]
+        },
+        "mid": {
+          "headline": "You see capacity, now make it predictive",
+          "text": "Visibility is good. The leak now is reaction speed. By the time a deadline shows risk in a weekly meeting, the recovery cost is already 3x what it would have been at week one.",
+          "steps": [
+            "Wire deadline-risk alerts to leading indicators (data not in by day 7, no review by day 14)",
+            "Add live variance alerts on engagement budgets, not end-of-engagement reports",
+            "Make capacity reallocation a daily standup, not a weekly meeting"
+          ]
+        },
+        "high": {
+          "headline": "Capacity is no longer the constraint. Margin is",
+          "text": "Keep sharpening. Here is the frontier: with capacity visible and predictive, the next move is pricing the work to its real cost in real time.",
+          "steps": [
+            "Layer client-level profitability on top of engagement budgets",
+            "Identify the bottom 20% of clients by margin and either re-price or off-board",
+            "Tie partner compensation to client-level margin, not gross billings"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~22% of capacity is invisible until a deadline forces a fire drill",
+        "lever": "What I would do: move from end-of-engagement variance reports to live alerts. The dollar value of catching scope creep at week one vs. week six is roughly 4x in recovered margin.",
+        "talking_points": [
+          "Real-time capacity data turns hiring decisions from gut feel into math",
+          "Live budget variance is the single fastest way to recover margin without raising prices",
+          "Predictive deadline alerts cut peak-season overtime by 30 to 40%"
+        ],
+        "proof_of_concept": "Pick your next 10 engagements. Set hour and dollar budgets at quote time. Wire a weekly variance check that alerts the engagement lead at 80% budget burn. Compare realized margin to a matched set from last quarter."
       }
     },
     {
       "id": "client-communication",
-      "name": "Client Communication & Status",
+      "name": "Client Communication and Advisory",
       "questions": [
         {
-          "id": "status-update-consistency",
-          "text": "How consistently do clients know where their engagement stands without having to email and ask?",
+          "id": "comm-status-updates",
+          "text": "How automated are client status updates during an active engagement?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — They email us — we then check internally and reply",
+              "label": "1. Clients email us asking where things stand",
               "score": 1
             },
             {
-              "label": "2 — Manual status updates sent at major milestones",
+              "label": "2. We send updates only when prompted",
               "score": 2
             },
             {
-              "label": "3 — Portal shows status, but it is updated by hand",
+              "label": "3. Manual but proactive updates at milestones",
               "score": 3
             },
             {
-              "label": "4 — Status auto-updates as work progresses, clients see it live",
+              "label": "4. Portal shows status, with auto-notifications on change",
               "score": 4
             },
             {
-              "label": "5 — Proactive notifications go out at every milestone, no client has to ask",
+              "label": "5. Personalized auto-updates. The client never has to ask",
               "score": 5
             }
           ]
         },
         {
-          "id": "inbound-inquiry-handling",
-          "text": "How automated is the routing and first-response on inbound client emails and portal messages?",
+          "id": "comm-yearround",
+          "text": "How systematic is your year-round advisory touch outside of tax or audit season?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Everything lands in a shared inbox and someone triages by hand",
+              "label": "1. We talk to most clients only at compliance time",
               "score": 1
             },
             {
-              "label": "2 — Filters and rules sort some, the rest is manual",
+              "label": "2. Occasional check-ins with no system behind them",
               "score": 2
             },
             {
-              "label": "3 — Routing is automated, responses are still fully manual",
+              "label": "3. Quarterly touch on top clients only",
               "score": 3
             },
             {
-              "label": "4 — Routine inquiries get templated auto-responses with human review",
+              "label": "4. Quarterly touch on all retained clients with a structured agenda",
               "score": 4
             },
             {
-              "label": "5 — AI-drafted replies for routine asks, humans approve and send in seconds",
+              "label": "5. Year-round advisory cadence. Compliance is a feature, not the product",
               "score": 5
             }
           ]
         },
         {
-          "id": "proactive-touchpoints",
-          "text": "How proactively does the firm reach out to clients between engagements (deadlines, planning windows, regulatory changes)?",
+          "id": "comm-advisory-surfacing",
+          "text": "How structured is your process for surfacing advisory and upsell opportunities from compliance work?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Only when the client reaches out first",
+              "label": "1. We do not. Compliance is the deliverable",
               "score": 1
             },
             {
-              "label": "2 — Annual reminder for the main filing, nothing else",
+              "label": "2. Partners spot opportunities ad hoc",
               "score": 2
             },
             {
-              "label": "3 — A handful of scheduled touchpoints per client per year",
+              "label": "3. Documented triggers, partners reach out manually",
               "score": 3
             },
             {
-              "label": "4 — Segmented cadence by client type with automated triggers",
+              "label": "4. PM system flags advisory triggers from return data",
               "score": 4
             },
             {
-              "label": "5 — Every client gets event-driven outreach tied to their specific situation and deadlines",
+              "label": "5. Automated advisory pipeline. Triggers, outreach, and meeting booking flow without partner lift",
               "score": 5
             }
           ]
@@ -493,148 +691,42 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Clients are running your inbox",
-          "text": "Every status email a client sends costs the firm 5–10 minutes of someone checking, drafting, and replying. Multiply by your client count and the leak is real. Stop letting clients pull status from you.",
+          "headline": "You are leaving the most profitable revenue on the table",
+          "text": "When compliance is the only conversation, the firm caps at the price of compliance. The fix is making advisory triggers fall out of work you are already doing, instead of a separate sales motion.",
           "steps": [
-            "Pick one engagement type and add a client-visible status that updates automatically as work moves stages",
-            "Send proactive milestone notifications so clients stop emailing for updates",
-            "Set up auto-routing on your shared inbox so triage stops eating senior time"
+            "Pick five recurring compliance signals that map to advisory work (e.g., entity restructure, large capex, owner W-2 vs. distribution mix)",
+            "Document the trigger and the corresponding advisory offer for each",
+            "Schedule a quarterly client check-in for the top 20 clients, with the trigger list as the agenda"
           ]
         },
         "mid": {
-          "headline": "Comms are reactive, not yet proactive",
-          "text": "You answer clients well, but they still drive the pace. Move from responsive to proactive — it changes how clients perceive the firm and frees significant senior-team capacity.",
+          "headline": "Advisory is happening, but it is partner-bottlenecked",
+          "text": "When advisory only happens when a partner notices, you cap the firm at partner attention. The next move is making the trigger surface inside the workflow, not inside the partner's head.",
           "steps": [
-            "Build a client-facing status view fed by your PM system so updates do not require human work",
-            "Layer AI-drafted first-response on routine inquiries with a human approve-and-send step",
-            "Define a proactive touchpoint cadence per client segment and automate the triggers"
+            "Wire advisory triggers into your PM system so they fire from return data, not memory",
+            "Pre-write the outreach for each trigger so the partner approves rather than drafts",
+            "Track advisory revenue per partner as a board metric, not a footnote"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — turn comms into advisory leverage",
-          "text": "You handle volume well. The frontier is using your data to deliver client-specific insight, not just status — that is what makes a boutique firm impossible to leave.",
+          "headline": "Advisory is a system, not a hobby. Now productize it",
+          "text": "Keep sharpening. Here is the frontier: at this maturity, advisory is real revenue. The next gain is making it a named, priced product instead of a custom engagement each time.",
           "steps": [
-            "Trigger personalized outreach on client-specific events (deadline windows, threshold crossings, life events)",
-            "Send quarterly client-specific advisory snapshots auto-generated from their data",
-            "Score client engagement health and flag at-risk relationships before they churn"
+            "Productize three advisory packages with fixed pricing (e.g., entity strategy, owner comp optimization, multi-state nexus review)",
+            "Add an automated advisory pipeline: trigger fires, package recommendation drafted, partner approves, client books",
+            "Move the firm's primary positioning from compliance to advisory in all marketing"
           ]
         }
-      }
-    },
-    {
-      "id": "internal-admin-capacity",
-      "name": "Internal Admin & Capacity Planning",
-      "questions": [
-        {
-          "id": "time-tracking-billing",
-          "text": "How accurately does time tracking reflect actual work, and how cleanly does it flow into billing?",
-          "max_score": 5,
-          "answers": [
-            {
-              "label": "1 — Reconstructed from memory at month-end, billing is a fight",
-              "score": 1
-            },
-            {
-              "label": "2 — Tracked weekly, frequent corrections at billing time",
-              "score": 2
-            },
-            {
-              "label": "3 — Tracked daily, billing is mostly clean with manual review",
-              "score": 3
-            },
-            {
-              "label": "4 — Captured at task level, billing is automated with exception review",
-              "score": 4
-            },
-            {
-              "label": "5 — Auto-captured from system activity and flows straight to billing with no rework",
-              "score": 5
-            }
-          ]
-        },
-        {
-          "id": "capacity-visibility",
-          "text": "How clearly can leadership see, in real time, who has capacity this week and where bottlenecks are forming?",
-          "max_score": 5,
-          "answers": [
-            {
-              "label": "1 — We ask people in standup or guess from inboxes",
-              "score": 1
-            },
-            {
-              "label": "2 — Spreadsheet updated weekly by an admin",
-              "score": 2
-            },
-            {
-              "label": "3 — PM tool shows assigned work, capacity load is interpreted by hand",
-              "score": 3
-            },
-            {
-              "label": "4 — Live dashboard of utilization and queue depth per person",
-              "score": 4
-            },
-            {
-              "label": "5 — Capacity-aware system that auto-routes work and flags overloads before they hit",
-              "score": 5
-            }
-          ]
-        },
-        {
-          "id": "knowledge-management",
-          "text": "How accessible are the firm's SOPs, decisions, and how-tos to a new hire on day one?",
-          "max_score": 5,
-          "answers": [
-            {
-              "label": "1 — In partners' heads — new hires shadow until they figure it out",
-              "score": 1
-            },
-            {
-              "label": "2 — Scattered docs across email, drives, and the PM tool",
-              "score": 2
-            },
-            {
-              "label": "3 — Centralized in one tool, but updates lag and search is poor",
-              "score": 3
-            },
-            {
-              "label": "4 — Living SOP library with ownership and review cadence",
-              "score": 4
-            },
-            {
-              "label": "5 — Searchable knowledge base plus AI assistant trained on firm-specific procedures",
-              "score": 5
-            }
-          ]
-        }
-      ],
-      "recommendations": {
-        "low": {
-          "headline": "You cannot scale what you cannot see",
-          "text": "If capacity lives in people's heads and SOPs live in partners' heads, every hire costs you a quarter of someone's time to onboard. This is the foundation under everything else — fix it before automating anywhere else.",
-          "steps": [
-            "Pick one tool to be the single source of truth for time, tasks, and capacity — and make it mandatory",
-            "Document your top 10 most-asked-about procedures into a living SOP library this quarter",
-            "Add a weekly capacity view leadership actually opens before assigning new work"
-          ]
-        },
-        "mid": {
-          "headline": "Tooling exists, instrumentation is partial",
-          "text": "You have systems, but they are not yet feeding leadership the signal needed to make capacity calls in real time. Tighten the loop between work, time, and capacity visibility.",
-          "steps": [
-            "Replace manual time entry with system-captured activity where possible — meet preparers where they work",
-            "Build a leadership dashboard that shows queue depth, utilization, and at-risk engagements live",
-            "Assign owners and quarterly review cycles to every SOP so the library stays current"
-          ]
-        },
-        "high": {
-          "headline": "Keep sharpening — make the system route work, not the partners",
-          "text": "Your visibility is strong. The frontier is letting capacity data drive routing decisions automatically, so partners stop being the firm's allocation engine.",
-          "steps": [
-            "Auto-route incoming work based on real-time capacity, skill match, and engagement priority",
-            "Layer an AI assistant on your SOP library so any team member can self-serve firm-specific guidance",
-            "Tie capacity forecasts to your sales pipeline so you sign clients when capacity exists, not when it does not"
-          ]
-        }
+      },
+      "operator_brief": {
+        "headline_number": "~$240K/year in advisory revenue typically left on the table at this firm size",
+        "lever": "Honest take: the advisory revenue is sitting inside your existing returns. You do not need a sales team. You need a trigger layer that surfaces what compliance work already proves.",
+        "talking_points": [
+          "Every compliance file contains 2 to 4 advisory triggers we are already paying staff to find and ignore",
+          "Year-round contact retains clients at 2x the rate of seasonal-only firms",
+          "Productized advisory packages double margin per client without doubling capacity"
+        ],
+        "proof_of_concept": "Take last quarter's 50 returns. Have one staffer score each for three advisory triggers (entity, comp mix, multi-state). Send a templated outreach to the top 20 hits. Measure booked advisory meetings within 30 days."
       }
     }
   ],
@@ -646,31 +738,31 @@
     {
       "id": "qualified_loom",
       "when": "(persona === \"boutique\" || persona === \"growing\" || persona === \"established\") && overall_score < 70",
-      "headline": "Want a personalized Loom breakdown of your biggest workflow leak?",
-      "description": "Drop your email and I'll review your exact answers, stack them against accounting firms your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there. This is how you scale without scaling payroll — find the leak, plug the leak.",
-      "button": "Request a personalized Loom →",
+      "headline": "Want a personalized Loom breakdown of your firm's capacity leaks?",
+      "description": "Drop your email and I'll review your exact answers, stack them against accounting firms your size, and send a 5-minute Loom within 48 hours with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom",
       "url": "https://calendly.com/ivan-intelligents/30min"
     },
     {
       "id": "too_small",
-      "when": "persona === \"micro\"",
-      "headline": "Under 10 staff? You're early for a custom audit.",
-      "description": "Automation ROI is real at your scale, but the 90-Day Payback Rule is harder to hit until you cross ~10 staff. Follow me on LinkedIn — I post tactical accounting ops breakdowns 3x/week. When you cross 11 staff and have repeat workflows worth automating, come back and retake; the CTA will change.",
-      "button": "Follow on LinkedIn →",
+      "when": "persona === \"solo_micro\"",
+      "headline": "Solo or micro firm? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real, but payback is longer and the fixes are different. Follow me on LinkedIn for tactical accounting ops breakdowns several times a week. When you cross 11 staff, come back and retake. The recommendation will change.",
+      "button": "Follow on LinkedIn",
       "url": "https://www.linkedin.com/in/ivanmanfredi/"
     },
     {
       "id": "dialed_content",
       "when": "overall_score >= 70",
-      "headline": "You're running tight — here's what accounting firms your size miss next.",
-      "description": "At your score, the obvious leaks are closed. The next gains come from pre-engagement triage (saying no faster), cross-engagement intelligence (using prior-year data to catch issues before review), and capacity-aware sales (signing when capacity exists, not when it doesn't). I'm writing teardowns on each — follow along.",
-      "button": "Follow for the teardowns →",
+      "headline": "You're running tight. Here's what accounting firms your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from exception-based partner review, productized year-round advisory pipelines, and continuous data layers that turn annual compliance into rolling insight. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns",
       "url": "https://www.linkedin.com/in/ivanmanfredi/"
     },
     {
       "headline": "Get the weekly accounting ops teardown",
-      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market accounting firms run lean and Hire a System instead of another junior — no fluff, no pitch.",
-      "button": "Follow on LinkedIn →",
+      "description": "One tactical case study plus one n8n workflow breakdown per week. How mid-market accounting firms run lean, scale without scaling payroll, and turn compliance into advisory. No fluff, no pitch.",
+      "button": "Follow on LinkedIn",
       "url": "https://www.linkedin.com/in/ivanmanfredi/"
     }
   ]
