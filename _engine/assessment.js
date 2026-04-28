@@ -445,11 +445,11 @@
       // If no answers array, default to 1-5 Likert
       if (!options.length) {
         options = [
-          { label: "1 — Strongly disagree", score: 1 },
-          { label: "2 — Disagree", score: 2 },
-          { label: "3 — Neutral", score: 3 },
-          { label: "4 — Agree", score: 4 },
-          { label: "5 — Strongly agree", score: 5 }
+          { label: "1. Strongly disagree", score: 1 },
+          { label: "2. Disagree", score: 2 },
+          { label: "3. Neutral", score: 3 },
+          { label: "4. Agree", score: 4 },
+          { label: "5. Strongly agree", score: 5 }
         ];
       }
 
@@ -665,7 +665,7 @@
       // Remove any gate
       var gate = $("#lmc-capture"); if (gate) gate.parentNode.removeChild(gate);
       var unl = make("div", { class: "lmc-unlocked" });
-      unl.appendChild(make("h3", { style: "font-size:1.5rem;font-weight:900;text-transform:uppercase;margin:1rem 0 0.5rem;" }, "Per-Category Breakdown"));
+      unl.appendChild(make("h3", { class: "lmc-results-h" }, "Per-Category Breakdown"));
 
       (data.categories || []).forEach(function (cat) {
         var key = cat.id || cat.name;
@@ -680,7 +680,7 @@
         if (rec) {
           var rc = make("div", { class: "lmc-rec" });
           var tag = "Next step";
-          if (catRes.score <= 40) tag = "Critical — fix first";
+          if (catRes.score <= 40) tag = "Critical: fix first";
           else if (catRes.score <= 70) tag = "Growth unlock";
           else tag = "Keep sharpening";
           var text = typeof rec === "string" ? rec : (rec.text || rec.headline || "");
