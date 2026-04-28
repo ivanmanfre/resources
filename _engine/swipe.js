@@ -31,7 +31,7 @@
     root.appendChild(L.buildIntro(data, ".lms-filters", {
       tool_type: "swipe",
       defaultValueBullet: "Filter by use case, take only the examples that fit you",
-      defaultNextBullet: "Export your selected subset as markdown — your URL stays in the file",
+      defaultNextBullet: "Export your selected subset as markdown. Your URL stays in the file",
       startLabel: "Browse examples",
       defaultNote: "No signup to browse. Take 3 or more examples to unlock a markdown export."
     }));
@@ -178,7 +178,7 @@
         md += "```\n" + (ex.body || "") + "\n```\n\n";
         if (ex.why) md += "> **Why it works:** " + ex.why + "\n\n";
       });
-      md += "---\n" + takenExamples.length + " of " + (data.examples || []).length + " from [" + (data.title || "") + "](" + location.href + ") — by Ivan Manfredi\n";
+      md += "---\n" + takenExamples.length + " of " + (data.examples || []).length + " from [" + (data.title || "") + "](" + location.href + ") · by Ivan Manfredi\n";
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(md).then(function () { L.toast("Subset copied as Markdown"); });
       } else {

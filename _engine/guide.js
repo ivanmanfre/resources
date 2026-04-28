@@ -29,9 +29,9 @@
     root.appendChild(L.buildIntro(data, ".lmg-progress-wrap", {
       tool_type: "guide",
       defaultValueBullet: "Rate your team's current practice at the bottom of each section",
-      defaultNextBullet: "End-of-guide summary shows which chapters to revisit — emailed if you want",
+      defaultNextBullet: "End-of-guide summary shows which chapters to revisit. Emailed if you want",
       startLabel: "Start reading",
-      defaultNote: "You don't have to rate anything — but rating unlocks a personalized summary."
+      defaultNote: "You don't have to rate anything. But rating unlocks a personalized summary."
     }));
 
     // Sticky progress bar

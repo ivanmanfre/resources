@@ -62,7 +62,7 @@
     // Result (download) panel
     var result = L.make("section", { class: "lmt-result", id: "lmt-result", "aria-live": "polite" });
     result.innerHTML = '<h3>Your personalized template is <em>ready</em></h3>' +
-      '<p id="lmt-result-note">Click to download — we\'ll swap the nodes/types to match your stack.</p>' +
+      '<p id="lmt-result-note">Click to download. We\'ll swap the nodes/types to match your stack.</p>' +
       '<div class="lmt-download-wrap">' +
         '<button type="button" class="lmt-download" id="lmt-download">Download personalized artifact</button>' +
         '<span class="lmt-download-meta" id="lmt-download-meta"></span>' +
@@ -150,7 +150,7 @@
         Object.keys(patch).forEach(function (k) { artifact[k] = patch[k]; });
       });
       // Attribution footer
-      artifact.__source = "Ivan Manfredi — " + (data.title || "Template") + " · " + location.href;
+      artifact.__source = "Ivan Manfredi · " + (data.title || "Template") + " · " + location.href;
       artifact.__personalized_for = selected;
       return artifact;
     }
