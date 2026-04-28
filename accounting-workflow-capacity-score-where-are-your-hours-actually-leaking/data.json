@@ -6,6 +6,11 @@
     "accent": "#2A8F65",
     "hero_badge": "Interactive Assessment"
   },
+  "audience": {
+    "vertical": "accounting and tax advisory",
+    "locations": "the US, UK, and Canada",
+    "count_band": "20-80"
+  },
   "estimated_minutes": 8,
   "methodology_anchor": {
     "name": "Agent-Ready Ops",
