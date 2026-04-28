@@ -81,9 +81,11 @@
           answered: scores.length,
           total: (cat.questions || []).length,
           // surface optional brief fields for the Operator's Brief 1-pager
-          lever: cat.lever || null,
-          talking_points: cat.talking_points || null,
-          proof_of_concept: cat.proof_of_concept || null
+          // Schema: cat.operator_brief = { headline_number, lever, talking_points[], proof_of_concept }
+          headline_number: (cat.operator_brief && cat.operator_brief.headline_number) || null,
+          lever: (cat.operator_brief && cat.operator_brief.lever) || cat.lever || null,
+          talking_points: (cat.operator_brief && cat.operator_brief.talking_points) || cat.talking_points || null,
+          proof_of_concept: (cat.operator_brief && cat.operator_brief.proof_of_concept) || cat.proof_of_concept || null
         };
       }
     });
@@ -109,6 +111,7 @@
         id: sortedCats[0][0],
         name: w.name,
         score: w.score,
+        headline_number: w.headline_number,
         lever: w.lever,
         talking_points: w.talking_points,
         proof_of_concept: w.proof_of_concept
@@ -208,7 +211,8 @@
     var col = make("aside", { class: "lmc-ivan-col", "aria-label": "About Ivan" });
     var img = make("img", { class: "lmc-ivan-portrait", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     col.appendChild(img);
-    var p = make("p", { class: "lmc-ivan-bio" }, "I built this to surface the leaks in operator-led teams \u2014 not to sell you anything. Honest answers in, honest scorecard out.");
+    var bioText = (data.ivan_bio) || "I'm Ivan. I build Agent-Ready Ops systems for boutique knowledge-service firms. Honest answers in, honest scorecard out. No pitch on this page.";
+    var p = make("p", { class: "lmc-ivan-bio" }, bioText);
     col.appendChild(p);
     var more = make("a", { class: "lmc-ivan-link", href: "https://ivanmanfredi.com", target: "_blank", rel: "noopener" }, "more about Ivan \u2192");
     col.appendChild(more);
@@ -266,14 +270,14 @@
   function openOperatorsBrief(data, res) {
     var w = res.weakest || {};
     var headline = (res.tier && res.tier.headline_number) || (res.overall + "/100");
-    var lever = w.lever || "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]";
+    var lever = w.lever || "[brief content not generated for this assessment . regenerate via the LM workflow]";
     var tps = (w.talking_points && w.talking_points.length === 3)
       ? w.talking_points
-      : ["[brief content not generated for this assessment \u2014 regenerate via the LM workflow]",
-         "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]",
-         "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]"];
-    var poc = w.proof_of_concept || "[brief content not generated for this assessment \u2014 regenerate via the LM workflow]";
-    var title = (data.title || "Assessment") + " \u2014 Operator's Brief";
+      : ["[brief content not generated for this assessment . regenerate via the LM workflow]",
+         "[brief content not generated for this assessment . regenerate via the LM workflow]",
+         "[brief content not generated for this assessment . regenerate via the LM workflow]"];
+    var poc = w.proof_of_concept || "[brief content not generated for this assessment . regenerate via the LM workflow]";
+    var title = (data.title || "Assessment") + " Operator's Brief";
 
     var html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
       '<title>' + esc(title) + '</title>' +
@@ -313,7 +317,7 @@
       '</body></html>';
 
     var win = window.open("", "_blank");
-    if (!win) { toast("Pop-up blocked \u2014 allow pop-ups to open the brief"); return; }
+    if (!win) { toast("Pop-up blocked. Allow pop-ups to open the brief"); return; }
     win.document.open();
     win.document.write(html);
     win.document.close();
@@ -414,7 +418,7 @@
         if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
         saveEmail(data.slug, em);
         beacon("partial_progress", { email: em, q_index: idx, total: questions.length });
-        toast("Saved \u2014 we\u2019ll email your scorecard");
+        toast("Saved. We\u2019ll email your scorecard");
         dismissRecovery(data.slug);
         if (box.parentNode) box.parentNode.removeChild(box);
       });
