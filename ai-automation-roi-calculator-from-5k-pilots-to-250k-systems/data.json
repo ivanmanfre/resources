@@ -1,0 +1,200 @@
+{
+  "slug": "ai-automation-roi-calculator-from-5k-pilots-to-250k-systems",
+  "title": "The 90-Day Payback Calculator: Size Your AI Build From $5K Pilot to $250K System",
+  "subtitle": "For ops leaders at 10-200 person service firms. Plug in seven numbers and get the recommended investment tier, payback window, and Year 1 net ROI your CFO would want to see.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 4,
+  "inputs": [
+    {
+      "id": "hours_per_week",
+      "label": "Weekly hours consumed by the process",
+      "type": "range",
+      "suffix": "hrs/wk",
+      "min": 1,
+      "max": 80,
+      "step": 1,
+      "default": 18,
+      "slider": true,
+      "hint": "Total team time on the target workflow each week, including handoffs and rework."
+    },
+    {
+      "id": "hourly_cost",
+      "label": "Fully-loaded hourly cost",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 20,
+      "max": 300,
+      "step": 1,
+      "default": 72,
+      "slider": false,
+      "hint": "Salary + benefits + overhead. If unknown, use 1.4x the hourly salary."
+    },
+    {
+      "id": "monthly_volume",
+      "label": "Process volume",
+      "type": "number",
+      "suffix": "transactions/mo",
+      "min": 1,
+      "max": 5000,
+      "step": 1,
+      "default": 84,
+      "slider": false,
+      "hint": "How many times this process runs per month (onboardings, proposals, invoices, etc.)."
+    },
+    {
+      "id": "rework_rate",
+      "label": "Rework rate",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 22,
+      "slider": true,
+      "hint": "Share of transactions that get redone or kicked back. Most service firms sit between 8% and 25%."
+    },
+    {
+      "id": "complexity",
+      "label": "Process complexity",
+      "type": "range",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "slider": true,
+      "hint": "1 = single repetitive task, 3 = a few documented decisions, 5 = many edge cases across multiple systems."
+    },
+    {
+      "id": "build_cost",
+      "label": "Estimated build cost",
+      "type": "number",
+      "prefix": "$",
+      "min": 1000,
+      "max": 500000,
+      "step": 1000,
+      "default": 42000,
+      "slider": false,
+      "hint": "Use the tier table if you don't have a quote. Pilots start at $5K, multi-agent builds at $50K."
+    },
+    {
+      "id": "monthly_maintenance",
+      "label": "Monthly maintenance",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/mo",
+      "min": 0,
+      "max": 10000,
+      "step": 50,
+      "default": 850,
+      "slider": false,
+      "hint": "API calls, hosting, model costs, and human review time. Most builds run $300-$2,500/month."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "payback_months",
+      "label": "Payback period",
+      "format": "decimal",
+      "suffix": " months",
+      "primary": true,
+      "formula": "Math.max(0, build_cost / Math.max(0.01, ((hours_per_week * 52 * hourly_cost * 0.75) + ((hours_per_week * 52 * hourly_cost * 0.75) / Math.max(0.01, 1 - rework_rate / 100)) * (rework_rate / 100)) / 12 - monthly_maintenance))",
+      "tier_thresholds": {
+        "low": 0,
+        "mid": 3,
+        "high": 9,
+        "max": 18,
+        "low_label": "Green-light: under the 90-day rule",
+        "mid_label": "Solid mid-market build",
+        "high_label": "Re-scope before you sign"
+      }
+    },
+    {
+      "id": "year_one_roi",
+      "label": "Net Year 1 ROI",
+      "format": "percent",
+      "formula": "((hours_per_week * 52 * hourly_cost * 0.75) + ((hours_per_week * 52 * hourly_cost * 0.75) / Math.max(0.01, 1 - rework_rate / 100)) * (rework_rate / 100) - build_cost - 12 * monthly_maintenance) / build_cost * 100"
+    },
+    {
+      "id": "annual_hours_recovered",
+      "label": "Annual hours recovered",
+      "format": "integer",
+      "suffix": " hrs",
+      "formula": "hours_per_week * 52"
+    },
+    {
+      "id": "annual_labor_recovered",
+      "label": "Annual labor cost recovered",
+      "format": "currency",
+      "formula": "hours_per_week * 52 * hourly_cost * 0.75"
+    },
+    {
+      "id": "rework_eliminated",
+      "label": "Rework cost eliminated",
+      "format": "currency",
+      "formula": "(annual_labor_recovered / Math.max(0.01, 1 - rework_rate / 100)) * (rework_rate / 100)"
+    },
+    {
+      "id": "total_annual_value",
+      "label": "Total annual recovered value",
+      "format": "currency",
+      "formula": "annual_labor_recovered + rework_eliminated"
+    },
+    {
+      "id": "recommended_tier_low",
+      "label": "Recommended tier (low end)",
+      "format": "currency",
+      "formula": "complexity <= 2 ? (payback_months < 3 ? 5000 : (payback_months < 9 ? 15000 : 0)) : (complexity == 3 ? (payback_months < 3 ? 25000 : (payback_months < 9 ? 50000 : (payback_months < 18 ? 100000 : 0))) : (payback_months < 3 ? 75000 : (payback_months < 9 ? 100000 : (payback_months < 18 ? 200000 : 0))))"
+    },
+    {
+      "id": "recommended_tier_high",
+      "label": "Recommended tier (high end)",
+      "format": "currency",
+      "formula": "complexity <= 2 ? (payback_months < 3 ? 15000 : (payback_months < 9 ? 50000 : 0)) : (complexity == 3 ? (payback_months < 3 ? 75000 : (payback_months < 9 ? 150000 : (payback_months < 18 ? 200000 : 0))) : (payback_months < 3 ? 150000 : (payback_months < 9 ? 250000 : (payback_months < 18 ? 500000 : 0))))"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "Green-light the build",
+      "when": "payback_months < 3 && year_one_roi > 50",
+      "text": "Payback is under the 90-day rule with strong Year 1 ROI. Sign the SOW, but cap the first phase at the low end of your tier and add a milestone gate before expanding scope. Most overruns come from front-loading complexity, not from underbuilding."
+    },
+    {
+      "tag": "Mid-market sweet spot",
+      "when": "payback_months >= 3 && payback_months <= 9 && complexity == 3",
+      "text": "This is the multi-agent orchestration band where most of my mid-market builds live. Budget $50K-$150K, plan for 2-3 agents passing structured handoffs, and design human review into 15-20% of cases from day one. That is not failure, it is the architecture."
+    },
+    {
+      "tag": "Quote looks light",
+      "when": "payback_months > 6 && build_cost < recommended_tier_low",
+      "text": "Your quoted build cost is under the recommended tier for this complexity and payback profile. Either the vendor is missing scope (integrations, exception handling, governance) or you will eat the gap in change orders. Ask for a written scope of what is excluded before signing."
+    },
+    {
+      "tag": "Re-scope before building",
+      "when": "payback_months > 9 && payback_months <= 18",
+      "text": "Payback past 9 months on a first build is a yellow flag. Narrow the scope to a single happy path covering 70%+ of cases, push edge cases to a phase 2, and re-run the math. The faster the first cycle ships, the more you learn before committing the rest of the budget."
+    },
+    {
+      "tag": "Don't build yet",
+      "when": "payback_months > 18 || year_one_roi < 0",
+      "text": "The bottleneck is upstream of where AI can help. Clean the input data, document the decision logic on paper, and narrow the scope by half. Come back to this calculator after the process is something a new hire could run from a checklist."
+    },
+    {
+      "tag": "Pilot candidate",
+      "when": "monthly_volume >= 200 && complexity <= 2 && payback_months < 6",
+      "text": "High volume plus low complexity is the textbook pilot. Start with a $5K-$15K single-process build (intake parsing, invoice routing, or data sync) and use the win to fund a complexity-3 build next quarter. The unit economics get better the longer it runs."
+    },
+    {
+      "tag": "Volume too low for enterprise",
+      "when": "monthly_volume < 50 && complexity >= 4",
+      "text": "Low volume with high complexity rarely justifies anything past the mid-tier band. Either consolidate this with adjacent processes to raise the volume, or accept that a $200K+ build will not pay back inside 18 months at this throughput."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Want the tier recommendation in writing?",
+    "description": "Send me your top three processes with these seven inputs filled in. I'll return the recommended tier, a rough scope of what each build looks like, and which one to ship first."
+  }
+}
