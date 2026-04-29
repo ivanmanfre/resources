@@ -17,7 +17,7 @@
   }
 
   function fmt(spec, val) {
-    if (val == null || isNaN(val)) return "-";
+    if (val == null || isNaN(val)) return "—";
     var n = Number(val);
     if (spec === "currency") return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
     if (spec === "percent") return n.toFixed(0) + "%";
@@ -156,7 +156,7 @@
     var primary = (data.outputs || []).find(function (o) { return o.primary; }) || (data.outputs || [])[0];
     if (primary) {
       var ring = make("div", { class: "lmc-output-ring" });
-      ring.appendChild(make("div", { class: "lmc-big-num", id: "lmc-big-num" }, "-"));
+      ring.appendChild(make("div", { class: "lmc-big-num", id: "lmc-big-num" }, "—"));
       ring.appendChild(make("div", { class: "lmc-big-unit" }, escapeHtml(primary.label || "")));
       ring.appendChild(make("span", { class: "lmc-tier-pill", id: "lmc-tier" }, "Fill in the numbers"));
       outputsCard.appendChild(ring);
@@ -165,7 +165,7 @@
     (data.outputs || []).forEach(function (out) {
       if (out === primary) return;
       var row = make("div", { class: "lmc-output-row" });
-      row.innerHTML = '<span class="label">' + escapeHtml(out.label || out.id) + '</span><span class="value" data-out-id="' + out.id + '">-</span>';
+      row.innerHTML = '<span class="label">' + escapeHtml(out.label || out.id) + '</span><span class="value" data-out-id="' + out.id + '">—</span>';
       secondaryWrap.appendChild(row);
     });
     outputsCard.appendChild(secondaryWrap);
@@ -221,7 +221,7 @@
         if (tp && primary.tier_thresholds && typeof main === "number") {
           var t = tierFor(main, primary.tier_thresholds);
           tp.className = "lmc-tier-pill " + (t.class || "");
-          tp.textContent = t.name || "-";
+          tp.textContent = t.name || "—";
         }
       }
       (data.outputs || []).forEach(function (out) {
