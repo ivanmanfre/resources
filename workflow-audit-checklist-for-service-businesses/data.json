@@ -3,7 +3,7 @@
   "title": "Workflow Audit Checklist for Service Businesses",
   "subtitle": "Find the broken processes bleeding time and money from your $1M-$20M service business in 60-90 minutes",
   "brand": {
-    "accent": "#00E676",
+    "accent": "#2A8F65",
     "hero_badge": "Action Checklist"
   },
   "estimated_minutes": 75,
@@ -136,5 +136,42 @@
   "completion_cta": {
     "headline": "You found the leaks. Now fix the biggest one.",
     "description": "Every unchecked box is a workflow costing you time, money, or client trust. Pick the 3 highest-impact items you flagged and build or automate them first. If you want help designing the systems that replace those broken processes, reply to the email that sent you here and we will map your next automation together."
-  }
+  },
+  "ctas": [
+    {
+      "id": "high_gaps_blueprint",
+      "when": "gap_pct > 70",
+      "headline": "You found a system-wide leak. Want it mapped, not patched?",
+      "description": "Over 70% of these workflow controls are unchecked. At that gap level, fixing them one at a time is how leaks come back. The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I audit your client intake, project management, communication, and billing flows end-to-end, then deliver a 90-day deployment plan with sequenced fixes, vendor shortlists, and a phase-1 stop-loss gate. Budget-defensible whether or not you build with me.",
+      "button": "See the Blueprint →",
+      "url": "https://resources.ivanmanfredi.com/assessment",
+      "secondary": {
+        "button": "Or book a 30-min working call",
+        "url": "https://calendly.com/ivan-intelligents/30min"
+      }
+    },
+    {
+      "id": "mid_gaps_lms",
+      "when": "gap_pct >= 30 && gap_pct <= 70",
+      "headline": "Several real gaps, none catastrophic. See the system that closes them.",
+      "description": "30-70% gaps means your workflows are mostly there — but the unchecked items compound across every client. Tour the Lead Magnet System and Content System to see how I deployed pre-built n8n + Claude pipelines for service firms in your range. You can plug in the components your audit flagged.",
+      "button": "Tour the Lead Magnet System →",
+      "url": "https://ivanmanfredi.com/lead-magnet-system",
+      "secondary": {
+        "button": "Get the weekly ops teardown",
+        "url": "https://www.linkedin.com/in/ivanmanfredi/"
+      }
+    },
+    {
+      "id": "low_gaps_newsletter",
+      "headline": "You're running tight. Stay sharp — here's what firms like yours fix next.",
+      "description": "Under 30% gaps means the obvious leaks are closed. The next gains are in the kind of work most service firms never get to: event-sourced decision logs, capacity accounting, and confidence-gated review. Subscribe to the Agent-Ready Letter — one tactical n8n teardown + one ops case study per week.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/",
+      "secondary": {
+        "button": "Browse other resources",
+        "url": "https://resources.ivanmanfredi.com"
+      }
+    }
+  ]
 }

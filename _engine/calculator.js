@@ -42,6 +42,26 @@
     } catch (_) { return null; }
   }
 
+  // CTA gating — walk data.ctas[], pick first whose `when` evaluates true; fallback = entry without `when` (last).
+  // Mirror assessment.js pickCta semantics. Eval context is the merged ctx+results map plus tier/tier_name.
+  function evalWhen(expr, ctx) {
+    try {
+      var allowed = /^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\"\']+$/;
+      if (!allowed.test(expr)) return false;
+      var fn = new Function("ctx", "Math", "with (ctx) { return (" + expr + "); }");
+      return !!fn(ctx, Math);
+    } catch (_) { return false; }
+  }
+  function pickCta(data, ctx) {
+    if (!Array.isArray(data.ctas) || !data.ctas.length) return null;
+    for (var i = 0; i < data.ctas.length; i++) {
+      var c = data.ctas[i];
+      if (c && c.when) { if (evalWhen(c.when, ctx)) return c; }
+    }
+    // Fallback = last entry (whether or not it has a `when`)
+    return data.ctas[data.ctas.length - 1] || null;
+  }
+
   function tierFor(value, thresholds) {
     if (!thresholds) return { name: null, class: "" };
     if (value >= (thresholds.high || Infinity)) return { name: thresholds.high_label || "Optimized", class: "" };
@@ -190,6 +210,10 @@
       '<p class="lmc-note">No spam. One email, then you decide.</p>';
     container.appendChild(capture);
 
+    // Gated CTA (input-derived; rendered/updated by compute() below)
+    var ctaSection = make("div", { id: "lmc-gated-cta", class: "lmc-gated-cta-wrap" });
+    container.appendChild(ctaSection);
+
     // Footer actions
     var footer = make("div", { class: "lmc-footer-actions" });
     footer.innerHTML = '<button class="lmc-btn lmc-btn-secondary" id="lmc-copy" type="button">Copy result</button><button class="lmc-btn lmc-btn-secondary" id="lmc-reset" type="button">Reset</button>';
@@ -239,6 +263,46 @@
           rcEl.innerHTML = '<h3>What to do next</h3>' + matched.map(function (m) { return '<div class="lmc-rec"><strong>' + escapeHtml(m.tag || "Recommended") + '</strong>' + escapeHtml(m.text || "") + '</div>'; }).join("");
         }
       }
+      // Gated CTA — input-derived, re-rendered on each compute()
+      try {
+        var ctaCtx = Object.assign({}, ctx, results);
+        if (primary && typeof results[primary.id] === "number" && primary.tier_thresholds) {
+          var t2 = tierFor(results[primary.id], primary.tier_thresholds);
+          ctaCtx.tier = t2.class || "high";  // "low" | "medium" | "" (mapped to "high")
+          if (ctaCtx.tier === "") ctaCtx.tier = "high";
+          ctaCtx.tier_name = t2.name || "";
+        }
+        var picked = pickCta(data, ctaCtx);
+        var cWrap = $("#lmc-gated-cta");
+        if (cWrap) {
+          if (picked && picked.url) {
+            cWrap.innerHTML =
+              '<section class="lmc-cta-card" data-cta-id="' + escapeHtml(picked.id || "fallback") + '">' +
+              '<h3>' + escapeHtml(picked.headline || "Want help with this?") + '</h3>' +
+              (picked.description ? '<p>' + escapeHtml(picked.description) + '</p>' : '') +
+              '<a class="lmc-btn" href="' + escapeHtml(picked.url) + '" target="_blank" rel="noopener">' + escapeHtml(picked.button || "Learn more") + '</a>' +
+              (picked.secondary && picked.secondary.url ? '<a class="lmc-btn lmc-btn-secondary lmc-cta-secondary" href="' + escapeHtml(picked.secondary.url) + '" target="_blank" rel="noopener">' + escapeHtml(picked.secondary.button || "More") + '</a>' : '') +
+              '</section>';
+            var primaryA = cWrap.querySelector("a.lmc-btn:not(.lmc-btn-secondary)");
+            if (primaryA && !primaryA.__bound) {
+              primaryA.__bound = true;
+              primaryA.addEventListener("click", function () {
+                beacon("cta_click", { answers: { cta_id: picked.id || "fallback", cta_when: picked.when || null, tier: ctaCtx.tier, primary_output: primary && results[primary.id] } });
+              });
+            }
+            var secA = cWrap.querySelector("a.lmc-btn-secondary");
+            if (secA && !secA.__bound) {
+              secA.__bound = true;
+              secA.addEventListener("click", function () {
+                beacon("cta_click", { answers: { cta_id: (picked.id || "fallback") + ":secondary", tier: ctaCtx.tier } });
+              });
+            }
+          } else {
+            cWrap.innerHTML = "";
+          }
+        }
+      } catch (_) {}
+
       return { ctx: ctx, results: results, matched_recs: matched.map(function (m) { return m.tag; }) };
     }
     // Attach

@@ -92,8 +92,17 @@
 .lmc-intro-start:hover{background:var(--accent-ink);color:#fff;}
 .lmc-intro-note{font-size:.82rem;color:var(--ink-mute);margin-top:1rem;max-width:32rem;line-height:1.5;}
 
+/* Gated CTA (input-derived) */
+.lmc-gated-cta-wrap{margin:1rem 0 0;}
+.lmc-cta-card{background:var(--paper,#F7F4EF);border:1px solid var(--hairline);border-left:4px solid var(--accent,#2A8F65);padding:1.5rem;border-radius:6px;margin:0 0 1.5rem;}
+.lmc-cta-card h3{margin:0 0 .5rem;font-family:var(--font-sans);font-size:1.15rem;font-weight:700;color:var(--ink);}
+.lmc-cta-card p{margin:0 0 1rem;color:var(--ink-soft);line-height:1.55;}
+.lmc-cta-card .lmc-cta-secondary{margin-left:.5rem;}
+
 @media (prefers-reduced-motion:reduce){.lmc-progress-fill,.lmc-item,.lmc-btn,.lmc-toast{transition:none !important;}}
 @media (max-width:640px){
+  .lmc-cta-card{padding:1.25rem;margin:0 0 1rem;}
+  .lmc-cta-card .lmc-cta-secondary{margin-left:0;margin-top:.5rem;display:inline-block;}
   .lmc-hero{padding:2.5rem 1.25rem 2rem;}
   .lmc-capture{padding:2rem 1.25rem;}
   .lmc-intro{padding:2.5rem 1.25rem;}

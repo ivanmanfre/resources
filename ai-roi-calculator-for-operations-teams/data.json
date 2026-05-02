@@ -3,7 +3,7 @@
   "title": "AI ROI Calculator for Operations Teams",
   "subtitle": "Stop guessing whether automation is worth it. Build a business case with real numbers.",
   "brand": {
-    "accent": "#00E676",
+    "accent": "#2A8F65",
     "hero_badge": "Interactive Calculator"
   },
   "estimated_minutes": 10,
@@ -167,5 +167,42 @@
   "capture_cta": {
     "headline": "Want me to pressure test your numbers?",
     "description": "Send me your calculator results and I will tell you which workflow to automate first, what it should cost to build, and where the ROI is hiding in your ops data. No pitch, just a straight read."
-  }
+  },
+  "ctas": [
+    {
+      "id": "high_savings_blueprint",
+      "when": "annual_savings > 50000",
+      "headline": "You're looking at a real leak. Want it mapped, not guessed?",
+      "description": "At this scale of recoverable savings, the 'which workflow first, who builds it, in what order' question is worth getting right the first time. The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I review your stack, your data flows, and your team's capacity, then hand you a sequenced 90-day deployment plan with build cost ranges, vendor shortlists, and risk gates. You walk away with a budget-defensible plan whether or not you build with me.",
+      "button": "See the Blueprint \u2192",
+      "url": "https://resources.ivanmanfredi.com/assessment",
+      "secondary": {
+        "button": "Or book a 30-min working call",
+        "url": "https://calendly.com/ivan-intelligents/30min"
+      }
+    },
+    {
+      "id": "mid_savings_lms",
+      "when": "annual_savings >= 10000 && annual_savings <= 50000",
+      "headline": "Your numbers say there's juice here. Tour how I'd build it.",
+      "description": "$10-50k/yr in recoverable savings is the sweet spot for the Lead Magnet System and Content System engagements: pre-built n8n + Claude pipelines that recover ops hours without a custom build. Tour the system to see how other operations teams in your range deployed it.",
+      "button": "Tour the Lead Magnet System \u2192",
+      "url": "https://ivanmanfredi.com/lead-magnet-system",
+      "secondary": {
+        "button": "Get the weekly ops teardown",
+        "url": "https://www.linkedin.com/in/ivanmanfredi/"
+      }
+    },
+    {
+      "id": "low_savings_newsletter",
+      "headline": "Numbers are thin for a custom build. Stay on the list \u2014 the math changes when volume does.",
+      "description": "Under $10k/yr in recoverable savings means a one-off build's payback is too long. Subscribe to the Agent-Ready Letter (one tactical n8n teardown + one ops case study per week). When your volume crosses the build threshold, you'll already know which workflow to automate first.",
+      "button": "Follow on LinkedIn \u2192",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/",
+      "secondary": {
+        "button": "Browse other resources",
+        "url": "https://resources.ivanmanfredi.com"
+      }
+    }
+  ]
 }

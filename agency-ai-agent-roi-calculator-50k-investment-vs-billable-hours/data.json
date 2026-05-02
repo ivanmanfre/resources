@@ -3,7 +3,7 @@
   "title": "The Agency AI Agent ROI Calculator: Payback Period and 3-Year Net for Your Build",
   "subtitle": "For agency owners and ops directors at 10\u2013200 person firms. Plug in your build quote and workflow hours, get payback in months and 3-year net return in 30 seconds.",
   "brand": {
-    "accent": "#00E676",
+    "accent": "#2A8F65",
     "hero_badge": "Interactive Calculator"
   },
   "estimated_minutes": 4,
@@ -191,5 +191,42 @@
   "capture_cta": {
     "headline": "Want me to pressure-test your numbers?",
     "description": "Send me your inputs \u2014 build quote, hours/week, loaded cost, billable rate \u2014 and I'll run the calculator with you and flag the assumptions that look soft before you sign the SOW."
-  }
+  },
+  "ctas": [
+    {
+      "id": "high_savings_blueprint",
+      "when": "total_annual_value > 50000 || three_year_net_return >= 150000",
+      "headline": "The math says build it. The Blueprint says build it right.",
+      "description": "At this scale of recoverable annual value, the next risk isn't 'will it work' \u2014 it's 'who builds it, in what order, and what happens when phase 1 misses payback.' The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I review your stack, your billable model, and your team's redeployment plan, then deliver a sequenced 90-day build plan with vendor shortlists, scope cuts, and a phase-1 stop-loss gate. Budget-defensible whether or not you build with me.",
+      "button": "See the Blueprint \u2192",
+      "url": "https://resources.ivanmanfredi.com/assessment",
+      "secondary": {
+        "button": "Or book a 30-min working call",
+        "url": "https://calendly.com/ivan-intelligents/30min"
+      }
+    },
+    {
+      "id": "mid_savings_lms",
+      "when": "total_annual_value >= 10000 && total_annual_value <= 50000",
+      "headline": "There's a viable build here \u2014 see how I'd structure it.",
+      "description": "$10-50k/yr in recoverable annual value is the sweet spot for the Lead Magnet System and Content System engagements: pre-built n8n + Claude pipelines that recover agency hours without a full custom build. Tour the system to see how other agencies in your range deployed it.",
+      "button": "Tour the Lead Magnet System \u2192",
+      "url": "https://ivanmanfredi.com/lead-magnet-system",
+      "secondary": {
+        "button": "Get the weekly agency-ops teardown",
+        "url": "https://www.linkedin.com/in/ivanmanfredi/"
+      }
+    },
+    {
+      "id": "low_savings_newsletter",
+      "headline": "The math doesn't pencil yet. Stay close \u2014 it usually does within 12 months.",
+      "description": "Under $10k/yr in recoverable value means the build's payback is too long for a custom engagement today. Subscribe to the Agent-Ready Letter (one tactical n8n teardown + one agency-ops case study per week). When your billable rate, headcount, or workflow volume climbs, the math flips fast.",
+      "button": "Follow on LinkedIn \u2192",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/",
+      "secondary": {
+        "button": "Browse other resources",
+        "url": "https://resources.ivanmanfredi.com"
+      }
+    }
+  ]
 }

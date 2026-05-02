@@ -1,9 +1,13 @@
 {
+  "_archived": true,
+  "archived": true,
+  "public": false,
+  "hide_from_library": true,
   "slug": "the-operations-audit-for-manufacturing-companies-under-200-employees",
   "title": "The Operations Audit for Manufacturing Companies Under 200 Employees",
   "subtitle": "Map where your team bleeds time, money, and sanity before spending a dollar on new software or automation",
   "brand": {
-    "accent": "#00E676",
+    "accent": "#2A8F65",
     "hero_badge": "Action Checklist"
   },
   "estimated_minutes": 150,

@@ -768,11 +768,11 @@
   },
   "ctas": [
     {
-      "id": "qualified_loom",
+      "id": "qualified_call",
       "when": "(persona === \"early_boutique\" || persona === \"established_boutique\" || persona === \"scaling_boutique\") && overall_score < 70",
-      "headline": "Want a personalized Loom breakdown of your capacity leaks?",
-      "description": "Drop your email and I will review your exact answers, stack them against boutique consultancies your size, and send a 5-minute Loom within 48h with the ONE fix I would prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
-      "button": "Request a personalized Loom",
+      "headline": "Want a working call on your capacity leaks?",
+      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against boutique consultancies your size, and pinpoint the ONE fix I'd prioritize first. No pitch — if we both see signal, we keep going.",
+      "button": "Book a 30-min working call",
       "url": "https://calendly.com/ivan-intelligents/30min"
     },
     {

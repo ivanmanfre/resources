@@ -1,9 +1,13 @@
 {
+  "_archived": true,
+  "archived": true,
+  "public": false,
+  "hide_from_library": true,
   "slug": "5-manual-processes-costing-your-construction-company-10-hours-a-week-and-how-to-fix-them",
   "title": "5 Manual Processes Costing Your Construction Company 10+ Hours a Week",
   "subtitle": "A 30-minute self-audit to spot where your team is bleeding time and what to fix first",
   "brand": {
-    "accent": "#00E676",
+    "accent": "#2A8F65",
     "hero_badge": "Action Checklist"
   },
   "estimated_minutes": 30,

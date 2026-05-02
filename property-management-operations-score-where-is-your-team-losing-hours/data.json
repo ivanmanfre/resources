@@ -1,4 +1,6 @@
 {
+  "public": false,
+  "hide_from_library": true,
   "slug": "property-management-operations-score-where-is-your-team-losing-hours",
   "title": "Property Management Operations Score — Where Is Your Team Losing Hours?",
   "subtitle": "A 15-minute diagnostic for property management owners running 10-75 employees. Pinpoint the exact workflows bleeding 15-30+ hours a week so you can scale without scaling payroll.",
@@ -671,11 +673,11 @@
   },
   "ctas": [
     {
-      "id": "qualified_loom",
+      "id": "qualified_call",
       "when": "(persona === \"growing\" || persona === \"established\" || persona === \"scaling\") && overall_score < 70",
-      "headline": "Want a personalized Loom breakdown of your property management ops score?",
-      "description": "Drop your email and I'll review your exact answers, stack them against property management firms your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
-      "button": "Request a personalized Loom →",
+      "headline": "Want a working call on your property management ops score?",
+      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against property management firms your size, and pinpoint the ONE fix I'd prioritize first. No pitch — if we both see signal, we keep going.",
+      "button": "Book a 30-min working call →",
       "url": "https://calendly.com/ivan-intelligents/30min"
     },
     {

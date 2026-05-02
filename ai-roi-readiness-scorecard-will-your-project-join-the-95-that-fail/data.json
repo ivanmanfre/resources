@@ -698,11 +698,11 @@
   },
   "ctas": [
     {
-      "id": "qualified_loom",
+      "id": "qualified_call",
       "when": "(persona === \"lean_ops\" || persona === \"mid_market\" || persona === \"scaling\") && overall_score < 70",
-      "headline": "Want a personalized Loom breakdown of your AI readiness gaps?",
-      "description": "Drop your email and I'll review your exact answers, stack them against mid-market companies your size planning similar AI builds, and send a 5-minute Loom within 48h with the ONE readiness fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
-      "button": "Request a personalized Loom →",
+      "headline": "Want a working call on your AI readiness gaps?",
+      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against mid-market companies your size planning similar AI builds, and pinpoint the ONE readiness fix I'd prioritize first. No pitch — if we both see signal, we keep going.",
+      "button": "Book a 30-min working call →",
       "url": "https://calendly.com/ivan-intelligents/30min"
     },
     {

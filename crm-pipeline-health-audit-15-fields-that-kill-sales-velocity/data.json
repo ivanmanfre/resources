@@ -3,7 +3,7 @@
   "title": "15 CRM Fields That Kill Sales Velocity",
   "subtitle": "A pipeline health audit for RevOps managers at 10-200 employee B2B companies. Run it against one stage and find the fields that make your forecast lie.",
   "brand": {
-    "accent": "#00E676",
+    "accent": "#2A8F65",
     "hero_badge": "Action Checklist"
   },
   "estimated_minutes": 30,
@@ -131,5 +131,42 @@
   "completion_cta": {
     "headline": "Want the fix for your top 3 gaps?",
     "description": "Send me the fields that failed this audit and I'll return the specific enforcement rules — required-field logic, validation rules, and refresh cadence — matched to your CRM. One reply, no call required."
-  }
+  },
+  "ctas": [
+    {
+      "id": "high_gaps_blueprint",
+      "when": "gap_pct > 70",
+      "headline": "Your pipeline is leaking deals at the field level. Want it diagnosed, not guessed?",
+      "description": "Over 70% of these CRM fields and enforcement rules are missing or broken. At that level, no individual rep fix sticks — the system is selecting against velocity. The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I review your CRM (HubSpot/Salesforce/Pipedrive), audit field enforcement, validation rules, and refresh cadence, then deliver a 90-day cleanup plan with the exact required-field logic and weekly scorecard your reps need. Budget-defensible whether or not you build with me.",
+      "button": "See the Blueprint →",
+      "url": "https://resources.ivanmanfredi.com/assessment",
+      "secondary": {
+        "button": "Or book a 30-min working call",
+        "url": "https://calendly.com/ivan-intelligents/30min"
+      }
+    },
+    {
+      "id": "mid_gaps_lms",
+      "when": "gap_pct >= 30 && gap_pct <= 70",
+      "headline": "Real gaps in pipeline hygiene. See the system that enforces them.",
+      "description": "30-70% gaps means your CRM has the right fields but the enforcement is leaky. Tour the Lead Magnet System and Content System to see how I wire required-field gates, validation rules, and refresh cadence into n8n + Claude pipelines for sales teams — plug in the controls your audit flagged.",
+      "button": "Tour the Lead Magnet System →",
+      "url": "https://ivanmanfredi.com/lead-magnet-system",
+      "secondary": {
+        "button": "Get the weekly sales-ops teardown",
+        "url": "https://www.linkedin.com/in/ivanmanfredi/"
+      }
+    },
+    {
+      "id": "low_gaps_newsletter",
+      "headline": "Pipeline hygiene is dialed. Stay sharp — here's what comes next.",
+      "description": "Under 30% gaps means the field enforcement is mostly in place. The next gains live in stage-by-stage conversion analysis, deal-aging triggers, and forecast accuracy regressions — the kind of work most sales ops never get to. Subscribe to the Agent-Ready Letter — one tactical CRM teardown + one ops case study per week.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/",
+      "secondary": {
+        "button": "Browse other resources",
+        "url": "https://resources.ivanmanfredi.com"
+      }
+    }
+  ]
 }

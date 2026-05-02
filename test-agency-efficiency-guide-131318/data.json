@@ -672,11 +672,11 @@
   },
   "ctas": [
     {
-      "id": "qualified_loom",
+      "id": "qualified_call",
       "when": "(persona === \"growing\" || persona === \"established\" || persona === \"scaling\") && overall_score < 70",
-      "headline": "Want a personalized Loom breakdown of your agency's ops leaks?",
-      "description": "Drop your email and I'll review your exact answers, stack them against agencies your size doing client delivery ops, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
-      "button": "Request a personalized Loom →",
+      "headline": "Want a working call on your agency's ops leaks?",
+      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against agencies your size doing client delivery ops, and pinpoint the ONE fix I'd prioritize first. No pitch — if we both see signal, we keep going.",
+      "button": "Book a 30-min working call →",
       "url": "https://calendly.com/ivan-intelligents/30min"
     },
     {

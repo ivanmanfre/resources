@@ -33,6 +33,25 @@
     } catch (_) {}
   }
 
+  // CTA gating — walk data.ctas[], pick first whose `when` evaluates true; fallback = last entry.
+  // Mirrors assessment.js pickCta semantics. Eval ctx: completion_pct, gap_pct, high_gaps, done, total.
+  function evalWhen(expr, ctx) {
+    try {
+      var allowed = /^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\"\']+$/;
+      if (!allowed.test(expr)) return false;
+      var fn = new Function("ctx", "Math", "with (ctx) { return (" + expr + "); }");
+      return !!fn(ctx, Math);
+    } catch (_) { return false; }
+  }
+  function pickCta(data, ctx) {
+    if (!Array.isArray(data.ctas) || !data.ctas.length) return null;
+    for (var i = 0; i < data.ctas.length; i++) {
+      var c = data.ctas[i];
+      if (c && c.when) { if (evalWhen(c.when, ctx)) return c; }
+    }
+    return data.ctas[data.ctas.length - 1] || null;
+  }
+
   function loadState(slug) { try { return JSON.parse(localStorage.getItem("ivan.checklist." + slug) || "{}"); } catch (_) { return {}; } }
   function saveState(slug, state) { try { localStorage.setItem("ivan.checklist." + slug + ".checked", JSON.stringify(state.checked || {})); localStorage.setItem("ivan.checklist." + slug + ".email", state.email || ""); } catch (_) {} }
   function readState(slug) {
@@ -153,6 +172,10 @@
       '<p class="lmc-note">No spam. One email, then you decide.</p>';
     content.appendChild(capture);
 
+    // Gated CTA (input-derived; updated by update() below)
+    var ctaWrap = make("div", { id: "lmc-gated-cta", class: "lmc-gated-cta-wrap" });
+    content.appendChild(ctaWrap);
+
     // Footer actions
     var actions = make("div", { class: "lmc-footer-actions" });
     actions.innerHTML =
@@ -177,6 +200,48 @@
       var pctEl = $("#lmc-prog-pct"); if (pctEl) pctEl.textContent = pct + "%";
       var lbl = $("#lmc-prog-label"); if (lbl) lbl.textContent = done + " / " + totalItems + " complete" + (highGaps ? " · " + highGaps + " high-impact gap" + (highGaps === 1 ? "" : "s") : "");
       var bar = document.querySelector(".lmc-progress-bar"); if (bar) bar.setAttribute("aria-valuenow", done);
+
+      // Gated CTA — recompute on every update().
+      // Convention: items left UNCHECKED are gaps. gap_pct = (total-done)/total*100.
+      try {
+        var gap_pct = totalItems ? Math.round(((totalItems - done) / totalItems) * 100) : 100;
+        var ctaCtx = {
+          done: done,
+          total: totalItems,
+          completion_pct: pct,
+          gap_pct: gap_pct,
+          high_gaps: highGaps
+        };
+        var picked = pickCta(data, ctaCtx);
+        var cw = $("#lmc-gated-cta");
+        if (cw) {
+          if (picked && picked.url) {
+            cw.innerHTML =
+              '<section class="lmc-cta-card" data-cta-id="' + escapeHtml(picked.id || "fallback") + '">' +
+              '<h3>' + escapeHtml(picked.headline || "Want help with this?") + '</h3>' +
+              (picked.description ? '<p>' + escapeHtml(picked.description) + '</p>' : '') +
+              '<a class="lmc-btn" href="' + escapeHtml(picked.url) + '" target="_blank" rel="noopener">' + escapeHtml(picked.button || "Learn more") + '</a>' +
+              (picked.secondary && picked.secondary.url ? '<a class="lmc-btn lmc-btn-secondary lmc-cta-secondary" href="' + escapeHtml(picked.secondary.url) + '" target="_blank" rel="noopener">' + escapeHtml(picked.secondary.button || "More") + '</a>' : '') +
+              '</section>';
+            var primaryA = cw.querySelector("a.lmc-btn:not(.lmc-btn-secondary)");
+            if (primaryA && !primaryA.__bound) {
+              primaryA.__bound = true;
+              primaryA.addEventListener("click", function () {
+                beacon("cta_click", { answers: { cta_id: picked.id || "fallback", cta_when: picked.when || null, gap_pct: ctaCtx.gap_pct, completion_pct: ctaCtx.completion_pct } });
+              });
+            }
+            var secA = cw.querySelector("a.lmc-btn-secondary");
+            if (secA && !secA.__bound) {
+              secA.__bound = true;
+              secA.addEventListener("click", function () {
+                beacon("cta_click", { answers: { cta_id: (picked.id || "fallback") + ":secondary", gap_pct: ctaCtx.gap_pct } });
+              });
+            }
+          } else {
+            cw.innerHTML = "";
+          }
+        }
+      } catch (_) {}
     }
     update();
 
