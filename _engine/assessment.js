@@ -381,7 +381,11 @@
       // Share row
       var share = make("div", { class: "lmc-share" });
       var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the 10 min:";
-      var currentUrl = location.href.split("?")[0];
+      // Wave 0 / P30-2: shared LM URLs carry utm_source=lm-share so referral
+      // traffic from social shares is attributable.
+      var baseUrl = location.href.split("?")[0];
+      var slug = (data.slug || "lm").replace(/[^a-z0-9-]/gi, "-").toLowerCase();
+      var currentUrl = baseUrl + "?utm_source=lm-share&utm_medium=referral&utm_campaign=" + encodeURIComponent(slug);
       var liUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(currentUrl) + "&summary=" + encodeURIComponent(shareText);
       var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
       liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });
