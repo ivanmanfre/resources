@@ -102,6 +102,24 @@ a{color:inherit}
 .investment-recurring-list{list-style:none;padding:0;margin:0}
 .investment-recurring-list li{padding:10px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft);line-height:1.6}
 .investment-recurring-list li:last-child{border-bottom:none}
+.tiers-intro{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:720px;margin:0 0 28px}
+.tiers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:24px 0 36px}
+.tier-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
+.tier-card.recommended{border:1.5px solid var(--accent);box-shadow:0 2px 12px rgba(76,110,61,.08)}
+.tier-card.deferred{background:var(--paper-sunk);border-style:dashed}
+.tier-badge{position:absolute;top:-11px;left:24px;background:var(--accent);color:#fff;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.tier-name{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.tier-price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tier-price{font-family:'DM Serif Display',serif;font-size:52px;font-weight:400;line-height:1;color:var(--ink);letter-spacing:-.015em}
+.tier-price .currency{font-size:.45em;color:var(--accent);vertical-align:top;margin-right:3px;font-style:italic}
+.tier-period{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase}
+.tier-summary{font-size:14px;color:var(--ink-soft);line-height:1.55;margin:4px 0 8px}
+.tier-included{list-style:none;padding:0;margin:0;border-top:1px solid var(--hairline);padding-top:14px}
+.tier-included li{padding:5px 0 5px 18px;font-size:13.5px;color:var(--ink);line-height:1.5;position:relative}
+.tier-included li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
+.investment-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;padding:24px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin:0 0 24px}
+.investment-meta .investment-term{display:flex;flex-direction:column;gap:6px}
+@media (max-width:780px){.tiers-grid{grid-template-columns:1fr}}
 
 /* ROI */
 .roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
@@ -139,6 +157,11 @@ a{color:inherit}
 .upsell-box{margin-top:64px;padding:32px 40px;background:var(--paper-sunk);border-left:2px solid var(--accent)}
 .upsell-box h3{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 16px;border-left:none;padding-left:0}
 .upsell-box p{font-size:15px;color:var(--ink-soft);line-height:1.75;margin:0;max-width:none}
+.upsell-list{list-style:none;padding:0;margin:0}
+.upsell-list li{padding:10px 0 10px 22px;font-size:14.5px;color:var(--ink);line-height:1.55;position:relative;border-bottom:1px solid var(--hairline)}
+.upsell-list li:last-child{border-bottom:none}
+.upsell-list li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
+.upsell-lead{font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 14px}
 
 /* FOOTER */
 .footer{padding:32px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
@@ -271,17 +294,47 @@ a{color:inherit}
 <div class="section">
     <span class="section-number">05 • Investment</span>
     <h2>Pricing</h2>
-    <div class="investment-box">
-      <div class="investment-price"><span class="investment-currency">$</span>10000</div>
-      <div class="investment-right">
-        <div class="investment-model">Three ways to engage. (1) Single Project · just Lead Magnet System + Post Generation, 2-week build, hands-off after delivery: $7,500 one-time. (2) Fractional Month 1 [recommended, fits what you asked for] · everything in Single Project plus the DTC audit engine re-skin, custom dashboard, newsletter wiring, 90-day plan, weekly working sessions, and Slack support: $10,000 for month 1. (3) Months 2 and 3 continuation [available only after Month 1 Fractional] · $6,500 per month for ongoing optimization, emerging automations (forecast model, client weekly performance reports, creative brief generator, onboarding zap, etc.), continued weekly sessions and Slack support. After the partnership wraps, an optional Care Plan is $1,000 per month for maintenance, small fixes, and prompt updates.</div>
-        <div class="investment-terms">
+    <p class="tiers-intro">Four ways to engage, starting with what you asked for. Fractional Month 1 fits the scope from our call and is the recommended path. Months 2 and 3 and the Care Plan are available only after we kick off together.</p><div class="tiers-grid"><div class="tier-card">
+            
+            <div class="tier-name">Single Project</div>
+            <div class="tier-price-row">
+              <span class="tier-price"><span class="currency">$</span>7,500</span>
+              <span class="tier-period">one-time</span>
+            </div>
+            <div class="tier-summary">Just the build, no partnership. Hands-off after Day 14.</div>
+            <ul class="tier-included"><li>Lead Magnet System (5 engines)</li><li>Post Generation pipeline (5 sub-agents)</li><li>Source ingest (calls, manual, competitor, web research)</li><li>Airtable workspace + editable prompts</li><li>Brand voice training</li><li>System runbook at handoff</li></ul>
+          </div><div class="tier-card recommended">
+            <div class="tier-badge">Recommended</div>
+            <div class="tier-name">Fractional · Month 1</div>
+            <div class="tier-price-row">
+              <span class="tier-price"><span class="currency">$</span>10,000</span>
+              <span class="tier-period">month 1</span>
+            </div>
+            <div class="tier-summary">Everything in Single Project, plus the partnership stack.</div>
+            <ul class="tier-included"><li>Custom dashboard (system visibility)</li><li>DTC audit engine re-skinned</li><li>Newsletter wiring</li><li>90-day plan delivered Day 5</li><li>Weekly 45-min working sessions</li><li>Slack support throughout</li><li>Continuous tuning during month 1</li></ul>
+          </div><div class="tier-card deferred">
+            
+            <div class="tier-name">Months 2 &amp; 3 Continuation</div>
+            <div class="tier-price-row">
+              <span class="tier-price"><span class="currency">$</span>6,500</span>
+              <span class="tier-period">per month</span>
+            </div>
+            <div class="tier-summary">Only available after Month 1 Fractional. Compound the system.</div>
+            <ul class="tier-included"><li>Ongoing optimization based on real data</li><li>Emerging automations (forecast model, client weekly reports, brief generator, onboarding zap, etc.)</li><li>Continued weekly sessions + Slack support</li><li>Audit engine + outbound launch when Looms tire</li></ul>
+          </div><div class="tier-card deferred">
+            
+            <div class="tier-name">Care Plan</div>
+            <div class="tier-price-row">
+              <span class="tier-price"><span class="currency">$</span>1,000</span>
+              <span class="tier-period">per month, optional</span>
+            </div>
+            <div class="tier-summary">Post-partnership maintenance only. Activate if you want it.</div>
+            <ul class="tier-included"><li>Small fixes and prompt updates</li><li>Light maintenance on running systems</li><li>No engineering effort needed from 4 Creatives</li></ul>
+          </div></div><div class="investment-meta">
           <div class="investment-term"><span class="investment-term-label">Payment Terms</span><span class="investment-term-value">50% deposit on signature ($5,000), 50% on system handover at Day 14.</span></div>
-          <div class="investment-term"><span class="investment-term-label">Support Included</span><span class="investment-term-value">Continuous during engagement (weekly working sessions + Slack support). Optional Care Plan at $1,000 per month after the partnership closes.</span></div>
           <div class="investment-term"><span class="investment-term-label">Start Date</span><span class="investment-term-value">Monday following deposit</span></div>
+          <div class="investment-term"><span class="investment-term-label">Support</span><span class="investment-term-value">Continuous during engagement (weekly working sessions + Slack support). Optional Care Plan at $1,000 per month after the partnership closes.</span></div>
         </div>
-      </div>
-    </div>
     <div class="investment-recurring">
         <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
         <p class="investment-recurring-lead">Anthropic API roughly $50 to $100 per month depending on volume, Airtable subscription (likely already in place), email platform of your choice (Convertkit, Resend, or similar, light cost), Fireflies or equivalent transcript tool if not already used.</p>
@@ -316,11 +369,15 @@ a{color:inherit}
       <h2>Secure your project</h2>
       <p>Pay the deposit to lock in your start date and begin the engagement.</p>
       <div class="cta-buttons">
-        <a href="https://buy.stripe.com/3cI5kv9ezcvTcBg3HdfEk0N" class="btn-primary" target="_blank" rel="noopener">Pay Deposit →</a>
+        <a href="https://buy.stripe.com/dRm14f9ezbrP44Kb9FfEk0Q" class="btn-primary" target="_blank" rel="noopener">Pay Deposit →</a>
         <a href="mailto:im@ivanmanfredi.com" class="btn-secondary">Reply via Email</a>
       </div>
     
-    <div class="upsell-box"><h3>Future Opportunities</h3><p>After month 1 the natural expansion paths include: LinkedIn outreach automation (when real Looms stop scaling, audit engine becomes the outbound weapon), client-facing weekly performance reports automated from Meta Ads + Klaviyo + Shopify (high-leverage retention tool for your DTC client book), creative brief generator pulling from your winning-hook library, internal forecast model wired live to Stripe + QuickBooks (the one Kyle showed you), new-client onboarding automation that auto-provisions ClickUp + Slack + Drive, daily pulse Slack digest for the team, and video editing AI assist for the cutter bottleneck.</p></div>
+    <div class="upsell-box">
+          <h3>Future Opportunities</h3>
+          <p class="upsell-lead">After month 1 the natural expansion paths include:</p>
+          <ul class="upsell-list"><li>LinkedIn outreach automation (when real Looms stop scaling</li><li>audit engine becomes the outbound weapon)</li><li>client-facing weekly performance reports automated from Meta Ads + Klaviyo + Shopify (high-leverage retention tool for your DTC client book)</li><li>creative brief generator pulling from your winning-hook library</li><li>internal forecast model wired live to Stripe + QuickBooks (the one Kyle showed you)</li><li>new-client onboarding automation that auto-provisions ClickUp + Slack + Drive</li><li>daily pulse Slack digest for the team</li><li>and video editing AI assist for the cutter bottleneck</li></ul>
+        </div>
   </div>
 <div class="footer">
   <div class="footer-left">Iván Manfredi • AI &amp; Automation Architect</div>
