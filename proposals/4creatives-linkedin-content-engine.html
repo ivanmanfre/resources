@@ -117,6 +117,8 @@ a{color:inherit}
 .tier-included{list-style:none;padding:0;margin:0;border-top:1px solid var(--hairline);padding-top:14px}
 .tier-included li{padding:5px 0 5px 18px;font-size:13.5px;color:var(--ink);line-height:1.5;position:relative}
 .tier-included li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
+.tier-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:3px;align-self:flex-start;transition:opacity .15s}
+.tier-link:hover{opacity:.7}
 .investment-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;padding:24px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin:0 0 24px}
 .investment-meta .investment-term{display:flex;flex-direction:column;gap:6px}
 @media (max-width:780px){.tiers-grid{grid-template-columns:1fr}}
@@ -267,17 +269,17 @@ a{color:inherit}
     
     <h3>System Flow</h3>
     <div class="flow-grid">
-      <div class="flow-step"><span class="flow-step-number">01</span><div class="flow-step-title">Triggers</div><div class="flow-step-desc">The system pulls topic ideas automatically from four weighted sources: Fireflies / Granola call transcripts (weight 3.0 = highest signal), manual seeds Henner drops into Airtable (weight 2.0), competitor DTC agency posts and viral DTC ads (weight 0.5), and DTC marketing news and trend research (weight 0.3). Lead magnet creation is triggered manually when Henner picks a topic cluster.</div></div>
-      <div class="flow-step"><span class="flow-step-number">02</span><div class="flow-step-title">Process</div><div class="flow-step-desc">Post Generation pipeline runs 5 sub-agents in sequence: Topic Suggester proposes angles from the weighted source pool, Strategy Scorer ranks them against ICP fit and editorial pillars, Hook Generator produces 3 to 5 hook variants per approved topic, Copywriter writes the post in Henner's voice, QA Editor enforces editorial rules and forbidden-language filters. In parallel, the Lead Magnet engine produces capture assets in 5 formats (Interactive Assessment, Guide, Template, Checklist, Swipe File) from approved topic clusters.</div></div>
-      <div class="flow-step"><span class="flow-step-number">03</span><div class="flow-step-title">Output</div><div class="flow-step-desc">Ready-to-publish LinkedIn posts and live lead magnet URLs land in the Airtable review board with hook variants, CTAs, source attribution, and recommended publish slots</div></div>
-      <div class="flow-step"><span class="flow-step-number">04</span><div class="flow-step-title">Confirm</div><div class="flow-step-desc">Slack ping per batch, one tap in Airtable to approve and push live</div></div>
+      <div class="flow-step"><span class="flow-step-number">01</span><div class="flow-step-title">Triggers</div><div class="flow-step-desc">Four weighted sources feed the topic pool automatically: call transcripts from Fireflies or Granola (highest signal), manual seeds you drop in Airtable, competitor DTC agency posts, and DTC marketing news. Lead magnets are triggered manually when you pick a topic cluster.</div></div>
+      <div class="flow-step"><span class="flow-step-number">02</span><div class="flow-step-title">Process</div><div class="flow-step-desc">Five sub-agents run in sequence on each post: Topic Suggester picks an angle, Strategy Scorer ranks it, Hook Generator drafts 3 to 5 hooks, Copywriter writes the post in your voice, QA Editor enforces editorial rules. The Lead Magnet engine runs in parallel for the 5 asset formats.</div></div>
+      <div class="flow-step"><span class="flow-step-number">03</span><div class="flow-step-title">Output</div><div class="flow-step-desc">Ready-to-publish LinkedIn posts and live lead magnet URLs land in the Airtable review board with hook variants, CTAs, and recommended publish slots.</div></div>
+      <div class="flow-step"><span class="flow-step-number">04</span><div class="flow-step-title">Confirm</div><div class="flow-step-desc">Slack ping per batch. One tap in Airtable to approve and push live.</div></div>
     </div>
     
   </div>
 <div class="section">
       <span class="section-number">03 • Scope of Work</span>
       <h2>What’s included</h2>
-      <div class="scope-grid"><div class="scope-item"><div class="scope-check"></div><div>Post Generation pipeline · 5 sub-agents (Topic Suggester, Strategy Scorer, Hook Generator, Copywriter, QA Editor) producing 5 post types (Ad Teardown, Methodology, Case Study, Personal POV, Framework / Hook Library)</div></div><div class="scope-item"><div class="scope-check"></div><div>Lead Magnet System · 5 generation engines (Interactive Assessment, Guide, Template, Checklist, Swipe File)</div></div><div class="scope-item"><div class="scope-check"></div><div>Source pipeline · weighted ingest from call transcripts, manual seeds, competitor posts, and DTC marketing news</div></div><div class="scope-item"><div class="scope-check"></div><div>Brand voice training extracted from Henner's existing LinkedIn archive and source content</div></div><div class="scope-item"><div class="scope-check"></div><div>Airtable workspace · Briefs board, Review queue, Published log, editable Prompt Library (no n8n access required to tweak prompts)</div></div><div class="scope-item"><div class="scope-check"></div><div>Custom dashboard for system visibility (post pipeline, lead magnet stats, audit results, source weights)</div></div><div class="scope-item"><div class="scope-check"></div><div>DTC audit engine re-skinned for 4 Creatives' ICP (deployed but parked, ready when outbound scales)</div></div><div class="scope-item"><div class="scope-check"></div><div>Newsletter wiring · lead magnet capture into your chosen email platform (Convertkit, Resend, or alternative)</div></div><div class="scope-item"><div class="scope-check"></div><div>Partnership support · 90-day plan delivered Day 5, weekly 45-min working sessions, Slack support throughout, system runbook at handoff</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>LinkedIn outreach automation (Looms working currently, parked until later)</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Paid LinkedIn ads management</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Video or creative production for ads</div></div></div>
+      <div class="scope-grid"><div class="scope-item"><div class="scope-check"></div><div>Post Generation pipeline · 5 sub-agents (Topic Suggester, Strategy Scorer, Hook Generator, Copywriter, QA Editor) producing 5 post types (Ad Teardown, Methodology, Case Study, Personal POV, Framework / Hook Library)</div></div><div class="scope-item"><div class="scope-check"></div><div>Lead Magnet System · 5 generation engines (Interactive Assessment, Guide, Template, Checklist, Swipe File)</div></div><div class="scope-item"><div class="scope-check"></div><div>Source pipeline · weighted ingest from call transcripts, manual seeds, competitor posts, and DTC marketing news</div></div><div class="scope-item"><div class="scope-check"></div><div>Brand voice training extracted from Henner's existing LinkedIn archive and source content</div></div><div class="scope-item"><div class="scope-check"></div><div>Airtable workspace · Briefs board, Review queue, Published log, editable Prompt Library (no n8n access required to tweak prompts)</div></div><div class="scope-item"><div class="scope-check"></div><div>Custom dashboard for system visibility (post pipeline, lead magnet stats, audit results, source weights)</div></div><div class="scope-item"><div class="scope-check"></div><div>DTC audit engine re-skinned for 4 Creatives' ICP (deployed but parked, ready when outbound scales)</div></div><div class="scope-item"><div class="scope-check"></div><div>ConvertKit list building · capture from lead magnets wired, lists configured (both tiers)</div></div><div class="scope-item"><div class="scope-check"></div><div>Newsletter system · campaigns and automations on ConvertKit (Fractional Month 1+ only)</div></div><div class="scope-item"><div class="scope-check"></div><div>Partnership support · 90-day plan delivered Day 5, weekly 45-min working sessions, Slack support throughout, system runbook at handoff</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>LinkedIn outreach automation (Looms working currently, parked until later)</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Paid LinkedIn ads management</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Video or creative production for ads</div></div></div>
       <h3>Not Included</h3><p>LinkedIn outreach automation is parked for now (revisit when real Looms stop scaling, audit engine then becomes the outbound weapon). Paid LinkedIn ads management, video creative production, and migration of existing CRM systems are also out of scope.</p>
     </div>
 <div class="section">
@@ -301,8 +303,9 @@ a{color:inherit}
               <span class="tier-price"><span class="currency">$</span>7,500</span>
               <span class="tier-period">one-time</span>
             </div>
-            <div class="tier-summary">Just the build, no partnership. Hands-off after Day 14.</div>
-            <ul class="tier-included"><li>Lead Magnet System (5 engines)</li><li>Post Generation pipeline (5 sub-agents)</li><li>Source ingest (calls, manual, competitor, web research)</li><li>Airtable workspace + editable prompts</li><li>Brand voice training</li><li>System runbook at handoff</li></ul>
+            <div class="tier-summary">Just the build, no partnership. 1 month of post-launch support included, hands-off after.</div>
+            <ul class="tier-included"><li>Lead Magnet System (5 engines)</li><li>Post Generation pipeline (5 sub-agents)</li><li>Source ingest (calls, manual, competitor, web research)</li><li>Airtable workspace + editable prompts</li><li>Brand voice training</li><li>ConvertKit list building (capture wired, lists configured)</li><li>1 month post-launch support for fixes and tuning</li><li>System runbook at handoff</li></ul>
+            
           </div><div class="tier-card recommended">
             <div class="tier-badge">Recommended</div>
             <div class="tier-name">Fractional · Month 1</div>
@@ -310,17 +313,19 @@ a{color:inherit}
               <span class="tier-price"><span class="currency">$</span>10,000</span>
               <span class="tier-period">month 1</span>
             </div>
-            <div class="tier-summary">Everything in Single Project, plus the partnership stack.</div>
-            <ul class="tier-included"><li>Custom dashboard (system visibility)</li><li>DTC audit engine re-skinned</li><li>Newsletter wiring</li><li>90-day plan delivered Day 5</li><li>Weekly 45-min working sessions</li><li>Slack support throughout</li><li>Continuous tuning during month 1</li></ul>
+            <div class="tier-summary">Everything in Single Project, plus the partnership stack and the systems that compound.</div>
+            <ul class="tier-included"><li>Custom dashboard (system visibility)</li><li>DTC audit engine re-skinned for your ICP</li><li>Newsletter system (campaigns + automations on ConvertKit)</li><li>90-day plan delivered Day 5</li><li>Weekly 45-min working sessions</li><li>Slack support throughout</li><li>Continuous tuning during month 1</li></ul>
+            
           </div><div class="tier-card deferred">
             
             <div class="tier-name">Months 2 &amp; 3 Continuation</div>
             <div class="tier-price-row">
-              <span class="tier-price"><span class="currency">$</span>6,500</span>
+              <span class="tier-price"><span class="currency">$</span>3,500 – 10,000</span>
               <span class="tier-period">per month</span>
             </div>
-            <div class="tier-summary">Only available after Month 1 Fractional. Compound the system.</div>
-            <ul class="tier-included"><li>Ongoing optimization based on real data</li><li>Emerging automations (forecast model, client weekly reports, brief generator, onboarding zap, etc.)</li><li>Continued weekly sessions + Slack support</li><li>Audit engine + outbound launch when Looms tire</li></ul>
+            <div class="tier-summary">Three tier options. Pick the level that matches what your system needs next. Available only after Month 1 Fractional.</div>
+            <ul class="tier-included"><li>Ongoing optimization based on real data</li><li>Emerging automations (forecast model, client weekly reports, brief generator, etc.)</li><li>Continued weekly sessions + Slack support</li><li>Audit engine + outbound launch when Looms tire</li></ul>
+            <a class="tier-link" href="https://ivanmanfredi.com/fractional/" target="_blank" rel="noopener">See full tier breakdown →</a>
           </div><div class="tier-card deferred">
             
             <div class="tier-name">Care Plan</div>
@@ -329,7 +334,8 @@ a{color:inherit}
               <span class="tier-period">per month, optional</span>
             </div>
             <div class="tier-summary">Post-partnership maintenance only. Activate if you want it.</div>
-            <ul class="tier-included"><li>Small fixes and prompt updates</li><li>Light maintenance on running systems</li><li>No engineering effort needed from 4 Creatives</li></ul>
+            <ul class="tier-included"><li>Small fixes and prompt updates</li><li>Light maintenance on running systems</li><li>No engineering effort needed from your side</li></ul>
+            
           </div></div><div class="investment-meta">
           <div class="investment-term"><span class="investment-term-label">Payment Terms</span><span class="investment-term-value">50% deposit on signature ($5,000), 50% on system handover at Day 14.</span></div>
           <div class="investment-term"><span class="investment-term-label">Start Date</span><span class="investment-term-value">Monday following deposit</span></div>
@@ -369,7 +375,7 @@ a{color:inherit}
       <h2>Secure your project</h2>
       <p>Pay the deposit to lock in your start date and begin the engagement.</p>
       <div class="cta-buttons">
-        <a href="https://buy.stripe.com/dRm14f9ezbrP44Kb9FfEk0Q" class="btn-primary" target="_blank" rel="noopener">Pay Deposit →</a>
+        <a href="https://buy.stripe.com/aFa9ALeyT2Vj8l0b9FfEk0R" class="btn-primary" target="_blank" rel="noopener">Pay Deposit →</a>
         <a href="mailto:im@ivanmanfredi.com" class="btn-secondary">Reply via Email</a>
       </div>
     
