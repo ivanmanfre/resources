@@ -100,7 +100,7 @@
     }
   ],
   "total_timeline": "3 weeks",
-  "quoted_price": "4500-5500",
+  "quoted_price": "5000",
   "currency": "$",
   "pricing_model_details": "Fixed project fee",
   "payment_terms": "50% upfront, 50% on delivery",
@@ -158,5 +158,6 @@
     }
   },
   "_qa_pass": true,
-  "_qa_note": "Unparseable QA response, passing"
+  "_qa_note": "Unparseable QA response, passing",
+  "quoted_price_range": "4500-5500"
 }
