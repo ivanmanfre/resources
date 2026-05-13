@@ -164,6 +164,16 @@ a{color:inherit}
 .upsell-list li:last-child{border-bottom:none}
 .upsell-list li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
 .upsell-lead{font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 14px}
+.mermaid-wrap{margin:24px 0 12px;padding:32px 24px;background:var(--paper-raise);border:1px solid var(--hairline);overflow-x:auto;display:flex;justify-content:center}
+.mermaid-wrap .mermaid{font-family:'IBM Plex Mono',monospace !important;min-width:0}
+.mermaid-wrap svg{max-width:100%;height:auto}
+.mermaid-wrap .label,.mermaid-wrap .nodeLabel{font-family:'IBM Plex Mono',monospace !important;font-weight:500;font-size:12px !important}
+.mermaid-wrap .cluster rect{fill:var(--paper-sunk) !important;stroke:var(--ink-mute) !important}
+.mermaid-wrap .cluster .nodeLabel{font-family:'IBM Plex Mono',monospace !important;letter-spacing:.18em;text-transform:uppercase;font-size:10px !important;font-weight:600;fill:var(--accent)}
+.mermaid-wrap .edgeLabel{background:var(--paper-raise);font-family:'IBM Plex Mono',monospace !important;font-size:10px !important;letter-spacing:.1em;color:var(--ink-mute) !important}
+.mermaid-wrap .edgePath path{stroke:var(--accent) !important;stroke-width:1.5px !important}
+.mermaid-wrap .marker{fill:var(--accent) !important;stroke:var(--accent) !important}
+.mermaid-caption{font-size:13px;color:var(--ink-mute);font-style:italic;text-align:center;margin:0 0 32px}
 
 /* FOOTER */
 .footer{padding:32px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
@@ -241,7 +251,7 @@ a{color:inherit}
     <div class="cover-left">
       <div class="cover-tag">AI &amp; Automation Architect</div>
       <h1>LinkedIn Content Engine</h1>
-      <p class="cover-sub">Daily LinkedIn posts in Henner's voice produced from real source signals (call transcripts, competitor activity, DTC marketing news, manual seeds) in under one hour of weekly effort, paired with a 5-format lead magnet engine that captures and qualifies DTC brand leads.</p>
+      <p class="cover-sub">**Daily LinkedIn posts in your voice**, produced from real source signals (calls, competitor activity, DTC news, manual seeds) in **under one hour of weekly effort**, paired with a **5-format lead magnet engine** that captures and qualifies DTC brand leads.</p>
     </div>
     <div class="cover-right">
       <div class="cover-numeral">13</div>
@@ -258,29 +268,66 @@ a{color:inherit}
 <div class="section">
     <span class="section-number">01 • The Problem</span>
     <h2>What’s costing you time</h2>
-    <div class="problem-card"><p>Henner stopped posting on LinkedIn two months ago because hand-building each post (sourcing ideas, translating from English drops, editing for voice) was eating hours he could not afford as pod lead. He needs a daily-post cadence on under one hour of weekly effort, paired with a lead magnet engine that converts that audience into qualified DTC brand leads.</p></div>
+    <div class="problem-card"><p>Henner stopped posting on LinkedIn **two months ago** because hand-building each post (sourcing ideas, translating from English drops, editing for voice) was eating hours he could not afford as pod lead. He needs a **daily-post cadence on under one hour of weekly effort**, paired with a **lead magnet engine** that converts that audience into qualified DTC brand leads.</p></div>
     <p>Currently absorbing approximately <strong>5+ hrs/week hours per week</strong> in manual work, with the additional cost of dropped follow-ups and missed context.</p>
   </div>
 <div class="section">
     <span class="section-number">02 • The Solution</span>
     <h2>What we’re building</h2>
-    <p>Daily LinkedIn posts in Henner's voice produced from real source signals (call transcripts, competitor activity, DTC marketing news, manual seeds) in under one hour of weekly effort, paired with a 5-format lead magnet engine that captures and qualifies DTC brand leads.</p>
-    <p>Built on <strong>n8n + Anthropic Claude</strong>, integrated with Airtable (workspace + prompt store + review queue), n8n (orchestration), Anthropic Claude (model), Slack (notifications + async requests), Fireflies or your meeting tool (transcript source). Designed to remove manual touchpoints while keeping you in full control.</p>
+    <p><strong>Daily LinkedIn posts in your voice</strong>, produced from real source signals (calls, competitor activity, DTC news, manual seeds) in <strong>under one hour of weekly effort</strong>, paired with a <strong>5-format lead magnet engine</strong> that captures and qualifies DTC brand leads.</p>
+    <p>Built on <strong>n8n + Anthropic Claude</strong>, integrated with Airtable (workspace + prompts + review queue), n8n (orchestration), Anthropic Claude (model), Slack (notifications), Fireflies or your meeting tool (transcript source), ConvertKit (email list). Designed to remove manual touchpoints while keeping you in full control.</p>
     
     <h3>System Flow</h3>
-    <div class="flow-grid">
-      <div class="flow-step"><span class="flow-step-number">01</span><div class="flow-step-title">Triggers</div><div class="flow-step-desc">Four weighted sources feed the topic pool automatically: call transcripts from Fireflies or Granola (highest signal), manual seeds you drop in Airtable, competitor DTC agency posts, and DTC marketing news. Lead magnets are triggered manually when you pick a topic cluster.</div></div>
-      <div class="flow-step"><span class="flow-step-number">02</span><div class="flow-step-title">Process</div><div class="flow-step-desc">Five sub-agents run in sequence on each post: Topic Suggester picks an angle, Strategy Scorer ranks it, Hook Generator drafts 3 to 5 hooks, Copywriter writes the post in your voice, QA Editor enforces editorial rules. The Lead Magnet engine runs in parallel for the 5 asset formats.</div></div>
-      <div class="flow-step"><span class="flow-step-number">03</span><div class="flow-step-title">Output</div><div class="flow-step-desc">Ready-to-publish LinkedIn posts and live lead magnet URLs land in the Airtable review board with hook variants, CTAs, and recommended publish slots.</div></div>
-      <div class="flow-step"><span class="flow-step-number">04</span><div class="flow-step-title">Confirm</div><div class="flow-step-desc">Slack ping per batch. One tap in Airtable to approve and push live.</div></div>
-    </div>
+    <div class="mermaid-wrap"><pre class="mermaid">flowchart LR
+    subgraph SRC[&quot;SOURCES  -  weighted ingest&quot;]
+        direction TB
+        S1[&quot;Fireflies Calls  -  3.0×&quot;]
+        S2[&quot;Manual Seeds  -  2.0×&quot;]
+        S3[&quot;Competitor Posts  -  0.5×&quot;]
+        S4[&quot;DTC News  -  0.3×&quot;]
+    end
+    SRC ==&gt; A1[&quot;Topic Suggester&quot;]
+    A1 --&gt; A2[&quot;Strategy Scorer&quot;]
+    A2 --&gt; A3[&quot;Hook Generator&quot;]
+    A3 --&gt; A4[&quot;Copywriter&quot;]
+    A4 --&gt; A5[&quot;QA Editor&quot;]
+    A2 -.parallel.-&gt; LM[&quot;Lead Magnet Engine&lt;br/&gt;5 formats&quot;]
+    A5 ==&gt; RB[&quot;Airtable Review&quot;]
+    LM ==&gt; RB
+    RB ==&gt; PUB[&quot;Slack approve → Publish&quot;]</pre></div>
+    <p class="mermaid-caption">Sources feed the topic pool. Five agents run in sequence on every post. Lead magnets branch in parallel. You only see the final review board in Airtable.</p>
+    
     
   </div>
 <div class="section">
       <span class="section-number">03 • Scope of Work</span>
       <h2>What’s included</h2>
-      <div class="scope-grid"><div class="scope-item"><div class="scope-check"></div><div>Post Generation pipeline · 5 sub-agents (Topic Suggester, Strategy Scorer, Hook Generator, Copywriter, QA Editor) producing 5 post types (Ad Teardown, Methodology, Case Study, Personal POV, Framework / Hook Library)</div></div><div class="scope-item"><div class="scope-check"></div><div>Lead Magnet System · 5 generation engines (Interactive Assessment, Guide, Template, Checklist, Swipe File)</div></div><div class="scope-item"><div class="scope-check"></div><div>Source pipeline · weighted ingest from call transcripts, manual seeds, competitor posts, and DTC marketing news</div></div><div class="scope-item"><div class="scope-check"></div><div>Brand voice training extracted from Henner's existing LinkedIn archive and source content</div></div><div class="scope-item"><div class="scope-check"></div><div>Airtable workspace · Briefs board, Review queue, Published log, editable Prompt Library (no n8n access required to tweak prompts)</div></div><div class="scope-item"><div class="scope-check"></div><div>Custom dashboard for system visibility (post pipeline, lead magnet stats, audit results, source weights)</div></div><div class="scope-item"><div class="scope-check"></div><div>DTC audit engine re-skinned for 4 Creatives' ICP (deployed but parked, ready when outbound scales)</div></div><div class="scope-item"><div class="scope-check"></div><div>ConvertKit list building · capture from lead magnets wired, lists configured (both tiers)</div></div><div class="scope-item"><div class="scope-check"></div><div>Newsletter system · campaigns and automations on ConvertKit (Fractional Month 1+ only)</div></div><div class="scope-item"><div class="scope-check"></div><div>Partnership support · 90-day plan delivered Day 5, weekly 45-min working sessions, Slack support throughout, system runbook at handoff</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>LinkedIn outreach automation (Looms working currently, parked until later)</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Paid LinkedIn ads management</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Video or creative production for ads</div></div></div>
-      <h3>Not Included</h3><p>LinkedIn outreach automation is parked for now (revisit when real Looms stop scaling, audit engine then becomes the outbound weapon). Paid LinkedIn ads management, video creative production, and migration of existing CRM systems are also out of scope.</p>
+      
+        <div class="scope-group">
+          <div class="scope-group-label">Content System (Both Tiers)</div>
+          <div class="scope-grid">
+            <div class="scope-item"><div class="scope-check"></div><div>**Post Generation pipeline** · 5 sub-agents (Topic Suggester, Strategy Scorer, Hook Generator, Copywriter, QA Editor) producing 5 post types (Ad Teardown, Methodology, Case Study, Personal POV, Framework / Hook Library)</div></div><div class="scope-item"><div class="scope-check"></div><div>**Lead Magnet System** · 5 generation engines (Interactive Assessment, Guide, Template, Checklist, Swipe File)</div></div><div class="scope-item"><div class="scope-check"></div><div>**Cover image generation** · OpenAI Image creates the branded cover for every lead magnet, on demand</div></div><div class="scope-item"><div class="scope-check"></div><div>**Source pipeline** · weighted ingest from call transcripts, manual seeds, competitor posts, and DTC marketing news</div></div><div class="scope-item"><div class="scope-check"></div><div>**Brand voice training** from Henner's existing LinkedIn archive and source content</div></div>
+          </div>
+        </div>
+        <div class="scope-group">
+          <div class="scope-group-label">Workspace (Both Tiers)</div>
+          <div class="scope-grid">
+            <div class="scope-item"><div class="scope-check"></div><div>**Airtable workspace** · Briefs board, Review queue, Published log, editable Prompt Library (no n8n access required to tweak prompts)</div></div><div class="scope-item"><div class="scope-check"></div><div>**ConvertKit list building** · lead-magnet capture wired, lists configured for future newsletters</div></div><div class="scope-item"><div class="scope-check"></div><div>**System runbook + handoff documentation** at Day 14</div></div><div class="scope-item"><div class="scope-check"></div><div>**1 month post-launch support** for fixes and tuning (Single Project)</div></div>
+          </div>
+        </div>
+        <div class="scope-group">
+          <div class="scope-group-label">Partnership (Fractional Month 1 only)</div>
+          <div class="scope-grid">
+            <div class="scope-item"><div class="scope-check"></div><div>**Custom dashboard** for system visibility (post pipeline, lead magnet stats, audit results, source weights)</div></div><div class="scope-item"><div class="scope-check"></div><div>**DTC audit engine re-skinned** for 4 Creatives' ICP (deployed but parked, ready when outbound scales)</div></div><div class="scope-item"><div class="scope-check"></div><div>**Newsletter system** · campaigns + automations on ConvertKit</div></div><div class="scope-item"><div class="scope-check"></div><div>**90-day plan** document delivered Day 5</div></div><div class="scope-item"><div class="scope-check"></div><div>**Weekly 45-min working sessions**</div></div><div class="scope-item"><div class="scope-check"></div><div>**Slack support** · async requests answered within ~24h</div></div><div class="scope-item"><div class="scope-check"></div><div>Continuous tuning + system optimization during month 1</div></div>
+          </div>
+        </div>
+        <div class="scope-group">
+          <div class="scope-group-label">Out of Scope</div>
+          <div class="scope-grid">
+            <div class="scope-item excluded"><div class="scope-check"></div><div>LinkedIn outreach automation (Looms working currently, parked until later)</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Paid LinkedIn ads management</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Video or creative production for ads</div></div>
+          </div>
+        </div>
+      
     </div>
 <div class="section">
       <span class="section-number">04 • Timeline</span>
@@ -288,7 +335,7 @@ a{color:inherit}
       <div class="table-scroll">
         <table class="timeline-table">
           <thead><tr><th>Phase</th><th>Duration</th><th>Deliverable</th></tr></thead>
-          <tbody><tr><td class="phase-name">Discovery + voice extraction</td><td class="phase-duration">Days 1 to 3</td><td class="phase-deliverable">Brand voice profile from Henner's LinkedIn archive, 5 sub-agent prompts drafted in Airtable Prompt Library, source pipeline configured (Fireflies integration + competitor list + research feeds), 90-day plan outline shared on Day 5</td></tr><tr><td class="phase-name">Build sprint</td><td class="phase-duration">Days 4 to 10</td><td class="phase-deliverable">5-agent Post Generation pipeline live with first batch of test posts, all 5 Lead Magnet engines deployed with first sample asset per format, custom dashboard scaffolded, audit engine re-skin in progress</td></tr><tr><td class="phase-name">Tune + handoff</td><td class="phase-duration">Days 11 to 14</td><td class="phase-deliverable">Both systems tuned against real outputs, all prompts editable in Airtable, dashboard live, system runbook delivered</td></tr><tr><td class="phase-name">Month 1 partnership support</td><td class="phase-duration">Through Day 30</td><td class="phase-deliverable">Weekly working sessions, Slack support, system tuning, audit engine completed, ongoing optimization based on real performance data</td></tr></tbody>
+          <tbody><tr><td class="phase-name">Discovery + voice extraction</td><td class="phase-duration">Days 1 to 3</td><td class="phase-deliverable">Brand voice profile from your LinkedIn archive, 5 sub-agent prompts drafted in Airtable Prompt Library, source pipeline configured (Fireflies + competitor list + research feeds), 90-day plan outline shared on Day 5</td></tr><tr><td class="phase-name">Build sprint</td><td class="phase-duration">Days 4 to 10</td><td class="phase-deliverable">5-agent Post Generation pipeline live with first batch of test posts, all 5 Lead Magnet engines deployed with first sample asset per format, custom dashboard scaffolded, audit engine re-skin in progress</td></tr><tr><td class="phase-name">Tune + handoff</td><td class="phase-duration">Days 11 to 14</td><td class="phase-deliverable">Both systems tuned against real outputs, all prompts editable in Airtable, dashboard live, system runbook delivered</td></tr><tr><td class="phase-name">Month 1 partnership support</td><td class="phase-duration">Through Day 30</td><td class="phase-deliverable">Weekly working sessions, Slack support, system tuning, audit engine completed, ongoing optimization based on real performance data</td></tr></tbody>
         </table>
       </div>
       <div class="timeline-total">Total: Two-week build, full first month of partnership support included</div>
@@ -296,15 +343,15 @@ a{color:inherit}
 <div class="section">
     <span class="section-number">05 • Investment</span>
     <h2>Pricing</h2>
-    <p class="tiers-intro">Four ways to engage, starting with what you asked for. Fractional Month 1 fits the scope from our call and is the recommended path. Months 2 and 3 and the Care Plan are available only after we kick off together.</p><div class="tiers-grid"><div class="tier-card">
+    <p class="tiers-intro">Four ways to engage, starting with what you asked for. **Fractional Month 1** fits the scope from our call and is the recommended path. Months 2 &amp; 3 and the Care Plan are available only after we kick off together.</p><div class="tiers-grid"><div class="tier-card">
             
             <div class="tier-name">Single Project</div>
             <div class="tier-price-row">
               <span class="tier-price"><span class="currency">$</span>7,500</span>
               <span class="tier-period">one-time</span>
             </div>
-            <div class="tier-summary">Just the build, no partnership. 1 month of post-launch support included, hands-off after.</div>
-            <ul class="tier-included"><li>Lead Magnet System (5 engines)</li><li>Post Generation pipeline (5 sub-agents)</li><li>Source ingest (calls, manual, competitor, web research)</li><li>Airtable workspace + editable prompts</li><li>Brand voice training</li><li>ConvertKit list building (capture wired, lists configured)</li><li>1 month post-launch support for fixes and tuning</li><li>System runbook at handoff</li></ul>
+            <div class="tier-summary">Just the build, no partnership. **1 month of post-launch support** for fixes and tuning. Hands-off after.</div>
+            <ul class="tier-included"><li>Lead Magnet System (5 engines) + OpenAI cover image gen</li><li>Post Generation pipeline (5 sub-agents)</li><li>Source ingest (calls, manual, competitor, news)</li><li>Airtable workspace + editable prompts</li><li>Brand voice training</li><li>ConvertKit list building</li><li>**1 month post-launch support**</li><li>System runbook at handoff</li></ul>
             
           </div><div class="tier-card recommended">
             <div class="tier-badge">Recommended</div>
@@ -313,8 +360,8 @@ a{color:inherit}
               <span class="tier-price"><span class="currency">$</span>10,000</span>
               <span class="tier-period">month 1</span>
             </div>
-            <div class="tier-summary">Everything in Single Project, plus the partnership stack and the systems that compound.</div>
-            <ul class="tier-included"><li>Custom dashboard (system visibility)</li><li>DTC audit engine re-skinned for your ICP</li><li>Newsletter system (campaigns + automations on ConvertKit)</li><li>90-day plan delivered Day 5</li><li>Weekly 45-min working sessions</li><li>Slack support throughout</li><li>Continuous tuning during month 1</li></ul>
+            <div class="tier-summary">**Everything in Single Project**, plus the partnership stack and the systems that compound.</div>
+            <ul class="tier-included"><li>Custom dashboard (full system visibility)</li><li>DTC audit engine re-skinned for your ICP</li><li>Newsletter system (campaigns + automations on ConvertKit)</li><li>90-day plan delivered Day 5</li><li>Weekly 45-min working sessions</li><li>**Slack support** throughout</li><li>Continuous tuning during month 1</li></ul>
             
           </div><div class="tier-card deferred">
             
@@ -337,20 +384,20 @@ a{color:inherit}
             <ul class="tier-included"><li>Small fixes and prompt updates</li><li>Light maintenance on running systems</li><li>No engineering effort needed from your side</li></ul>
             
           </div></div><div class="investment-meta">
-          <div class="investment-term"><span class="investment-term-label">Payment Terms</span><span class="investment-term-value">50% deposit on signature ($5,000), 50% on system handover at Day 14.</span></div>
-          <div class="investment-term"><span class="investment-term-label">Start Date</span><span class="investment-term-value">Monday following deposit</span></div>
+          <div class="investment-term"><span class="investment-term-label">Payment Terms</span><span class="investment-term-value">**100% upfront on signature.** No second invoice to chase. Pick either tier below and pay via Stripe link to lock the start date.</span></div>
+          <div class="investment-term"><span class="investment-term-label">Start Date</span><span class="investment-term-value">Monday following payment</span></div>
           <div class="investment-term"><span class="investment-term-label">Support</span><span class="investment-term-value">Continuous during engagement (weekly working sessions + Slack support). Optional Care Plan at $1,000 per month after the partnership closes.</span></div>
         </div>
     <div class="investment-recurring">
         <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
-        <p class="investment-recurring-lead">Anthropic API roughly $50 to $100 per month depending on volume, Airtable subscription (likely already in place), email platform of your choice (Convertkit, Resend, or similar, light cost), Fireflies or equivalent transcript tool if not already used.</p>
+        <p class="investment-recurring-lead">Anthropic API roughly $50 to $100 per month depending on volume, OpenAI Image API roughly $5 to $15 per month for lead magnet cover generation, Airtable subscription (likely already in place), ConvertKit subscription (free up to 1,000 subs), Fireflies or equivalent transcript tool if not already used.</p>
         
       </div>
   </div>
 <div class="section">
     <span class="section-number">06 • Expected ROI</span>
     <h2>What you get back</h2>
-    <p>Henner is currently spending 5+ hours per week hand-building posts. 4 Creatives is targeting 7 to 8 new clients per month at €7k AOV. A single additional client per quarter attributed to the content system covers the full month-1 investment several times over. Beyond direct conversion, daily presence on LinkedIn compounds founder authority and inbound trust across the DTC ICP, which is the long-term lead-gen lever the audit engine plugs into when outreach scales up.</p>
+    <p>Henner is currently spending **5+ hours per week** hand-building posts. 4 Creatives is targeting **7 to 8 new clients per month at €7k AOV**. A single additional client per quarter attributed to the content system covers the full month-1 investment **several times over**. Beyond direct conversion, daily presence on LinkedIn compounds founder authority and inbound trust across the DTC ICP, which is the long-term lead-gen lever the audit engine plugs into when outreach scales up.</p>
     <div class="roi-grid">
       <div class="roi-stat"><div class="roi-stat-value">20+ hrs/month</div><div class="roi-stat-label">Hours Saved / Month</div></div>
       <div class="roi-stat"><div class="roi-stat-value">0</div><div class="roi-stat-label">Manual Errors</div></div>
@@ -360,25 +407,25 @@ a{color:inherit}
 <div class="section">
       <span class="section-number">07 • Requirements</span>
       <h2>What I need from you</h2>
-      <ul class="access-list"><li>Read access to Henner's existing LinkedIn posts and any past content drafts (for voice training)</li><li>30-min kickoff call with Henner and Philipp</li><li>Airtable workspace access (new base, or one of yours where I can build)</li><li>Logo and brand colors for the custom dashboard and lead magnet templates</li><li>List of 3 to 5 dream-fit DTC client examples (for lead magnet ICP targeting)</li><li>List of 5 to 10 competitor DTC creative agencies or DTC brands you want monitored (for the competitor source feed)</li><li>Decision on email platform for newsletter wiring (Convertkit, Resend, or alternative)</li><li>Access to Fireflies, Granola, or your current call-recording tool (for transcript source feed)</li><li>Optional: one current client domain to run the free audit demo before kickoff</li></ul>
+      <ul class="access-list"><li>Read access to Henner's existing LinkedIn posts and any past content drafts (for voice training)</li><li>30-min kickoff call with Henner and Philipp</li><li>Airtable workspace access (new base, or one of yours where I can build)</li><li>Logo and brand colors for the custom dashboard and lead magnet templates</li><li>List of 3 to 5 dream-fit DTC client examples (for lead magnet ICP targeting)</li><li>List of 5 to 10 competitor DTC creative agencies or DTC brands you want monitored (for the competitor source feed)</li><li>ConvertKit account or willingness to create one (newsletter wiring)</li><li>Access to Fireflies, Granola, or your current call-recording tool (for transcript source feed)</li><li>Optional: one current client domain to run the free audit demo before kickoff</li></ul>
     </div>
 <div class="section agreement-section">
       <span class="section-number">08 • Agreement &amp; Terms</span>
       <h2>Terms of engagement</h2>
       <p>Both parties agree to the following terms governing this engagement:</p>
-      <div class="terms-grid"><div class="term-item"><div class="term-title">Scope of Work</div><div class="term-text">This proposal defines the complete scope. Any work beyond what is described requires a separate agreement or amendment.</div></div><div class="term-item"><div class="term-title">Payment Terms</div><div class="term-text">Payment is due as outlined in the Investment section (50% deposit on signature ($5,000), 50% on system handover at Day 14.). Invoices are due within 14 days of issuance.</div></div><div class="term-item"><div class="term-title">Intellectual Property</div><div class="term-text">Upon full payment, all deliverables and custom code become the exclusive property of the Client. Iván Manfredi retains the right to reference the project in portfolios and case studies (without disclosing confidential data).</div></div><div class="term-item"><div class="term-title">Post-Delivery Support</div><div class="term-text">This engagement includes Continuous during engagement (weekly working sessions + Slack support). Optional Care Plan at $1,000 per month after the partnership closes. of post-delivery support after final handoff. Issues, adjustments, and questions related to delivered work are covered within this period at no additional cost.</div></div><div class="term-item"><div class="term-title">Cancellation</div><div class="term-text">Either party may terminate this agreement with 7 days written notice. Work completed up to the cancellation date will be invoiced proportionally.</div></div><div class="term-item"><div class="term-title">Confidentiality</div><div class="term-text">Both parties agree to keep confidential any proprietary information shared during this engagement. This obligation survives termination of the agreement.</div></div><div class="term-item"><div class="term-title">Liability</div><div class="term-text">Total liability under this engagement is limited to the total fees paid by the Client. Neither party shall be liable for indirect, incidental, or consequential damages.</div></div><div class="term-item"><div class="term-title">Data Protection</div><div class="term-text">The Service Provider will handle all client data accessed during the engagement in accordance with applicable data protection regulations. Access credentials will be used solely for the purposes described in this proposal and will not be retained after the engagement concludes.</div></div></div>
+      <div class="terms-grid"><div class="term-item"><div class="term-title">Scope of Work</div><div class="term-text">This proposal defines the complete scope. Any work beyond what is described requires a separate agreement or amendment.</div></div><div class="term-item"><div class="term-title">Payment Terms</div><div class="term-text">Payment is due as outlined in the Investment section (**100% upfront on signature.** No second invoice to chase. Pick either tier below and pay via Stripe link to lock the start date.). Invoices are due within 14 days of issuance.</div></div><div class="term-item"><div class="term-title">Intellectual Property</div><div class="term-text">Upon full payment, all deliverables and custom code become the exclusive property of the Client. Iván Manfredi retains the right to reference the project in portfolios and case studies (without disclosing confidential data).</div></div><div class="term-item"><div class="term-title">Post-Delivery Support</div><div class="term-text">This engagement includes Continuous during engagement (weekly working sessions + Slack support). Optional Care Plan at $1,000 per month after the partnership closes. of post-delivery support after final handoff. Issues, adjustments, and questions related to delivered work are covered within this period at no additional cost.</div></div><div class="term-item"><div class="term-title">Cancellation</div><div class="term-text">Either party may terminate this agreement with 7 days written notice. Work completed up to the cancellation date will be invoiced proportionally.</div></div><div class="term-item"><div class="term-title">Confidentiality</div><div class="term-text">Both parties agree to keep confidential any proprietary information shared during this engagement. This obligation survives termination of the agreement.</div></div><div class="term-item"><div class="term-title">Liability</div><div class="term-text">Total liability under this engagement is limited to the total fees paid by the Client. Neither party shall be liable for indirect, incidental, or consequential damages.</div></div><div class="term-item"><div class="term-title">Data Protection</div><div class="term-text">The Service Provider will handle all client data accessed during the engagement in accordance with applicable data protection regulations. Access credentials will be used solely for the purposes described in this proposal and will not be retained after the engagement concludes.</div></div></div>
       <p class="agreement-footnote">Governed by the laws of Spain. Disputes resolved through good-faith negotiation before formal proceedings.</p>
     </div>
 <div class="cta-section">
     
       <span class="section-number">Next Step</span>
-      <h2>Secure your project</h2>
-      <p>Pay the deposit to lock in your start date and begin the engagement.</p>
+      <h2>Pick your path</h2>
+      <p>Both options below lock in your start date and begin the engagement Monday. Pay in full upfront, no second invoice to chase.</p>
       <div class="cta-buttons">
-        <a href="https://buy.stripe.com/aFa9ALeyT2Vj8l0b9FfEk0R" class="btn-primary" target="_blank" rel="noopener">Pay Deposit →</a>
-        <a href="mailto:im@ivanmanfredi.com" class="btn-secondary">Reply via Email</a>
+        <a href="https://buy.stripe.com/6oU3cn3Uf3ZnbxcelRfEk0S" class="btn-secondary" target="_blank" rel="noopener">Pay $7,500 · Single Project →</a><a href="https://buy.stripe.com/aFa14f4YjdzX58OgtZfEk0T" class="btn-primary" target="_blank" rel="noopener">Pay $10,000 · Fractional · Month 1 →</a>
       </div>
-    
+      <p style="font-size:13px;color:var(--ink-mute);margin-top:14px">Prefer to talk first? <a href="mailto:im@ivanmanfredi.com" style="color:var(--accent);text-decoration:underline">Reply via email</a>.</p>
+      
     <div class="upsell-box">
           <h3>Future Opportunities</h3>
           <p class="upsell-lead">After month 1 the natural expansion paths include:</p>
@@ -392,6 +439,27 @@ a{color:inherit}
     <a href="mailto:im@ivanmanfredi.com">im@ivanmanfredi.com</a>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      fontFamily: "'IBM Plex Mono', monospace",
+      primaryColor: '#FFFFFF',
+      primaryBorderColor: '#1A1A1A',
+      primaryTextColor: '#1A1A1A',
+      lineColor: '#4C6E3D',
+      secondaryColor: '#EFEBE3',
+      tertiaryColor: '#F7F4EF',
+      mainBkg: '#FFFFFF',
+      clusterBkg: '#EFEBE3',
+      clusterBorder: '#5A5752',
+      edgeLabelBackground: '#F7F4EF'
+    },
+    flowchart: { curve: 'basis', nodeSpacing: 40, rankSpacing: 50, padding: 14, htmlLabels: true }
+  });
+</script>
 <script>
 (function(){
   const bar=document.querySelector('.scroll-progress');
