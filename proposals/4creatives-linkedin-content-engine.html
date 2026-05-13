@@ -28,7 +28,7 @@ a{color:inherit}
 .cover-monthyear{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink)}
 .cover-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:36px;margin-top:64px;border-top:1px solid var(--hairline);grid-column:1 / -1}
 .cover-detail{display:flex;flex-direction:column;gap:8px;min-width:0}
-.cover-detail-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-detail-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px}
 .cover-detail-value{font-size:16px;font-weight:600;color:var(--ink);line-height:1.4}
 
 /* SECTION */
@@ -120,6 +120,13 @@ a{color:inherit}
 .tier-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:3px;align-self:flex-start;transition:opacity .15s}
 .tier-link:hover{opacity:.7}
 .tier-payment-note{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--ink-mute);margin:-4px 0 4px}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px;margin:32px 0}
+.proof-card{background:var(--paper-raise);border:1px solid var(--hairline);overflow:hidden;display:flex;flex-direction:column}
+.proof-card img{width:100%;height:auto;display:block;border-bottom:1px solid var(--hairline)}
+.proof-card-body{padding:18px 22px}
+.proof-card-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.proof-card-caption{font-size:14px;color:var(--ink);line-height:1.5}
+@media(max-width:760px){.proof-grid{grid-template-columns:1fr}}
 .investment-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;padding:24px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin:0 0 24px}
 .investment-meta .investment-term{display:flex;flex-direction:column;gap:6px}
 @media (max-width:780px){.tiers-grid{grid-template-columns:1fr}}
@@ -296,6 +303,10 @@ a{color:inherit}
     <div class="sysflow"><div class="sysflow-stage"><div class="sysflow-num">01</div><div class="sysflow-title">Sources · weighted ingest</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Fireflies / Granola transcripts</span><span class="sysflow-item-meta">3.0×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Manual seeds in Airtable</span><span class="sysflow-item-meta">2.0×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Competitor post scrape</span><span class="sysflow-item-meta">0.5×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Perplexity weekly research</span><span class="sysflow-item-meta">0.3×</span></li></ul></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">02</div><div class="sysflow-title">Pipeline · 5 agents</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Context Retrieval (RAG over past calls + post patterns)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Categorizer (framework, story, hot take, teardown)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Hook Generator (<strong>10 variations</strong> per post)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Copywriter (in your voice)</span></li><li class="sysflow-item"><span class="sysflow-item-text">QA Editor (secondary refinement)</span></li></ul><div class="sysflow-branch"><div class="sysflow-branch-label">parallel branch</div><strong>Lead Magnet Engine</strong>  -  runs from approved topics. Produces landing page + resource page + OpenAI cover image + ConvertKit email draft.</div></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">03</div><div class="sysflow-title">Review &amp; Publish</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Posts land in Airtable Review Board</span></li><li class="sysflow-item"><span class="sysflow-item-text">Slack ping per batch</span></li><li class="sysflow-item"><span class="sysflow-item-text">One-tap approve → <strong>Unipile</strong> schedules to LinkedIn</span></li></ul></div></div>
     <p class="mermaid-caption">Sources weighted by signal strength. RAG-grounded agents draft each post. Lead magnets branch in parallel from approved topics.</p>
     
+    <h3>What it looks like in practice</h3>
+    <div class="proof-grid"><figure class="proof-card"><img src="https://resources.ivanmanfredi.com/proposals/assets/4creatives/kyle-content-system.png" alt="Kyle Hunt's content system board with LinkedIn posts queue" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Kyle Hunt's content system · live</div><div class="proof-card-caption">ClickUp board of Kyle's LinkedIn Posts list running through the same architecture. Each row is a post drafted by the multi-agent pipeline  -  source, format, status, all visible. <strong>Same system being deployed for 4 Creatives</strong> (you'd use Airtable instead of ClickUp).</div></figcaption></figure><figure class="proof-card"><img src="https://resources.ivanmanfredi.com/proposals/assets/4creatives/ivan-assessment-scoring.png" alt="Live interactive assessment lead magnet" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Live lead magnet assessment</div><div class="proof-card-caption">Example interactive assessment generated by the lead magnet engine  -  one of 5 formats. Question-based, branded, scored. <strong>Same engine</strong> deployed for 4 Creatives, tuned to your ICP and offer.</div></figcaption></figure></div>
+    
+    
     
   </div>
 <div class="section">
@@ -311,7 +322,7 @@ a{color:inherit}
         <div class="scope-group">
           <div class="scope-group-label">Workspace</div>
           <div class="scope-grid">
-            <div class="scope-item"><div class="scope-check"></div><div><strong>Airtable workspace</strong> · Briefs board, Review queue, Published log, editable Prompt Library (tweak prompts in-house, no n8n access required)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Unipile integration</strong> · LinkedIn post scheduling + DM distribution for lead magnets</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>ConvertKit list building</strong> · capture from lead magnets wired, lists configured for future newsletters</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Lead magnet landing + resource pages</strong> · stack TBD at kickoff (Webflow, Framer, or custom based on your existing site)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>System runbook + handoff documentation</strong> at Day 14</div></div>
+            <div class="scope-item"><div class="scope-check"></div><div><strong>Airtable workspace</strong> · Briefs board, Review queue, Published log, editable Prompt Library (tweak prompts in-house, no n8n access required)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Unipile integration</strong> · LinkedIn post scheduling + DM distribution for lead magnets</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>ConvertKit list building</strong> · capture from lead magnets wired, lists configured for future newsletters</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Lead magnet landing + resource pages</strong> · dynamically generated on a subdomain (e.g. resources.4creatives.com)  -  same architecture I use for ivanmanfredi.com/audit and /blueprint. No Webflow or Framer needed.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>System runbook + handoff documentation</strong> at Day 14</div></div>
           </div>
         </div>
       
@@ -338,7 +349,7 @@ a{color:inherit}
               <span class="tier-period">one-time</span>
             </div>
             <div class="tier-payment-note">50% deposit ($3,750) on signature, 50% on delivery</div>
-            <div class="tier-summary">The full build, end of engagement at Day 14. <strong>1 month of post-launch support</strong> included for fixes and prompt tuning. Hands-off after.</div>
+            <div class="tier-summary">Three-week build, followed by <strong>1 month of post-launch support</strong> for fixes and prompt tuning. End of engagement at Day 45  -  hands-off after that.</div>
             <ul class="tier-included"><li>Everything in Scope above</li><li><strong>1 month post-launch support</strong> for fixes and prompt tuning</li><li>Editable Prompt Library so you can tweak in-house</li></ul>
             
           </div><div class="tier-card recommended">
@@ -360,7 +371,7 @@ a{color:inherit}
               <span class="tier-period">per month</span>
             </div>
             
-            <div class="tier-summary">Natural continuation after Month 1 Fractional. Two-month minimum recommended. Three tier options ($3.5k / $6.5k / $10k per month)  -  pick the level that fits.</div>
+            <div class="tier-summary">Natural continuation after Month 1 Fractional. $6,500 per month is the standard tier  -  three options available ($3.5k / $6.5k / $10k), see link below for full breakdown. Two-month minimum recommended.</div>
             <ul class="tier-included"><li><strong>Ongoing optimization</strong> based on real performance data</li><li><strong>Client-facing weekly reports</strong> automated from Meta Ads + Klaviyo + Shopify (retention tool for your DTC book)</li><li><strong>Creative brief generator</strong> pulling from your winning-hook library</li><li><strong>Internal forecast model</strong> wired live to Stripe + QuickBooks (the Kyle sheet)</li><li><strong>Carousel posts</strong> with AI-generated slide images</li><li><strong>Cross-platform repurposing</strong> (LinkedIn winners → Twitter / IG / short-form video scripts)</li><li><strong>DTC audit engine</strong> re-skinned + outbound launch when your Looms outreach starts maxing out</li><li>Slack support + optional strategy calls</li></ul>
             <a class="tier-link" href="https://ivanmanfredi.com/fractional/" target="_blank" rel="noopener">See full tier breakdown →</a>
           </div><div class="tier-card deferred">
@@ -381,8 +392,8 @@ a{color:inherit}
         </div>
     <div class="investment-recurring">
         <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
-        <p class="investment-recurring-lead">Anthropic API roughly $50 to $100 per month depending on volume, OpenAI Image API roughly $5 to $15 per month for lead magnet covers, Supabase + Airtable + ConvertKit subscriptions (mostly already in place or on free tiers), Fireflies or equivalent transcript tool if not already used, Perplexity API (light cost), Unipile subscription for LinkedIn scheduling + DMs.</p>
-        
+        <p class="investment-recurring-lead">Anthropic API roughly $50 to $100 per month depending on post and lead magnet volume.</p>
+        <ul class="investment-recurring-list"><li>OpenAI Image API roughly $5 to $15 per month for lead magnet covers.</li><li>Unipile subscription roughly $30 to $80 per month for LinkedIn scheduling and DM distribution.</li><li>Supabase, Airtable, and ConvertKit subscriptions are typically already in place or on free tiers.</li><li>Fireflies or equivalent transcript tool if not already used.</li><li>Perplexity API access is light cost (under $20 per month at typical use).</li></ul>
       </div>
   </div>
 <div class="section">
@@ -396,7 +407,7 @@ a{color:inherit}
 <div class="section">
       <span class="section-number">07 • Requirements</span>
       <h2>What I need from you</h2>
-      <ul class="access-list"><li>Read access to your existing LinkedIn posts (for voice training)</li><li>Airtable workspace access (new base or one of yours)</li><li>Logo + brand colors for lead magnet templates</li><li>List of 3 to 5 dream-fit DTC client examples (for lead magnet ICP targeting)</li><li>List of 5 to 10 competitor DTC creative agencies or DTC brands to scrape patterns from</li><li>ConvertKit + Unipile accounts (or willingness to create)</li><li>Access to Fireflies / Granola (or your current call-recording tool)</li><li>Decision on landing-page stack (Webflow / Framer / custom) — can be made at kickoff</li></ul>
+      <ul class="access-list"><li>Read access to your existing LinkedIn posts (for voice training)</li><li>Airtable workspace access (new base or one of yours)</li><li>Logo + brand colors for lead magnet templates</li><li>List of 3 to 5 dream-fit DTC client examples (for lead magnet ICP targeting)</li><li>List of 5 to 10 competitor DTC creative agencies or DTC brands to scrape patterns from</li><li>ConvertKit + Unipile accounts (or willingness to create)</li><li>Access to Fireflies / Granola (or your current call-recording tool)</li><li>Authority on a subdomain (e.g. resources.4creatives.com) — I configure the DNS record, you provide registrar access for the domain</li></ul>
     </div>
 <div class="section agreement-section">
       <span class="section-number">08 • Agreement &amp; Terms</span>
@@ -411,7 +422,7 @@ a{color:inherit}
       <h2>Pick your path</h2>
       <p>Both options below lock in your start date and begin Monday. Payment terms differ per tier (see each card).</p>
       <div class="cta-buttons">
-        <a href="https://buy.stripe.com/aFa3cn76r7bzbxc7XtfEk13" class="btn-secondary" target="_blank" rel="noopener">Pay $3,750 deposit · Single Project →</a><a href="https://buy.stripe.com/fZu14fgH18fD58O4LhfEk14" class="btn-primary" target="_blank" rel="noopener">Pay $10,000 · Fractional · Month 1 →</a>
+        <a href="https://buy.stripe.com/bJe00baiDcvT9p41z5fEk15" class="btn-secondary" target="_blank" rel="noopener">Pay $3,750 deposit · Single Project →</a><a href="https://buy.stripe.com/8x24grcqLfI5dFk3HdfEk16" class="btn-primary" target="_blank" rel="noopener">Pay $10,000 · Fractional · Month 1 →</a>
       </div>
       <p style="font-size:13px;color:var(--ink-mute);margin-top:14px">Prefer to talk first? <a href="mailto:im@ivanmanfredi.com" style="color:var(--accent);text-decoration:underline">Reply via email</a>.</p>
       
