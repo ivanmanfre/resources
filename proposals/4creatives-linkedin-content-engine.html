@@ -260,21 +260,21 @@ a{color:inherit}
         <div class="logo-mark">IM</div>
         <span class="logo-text">Iván Manfredi</span>
       </div>
-      <span class="cover-meta">Proposal • May 13, 2026</span>
+      <span class="cover-meta">Proposal • May 14, 2026</span>
     </div>
     <div class="cover-left">
-      <div class="cover-tag">AI &amp; Automation Architect</div>
+      
       <h1>LinkedIn Content Engine</h1>
-      <p class="cover-sub"><strong>Daily LinkedIn posts in your voice</strong>, drafted automatically from real source signals (calls, competitor activity, DTC news, manual seeds), paired with a <strong>5-format lead magnet engine</strong> that captures and qualifies DTC brand leads.</p>
+      <p class="cover-sub"><strong>Daily LinkedIn posts in your voice</strong>, drafted automatically from real source signals (calls, competitor activity, DTC marketing trends, manual seeds), paired with a <strong>5-format lead magnet engine</strong> that captures and qualifies DTC brand leads.</p>
     </div>
     <div class="cover-right">
-      <div class="cover-numeral">13</div>
+      <div class="cover-numeral">14</div>
       <div class="cover-monthyear">MAY 2026</div>
     </div>
     <div class="cover-details">
       <div class="cover-detail"><span class="cover-detail-label">Prepared For</span><span class="cover-detail-value">Henner</span></div>
       <div class="cover-detail"><span class="cover-detail-label">Engagement</span><span class="cover-detail-value">4 Creatives</span></div>
-      <div class="cover-detail"><span class="cover-detail-label">Delivery</span><span class="cover-detail-value">Two-week build, plus one month of post-launch support</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Delivery</span><span class="cover-detail-value">Three-week build, plus one month of post-launch support</span></div>
       
       <div class="cover-detail"><span class="cover-detail-label">Investment</span><span class="cover-detail-value">$7,500 – $10,000</span></div>
     </div>
@@ -288,12 +288,12 @@ a{color:inherit}
 <div class="section">
     <span class="section-number">02 • The Solution</span>
     <h2>What we’re building</h2>
-    <p><strong>Daily LinkedIn posts in your voice</strong>, drafted automatically from real source signals (calls, competitor activity, DTC news, manual seeds), paired with a <strong>5-format lead magnet engine</strong> that captures and qualifies DTC brand leads.</p>
-    <p>Built on <strong>n8n + Anthropic Claude</strong>, integrated with Airtable (workspace + prompts + review queue), n8n (orchestration), Anthropic Claude (model), OpenAI Image (lead magnet covers), Slack (notifications), Fireflies or your meeting tool (transcripts), ConvertKit (email list). Designed to remove manual touchpoints while keeping you in full control.</p>
+    <p><strong>Daily LinkedIn posts in your voice</strong>, drafted automatically from real source signals (calls, competitor activity, DTC marketing trends, manual seeds), paired with a <strong>5-format lead magnet engine</strong> that captures and qualifies DTC brand leads.</p>
+    <p>Built on <strong>n8n + Anthropic Claude + Supabase</strong>, integrated with n8n (orchestration), Supabase (vector DB + content storage), Anthropic Claude (generation), OpenAI Image (lead magnet covers), Airtable (review queue + editable prompts), ConvertKit (email delivery), Fireflies / Granola (call transcripts), Perplexity (weekly trend research), Unipile (LinkedIn post scheduling + DM distribution), Short.io (smart links with geo-routing). Landing + resource page hosting TBD  -  Webflow, Framer, or custom, picked at kickoff based on your existing stack.. Designed to remove manual touchpoints while keeping you in full control.</p>
     
     <h3>System Flow</h3>
-    <div class="sysflow"><div class="sysflow-stage"><div class="sysflow-num">01</div><div class="sysflow-title">Sources · weighted ingest</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Fireflies / Granola call transcripts</span><span class="sysflow-item-meta">3.0×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Manual seeds in Airtable</span><span class="sysflow-item-meta">2.0×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Competitor DTC agency posts</span><span class="sysflow-item-meta">0.5×</span></li><li class="sysflow-item"><span class="sysflow-item-text">DTC marketing news + trends</span><span class="sysflow-item-meta">0.3×</span></li></ul></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">02</div><div class="sysflow-title">Pipeline · 5 sub-agents</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Topic Suggester</span></li><li class="sysflow-item"><span class="sysflow-item-text">Strategy Scorer</span></li><li class="sysflow-item"><span class="sysflow-item-text">Hook Generator</span></li><li class="sysflow-item"><span class="sysflow-item-text">Copywriter (in your voice)</span></li><li class="sysflow-item"><span class="sysflow-item-text">QA Editor</span></li></ul><div class="sysflow-branch"><div class="sysflow-branch-label">parallel branch</div><strong>Lead Magnet Engine</strong> runs in parallel from approved topics  -  5 asset formats with OpenAI cover gen</div></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">03</div><div class="sysflow-title">Review &amp; Publish</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Airtable Review Board</span></li><li class="sysflow-item"><span class="sysflow-item-text">Slack ping per batch</span></li><li class="sysflow-item"><span class="sysflow-item-text">One-tap approve → live</span></li></ul></div></div>
-    <p class="mermaid-caption">Sources weighted by signal strength. Five agents draft each post. Lead magnets branch from approved topics. You only see the final review queue.</p>
+    <div class="sysflow"><div class="sysflow-stage"><div class="sysflow-num">01</div><div class="sysflow-title">Sources · weighted ingest</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Fireflies / Granola call transcripts (webhook, auto-extract 3 to 5 ideas per call)</span><span class="sysflow-item-meta">3.0×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Manual seeds in Airtable</span><span class="sysflow-item-meta">2.0×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Competitor DTC agency post scrape</span><span class="sysflow-item-meta">0.5×</span></li><li class="sysflow-item"><span class="sysflow-item-text">Perplexity DTC marketing research (5 to 7 weekly topics)</span><span class="sysflow-item-meta">0.3×</span></li></ul></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">02</div><div class="sysflow-title">Pipeline · multi-agent generation</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Context Retrieval (RAG queries past calls + winning post patterns)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Categorizer (framework, story, hot take, teardown)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Hook Generator (10 opening variations per post)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Copywriter (in your voice)</span></li><li class="sysflow-item"><span class="sysflow-item-text">QA Editor (secondary refinement pass)</span></li></ul><div class="sysflow-branch"><div class="sysflow-branch-label">parallel branch</div><strong>Lead Magnet Engine</strong> runs from approved topics: full asset package  -  landing page + resource page + OpenAI cover image + ConvertKit email draft + Short.io smart link</div></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">03</div><div class="sysflow-title">Review &amp; Publish</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Posts + hook variants land in Airtable Review Board</span></li><li class="sysflow-item"><span class="sysflow-item-text">Slack ping per batch</span></li><li class="sysflow-item"><span class="sysflow-item-text">One-tap approve → Unipile schedules to LinkedIn at your chosen time</span></li></ul></div></div>
+    <p class="mermaid-caption">Sources weighted by signal strength. RAG-grounded multi-agent pipeline drafts each post. Lead magnets branch in parallel from approved topics. You only see the final review queue in Airtable.</p>
     
     
   </div>
@@ -304,13 +304,13 @@ a{color:inherit}
         <div class="scope-group">
           <div class="scope-group-label">Content System</div>
           <div class="scope-grid">
-            <div class="scope-item"><div class="scope-check"></div><div><strong>Post Generation pipeline</strong> · 5 sub-agents (Topic Suggester, Strategy Scorer, Hook Generator, Copywriter, QA Editor) producing 5 post types (Ad Teardown, Methodology, Case Study, Personal POV, Framework / Hook Library)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Lead Magnet System</strong> · 5 generation engines (Interactive Assessment, Guide, Template, Checklist, Swipe File)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Cover image generation</strong> · OpenAI Image creates the branded cover for every lead magnet, on demand</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Source pipeline</strong> · weighted ingest from call transcripts, manual seeds, competitor posts, and DTC marketing news</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Brand voice training</strong> from your existing LinkedIn archive and source content</div></div>
+            <div class="scope-item"><div class="scope-check"></div><div><strong>Post Generation pipeline</strong> · multi-agent flow with <strong>10 hook variations</strong> per post and RAG-grounded context retrieval. Produces 5 post types: Ad Teardown, Methodology, Case Study, Personal POV, Framework / Hook Library</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Lead Magnet System</strong> · 5 generation engines (Interactive Assessment, Guide, Template, Checklist, Swipe File). Each ships a complete asset package: landing page, resource page, AI-generated cover image, ConvertKit email draft, Short.io smart link</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Content Brain (RAG)</strong> · Supabase vector DB indexing call transcripts, high-performing post patterns, and brand guidelines. Output quality improves as your call library grows.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Source pipeline</strong> · weighted ingest from Fireflies / Granola transcripts, manual seeds, competitor scrape, and Perplexity weekly research</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Brand voice training</strong> from your existing LinkedIn archive, source content, and competitor patterns (one-time setup)</div></div>
           </div>
         </div>
         <div class="scope-group">
           <div class="scope-group-label">Workspace</div>
           <div class="scope-grid">
-            <div class="scope-item"><div class="scope-check"></div><div><strong>Airtable workspace</strong> · Briefs board, Review queue, Published log, editable Prompt Library (no n8n access required to tweak prompts)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>ConvertKit list building</strong> · lead-magnet capture wired, lists configured for future newsletters</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>System runbook + handoff documentation</strong> at Day 14</div></div>
+            <div class="scope-item"><div class="scope-check"></div><div><strong>Airtable workspace</strong> · Briefs board, Review queue, Published log, editable Prompt Library (no n8n access required to tweak prompts in-house)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Unipile integration</strong> · LinkedIn post scheduling at your chosen times + LinkedIn DM distribution for lead magnets</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>ConvertKit list building + Short.io smart links</strong> · capture from lead magnets wired, lists configured, geo-routed short links per asset</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Lead magnet landing + resource pages</strong> · Webflow, Framer, or custom (TBD at kickoff based on your existing stack)</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>System runbook + handoff documentation</strong> at Day 14</div></div>
           </div>
         </div>
       
@@ -321,10 +321,10 @@ a{color:inherit}
       <div class="table-scroll">
         <table class="timeline-table">
           <thead><tr><th>Phase</th><th>Duration</th><th>Deliverable</th></tr></thead>
-          <tbody><tr><td class="phase-name">Discovery + voice extraction</td><td class="phase-duration">Days 1 to 3</td><td class="phase-deliverable">Brand voice profile from your LinkedIn archive, 5 sub-agent prompts drafted in Airtable Prompt Library, source pipeline configured (Fireflies + competitor list + research feeds)</td></tr><tr><td class="phase-name">Build sprint</td><td class="phase-duration">Days 4 to 10</td><td class="phase-deliverable">5-agent Post Generation pipeline live with first batch of test posts, all 5 Lead Magnet engines deployed with first sample asset per format</td></tr><tr><td class="phase-name">Tune + handoff</td><td class="phase-duration">Days 11 to 14</td><td class="phase-deliverable">Both systems tuned against real outputs, all prompts editable in Airtable, system runbook delivered</td></tr><tr><td class="phase-name">Post-launch support</td><td class="phase-duration">Days 15 to 30</td><td class="phase-deliverable">1 month of fixes + tuning. On Fractional, this is the active partnership month (weekly sessions, Slack support, ongoing build).</td></tr></tbody>
+          <tbody><tr><td class="phase-name">Foundation</td><td class="phase-duration">Week 1</td><td class="phase-deliverable">Supabase vector DB + RAG functions, Airtable workspace with prompt library, Fireflies / Granola webhook integration, competitor post scrape + ingestion, brand voice profile from your LinkedIn archive</td></tr><tr><td class="phase-name">Content Generation</td><td class="phase-duration">Week 2</td><td class="phase-deliverable">Multi-agent post pipeline live (context retrieval, categorizer, hook gen with 10 variations, copywriter, QA editor), Perplexity weekly research automation, Unipile post scheduling integration, first test batch in Airtable</td></tr><tr><td class="phase-name">Lead Magnets + Distribution</td><td class="phase-duration">Week 3</td><td class="phase-deliverable">All 5 LM engines deployed with first sample asset per format, OpenAI cover image generation, landing + resource pages, ConvertKit integration, Short.io smart links, Unipile DM distribution wired, system runbook + handoff documentation</td></tr><tr><td class="phase-name">Post-launch support</td><td class="phase-duration">Days 15 to 30</td><td class="phase-deliverable">1 month of fixes + tuning. On Fractional, this is the active partnership month (weekly sessions, Slack support, ongoing build).</td></tr></tbody>
         </table>
       </div>
-      <div class="timeline-total">Total: Two-week build, plus one month of post-launch support</div>
+      <div class="timeline-total">Total: Three-week build, plus one month of post-launch support</div>
     </div>
 <div class="section">
     <span class="section-number">05 • Investment</span>
@@ -353,7 +353,7 @@ a{color:inherit}
             
             <div class="tier-name">Months 2 &amp; 3 Continuation</div>
             <div class="tier-price-row">
-              <span class="tier-price"><span class="currency">$</span>3,500 – 10,000</span>
+              <span class="tier-price"><span class="currency">$</span>3,500 to 10,000</span>
               <span class="tier-period">per month</span>
             </div>
             <div class="tier-summary">Pick the tier that matches what your system needs next. Available only after Month 1 Fractional.</div>
@@ -376,7 +376,7 @@ a{color:inherit}
         </div>
     <div class="investment-recurring">
         <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
-        <p class="investment-recurring-lead">Anthropic API roughly $50 to $100 per month depending on volume, OpenAI Image API roughly $5 to $15 per month for lead magnet cover generation, Airtable subscription (likely already in place), ConvertKit subscription (free up to 1,000 subs), Fireflies or equivalent transcript tool if not already used.</p>
+        <p class="investment-recurring-lead">Anthropic API roughly $50 to $100 per month depending on volume, OpenAI Image API roughly $5 to $15 per month for lead magnet covers, Supabase + Airtable + ConvertKit + Short.io subscriptions (mostly already in place or free tiers), Fireflies or equivalent transcript tool if not already used, Perplexity API if pulled directly (light cost), Unipile subscription for LinkedIn scheduling + DMs.</p>
         
       </div>
   </div>
@@ -391,7 +391,7 @@ a{color:inherit}
 <div class="section">
       <span class="section-number">07 • Requirements</span>
       <h2>What I need from you</h2>
-      <ul class="access-list"><li>Read access to your existing LinkedIn posts and any past content drafts (for voice training)</li><li>Airtable workspace access (new base, or one of yours where I can build)</li><li>Logo and brand colors for the lead magnet templates</li><li>List of 3 to 5 dream-fit DTC client examples (for lead magnet ICP targeting)</li><li>List of 5 to 10 competitor DTC creative agencies or DTC brands you want monitored (for the competitor source feed)</li><li>ConvertKit account or willingness to create one (newsletter wiring)</li><li>Access to Fireflies, Granola, or your current call-recording tool (for transcript source feed)</li></ul>
+      <ul class="access-list"><li>Read access to your existing LinkedIn posts and any past content drafts (for voice training)</li><li>Airtable workspace access (new base, or one of yours where I can build)</li><li>Logo and brand colors for the lead magnet templates</li><li>List of 3 to 5 dream-fit DTC client examples (for lead magnet ICP targeting)</li><li>List of 5 to 10 competitor DTC creative agencies or DTC brands to scrape patterns from</li><li>ConvertKit account or willingness to create one</li><li>Unipile account or willingness to create one</li><li>Access to Fireflies, Granola, or your current call-recording tool (transcript source feed)</li><li>Decision on landing-page stack (Webflow, Framer, or custom) — can be made during kickoff</li></ul>
     </div>
 <div class="section agreement-section">
       <span class="section-number">08 • Agreement &amp; Terms</span>
@@ -403,17 +403,17 @@ a{color:inherit}
 <div class="cta-section">
     
       <span class="section-number">Next Step</span>
-      <h2>Pick your path</h2>
-      <p>Both options below lock in your start date and begin the engagement Monday. Pay in full upfront, no second invoice to chase.</p>
+      <h2>Secure your project</h2>
+      <p>Pay in full to lock in your start date and begin the engagement.</p>
       <div class="cta-buttons">
-        <a href="https://buy.stripe.com/28E5kv3Uf0NbgRw1z5fEk0Y" class="btn-secondary" target="_blank" rel="noopener">Pay $7,500 · Single Project →</a><a href="https://buy.stripe.com/14A8wH4YjcvT6cSb9FfEk0Z" class="btn-primary" target="_blank" rel="noopener">Pay $10,000 · Fractional · Month 1 →</a>
+        <a href="https://buy.stripe.com/eVq5kvaiD3Zn44K7XtfEk10" class="btn-primary" target="_blank" rel="noopener">Pay $10000 →</a>
+        <a href="mailto:im@ivanmanfredi.com" class="btn-secondary">Reply via Email</a>
       </div>
-      <p style="font-size:13px;color:var(--ink-mute);margin-top:14px">Prefer to talk first? <a href="mailto:im@ivanmanfredi.com" style="color:var(--accent);text-decoration:underline">Reply via email</a>.</p>
-      
-    <div class="upsell-box"><h3>Future Opportunities</h3><p class="upsell-lead">After month 1, natural expansion paths if you want to keep building together:</p><ul class="upsell-list"><li>LinkedIn outreach automation (when your Looms outreach starts maxing out)</li><li>DTC audit engine re-skinned for your ICP (becomes the outbound weapon)</li><li>Client-facing weekly performance reports automated from Meta Ads + Klaviyo + Shopify</li><li>Creative brief generator pulling from your winning-hook library</li><li>Internal forecast model wired live to Stripe + QuickBooks</li><li>New-client onboarding automation (auto-provisions ClickUp + Slack + Drive)</li><li>Daily pulse Slack digest for the team</li><li>Video editing AI assist for the cutter bottleneck</li></ul></div>
+    
+    <div class="upsell-box"><h3>Future Opportunities</h3><p class="upsell-lead">After month 1, natural expansion paths if you want to keep building together:</p><ul class="upsell-list"><li>LinkedIn outreach automation (when your Looms outreach starts maxing out)</li><li>DTC audit engine re-skinned for your ICP (becomes the outbound weapon when outreach launches)</li><li>Client-facing weekly performance reports automated from Meta Ads + Klaviyo + Shopify</li><li>Creative brief generator pulling from your winning-hook library</li><li>Internal forecast model wired live to Stripe + QuickBooks</li><li>New-client onboarding automation (auto-provisions ClickUp + Slack + Drive)</li><li>Daily pulse Slack digest for the team</li><li>Video editing AI assist for the cutter bottleneck</li><li>Carousel posts with AI-generated slide images for frameworks and step-by-step content</li><li>Cross-platform repurposing (LinkedIn winners adapted to Twitter / IG / short-form video scripts)</li></ul></div>
   </div>
 <div class="footer">
-  <div class="footer-left">Iván Manfredi • AI &amp; Automation Architect</div>
+  <div class="footer-left">Iván Manfredi</div>
   <div class="footer-right">
     <a href="https://ivanmanfredi.com">ivanmanfredi.com</a>
     <a href="mailto:im@ivanmanfredi.com">im@ivanmanfredi.com</a>
