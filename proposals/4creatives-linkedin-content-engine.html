@@ -280,86 +280,54 @@ a{color:inherit}
   margin:0 0 36px;
 }
 
-/* ── Pipeline: 3 cards + 2 arrows ── */
-.sysflow-wrap .sysflow{
-  display:grid;
-  grid-template-columns:1fr 44px 1.3fr 44px 1fr;
-  gap:0;align-items:start;
-  margin:32px 0 0;
+/* ── Architecture diagram ── */
+.arch{display:flex;flex-direction:column;align-items:center;margin:0 0 8px;width:100%}
+.arch-sources{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%;max-width:680px}
+.arch-chip{
+  display:inline-flex;padding:7px 14px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(247,244,239,.15);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(247,244,239,.75);
 }
-
-/* Each stage = a proper panel node */
-.sysflow-wrap .sysflow-stage{
-  position:relative;overflow:hidden;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(247,244,239,.1);
-  border-top:2px solid #709A5D;
-  padding:24px 24px 24px;
-  display:flex;flex-direction:column;gap:0;
-  min-height:200px;
+.arch-arrow{
+  color:rgba(112,154,93,.55);font-family:'IBM Plex Mono',monospace;
+  font-size:13px;letter-spacing:.15em;padding:12px 0;line-height:1;text-align:center;
 }
-
-/* Ghost watermark number */
-.sysflow-wrap .sysflow-num{
-  position:absolute;bottom:-10px;right:10px;
-  font-family:'DM Serif Display',serif;font-style:italic;
-  font-size:96px;color:rgba(247,244,239,.07);
-  line-height:.85;letter-spacing:-.04em;
-  pointer-events:none;z-index:0;margin:0;transform:none;
+.arch-block{
+  width:100%;max-width:680px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(247,244,239,.1);
+  border-top:2px solid #709A5D;padding:20px 28px;
 }
-.sysflow-wrap .sysflow-stage>*:not(.sysflow-num){position:relative;z-index:1}
-
-/* Stage label */
-.sysflow-wrap .sysflow-title{
+.arch-block-title{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:#709A5D;margin-bottom:8px;
+}
+.arch-block-sub{
+  font-family:'Source Serif 4',serif;font-size:14px;
+  color:rgba(247,244,239,.8);line-height:1.55;
+}
+.arch-pipeline-seq{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin-top:10px}
+.arch-pipeline-seq span{font-family:'Source Serif 4',serif;font-size:13px;color:rgba(247,244,239,.85)}
+.arch-step-sep{color:rgba(112,154,93,.5)!important;font-family:'IBM Plex Mono',monospace!important;font-size:11px!important}
+.arch-approve{
   font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
   letter-spacing:.22em;text-transform:uppercase;
-  color:#709A5D;border-top:none;padding-top:0;
-  margin-bottom:18px;
+  color:rgba(112,154,93,.7);padding:10px 0 0;text-align:center;
 }
-
-/* Items */
-.sysflow-wrap .sysflow-items{margin:0;padding:0}
-.sysflow-wrap .sysflow-item{
-  font-family:'Source Serif 4',Georgia,serif;
-  font-size:14px;color:#F7F4EF;line-height:1.6;
-  padding:9px 0;
-  border-bottom:1px solid rgba(247,244,239,.09);
-  display:block;
+.arch-fork-arrows{font-size:18px;letter-spacing:.5em;padding:2px 0}
+.arch-outputs{display:flex;gap:20px;width:100%;max-width:680px}
+.arch-output{
+  flex:1;background:rgba(255,255,255,.04);
+  border:1px solid rgba(247,244,239,.1);border-top:2px solid rgba(112,154,93,.4);
+  padding:18px 20px;
 }
-.sysflow-wrap .sysflow-item:last-child{border-bottom:none}
-.sysflow-wrap .sysflow-item-text{
-  font-family:'Source Serif 4',Georgia,serif;
-  font-size:14px;color:#F7F4EF;font-weight:400;
-}
-.sysflow-wrap .sysflow-item strong{color:#fff;font-weight:600}
-
-/* Arrow connector */
-.sysflow-wrap .sysflow-arrow{
-  display:flex;align-items:center;justify-content:center;
-  padding-top:112px;
-  font-size:20px;color:rgba(112,154,93,.6);
-  font-family:inherit;font-style:normal;transform:none;
-}
-.sysflow-wrap .sysflow-arrow::after{content:none}
-
-/* Parallel branch box */
-.sysflow-wrap .sysflow-branch{
-  margin-top:18px;padding:14px 16px;
-  background:rgba(112,154,93,.08);
-  border:1px dashed rgba(112,154,93,.45);
-  font-family:'Source Serif 4',serif;font-size:13px;
-  color:#F7F4EF;line-height:1.55;
-}
-.sysflow-wrap .sysflow-branch-label{
+.arch-output-title{
   font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:#709A5D;margin-bottom:7px;
+  letter-spacing:.22em;text-transform:uppercase;color:#709A5D;margin-bottom:8px;
 }
-.sysflow-wrap .sysflow-branch strong{color:#fff}
-
-/* Caption */
-.sysflow-wrap .mermaid-caption{
-  color:rgba(247,244,239,.25);font-style:italic;font-size:13px;margin-top:28px;
+.arch-output-sub{
+  font-family:'Source Serif 4',serif;font-size:13px;
+  color:rgba(247,244,239,.75);line-height:1.55;
 }
 
 /* Callout */
@@ -371,26 +339,17 @@ a{color:inherit}
 }
 .sysflow-wrap .problem-card p{
   font-family:'Source Serif 4',serif;font-size:16px;
-  color:rgba(247,244,239,.9);line-height:1.75;max-width:none;margin:0;
+  color:rgba(247,244,244,.9);line-height:1.75;max-width:none;margin:0;
 }
 .sysflow-wrap .problem-card p strong{color:#fff}
 
-/* Mobile */
 @media(max-width:900px){
   .sysflow-wrap{padding:56px max(32px,calc((100vw - 1080px)/2)) 44px}
 }
-@media(max-width:880px){
-  .sysflow-wrap .sysflow{grid-template-columns:1fr}
-  .sysflow-wrap .sysflow-stage{min-height:auto}
-  .sysflow-wrap .sysflow-arrow{
-    padding-top:0;justify-content:flex-start;
-    font-size:0;height:32px;align-items:center;
-  }
-  .sysflow-wrap .sysflow-arrow::after{
-    content:'↓';font-size:14px;
-    font-family:'IBM Plex Mono',monospace;
-    color:rgba(112,154,93,.5);
-  }
+@media(max-width:700px){
+  .arch-outputs{flex-direction:column}
+  .arch-sources{gap:6px}
+  .arch-chip{font-size:10px;padding:6px 10px}
 }
 
 /* MOBILE RECURRING TABLE: hide note col */
@@ -463,7 +422,51 @@ a{color:inherit}
     <div class="sysflow-wrap"><span class="section-number">02 • The Solution</span>
     <h2>What we’re building</h2>
     <h3>System Flow</h3>
-    <div class="sysflow"><div class="sysflow-stage"><div class="sysflow-num">01</div><div class="sysflow-title">Sources · weighted ingest</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Call Transcripts</span></li><li class="sysflow-item"><span class="sysflow-item-text">Manual seeds in Airtable</span></li><li class="sysflow-item"><span class="sysflow-item-text">Competitor post scrape</span></li><li class="sysflow-item"><span class="sysflow-item-text">Perplexity weekly research</span></li></ul></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">02</div><div class="sysflow-title">Pipeline · 5 agents</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Context Retrieval (RAG over past calls + post patterns)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Categorizer (framework, story, hot take, teardown)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Hook Generator (<strong>10 variations</strong> per post)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Copywriter (in your voice)</span></li><li class="sysflow-item"><span class="sysflow-item-text">QA Editor (secondary refinement)</span></li></ul><div class="sysflow-branch"><div class="sysflow-branch-label">parallel branch</div><strong>Lead Magnet Engine</strong>  -  runs from approved topics. Produces landing page + resource page + OpenAI cover image + ConvertKit email.</div></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">03</div><div class="sysflow-title">Review &amp; Publish</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Posts land in Airtable Review Board</span></li><li class="sysflow-item"><span class="sysflow-item-text">Slack ping per batch</span></li><li class="sysflow-item"><span class="sysflow-item-text">One-tap approve → <strong>Unipile</strong> schedules to LinkedIn</span></li></ul></div></div>
+    <div class="arch">
+      <div class="arch-sources">
+        <span class="arch-chip">Call Transcripts</span>
+        <span class="arch-chip">Airtable Seeds</span>
+        <span class="arch-chip">Competitor Scrape</span>
+        <span class="arch-chip">Perplexity Research</span>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-block">
+        <div class="arch-block-title">Content Brain · RAG</div>
+        <div class="arch-block-sub">Supabase vector DB — indexes your call library, post patterns &amp; brand voice. Output quality compounds as your library grows.</div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-block">
+        <div class="arch-block-title">5-Agent Pipeline</div>
+        <div class="arch-pipeline-seq">
+          <span>Context Retrieval</span>
+          <span class="arch-step-sep">→</span>
+          <span>Categorize</span>
+          <span class="arch-step-sep">→</span>
+          <span>10 Hook Variations</span>
+          <span class="arch-step-sep">→</span>
+          <span>Write in your voice</span>
+          <span class="arch-step-sep">→</span>
+          <span>QA Review</span>
+        </div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-block">
+        <div class="arch-block-title">Airtable Review Board</div>
+        <div class="arch-block-sub">Slack ping per batch · read the draft, tap approve, done</div>
+      </div>
+      <div class="arch-approve">one-tap approve</div>
+      <div class="arch-arrow arch-fork-arrows">↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+      <div class="arch-outputs">
+        <div class="arch-output">
+          <div class="arch-output-title">LinkedIn Post</div>
+          <div class="arch-output-sub">Unipile schedules it to LinkedIn at the time you select</div>
+        </div>
+        <div class="arch-output">
+          <div class="arch-output-title">Lead Magnet</div>
+          <div class="arch-output-sub">Landing page · Resource page · Cover image · ConvertKit email</div>
+        </div>
+      </div>
+    </div>
     <div class="problem-card" style="margin:28px 0 0"><p><strong>Once it's running, your daily task is under 10 minutes.</strong> Posts queue up in Airtable each week. Read the draft, tap approve, done. LinkedIn schedules itself. Lead magnets branch automatically from approved topics. No briefing, no writing, nothing to manage.</p></div></div>
     
     <h3>What it looks like in practice</h3>
