@@ -253,32 +253,143 @@ a{color:inherit}
   .timeline-table .phase-deliverable{font-size:14px;line-height:1.7;color:var(--ink-soft)}
 }
 
-/* DARK FLOW BAND — clean editorial, no nested card boxes */
-.sysflow-wrap{margin:36px -80px 0;padding:52px 80px 48px;background:#1a1a1a}
-.sysflow-wrap h3{color:rgba(247,244,239,.35);border-left-color:rgba(112,154,93,.5);margin-top:0;font-size:10px}
-/* Stages: transparent — text floats directly on dark bg */
-.sysflow-wrap .sysflow-stage{background:transparent;border:none;border-top:1px solid rgba(112,154,93,.4);padding:20px 0 0;gap:10px}
-/* Ghost stage number — decorative, low opacity */
-.sysflow-wrap .sysflow-num{font-size:80px;color:rgba(247,244,239,.05);line-height:.85;letter-spacing:-.04em;position:static;margin-bottom:-6px;font-family:'DM Serif Display',serif;font-style:italic}
-/* Stage title */
-.sysflow-wrap .sysflow-title{color:#709A5D;border-top:none;padding-top:0;font-size:10px;letter-spacing:.2em}
-/* Items */
-.sysflow-wrap .sysflow-item{padding:7px 0;border-bottom:1px solid rgba(247,244,239,.05)}
+/* SOLUTION — full-width dark section, AgentReadySection pattern */
+.solution-dark-section{padding-top:0;border-top-color:rgba(247,244,239,.06)}
+
+/* Dark band: full viewport width, content aligned to page grid */
+.sysflow-wrap{
+  width:100vw;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  background:#1a1a1a;
+  padding:80px max(80px,calc((100vw - 1080px)/2)) 60px;
+  margin-bottom:0;
+  overflow:hidden;
+}
+
+/* Section label + headline inside dark zone */
+.sysflow-wrap .section-number{background:rgba(247,244,239,.1);color:rgba(247,244,239,.55);margin-bottom:24px}
+.sysflow-wrap h2{color:#F7F4EF;margin-bottom:60px}
+
+/* "System Flow" sublabel */
+.sysflow-wrap h3{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(247,244,239,.28);border-left:none;padding-left:0;
+  margin:0 0 36px;
+}
+
+/* ── Stages: vertical blocks ── */
+.sysflow-wrap .sysflow{display:block;margin:0}
+
+/* Each stage as a positioned block with ghost numeral behind */
+.sysflow-wrap .sysflow-stage{
+  position:relative;
+  display:block;
+  background:transparent;border:none;
+  padding:48px 0;
+  border-top:1px solid rgba(247,244,239,.1);
+  overflow:hidden;
+}
+.sysflow-wrap .sysflow-stage:first-child{border-top:none;padding-top:0}
+
+/* Ghost numeral — huge, behind content, barely visible */
+.sysflow-wrap .sysflow-num{
+  position:absolute;top:50%;right:-8px;
+  transform:translateY(-55%);
+  font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;
+  font-size:clamp(100px,18vw,260px);
+  color:#F7F4EF;opacity:.04;
+  line-height:1;letter-spacing:-.04em;
+  pointer-events:none;user-select:none;
+  z-index:0;margin:0;
+}
+
+/* All non-ghost content sits on top */
+.sysflow-wrap .sysflow-stage>*:not(.sysflow-num){position:relative;z-index:1}
+
+/* Stage title — visible numeral + label, styled like PreconditionItem numeral */
+.sysflow-wrap .sysflow-title{
+  display:flex;align-items:center;gap:16px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#709A5D;border-top:none;padding-top:0;
+  margin-bottom:20px;
+}
+
+/* Items — Source Serif for readability, like AgentReadySection body */
+.sysflow-wrap .sysflow-items{margin:0;padding:0}
+.sysflow-wrap .sysflow-item{
+  display:block;
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:16px;line-height:1.65;
+  color:rgba(247,244,239,.82);
+  padding:10px 0;
+  border-bottom:1px solid rgba(247,244,239,.08);
+  justify-content:unset;gap:0;
+}
 .sysflow-wrap .sysflow-item:last-child{border-bottom:none}
-.sysflow-wrap .sysflow-item-text{color:#F7F4EF;font-weight:400;font-size:13.5px}
-.sysflow-wrap .sysflow-item strong{color:#fff}
-/* Arrow connector */
-.sysflow-wrap .sysflow-arrow{color:rgba(112,154,93,.5);font-size:18px;padding-top:32px;font-family:inherit;font-style:normal;align-items:flex-start}
+.sysflow-wrap .sysflow-item-text{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:16px;color:rgba(247,244,239,.82);font-weight:400;
+}
+.sysflow-wrap .sysflow-item strong{color:#F7F4EF;font-weight:600}
+
+/* Arrow between stages — ↓ indicator */
+.sysflow-wrap .sysflow-arrow{
+  display:flex;align-items:center;
+  height:28px;padding:0;
+  font-size:0;transform:none;
+  color:rgba(112,154,93,.4);
+}
+.sysflow-wrap .sysflow-arrow::after{
+  content:'↓';font-size:13px;
+  font-family:'IBM Plex Mono',monospace;
+  color:rgba(112,154,93,.4);
+  letter-spacing:.05em;
+}
+
 /* Parallel branch */
-.sysflow-wrap .sysflow-branch{margin-top:16px;padding:14px 18px;background:transparent;border:1px dashed rgba(112,154,93,.3);font-size:13px;color:#F7F4EF;line-height:1.55}
-.sysflow-wrap .sysflow-branch-label{color:#709A5D;margin-bottom:6px}
-/* Caption and callout card */
-.sysflow-wrap .mermaid-caption{color:rgba(247,244,239,.25);font-style:italic;margin-top:20px;font-size:13px}
-.sysflow-wrap .problem-card{background:transparent;border-left:2px solid rgba(112,154,93,.45);padding:20px 0 20px 24px;margin-top:32px}
-.sysflow-wrap .problem-card p{color:#F7F4EF;font-size:16px}
-.sysflow-wrap .problem-card p strong{color:#fff}
-@media(max-width:900px){.sysflow-wrap{margin:36px -32px 0;padding:40px 32px 36px}}
-@media(max-width:880px){.sysflow-wrap .sysflow{grid-template-columns:1fr}.sysflow-wrap .sysflow-arrow{padding:10px 0;justify-content:flex-start;font-size:16px}}
+.sysflow-wrap .sysflow-branch{
+  margin-top:20px;padding:16px 24px;
+  background:transparent;
+  border-left:2px solid rgba(112,154,93,.5);
+  font-family:'Source Serif 4',serif;font-size:15px;
+  color:rgba(247,244,239,.82);line-height:1.65;
+}
+.sysflow-wrap .sysflow-branch-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#709A5D;margin-bottom:8px;
+}
+.sysflow-wrap .sysflow-branch strong{color:#F7F4EF}
+
+/* Caption */
+.sysflow-wrap .mermaid-caption{
+  color:rgba(247,244,239,.25);font-style:italic;font-size:13px;margin-top:24px;
+}
+
+/* Callout card */
+.sysflow-wrap .problem-card{
+  background:transparent;
+  border-left:2px solid rgba(112,154,93,.5);
+  padding:24px 0 24px 28px;margin-top:40px;
+}
+.sysflow-wrap .problem-card p{
+  font-family:'Source Serif 4',serif;font-size:17px;
+  color:rgba(247,244,239,.88);line-height:1.75;max-width:none;margin:0;
+}
+.sysflow-wrap .problem-card p strong{color:#F7F4EF}
+
+/* Mobile */
+@media(max-width:900px){
+  .sysflow-wrap{padding:56px max(32px,calc((100vw - 1080px)/2)) 44px}
+}
+@media(max-width:640px){
+  .sysflow-wrap .sysflow-stage{padding:36px 0}
+  .sysflow-wrap .sysflow-num{font-size:100px;right:-4px}
+}
 
 /* MOBILE RECURRING TABLE: hide note col */
 @media(max-width:600px){
@@ -346,11 +457,10 @@ a{color:inherit}
     <div class="problem-card"><p>Henner stopped posting on LinkedIn <strong>two months ago</strong> because hand-building each post (sourcing ideas, translating from English drops, editing for voice) was eating hours he could not afford as pod lead. He needs a <strong>daily-post cadence</strong> running on autopilot, paired with a <strong>lead magnet engine</strong> that converts that audience into qualified DTC brand leads.</p></div>
     <p>Currently absorbing approximately <strong>5+ hrs/week</strong> in manual work, with the additional cost of dropped follow-ups and missed context.</p>
   </div>
-<div class="section">
-    <span class="section-number">02 • The Solution</span>
+<div class="section solution-dark-section">
+    <div class="sysflow-wrap"><span class="section-number">02 • The Solution</span>
     <h2>What we’re building</h2>
-    
-    <div class="sysflow-wrap"><h3>System Flow</h3>
+    <h3>System Flow</h3>
     <div class="sysflow"><div class="sysflow-stage"><div class="sysflow-num">01</div><div class="sysflow-title">Sources · weighted ingest</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Call Transcripts</span></li><li class="sysflow-item"><span class="sysflow-item-text">Manual seeds in Airtable</span></li><li class="sysflow-item"><span class="sysflow-item-text">Competitor post scrape</span></li><li class="sysflow-item"><span class="sysflow-item-text">Perplexity weekly research</span></li></ul></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">02</div><div class="sysflow-title">Pipeline · 5 agents</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Context Retrieval (RAG over past calls + post patterns)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Categorizer (framework, story, hot take, teardown)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Hook Generator (<strong>10 variations</strong> per post)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Copywriter (in your voice)</span></li><li class="sysflow-item"><span class="sysflow-item-text">QA Editor (secondary refinement)</span></li></ul><div class="sysflow-branch"><div class="sysflow-branch-label">parallel branch</div><strong>Lead Magnet Engine</strong>  -  runs from approved topics. Produces landing page + resource page + OpenAI cover image + ConvertKit email draft.</div></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">03</div><div class="sysflow-title">Review &amp; Publish</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Posts land in Airtable Review Board</span></li><li class="sysflow-item"><span class="sysflow-item-text">Slack ping per batch</span></li><li class="sysflow-item"><span class="sysflow-item-text">One-tap approve → <strong>Unipile</strong> schedules to LinkedIn</span></li></ul></div></div>
     <p class="mermaid-caption">Sources weighted by signal strength. RAG-grounded agents draft each post. Lead magnets branch in parallel from approved topics.</p>
     <div class="problem-card" style="margin:28px 0 0"><p><strong>Once it's running, your daily task is under 10 minutes.</strong> Posts queue up in Airtable each week. Read the draft, tap approve, done. LinkedIn schedules itself. Lead magnets branch automatically from approved topics. No briefing, no writing, nothing to manage.</p></div></div>
