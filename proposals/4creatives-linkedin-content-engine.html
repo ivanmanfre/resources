@@ -52,7 +52,7 @@ a{color:inherit}
 .flow-step-desc{font-size:15px;color:var(--ink-soft);line-height:1.7}
 
 /* SCOPE */
-.scope-grid{margin:0;border-top:1px solid var(--hairline)}
+.scope-grid{margin:0;border-top:1px solid var(--hairline);max-width:840px}
 .scope-group{margin:32px 0 40px}
 .scope-group:first-of-type{margin-top:24px}
 .scope-group-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
@@ -103,7 +103,7 @@ a{color:inherit}
 .investment-recurring-list li{padding:10px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft);line-height:1.6}
 .investment-recurring-list li:last-child{border-bottom:none}
 .tiers-intro{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:720px;margin:0 0 28px}
-.tiers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:24px 0 36px}
+.tiers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:24px 0 36px;align-items:start}
 .tier-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
 .tier-card.recommended{border:1.5px solid var(--accent);box-shadow:0 2px 12px rgba(76,110,61,.08)}
 .tier-card.deferred{background:var(--paper-sunk);border-style:dashed}
@@ -480,7 +480,7 @@ a{color:inherit}
       const suffix=text.replace(/[0-9.,]/g,'');
       const isInt=!text.includes('.');
       let start=0;
-      const duration=1200;
+      const duration=600;
       const startTime=performance.now();
       function tick(now){
         const p=Math.min((now-startTime)/duration,1);
