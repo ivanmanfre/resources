@@ -13,20 +13,20 @@ body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:va
 a{color:inherit}
 
 /* COVER */
-.cover{min-height:100vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:64px;align-items:center}
+.cover{min-height:100vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto}
 .cover-nav{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:14px}
 .logo-mark{width:40px;height:40px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.05em;color:var(--ink)}
 .logo-text{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
 .cover-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
 .cover-tag{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px}
-.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,5.2vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.01em;color:var(--ink);margin-bottom:32px;max-width:760px}
-.cover h1 em{font-style:italic;color:var(--accent)}
-.cover-sub{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:520px;margin-bottom:0;border-left:2px solid var(--accent);padding-left:20px}
+.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(44px,8.5vw,108px);font-weight:400;line-height:0.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:40px;max-width:920px}
+.cover h1 em{font-style:italic;color:var(--accent);position:relative;display:inline}.cover h1 em::after{content:'';position:absolute;left:-1%;right:-1%;bottom:.1em;height:.36em;background:var(--accent);opacity:.18;z-index:-1;pointer-events:none}
+.cover-sub{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:600px;margin-bottom:0;border-left:2px solid var(--accent);padding-left:20px}
 .cover-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;text-align:right}
 .cover-numeral{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(140px,18vw,260px);line-height:.85;color:var(--accent);letter-spacing:-.04em;margin-bottom:12px}
 .cover-monthyear{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink)}
-.cover-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:36px;margin-top:64px;border-top:1px solid var(--hairline);grid-column:1 / -1}
+.cover-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:36px;margin-top:64px;border-top:1px solid var(--hairline)}
 .cover-detail{display:flex;flex-direction:column;gap:8px;min-width:0}
 .cover-detail-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px}
 .cover-detail-value{font-size:16px;font-weight:600;color:var(--ink);line-height:1.4}
@@ -184,11 +184,11 @@ a{color:inherit}
 .mermaid-caption{font-size:13px;color:var(--ink-mute);font-style:italic;text-align:center;margin:0 0 32px}
 /* Custom system flow (replaces mermaid) */
 .sysflow{margin:28px 0 12px;display:grid;grid-template-columns:1fr auto 1.3fr auto 1fr;gap:0;align-items:stretch}
-.sysflow-stage{padding:24px 22px;background:var(--paper-raise);border:1px solid var(--hairline);position:relative;display:flex;flex-direction:column;gap:14px;min-width:0}
-.sysflow-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:38px;color:var(--accent);line-height:.9;letter-spacing:-.02em}
-.sysflow-title{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);border-top:1px solid var(--hairline);padding-top:10px;line-height:1.4}
+.sysflow-stage{padding:28px 24px;background:var(--paper-raise);border:1px solid var(--hairline);border-top:2px solid var(--accent);position:relative;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sysflow-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:52px;color:var(--accent);line-height:.9;letter-spacing:-.02em;margin-bottom:4px}
+.sysflow-title{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);border-top:1px solid var(--hairline);padding-top:12px;line-height:1.4}
 .sysflow-items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0}
-.sysflow-item{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed var(--hairline);font-size:14px;line-height:1.45}
+.sysflow-item{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed var(--hairline);font-size:14.5px;line-height:1.5}
 .sysflow-item:last-child{border-bottom:none}
 .sysflow-item-text{font-weight:500;color:var(--ink)}
 .sysflow-item-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.06em;white-space:nowrap}
@@ -210,6 +210,8 @@ a{color:inherit}
 /* ANIMATIONS */
 .section,.cover,.cta-section,.agreement-section,.footer{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .section.visible,.cover.visible,.cta-section.visible,.agreement-section.visible,.footer.visible{opacity:1;transform:translateY(0)}
+.wrd{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(12px);transition:opacity .65s cubic-bezier(.16,1,.3,1),filter .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.wrd.vis{opacity:1;filter:blur(0);transform:translateY(0)}
 
 /* TABLE SCROLL */
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -217,7 +219,7 @@ a{color:inherit}
 /* RESPONSIVE */
 @media(max-width:900px){
   .skills-grid{grid-template-columns:1fr}
-  .cover{grid-template-columns:1fr;padding:120px 32px 48px;gap:32px}
+  .cover{padding:100px 32px 48px}
   .cover-nav{left:32px;right:32px;top:24px;flex-wrap:wrap;gap:8px}
   .cover h1{font-size:44px}
   .cover-numeral{font-size:120px}
@@ -283,7 +285,7 @@ a{color:inherit}
 .proof-card img{cursor:zoom-in;transition:opacity .15s}
 .proof-card img:hover{opacity:.9}
 </style>
-<noscript><style>.section,.cover,.cta-section,.agreement-section,.footer{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>.section,.cover,.cta-section,.agreement-section,.footer{opacity:1!important;transform:none!important}.cover .wrd{opacity:1!important;filter:blur(0)!important;transform:none!important}</style></noscript>
 </head>
 <body>
 <div class="scroll-progress"></div>
@@ -296,14 +298,10 @@ a{color:inherit}
       <span class="cover-meta">Proposal • May 14, 2026</span>
     </div>
     <div class="cover-left">
-      
-      <h1>LinkedIn Content Engine</h1>
+      <h1><span class="wrd">LinkedIn</span> <span class="wrd">Content</span><br><span class="wrd"><em>Engine</em></span></h1>
       <p class="cover-sub">Two months without posting. The system below fixes that permanently: <strong>daily posts in your voice</strong>, lead magnets capturing DTC brand leads, nothing to manage manually.</p>
     </div>
-    <div class="cover-right">
-      <div class="cover-numeral">14</div>
-      <div class="cover-monthyear">MAY 2026</div>
-    </div>
+
     <div class="cover-details">
       <div class="cover-detail"><span class="cover-detail-label">Prepared For</span><span class="cover-detail-value">Henner</span></div>
       <div class="cover-detail"><span class="cover-detail-label">Engagement</span><span class="cover-detail-value">4 Creatives</span></div>
@@ -495,7 +493,7 @@ a{color:inherit}
   },{threshold:0.5});
   document.querySelectorAll('.roi-stat-value').forEach(el=>numObs.observe(el));
   const cover=document.querySelector('.cover');
-  if(cover)setTimeout(()=>cover.classList.add('visible'),100);
+  if(cover){setTimeout(()=>cover.classList.add('visible'),100);document.querySelectorAll('.cover .wrd').forEach((w,i)=>{setTimeout(()=>w.classList.add('vis'),240+i*160);})}
 })();
 
 // Lightbox
