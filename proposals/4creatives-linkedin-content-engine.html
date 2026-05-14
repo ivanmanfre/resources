@@ -280,51 +280,51 @@ a{color:inherit}
   margin:0 0 36px;
 }
 
-/* ── Horizontal pipeline path ── */
+/* ── Pipeline: 3 cards + 2 arrows ── */
 .sysflow-wrap .sysflow{
   display:grid;
-  grid-template-columns:1fr 52px 1.3fr 52px 1fr;
+  grid-template-columns:1fr 44px 1.3fr 44px 1fr;
   gap:0;align-items:start;
-  margin:28px 0 0;
+  margin:32px 0 0;
 }
 
-/* Stage card: top accent, ghost number behind */
+/* Each stage = a proper panel node */
 .sysflow-wrap .sysflow-stage{
   position:relative;overflow:hidden;
-  background:transparent;border:none;
-  border-top:2px solid rgba(112,154,93,.55);
-  padding:20px 16px 0 0;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(247,244,239,.1);
+  border-top:2px solid #709A5D;
+  padding:24px 24px 24px;
   display:flex;flex-direction:column;gap:0;
+  min-height:200px;
 }
 
-/* Ghost numeral: decorative watermark */
+/* Ghost watermark number */
 .sysflow-wrap .sysflow-num{
-  position:absolute;bottom:-16px;right:-4px;
+  position:absolute;bottom:-10px;right:10px;
   font-family:'DM Serif Display',serif;font-style:italic;
-  font-size:110px;color:rgba(247,244,239,.06);
+  font-size:96px;color:rgba(247,244,239,.07);
   line-height:.85;letter-spacing:-.04em;
   pointer-events:none;z-index:0;margin:0;transform:none;
 }
-
-/* Content above ghost */
 .sysflow-wrap .sysflow-stage>*:not(.sysflow-num){position:relative;z-index:1}
 
-/* Stage title */
+/* Stage label */
 .sysflow-wrap .sysflow-title{
   font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
   letter-spacing:.22em;text-transform:uppercase;
   color:#709A5D;border-top:none;padding-top:0;
-  margin-bottom:14px;
+  margin-bottom:18px;
 }
 
-/* Items: Source Serif, white */
+/* Items */
 .sysflow-wrap .sysflow-items{margin:0;padding:0}
 .sysflow-wrap .sysflow-item{
   font-family:'Source Serif 4',Georgia,serif;
   font-size:14px;color:#F7F4EF;line-height:1.6;
-  padding:8px 0;
-  border-bottom:1px solid rgba(247,244,239,.08);
-  display:block;justify-content:unset;gap:0;
+  padding:9px 0;
+  border-bottom:1px solid rgba(247,244,239,.09);
+  display:block;
 }
 .sysflow-wrap .sysflow-item:last-child{border-bottom:none}
 .sysflow-wrap .sysflow-item-text{
@@ -333,46 +333,47 @@ a{color:inherit}
 }
 .sysflow-wrap .sysflow-item strong{color:#fff;font-weight:600}
 
-/* Arrow: → between stages */
+/* Arrow connector */
 .sysflow-wrap .sysflow-arrow{
-  display:flex;align-items:flex-start;justify-content:center;
-  padding-top:16px;font-size:22px;
-  color:rgba(112,154,93,.55);
+  display:flex;align-items:center;justify-content:center;
+  padding-top:112px;
+  font-size:20px;color:rgba(112,154,93,.6);
   font-family:inherit;font-style:normal;transform:none;
 }
 .sysflow-wrap .sysflow-arrow::after{content:none}
 
-/* Parallel branch */
+/* Parallel branch box */
 .sysflow-wrap .sysflow-branch{
-  margin-top:14px;padding:12px 14px;
-  background:transparent;
-  border:1px dashed rgba(112,154,93,.4);
+  margin-top:18px;padding:14px 16px;
+  background:rgba(112,154,93,.08);
+  border:1px dashed rgba(112,154,93,.45);
   font-family:'Source Serif 4',serif;font-size:13px;
   color:#F7F4EF;line-height:1.55;
 }
 .sysflow-wrap .sysflow-branch-label{
   font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase;
-  color:#709A5D;margin-bottom:6px;
+  color:#709A5D;margin-bottom:7px;
 }
 .sysflow-wrap .sysflow-branch strong{color:#fff}
 
 /* Caption */
 .sysflow-wrap .mermaid-caption{
-  color:rgba(247,244,239,.25);font-style:italic;font-size:13px;margin-top:24px;
+  color:rgba(247,244,239,.25);font-style:italic;font-size:13px;margin-top:28px;
 }
 
-/* Callout card */
+/* Callout */
 .sysflow-wrap .problem-card{
-  background:transparent;
-  border-left:2px solid rgba(112,154,93,.5);
-  padding:24px 0 24px 28px;margin-top:40px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(247,244,239,.1);
+  border-left:3px solid #709A5D;
+  padding:24px 28px;margin-top:36px;
 }
 .sysflow-wrap .problem-card p{
-  font-family:'Source Serif 4',serif;font-size:17px;
-  color:rgba(247,244,239,.88);line-height:1.75;max-width:none;margin:0;
+  font-family:'Source Serif 4',serif;font-size:16px;
+  color:rgba(247,244,239,.9);line-height:1.75;max-width:none;margin:0;
 }
-.sysflow-wrap .problem-card p strong{color:#F7F4EF}
+.sysflow-wrap .problem-card p strong{color:#fff}
 
 /* Mobile */
 @media(max-width:900px){
@@ -380,15 +381,15 @@ a{color:inherit}
 }
 @media(max-width:880px){
   .sysflow-wrap .sysflow{grid-template-columns:1fr}
-  .sysflow-wrap .sysflow-stage{padding:20px 0 0}
+  .sysflow-wrap .sysflow-stage{min-height:auto}
   .sysflow-wrap .sysflow-arrow{
-    justify-content:flex-start;padding-top:0;
-    font-size:0;height:28px;align-items:center;
+    padding-top:0;justify-content:flex-start;
+    font-size:0;height:32px;align-items:center;
   }
   .sysflow-wrap .sysflow-arrow::after{
-    content:'↓';font-size:13px;
+    content:'↓';font-size:14px;
     font-family:'IBM Plex Mono',monospace;
-    color:rgba(112,154,93,.45);
+    color:rgba(112,154,93,.5);
   }
 }
 
