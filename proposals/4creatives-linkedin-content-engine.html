@@ -280,94 +280,124 @@ a{color:inherit}
   margin:0 0 36px;
 }
 
-/* ── Architecture diagram ── */
+/* ══ Architecture Diagram — complete redesign ══ */
 .arch{display:flex;flex-direction:column;align-items:center;width:100%}
 
-/* Source chips */
-.arch-sources{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;width:100%}
-.arch-chip{
-  display:inline-flex;align-items:center;padding:9px 16px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(247,244,239,.12);
-  border-left:2px solid rgba(112,154,93,.55);
-  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,239,.7);
+/* Sources — italic serif with dot, no heavy boxes */
+.arch-sources{
+  display:flex;flex-wrap:wrap;gap:10px 28px;
+  justify-content:center;width:100%;padding-bottom:4px;
+}
+.arch-src{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:'Source Serif 4',serif;font-size:15px;font-style:italic;
+  color:rgba(247,244,239,.62);
+}
+.arch-src::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:#709A5D;opacity:.75;flex-shrink:0;
 }
 
-/* Vertical connector: line + arrowhead */
-.arch-vline{
-  width:1px;height:36px;
-  background:rgba(112,154,93,.4);
+/* Arrowhead connector */
+.arch-down{
+  width:2px;height:40px;
+  background:linear-gradient(to bottom,rgba(112,154,93,.5),rgba(112,154,93,.28));
   position:relative;flex-shrink:0;
 }
-.arch-vline::after{
-  content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
-  border-left:5px solid transparent;border-right:5px solid transparent;
-  border-top:7px solid rgba(112,154,93,.4);
+.arch-down::after{
+  content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+  border-left:6px solid transparent;border-right:6px solid transparent;
+  border-top:9px solid rgba(112,154,93,.3);
 }
 
-/* Process nodes */
-.arch-node{
-  width:100%;
+/* Stage cards — left-border accent, ghost watermark */
+.arch-stage{
+  width:100%;position:relative;overflow:hidden;
   background:rgba(255,255,255,.045);
-  border:1px solid rgba(247,244,239,.09);
-  border-top:2px solid #709A5D;
-  padding:24px 32px;
+  border:1px solid rgba(247,244,239,.08);
+  border-left:3px solid #709A5D;
+  padding:26px 36px 26px 30px;
 }
-.arch-node-label{
-  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:#709A5D;margin-bottom:10px;
-}
-.arch-node-desc{
-  font-family:'Source Serif 4',serif;font-size:15px;
-  color:rgba(247,244,239,.82);line-height:1.62;
-}
-
-/* Agent pill badges */
-.arch-agents{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.arch-agent{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 14px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(247,244,239,.1);
-  font-family:'Source Serif 4',serif;font-size:13.5px;
-  color:rgba(247,244,239,.82);
-}
-.arch-agent-n{
+.arch-stg-n{
+  display:inline-block;
   font-family:'DM Serif Display',serif;font-style:italic;
-  font-size:16px;color:#709A5D;line-height:1;
+  font-size:12px;color:rgba(112,154,93,.8);
+  border:1px solid rgba(112,154,93,.25);
+  padding:2px 9px;margin-bottom:13px;letter-spacing:.06em;
+}
+.arch-stg-label{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#F7F4EF;margin-bottom:10px;
+}
+.arch-stg-body{
+  font-family:'Source Serif 4',serif;font-size:15px;
+  color:rgba(247,244,239,.72);line-height:1.72;
+}
+.arch-ghost{
+  position:absolute;bottom:-14px;right:18px;
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:115px;line-height:1;letter-spacing:-.04em;
+  color:rgba(112,154,93,.07);pointer-events:none;user-select:none;
 }
 
-/* SVG fork connector */
-.arch-fork-wrap{
-  width:100%;position:relative;
+/* Agent flow — circles with italic numerals, connected by arrows */
+.arch-flow{
+  display:flex;flex-wrap:wrap;align-items:flex-start;
+  gap:0 2px;margin-top:18px;position:relative;z-index:1;
 }
-.arch-fork-svg{display:block;width:100%;height:52px}
-.arch-fork-approve{
-  position:absolute;top:3px;left:50%;transform:translateX(-50%);
+.arch-flow-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0}
+.arch-flow-node{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(112,154,93,.1);border:1px solid rgba(112,154,93,.38);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:18px;color:#709A5D;line-height:1;flex-shrink:0;
+}
+.arch-flow-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(247,244,239,.48);text-align:center;
+  line-height:1.5;max-width:72px;
+}
+.arch-flow-arr{
+  color:rgba(112,154,93,.38);font-size:13px;
+  padding-top:12px;flex-shrink:0;margin:0 2px;
+}
+
+/* Fork — SVG T-shape with label */
+.arch-fork{width:100%;position:relative}
+.arch-fork svg{display:block;width:100%;height:52px}
+.arch-fork-lbl{
+  position:absolute;top:4px;left:50%;transform:translateX(-50%);
   font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
   letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(112,154,93,.6);white-space:nowrap;
+  color:rgba(112,154,93,.52);white-space:nowrap;
 }
 
-/* Output cards */
-.arch-outputs{display:flex;gap:16px;width:100%}
-.arch-output{
-  flex:1;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(247,244,239,.11);
-  border-top:2px solid rgba(112,154,93,.55);
-  padding:22px 24px;
+/* Output cards — sage-tinted, visually distinct as deliverables */
+.arch-outs{display:flex;gap:16px;width:100%}
+.arch-out{
+  flex:1;position:relative;overflow:hidden;
+  background:rgba(112,154,93,.08);
+  border:1px solid rgba(112,154,93,.2);
+  border-top:2px solid #709A5D;
+  padding:22px 28px;
+  box-shadow:0 4px 28px rgba(112,154,93,.07);
 }
-.arch-output-label{
+.arch-out-lbl{
   font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(112,154,93,.95);margin-bottom:9px;
+  color:#F7F4EF;margin-bottom:10px;
 }
-.arch-output-desc{
-  font-family:'Source Serif 4',serif;font-size:14px;
-  color:rgba(247,244,239,.76);line-height:1.62;
+.arch-out-body{
+  font-family:'Source Serif 4',serif;font-size:14.5px;
+  color:rgba(247,244,239,.7);line-height:1.65;
+}
+
+@media(max-width:700px){
+  .arch-outs{flex-direction:column}
+  .arch-flow{gap:8px}
 }
 
 /* Callout */
@@ -461,58 +491,82 @@ a{color:inherit}
 <div class="section solution-dark-section">
     <div class="sysflow-wrap"><span class="section-number">02 • The Solution</span>
     <h2>What we’re building</h2>
-    <h3>System Flow</h3>
     <div class="arch">
-      <!-- Sources -->
+      <!-- Sources — dot indicators, no chip boxes -->
       <div class="arch-sources">
-        <span class="arch-chip">Call Transcripts</span>
-        <span class="arch-chip">Airtable Seeds</span>
-        <span class="arch-chip">Competitor Scrape</span>
-        <span class="arch-chip">Perplexity Research</span>
+        <span class="arch-src">Call Transcripts</span>
+        <span class="arch-src">Airtable Seeds</span>
+        <span class="arch-src">Competitor Scrape</span>
+        <span class="arch-src">Perplexity Research</span>
       </div>
-      <div class="arch-vline"></div>
-      <!-- Content Brain -->
-      <div class="arch-node">
-        <div class="arch-node-label">Content Brain · RAG</div>
-        <div class="arch-node-desc">Supabase vector DB — indexes your call library, post patterns &amp; brand voice. Output quality compounds as your library grows.</div>
+      <div class="arch-down"></div>
+      <!-- 01 · Content Brain -->
+      <div class="arch-stage">
+        <span class="arch-stg-n">01</span>
+        <div class="arch-stg-label">Content Brain · RAG</div>
+        <div class="arch-stg-body">Supabase vector DB — indexes your call library, post patterns &amp; brand voice. Output quality compounds as your library grows.</div>
+        <span class="arch-ghost">01</span>
       </div>
-      <div class="arch-vline"></div>
-      <!-- Pipeline -->
-      <div class="arch-node">
-        <div class="arch-node-label">5-Agent Pipeline</div>
-        <div class="arch-agents">
-          <span class="arch-agent"><span class="arch-agent-n">1</span>Context Retrieval</span>
-          <span class="arch-agent"><span class="arch-agent-n">2</span>Categorize</span>
-          <span class="arch-agent"><span class="arch-agent-n">3</span>10 Hook Variations</span>
-          <span class="arch-agent"><span class="arch-agent-n">4</span>Write in your voice</span>
-          <span class="arch-agent"><span class="arch-agent-n">5</span>QA Review</span>
+      <div class="arch-down"></div>
+      <!-- 02 · Pipeline -->
+      <div class="arch-stage">
+        <span class="arch-stg-n">02</span>
+        <div class="arch-stg-label">5-Agent Pipeline</div>
+        <div class="arch-flow">
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">1</div>
+            <div class="arch-flow-lbl">Context<br>Retrieval</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">2</div>
+            <div class="arch-flow-lbl">Categorize</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">3</div>
+            <div class="arch-flow-lbl">10 Hook<br>Variations</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">4</div>
+            <div class="arch-flow-lbl">Write in<br>your voice</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">5</div>
+            <div class="arch-flow-lbl">QA<br>Review</div>
+          </div>
         </div>
+        <span class="arch-ghost">02</span>
       </div>
-      <div class="arch-vline"></div>
-      <!-- Review -->
-      <div class="arch-node">
-        <div class="arch-node-label">Airtable Review Board</div>
-        <div class="arch-node-desc">Posts queue up automatically · read the draft · tap approve</div>
+      <div class="arch-down"></div>
+      <!-- 03 · Review -->
+      <div class="arch-stage">
+        <span class="arch-stg-n">03</span>
+        <div class="arch-stg-label">Airtable Review Board</div>
+        <div class="arch-stg-body">Posts queue up automatically · read the draft · tap approve</div>
+        <span class="arch-ghost">03</span>
       </div>
-      <!-- SVG fork -->
-      <div class="arch-fork-wrap">
-        <div class="arch-fork-approve">on approval</div>
-        <svg class="arch-fork-svg" viewBox="0 0 100 52" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="50" y1="0" x2="50" y2="20" stroke="rgba(112,154,93,.42)" stroke-width="1" vector-effect="non-scaling-stroke"/>
-          <line x1="25" y1="20" x2="75" y2="20" stroke="rgba(112,154,93,.42)" stroke-width="1" vector-effect="non-scaling-stroke"/>
-          <line x1="25" y1="20" x2="25" y2="52" stroke="rgba(112,154,93,.42)" stroke-width="1" vector-effect="non-scaling-stroke"/>
-          <line x1="75" y1="20" x2="75" y2="52" stroke="rgba(112,154,93,.42)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+      <!-- SVG fork with label -->
+      <div class="arch-fork">
+        <div class="arch-fork-lbl">on approval</div>
+        <svg viewBox="0 0 100 52" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="50" y1="0" x2="50" y2="20" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <line x1="25" y1="20" x2="75" y2="20" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <line x1="25" y1="20" x2="25" y2="52" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <line x1="75" y1="20" x2="75" y2="52" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
         </svg>
       </div>
-      <!-- Outputs -->
-      <div class="arch-outputs">
-        <div class="arch-output">
-          <div class="arch-output-label">LinkedIn Post</div>
-          <div class="arch-output-desc">Unipile schedules it to LinkedIn at the time you select</div>
+      <!-- Outputs — sage-tinted, visually distinct -->
+      <div class="arch-outs">
+        <div class="arch-out">
+          <div class="arch-out-lbl">LinkedIn Post</div>
+          <div class="arch-out-body">Unipile schedules it to LinkedIn at the time you select</div>
         </div>
-        <div class="arch-output">
-          <div class="arch-output-label">Lead Magnet</div>
-          <div class="arch-output-desc">Landing page · Resource page · Cover image · ConvertKit email</div>
+        <div class="arch-out">
+          <div class="arch-out-lbl">Lead Magnet</div>
+          <div class="arch-out-body">Landing page · Resource page · Cover image · ConvertKit email</div>
         </div>
       </div>
     </div>
