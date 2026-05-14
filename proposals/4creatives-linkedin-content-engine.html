@@ -7,7 +7,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--paper:#F7F4EF;--paper-sunk:#EFEBE3;--paper-raise:#FFFFFF;--ink:#1A1A1A;--ink-soft:#4A4A48;--ink-mute:#5A5752;--hairline:rgba(26,26,26,.15);--hairline-bold:rgba(26,26,26,.25);--accent:#4C6E3D;--accent-ink:#344B29;--accent-soft:rgba(76,110,61,.08)}
+:root{--paper:#F7F4EF;--paper-sunk:#EFEBE3;--paper-raise:#FFFFFF;--ink:#1A1A1A;--ink-soft:#4A4A48;--ink-mute:#5A5752;--hairline:rgba(26,26,26,.15);--hairline-bold:rgba(26,26,26,.25);--accent:#2a8f65;--accent-ink:#1d6649;--accent-soft:rgba(42,143,101,.08)}
 html{scroll-behavior:smooth}
 body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
 a{color:inherit}
@@ -105,7 +105,7 @@ a{color:inherit}
 .tiers-intro{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:720px;margin:0 0 28px}
 .tiers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:24px 0 36px;align-items:start}
 .tier-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
-.tier-card.recommended{border:1.5px solid var(--accent);box-shadow:0 2px 12px rgba(76,110,61,.08)}
+.tier-card.recommended{border:1.5px solid var(--accent);box-shadow:0 2px 12px rgba(42,143,101,.1)}
 .tier-card.deferred{background:var(--paper-sunk);border-style:dashed}
 .tier-badge{position:absolute;top:-11px;left:24px;background:var(--accent);color:#fff;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 .tier-name{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
@@ -250,6 +250,24 @@ a{color:inherit}
   .timeline-table .phase-deliverable{font-size:14px;line-height:1.7;color:var(--ink-soft)}
 }
 
+/* DARK FLOW BAND */
+.sysflow-wrap{margin:36px -80px 0;padding:52px 80px 48px;background:#1a1a1a}
+.sysflow-wrap h3{color:rgba(247,244,239,.45);border-left-color:rgba(42,143,101,.5);margin-top:0}
+.sysflow-wrap .mermaid-caption{color:rgba(247,244,239,.3);font-style:italic}
+.sysflow-wrap .sysflow-stage{background:#1f1f1f;border:1px solid rgba(247,244,239,.08);border-top:2px solid var(--accent)}
+.sysflow-wrap .sysflow-num{font-size:120px;position:absolute;top:0;right:12px;color:rgba(247,244,239,.04);line-height:.9;z-index:0;pointer-events:none;letter-spacing:-.04em}
+.sysflow-wrap .sysflow-stage>*:not(.sysflow-num){position:relative;z-index:1}
+.sysflow-wrap .sysflow-title{color:rgba(247,244,239,.4);border-top-color:rgba(247,244,239,.1)}
+.sysflow-wrap .sysflow-item-text{color:rgba(247,244,239,.82);font-weight:400}
+.sysflow-wrap .sysflow-item{border-bottom-color:rgba(247,244,239,.08)}
+.sysflow-wrap .sysflow-item strong{color:#fff}
+.sysflow-wrap .sysflow-arrow{color:var(--accent)}
+.sysflow-wrap .sysflow-branch{background:rgba(42,143,101,.1);border-color:var(--accent)}
+.sysflow-wrap .sysflow-branch-label{color:var(--accent)}
+.sysflow-wrap .problem-card{background:rgba(247,244,239,.05);border-left-color:var(--accent);margin-top:36px}
+.sysflow-wrap .problem-card p{color:rgba(247,244,239,.85)}
+.sysflow-wrap .problem-card p strong{color:#fff}
+@media(max-width:900px){.sysflow-wrap{margin:36px -32px 0;padding:40px 32px 36px}}
 
 /* MOBILE RECURRING TABLE: hide note col */
 @media(max-width:600px){
@@ -320,10 +338,10 @@ a{color:inherit}
     <span class="section-number">02 • The Solution</span>
     <h2>What we’re building</h2>
     
-    <h3>System Flow</h3>
+    <div class="sysflow-wrap"><h3>System Flow</h3>
     <div class="sysflow"><div class="sysflow-stage"><div class="sysflow-num">01</div><div class="sysflow-title">Sources · weighted ingest</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Call Transcripts</span></li><li class="sysflow-item"><span class="sysflow-item-text">Manual seeds in Airtable</span></li><li class="sysflow-item"><span class="sysflow-item-text">Competitor post scrape</span></li><li class="sysflow-item"><span class="sysflow-item-text">Perplexity weekly research</span></li></ul></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">02</div><div class="sysflow-title">Pipeline · 5 agents</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Context Retrieval (RAG over past calls + post patterns)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Categorizer (framework, story, hot take, teardown)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Hook Generator (<strong>10 variations</strong> per post)</span></li><li class="sysflow-item"><span class="sysflow-item-text">Copywriter (in your voice)</span></li><li class="sysflow-item"><span class="sysflow-item-text">QA Editor (secondary refinement)</span></li></ul><div class="sysflow-branch"><div class="sysflow-branch-label">parallel branch</div><strong>Lead Magnet Engine</strong>  -  runs from approved topics. Produces landing page + resource page + OpenAI cover image + ConvertKit email draft.</div></div><div class="sysflow-arrow">→</div><div class="sysflow-stage"><div class="sysflow-num">03</div><div class="sysflow-title">Review &amp; Publish</div><ul class="sysflow-items"><li class="sysflow-item"><span class="sysflow-item-text">Posts land in Airtable Review Board</span></li><li class="sysflow-item"><span class="sysflow-item-text">Slack ping per batch</span></li><li class="sysflow-item"><span class="sysflow-item-text">One-tap approve → <strong>Unipile</strong> schedules to LinkedIn</span></li></ul></div></div>
     <p class="mermaid-caption">Sources weighted by signal strength. RAG-grounded agents draft each post. Lead magnets branch in parallel from approved topics.</p>
-    <div class="problem-card" style="margin:28px 0 0"><p><strong>Once it's running, your daily task is under 10 minutes.</strong> Posts queue up in Airtable each week. Read the draft, tap approve, done. LinkedIn schedules itself. Lead magnets branch automatically from approved topics. No briefing, no writing, nothing to manage.</p></div>
+    <div class="problem-card" style="margin:28px 0 0"><p><strong>Once it's running, your daily task is under 10 minutes.</strong> Posts queue up in Airtable each week. Read the draft, tap approve, done. LinkedIn schedules itself. Lead magnets branch automatically from approved topics. No briefing, no writing, nothing to manage.</p></div></div>
     
     <h3>What it looks like in practice</h3>
     <div class="proof-grid"><figure class="proof-card"><img src="https://resources.ivanmanfredi.com/proposals/assets/4creatives/kyle-content-system.png" alt="Kyle Hunt's content system board with LinkedIn posts queue" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Kyle Hunt's content system · live</div><div class="proof-card-caption">ClickUp board of Kyle's LinkedIn Posts list running through the same architecture. Each row is a post drafted by the multi-agent pipeline  -  source, format, status, all visible. Pipeline live within 2 weeks of kickoff, posts running daily.</div></figcaption></figure><figure class="proof-card"><img src="https://resources.ivanmanfredi.com/proposals/assets/4creatives/ivan-assessment-scoring.png" alt="Live interactive assessment lead magnet" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Live lead magnet assessment</div><div class="proof-card-caption">Example interactive assessment generated by the lead magnet engine  -  one of 5 formats. Question-based, branded, scored.</div></figcaption></figure><figure class="proof-card"><img src="https://resources.ivanmanfredi.com/proposals/assets/4creatives/ivan-interactive-assessment.png" alt="Interactive assessment lead magnet flow" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Interactive assessment · full flow</div><div class="proof-card-caption">The full interactive assessment UX  -  question flow, scoring, and results page. One of 5 lead magnet formats, deployed branded for your audience.</div></figcaption></figure><figure class="proof-card"><img src="https://resources.ivanmanfredi.com/proposals/assets/4creatives/kyle-guides.png" alt="Kyle Hunt lead magnet guides library" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Kyle Hunt · guides library</div><div class="proof-card-caption">Lead magnet guides generated and published for Kyle's audience. Same lead magnet engine, different positioning.</div></figcaption></figure></div>
