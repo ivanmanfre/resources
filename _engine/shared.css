@@ -348,13 +348,16 @@
 .lm-tracker-title { font-weight: 600; }
 .lm-tracker-when { font-size: 11px; color: #888; }
 
-/* WhatsApp share button */
+/* WhatsApp share button — muted, matches paper+sage palette + outlined like other secondaries */
 .lm-share-whatsapp {
-  background: #25D366 !important;
-  color: #fff !important;
-  border-color: #1ebd5a !important;
+  background: transparent !important;
+  color: #344B29 !important;
+  border: 1px solid #344B29 !important;
 }
-.lm-share-whatsapp:hover { background: #1ebd5a !important; }
+.lm-share-whatsapp:hover {
+  background: rgba(76, 110, 61, 0.08) !important;
+  color: #1a2914 !important;
+}
 
 /* When tracker collapsed, hide panel */
 .lm-tracker.collapsed .lm-tracker-panel { display: none; }

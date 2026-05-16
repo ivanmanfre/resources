@@ -223,10 +223,8 @@
     container.appendChild(footer);
     root.appendChild(container);
 
-    // Mount unified progress
-    if (window.LM && window.LM.progress) {
-      window.LM.progress.mount({ total: (data.inputs || []).length, current: 0, label: "Run the numbers" });
-    }
+    // No sticky progress on calculator — primary output ring already shows progress.
+    // Calculators aren't stepped flows; an extra "X / N inputs filled" bar adds noise.
 
     // Live compute
     function getCtx() {
@@ -281,19 +279,6 @@
             rcEl.appendChild(recDiv);
           });
         }
-      }
-      if (window.LM && window.LM.progress) {
-        var filled = 0;
-        (data.inputs || []).forEach(function (inp) {
-          var v = ctx[inp.id];
-          var dflt = inp.default != null ? inp.default : 0;
-          if (v !== dflt && v !== null && v !== "" && v !== 0) filled++;
-        });
-        window.LM.progress.update({
-          current: filled,
-          total: (data.inputs || []).length,
-          label: filled + " / " + (data.inputs || []).length + " inputs filled",
-        });
       }
       return { ctx: ctx, results: results, matched_recs: matched.map(function (m) { return m.tag; }) };
     }
