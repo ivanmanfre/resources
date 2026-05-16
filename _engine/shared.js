@@ -388,6 +388,8 @@
     if (existingIdx >= 0) list.splice(existingIdx, 1);
     list.unshift(entry);
     trackerWrite(list);
+    // Re-render: widget may need to appear now that count >= 2
+    if (!document.getElementById("lm-tracker-widget")) trackerRender();
   }
 
   function trackerRender() {
