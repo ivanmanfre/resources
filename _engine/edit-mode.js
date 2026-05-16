@@ -215,7 +215,18 @@
       markDirty();
       showToast("Added — refresh to see new item (Save first)");
     });
-    containerEl.parentNode.insertBefore(addBtn, containerEl.nextSibling);
+    // Insert the +Add button. Engines often call registerArray BEFORE appending
+    // the container to DOM, so parentNode may be null on first call. Defer to
+    // a microtask in that case so the engine can complete its render first.
+    function placeAddBtn() {
+      if (containerEl.parentNode) {
+        containerEl.parentNode.insertBefore(addBtn, containerEl.nextSibling);
+      } else {
+        // Not yet in DOM — retry on next animation frame (engine still rendering)
+        requestAnimationFrame(placeAddBtn);
+      }
+    }
+    placeAddBtn();
   }
   function decorateArrayItem(itemEl, arrayPath, idx) {
     itemEl.setAttribute("data-lme-array-item", idx);
