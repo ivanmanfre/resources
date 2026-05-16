@@ -12,6 +12,8 @@
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
+    window.__lm_format = "guide";
+    if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
     var slug = data.slug;
     var states = L.readKV("guide", slug, "states", {}) || {};
     var captured = !!L.readKV("guide", slug, "email", null);
@@ -34,14 +36,10 @@
       defaultNote: "You don't have to rate anything. But rating unlocks a personalized summary."
     }));
 
-    // Sticky progress bar
-    var prog = L.make("div", { class: "lmg-progress-wrap" });
-    prog.innerHTML = '<div class="lmg-progress-inner">' +
-      '<span id="lmg-prog-label">0 / ' + (data.sections || []).length + ' rated</span>' +
-      '<div class="lmg-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="lmg-progress-fill" id="lmg-prog-fill"></div></div>' +
-      '<span id="lmg-prog-pct">0%</span>' +
-    '</div>';
-    root.appendChild(prog);
+    // Sticky progress bar (unified, via LM.progress)
+    if (window.LM && window.LM.progress) {
+      window.LM.progress.mount({ total: (data.sections || []).length, current: 0, label: "0 / " + (data.sections || []).length + " rated" });
+    }
 
     // Sections
     var main = L.make("main", { class: "lmc-container lmg-prose" });
@@ -88,6 +86,16 @@
         '<button class="lmc-btn" type="submit">Email me the chapters</button>' +
       '</form>' +
       '<p class="lmc-note">One email. Unsubscribe any time.</p>';
+    var shareRow = L.make("div", { class: "lmc-share lmg-share" });
+    var shareTextGuide = "Reading: " + (data.title || "this guide") + " — by Ivan Manfredi.";
+    shareRow.innerHTML =
+      '<a class="lmc-btn lm-share-whatsapp" target="_blank" rel="noopener" href="' +
+        (window.LM && window.LM.share ? window.LM.share.whatsapp(shareTextGuide) : "#") +
+      '">Share on WhatsApp</a>' +
+      '<a class="lmc-btn lmc-btn-secondary" target="_blank" rel="noopener" href="' +
+        (window.LM && window.LM.share ? window.LM.share.linkedIn(shareTextGuide) : "#") +
+      '">Share on LinkedIn</a>';
+    gate.appendChild(shareRow);
     main.appendChild(gate);
 
     root.appendChild(main);
@@ -110,9 +118,13 @@
     }
     function update() {
       var r = compute();
-      var fill = document.getElementById("lmg-prog-fill"); if (fill) fill.style.width = r.score + "%";
-      var pct = document.getElementById("lmg-prog-pct"); if (pct) pct.textContent = r.score + "%";
-      var lbl = document.getElementById("lmg-prog-label"); if (lbl) lbl.textContent = r.rated + " / " + r.total + " rated";
+      if (window.LM && window.LM.progress) {
+        window.LM.progress.update({
+          current: r.rated,
+          total: r.total,
+          label: r.rated + " / " + r.total + " rated · " + r.score + "% strength",
+        });
+      }
       root.classList.toggle("rated", r.rated > 0);
 
       var panel = document.getElementById("lmg-summary");
