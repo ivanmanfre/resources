@@ -84,7 +84,6 @@
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
-    window.__lm_format = "checklist";
     var state = readState(data.slug);
     root.innerHTML = "";
 
@@ -92,14 +91,8 @@
     var hero = make("section", { class: "lmc-hero" });
     var heroInner = make("div", { class: "lmc-container" });
     heroInner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist")));
-    var h1 = make("h1", { class: "lmc-h1" }, escapeHtml(data.title || "Checklist"));
-    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
-    heroInner.appendChild(h1);
-    if (data.subtitle) {
-      var sub = make("p", { class: "lmc-sub" }, escapeHtml(data.subtitle));
-      if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
-      heroInner.appendChild(sub);
-    }
+    heroInner.appendChild(make("h1", { class: "lmc-h1" }, escapeHtml(data.title || "Checklist")));
+    if (data.subtitle) heroInner.appendChild(make("p", { class: "lmc-sub" }, escapeHtml(data.subtitle)));
     var meta = make("div", { class: "lmc-meta" });
     var total = 0; (data.sections || []).forEach(function (s) { total += (s.items || []).length; });
     meta.appendChild(make("div", { class: "lmc-meta-chip" }, total + " items"));
@@ -124,43 +117,25 @@
 
     // Sections
     var content = make("main", { class: "lmc-container" });
-    (data.sections || []).forEach(function (s, sIdx) {
+    (data.sections || []).forEach(function (s) {
       var sec = make("section", { class: "lmc-section" });
-      var secTitle = make("h2", { class: "lmc-section-title" }, escapeHtml(s.title || ""));
-      if (window.LM && window.LM.editMode) window.LM.editMode.registerField(secTitle, "sections[" + sIdx + "].title");
-      sec.appendChild(secTitle);
-      if (s.description) {
-        var secDesc = make("p", { class: "lmc-section-desc" }, escapeHtml(s.description));
-        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(secDesc, "sections[" + sIdx + "].description");
-        sec.appendChild(secDesc);
-      }
-      var itemsContainer = make("div", { class: "lmc-items-container" });
-      (s.items || []).forEach(function (it, iIdx) {
+      sec.appendChild(make("h2", { class: "lmc-section-title" }, escapeHtml(s.title || "")));
+      if (s.description) sec.appendChild(make("p", { class: "lmc-section-desc" }, escapeHtml(s.description)));
+      (s.items || []).forEach(function (it) {
         var row = make("div", { class: "lmc-item" + (state.checked[it.id] ? " checked" : "") });
         row.setAttribute("data-item-id", it.id);
         var box = make("button", { class: "lmc-checkbox" + (state.checked[it.id] ? " checked" : ""), type: "button", role: "checkbox", "aria-checked": state.checked[it.id] ? "true" : "false", "aria-label": "Toggle: " + (it.text || "item") });
         box.innerHTML = state.checked[it.id] ? "&#10003;" : "";
         var txt = make("div", { class: "lmc-text" });
-        var textSpan = make("span", null, escapeHtml(it.text || ""));
-        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(textSpan, "sections[" + sIdx + "].items[" + iIdx + "].text", { multiline: true });
-        txt.appendChild(textSpan);
-        if (it.tip) {
-          var tipSpan = make("span", { class: "lmc-tip" }, escapeHtml(it.tip));
-          if (window.LM && window.LM.editMode) window.LM.editMode.registerField(tipSpan, "sections[" + sIdx + "].items[" + iIdx + "].tip");
-          txt.appendChild(tipSpan);
-        }
+        txt.appendChild(make("span", null, escapeHtml(it.text || "")));
+        if (it.tip) txt.appendChild(make("span", { class: "lmc-tip" }, escapeHtml(it.tip)));
         if (it.impact) {
           var imp = make("span", { class: "lmc-impact lmc-impact-" + it.impact }, (it.impact || "").toUpperCase() + " IMPACT");
           txt.appendChild(imp);
         }
         row.appendChild(box); row.appendChild(txt);
-        itemsContainer.appendChild(row);
+        sec.appendChild(row);
       });
-      if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(itemsContainer, "sections[" + sIdx + "].items", {
-        itemLabel: "checklist item",
-        template: { id: "", text: "New item" },
-      });
-      sec.appendChild(itemsContainer);
       content.appendChild(sec);
     });
 
