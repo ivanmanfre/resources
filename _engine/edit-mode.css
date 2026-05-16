@@ -1,0 +1,264 @@
+/* LM Edit Mode styles — only loaded when ?edit=<token> in URL */
+
+/* Toolbar */
+.lme-toolbar {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99998;
+  background: #111;
+  color: #fff;
+  border: 2px solid #2A8F65;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+.lme-toolbar-label { font-weight: 700; letter-spacing: 0.3px; }
+.lme-toolbar-slug { color: #2A8F65; font-family: ui-monospace, monospace; font-size: 12px; }
+.lme-toolbar-dirty { color: #ff9800; font-weight: 700; }
+.lme-toolbar-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms;
+}
+.lme-toolbar-btn:hover { background: #222; }
+.lme-toolbar-btn-primary { background: #2A8F65; border-color: #2A8F65; }
+.lme-toolbar-btn-primary:hover { background: #1f6e4f; }
+.lme-toolbar-btn-danger { color: #ff6b6b; }
+
+/* Field hover state */
+[data-lme-field] {
+  position: relative;
+  outline: 1px dashed transparent;
+  outline-offset: 2px;
+  transition: outline-color 80ms, background 80ms;
+}
+[data-lme-field]:hover {
+  outline-color: #2A8F65;
+  background: rgba(42, 143, 101, 0.06);
+  cursor: pointer;
+}
+[data-lme-field-editing] { outline: 2px solid #2A8F65; background: rgba(42, 143, 101, 0.1); }
+
+/* Inline input — match surrounding typography */
+.lme-inline-input,
+.lme-inline-textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  background: #fffce8;
+  border: 1px solid #2A8F65;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: -3px -7px;
+  box-sizing: border-box;
+  outline: none;
+}
+.lme-inline-textarea { resize: vertical; min-height: 60px; }
+
+/* Array container */
+[data-lme-array] { position: relative; }
+[data-lme-array-item] {
+  position: relative;
+  padding-left: 24px;
+}
+.lme-handle {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  cursor: grab;
+  color: #888;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 80ms;
+}
+[data-lme-array-item]:hover .lme-handle { opacity: 1; }
+.lme-handle:active { cursor: grabbing; }
+.lme-remove-btn {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: #ff6b6b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 80ms;
+}
+[data-lme-array-item]:hover .lme-remove-btn { opacity: 1; }
+.lme-add-btn {
+  display: inline-block;
+  margin: 12px 0;
+  padding: 6px 12px;
+  border: 1px dashed #2A8F65;
+  background: transparent;
+  color: #2A8F65;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lme-add-btn:hover { background: rgba(42, 143, 101, 0.1); }
+
+/* Locked field indicator (stable IDs) */
+.lme-field-locked::before {
+  content: "🔒";
+  font-size: 10px;
+  margin-right: 4px;
+  opacity: 0.5;
+}
+
+/* Modal */
+.lme-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lme-modal {
+  background: #fff;
+  border-radius: 10px;
+  max-width: min(900px, 92vw);
+  width: 100%;
+  max-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+.lme-modal-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lme-modal-title { font-weight: 700; font-size: 14px; letter-spacing: 0.2px; }
+.lme-modal-close { background: none; border: none; font-size: 18px; cursor: pointer; color: #888; }
+.lme-modal-body { padding: 16px 18px; overflow: auto; flex: 1; }
+.lme-modal-warning {
+  background: #fff4e5;
+  border-left: 4px solid #ff9800;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #663c00;
+  line-height: 1.5;
+}
+.lme-modal-textarea {
+  width: 100%;
+  min-height: 50vh;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  resize: vertical;
+}
+.lme-modal-textarea:focus { border-color: #2A8F65; }
+.lme-modal-validation {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 4px;
+}
+.lme-modal-validation-ok { color: #1f6e4f; background: rgba(42, 143, 101, 0.08); }
+.lme-modal-validation-error { color: #c62828; background: rgba(198, 40, 40, 0.06); white-space: pre-wrap; }
+.lme-modal-footer {
+  padding: 12px 18px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Toast (override engines' toast color in edit mode) */
+.lme-edit-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2A8F65;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  z-index: 99997;
+  opacity: 0;
+  transition: opacity 160ms;
+}
+.lme-edit-toast.show { opacity: 1; }
+.lme-edit-toast-error { background: #c62828; }
+
+/* Recent saves panel */
+.lme-saves-panel {
+  position: fixed;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(560px, 92vw);
+  max-height: 50vh;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+  z-index: 99998;
+  overflow: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+}
+.lme-save-row {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.lme-save-row:hover { background: #fafafa; }
+.lme-save-msg { font-weight: 500; flex: 1; }
+.lme-save-meta { color: #888; font-size: 11px; font-family: ui-monospace, monospace; }
+.lme-revert-btn {
+  background: transparent;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.lme-revert-btn:hover { background: #ff6b6b; color: #fff; }
