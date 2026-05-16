@@ -1,7 +1,7 @@
 {
   "slug": "workflow-audit-checklist-for-service-businesses",
   "title": "Workflow Audit Checklist for Service Businesses",
-  "subtitle": "Find the broken processes bleeding time and money from your $1M-$20M service business in 60-90 minutes",
+  "subtitle": "Find the broken processes bleeding time and money from your $1M-$20M service business in 60-90 minutes.",
   "brand": {
     "accent": "#2A8F65",
     "hero_badge": "Action Checklist"
@@ -109,7 +109,7 @@
         {
           "id": "4-1",
           "text": "Generate invoices automatically from completed work or project milestones",
-          "tip": "Tie invoice creation to a status change so billing never waits on a human checklist\n",
+          "tip": "Tie invoice creation to a status change so billing never waits on a human checklist.",
           "impact": "high"
         },
         {
@@ -174,5 +174,5 @@
       }
     }
   ],
-  "data_version": 3
+  "data_version": 4
 }
