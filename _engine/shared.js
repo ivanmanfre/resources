@@ -181,18 +181,19 @@
   function editModeIsLoaded() { return !!window.__LM_EDIT_MODE_LOADED; }
 
   function editModeRegisterField(el, path, opts) {
-    if (!editModeState.enabled || !el) return el;
+    if (!el) return el;
+    // Always buffer — flush on mount even if token check is still in flight
     editModeState.fields.push({ el: el, path: path, opts: opts || {} });
-    if (editModeIsLoaded() && window.__LM_EDIT_MODE_API) {
+    if (editModeState.enabled && editModeIsLoaded() && window.__LM_EDIT_MODE_API) {
       window.__LM_EDIT_MODE_API.attachField(el, path, opts || {});
     }
     return el;
   }
 
   function editModeRegisterArray(el, arrayPath, opts) {
-    if (!editModeState.enabled || !el) return el;
+    if (!el) return el;
     editModeState.arrays.push({ el: el, arrayPath: arrayPath, opts: opts || {} });
-    if (editModeIsLoaded() && window.__LM_EDIT_MODE_API) {
+    if (editModeState.enabled && editModeIsLoaded() && window.__LM_EDIT_MODE_API) {
       window.__LM_EDIT_MODE_API.attachArray(el, arrayPath, opts || {});
     }
     return el;
