@@ -169,6 +169,109 @@
     return          { key: "optimized",label: "Optimized", note: "Maintain the streak and re-audit in 60 days." };
   }
 
+  // ── Edit mode (lazy-loaded only when ?edit=<token> in URL) ─────────────
+  var editModeState = {
+    enabled: false,
+    token: null,
+    sessionFlag: "ivan.lm.edit_session",
+    fields: [],         // [{el, path, opts}]
+    arrays: [],         // [{el, arrayPath, opts}]
+  };
+
+  function editModeIsLoaded() { return !!window.__LM_EDIT_MODE_LOADED; }
+
+  function editModeRegisterField(el, path, opts) {
+    if (!editModeState.enabled || !el) return el;
+    editModeState.fields.push({ el: el, path: path, opts: opts || {} });
+    if (editModeIsLoaded() && window.__LM_EDIT_MODE_API) {
+      window.__LM_EDIT_MODE_API.attachField(el, path, opts || {});
+    }
+    return el;
+  }
+
+  function editModeRegisterArray(el, arrayPath, opts) {
+    if (!editModeState.enabled || !el) return el;
+    editModeState.arrays.push({ el: el, arrayPath: arrayPath, opts: opts || {} });
+    if (editModeIsLoaded() && window.__LM_EDIT_MODE_API) {
+      window.__LM_EDIT_MODE_API.attachArray(el, arrayPath, opts || {});
+    }
+    return el;
+  }
+
+  function loadEditModeAssets() {
+    if (editModeIsLoaded()) return Promise.resolve();
+    return new Promise(function (resolve, reject) {
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://resources.ivanmanfredi.com/_engine/edit-mode.css";
+      document.head.appendChild(link);
+      var script = document.createElement("script");
+      script.src = "https://resources.ivanmanfredi.com/_engine/edit-mode.js";
+      script.onload = function () {
+        // edit-mode.js sets window.__LM_EDIT_MODE_LOADED = true
+        // and window.__LM_EDIT_MODE_API = { attachField, attachArray, mount }
+        if (window.__LM_EDIT_MODE_API) {
+          // Flush any registered fields/arrays that came in before edit-mode.js loaded
+          editModeState.fields.forEach(function (f) {
+            window.__LM_EDIT_MODE_API.attachField(f.el, f.path, f.opts);
+          });
+          editModeState.arrays.forEach(function (a) {
+            window.__LM_EDIT_MODE_API.attachArray(a.el, a.arrayPath, a.opts);
+          });
+          window.__LM_EDIT_MODE_API.mount({
+            token: editModeState.token,
+            slug: window.__lm_slug || (window.__lm_data && window.__lm_data.slug),
+            format: window.__lm_format || null,
+            data: window.__lm_data || null,
+          });
+          resolve();
+        } else {
+          reject(new Error("edit-mode.js loaded but API not exposed"));
+        }
+      };
+      script.onerror = function () { reject(new Error("edit-mode.js failed to load")); };
+      document.head.appendChild(script);
+    });
+  }
+
+  function editModeMaybeEnable() {
+    try {
+      var params = new URLSearchParams(location.search);
+      var token = params.get("edit");
+      if (!token) return Promise.resolve(false);
+      // Check sessionStorage first to avoid round-trip on every page load
+      var cached = null;
+      try { cached = JSON.parse(sessionStorage.getItem(editModeState.sessionFlag) || "null"); } catch (_) {}
+      if (cached && cached.token === token && cached.expires_at > Date.now()) {
+        editModeState.enabled = true;
+        editModeState.token = token;
+        // Replace LM.beacon with no-op (mitigation #6)
+        window.LM.beacon = function () {};
+        return loadEditModeAssets().then(function () { return true; });
+      }
+      return fetch(BEACON.replace(/\/lm-beacon$/, "/lm-edit-token-check"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (!j.ok) return false;
+          editModeState.enabled = true;
+          editModeState.token = token;
+          try {
+            sessionStorage.setItem(editModeState.sessionFlag, JSON.stringify({
+              token: token, expires_at: j.expires_at,
+            }));
+          } catch (_) {}
+          // Replace LM.beacon with no-op (mitigation #6)
+          window.LM.beacon = function () {};
+          return loadEditModeAssets().then(function () { return true; });
+        })
+        .catch(function () { return false; });
+    } catch (_) { return Promise.resolve(false); }
+  }
+
   window.LM = {
     make: make, esc: esc, toast: toast, emailIsValid: emailIsValid,
     beacon: beacon, canonicalBeaconEvent: canonicalBeaconEvent,
@@ -176,6 +279,20 @@
     readKV: readKV, writeKV: writeKV, removeKV: removeKV,
     observeReveal: observeReveal,
     buildHero: buildHero, buildIntro: buildIntro,
-    tierFor: tierFor
+    tierFor: tierFor,
+    editMode: {
+      enabled: function () { return editModeState.enabled; },
+      registerField: editModeRegisterField,
+      registerArray: editModeRegisterArray,
+      maybeEnable: editModeMaybeEnable,
+    },
   };
+
+  // Auto-trigger edit-mode check on DOMContentLoaded. Each engine also
+  // checks LM.editMode.enabled() before assuming non-edit context.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () { editModeMaybeEnable(); });
+  } else {
+    editModeMaybeEnable();
+  }
 })();
