@@ -191,9 +191,20 @@
   document.addEventListener("DOMContentLoaded", function () {
     var root = document.querySelector("[data-lm-guide-src]") || document.querySelector("#lmc-root");
     if (!root) return;
-    var src = root.getAttribute("data-lm-guide-src") || "./data.json";
+    var defaultSrc = root.getAttribute("data-lm-guide-src") || "./data.json";
+    var params = new URLSearchParams(location.search);
+    var src = params.get("preview") === "draft" ? "./data.draft.json" : defaultSrc;
     fetch(src, { credentials: "same-origin" })
-      .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+      .then(function (r) {
+        if (params.get("preview") === "draft" && !r.ok) {
+          return fetch(defaultSrc, { credentials: "same-origin" }).then(function (r2) {
+            if (!r2.ok) throw new Error("data.json " + r2.status);
+            return r2.json();
+          });
+        }
+        if (!r.ok) throw new Error("data.json " + r.status);
+        return r.json();
+      })
       .then(function (data) { render(data, root); })
       .catch(function (e) {
         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading guide:</strong> ' + L.esc(e.message) + '</div>';
