@@ -91,6 +91,7 @@
     window.__lm_slug = data.slug;
     window.__lm_data = data;
     window.__lm_format = "checklist";
+    if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
     var state = readState(data.slug);
     root.innerHTML = "";
 
@@ -123,10 +124,10 @@
     });
     root.appendChild(introSection);
 
-    // Progress bar (sticky)
-    var prog = make("div", { class: "lmc-progress-wrap" });
-    prog.innerHTML = '<div class="lmc-progress-inner"><span id="lmc-prog-label">0 / ' + total + ' complete</span><div class="lmc-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + total + '" aria-valuenow="0"><div class="lmc-progress-fill" id="lmc-prog-fill"></div></div><span id="lmc-prog-pct">0%</span></div>';
-    root.appendChild(prog);
+    // Sticky progress (unified, via LM.progress)
+    if (window.LM && window.LM.progress) {
+      window.LM.progress.mount({ total: total, current: 0, label: "0 / " + total + " complete" });
+    }
 
     // Sections
     var content = make("main", { class: "lmc-container" });
@@ -186,8 +187,12 @@
 
     // Footer actions
     var actions = make("div", { class: "lmc-footer-actions" });
+    var shareTextChecklist = "Working through " + (data.title || "this checklist") + " by Ivan Manfredi.";
     actions.innerHTML =
       '<button class="lmc-btn lmc-btn-secondary" id="lmc-copy-md" type="button">Copy as Markdown</button>' +
+      '<a class="lmc-btn lm-share-whatsapp" id="lmc-share-wa" target="_blank" rel="noopener" href="' +
+        (window.LM && window.LM.share ? window.LM.share.whatsapp(shareTextChecklist) : "#") +
+      '">Share on WhatsApp</a>' +
       '<button class="lmc-btn lmc-btn-secondary" id="lmc-reset" type="button">Reset progress</button>';
     content.appendChild(actions);
     root.appendChild(content);
@@ -203,11 +208,13 @@
           else if (it.impact === "high") highGaps++;
         });
       });
-      var pct = totalItems ? Math.round((done / totalItems) * 100) : 0;
-      var fill = $("#lmc-prog-fill"); if (fill) fill.style.width = pct + "%";
-      var pctEl = $("#lmc-prog-pct"); if (pctEl) pctEl.textContent = pct + "%";
-      var lbl = $("#lmc-prog-label"); if (lbl) lbl.textContent = done + " / " + totalItems + " complete" + (highGaps ? " · " + highGaps + " high-impact gap" + (highGaps === 1 ? "" : "s") : "");
-      var bar = document.querySelector(".lmc-progress-bar"); if (bar) bar.setAttribute("aria-valuenow", done);
+      if (window.LM && window.LM.progress) {
+        window.LM.progress.update({
+          current: done,
+          total: totalItems,
+          label: done + " / " + totalItems + " complete" + (highGaps ? " · " + highGaps + " high-impact gap" + (highGaps === 1 ? "" : "s") : ""),
+        });
+      }
     }
     update();
 
@@ -265,6 +272,10 @@
         beacon("share", { answers: { format: "markdown" } });
       });
     }
+
+    // WhatsApp share
+    var shareWa = $("#lmc-share-wa");
+    if (shareWa) shareWa.addEventListener("click", function () { beacon("share", { answers: { target: "whatsapp" } }); });
 
     // Reset
     var resetBtn = $("#lmc-reset");
