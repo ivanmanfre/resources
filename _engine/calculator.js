@@ -98,6 +98,7 @@
     window.__lm_slug = data.slug;
     window.__lm_data = data;
     window.__lm_format = "calculator";
+    if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
     root.innerHTML = "";
 
     // Hero
@@ -212,9 +213,20 @@
 
     // Footer actions
     var footer = make("div", { class: "lmc-footer-actions" });
-    footer.innerHTML = '<button class="lmc-btn lmc-btn-secondary" id="lmc-copy" type="button">Copy result</button><button class="lmc-btn lmc-btn-secondary" id="lmc-reset" type="button">Reset</button>';
+    var shareTextCalc = "Just ran " + (data.title || "this calculator") + " from Ivan Manfredi.";
+    footer.innerHTML =
+      '<button class="lmc-btn lmc-btn-secondary" id="lmc-copy" type="button">Copy result</button>' +
+      '<a class="lmc-btn lm-share-whatsapp" id="lmc-share-wa" target="_blank" rel="noopener" href="' +
+        (window.LM && window.LM.share ? window.LM.share.whatsapp(shareTextCalc) : "#") +
+      '">Share on WhatsApp</a>' +
+      '<button class="lmc-btn lmc-btn-secondary" id="lmc-reset" type="button">Reset</button>';
     container.appendChild(footer);
     root.appendChild(container);
+
+    // Mount unified progress
+    if (window.LM && window.LM.progress) {
+      window.LM.progress.mount({ total: (data.inputs || []).length, current: 0, label: "Run the numbers" });
+    }
 
     // Live compute
     function getCtx() {
@@ -270,6 +282,19 @@
           });
         }
       }
+      if (window.LM && window.LM.progress) {
+        var filled = 0;
+        (data.inputs || []).forEach(function (inp) {
+          var v = ctx[inp.id];
+          var dflt = inp.default != null ? inp.default : 0;
+          if (v !== dflt && v !== null && v !== "" && v !== 0) filled++;
+        });
+        window.LM.progress.update({
+          current: filled,
+          total: (data.inputs || []).length,
+          label: filled + " / " + (data.inputs || []).length + " inputs filled",
+        });
+      }
       return { ctx: ctx, results: results, matched_recs: matched.map(function (m) { return m.tag; }) };
     }
     // Attach
@@ -310,6 +335,10 @@
         } else { toast("Copy not supported"); }
       });
     }
+
+    // WhatsApp share
+    var shareWa = $("#lmc-share-wa");
+    if (shareWa) shareWa.addEventListener("click", function () { beacon("share", { answers: { target: "whatsapp" } }); });
 
     // Reset
     var resetBtn = $("#lmc-reset");
