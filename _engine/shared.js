@@ -211,24 +211,36 @@
       script.onload = function () {
         // edit-mode.js sets window.__LM_EDIT_MODE_LOADED = true
         // and window.__LM_EDIT_MODE_API = { attachField, attachArray, mount }
-        if (window.__LM_EDIT_MODE_API) {
-          // Flush any registered fields/arrays that came in before edit-mode.js loaded
-          editModeState.fields.forEach(function (f) {
-            window.__LM_EDIT_MODE_API.attachField(f.el, f.path, f.opts);
-          });
-          editModeState.arrays.forEach(function (a) {
-            window.__LM_EDIT_MODE_API.attachArray(a.el, a.arrayPath, a.opts);
-          });
-          window.__LM_EDIT_MODE_API.mount({
-            token: editModeState.token,
-            slug: window.__lm_slug || (window.__lm_data && window.__lm_data.slug),
-            format: window.__lm_format || null,
-            data: window.__lm_data || null,
-          });
-          resolve();
-        } else {
+        if (!window.__LM_EDIT_MODE_API) {
           reject(new Error("edit-mode.js loaded but API not exposed"));
+          return;
         }
+        // Wait for the engine's render() to set window.__lm_format + window.__lm_data
+        // before mounting. Without this, mount fires with format=null on fast cache hits.
+        var attempts = 0;
+        function tryMount() {
+          if (window.__lm_format && window.__lm_data) {
+            // Flush any registered fields/arrays buffered before edit-mode.js loaded
+            editModeState.fields.forEach(function (f) {
+              window.__LM_EDIT_MODE_API.attachField(f.el, f.path, f.opts);
+            });
+            editModeState.arrays.forEach(function (a) {
+              window.__LM_EDIT_MODE_API.attachArray(a.el, a.arrayPath, a.opts);
+            });
+            window.__LM_EDIT_MODE_API.mount({
+              token: editModeState.token,
+              slug: window.__lm_slug || (window.__lm_data && window.__lm_data.slug),
+              format: window.__lm_format,
+              data: window.__lm_data,
+            });
+            resolve();
+          } else if (++attempts < 60) {  // ~6s total wait at 100ms intervals
+            setTimeout(tryMount, 100);
+          } else {
+            reject(new Error("Timed out waiting for engine to set __lm_format / __lm_data"));
+          }
+        }
+        tryMount();
       };
       script.onerror = function () { reject(new Error("edit-mode.js failed to load")); };
       document.head.appendChild(script);
