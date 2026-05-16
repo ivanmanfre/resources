@@ -16,7 +16,9 @@
 
   function beacon(event_type, payload) {
     // Edit mode active → no-op (mitigation #6)
+    // Sync URL check catches the race where async token validation hasn't resolved yet
     try {
+      if (new URLSearchParams(location.search).get("edit")) return;
       if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) return;
     } catch (_) {}
     try {

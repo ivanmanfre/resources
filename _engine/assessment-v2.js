@@ -12,7 +12,9 @@
   function toast(msg) { var t = $("#lmc-toast"); if (!t) { t = make("div", { id: "lmc-toast", class: "lmc-toast" }); document.body.appendChild(t); } t.textContent = msg; t.classList.add("show"); setTimeout(function () { t.classList.remove("show"); }, 2500); }
   function beacon(event_type, payload) {
     // Edit mode active → no-op (mitigation #6)
+    // Sync URL check catches the race where async token validation hasn't resolved yet
     try {
+      if (new URLSearchParams(location.search).get("edit")) return;
       if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) return;
     } catch (_) {}
     try {
