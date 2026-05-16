@@ -15,6 +15,10 @@
   }
 
   function beacon(event_type, payload) {
+    // Edit mode active → no-op (mitigation #6)
+    try {
+      if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) return;
+    } catch (_) {}
     try {
       var q = new URLSearchParams(location.search);
       var body = Object.assign({
