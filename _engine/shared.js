@@ -361,71 +361,10 @@
     el.textContent = mins + ":" + (rem < 10 ? "0" : "") + rem;
   }
 
-  // ── Resource tracker (persistent across LM visits) ────────────────────
-  var TRACKER_KEY = "ivan.resources";
-  var TRACKER_MAX = 12;  // keep last N resources
-
-  function trackerRead() {
-    try { return JSON.parse(localStorage.getItem(TRACKER_KEY) || "[]") || []; }
-    catch (_) { return []; }
-  }
-  function trackerWrite(arr) {
-    try { localStorage.setItem(TRACKER_KEY, JSON.stringify(arr.slice(0, TRACKER_MAX))); }
-    catch (_) {}
-  }
-
-  function trackerTouch(data) {
-    if (!data || !data.slug) return;
-    var list = trackerRead();
-    var existingIdx = list.findIndex(function (r) { return r.slug === data.slug; });
-    var entry = {
-      slug: data.slug,
-      title: data.title || data.slug,
-      format: window.__lm_format || "lm",
-      last_visited: Date.now(),
-      url: location.pathname,
-    };
-    if (existingIdx >= 0) list.splice(existingIdx, 1);
-    list.unshift(entry);
-    trackerWrite(list);
-    // Re-render: widget may need to appear now that count >= 2
-    if (!document.getElementById("lm-tracker-widget")) trackerRender();
-  }
-
-  function trackerRender() {
-    var list = trackerRead();
-    if (list.length < 2) return;  // only show when user has visited 2+ LMs
-    if (document.getElementById("lm-tracker-widget")) return;
-    var widget = make("div", { id: "lm-tracker-widget", class: "lm-tracker collapsed", role: "complementary" });
-    widget.innerHTML =
-      '<button class="lm-tracker-toggle" type="button" aria-label="Show resources visited">' +
-        '<span class="lm-tracker-count">' + list.length + '</span>' +
-        '<span class="lm-tracker-label">resources</span>' +
-      '</button>' +
-      '<div class="lm-tracker-panel" hidden>' +
-        '<div class="lm-tracker-panel-head">You\'ve started ' + list.length + ' resources.</div>' +
-        '<ul class="lm-tracker-list">' +
-          list.map(function (r) {
-            var when = "·";
-            var ago = Date.now() - r.last_visited;
-            if (ago < 60000) when = "just now";
-            else if (ago < 3600000) when = Math.round(ago / 60000) + " min ago";
-            else if (ago < 86400000) when = Math.round(ago / 3600000) + " hr ago";
-            else when = Math.round(ago / 86400000) + " d ago";
-            return '<li><a href="' + esc(r.url) + '"><span class="lm-tracker-title">' + esc(r.title) + '</span><span class="lm-tracker-when">' + esc(when) + '</span></a></li>';
-          }).join('') +
-        '</ul>' +
-      '</div>';
-    document.body.appendChild(widget);
-    var toggle = widget.querySelector(".lm-tracker-toggle");
-    var panel = widget.querySelector(".lm-tracker-panel");
-    toggle.addEventListener("click", function () {
-      var expanded = !widget.classList.contains("collapsed");
-      widget.classList.toggle("collapsed");
-      if (expanded) { panel.setAttribute("hidden", ""); }
-      else { panel.removeAttribute("hidden"); }
-    });
-  }
+  // ── Resource tracker removed — was a "could be cool" Netflix-style widget,
+  // but Ivan's audience arrives via DM/comment-gate for ONE specific LM, not browsing.
+  // Kept as no-op so existing engine calls to LM.tracker.touch() don't throw.
+  function trackerTouch() {}
 
   window.LM = {
     make: make, esc: esc, toast: toast, emailIsValid: emailIsValid,
@@ -441,11 +380,7 @@
       registerArray: editModeRegisterArray,
       maybeEnable: editModeMaybeEnable,
     },
-    tracker: {
-      touch: trackerTouch,
-      render: trackerRender,
-      read: trackerRead,
-    },
+    tracker: { touch: trackerTouch },  // no-op stub, see comment above
     progress: {
       mount: progressMount,
       update: progressUpdate,
@@ -462,10 +397,8 @@
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       editModeMaybeEnable();
-      trackerRender();
     });
   } else {
     editModeMaybeEnable();
-    trackerRender();
   }
 })();
