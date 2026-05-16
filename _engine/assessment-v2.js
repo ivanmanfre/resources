@@ -221,6 +221,7 @@
     window.__lm_slug = data.slug;
     window.__lm_data = data;
     window.__lm_format = "assessment";
+    if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
     var key = "ivan.assessment." + data.slug;
     var questions = flattenQuestions(data);
     var answers = (function () { try { return JSON.parse(localStorage.getItem(key + ".answers") || "{}"); } catch (_) { return {}; } })();
@@ -264,10 +265,13 @@
     function renderQuestion() {
       card.innerHTML = "";
       var q = questions[idx];
-      var pct = Math.round((idx / questions.length) * 100);
-      var prog = make("div", { class: "lmc-progress-row" });
-      prog.innerHTML = '<span>Question <strong>' + (idx + 1) + '</strong> of ' + questions.length + '</span><div class="lmc-progress-bar"><div class="lmc-progress-fill" style="width:' + pct + '%"></div></div><span>' + pct + '%</span>';
-      card.appendChild(prog);
+      if (window.LM && window.LM.progress) {
+        window.LM.progress.update({
+          current: idx + 1,
+          total: questions.length,
+          label: "Question " + (idx + 1) + " of " + questions.length,
+        });
+      }
       if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
       var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
       var catIdx = -1, qIdx = -1;
@@ -483,6 +487,10 @@
       var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
       liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });
       share.appendChild(liBtn);
+      var waUrl = window.LM && window.LM.share ? window.LM.share.whatsapp(shareText) : "#";
+      var waBtn = make("a", { class: "lmc-btn lm-share-whatsapp", href: waUrl, target: "_blank", rel: "noopener" }, "Share on WhatsApp");
+      waBtn.addEventListener("click", function () { beacon("share", { answers: { target: "whatsapp", score: res.overall } }); });
+      share.appendChild(waBtn);
       var copy = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Copy link");
       copy.addEventListener("click", function () { if (navigator.clipboard) navigator.clipboard.writeText(currentUrl).then(function () { toast("Link copied"); }); beacon("share", { answers: { target: "copy_link" } }); });
       share.appendChild(copy);
@@ -570,6 +578,9 @@
       return "Your weakest area is <strong>" + esc(res.weakest.name) + "</strong> (" + res.weakest.score + "/100). That's where the biggest hours-per-week leak usually lives.";
     }
 
+    if (window.LM && window.LM.progress) {
+      window.LM.progress.mount({ total: questions.length, current: 0, label: "Question 1 of " + questions.length });
+    }
     renderQuestion();
     beacon("view", {});
   }

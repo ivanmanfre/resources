@@ -137,6 +137,7 @@
     window.__lm_slug = data.slug;
     window.__lm_data = data;
     window.__lm_format = "assessment";
+    if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
     root.innerHTML = "";
 
     var questions = flattenQuestions(data);
@@ -189,10 +190,13 @@
       var q = questions[idx];
       if (!q) { renderResult(); return; }
       // Progress
-      var prog = make("div", { class: "lmc-progress-row" });
-      var pct = Math.round((idx / questions.length) * 100);
-      prog.innerHTML = '<span>Question <strong>' + (idx + 1) + '</strong> of ' + questions.length + '</span><div class="lmc-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + questions.length + '" aria-valuenow="' + idx + '"><div class="lmc-progress-fill" style="width:' + pct + '%"></div></div><span>' + pct + '%</span>';
-      card.appendChild(prog);
+      if (window.LM && window.LM.progress) {
+        window.LM.progress.update({
+          current: idx + 1,
+          total: questions.length,
+          label: "Question " + (idx + 1) + " of " + questions.length,
+        });
+      }
 
       if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
       var qH = make("h2", { class: "lmc-question", id: "lmc-question-" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
@@ -407,6 +411,10 @@
       var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
       liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });
       share.appendChild(liBtn);
+      var waUrl = window.LM && window.LM.share ? window.LM.share.whatsapp(shareText) : "#";
+      var waBtn = make("a", { class: "lmc-btn lm-share-whatsapp", href: waUrl, target: "_blank", rel: "noopener" }, "Share on WhatsApp");
+      waBtn.addEventListener("click", function () { beacon("share", { answers: { target: "whatsapp", score: res.overall } }); });
+      share.appendChild(waBtn);
       var copy = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Copy result link");
       copy.addEventListener("click", function () {
         if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(currentUrl).then(function () { toast("Link copied"); });
@@ -435,6 +443,9 @@
       card.appendChild(unl);
     }
 
+    if (window.LM && window.LM.progress) {
+      window.LM.progress.mount({ total: questions.length, current: 0, label: "Question 1 of " + questions.length });
+    }
     renderQuestion();
     beacon("view", {});
   }
