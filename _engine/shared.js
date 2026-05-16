@@ -285,6 +285,33 @@
     } catch (_) { return Promise.resolve(false); }
   }
 
+  // ── Share helpers ──────────────────────────────────────────────────────
+  function shareUrlWithUtm(base, source) {
+    var u = new URL(base, location.origin);
+    u.searchParams.set("utm_source", source);
+    u.searchParams.set("utm_medium", "referral");
+    u.searchParams.set("utm_campaign", window.__lm_slug || "lm");
+    return u.toString();
+  }
+
+  function shareLinkedIn(text, url) {
+    var u = shareUrlWithUtm(url || location.href, "linkedin-share");
+    return "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(u) + "&summary=" + encodeURIComponent(text || "");
+  }
+
+  function shareWhatsApp(text, url) {
+    var u = shareUrlWithUtm(url || location.href, "whatsapp-share");
+    return "https://wa.me/?text=" + encodeURIComponent((text ? text + "\n\n" : "") + u);
+  }
+
+  function shareCopy(url) {
+    var u = shareUrlWithUtm(url || location.href, "copy-link");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(u).then(function () { return true; });
+    }
+    return Promise.resolve(false);
+  }
+
   // ── Unified sticky progress header ────────────────────────────────────
   var progState = { startedAt: null, total: 0, current: 0, label: "" };
 
@@ -420,6 +447,11 @@
     progress: {
       mount: progressMount,
       update: progressUpdate,
+    },
+    share: {
+      linkedIn: shareLinkedIn,
+      whatsapp: shareWhatsApp,
+      copy: shareCopy,
     },
   };
 
