@@ -109,7 +109,7 @@
         {
           "id": "4-1",
           "text": "Generate invoices automatically from completed work or project milestones",
-          "tip": "Tie invoice creation to a status change so billing never waits on a human checklist.",
+          "tip": "Tie invoice creation to a status change so billing never waits on a human checklist\n",
           "impact": "high"
         },
         {
@@ -127,7 +127,7 @@
         {
           "id": "4-4",
           "text": "Surface revenue and AR data in one dashboard instead of pulling reports manually",
-          "tip": "If your finance lead exports CSVs every Monday, that is a 52-hour-per-year automation opportunity\n",
+          "tip": "If your finance lead exports CSVs every Monday, that is a 52-hour-per-year automation opportunity.",
           "impact": "medium"
         }
       ]
@@ -174,5 +174,5 @@
       }
     }
   ],
-  "data_version": 1
+  "data_version": 2
 }
