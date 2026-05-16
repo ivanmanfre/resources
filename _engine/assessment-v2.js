@@ -214,6 +214,7 @@
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
+    window.__lm_format = "assessment";
     var key = "ivan.assessment." + data.slug;
     var questions = flattenQuestions(data);
     var answers = (function () { try { return JSON.parse(localStorage.getItem(key + ".answers") || "{}"); } catch (_) { return {}; } })();
@@ -229,8 +230,14 @@
     var hero = make("section", { class: "lmc-hero" });
     var hi = make("div", { class: "lmc-container" });
     hi.appendChild(make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment")));
-    hi.appendChild(make("h1", { class: "lmc-h1" }, esc(data.title || "Assessment")));
-    if (data.subtitle) hi.appendChild(make("p", { class: "lmc-sub" }, esc(data.subtitle)));
+    var h1 = make("h1", { class: "lmc-h1" }, esc(data.title || "Assessment"));
+    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+    hi.appendChild(h1);
+    if (data.subtitle) {
+      var sub = make("p", { class: "lmc-sub" }, esc(data.subtitle));
+      if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
+      hi.appendChild(sub);
+    }
     var meta = make("div", { class: "lmc-meta" });
     meta.appendChild(make("div", { class: "lmc-meta-chip" }, questions.length + " questions"));
     if (data.estimated_minutes) meta.appendChild(make("div", { class: "lmc-meta-chip" }, data.estimated_minutes + " min"));
@@ -256,8 +263,23 @@
       prog.innerHTML = '<span>Question <strong>' + (idx + 1) + '</strong> of ' + questions.length + '</span><div class="lmc-progress-bar"><div class="lmc-progress-fill" style="width:' + pct + '%"></div></div><span>' + pct + '%</span>';
       card.appendChild(prog);
       if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
-      card.appendChild(make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || "")));
-      if (q.hint) card.appendChild(make("p", { class: "lmc-hint" }, esc(q.hint)));
+      var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
+      var catIdx = -1, qIdx = -1;
+      if (q.category_id && q.id) {
+        catIdx = (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
+        qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
+        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
+          window.LM.editMode.registerField(qH, "categories[" + catIdx + "].questions[" + qIdx + "].text", { multiline: true });
+        }
+      }
+      card.appendChild(qH);
+      if (q.hint) {
+        var hintEl = make("p", { class: "lmc-hint" }, esc(q.hint));
+        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
+          window.LM.editMode.registerField(hintEl, "categories[" + catIdx + "].questions[" + qIdx + "].hint");
+        }
+        card.appendChild(hintEl);
+      }
 
       // Type-dispatched input
       if (q.type === "number") renderNumberInput(q);

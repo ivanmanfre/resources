@@ -130,6 +130,7 @@
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
+    window.__lm_format = "assessment";
     root.innerHTML = "";
 
     var questions = flattenQuestions(data);
@@ -146,8 +147,14 @@
     var hero = make("section", { class: "lmc-hero" });
     var hi = make("div", { class: "lmc-container" });
     hi.appendChild(make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment")));
-    hi.appendChild(make("h1", { class: "lmc-h1" }, esc(data.title || "Assessment")));
-    if (data.subtitle) hi.appendChild(make("p", { class: "lmc-sub" }, esc(data.subtitle)));
+    var h1 = make("h1", { class: "lmc-h1" }, esc(data.title || "Assessment"));
+    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+    hi.appendChild(h1);
+    if (data.subtitle) {
+      var sub = make("p", { class: "lmc-sub" }, esc(data.subtitle));
+      if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
+      hi.appendChild(sub);
+    }
     var meta = make("div", { class: "lmc-meta" });
     meta.appendChild(make("div", { class: "lmc-meta-chip" }, questions.length + " questions"));
     if (data.estimated_minutes) meta.appendChild(make("div", { class: "lmc-meta-chip" }, data.estimated_minutes + " min"));
@@ -182,7 +189,15 @@
       card.appendChild(prog);
 
       if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
-      card.appendChild(make("h2", { class: "lmc-question", id: "lmc-question-" + idx, tabindex: "-1" }, esc(q.text || q.label || "")));
+      var qH = make("h2", { class: "lmc-question", id: "lmc-question-" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
+      if (window.LM && window.LM.editMode && q.category_id && q.id) {
+        var catIdx = (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
+        var qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
+        if (catIdx >= 0 && qIdx >= 0) {
+          window.LM.editMode.registerField(qH, "categories[" + catIdx + "].questions[" + qIdx + "].text", { multiline: true });
+        }
+      }
+      card.appendChild(qH);
 
       var options = q.answers || [];
       // If no answers array, default to 1-5 Likert
