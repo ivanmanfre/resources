@@ -56,7 +56,7 @@
       { "from": "n_schedule", "to": "n_publish",   "label": "now" },
       { "from": "n_publish",  "to": "n_comments",  "label": "URN" },
       { "from": "n_comments", "to": "n_dm",        "label": "match" },
-      { "from": "n_dm",       "to": "n_nurture",   "label": "email captured" }
+      { "from": "n_dm",       "to": "n_nurture",   "label": "email" }
     ]
   },
   "ctas": [
