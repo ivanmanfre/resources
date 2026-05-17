@@ -20,13 +20,15 @@
 
     root.className = "lmc-root lmg-root";
     root.innerHTML = "";
+    // Meta chips adapt to whether self-placement feature is on
+    var chips = [
+      (data.sections || []).length + " sections",
+      (data.estimated_minutes || 10) + " min",
+    ];
+    if (data.enable_self_placement === true) chips.push("Self-placement");
     root.appendChild(L.buildHero(data, {
       badge: (data.brand && data.brand.hero_badge) || "Guide",
-      metaChips: [
-        (data.sections || []).length + " sections",
-        (data.estimated_minutes || 10) + " min",
-        "Self-placement"
-      ]
+      metaChips: chips,
     }));
 
     // Editor hooks: wrap hero title + subtitle for inline edit
@@ -34,13 +36,22 @@
     var heroSub = root.querySelector(".lmc-sub");
     if (heroH1 && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroH1, "title");
     if (heroSub && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroSub, "subtitle");
-    root.appendChild(L.buildIntro(data, ".lmg-progress-wrap", {
+    // Intro bullets also adapt to feature state
+    var introBullets = data.enable_self_placement === true
+      ? {
+          defaultValueBullet: "Rate your team's current practice at the bottom of each section",
+          defaultNextBullet: "End-of-guide summary shows which chapters to revisit. Emailed if you want",
+          defaultNote: "You don't have to rate anything. But rating unlocks a personalized summary.",
+        }
+      : {
+          defaultValueBullet: "Read at your pace — no progress tracking, no signup wall",
+          defaultNextBullet: "Optional email at the end if you want the full guide as a clean PDF",
+          defaultNote: "",
+        };
+    root.appendChild(L.buildIntro(data, ".lmg-progress-wrap", Object.assign({
       tool_type: "guide",
-      defaultValueBullet: "Rate your team's current practice at the bottom of each section",
-      defaultNextBullet: "End-of-guide summary shows which chapters to revisit. Emailed if you want",
       startLabel: "Start reading",
-      defaultNote: "You don't have to rate anything. But rating unlocks a personalized summary."
-    }));
+    }, introBullets)));
 
     // Sections — wrapped in a container so registerArray has a handle for
     // add / drag-reorder / between-add affordances.
