@@ -251,6 +251,41 @@
 .lmc-toast { position: fixed; bottom: 1.25rem; right: 1.25rem; padding: .85rem 1.35rem; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: .9rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); transform: translateY(12px); }
 .lmc-toast.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
+/* ── Editorial tables (hairline, no brutal grid) — per audit 2026-05-17 ── */
+.lmc-root table, .lmg-root table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 16px;
+  border: none;
+  background: transparent;
+}
+.lmc-root thead th, .lmg-root thead th {
+  text-align: left;
+  font-weight: 600;
+  color: #1A1A1A;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 18px 12px;
+  border: none;
+  border-bottom: 1px solid #2A8F65;
+  background: transparent;
+}
+.lmc-root tbody td, .lmg-root tbody td {
+  padding: 18px 12px;
+  border: none;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  color: #3D3D3B;
+  vertical-align: top;
+  font-family: 'Source Serif 4', Georgia, serif;
+}
+.lmc-root tbody tr:last-child td, .lmg-root tbody tr:last-child td { border-bottom: none; }
+.lmc-root table td.num, .lmc-root table th.num,
+.lmg-root table td.num, .lmg-root table th.num {
+  text-align: right; font-feature-settings: "tnum"; font-variant-numeric: tabular-nums;
+}
+
 /* ── Motion-safe ─────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after { animation: none !important; transition: none !important; }
