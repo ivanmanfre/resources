@@ -66,19 +66,22 @@
         if (window.LM && window.LM.editMode) window.LM.editMode.registerField(p, "sections[" + sIdx + "].text", { multiline: true });
         sec.appendChild(p);
       }
-      // Self-placement block
-      var prompt = s.self_prompt || "Is your team already doing this?";
-      var cur = states[s.id || s.title] || "not_yet";
-      var self = L.make("div", { class: "lmg-self" });
-      self.innerHTML = '<div class="lmg-self-prompt"><span>Self-placement</span>' + L.esc(prompt) + '</div>' +
-        '<div class="lmg-self-group" role="radiogroup" aria-label="Self-placement">' +
-          ["not_yet", "partial", "done"].map(function (st) {
-            return '<button class="lmg-self-btn state-' + st + (cur === st ? ' selected' : '') +
-              '" type="button" role="radio" aria-checked="' + (cur === st ? "true" : "false") +
-              '" data-state="' + st + '">' + STATE_LABEL[st] + '</button>';
-          }).join('') +
-        '</div>';
-      sec.appendChild(self);
+      // Self-placement block — opt-in only. Default OFF because reading guides
+      // weren't written as per-section assessments and the buttons read as noise.
+      if (data.enable_self_placement === true) {
+        var prompt = s.self_prompt || "Is your team already doing this?";
+        var cur = states[s.id || s.title] || "not_yet";
+        var self = L.make("div", { class: "lmg-self" });
+        self.innerHTML = '<div class="lmg-self-prompt"><span>Self-placement</span>' + L.esc(prompt) + '</div>' +
+          '<div class="lmg-self-group" role="radiogroup" aria-label="Self-placement">' +
+            ["not_yet", "partial", "done"].map(function (st) {
+              return '<button class="lmg-self-btn state-' + st + (cur === st ? ' selected' : '') +
+                '" type="button" role="radio" aria-checked="' + (cur === st ? "true" : "false") +
+                '" data-state="' + st + '">' + STATE_LABEL[st] + '</button>';
+            }).join('') +
+          '</div>';
+        sec.appendChild(self);
+      }
       sectionsContainer.appendChild(sec);
     });
     if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(sectionsContainer, "sections", {
@@ -87,20 +90,32 @@
     });
     main.appendChild(sectionsContainer);
 
-    // Summary panel (hidden until at least one rated)
-    var pending = L.make("p", { class: "lmg-summary-pending" }, "Rate a section above to start building your personalized summary.");
-    main.appendChild(pending);
-    var summary = L.make("section", { class: "lmg-summary", id: "lmg-summary", "aria-live": "polite" });
-    main.appendChild(summary);
+    // Summary panel only renders when self-placement is enabled (it shows
+    // ratings-based personalized summary). Off by default.
+    if (data.enable_self_placement === true) {
+      var pending = L.make("p", { class: "lmg-summary-pending" }, "Rate a section above to start building your personalized summary.");
+      main.appendChild(pending);
+      var summary = L.make("section", { class: "lmg-summary", id: "lmg-summary", "aria-live": "polite" });
+      main.appendChild(summary);
+    }
 
-    // Capture (email gate)
+    // Capture (email gate) — copy adapts to self-placement on/off
     var gate = L.make("section", { class: "lmc-capture", id: "lmg-capture" });
-    gate.innerHTML = '<h2>Send me the <em>chapters I skipped</em></h2>' +
-      '<p>One email with standalone PDFs of just the sections you rated Not yet.</p>' +
+    var captureHeadline = data.enable_self_placement === true
+      ? 'Send me the <em>chapters I skipped</em>'
+      : 'Get the takeaways as a <em>printable PDF</em>';
+    var captureBody = data.enable_self_placement === true
+      ? 'One email with standalone PDFs of just the sections you rated Not yet.'
+      : 'One email with the full guide as a clean PDF for later reference.';
+    var captureBtn = data.enable_self_placement === true
+      ? 'Email me the chapters'
+      : 'Email me the PDF';
+    gate.innerHTML = '<h2>' + captureHeadline + '</h2>' +
+      '<p>' + captureBody + '</p>' +
       '<form class="lmc-form" id="lmg-form">' +
         '<label class="sr-only" for="lmg-email">Email</label>' +
         '<input class="lmc-input" type="email" id="lmg-email" autocomplete="email" required placeholder="you@company.com" />' +
-        '<button class="lmc-btn" type="submit">Email me the chapters</button>' +
+        '<button class="lmc-btn" type="submit">' + captureBtn + '</button>' +
       '</form>' +
       '<p class="lmc-note">One email. Unsubscribe any time.</p>';
     var shareRow = L.make("div", { class: "lmc-share lmg-share" });
