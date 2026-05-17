@@ -265,13 +265,6 @@
     function renderQuestion() {
       card.innerHTML = "";
       var q = questions[idx];
-      if (window.LM && window.LM.progress) {
-        window.LM.progress.update({
-          current: idx + 1,
-          total: questions.length,
-          label: "Question " + (idx + 1) + " of " + questions.length,
-        });
-      }
       if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
       var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
       var catIdx = -1, qIdx = -1;
@@ -578,9 +571,6 @@
       return "Your weakest area is <strong>" + esc(res.weakest.name) + "</strong> (" + res.weakest.score + "/100). That's where the biggest hours-per-week leak usually lives.";
     }
 
-    if (window.LM && window.LM.progress) {
-      window.LM.progress.mount({ total: questions.length, current: 0, label: "Question 1 of " + questions.length });
-    }
     renderQuestion();
     beacon("view", {});
   }

@@ -36,11 +36,6 @@
       defaultNote: "You don't have to rate anything. But rating unlocks a personalized summary."
     }));
 
-    // Sticky progress bar (unified, via LM.progress)
-    if (window.LM && window.LM.progress) {
-      window.LM.progress.mount({ total: (data.sections || []).length, current: 0, label: "0 / " + (data.sections || []).length + " rated" });
-    }
-
     // Sections
     var main = L.make("main", { class: "lmc-container lmg-prose" });
     (data.sections || []).forEach(function (s) {
@@ -118,13 +113,6 @@
     }
     function update() {
       var r = compute();
-      if (window.LM && window.LM.progress) {
-        window.LM.progress.update({
-          current: r.rated,
-          total: r.total,
-          label: r.rated + " / " + r.total + " rated · " + r.score + "% strength",
-        });
-      }
       root.classList.toggle("rated", r.rated > 0);
 
       var panel = document.getElementById("lmg-summary");

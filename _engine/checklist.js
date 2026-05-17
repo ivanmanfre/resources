@@ -124,11 +124,6 @@
     });
     root.appendChild(introSection);
 
-    // Sticky progress (unified, via LM.progress)
-    if (window.LM && window.LM.progress) {
-      window.LM.progress.mount({ total: total, current: 0, label: "0 / " + total + " complete" });
-    }
-
     // Sections
     var content = make("main", { class: "lmc-container" });
     (data.sections || []).forEach(function (s, sIdx) {
@@ -208,13 +203,6 @@
           else if (it.impact === "high") highGaps++;
         });
       });
-      if (window.LM && window.LM.progress) {
-        window.LM.progress.update({
-          current: done,
-          total: totalItems,
-          label: done + " / " + totalItems + " complete" + (highGaps ? " · " + highGaps + " high-impact gap" + (highGaps === 1 ? "" : "s") : ""),
-        });
-      }
     }
     update();
 

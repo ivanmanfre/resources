@@ -312,54 +312,10 @@
     return Promise.resolve(false);
   }
 
-  // ── Unified sticky progress header ────────────────────────────────────
-  var progState = { startedAt: null, total: 0, current: 0, label: "" };
-
-  function progressMount(opts) {
-    if (document.getElementById("lm-progress-header")) return;
-    progState.startedAt = Date.now();
-    progState.total = opts.total || 0;
-    progState.current = opts.current || 0;
-    progState.label = opts.label || "";
-    var bar = make("div", { id: "lm-progress-header", class: "lm-progress-header", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": String(progState.total), "aria-valuenow": String(progState.current) });
-    bar.innerHTML =
-      '<div class="lm-progress-inner">' +
-        '<span class="lm-progress-label" id="lm-progress-label">' + esc(progState.label) + '</span>' +
-        '<div class="lm-progress-track"><div class="lm-progress-fill" id="lm-progress-fill" style="width:' + progressPercent() + '%"></div></div>' +
-        '<span class="lm-progress-pct" id="lm-progress-pct">' + progressPercent() + '%</span>' +
-        '<span class="lm-progress-time" id="lm-progress-time">0:00</span>' +
-      '</div>';
-    document.body.insertBefore(bar, document.body.firstChild);
-    setInterval(progressUpdateTimeDisplay, 1000);
-  }
-
-  function progressUpdate(opts) {
-    if (opts.current != null) progState.current = opts.current;
-    if (opts.total != null) progState.total = opts.total;
-    if (opts.label != null) progState.label = opts.label;
-    var fill = document.getElementById("lm-progress-fill");
-    var lbl = document.getElementById("lm-progress-label");
-    var pct = document.getElementById("lm-progress-pct");
-    var bar = document.getElementById("lm-progress-header");
-    if (fill) fill.style.width = progressPercent() + "%";
-    if (lbl) lbl.textContent = progState.label;
-    if (pct) pct.textContent = progressPercent() + "%";
-    if (bar) bar.setAttribute("aria-valuenow", String(progState.current));
-  }
-
-  function progressPercent() {
-    return progState.total > 0 ? Math.round((progState.current / progState.total) * 100) : 0;
-  }
-
-  function progressUpdateTimeDisplay() {
-    if (!progState.startedAt) return;
-    var el = document.getElementById("lm-progress-time");
-    if (!el) return;
-    var secs = Math.floor((Date.now() - progState.startedAt) / 1000);
-    var mins = Math.floor(secs / 60);
-    var rem = secs - mins * 60;
-    el.textContent = mins + ":" + (rem < 10 ? "0" : "") + rem;
-  }
+  // ── Sticky progress header removed — engines have their own native progress UI.
+  // Kept as no-ops so any lingering engine calls don't throw.
+  function progressMount() {}
+  function progressUpdate() {}
 
   // ── Resource tracker removed — was a "could be cool" Netflix-style widget,
   // but Ivan's audience arrives via DM/comment-gate for ONE specific LM, not browsing.
