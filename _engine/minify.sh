@@ -21,3 +21,12 @@ node -c assessment.js
 rm .assessment.js.bak .assessment.css.bak
 
 echo "Minified. JS: $(wc -c < assessment.js) bytes, CSS: $(wc -c < assessment.css) bytes"
+
+# Architecture engine
+cp architecture.js .architecture.js.bak
+cp architecture.css .architecture.css.bak
+npx -y terser .architecture.js.bak -c -m -o architecture.js
+npx -y lightningcss-cli --minify -o architecture.css .architecture.css.bak
+node -c architecture.js
+rm .architecture.js.bak .architecture.css.bak
+echo "Architecture minified. JS: $(wc -c < architecture.js) bytes, CSS: $(wc -c < architecture.css) bytes"
