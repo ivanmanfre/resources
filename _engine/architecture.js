@@ -1,1 +1,559 @@
-!function(){"use strict";var e="architecture";function a(){return window.__lm_slug||window.__lm_data&&window.__lm_data.slug||""}function t(e,a){return(a||document).querySelector(e)}function n(e,a,t){return window.LM.make(e,a,t)}function d(e){return window.LM.esc(e)}function i(e,a){var t=document.createElementNS("http://www.w3.org/2000/svg",e);if(a)for(var n in a)t.setAttribute(n,a[n]);return t}function r(a,t){window.LM.beacon(e,a,t||{})}var o={data:null,root:null,drawer:null,activeNodeId:null,viewedNodes:{},viewStartedAt:Date.now()};function l(){return Object.keys(o.viewedNodes).length}function s(){var e=0;for(var a in o.viewedNodes)e+=o.viewedNodes[a]||0;return e}function c(){return{viewed_node_count:s(),unique_node_count:l(),time_on_page:Math.round((Date.now()-o.viewStartedAt)/1e3)}}function h(e,a){try{return!!/^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\"\']+$/.test(e)&&!!new Function("ctx","Math","with (ctx) { return ("+e+"); }")(a,Math)}catch(e){return!1}}function u(e,a){if(!Array.isArray(e.ctas)||!e.ctas.length)return null;for(var t=0;t<e.ctas.length;t++){var n=e.ctas[t];if(n&&n.when&&h(n.when,a))return n}for(var d=e.ctas.length-1;d>=0;d--)if(!e.ctas[d].when)return e.ctas[d];return e.ctas[e.ctas.length-1]||null}function m(){if(o.activeNodeId){var e='[data-node-id="'+o.activeNodeId+'"]',a=o.root.querySelector(e);a&&a.classList.remove("is-active")}}function p(){o.drawer&&(o.drawer.classList.remove("open"),o.drawer.setAttribute("aria-hidden","true"),m(),o.activeNodeId=null)}function w(t){var d=function(){if(o.drawer)return o.drawer;var e=n("aside",{class:"lma-drawer",role:"dialog","aria-hidden":"true","aria-label":"Node detail"});return document.body.appendChild(e),o.drawer=e,e}();o.activeNodeId&&o.activeNodeId!==t.id&&m();var i='[data-node-id="'+t.id+'"]';o.root.querySelectorAll(i).forEach(function(e){e.classList.add("is-active","is-visited")}),o.activeNodeId=t.id;var c=t.panel||{};d.innerHTML="";var h=n("button",{class:"lma-drawer-close",type:"button","aria-label":"Close"},"&times;");h.addEventListener("click",p),d.appendChild(h);var u=n("p",{class:"lma-drawer-eyebrow"});u.textContent=(t.type||"transform").toUpperCase()+" · "+(t.label||t.id),d.appendChild(u);var w=n("h2",{class:"lma-drawer-headline"});w.textContent=c.headline||t.label||"Detail",d.appendChild(w);var f=n("div",{class:"lma-drawer-body"});if(f.innerHTML=c.body_html||"",d.appendChild(f),Array.isArray(c.stack)&&c.stack.length){d.appendChild(n("p",{class:"lma-drawer-section-h"},"Stack"));var g=n("div",{class:"lma-chip-row"});c.stack.forEach(function(e){var a=n("span",{class:"lma-chip"});a.textContent=e,g.appendChild(a)}),d.appendChild(g)}if(Array.isArray(c.common_mistakes)&&c.common_mistakes.length){d.appendChild(n("p",{class:"lma-drawer-section-h"},"Common mistakes"));var b=n("ul",{class:"lma-list"});c.common_mistakes.forEach(function(e){var a=n("li");a.textContent=e,b.appendChild(a)}),d.appendChild(b)}if(Array.isArray(c.alternatives)&&c.alternatives.length){d.appendChild(n("p",{class:"lma-drawer-section-h"},"Alternatives"));var C=n("div",{class:"lma-chip-row"});c.alternatives.forEach(function(e){var a=n("span",{class:"lma-chip alt"});a.textContent="string"==typeof e?e:e.name||"alt",C.appendChild(a)}),d.appendChild(C)}if(c.cta_id){var M=(o.data.ctas||[]).find(function(e){return e.id===c.cta_id});if(M&&M.url){var y=n("a",{class:"lma-drawer-cta",href:M.url,target:"_blank",rel:"noopener"});y.textContent=M.button||M.headline||"Talk it through",y.addEventListener("click",function(){r("cta_click",{answers:{cta_id:M.id,source:"drawer",node_id:t.id}})}),d.appendChild(y)}}if(window.LM.editMode&&window.LM.editMode.enabled()){var L=(o.data.diagram.nodes||[]).findIndex(function(e){return e.id===t.id});L>=0&&(window.LM.editMode.registerField(w,"diagram.nodes["+L+"].panel.headline"),window.LM.editMode.registerField(f,"diagram.nodes["+L+"].panel.body_html",{multiline:!0}))}d.classList.add("open"),d.setAttribute("aria-hidden","false"),o.viewedNodes[t.id]=(o.viewedNodes[t.id]||0)+1,window.LM.writeKV(e,a(),"viewed",o.viewedNodes),r("node_click",{answers:{node_id:t.id,node_type:t.type,viewed_node_count:s(),unique_node_count:l()}}),r("panel_view",{answers:{node_id:t.id,headline:c.headline||null}}),v()}function v(){var e=t("#lma-floating-cta");if(e){var a=u(o.data,c());if(a){e.innerHTML='<section class="lma-cta-card" data-cta-id="'+d(a.id||"fallback")+'"><h3>'+d(a.headline||"Want help with this?")+'</h3><a class="lma-btn" href="'+d(a.url)+'" target="_blank" rel="noopener">'+d(a.button||"Learn more")+"</a></section>";var n=e.querySelector("a.lma-btn");n&&!n.__bound&&(n.__bound=!0,n.addEventListener("click",function(){r("cta_click",{answers:{cta_id:a.id,source:"floating"}})}))}else e.innerHTML=""}}function f(e){var a=String(e||"diagram").toLowerCase().replace(/[^a-z0-9-]+/g,"-").replace(/^-+|-+$/g,""),t=new Date;return(a||"diagram")+"-"+(t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0"))+".png"}function g(){var e=o.root.querySelector(".lma-stage");if(e&&null!==e.offsetParent||(e=o.root.querySelector(".lma-mobile-list")),e){var n=t("#lma-download"),d=n?n.textContent:null;n&&(n.disabled=!0,n.textContent="Preparing…"),(window.html2canvas?Promise.resolve(window.html2canvas):new Promise(function(e,a){var t=document.createElement("script");t.src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",t.async=!0,t.onload=function(){e(window.html2canvas)},t.onerror=function(){a(new Error("html2canvas failed to load"))},document.head.appendChild(t)})).then(function(a){return a(e,{backgroundColor:"#FFFFFF",scale:2,useCORS:!0})}).then(function(e){var t=document.createElement("a");t.download=f(a()),t.href=e.toDataURL("image/png"),document.body.appendChild(t),t.click(),t.remove(),r("share",{answers:{format:"png"}})}).catch(function(e){window.LM.toast&&window.LM.toast("Download failed: "+e.message)}).finally(function(){n&&(n.disabled=!1,n.textContent=d||"Download as PNG")})}}function b(t,l){window.__lm_slug=t.slug||window.__lm_slug,window.__lm_data=t,o.data=t,o.root=l,o.viewedNodes=window.LM.readKV(e,a(),"viewed",{})||{},o.viewStartedAt=Date.now(),l.innerHTML="",l.appendChild(function(e){var a=n("section",{class:"lma-hero"});a.appendChild(n("span",{class:"lma-badge"},"System diagram"));var t=n("h1",{class:"lma-h1"});t.textContent=e.title||"Architecture",a.appendChild(t);var d=null;e.subtitle&&((d=n("p",{class:"lma-sub"})).textContent=e.subtitle,a.appendChild(d));var i=n("div",{class:"lma-meta"}),r=(e.diagram&&e.diagram.nodes||[]).length,o=(e.diagram&&e.diagram.edges||[]).length;return i.appendChild(n("div",{class:"lma-meta-chip"},r+" nodes")),i.appendChild(n("div",{class:"lma-meta-chip"},o+" connections")),i.appendChild(n("div",{class:"lma-meta-chip"},"Click any node")),a.appendChild(i),window.LM.editMode&&window.LM.editMode.enabled()&&(window.LM.editMode.registerField(t,"title"),d&&window.LM.editMode.registerField(d,"subtitle")),a}(t)),l.appendChild(function(e){var a=e.diagram||{},t=a.nodes||[],d=a.edges||[],r=n("section",{class:"lma-stage"}),l=i("svg",{viewBox:a.viewBox||"0 0 1200 800","aria-label":"Architecture diagram",role:"img"}),s=i("defs"),c=i("marker",{id:"lma-arrow",viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:"7",markerHeight:"7",orient:"auto-start-reverse"});if(c.appendChild(i("path",{d:"M0,0 L10,5 L0,10 Z",fill:"rgba(26,26,26,0.55)"})),s.appendChild(c),l.appendChild(s),a.background_grid){for(var h=i("g",{class:"lma-grid"}),u=0;u<=1200;u+=40)h.appendChild(i("path",{d:"M"+u+" 0 L"+u+" 800"}));for(var m=0;m<=800;m+=40)h.appendChild(i("path",{d:"M0 "+m+" L1200 "+m}));l.appendChild(h)}var p={};return t.forEach(function(e){p[e.id]=e}),d.forEach(function(e,a){var t=p[e.from],n=p[e.to];if(t&&n){var d=t.x+t.width/2,r=t.y+t.height/2,o=n.x+n.width/2,s=n.y+n.height/2,c=o-d,h=s-r,u=t.width/2,m=t.height/2,w=Math.min(u/Math.max(1,Math.abs(c)),m/Math.max(1,Math.abs(h))),v=d+c*w,f=r+h*w,g=n.width/2,b=n.height/2,C=Math.min(g/Math.max(1,Math.abs(c)),b/Math.max(1,Math.abs(h))),M=o-c*C,y=s-h*C,L=(v+M)/2,_=(f+y)/2,x=i("path",{d:"M"+v+" "+f+" L"+M+" "+y,class:"lma-edge","marker-end":"url(#lma-arrow)"});if(l.appendChild(x),e.label){var k=String(e.label),E=6.2*k.length+12,A=i("rect",{x:L-E/2,y:_-6-16+4,width:E,height:16,rx:8,ry:8,class:"lma-edge-label-bg"});l.appendChild(A);var N=i("text",{x:L,y:_-6,class:"lma-edge-label"});N.textContent=k,l.appendChild(N),window.LM.editMode&&window.LM.editMode.enabled()&&window.LM.editMode.registerField(N,"diagram.edges["+a+"].label")}}}),t.forEach(function(e,a){var t=i("g",{class:"lma-node t-"+(e.type||"transform"),"data-node-id":e.id,tabindex:"0",role:"button","aria-label":"Open detail for "+(e.label||e.id)});o.viewedNodes[e.id]&&t.setAttribute("class",t.getAttribute("class")+" is-visited");var n=i("rect",{x:e.x,y:e.y,width:e.width,height:e.height}),d=i("text",{class:"lma-node-type",x:e.x+e.width/2,y:e.y+22});d.textContent=(e.type||"transform").toUpperCase();var r=i("text",{class:"lma-node-label",x:e.x+e.width/2,y:e.y+e.height/2+12});r.textContent=e.label||e.id;var s=i("circle",{class:"lma-node-dot",cx:e.x+e.width-14,cy:e.y+14,r:4});t.appendChild(n),t.appendChild(d),t.appendChild(r),t.appendChild(s),l.appendChild(t),window.LM.editMode&&window.LM.editMode.enabled()&&window.LM.editMode.registerField(r,"diagram.nodes["+a+"].label")}),window.LM.editMode&&window.LM.editMode.enabled()&&(window.LM.editMode.registerArray(l,"diagram.nodes",{itemLabel:"node"}),window.LM.editMode.registerArray(l,"diagram.edges",{itemLabel:"edge",template:{from:"",to:"",label:""}})),r.appendChild(l),r}(t)),l.appendChild(function(e){var a=e.diagram&&e.diagram.nodes||[],t=n("section",{class:"lma-mobile-list","aria-label":"Node list (mobile)"}),i=n("ol");return a.forEach(function(e){var a=n("button",{class:"lma-mobile-card"+(o.viewedNodes[e.id]?" is-visited":""),type:"button","data-node-id":e.id});a.innerHTML='<span class="m-type">'+d((e.type||"transform").toUpperCase())+'</span><span class="m-label">'+d(e.label||e.id)+"</span>"+(e.panel&&e.panel.headline?'<span class="m-hint">'+d(e.panel.headline)+"</span>":"");var t=n("li");t.appendChild(a),i.appendChild(t)}),t.appendChild(i),t}(t));var s=n("div",{class:"lma-actions",id:"lma-actions"}),c=n("button",{class:"lma-btn lma-btn-secondary",type:"button",id:"lma-download"},"Download as PNG");c.addEventListener("click",g),s.appendChild(c),l.appendChild(s);var h,u,m=n("div",{id:"lma-floating-cta"});l.appendChild(m),h=o.data.diagram&&o.data.diagram.nodes||[],u={},h.forEach(function(e){u[e.id]=e}),o.root.querySelectorAll(".lma-node").forEach(function(e){e.addEventListener("click",function(){var a=u[e.getAttribute("data-node-id")];a&&w(a)}),e.addEventListener("keydown",function(a){"Enter"!==a.key&&" "!==a.key||(a.preventDefault(),e.dispatchEvent(new Event("click")))})}),o.root.querySelectorAll(".lma-mobile-card").forEach(function(e){e.addEventListener("click",function(){var a=u[e.getAttribute("data-node-id")];a&&w(a)})}),document.addEventListener("keydown",function(e){"Escape"===e.key&&p()}),document.addEventListener("click",function(e){o.drawer&&o.drawer.classList.contains("open")&&(o.drawer.contains(e.target)||e.target.closest&&e.target.closest(".lma-node")||e.target.closest&&e.target.closest(".lma-mobile-card")||p())}),v(),r("view",{answers:{node_count:(t.diagram&&t.diagram.nodes||[]).length}})}function C(){var e=document.getElementById("lma-root")||document.querySelector("[data-lm-architecture-src]");if(e){var a=e.getAttribute("data-lm-architecture-src")||"./data.json";fetch(a,{credentials:"same-origin"}).then(function(e){if(!e.ok)throw new Error("data.json "+e.status);return e.json()}).then(function(a){b(a,e)}).catch(function(a){e.innerHTML='<div style="padding:2rem;color:#a00"><strong>Error loading architecture:</strong> '+d(a.message)+"</div>"})}}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",C):C(),window.__lm_architecture={state:o,render:b,beacon:r,ctaCtx:c,pickCta:u,pngFilename:f,openDrawerForNode:w,closeDrawer:p}}();
+/* LM Architecture Engine — vanilla JS, renders an SVG system diagram from data.json,
+ * opens a non-blocking side drawer per node, tracks visits in localStorage via
+ * LM.readKV/writeKV, fires beacon events, evaluates gated CTAs, and exposes
+ * LM.editMode wraps for inline editing of labels / panel content / edge labels.
+ */
+(function () {
+  "use strict";
+
+  var TOOL = "architecture";
+  var SVG_NS = "http://www.w3.org/2000/svg";
+
+  function SLUG() { return window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || ""; }
+  function $(s, c) { return (c || document).querySelector(s); }
+  function make(tag, attrs, html) { return window.LM.make(tag, attrs, html); }
+  function esc(s) { return window.LM.esc(s); }
+  function svgEl(tag, attrs) {
+    var e = document.createElementNS(SVG_NS, tag);
+    if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function beacon(event, extra) { window.LM.beacon(TOOL, event, extra || {}); }
+
+  // ── State (per page load) ──────────────────────────────────────────────
+  var state = {
+    data: null,
+    root: null,
+    drawer: null,
+    activeNodeId: null,
+    viewedNodes: {},
+    viewStartedAt: Date.now()
+  };
+
+  function getViewedKV() { return window.LM.readKV(TOOL, SLUG(), "viewed", {}) || {}; }
+  function persistViewedKV() { window.LM.writeKV(TOOL, SLUG(), "viewed", state.viewedNodes); }
+  function uniqueViewedCount() { return Object.keys(state.viewedNodes).length; }
+  function totalViewedCount() {
+    var n = 0;
+    for (var k in state.viewedNodes) n += (state.viewedNodes[k] || 0);
+    return n;
+  }
+
+  // ── CTA gating ─────────────────────────────────────────────────────────
+  function ctaCtx() {
+    return {
+      viewed_node_count: totalViewedCount(),
+      unique_node_count: uniqueViewedCount(),
+      time_on_page: Math.round((Date.now() - state.viewStartedAt) / 1000)
+    };
+  }
+  // Whitelist mirrors checklist / calculator engines.
+  function evalWhen(expr, ctx) {
+    try {
+      var allowed = /^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\"\']+$/;
+      if (!allowed.test(expr)) return false;
+      var fn = new Function("ctx", "Math", "with (ctx) { return (" + expr + "); }");
+      return !!fn(ctx, Math);
+    } catch (_) { return false; }
+  }
+  function pickCta(data, ctx) {
+    if (!Array.isArray(data.ctas) || !data.ctas.length) return null;
+    for (var i = 0; i < data.ctas.length; i++) {
+      var c = data.ctas[i];
+      if (c && c.when) {
+        if (evalWhen(c.when, ctx)) return c;
+      }
+    }
+    // Final fallback = the last entry (whether or not it has a `when`).
+    for (var j = data.ctas.length - 1; j >= 0; j--) {
+      if (!data.ctas[j].when) return data.ctas[j];
+    }
+    return data.ctas[data.ctas.length - 1] || null;
+  }
+
+  // ── Hero ───────────────────────────────────────────────────────────────
+  function renderHero(data) {
+    var hero = make("section", { class: "lma-hero" });
+    hero.appendChild(make("span", { class: "lma-badge" }, "System diagram"));
+    var h1 = make("h1", { class: "lma-h1" });
+    h1.textContent = data.title || "Architecture";
+    hero.appendChild(h1);
+    var sub = null;
+    if (data.subtitle) {
+      sub = make("p", { class: "lma-sub" });
+      sub.textContent = data.subtitle;
+      hero.appendChild(sub);
+    }
+    var meta = make("div", { class: "lma-meta" });
+    var nc = (data.diagram && data.diagram.nodes || []).length;
+    var ec = (data.diagram && data.diagram.edges || []).length;
+    meta.appendChild(make("div", { class: "lma-meta-chip" }, nc + " nodes"));
+    meta.appendChild(make("div", { class: "lma-meta-chip" }, ec + " connections"));
+    meta.appendChild(make("div", { class: "lma-meta-chip" }, "Click any node"));
+    hero.appendChild(meta);
+    if (window.LM.editMode && window.LM.editMode.enabled()) {
+      window.LM.editMode.registerField(h1, "title");
+      if (sub) window.LM.editMode.registerField(sub, "subtitle");
+    }
+    return hero;
+  }
+
+  // ── SVG diagram ────────────────────────────────────────────────────────
+  function renderSvg(data) {
+    var d = data.diagram || {};
+    var nodes = d.nodes || [];
+    var edges = d.edges || [];
+    var stage = make("section", { class: "lma-stage" });
+    var svg = svgEl("svg", {
+      viewBox: d.viewBox || "0 0 1200 800",
+      "aria-label": "Architecture diagram",
+      role: "img"
+    });
+
+    // Arrow marker
+    var defs = svgEl("defs");
+    var marker = svgEl("marker", {
+      id: "lma-arrow",
+      viewBox: "0 0 10 10",
+      refX: "9", refY: "5",
+      markerWidth: "7", markerHeight: "7",
+      orient: "auto-start-reverse"
+    });
+    marker.appendChild(svgEl("path", { d: "M0,0 L10,5 L0,10 Z", fill: "rgba(26,26,26,0.55)" }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+
+    // Background grid (optional)
+    if (d.background_grid) {
+      var grid = svgEl("g", { class: "lma-grid" });
+      for (var x = 0; x <= 1200; x += 40) grid.appendChild(svgEl("path", { d: "M" + x + " 0 L" + x + " 800" }));
+      for (var y = 0; y <= 800; y += 40) grid.appendChild(svgEl("path", { d: "M0 " + y + " L1200 " + y }));
+      svg.appendChild(grid);
+    }
+
+    // Edges first (so nodes paint over them)
+    var idMap = {};
+    nodes.forEach(function (n) { idMap[n.id] = n; });
+    edges.forEach(function (e, edgeIdx) {
+      var a = idMap[e.from], b = idMap[e.to];
+      if (!a || !b) return;
+      var ax = a.x + a.width / 2, ay = a.y + a.height / 2;
+      var bx = b.x + b.width / 2, by = b.y + b.height / 2;
+      var dx = bx - ax, dy = by - ay;
+      // Anchor at rectangle edge along the line from center to center.
+      var halfAW = a.width / 2, halfAH = a.height / 2;
+      var scaleA = Math.min(halfAW / Math.max(1, Math.abs(dx)), halfAH / Math.max(1, Math.abs(dy)));
+      var startX = ax + dx * scaleA, startY = ay + dy * scaleA;
+      var halfBW = b.width / 2, halfBH = b.height / 2;
+      var scaleB = Math.min(halfBW / Math.max(1, Math.abs(dx)), halfBH / Math.max(1, Math.abs(dy)));
+      var endX = bx - dx * scaleB, endY = by - dy * scaleB;
+      var midX = (startX + endX) / 2, midY = (startY + endY) / 2;
+
+      var path = svgEl("path", {
+        d: "M" + startX + " " + startY + " L" + endX + " " + endY,
+        class: "lma-edge",
+        "marker-end": "url(#lma-arrow)"
+      });
+      svg.appendChild(path);
+      if (e.label) {
+        // Render a white pill behind the label so it doesn't sit on the line.
+        var labelText = String(e.label);
+        var charW = 6.2;
+        var pillW = labelText.length * charW + 12;
+        var pillH = 16;
+        var bg = svgEl("rect", {
+          x: midX - pillW / 2, y: midY - 6 - pillH + 4,
+          width: pillW, height: pillH,
+          rx: 8, ry: 8,
+          class: "lma-edge-label-bg"
+        });
+        svg.appendChild(bg);
+        var lbl = svgEl("text", { x: midX, y: midY - 6, class: "lma-edge-label" });
+        lbl.textContent = labelText;
+        svg.appendChild(lbl);
+        if (window.LM.editMode && window.LM.editMode.enabled()) {
+          window.LM.editMode.registerField(lbl, "diagram.edges[" + edgeIdx + "].label");
+        }
+      }
+    });
+
+    // Nodes
+    nodes.forEach(function (n, idx) {
+      var g = svgEl("g", {
+        class: "lma-node t-" + (n.type || "transform"),
+        "data-node-id": n.id,
+        tabindex: "0",
+        role: "button",
+        "aria-label": "Open detail for " + (n.label || n.id)
+      });
+      // Mark visited from KV
+      if (state.viewedNodes[n.id]) g.setAttribute("class", g.getAttribute("class") + " is-visited");
+      var rect = svgEl("rect", { x: n.x, y: n.y, width: n.width, height: n.height });
+      var typeText = svgEl("text", { class: "lma-node-type", x: n.x + n.width / 2, y: n.y + 22 });
+      typeText.textContent = (n.type || "transform").toUpperCase();
+      var label = svgEl("text", {
+        class: "lma-node-label",
+        x: n.x + n.width / 2,
+        y: n.y + n.height / 2 + 12
+      });
+      label.textContent = n.label || n.id;
+      var dot = svgEl("circle", {
+        class: "lma-node-dot",
+        cx: n.x + n.width - 14, cy: n.y + 14, r: 4
+      });
+      g.appendChild(rect);
+      g.appendChild(typeText);
+      g.appendChild(label);
+      g.appendChild(dot);
+      svg.appendChild(g);
+      if (window.LM.editMode && window.LM.editMode.enabled()) {
+        window.LM.editMode.registerField(label, "diagram.nodes[" + idx + "].label");
+      }
+    });
+
+    if (window.LM.editMode && window.LM.editMode.enabled()) {
+      window.LM.editMode.registerArray(svg, "diagram.nodes", { itemLabel: "node" });
+      window.LM.editMode.registerArray(svg, "diagram.edges", {
+        itemLabel: "edge",
+        template: { from: "", to: "", label: "" }
+      });
+    }
+
+    stage.appendChild(svg);
+    return stage;
+  }
+
+  // ── Mobile node list (rendered at any width, hidden via CSS on desktop) ─
+  function renderMobileList(data) {
+    var nodes = (data.diagram && data.diagram.nodes) || [];
+    var wrap = make("section", { class: "lma-mobile-list", "aria-label": "Node list (mobile)" });
+    var ol = make("ol");
+    nodes.forEach(function (n) {
+      var card = make("button", {
+        class: "lma-mobile-card" + (state.viewedNodes[n.id] ? " is-visited" : ""),
+        type: "button",
+        "data-node-id": n.id
+      });
+      card.innerHTML =
+        '<span class="m-type">' + esc((n.type || "transform").toUpperCase()) + '</span>' +
+        '<span class="m-label">' + esc(n.label || n.id) + '</span>' +
+        (n.panel && n.panel.headline ? '<span class="m-hint">' + esc(n.panel.headline) + '</span>' : '');
+      var li = make("li");
+      li.appendChild(card);
+      ol.appendChild(li);
+    });
+    wrap.appendChild(ol);
+    return wrap;
+  }
+
+  // ── Drawer ─────────────────────────────────────────────────────────────
+  function ensureDrawer() {
+    if (state.drawer) return state.drawer;
+    var d = make("aside", {
+      class: "lma-drawer",
+      role: "dialog",
+      "aria-hidden": "true",
+      "aria-label": "Node detail"
+    });
+    document.body.appendChild(d);
+    state.drawer = d;
+    return d;
+  }
+  function clearActiveMarker() {
+    if (!state.activeNodeId) return;
+    var sel = '[data-node-id="' + state.activeNodeId + '"]';
+    var prev = state.root.querySelector(sel);
+    if (prev) prev.classList.remove("is-active");
+  }
+  function closeDrawer() {
+    if (!state.drawer) return;
+    state.drawer.classList.remove("open");
+    state.drawer.setAttribute("aria-hidden", "true");
+    clearActiveMarker();
+    state.activeNodeId = null;
+  }
+  function openDrawerForNode(node) {
+    var drawer = ensureDrawer();
+    if (state.activeNodeId && state.activeNodeId !== node.id) clearActiveMarker();
+    // Mark all matching elements (SVG + mobile card) as active/visited
+    var sel = '[data-node-id="' + node.id + '"]';
+    state.root.querySelectorAll(sel).forEach(function (el) {
+      el.classList.add("is-active", "is-visited");
+    });
+    state.activeNodeId = node.id;
+
+    var panel = node.panel || {};
+    drawer.innerHTML = "";
+
+    var close = make("button", {
+      class: "lma-drawer-close",
+      type: "button",
+      "aria-label": "Close"
+    }, "&times;");
+    close.addEventListener("click", closeDrawer);
+    drawer.appendChild(close);
+
+    var eyebrow = make("p", { class: "lma-drawer-eyebrow" });
+    eyebrow.textContent = (node.type || "transform").toUpperCase() + " · " + (node.label || node.id);
+    drawer.appendChild(eyebrow);
+
+    var h = make("h2", { class: "lma-drawer-headline" });
+    h.textContent = panel.headline || node.label || "Detail";
+    drawer.appendChild(h);
+
+    var body = make("div", { class: "lma-drawer-body" });
+    body.innerHTML = panel.body_html || "";
+    drawer.appendChild(body);
+
+    if (Array.isArray(panel.stack) && panel.stack.length) {
+      drawer.appendChild(make("p", { class: "lma-drawer-section-h" }, "Stack"));
+      var row = make("div", { class: "lma-chip-row" });
+      panel.stack.forEach(function (s) {
+        var chip = make("span", { class: "lma-chip" });
+        chip.textContent = s;
+        row.appendChild(chip);
+      });
+      drawer.appendChild(row);
+    }
+    if (Array.isArray(panel.common_mistakes) && panel.common_mistakes.length) {
+      drawer.appendChild(make("p", { class: "lma-drawer-section-h" }, "Common mistakes"));
+      var ul = make("ul", { class: "lma-list" });
+      panel.common_mistakes.forEach(function (m) {
+        var li = make("li");
+        li.textContent = m;
+        ul.appendChild(li);
+      });
+      drawer.appendChild(ul);
+    }
+    if (Array.isArray(panel.alternatives) && panel.alternatives.length) {
+      drawer.appendChild(make("p", { class: "lma-drawer-section-h" }, "Alternatives"));
+      var altRow = make("div", { class: "lma-chip-row" });
+      panel.alternatives.forEach(function (a) {
+        var chip = make("span", { class: "lma-chip alt" });
+        chip.textContent = typeof a === "string" ? a : (a.name || "alt");
+        altRow.appendChild(chip);
+      });
+      drawer.appendChild(altRow);
+    }
+    if (panel.cta_id) {
+      var ctaDef = (state.data.ctas || []).find(function (c) { return c.id === panel.cta_id; });
+      if (ctaDef && ctaDef.url) {
+        var cta = make("a", {
+          class: "lma-drawer-cta",
+          href: ctaDef.url,
+          target: "_blank",
+          rel: "noopener"
+        });
+        cta.textContent = ctaDef.button || ctaDef.headline || "Talk it through";
+        cta.addEventListener("click", function () {
+          beacon("cta_click", { answers: { cta_id: ctaDef.id, source: "drawer", node_id: node.id } });
+        });
+        drawer.appendChild(cta);
+      }
+    }
+
+    // edit-mode field wraps
+    if (window.LM.editMode && window.LM.editMode.enabled()) {
+      var nodeIdx = (state.data.diagram.nodes || []).findIndex(function (x) { return x.id === node.id; });
+      if (nodeIdx >= 0) {
+        window.LM.editMode.registerField(h, "diagram.nodes[" + nodeIdx + "].panel.headline");
+        window.LM.editMode.registerField(body, "diagram.nodes[" + nodeIdx + "].panel.body_html", { multiline: true });
+      }
+    }
+
+    drawer.classList.add("open");
+    drawer.setAttribute("aria-hidden", "false");
+
+    // Track visit + persist
+    state.viewedNodes[node.id] = (state.viewedNodes[node.id] || 0) + 1;
+    persistViewedKV();
+    beacon("node_click", {
+      answers: {
+        node_id: node.id,
+        node_type: node.type,
+        viewed_node_count: totalViewedCount(),
+        unique_node_count: uniqueViewedCount()
+      }
+    });
+    beacon("panel_view", {
+      answers: { node_id: node.id, headline: panel.headline || null }
+    });
+    refreshFloatingCta();
+  }
+
+  function wireNodeClicks() {
+    var nodes = (state.data.diagram && state.data.diagram.nodes) || [];
+    var idMap = {};
+    nodes.forEach(function (n) { idMap[n.id] = n; });
+
+    // SVG node groups
+    state.root.querySelectorAll(".lma-node").forEach(function (g) {
+      g.addEventListener("click", function () {
+        var n = idMap[g.getAttribute("data-node-id")];
+        if (n) openDrawerForNode(n);
+      });
+      g.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter" || ev.key === " ") {
+          ev.preventDefault();
+          g.dispatchEvent(new Event("click"));
+        }
+      });
+    });
+
+    // Mobile cards
+    state.root.querySelectorAll(".lma-mobile-card").forEach(function (c) {
+      c.addEventListener("click", function () {
+        var n = idMap[c.getAttribute("data-node-id")];
+        if (n) openDrawerForNode(n);
+      });
+    });
+
+    // ESC closes
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") closeDrawer();
+    });
+    // Click outside the drawer closes it (but not clicks on nodes / cards)
+    document.addEventListener("click", function (ev) {
+      if (!state.drawer || !state.drawer.classList.contains("open")) return;
+      if (state.drawer.contains(ev.target)) return;
+      if (ev.target.closest && ev.target.closest(".lma-node")) return;
+      if (ev.target.closest && ev.target.closest(".lma-mobile-card")) return;
+      closeDrawer();
+    });
+  }
+
+  function refreshFloatingCta() {
+    var cw = $("#lma-floating-cta");
+    if (!cw) return;
+    var picked = pickCta(state.data, ctaCtx());
+    if (!picked) { cw.innerHTML = ""; return; }
+    cw.innerHTML =
+      '<section class="lma-cta-card" data-cta-id="' + esc(picked.id || "fallback") + '">' +
+        '<h3>' + esc(picked.headline || "Want help with this?") + '</h3>' +
+        '<a class="lma-btn" href="' + esc(picked.url) + '" target="_blank" rel="noopener">' +
+          esc(picked.button || "Learn more") +
+        '</a>' +
+      '</section>';
+    var a = cw.querySelector("a.lma-btn");
+    if (a && !a.__bound) {
+      a.__bound = true;
+      a.addEventListener("click", function () {
+        beacon("cta_click", { answers: { cta_id: picked.id, source: "floating" } });
+      });
+    }
+  }
+
+  // ── PNG download (lazy-loaded html2canvas) ─────────────────────────────
+  var H2C_URL = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+  function loadHtml2Canvas() {
+    if (window.html2canvas) return Promise.resolve(window.html2canvas);
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = H2C_URL;
+      s.async = true;
+      s.onload = function () { resolve(window.html2canvas); };
+      s.onerror = function () { reject(new Error("html2canvas failed to load")); };
+      document.head.appendChild(s);
+    });
+  }
+  function pngFilename(slug) {
+    var safe = String(slug || "diagram").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "");
+    var d = new Date();
+    var ymd = d.getFullYear() + "-" +
+              String(d.getMonth() + 1).padStart(2, "0") + "-" +
+              String(d.getDate()).padStart(2, "0");
+    return (safe || "diagram") + "-" + ymd + ".png";
+  }
+  function downloadDiagramAsPng() {
+    var stage = state.root.querySelector(".lma-stage");
+    if (!stage || stage.offsetParent === null) {
+      // Mobile: capture the mobile list instead
+      stage = state.root.querySelector(".lma-mobile-list");
+    }
+    if (!stage) return;
+    var btn = $("#lma-download");
+    var orig = btn ? btn.textContent : null;
+    if (btn) { btn.disabled = true; btn.textContent = "Preparing…"; }
+    loadHtml2Canvas().then(function (h2c) {
+      return h2c(stage, { backgroundColor: "#FFFFFF", scale: 2, useCORS: true });
+    }).then(function (canvas) {
+      var a = document.createElement("a");
+      a.download = pngFilename(SLUG());
+      a.href = canvas.toDataURL("image/png");
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      beacon("share", { answers: { format: "png" } });
+    }).catch(function (e) {
+      if (window.LM.toast) window.LM.toast("Download failed: " + e.message);
+    }).finally(function () {
+      if (btn) { btn.disabled = false; btn.textContent = orig || "Download as PNG"; }
+    });
+  }
+
+  // ── Render orchestration ───────────────────────────────────────────────
+  function render(data, root) {
+    window.__lm_slug = data.slug || window.__lm_slug;
+    window.__lm_data = data;
+    state.data = data;
+    state.root = root;
+    state.viewedNodes = getViewedKV();
+    state.viewStartedAt = Date.now();
+    root.innerHTML = "";
+    root.appendChild(renderHero(data));
+    root.appendChild(renderSvg(data));
+    root.appendChild(renderMobileList(data));
+
+    var actions = make("div", { class: "lma-actions", id: "lma-actions" });
+    var dl = make("button", {
+      class: "lma-btn lma-btn-secondary",
+      type: "button",
+      id: "lma-download"
+    }, "Download as PNG");
+    dl.addEventListener("click", downloadDiagramAsPng);
+    actions.appendChild(dl);
+    root.appendChild(actions);
+
+    var ctaWrap = make("div", { id: "lma-floating-cta" });
+    root.appendChild(ctaWrap);
+
+    wireNodeClicks();
+    refreshFloatingCta();
+    beacon("view", {
+      answers: { node_count: (data.diagram && data.diagram.nodes || []).length }
+    });
+  }
+
+  function init() {
+    var root = document.getElementById("lma-root") || document.querySelector("[data-lm-architecture-src]");
+    if (!root) return;
+    var src = root.getAttribute("data-lm-architecture-src") || "./data.json";
+    fetch(src, { credentials: "same-origin" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("data.json " + r.status);
+        return r.json();
+      })
+      .then(function (data) { render(data, root); })
+      .catch(function (e) {
+        root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading architecture:</strong> ' + esc(e.message) + '</div>';
+      });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Expose internals for tests / debugging
+  window.__lm_architecture = {
+    state: state,
+    render: render,
+    beacon: beacon,
+    ctaCtx: ctaCtx,
+    pickCta: pickCta,
+    pngFilename: pngFilename,
+    openDrawerForNode: openDrawerForNode,
+    closeDrawer: closeDrawer
+  };
+})();
