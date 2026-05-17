@@ -28,11 +28,64 @@
     if (val == null || isNaN(val)) return "—";
     var n = Number(val);
     if (spec === "currency") return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    if (spec === "currency_per_period") return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 }) + "/mo";
+    if (spec === "hours_per_period") return n.toFixed(n < 10 ? 1 : 0) + " hrs/wk";
     if (spec === "percent") return n.toFixed(0) + "%";
     if (spec === "hours") return n.toFixed(n < 10 ? 1 : 0) + " hrs";
     if (spec === "integer") return Math.round(n).toLocaleString("en-US");
     if (spec === "decimal") return n.toFixed(2);
     return n.toLocaleString("en-US");
+  }
+
+  // D3.2: Supabase REST helpers for new RPCs (publishable anon key — safe for browser)
+  var SUPABASE_ANON_KEY = window.__supabase_anon_key || "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
+  var SUPABASE_REST_BASE = "https://bjbvqvzbzczjbatgmccb.supabase.co/rest/v1";
+  function rpc(name, body) {
+    return fetch(SUPABASE_REST_BASE + "/rpc/" + name, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY, "Authorization": "Bearer " + SUPABASE_ANON_KEY },
+      body: JSON.stringify(body || {}),
+    }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  }
+
+  // D3.3: scroll-recorder /share-card URL (auth-disabled in prod; token optional)
+  var SCROLL_RECORDER_URL = window.__scroll_recorder_url || "https://scroll-recorder-production.up.railway.app";
+  var SCROLL_RECORDER_TOKEN = window.__scroll_recorder_token || "";
+
+  // D3.4: leaky bucket SVG — droplets fall out of trapezoid bucket; sage for currency, blue-ish ink for hours
+  function leakyBucketSvg(co) {
+    var isCurrency = co.format === "currency_per_period";
+    var fill = isCurrency ? "#2A8F65" : "#4C6E3D";
+    var fillRgb = isCurrency ? "42,143,101" : "76,110,61";
+    var drops = [];
+    for (var i = 0; i < 6; i++) {
+      var dur = 1.2 + Math.random() * 1.4;
+      var delay = (i * 0.35).toFixed(2);
+      var x = 90 + (i % 3 - 1) * 14;
+      drops.push('<circle cx="' + x + '" cy="118" r="3" fill="' + fill + '">' +
+        '<animate attributeName="cy" from="118" to="172" dur="' + dur.toFixed(2) + 's" begin="' + delay + 's" repeatCount="indefinite" />' +
+        '<animate attributeName="opacity" from="1" to="0" dur="' + dur.toFixed(2) + 's" begin="' + delay + 's" repeatCount="indefinite" />' +
+        '</circle>');
+    }
+    return '<div class="lmc-leaky" aria-label="' + esc(co.label) + ': ' + esc(fmt(co.format, co.value)) + '">' +
+      '<svg viewBox="0 0 180 180" width="180" height="180" aria-hidden="true">' +
+        '<defs><linearGradient id="lb-' + (co.id || "x") + '" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="rgba(' + fillRgb + ',0.4)" />' +
+          '<stop offset="100%" stop-color="rgba(' + fillRgb + ',0.12)" />' +
+        '</linearGradient></defs>' +
+        // Bucket trapezoid outline
+        '<path d="M 50 38 L 130 38 L 122 118 L 58 118 Z" fill="url(#lb-' + (co.id || "x") + ')" stroke="rgba(26,26,26,0.55)" stroke-width="1.5" />' +
+        // Surface line
+        '<line x1="58" y1="54" x2="122" y2="54" stroke="rgba(' + fillRgb + ',0.6)" stroke-width="1.5" stroke-dasharray="3,3" />' +
+        // Crack at the bottom
+        '<line x1="84" y1="118" x2="96" y2="118" stroke="rgba(26,26,26,0.8)" stroke-width="1.5" />' +
+        drops.join("") +
+      '</svg>' +
+      '<div class="lmc-leaky-meta">' +
+        '<div class="lmc-leaky-label">' + esc(co.label) + '</div>' +
+        '<div class="lmc-leaky-value">' + esc(fmt(co.format, co.value)) + '</div>' +
+      '</div>' +
+    '</div>';
   }
   function safeEval(expr, ctx) {
     try {
@@ -403,11 +456,56 @@
       setTimeout(function () { ta.focus(); }, 50);
     }
 
+    // D3.2: Per-question social proof reveal. Skips first 3 questions (no capture overhead),
+    // skips persona classifier, requires ≥ 10 prior captures for that q+persona combo.
+    function ctxPersonaTag() {
+      if (data.persona_selector && answers["__persona"] != null) {
+        var p = data.persona_selector.answers && data.persona_selector.answers[answers["__persona"]];
+        return p && p.tag ? p.tag : null;
+      }
+      return null;
+    }
+
+    function showSocialProof(match, sampleSize, persona, onClose) {
+      if (document.querySelector(".lmc-social-proof")) { onClose(); return; }
+      var overlay = make("div", { class: "lmc-social-proof" });
+      overlay.innerHTML =
+        '<div class="lmc-social-proof-card">' +
+          '<div class="lmc-social-proof-pct">' + Math.round(match.pct) + '%</div>' +
+          '<div class="lmc-social-proof-label">of ' + esc(persona || "respondents") + ' also chose this answer</div>' +
+          '<div class="lmc-social-proof-meta">based on ' + sampleSize + ' completions</div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+      setTimeout(function () { overlay.classList.add("show"); }, 10);
+      var done = false;
+      var finish = function () {
+        if (done) return; done = true;
+        overlay.classList.remove("show");
+        setTimeout(function () { try { overlay.remove(); } catch (_) {} onClose(); }, 200);
+      };
+      setTimeout(finish, 1500);
+    }
+
     function goNext() {
       var q = questions[idx];
       if (!hasValidAnswer(q)) return;
-      if (idx < questions.length - 1) { idx++; renderQuestion(); }
-      else renderResult();
+      var advance = function () {
+        if (idx < questions.length - 1) { idx++; renderQuestion(); }
+        else renderResult();
+      };
+      // Skip social-proof reveal on first 3 questions, persona classifier, or short_text (no discrete answer to match)
+      var qNum = idx + (data.persona_selector ? 0 : 1);  // 0-indexed; we want to skip 0,1,2
+      var eligible = !!q.id && idx >= 3 && q.type !== "short_text" && answers[q.id] != null;
+      if (!eligible) { advance(); return; }
+      var persona = ctxPersonaTag();
+      rpc("lm_assessment_answer_distribution", { p_slug: data.slug, p_question_id: q.id, p_persona: persona })
+        .then(function (rows) {
+          if (!rows || rows.length === 0 || (rows[0].sample_size || 0) < 10) { advance(); return; }
+          var yourAns = String(answers[q.id]);
+          var match = (rows || []).find(function (r) { return String(r.answer_value) === yourAns; });
+          if (!match) { advance(); return; }
+          showSocialProof(match, rows[0].sample_size, persona, advance);
+        }).catch(function () { advance(); });
     }
 
     function renderResult() {
@@ -415,18 +513,26 @@
       card.innerHTML = "";
       var wrap = make("div", { class: "lmc-result" });
       var circ = 2 * Math.PI * 70;
-      var offset = circ - (res.overall / 100) * circ;
-      wrap.innerHTML = '<div class="lmc-score-ring"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="track" cx="90" cy="90" r="70"/><circle class="arc" cx="90" cy="90" r="70" stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + offset.toFixed(2) + '"/></svg><div class="score-num"><div class="num">' + res.overall + '</div><div class="suffix">out of 100</div></div></div>';
+      var finalOffset = circ - (res.overall / 100) * circ;
+      // D3.1: render arc fully empty initially, then transition to final offset for draw animation
+      wrap.innerHTML = '<div class="lmc-score-ring entering"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="track" cx="90" cy="90" r="70"/><circle class="arc" cx="90" cy="90" r="70" stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + circ.toFixed(2) + '" data-final-offset="' + finalOffset.toFixed(2) + '"/></svg><div class="score-num"><div class="num">0</div><div class="suffix">out of 100</div></div></div>';
       wrap.appendChild(make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name)));
 
-      // Computed outputs rendered prominently (this is the $ leak / hrs lost)
+      // Computed outputs rendered prominently (this is the $ leak / hrs lost).
+      // D3.4: currency_per_period + hours_per_period get replaced with leaky-bucket SVG
       var visibleComputed = Object.values(res.computed).filter(function (co) { return co.show; });
       if (visibleComputed.length > 0) {
         var cb = make("div", { class: "lmc-computed-block" });
         visibleComputed.forEach(function (co) {
-          var row = make("div", { class: "lmc-computed-row" });
-          row.innerHTML = '<div class="lmc-computed-label">' + esc(co.label) + '</div><div class="lmc-computed-value">' + fmt(co.format, co.value) + '</div>';
-          cb.appendChild(row);
+          if (co.format === "currency_per_period" || co.format === "hours_per_period") {
+            var lb = make("div", { class: "lmc-leaky-wrap", "data-computed-id": co.id });
+            lb.innerHTML = leakyBucketSvg(co);
+            cb.appendChild(lb);
+          } else {
+            var row = make("div", { class: "lmc-computed-row" });
+            row.innerHTML = '<div class="lmc-computed-label">' + esc(co.label) + '</div><div class="lmc-computed-value">' + fmt(co.format, co.value) + '</div>';
+            cb.appendChild(row);
+          }
         });
         wrap.appendChild(cb);
       }
@@ -437,6 +543,60 @@
         wrap.appendChild(make("p", { class: "lmc-result-lead" }, headline));
       }
       card.appendChild(wrap);
+
+      // D3.1: trigger arc draw + number count-up after the DOM is committed
+      var ring = wrap.querySelector(".lmc-score-ring");
+      var arc = ring && ring.querySelector(".arc");
+      var numEl = ring && ring.querySelector(".score-num .num");
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          if (ring) ring.classList.add("in-view");
+          if (arc) arc.setAttribute("stroke-dashoffset", arc.getAttribute("data-final-offset"));
+          if (numEl) {
+            var finalScore = res.overall;
+            if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              numEl.textContent = String(finalScore);
+            } else {
+              var start = performance.now();
+              (function tickNum(now) {
+                var t = Math.min(1, ((now || performance.now()) - start) / 1000);
+                var eased = 1 - Math.pow(1 - t, 3);
+                numEl.textContent = String(Math.round(finalScore * eased));
+                if (t < 1) requestAnimationFrame(tickNum);
+              })(start);
+            }
+          }
+        });
+      });
+
+      // D3.3: generate share card + set og:image meta (best-effort, async)
+      try {
+        var hdrs = { "Content-Type": "application/json" };
+        if (SCROLL_RECORDER_TOKEN) hdrs["Authorization"] = "Bearer " + SCROLL_RECORDER_TOKEN;
+        fetch(SCROLL_RECORDER_URL + "/share-card", {
+          method: "POST",
+          headers: hdrs,
+          body: JSON.stringify({
+            slug: data.slug,
+            score: res.overall,
+            tier: res.tier && res.tier.name,
+            persona: res.persona,
+            weakest: res.weakest && res.weakest.name,
+            title: data.title,
+          }),
+        }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+          if (j && j.url) {
+            // Update / inject og:image + twitter:image so re-share previews use the result image
+            ["og:image", "twitter:image"].forEach(function (prop) {
+              var sel = prop.indexOf("twitter") === 0 ? 'meta[name="' + prop + '"]' : 'meta[property="' + prop + '"]';
+              var m = document.head.querySelector(sel);
+              if (!m) { m = document.createElement("meta"); if (prop.indexOf("twitter") === 0) m.setAttribute("name", prop); else m.setAttribute("property", prop); document.head.appendChild(m); }
+              m.setAttribute("content", j.url);
+            });
+            window.__lm_share_card_url = j.url;
+          }
+        }).catch(function () {});
+      } catch (_) {}
 
       // No gate — show the full report unconditionally
       beacon("complete", {
@@ -531,6 +691,39 @@
         cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
       }
       card.appendChild(unl);
+
+      // D3.5: time-series sparkline for repeat takers (requires localStorage email + ≥ 2 prior captures)
+      try {
+        var prevEmail = "";
+        try { prevEmail = localStorage.getItem(key + ".email") || ""; } catch (_) {}
+        if (prevEmail) {
+          rpc("lm_assessment_score_history", { p_slug: data.slug, p_email: prevEmail }).then(function (rows) {
+            if (!Array.isArray(rows) || rows.length < 2) return;
+            var ts = make("div", { class: "lmc-timeseries" });
+            var scores = rows.map(function (r) { return r.overall_score; });
+            var maxS = Math.max.apply(null, scores);
+            var minS = Math.min.apply(null, scores);
+            var range = Math.max(1, maxS - minS);
+            var points = rows.map(function (r, i) {
+              var x = rows.length > 1 ? (i / (rows.length - 1)) * 240 : 120;
+              var y = 40 - ((r.overall_score - minS) / range) * 36;
+              return x.toFixed(1) + "," + y.toFixed(1);
+            }).join(" ");
+            var dotsHtml = rows.map(function (r, i) {
+              var x = rows.length > 1 ? (i / (rows.length - 1)) * 240 : 120;
+              var y = 40 - ((r.overall_score - minS) / range) * 36;
+              return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3" fill="#2A8F65" />';
+            }).join("");
+            ts.innerHTML = '<h4>Your scores over time</h4>' +
+              '<svg viewBox="0 0 240 40" width="240" height="40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">' +
+                '<polyline points="' + points + '" fill="none" stroke="#2A8F65" stroke-width="2" />' +
+                dotsHtml +
+              '</svg>' +
+              '<p>From ' + scores[0] + ' to ' + scores[scores.length - 1] + ' across ' + rows.length + ' takes.</p>';
+            unl.appendChild(ts);
+          });
+        }
+      } catch (_) {}
     }
 
     function pickRec(cat, score, ctx) {

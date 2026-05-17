@@ -172,3 +172,68 @@
 @media (prefers-reduced-motion: reduce) {
   .lmc-progress-fill, .lmc-opt, .lmc-btn, .lmc-cat-fill, .lmc-score-ring .arc, .lmc-toast, .lmc-intro-start { transition: none !important; }
 }
+
+/* ── Phase D ─────────────────────────────────────────────────────────── */
+/* D3.1: animated arc draw + count-up on reveal */
+.lmc-score-ring .arc { transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1); }
+.lmc-score-ring.entering .arc { transition: none; }
+.lmc-score-ring.entering.in-view .arc { transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1) 120ms; }
+@media (prefers-reduced-motion: reduce) {
+  .lmc-score-ring.entering.in-view .arc { transition: none !important; }
+}
+
+/* D3.2: per-question social proof reveal overlay */
+.lmc-social-proof {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0); pointer-events: none;
+  opacity: 0; transition: opacity 200ms ease, background 200ms ease;
+}
+.lmc-social-proof.show {
+  background: rgba(26, 26, 26, 0.4); opacity: 1; pointer-events: auto;
+}
+.lmc-social-proof-card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+  padding: 2rem 2.5rem; text-align: center; box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  transform: scale(0.92) translateY(8px); transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+.lmc-social-proof.show .lmc-social-proof-card { transform: scale(1) translateY(0); }
+.lmc-social-proof-pct {
+  font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400;
+  font-size: 64px; color: var(--sage); line-height: 1; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.lmc-social-proof-label { font-size: 14px; color: var(--ink); margin-top: .5rem; max-width: 320px; line-height: 1.45; }
+.lmc-social-proof-meta {
+  font-family: monospace; font-size: 11px; color: var(--ink-faint);
+  margin-top: .65rem; text-transform: uppercase; letter-spacing: .15em;
+}
+
+/* D3.4: leaky-bucket viz for currency/hours per period */
+.lmc-leaky-wrap { background: transparent; padding: 0; margin: 1rem 0; }
+.lmc-leaky {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.5rem 1.75rem; background: #fff; border: 1px solid var(--line);
+  border-left: 3px solid var(--sage); border-radius: 4px;
+}
+.lmc-leaky svg { flex-shrink: 0; }
+.lmc-leaky-meta { flex: 1 1 auto; min-width: 0; }
+.lmc-leaky-label { font-family: monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .15em; color: var(--ink-faint); margin-bottom: .35rem; font-weight: 700; }
+.lmc-leaky-value { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 2.25rem; color: var(--sage); line-height: 1.1; font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .lmc-leaky { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.25rem 1.25rem; }
+  .lmc-leaky svg { width: 140px; height: 140px; align-self: center; }
+}
+
+/* D3.5: repeat-taker time-series sparkline */
+.lmc-timeseries {
+  margin: 1.75rem 0; padding: 1.25rem 1.5rem;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 4px;
+}
+.lmc-timeseries h4 {
+  font-family: monospace; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .15em; color: var(--ink-faint); margin: 0 0 .65rem;
+}
+.lmc-timeseries svg { display: block; margin: .5rem 0 .35rem; max-width: 100%; }
+.lmc-timeseries p { font-size: .9rem; color: var(--ink-soft); margin: 0; font-variant-numeric: tabular-nums; }
