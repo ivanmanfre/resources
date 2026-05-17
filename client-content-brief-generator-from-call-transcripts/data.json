@@ -7,15 +7,10 @@
     "hero_badge": "Guide"
   },
   "intro": {
-    "paragraph": "You made the right call grabbing this one. This n8n workflow pulls the strategic insights from your client calls and turns them into briefs your team can actually execute - no more digging through transcripts trying to remember what mattered. Import it, customize the prompts to your content pillars, and test with a couple real transcripts before rolling it out to the whole team."
+    "paragraph": "You made the right call grabbing this one. This n8n workflow pulls the strategic insights from your client calls and turns them into briefs your team can actually execute - no more digging through transcripts trying to remember what mattered. Import it, customize the prompts to your content pillars, and test with a couple real transcripts before rolling it out to the whole team.",
+    "bio_html": "<div class=\"lmg-bio\"><p>So who am I and why should you trust me? I'll keep this quick so we can get to the good stuff...</p>\n<ul><li>AI &amp; Automation Architect - designed and deployed systems for 100+ companies</li>\n<li>Built AI agents and n8n workflows that save teams 20+ hours every single week</li>\n<li>Helped businesses 3-5x their operational efficiency through smart automation</li>\n<li>Building and shipping AI solutions before most people knew what an LLM was</li>\n<li>Fueled by espresso and mass amounts of automation nodes</li>\n</ul></div>"
   },
   "sections": [
-    {
-      "id": "who-am-i",
-      "title": "Who Am I?",
-      "html": "<p>So who am I and why should you trust me? I'll keep this quick so we can get to the good stuff...</p>\n<ul><li>AI &amp; Automation Architect - designed and deployed systems for 100+ companies</li>\n<li>Built AI agents and n8n workflows that save teams 20+ hours every single week</li>\n<li>Helped businesses 3-5x their operational efficiency through smart automation</li>\n<li>Building and shipping AI solutions before most people knew what an LLM was</li>\n<li>Fueled by espresso and mass amounts of automation nodes</li>\n</ul>",
-      "self_prompt": "Is your team already doing this?"
-    },
     {
       "id": "what-to-do-with-this",
       "title": "What To Do With This",

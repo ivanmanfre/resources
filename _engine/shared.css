@@ -158,6 +158,16 @@
 .lmc-intro-start:hover { background: #000; color: #F7F4EF; }
 .lmc-intro-note { font-family: 'Source Serif 4', Georgia, serif; font-size: .82rem; color: var(--ink-mute); margin-top: 1rem; max-width: 34rem; }
 
+/* ── Welcome-block bio (hoisted from "Who Am I?" sections) ───────────── */
+.lmc-intro-bio { max-width: 38rem; margin: 0 0 1.5rem; font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); font-size: 1rem; line-height: 1.6; }
+.lmc-intro-bio .lmg-bio > *:first-child { margin-top: 0; }
+.lmc-intro-bio .lmg-bio > *:last-child { margin-bottom: 0; }
+.lmc-intro-bio p { margin: 0 0 .75rem; color: var(--ink-soft); }
+.lmc-intro-bio ul, .lmc-intro-bio ol { margin: 0 0 .75rem; padding-left: 1.25rem; }
+.lmc-intro-bio li { margin: 0 0 .35rem; color: var(--ink); }
+.lmc-intro-bio li::marker { color: var(--accent); }
+.lmc-intro-bio strong { color: var(--ink); font-weight: 600; }
+
 /* ── Shared buttons ──────────────────────────────────────────────────── */
 .lmc-btn {
   padding: 14px 28px;

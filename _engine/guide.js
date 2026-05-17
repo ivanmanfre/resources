@@ -53,6 +53,19 @@
       startLabel: "Start reading",
     }, introBullets)));
 
+    // Render bio_html (hoisted from a "Who Am I?" section) inside the welcome
+    // block, after the bullets and before the Start button. We have to inject
+    // post-buildIntro because the shared helper doesn't know about bio_html.
+    if (data.intro && data.intro.bio_html) {
+      var introBody = root.querySelector(".lmc-intro-body");
+      var startBtn = root.querySelector(".lmc-intro-start");
+      if (introBody && startBtn) {
+        var bio = L.make("div", { class: "lmc-intro-bio" });
+        bio.innerHTML = data.intro.bio_html;
+        introBody.insertBefore(bio, startBtn);
+      }
+    }
+
     // Sections — wrapped in a container so registerArray has a handle for
     // add / drag-reorder / between-add affordances.
     var main = L.make("main", { class: "lmc-container lmg-prose" });

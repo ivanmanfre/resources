@@ -7,15 +7,10 @@
     "hero_badge": "Guide"
   },
   "intro": {
-    "paragraph": "This workflow contains 27 nodes across 11 different integration types.Integrations UsedstickyNotegoogleDrivewebhookcodehttpRequest@n8n/n8n-nodes-langchain.anthropicifmergegoogleDocsslack@n8n/n8n-nodes-langchain.toolThinkWorkflow Architecturegraph LR\n    N0[\"Client Folders\"] --> N"
+    "paragraph": "This workflow contains 27 nodes across 11 different integration types.Integrations UsedstickyNotegoogleDrivewebhookcodehttpRequest@n8n/n8n-nodes-langchain.anthropicifmergegoogleDocsslack@n8n/n8n-nodes-langchain.toolThinkWorkflow Architecturegraph LR\n    N0[\"Client Folders\"] --> N",
+    "bio_html": "<div class=\"lmg-bio\"><ul><li>AI automation consultant</li>\n<li>Built AI-powered automation systems for 50+ businesses</li>\n<li>Designed workflows that save teams 20+ hours per week</li>\n<li>Created AI solutions that consistently 3-5x operational efficiency</li>\n<li>The guy who automates the stuff you hate doing manually</li>\n</ul></div>"
   },
   "sections": [
-    {
-      "id": "who-am-i",
-      "title": "Who Am I?",
-      "html": "<ul><li>AI automation consultant</li>\n<li>Built AI-powered automation systems for 50+ businesses</li>\n<li>Designed workflows that save teams 20+ hours per week</li>\n<li>Created AI solutions that consistently 3-5x operational efficiency</li>\n<li>The guy who automates the stuff you hate doing manually</li>\n</ul>",
-      "self_prompt": "Is your team already doing this?"
-    },
     {
       "id": "what-to-do-with-this",
       "title": "What To Do With This",
