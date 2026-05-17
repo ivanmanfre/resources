@@ -115,11 +115,9 @@
   object-position: top;
   border: 1px solid var(--hairline-bold);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lift);
+  box-shadow: none;
   filter: saturate(0.45) sepia(0.18) contrast(1.1) brightness(0.95);
-  transition: transform .4s var(--ease);
 }
-.lmc-intro-avatar:hover { transform: translateY(-2px); }
 .lmc-intro-badge {
   display: inline-flex;
   align-items: center;
@@ -179,17 +177,17 @@
 /* ── Shared results panel tokens (tier / gaps / next move) ───────────── */
 .lmc-tier {
   display: grid; gap: .85rem;
-  padding: 2rem 1.75rem;
-  background: var(--paper-raise);
-  border: 1px solid var(--hairline);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lift);
-  margin-bottom: 2rem;
+  padding: 2.5rem 2rem;
+  background: transparent;
+  border: none;
+  border-left: 4px solid #2A8F65;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 2.5rem;
 }
 .lmc-tier-critical { border-left-color: var(--ink); }
-.lmc-tier-growth { border-left-color: var(--accent-light); }
-.lmc-tier-optimized { border-left-color: var(--accent); }
+.lmc-tier-growth { border-left-color: #2A8F65; }
+.lmc-tier-optimized { border-left-color: #2A8F65; }
 .lmc-tier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .lmc-tier-label { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
 .lmc-tier-score { display: inline-flex; align-items: baseline; gap: .15rem; color: var(--ink); }
@@ -202,14 +200,16 @@
 .lmc-gap-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .85rem; }
 .lmc-gap {
   display: grid; grid-template-columns: auto 1fr; gap: 1.25rem;
-  padding: 1.15rem 1.25rem;
-  background: var(--paper-raise);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-subtle);
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+  padding: 1.5rem 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(26,26,26,0.08);
+  border-radius: 0;
+  box-shadow: none;
+  transition: background .15s;
 }
-.lmc-gap:hover { transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+.lmc-gap:first-child { border-top: none; }
+.lmc-gap:hover { background: rgba(26,26,26,0.02); }
 .lmc-gap-rank { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 2.25rem; line-height: 1; color: #2A8F65; letter-spacing: 0; min-width: 1.5ch; }
 .lmc-gap-body { min-width: 0; }
 .lmc-gap-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
@@ -217,7 +217,7 @@
 .lmc-gap-fix { font-family: 'Source Serif 4', Georgia, serif; margin-top: .6rem; font-size: .92rem; line-height: 1.55; color: var(--ink-soft); padding-left: .9rem; border-left: 2px solid rgba(42, 143, 101, 0.35); }
 .lmc-gap-fix-label { display: inline-block; font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #2A8F65; margin-right: .5rem; }
 
-.lmc-next-move { font-family: 'Source Serif 4', Georgia, serif; display: block; padding: 1rem 1.25rem; background: var(--ink); color: var(--paper); border-radius: var(--radius-md); font-size: 1rem; line-height: 1.55; margin: 0 0 1.5rem; box-shadow: var(--shadow-subtle); }
+.lmc-next-move { font-family: 'Source Serif 4', Georgia, serif; display: block; padding: 1.5rem 1.5rem; background: var(--ink); color: var(--paper); border-radius: 0; font-size: 1rem; line-height: 1.55; margin: 0 0 1.5rem; box-shadow: none; }
 .lmc-next-label { font-family: 'Source Serif 4', Georgia, serif; display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #2A8F65; margin-bottom: .35rem; }
 
 /* ── Shared impact pills ─────────────────────────────────────────────── */
@@ -228,12 +228,12 @@
 
 /* ── Shared capture block (email gate) ───────────────────────────────── */
 .lmc-capture {
-  padding: 2.5rem 1.75rem;
+  padding: 4rem 2rem;
   background: var(--ink);
   color: var(--paper);
-  margin: 3rem 0 2rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lift);
+  margin: 5rem 0 3rem;
+  border-radius: 0;
+  box-shadow: none;
   position: relative; overflow: hidden;
 }
 .lmc-capture::before { content: ""; position: absolute; inset: 0; opacity: .05; background-size: 40px 40px; background-image: linear-gradient(to right, var(--accent) 1px, transparent 1px), linear-gradient(to bottom, var(--accent) 1px, transparent 1px); pointer-events: none; }

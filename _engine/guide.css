@@ -8,9 +8,9 @@
 .lmg-progress-bar { flex: 1 1 auto; height: .5rem; background: var(--paper-sunk); border: 1px solid var(--hairline); position: relative; overflow: hidden; border-radius: 2px; }
 .lmg-progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%); transition: width .5s var(--ease); width: 0%; }
 
-.lmg-prose { padding: 2.5rem 0; }
+.lmg-prose { padding: 5rem 0; }
 .lmg-section {
-  padding: 1.25rem 0 2.25rem;
+  padding: 3rem 0 4rem;
   border-bottom: 1px solid var(--hairline);
   opacity: 0;
   transform: translateY(16px);
@@ -18,7 +18,8 @@
 }
 .lmg-section.in-view { opacity: 1; transform: translateY(0); }
 .lmg-section:last-of-type { border-bottom: none; }
-.lmg-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 400; margin: 0 0 1rem; letter-spacing: -0.01em; color: var(--ink); line-height: 1.1; }
+.lmg-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 400; margin: 4rem 0 1.25rem; letter-spacing: -0.01em; color: var(--ink); line-height: 1.1; }
+.lmg-section:first-child h2, .lmg-section > h2:first-child { margin-top: 0; }
 .lmg-section h2 em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
 .lmg-section h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.4rem; font-weight: 400; margin: 1.75rem 0 .5rem; color: var(--ink); letter-spacing: -0.005em; line-height: 1.2; }
 .lmg-section p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.08rem; line-height: 1.75; color: var(--ink-soft); margin: 0 0 1rem; }
@@ -82,7 +83,7 @@
 .lmg-self-group { display: inline-flex; gap: 0; padding: 3px; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--radius-md); }
 .lmg-self-btn { padding: .5rem .9rem; background: transparent; color: var(--ink-mute); font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border: none; border-radius: calc(var(--radius-md) - 2px); cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease); }
 .lmg-self-btn:hover { color: var(--ink); }
-.lmg-self-btn.selected { background: var(--paper-raise); color: var(--ink); box-shadow: var(--shadow-subtle); }
+.lmg-self-btn.selected { background: var(--paper-raise); color: var(--ink); box-shadow: none; }
 .lmg-self-btn.state-done.selected { background: var(--accent); color: var(--paper); }
 .lmg-self-btn.state-partial.selected { background: var(--accent-light); color: var(--paper); }
 .lmg-self-btn.state-not_yet.selected { background: var(--ink); color: var(--paper); }
