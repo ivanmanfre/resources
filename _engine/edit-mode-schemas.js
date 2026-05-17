@@ -94,6 +94,55 @@
         computed_outputs: { type: "array?" },
       },
     },
+    architecture: {
+      required: ["slug", "title", "diagram"],
+      properties: {
+        slug: "string",
+        data_version: "number?",
+        title: "string",
+        subtitle: "string?",
+        // diagram is validated by the architecture-specific custom hook below
+        ctas: { type: "array?" },
+      },
+    },
+  };
+
+  // Architecture has nested arrays that the lightweight validator above can't
+  // express directly. Provide a custom hook that runs after the generic checks.
+  var customValidators = {
+    architecture: function (data) {
+      var errs = [];
+      if (!data || typeof data !== "object") return errs;
+      var d = data.diagram;
+      if (!d || typeof d !== "object") { errs.push("Missing required field: $.diagram"); return errs; }
+      if (!Array.isArray(d.nodes)) { errs.push("diagram.nodes must be an array"); }
+      else {
+        var ids = {};
+        d.nodes.forEach(function (n, i) {
+          var p = "diagram.nodes[" + i + "]";
+          ["id", "type", "x", "y", "width", "height", "label"].forEach(function (k) {
+            if (n == null || n[k] == null) errs.push("Missing " + p + "." + k);
+          });
+          if (n && n.id) {
+            if (ids[n.id]) errs.push("Duplicate node id: " + n.id);
+            ids[n.id] = true;
+          }
+          if (n && n.type && ["trigger", "transform", "output", "decision", "storage"].indexOf(n.type) === -1) {
+            errs.push(p + ".type must be one of trigger|transform|output|decision|storage");
+          }
+        });
+        if (Array.isArray(d.edges)) {
+          d.edges.forEach(function (e, i) {
+            var p = "diagram.edges[" + i + "]";
+            if (!e || !e.from) errs.push("Missing " + p + ".from");
+            if (!e || !e.to) errs.push("Missing " + p + ".to");
+            if (e && e.from && !ids[e.from]) errs.push(p + ".from references unknown node id: " + e.from);
+            if (e && e.to && !ids[e.to]) errs.push(p + ".to references unknown node id: " + e.to);
+          });
+        }
+      }
+      return errs;
+    }
   };
 
   function typeOf(v) {
@@ -132,7 +181,9 @@
   function validate(format, data) {
     var schema = schemas[format];
     if (!schema) return ["Unknown format: " + format];
-    return validateAgainst(schema, data);
+    var errs = validateAgainst(schema, data);
+    if (customValidators[format]) errs = errs.concat(customValidators[format](data));
+    return errs;
   }
 
   window.LM_SCHEMAS = { schemas: schemas, validate: validate };
