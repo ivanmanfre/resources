@@ -55,6 +55,77 @@
     return { name: thresholds.low_label || "Critical", class: "low" };
   }
 
+  // D2.1: animated count-up between prev and target output values
+  function tickTo(el, fromVal, toVal, formatFn, durationMs) {
+    if (!el) return;
+    if (typeof fromVal !== "number" || !isFinite(fromVal)) fromVal = 0;
+    if (typeof toVal !== "number" || !isFinite(toVal)) { el.textContent = formatFn(toVal); return; }
+    durationMs = durationMs || 280;
+    // Skip animation for reduced-motion users
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = formatFn(toVal); return;
+    }
+    var startedAt = performance.now();
+    function step(now) {
+      var t = Math.min(1, (now - startedAt) / durationMs);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var v = fromVal + (toVal - fromVal) * eased;
+      el.textContent = formatFn(v);
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // D2.2: sensitivity = per-input contribution to a single output, by bumping each input +10%
+  function computeSensitivity(data, ctx, outId) {
+    var baseline = {};
+    (data.outputs || []).forEach(function (o) {
+      baseline[o.id] = o.formula ? safeEval(o.formula, Object.assign({}, ctx, baseline)) : null;
+    });
+    var perInput = (data.inputs || []).map(function (inp) {
+      if (inp.type === "text" || typeof ctx[inp.id] !== "number") return null;
+      var orig = ctx[inp.id];
+      if (orig === 0) {
+        // Avoid zero-baseline ambiguity; bump by absolute 1 unit instead
+        var bumped0 = Object.assign({}, ctx);
+        bumped0[inp.id] = orig + 1;
+        var rec0 = {};
+        (data.outputs || []).forEach(function (o) { rec0[o.id] = o.formula ? safeEval(o.formula, Object.assign({}, bumped0, rec0)) : null; });
+        var delta0 = Math.abs((rec0[outId] || 0) - (baseline[outId] || 0));
+        return { id: inp.id, label: inp.label || inp.id, delta: delta0 };
+      }
+      var bumped = Object.assign({}, ctx);
+      bumped[inp.id] = orig * 1.1;
+      var rec = {};
+      (data.outputs || []).forEach(function (o) { rec[o.id] = o.formula ? safeEval(o.formula, Object.assign({}, bumped, rec)) : null; });
+      var delta = Math.abs((rec[outId] || 0) - (baseline[outId] || 0));
+      return { id: inp.id, label: inp.label || inp.id, delta: delta };
+    }).filter(Boolean);
+    var totalDelta = 0;
+    perInput.forEach(function (p) { totalDelta += p.delta; });
+    return perInput
+      .map(function (p) { return { id: p.id, label: p.label, contribution_pct: totalDelta > 0 ? (p.delta / totalDelta) * 100 : 0 }; })
+      .sort(function (a, b) { return b.contribution_pct - a.contribution_pct; })
+      .slice(0, 4);
+  }
+
+  // D2.3: cached Supabase RPC fetch for benchmark distribution
+  var SUPABASE_ANON_KEY = window.__supabase_anon_key || "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
+  var SUPABASE_REST_BASE = "https://bjbvqvzbzczjbatgmccb.supabase.co/rest/v1";
+  function fetchBenchmark(slug, outputId) {
+    var benchKey = slug + ":" + outputId;
+    window.__lmc_bench_cache = window.__lmc_bench_cache || {};
+    if (window.__lmc_bench_cache[benchKey]) return Promise.resolve(window.__lmc_bench_cache[benchKey]);
+    return fetch(SUPABASE_REST_BASE + "/rpc/lm_calculator_benchmark", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY, "Authorization": "Bearer " + SUPABASE_ANON_KEY },
+      body: JSON.stringify({ p_slug: slug, p_output_id: outputId }),
+    })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) { window.__lmc_bench_cache[benchKey] = rows; return rows; })
+      .catch(function () { return null; });
+  }
+
 
   function buildIntro(data, startTargetSelector, opts) {
     opts = opts || {};
@@ -190,6 +261,19 @@
     });
     if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(secondaryWrap, "outputs", { itemLabel: "output", template: { id: "", label: "New output", format: "decimal", formula: "0" } });
     outputsCard.appendChild(secondaryWrap);
+    // D2.2: Sensitivity slot (populated after each compute())
+    var sensSlot = make("div", { id: "lmc-sensitivity", class: "lmc-sensitivity", hidden: "hidden" });
+    outputsCard.appendChild(sensSlot);
+    // D2.3: Benchmark slot (only populated if primary.show_benchmark === true)
+    var benchSlot = make("div", { id: "lmc-benchmark", class: "lmc-benchmark", hidden: "hidden" });
+    outputsCard.appendChild(benchSlot);
+    // D2.4: Top-3-fixes toggle — opt-in via data.fixes_scenario block
+    if (data.fixes_scenario && Array.isArray(data.fixes_scenario.input_overrides) && data.fixes_scenario.input_overrides.length) {
+      var fixToggle = make("label", { class: "lmc-fix-toggle", for: "lmc-fix-on" });
+      var fixLabel = (data.fixes_scenario.label || "See what happens with the top 3 fixes");
+      fixToggle.innerHTML = '<input type="checkbox" id="lmc-fix-on" /> <span>' + escapeHtml(fixLabel) + '</span>';
+      outputsCard.appendChild(fixToggle);
+    }
     // Recommendations
     var recsWrap = make("div", { class: "lmc-recs", id: "lmc-recs" });
     outputsCard.appendChild(recsWrap);
@@ -237,16 +321,35 @@
       return ctx;
     }
     function compute() {
-      var ctx = getCtx();
+      var ctxBase = getCtx();
+      // D2.4: apply fixes_scenario overrides when toggle is on
+      var fixToggleEl = $("#lmc-fix-on");
+      var fixOn = !!(fixToggleEl && fixToggleEl.checked);
+      var ctx = Object.assign({}, ctxBase);
+      if (fixOn && data.fixes_scenario && Array.isArray(data.fixes_scenario.input_overrides)) {
+        data.fixes_scenario.input_overrides.forEach(function (ov) {
+          if (ov && ov.input_id != null && ov.value != null) ctx[ov.input_id] = ov.value;
+        });
+      }
       var results = {};
       (data.outputs || []).forEach(function (out) {
         var val = out.formula ? safeEval(out.formula, Object.assign({}, ctx, results)) : null;
         results[out.id] = val;
       });
-      // Paint
+      // Apply CSS class to outputs card when fix-on mode active
+      outputsCard.classList.toggle("lmc-fixes-on", fixOn);
+      // D2.1: Paint with ticker — track previous values across compute() calls
+      window.__lmc_prev_outputs = window.__lmc_prev_outputs || {};
+      var prev = window.__lmc_prev_outputs;
       if (primary) {
         var main = results[primary.id];
-        var bn = $("#lmc-big-num"); if (bn) bn.textContent = fmt(primary.format, main);
+        var bn = $("#lmc-big-num");
+        if (bn && typeof main === "number") {
+          tickTo(bn, typeof prev[primary.id] === "number" ? prev[primary.id] : 0, main, function (v) { return fmt(primary.format, v); });
+          prev[primary.id] = main;
+        } else if (bn) {
+          bn.textContent = fmt(primary.format, main);
+        }
         var tp = $("#lmc-tier");
         if (tp && primary.tier_thresholds && typeof main === "number") {
           var t = tierFor(main, primary.tier_thresholds);
@@ -257,7 +360,12 @@
       (data.outputs || []).forEach(function (out) {
         if (out === primary) return;
         var el = document.querySelector('[data-out-id="' + out.id + '"]');
-        if (el) el.textContent = fmt(out.format, results[out.id]);
+        if (el && typeof results[out.id] === "number") {
+          tickTo(el, typeof prev[out.id] === "number" ? prev[out.id] : 0, results[out.id], function (v) { return fmt(out.format, v); });
+          prev[out.id] = results[out.id];
+        } else if (el) {
+          el.textContent = fmt(out.format, results[out.id]);
+        }
       });
       // Recs
       var recs = data.recommendations || [];
@@ -280,12 +388,63 @@
           });
         }
       }
-      return { ctx: ctx, results: results, matched_recs: matched.map(function (m) { return m.tag; }) };
+      // D2.2: Sensitivity bars (only shows when primary + ≥ 2 numeric inputs)
+      var sensEl = $("#lmc-sensitivity");
+      if (sensEl && primary) {
+        var sens = computeSensitivity(data, ctx, primary.id);
+        var hasMeaningful = sens.length >= 2 && sens.some(function (s) { return s.contribution_pct > 0.5; });
+        if (hasMeaningful) {
+          sensEl.removeAttribute("hidden");
+          sensEl.innerHTML = '<h4>What\'s driving this number</h4>' +
+            sens.map(function (s) {
+              return '<div class="lmc-sens-row">' +
+                '<span class="lmc-sens-label">' + escapeHtml(s.label) + '</span>' +
+                '<div class="lmc-sens-bar"><div class="lmc-sens-fill" style="width:' + s.contribution_pct.toFixed(0) + '%"></div></div>' +
+                '<span class="lmc-sens-pct">' + s.contribution_pct.toFixed(0) + '%</span>' +
+              '</div>';
+            }).join('');
+        } else {
+          sensEl.setAttribute("hidden", "hidden");
+        }
+      }
+      // D2.3: Benchmark overlay (opt-in via primary.show_benchmark === true)
+      var benchEl = $("#lmc-benchmark");
+      if (benchEl && primary && primary.show_benchmark === true) {
+        fetchBenchmark(data.slug, primary.id).then(function (rows) {
+          if (!rows || !rows.length) { benchEl.setAttribute("hidden", "hidden"); return; }
+          benchEl.removeAttribute("hidden");
+          var mainVal = results[primary.id];
+          var min = rows[0].bucket_lo;
+          var max = rows[rows.length - 1].bucket_hi;
+          var span = (max - min) || 1;
+          var clamp = function (v) { return Math.max(0, Math.min(100, v)); };
+          var youPct = (typeof mainVal === "number") ? clamp(((mainVal - min) / span) * 100) : 50;
+          var medianPct = clamp(((Number(rows[0].median) - min) / span) * 100);
+          var hMax = Math.max.apply(null, rows.map(function (rr) { return rr.bucket_count; }));
+          benchEl.innerHTML = '<h4>How you compare <span class="lmc-bench-meta">(industry median)</span></h4>' +
+            '<div class="lmc-bench-track">' +
+              rows.map(function (r) {
+                var w = ((r.bucket_hi - r.bucket_lo) / span) * 100;
+                var h = (r.bucket_count / hMax) * 100;
+                return '<div class="lmc-bench-bar" style="width:' + Math.max(2, w).toFixed(2) + '%;height:' + h.toFixed(0) + '%"></div>';
+              }).join('') +
+              '<div class="lmc-bench-median" style="left:' + medianPct.toFixed(1) + '%" title="Median: ' + fmt(primary.format, Number(rows[0].median)) + '"></div>' +
+              '<div class="lmc-bench-you" style="left:' + youPct.toFixed(1) + '%">You</div>' +
+            '</div>' +
+            '<p class="lmc-bench-note">Median: ' + fmt(primary.format, Number(rows[0].median)) + ' &middot; You: ' + fmt(primary.format, mainVal) + '</p>';
+        });
+      }
+      return { ctx: ctx, results: results, matched_recs: matched.map(function (m) { return m.tag; }), fix_on: fixOn };
     }
     // Attach
     (data.inputs || []).forEach(function (inp) {
       var el = document.getElementById("lmc-in-" + inp.id);
       if (el) el.addEventListener("input", compute);
+    });
+    var fixOnEl = $("#lmc-fix-on");
+    if (fixOnEl) fixOnEl.addEventListener("change", function () {
+      compute();
+      beacon("cta_click", { answers: { target: "fixes_scenario_toggle", on: !!fixOnEl.checked } });
     });
     compute();
 

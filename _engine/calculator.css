@@ -137,3 +137,39 @@
   .lmc-intro-inner{gap:1.5rem;}
   .lmc-intro-avatar{width:96px;height:96px;}
 }
+
+/* ── Phase D ─────────────────────────────────────────────────────────── */
+/* D2.1: smooth tabular-numeric tick — already on .lmc-big-num via font-variant-numeric. Nothing extra here. */
+.lmc-big-num{font-variant-numeric:tabular-nums lining-nums;}
+
+/* D2.2: sensitivity bars */
+.lmc-sensitivity{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--hairline);}
+.lmc-sensitivity[hidden]{display:none;}
+.lmc-sensitivity h4{font-family:'Source Serif 4',Georgia,serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 .85rem;}
+.lmc-sens-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;font-family:var(--font-sans);font-size:.92rem;color:var(--ink);}
+.lmc-sens-row:last-child{margin-bottom:0;}
+.lmc-sens-label{flex:1 1 auto;min-width:0;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lmc-sens-bar{flex:1 1 50%;height:6px;background:var(--paper-sunk);border-radius:3px;overflow:hidden;border:1px solid var(--hairline);}
+.lmc-sens-fill{height:100%;background:#2A8F65;transition:width .28s cubic-bezier(0.4,0,0.2,1);}
+.lmc-sens-pct{font-family:'Source Serif 4',Georgia,serif;font-variant-numeric:tabular-nums;font-weight:600;color:#1A1A1A;min-width:2.5rem;text-align:right;font-size:.92rem;}
+@media (prefers-reduced-motion:reduce){.lmc-sens-fill{transition:none !important;}}
+
+/* D2.3: benchmark histogram + you-are-here pin */
+.lmc-benchmark{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--hairline);}
+.lmc-benchmark[hidden]{display:none;}
+.lmc-benchmark h4{font-family:'Source Serif 4',Georgia,serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 .85rem;display:flex;align-items:baseline;gap:.5rem;}
+.lmc-bench-meta{font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-mute);}
+.lmc-bench-track{position:relative;height:64px;background:var(--paper-sunk);border:1px solid var(--hairline);border-radius:4px;display:flex;align-items:flex-end;overflow:visible;padding:0 2px;}
+.lmc-bench-bar{background:rgba(76,110,61,0.45);min-height:6%;margin:0 1px;border-radius:2px 2px 0 0;transition:height .3s cubic-bezier(0.4,0,0.2,1);}
+.lmc-bench-median{position:absolute;top:-6px;bottom:-6px;width:1px;background:#1A1A1A;opacity:0.55;}
+.lmc-bench-you{position:absolute;top:-26px;transform:translateX(-50%);background:#2A8F65;color:#F7F4EF;font-family:'Source Serif 4',Georgia,serif;font-size:11px;font-weight:600;letter-spacing:.04em;padding:3px 10px;border-radius:3px;text-transform:uppercase;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,0.15);}
+.lmc-bench-you::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);width:0;height:0;border:5px solid transparent;border-top-color:#2A8F65;}
+.lmc-bench-note{font-size:.85rem;color:var(--ink-mute);margin:.85rem 0 0;font-variant-numeric:tabular-nums;}
+
+/* D2.4: fixes-scenario toggle + active-state output coloring */
+.lmc-fix-toggle{display:flex;align-items:flex-start;gap:.55rem;margin:1.25rem 0 0;font-family:var(--font-sans);font-size:.95rem;color:var(--ink);cursor:pointer;line-height:1.5;padding:.85rem 1rem;background:var(--paper-sunk);border:1px solid var(--hairline);border-radius:4px;transition:background .15s,border-color .15s;}
+.lmc-fix-toggle:hover{background:rgba(76,110,61,0.06);border-color:rgba(76,110,61,0.3);}
+.lmc-fix-toggle input[type="checkbox"]{flex-shrink:0;width:16px;height:16px;margin-top:3px;accent-color:#2A8F65;cursor:pointer;}
+#lmc-outputs.lmc-fixes-on{background:linear-gradient(180deg,rgba(76,110,61,0.04),transparent 60%);}
+#lmc-outputs.lmc-fixes-on .lmc-big-num,#lmc-outputs.lmc-fixes-on .lmc-output-row .value{color:#2A8F65;}
+#lmc-outputs.lmc-fixes-on .lmc-fix-toggle{background:rgba(42,143,101,0.10);border-color:rgba(42,143,101,0.4);color:#1A1A1A;}
