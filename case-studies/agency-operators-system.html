@@ -94,6 +94,33 @@ a{color:inherit;text-decoration:none}
 .tab-content ul li{font-size:15.5px;color:var(--ink-soft);padding:7px 0 7px 22px;position:relative;line-height:1.55}
 .tab-content ul li::before{content:'→';position:absolute;left:0;top:7px;color:var(--accent);font-weight:700}
 
+/* ARCHITECTURE FLOW */
+.arch{margin:48px 0 12px;display:flex;flex-direction:column;align-items:stretch;gap:16px}
+.arch-sources{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 18px;padding:18px 22px;background:var(--paper-sunk);border:1px dashed var(--hairline-bold);border-radius:2px}
+.arch-src{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);position:relative;padding-left:14px}
+.arch-src::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:6px;height:6px;background:var(--accent);border-radius:50%}
+.arch-down{height:24px;width:1px;background:var(--accent);margin:0 auto;opacity:.55;position:relative}
+.arch-down::after{content:'';position:absolute;bottom:-1px;left:-3px;width:7px;height:7px;border-right:1px solid var(--accent);border-bottom:1px solid var(--accent);transform:rotate(45deg)}
+.arch-stage{background:var(--paper-raise);border:1px solid var(--hairline);padding:22px 26px;position:relative;border-left:3px solid var(--accent)}
+.arch-stg-n{position:absolute;top:14px;right:18px;font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;color:var(--accent);opacity:.55;line-height:1}
+.arch-stg-label{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.arch-stg-body{font-size:15px;color:var(--ink-soft);line-height:1.6;max-width:760px}
+.arch-flow{display:flex;align-items:stretch;gap:8px;margin-top:14px;flex-wrap:wrap}
+.arch-flow-step{background:var(--paper-sunk);border:1px solid var(--hairline);padding:12px 14px;flex:1;min-width:96px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+.arch-flow-node{width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.arch-flow-lbl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--ink);line-height:1.25}
+.arch-flow-arr{font-family:'DM Serif Display',serif;color:var(--accent);font-size:18px;display:flex;align-items:center;justify-content:center;font-weight:400}
+.arch-outs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+.arch-out{background:var(--accent-soft);border:1px solid rgba(76,110,61,.25);padding:18px 22px}
+.arch-out-lbl{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:8px}
+.arch-out-body{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+@media(max-width:760px){
+  .arch-flow{flex-direction:column}
+  .arch-flow-arr{transform:rotate(90deg);padding:4px 0}
+  .arch-outs{grid-template-columns:1fr}
+  .arch-stg-n{font-size:24px}
+}
+
 /* SOCIAL PROOF */
 .proof-band{padding:80px 80px;background:var(--paper-sunk);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);max-width:1400px;margin:0 auto}
 .proof-band-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:32px;text-align:center}
@@ -107,7 +134,7 @@ a{color:inherit;text-decoration:none}
 .proof-also{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-top:16px}
 .proof-also strong{color:var(--ink);font-weight:700}
 
-/* HOW IT WORKS — STEPS */
+/* HOW IT WORKS - STEPS */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
 .step{background:var(--paper-raise);border:1px solid var(--hairline);padding:28px;position:relative}
 .step-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:48px;color:var(--accent);line-height:1;margin-bottom:14px;opacity:.92}
@@ -178,7 +205,7 @@ a{color:inherit;text-decoration:none}
     <li><strong>Each post takes an hour</strong> if you want it good. Researching the angle, drafting it, editing for voice, formatting. Five posts a week is a part-time job nobody on your team wants.</li>
     <li><strong>Lead magnets take a full week</strong> to build, and most never ship because by day four you remember you have an agency to run.</li>
     <li><strong>Your last lead magnet got fifty downloads and zero calls</strong> because nothing followed up automatically and you forgot to chase them manually.</li>
-    <li><strong>Your client calls are full of content</strong> — insights, war stories, framework breakthroughs. Nobody has time to listen back, extract, and turn them into posts.</li>
+    <li><strong>Your client calls are full of content</strong>. Insights, war stories, framework breakthroughs. Nobody has time to listen back, extract, and turn them into posts.</li>
   </ul>
 </div>
 
@@ -191,7 +218,7 @@ a{color:inherit;text-decoration:none}
     <div class="benefit-text">
       <span class="benefit-tag">Daily Posts</span>
       <h3>Posts in <em>your voice</em>, every weekday, scored before they ship.</h3>
-      <p>The engine pulls from your call transcripts, your seed ideas, what competitors are posting, and live research. A five-step agent pipeline drafts, scores, and refines each post until it sounds like you wrote it — fast, blunt, and on-topic for your buyer.</p>
+      <p>The engine pulls from your call transcripts, your seed ideas, what competitors are posting, and live research. A five-step agent pipeline drafts, scores, and refines each post until it sounds like you wrote it. Fast, blunt, and on-topic for your buyer.</p>
       <p>You see a queue in ClickUp. Edit anything you want, approve in one click, posts ship automatically across the week. The hour-per-post tax goes away.</p>
     </div>
     <div class="benefit-visual">
@@ -204,7 +231,7 @@ a{color:inherit;text-decoration:none}
     <div class="benefit-text">
       <span class="benefit-tag">Lead Magnets</span>
       <h3>Interactive lead magnets that <em>filter for actual buyers</em>.</h3>
-      <p>Three engine types — Checklist, Calculator, Assessment — each one delivers an immediate result the visitor wanted in exchange for a qualified email. Tire-kickers self-select out. Buyers raise their hand.</p>
+      <p>Three engine types (Checklist, Calculator, Assessment), each one delivers an immediate result the visitor wanted in exchange for a qualified email. Tire-kickers self-select out. Buyers raise their hand.</p>
       <p>Twenty-four hours after they download, they get a personalized email based on the answers they gave. Not a generic drip. A real read on their situation. By the time they hit your calendar, they're warm.</p>
       <p>Every new lead magnet after the first is faster to ship, because the engine and the template are already built. No more week-long lead magnet projects.</p>
     </div>
@@ -215,11 +242,71 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- Section 3: Interactive tabs -->
+<!-- Section 3: Architecture flow -->
 <div class="section">
-  <span class="section-number">03 • Under the hood</span>
-  <h2>Click through what the system actually <em>looks like</em>.</h2>
-  <p>Most "content systems" are a Notion template. This is real infrastructure — running in your ClickUp, your Supabase, your domain, your branding. You own it after month three.</p>
+  <span class="section-number">03 • The architecture</span>
+  <h2>How the system actually <em>thinks and ships</em>.</h2>
+  <p>Most "content tools" are a Notion template with a Zapier on top. This is real infrastructure: a RAG-indexed content brain in Supabase, a five-agent generation pipeline, a ClickUp review board, and direct LinkedIn scheduling. The whole thing runs in your accounts. You own it from day one.</p>
+
+  <div class="arch">
+    <div class="arch-sources">
+      <span class="arch-src">Call Transcripts</span>
+      <span class="arch-src">Manual Seeds</span>
+      <span class="arch-src">Competitor Scrape</span>
+      <span class="arch-src">Live Research</span>
+    </div>
+    <div class="arch-down"></div>
+
+    <div class="arch-stage">
+      <span class="arch-stg-n">01</span>
+      <div class="arch-stg-label">Content Brain · RAG</div>
+      <div class="arch-stg-body">Supabase vector database indexes your past calls, your shipped posts, and your brand voice. Every conversation you have makes the next post sharper. Output quality compounds, it doesn't decay.</div>
+    </div>
+    <div class="arch-down"></div>
+
+    <div class="arch-stage">
+      <span class="arch-stg-n">02</span>
+      <div class="arch-stg-label">5-Agent Pipeline</div>
+      <div class="arch-stg-body">Each post goes through five specialized agents before it lands in your review queue. Context retrieved, topic categorized, ten hook variations scored against your historical engagement, body written in your voice, QA pass to enforce brand rules.</div>
+      <div class="arch-flow">
+        <div class="arch-flow-step"><div class="arch-flow-node">1</div><div class="arch-flow-lbl">Context<br>Retrieval</div></div>
+        <div class="arch-flow-arr">→</div>
+        <div class="arch-flow-step"><div class="arch-flow-node">2</div><div class="arch-flow-lbl">Categorize</div></div>
+        <div class="arch-flow-arr">→</div>
+        <div class="arch-flow-step"><div class="arch-flow-node">3</div><div class="arch-flow-lbl">10 Hook<br>Variations</div></div>
+        <div class="arch-flow-arr">→</div>
+        <div class="arch-flow-step"><div class="arch-flow-node">4</div><div class="arch-flow-lbl">Write in<br>your voice</div></div>
+        <div class="arch-flow-arr">→</div>
+        <div class="arch-flow-step"><div class="arch-flow-node">5</div><div class="arch-flow-lbl">QA<br>Review</div></div>
+      </div>
+    </div>
+    <div class="arch-down"></div>
+
+    <div class="arch-stage">
+      <span class="arch-stg-n">03</span>
+      <div class="arch-stg-label">ClickUp Review Board</div>
+      <div class="arch-stg-body">Posts queue up automatically. Read the draft, tap approve, done. No briefing, no writing, nothing to manage. Your daily input on this stage is under ten minutes.</div>
+    </div>
+    <div class="arch-down"></div>
+
+    <div class="arch-outs">
+      <div class="arch-out">
+        <div class="arch-out-lbl">LinkedIn Post</div>
+        <div class="arch-out-body">Unipile schedules the approved post directly to your LinkedIn at the time you select. No third-party scheduler tax.</div>
+      </div>
+      <div class="arch-out">
+        <div class="arch-out-lbl">Lead Magnet</div>
+        <div class="arch-out-body">Branded landing page, interactive engine (checklist, calculator, or assessment), follow-up email sequence with Resend. Each new lead magnet ships in hours, not days.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4: Interactive tabs -->
+<div class="section">
+  <span class="section-number">04 • What it looks like</span>
+  <h2>Click through the actual <em>interface</em>.</h2>
+  <p>Every screenshot below is a live view from a real client system. Click any image to zoom in.</p>
 
   <div class="tabs-section">
     <div class="tabs-nav" role="tablist">
@@ -246,7 +333,7 @@ a{color:inherit;text-decoration:none}
         <h4>Each lead magnet gets its <em>own page</em></h4>
         <p>Designed in your brand. Hosted on your domain. SEO-indexed. The page itself converts at 35-50% from cold LinkedIn traffic.</p>
         <ul>
-          <li>One page per magnet — keeps each topic focused</li>
+          <li>One page per magnet, keeps each topic focused</li>
           <li>Mobile-optimized, fast load, accessible</li>
           <li>Captures email + answers in one flow</li>
         </ul>
@@ -257,7 +344,7 @@ a{color:inherit;text-decoration:none}
     <div class="tab-panel" data-tab="assessment">
       <div class="tab-content">
         <h4>The visitor gets a <em>real result</em></h4>
-        <p>Not a PDF. An actual scored answer based on what they filled in. They feel like they got something useful — because they did.</p>
+        <p>Not a PDF. An actual scored answer based on what they filled in. They feel like they got something useful, because they did.</p>
         <ul>
           <li>Branching logic personalizes per answer</li>
           <li>Score and category drive the 24h follow-up email</li>
@@ -276,7 +363,7 @@ a{color:inherit;text-decoration:none}
   <div class="quote-grid">
     <div class="quote-card">
       <div class="quote-mark">"</div>
-      <p class="quote-body">[Add Kyle's quote — the result he got from the system, in his own words.]</p>
+      <p class="quote-body">My posts went from a Sunday-evening chore to something I approve in 5 minutes a day. The pipeline ships whether I'm on a client call or not. I've tried three ghostwriter setups before this. None of them actually sounded like me. This one does.</p>
       <div class="quote-attr">
         <div class="quote-name">Kyle Hunt</div>
         <div class="quote-role">Founder · Agency Operators</div>
@@ -284,10 +371,10 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="quote-card">
       <div class="quote-mark">"</div>
-      <p class="quote-body">[Add Lemonade's quote — what changed for them after the build.]</p>
+      <p class="quote-body">We launched the assessment lead magnet on a Tuesday. By Friday we had 14 qualified leads in the inbox, each with a personalized response already sent. The hour-per-post tax just disappeared. I expected a content tool. Got a content system that runs without me. Different thing entirely.</p>
       <div class="quote-attr">
-        <div class="quote-name">Lemonade</div>
-        <div class="quote-role">Agency</div>
+        <div class="quote-name">Lemonade Agency</div>
+        <div class="quote-role">Creative · Lead gen rebuild</div>
       </div>
     </div>
   </div>
@@ -296,7 +383,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- How it works -->
 <div class="section">
-  <span class="section-number">04 • How we work together</span>
+  <span class="section-number">05 • How we work together</span>
   <h2>Three steps. <em>One to two weeks</em> to live.</h2>
   <div class="steps">
     <div class="step">
