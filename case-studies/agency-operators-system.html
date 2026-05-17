@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The LinkedIn Engine for Agency Operators • Iván Manfredi</title>
-<meta name="description" content="A done-for-you LinkedIn content + lead magnet system for agency owners. Daily posts in your voice, lead magnets that filter for buyers, a 90-day plan that turns content into pipeline.">
+<meta name="description" content="A done-for-you LinkedIn content + lead magnet system for agency owners. Daily posts in your voice, lead magnets that filter for buyers, built in one to two weeks.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -95,14 +95,17 @@ a{color:inherit;text-decoration:none}
 .tab-content ul li::before{content:'→';position:absolute;left:0;top:7px;color:var(--accent);font-weight:700}
 
 /* SOCIAL PROOF */
-.proof-band{padding:80px 80px;background:var(--paper-sunk);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);text-align:center;max-width:1400px;margin:0 auto}
-.proof-band-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:24px}
-.proof-band h3{font-family:'DM Serif Display',serif;font-size:clamp(26px,3vw,42px);font-weight:400;font-style:italic;line-height:1.2;color:var(--ink);max-width:880px;margin:0 auto 28px;text-transform:none;padding:0;border:none}
-.proof-band h3 em{color:var(--accent)}
-.proof-stats{display:flex;gap:64px;justify-content:center;flex-wrap:wrap;margin-top:40px}
-.proof-stat{text-align:center}
-.proof-stat-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;color:var(--accent);line-height:1;margin-bottom:8px;letter-spacing:-.02em}
-.proof-stat-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.proof-band{padding:80px 80px;background:var(--paper-sunk);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);max-width:1400px;margin:0 auto}
+.proof-band-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:32px;text-align:center}
+.quote-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:28px;max-width:1080px;margin:0 auto 40px}
+.quote-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:36px 36px 32px;position:relative;border-left:3px solid var(--accent)}
+.quote-mark{position:absolute;top:18px;right:28px;font-family:'DM Serif Display',serif;font-size:80px;line-height:1;color:var(--accent);opacity:.32;font-style:italic;pointer-events:none}
+.quote-body{font-family:'Source Serif 4',serif;font-size:17px;line-height:1.65;color:var(--ink);margin-bottom:24px;font-style:italic;max-width:none}
+.quote-attr{border-top:1px solid var(--hairline);padding-top:16px}
+.quote-name{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.1em;color:var(--ink);margin-bottom:4px}
+.quote-role{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.proof-also{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-top:16px}
+.proof-also strong{color:var(--ink);font-weight:700}
 
 /* HOW IT WORKS — STEPS */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
@@ -158,8 +161,8 @@ a{color:inherit;text-decoration:none}
     <span class="cover-meta">For Agency Operators • 2026</span>
   </div>
   <span class="cover-tag">A LinkedIn engine for agency owners</span>
-  <h1>Daily posts. Qualified leads. A 90-day plan. <em>Built once</em>, runs without you.</h1>
-  <p class="cover-sub">For agency owners running $50k-$300k/mo who stopped posting six weeks ago because writing every post by hand is eating time you can't afford. This system gives you back the channel — without giving up your voice or your standards.</p>
+  <h1>Lead magnets and daily posts that run <em>without you</em>.</h1>
+  <p class="cover-sub">For agency owners who know LinkedIn would work if they actually showed up, but the math doesn't pencil out when each post takes an hour and every lead magnet takes a week. This system builds both, in your voice, on autopilot.</p>
   <div class="cover-cta">
     <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">See if it fits your business</a>
     <span class="cover-meta-line">30-min discovery · No pitch</span>
@@ -169,27 +172,27 @@ a{color:inherit;text-decoration:none}
 <!-- Section 1: The pain -->
 <div class="section">
   <span class="section-number">01 • The honest read</span>
-  <h2>If you're an agency operator, your LinkedIn is probably <em>costing</em> you, not earning.</h2>
-  <p>Not because you don't know how. Because the work of doing it well, daily, in your voice, while also running an agency, is a part-time job nobody wants. Most operators I talk to are stuck in one of these four spots:</p>
+  <h2>The math on LinkedIn <em>doesn't pencil out</em> when you do it by hand.</h2>
+  <p>Most agency owners I talk to know LinkedIn would print money for them. They've seen peers do it. They've tried themselves. The reason they're not consistent isn't motivation. It's that the time cost is brutal and the work doesn't compound when you do it manually. The usual story:</p>
   <ul class="pain-list">
-    <li>You <strong>stopped posting</strong> six weeks ago. The drafts folder has eleven half-posts. You feel guilty every time you open the app.</li>
-    <li>You're <strong>posting through a ghostwriter</strong> and the content sounds like nobody specifically. Engagement is fine, leads are zero.</li>
-    <li>You ran <strong>one lead magnet two years ago</strong>, got fifty downloads, none turned into calls. You haven't tried again.</li>
-    <li>You know you should <strong>repurpose your client calls</strong> into content, but nobody on your team has the time to listen, transcribe, and rewrite.</li>
+    <li><strong>Each post takes an hour</strong> if you want it good. Researching the angle, drafting it, editing for voice, formatting. Five posts a week is a part-time job nobody on your team wants.</li>
+    <li><strong>Lead magnets take a full week</strong> to build, and most never ship because by day four you remember you have an agency to run.</li>
+    <li><strong>Your last lead magnet got fifty downloads and zero calls</strong> because nothing followed up automatically and you forgot to chase them manually.</li>
+    <li><strong>Your client calls are full of content</strong> — insights, war stories, framework breakthroughs. Nobody has time to listen back, extract, and turn them into posts.</li>
   </ul>
 </div>
 
 <!-- Section 2: Benefits with screenshots -->
 <div class="section">
   <span class="section-number">02 • What you actually get</span>
-  <h2>Three things working together. None of them ask for your time after week three.</h2>
+  <h2>Two engines working together. Built in <em>one to two weeks</em>, yours to keep.</h2>
 
   <div class="benefit">
     <div class="benefit-text">
       <span class="benefit-tag">Daily Posts</span>
       <h3>Posts in <em>your voice</em>, every weekday, scored before they ship.</h3>
       <p>The engine pulls from your call transcripts, your seed ideas, what competitors are posting, and live research. A five-step agent pipeline drafts, scores, and refines each post until it sounds like you wrote it — fast, blunt, and on-topic for your buyer.</p>
-      <p>You see a queue in ClickUp every Sunday. Edit anything you want, approve, posts go out automatically across the week. No more drafts folder. No more guilt scroll.</p>
+      <p>You see a queue in ClickUp. Edit anything you want, approve in one click, posts ship automatically across the week. The hour-per-post tax goes away.</p>
     </div>
     <div class="benefit-visual">
       <img src="images/carousel-cta.png" alt="LinkedIn carousel post with CTA" loading="lazy">
@@ -203,23 +206,11 @@ a{color:inherit;text-decoration:none}
       <h3>Interactive lead magnets that <em>filter for actual buyers</em>.</h3>
       <p>Three engine types — Checklist, Calculator, Assessment — each one delivers an immediate result the visitor wanted in exchange for a qualified email. Tire-kickers self-select out. Buyers raise their hand.</p>
       <p>Twenty-four hours after they download, they get a personalized email based on the answers they gave. Not a generic drip. A real read on their situation. By the time they hit your calendar, they're warm.</p>
+      <p>Every new lead magnet after the first is faster to ship, because the engine and the template are already built. No more week-long lead magnet projects.</p>
     </div>
     <div class="benefit-visual">
       <img src="images/interactive-assessment.png" alt="Interactive lead magnet assessment" loading="lazy">
       <div class="benefit-visual-caption">Interactive assessment · scores intent</div>
-    </div>
-  </div>
-
-  <div class="benefit">
-    <div class="benefit-text">
-      <span class="benefit-tag">Audit + 90-Day Plan</span>
-      <h3>A strategic audit that turns content into <em>a pipeline plan</em>.</h3>
-      <p>Month one delivers a full strategic audit of your offers, your content history, your positioning, and what's actually converting. Paired with a 90-day priority build list so you know exactly what to do next.</p>
-      <p>You don't leave with "a working system." You leave with a roadmap.</p>
-    </div>
-    <div class="benefit-visual">
-      <img src="images/guide.png" alt="Strategy guide and 90-day plan" loading="lazy">
-      <div class="benefit-visual-caption">Strategic audit + 90-day priority plan</div>
     </div>
   </div>
 </div>
@@ -235,7 +226,6 @@ a{color:inherit;text-decoration:none}
       <button class="tab-btn active" data-tab="pipeline">Post Pipeline</button>
       <button class="tab-btn" data-tab="landing">Landing Page</button>
       <button class="tab-btn" data-tab="assessment">Lead Magnet</button>
-      <button class="tab-btn" data-tab="guide">Strategy Plan</button>
     </div>
 
     <div class="tab-panel active" data-tab="pipeline">
@@ -277,60 +267,52 @@ a{color:inherit;text-decoration:none}
       <img src="images/interactive-assessment.png" alt="Interactive assessment with results" loading="lazy">
     </div>
 
-    <div class="tab-panel" data-tab="guide">
-      <div class="tab-content">
-        <h4>The <em>90-day plan</em> turns the audit into action</h4>
-        <p>Five to seven priority builds, each scoped, sequenced, and tied to a business outcome. You read it and know what to do next.</p>
-        <ul>
-          <li>Specific to your offers and content history</li>
-          <li>Ranked by impact, not effort</li>
-          <li>Doubles as your m2-m3 roadmap if you continue</li>
-        </ul>
-      </div>
-      <img src="images/guide.png" alt="Strategic 90-day plan document" loading="lazy">
-    </div>
   </div>
 </div>
 
-<!-- Social proof band -->
+<!-- Quotes band -->
 <div class="proof-band">
-  <div class="proof-band-eyebrow">Recent builds · 2026</div>
-  <h3>Currently running for <em>4 Creatives</em> and <em>Interlude Studio</em> — both creative agencies referred through the <em>Agency Operators</em> program.</h3>
-  <div class="proof-stats">
-    <div class="proof-stat">
-      <div class="proof-stat-num">3</div>
-      <div class="proof-stat-label">Weeks to launch</div>
+  <div class="proof-band-eyebrow">From people who use this system</div>
+  <div class="quote-grid">
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-body">[Add Kyle's quote — the result he got from the system, in his own words.]</p>
+      <div class="quote-attr">
+        <div class="quote-name">Kyle Hunt</div>
+        <div class="quote-role">Founder · Agency Operators</div>
+      </div>
     </div>
-    <div class="proof-stat">
-      <div class="proof-stat-num">5+</div>
-      <div class="proof-stat-label">Hours/week back</div>
-    </div>
-    <div class="proof-stat">
-      <div class="proof-stat-num">Daily</div>
-      <div class="proof-stat-label">Posts shipping</div>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-body">[Add Lemonade's quote — what changed for them after the build.]</p>
+      <div class="quote-attr">
+        <div class="quote-name">Lemonade</div>
+        <div class="quote-role">Agency</div>
+      </div>
     </div>
   </div>
+  <div class="proof-also">Also currently running for <strong>4 Creatives</strong> and <strong>Interlude Studio</strong>.</div>
 </div>
 
 <!-- How it works -->
 <div class="section">
   <span class="section-number">04 • How we work together</span>
-  <h2>Three steps. No surprises.</h2>
+  <h2>Three steps. <em>One to two weeks</em> to live.</h2>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-title">Discovery · 30 min</div>
-      <div class="step-body">We talk about your offers, your audience, where you stopped posting and why. If it's a fit, I send a scoped proposal within 48 hours. If not, you walk with a few useful pointers.</div>
+      <div class="step-body">We talk about your offers, your audience, and what's actually getting in the way. If it's a fit, I send a scoped proposal within 48 hours. If not, you walk with a few useful pointers.</div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-title">Build · 3 weeks</div>
-      <div class="step-body">I build the system end-to-end. Post pipeline, lead magnet, landing page, audit. Weekly working sessions, async Slack for everything else. You stay hands-off if you want.</div>
+      <div class="step-title">Build · 1-2 weeks</div>
+      <div class="step-body">I build the system end-to-end. Post pipeline, first lead magnet, landing page, follow-up emails. Async Slack for context, working sessions only when you want them. You stay hands-off if you prefer.</div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-title">Plan · End of month one</div>
-      <div class="step-body">Full audit + 90-day priority plan delivered. Either keep going on a Fractional engagement, or take the system and run it yourself. Your call, no pressure either way.</div>
+      <div class="step-title">Handover</div>
+      <div class="step-body">The system runs in your accounts (ClickUp, Supabase, your domain). You own it from day one. Optional care plan if you want me to monitor and tune it after launch.</div>
     </div>
   </div>
 </div>
