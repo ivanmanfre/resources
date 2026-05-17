@@ -357,12 +357,44 @@
             persona: typeof res.persona === "number" && data.persona_selector && data.persona_selector.answers ? (data.persona_selector.answers[res.persona] || {}).tag || null : null,
             answers: answers
           });
+          // Phase D3.3: generate share card + inject og:image meta
+          generateShareCard(data, res);
           renderUnlocked(res);
         });
       } else {
         // Already captured on this device
+        generateShareCard(data, res);
         renderUnlocked(res);
       }
+    }
+
+    // D3.3: best-effort share card generation (legacy engine)
+    function generateShareCard(data, res) {
+      try {
+        var url = window.__scroll_recorder_url || "https://scroll-recorder-production.up.railway.app";
+        fetch(url + "/share-card", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            slug: data.slug,
+            score: res.overall,
+            tier: res.tier && res.tier.name,
+            persona: typeof res.persona === "number" && data.persona_selector && data.persona_selector.answers ? (data.persona_selector.answers[res.persona] || {}).tag : null,
+            weakest: res.weakest && res.weakest.name,
+            title: data.title,
+          }),
+        }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+          if (j && j.url) {
+            ["og:image", "twitter:image"].forEach(function (prop) {
+              var sel = prop.indexOf("twitter") === 0 ? 'meta[name="' + prop + '"]' : 'meta[property="' + prop + '"]';
+              var m = document.head.querySelector(sel);
+              if (!m) { m = document.createElement("meta"); if (prop.indexOf("twitter") === 0) m.setAttribute("name", prop); else m.setAttribute("property", prop); document.head.appendChild(m); }
+              m.setAttribute("content", j.url);
+            });
+            window.__lm_share_card_url = j.url;
+          }
+        }).catch(function () {});
+      } catch (_) {}
     }
 
     function renderUnlocked(res) {
