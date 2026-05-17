@@ -151,8 +151,9 @@
       '<a class="lmc-btn lmc-btn-secondary" target="_blank" rel="noopener" href="' +
         (window.LM && window.LM.share ? window.LM.share.linkedIn(shareTextGuide) : "#") +
       '">Share on LinkedIn</a>';
-    gate.appendChild(shareRow);
     main.appendChild(gate);
+    // Share row OUTSIDE the dark capture so buttons sit on paper (legible) instead of inside the ink box
+    main.appendChild(shareRow);
 
     root.appendChild(main);
 
