@@ -9,6 +9,80 @@
   var STATE_LABEL = { not_yet: "Not yet", partial: "Partial", done: "Done" };
   var STATE_SCORE = { not_yet: 0, partial: 0.5, done: 1 };
 
+  // D4.4: inline interactive element renderers — hoisted to module scope so sections forEach can use them
+  function renderMiniChecklist(slug, sectionId, items) {
+    var wrap = L.make("div", { class: "lmg-mini-checklist" });
+    var state = L.readKV("guide", slug, "mini_check_" + sectionId, {}) || {};
+    wrap.innerHTML = '<div class="lmg-mini-label">Quick checklist</div>' +
+      items.map(function (it, i) {
+        var checked = !!state[i];
+        return '<label class="lmg-mini-item' + (checked ? " checked" : "") + '">' +
+          '<input type="checkbox" data-idx="' + i + '"' + (checked ? " checked" : "") + ' />' +
+          '<span>' + L.esc(it) + '</span></label>';
+      }).join('');
+    wrap.addEventListener("change", function (e) {
+      var target = e.target;
+      if (!target || !target.matches || !target.matches('input[type="checkbox"]')) return;
+      var idx = target.getAttribute("data-idx");
+      state[idx] = target.checked;
+      L.writeKV("guide", slug, "mini_check_" + sectionId, state);
+      var lbl = target.closest(".lmg-mini-item");
+      if (lbl) lbl.classList.toggle("checked", target.checked);
+      L.beacon("guide", "mini_check", { answers: { section_id: sectionId, idx: idx, checked: target.checked } });
+    });
+    return wrap;
+  }
+
+  function renderMiniCalculator(slug, sectionId, config) {
+    var wrap = L.make("div", { class: "lmg-mini-calc" });
+    var stored = L.readKV("guide", slug, "mini_calc_" + sectionId, {}) || {};
+    var outId = "lmg-mini-calc-" + sectionId.replace(/[^a-zA-Z0-9_-]/g, "_");
+    wrap.innerHTML = '<div class="lmg-mini-label">Quick calculator</div>' +
+      '<div class="lmg-mini-calc-inputs">' +
+        (config.inputs || []).map(function (inp) {
+          var v = (stored[inp.id] != null) ? stored[inp.id] : (inp.default != null ? inp.default : 0);
+          return '<label>' + L.esc(inp.label || inp.id) +
+            '<input type="number" data-input-id="' + L.esc(inp.id) + '" value="' + L.esc(v) + '"' +
+              (inp.min != null ? ' min="' + L.esc(inp.min) + '"' : '') +
+              (inp.max != null ? ' max="' + L.esc(inp.max) + '"' : '') +
+              (inp.step != null ? ' step="' + L.esc(inp.step) + '"' : '') +
+            ' />' +
+          '</label>';
+        }).join('') +
+      '</div>' +
+      '<div class="lmg-mini-calc-output">' + L.esc(config.output_label || "Result") + ': <strong id="' + outId + '">—</strong>' + (config.suffix ? ' <span class="lmg-mini-suf">' + L.esc(config.suffix) + '</span>' : '') + '</div>';
+
+    function compute() {
+      var ctx = {};
+      wrap.querySelectorAll('input[type="number"]').forEach(function (i) {
+        ctx[i.getAttribute("data-input-id")] = Number(i.value || 0);
+      });
+      // Persist
+      L.writeKV("guide", slug, "mini_calc_" + sectionId, ctx);
+      var allowed = /^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|]+$/;
+      if (!allowed.test(config.formula)) { wrap.querySelector("#" + outId).textContent = "—"; return; }
+      try {
+        var fn = new Function("ctx", "Math", "with (ctx) { return (" + config.formula + "); }");
+        var v = fn(ctx, Math);
+        var out = wrap.querySelector("#" + outId);
+        if (out) {
+          if (typeof v === "number" && isFinite(v)) {
+            var formatted = (config.format === "currency") ? "$" + Math.round(v).toLocaleString("en-US") :
+                            (config.format === "percent") ? (v).toFixed(0) + "%" :
+                            (config.format === "hours") ? v.toFixed(v < 10 ? 1 : 0) + " hrs" :
+                            v.toLocaleString("en-US");
+            out.textContent = formatted;
+          } else { out.textContent = "—"; }
+        }
+      } catch (_) { wrap.querySelector("#" + outId).textContent = "—"; }
+    }
+    wrap.addEventListener("input", function (e) {
+      if (e.target && e.target.matches && e.target.matches('input[type="number"]')) compute();
+    });
+    compute();
+    return wrap;
+  }
+
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
@@ -66,6 +140,33 @@
       }
     }
 
+    // D4.5: optional audio narration player (opt-in via data.audio_url)
+    if (data.audio_url) {
+      var audioWrap = L.make("div", { class: "lmg-audio-wrap" });
+      audioWrap.innerHTML =
+        '<div class="lmg-audio-label">Listen instead</div>' +
+        '<audio id="lmg-audio" controls preload="metadata" src="' + L.esc(data.audio_url) + '"></audio>';
+      root.appendChild(audioWrap);
+      try {
+        var audioEl = audioWrap.querySelector("#lmg-audio");
+        if (audioEl) {
+          var fired = false;
+          audioEl.addEventListener("play", function () { if (!fired) { fired = true; L.beacon("guide", "audio_play", { answers: { audio_url: data.audio_url } }); } });
+          // Section sync — when data.audio_timestamps = [{section_id, t_start}], highlight active section
+          if (Array.isArray(data.audio_timestamps) && data.audio_timestamps.length) {
+            audioEl.addEventListener("timeupdate", function () {
+              var t = audioEl.currentTime;
+              var activeId = null;
+              data.audio_timestamps.forEach(function (mark) { if (t >= (mark.t_start || 0)) activeId = mark.section_id; });
+              root.querySelectorAll(".lmg-section").forEach(function (sec) {
+                sec.classList.toggle("audio-active", sec.getAttribute("data-section-id") === activeId);
+              });
+            });
+          }
+        }
+      } catch (_) {}
+    }
+
     // Sections — wrapped in a container so registerArray has a handle for
     // add / drag-reorder / between-add affordances.
     var main = L.make("main", { class: "lmc-container lmg-prose" });
@@ -73,6 +174,10 @@
     (data.sections || []).forEach(function (s, sIdx) {
       var sec = L.make("section", { class: "lmg-section", id: s.id ? ("section-" + s.id) : null });
       sec.setAttribute("data-section-id", s.id || s.title);
+      // D4.2: data-state attribute reflects rating (only meaningful when self-placement enabled)
+      if (data.enable_self_placement === true) {
+        sec.setAttribute("data-state", states[s.id || s.title] || "unrated");
+      }
       if (s.title) {
         var h2 = L.make("h2", null, L.esc(s.title));
         if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h2, "sections[" + sIdx + "].title");
@@ -89,6 +194,16 @@
         var p = L.make("p", null, L.esc(s.text));
         if (window.LM && window.LM.editMode) window.LM.editMode.registerField(p, "sections[" + sIdx + "].text", { multiline: true });
         sec.appendChild(p);
+      }
+      // D4.4: inline interactive elements — type-dispatched per section
+      if (s.type === "checklist" && s.config && Array.isArray(s.config.items)) {
+        sec.appendChild(renderMiniChecklist(slug, s.id || ("sec-" + sIdx), s.config.items));
+      } else if (s.type === "mini_calculator" && s.config && Array.isArray(s.config.inputs) && s.config.formula) {
+        sec.appendChild(renderMiniCalculator(slug, s.id || ("sec-" + sIdx), s.config));
+      } else if (s.type === "video" && s.config && s.config.url) {
+        var vid = L.make("div", { class: "lmg-inline-video" });
+        vid.innerHTML = '<video controls preload="metadata" src="' + L.esc(s.config.url) + '" style="max-width:100%;border-radius:6px;display:block;"></video>';
+        sec.appendChild(vid);
       }
       // Self-placement block — opt-in only. Default OFF because reading guides
       // weren't written as per-section assessments and the buttons read as noise.
@@ -113,6 +228,21 @@
       template: { id: "", title: "New section", html: "<p>Write the section body here.</p>", self_prompt: "Is your team already doing this?" },
     });
     main.appendChild(sectionsContainer);
+
+    // D4.1: sticky mini-TOC on desktop right rail
+    if ((data.sections || []).length >= 2) {
+      var toc = L.make("nav", { class: "lmg-toc", "aria-label": "Sections" });
+      toc.innerHTML = '<div class="lmg-toc-label">Sections</div><ol>' +
+        (data.sections || []).map(function (s, i) {
+          var sid = s.id || s.title || ("sec-" + i);
+          var anchor = s.id ? ("#section-" + s.id) : ("#section-sec-" + i);
+          return '<li><a href="' + L.esc(anchor) + '" data-section-id="' + L.esc(sid) + '">' +
+            '<span class="lmg-toc-dot"></span>' +
+            '<span class="lmg-toc-text">' + L.esc(s.title || ("Section " + (i + 1))) + '</span>' +
+          '</a></li>';
+        }).join('') + '</ol>';
+      root.appendChild(toc);
+    }
 
     // Summary panel only renders when self-placement is enabled (it shows
     // ratings-based personalized summary). Off by default.
@@ -177,6 +307,19 @@
       var r = compute();
       root.classList.toggle("rated", r.rated > 0);
 
+      // D4.1 + D4.2: recolor TOC dots + per-section data-state borders
+      (data.sections || []).forEach(function (s, i) {
+        var sid = s.id || s.title || ("sec-" + i);
+        var st = states[sid];
+        var dot = root.querySelector('.lmg-toc a[data-section-id="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"] .lmg-toc-dot');
+        if (dot) dot.className = "lmg-toc-dot" + (st ? " lmg-toc-dot-" + st : "");
+        // Per-section border state (only when self-placement is enabled)
+        if (data.enable_self_placement === true) {
+          var secEl = root.querySelector('.lmg-section[data-section-id="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
+          if (secEl) secEl.setAttribute("data-state", st || "unrated");
+        }
+      });
+
       var panel = document.getElementById("lmg-summary");
       if (!panel) return;
       if (r.rated === 0) { panel.innerHTML = ""; return; }
@@ -221,8 +364,45 @@
         });
         update();
         L.beacon("guide", "self_placement", { answers: { section_id: sid, state: newState } });
+        // D4.3: after exactly 3 ratings, promote the skipped-chapters CTA (only once per session)
+        var ratedCount = Object.keys(states).length;
+        if (ratedCount === 3 && !document.getElementById("lmg-skipped-prompt") && !sessionStorage.getItem("ivan.guide." + slug + ".skipped_promoted")) {
+          showSkippedChaptersPrompt(data, states, slug);
+        }
       });
     });
+
+    function showSkippedChaptersPrompt(data, states, slug) {
+      var skipped = (data.sections || []).filter(function (s) { return states[s.id || s.title] === "not_yet"; });
+      if (skipped.length === 0) return;
+      try { sessionStorage.setItem("ivan.guide." + slug + ".skipped_promoted", "1"); } catch (_) {}
+      var prompt = L.make("div", { id: "lmg-skipped-prompt", class: "lmg-skipped-prompt", role: "dialog", "aria-label": "Skipped chapters offer" });
+      var n = skipped.length;
+      prompt.innerHTML =
+        '<button class="lmg-skipped-close" type="button" aria-label="Dismiss">&times;</button>' +
+        '<div class="lmg-skipped-body">' +
+          '<strong>Want me to email you the ' + n + ' chapter' + (n === 1 ? "" : "s") + ' you skipped?</strong>' +
+          '<p>One concise email with the standalone sections you rated <em>Not yet</em>.</p>' +
+          '<form><input type="email" placeholder="you@company.com" required autocomplete="email" /><button type="submit">Send</button></form>' +
+        '</div>';
+      document.body.appendChild(prompt);
+      prompt.querySelector(".lmg-skipped-close").addEventListener("click", function () { try { prompt.remove(); } catch (_) {} });
+      prompt.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var emInput = prompt.querySelector("input");
+        var em = emInput ? emInput.value : "";
+        if (!L.emailIsValid(em)) { L.toast("Enter a valid email"); return; }
+        L.beacon("guide", "capture", {
+          email: em,
+          answers: {
+            source: "skipped_chapters_prompt",
+            skipped_section_ids: skipped.map(function (s) { return s.id || s.title; }),
+          },
+        });
+        prompt.innerHTML = '<div class="lmg-skipped-body"><strong>Sent.</strong><p>Look for it in the next few minutes.</p></div>';
+        setTimeout(function () { try { prompt.remove(); } catch (_) {} }, 3000);
+      });
+    }
 
     // Scroll reveal
     L.observeReveal(root, ".lmg-section");
