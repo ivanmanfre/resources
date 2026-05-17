@@ -294,6 +294,14 @@
 /* ─── Phase B: only WhatsApp share button remains. Sticky progress header
    and resource tracker widget removed — engines own their own progress UI. ── */
 
+/* Share row — proper gap between WhatsApp + LinkedIn buttons */
+.lmc-share, .lmg-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
 /* WhatsApp share button — muted, matches paper+sage palette + outlined like other secondaries */
 .lm-share-whatsapp {
   background: transparent !important;

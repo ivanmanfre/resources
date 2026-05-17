@@ -126,11 +126,15 @@
     var welcomeLine = intro.paragraph ||
       (data.subtitle ? "You just grabbed " + (data.title || "this resource") + ". " + String(data.subtitle).replace(/\.$/, "") + "." :
                        "You just grabbed " + (data.title || "this resource") + ". Here's the quickest way to use it.");
+    // The h2 already greets ("Hey, I'm Ivan.") — strip any leading "Hey," / "Hey there," / "Hi," etc.
+    // from the intro paragraph so we don't double-greet.
+    welcomeLine = welcomeLine.replace(/^\s*(hey(\s+there)?|hi(\s+there)?|hello)[,\s]*/i, "").replace(/^./, function (c) { return c.toUpperCase(); });
     var pointA = intro.point_time || (data.estimated_minutes ? data.estimated_minutes + " min, at your pace" : "At your own pace");
     var pointB = intro.point_value || opts.defaultValueBullet || "Built to give you the sharpest observation on your team's gaps";
     var pointC = intro.point_next  || opts.defaultNextBullet  || "Your progress auto-saves to this browser. Email only if you want the full report.";
     var startLabel = (opts.startLabel || "Start");
-    var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
+    // Default note removed — was over-disclaimering ("No signup required. Scroll back up anytime to reread.")
+    var note = intro.note || opts.defaultNote || "";
 
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });

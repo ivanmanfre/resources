@@ -41,11 +41,11 @@
       ? {
           defaultValueBullet: "Rate your team's current practice at the bottom of each section",
           defaultNextBullet: "End-of-guide summary shows which chapters to revisit. Emailed if you want",
-          defaultNote: "You don't have to rate anything. But rating unlocks a personalized summary.",
+          defaultNote: "",
         }
       : {
-          defaultValueBullet: "Read at your pace — no progress tracking, no signup wall",
-          defaultNextBullet: "Optional email at the end if you want the full guide as a clean PDF",
+          defaultValueBullet: "Read at your pace",
+          defaultNextBullet: "Optional PDF at the end if you want it for later",
           defaultNote: "",
         };
     root.appendChild(L.buildIntro(data, ".lmg-progress-wrap", Object.assign({
