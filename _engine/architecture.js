@@ -136,225 +136,332 @@
     return hero;
   }
 
-  // ── SVG diagram ────────────────────────────────────────────────────────
-  function renderSvg(data) {
+  // ── Cytoscape.js diagram ──────────────────────────────────────────────
+  // CDN scripts loaded on-demand the first time a diagram renders.
+  var CY_CDN = {
+    cy:        "https://cdn.jsdelivr.net/npm/cytoscape@3.30.4/dist/cytoscape.min.js",
+    dagre:     "https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js",
+    cyDagre:   "https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.js",
+    navJs:     "https://cdn.jsdelivr.net/npm/cytoscape-navigator@2.0.2/cytoscape-navigator.min.js",
+    navCss:    "https://cdn.jsdelivr.net/npm/cytoscape-navigator@2.0.2/cytoscape.js-navigator.css"
+  };
+  function loadScript(src) {
+    return new Promise(function (res, rej) {
+      var s = document.createElement("script");
+      s.src = src; s.async = true;
+      s.onload = function () { res(); };
+      s.onerror = function () { rej(new Error("load failed: " + src)); };
+      document.head.appendChild(s);
+    });
+  }
+  function loadCss(href) {
+    return new Promise(function (res) {
+      var l = document.createElement("link");
+      l.rel = "stylesheet"; l.href = href;
+      l.onload = function () { res(); };
+      l.onerror = function () { res(); }; // CSS load failure is non-fatal
+      document.head.appendChild(l);
+    });
+  }
+  var _cyDepsPromise = null;
+  function loadCytoscapeDeps() {
+    if (_cyDepsPromise) return _cyDepsPromise;
+    // Core (cy + dagre) must succeed. Navigator (minimap) is optional.
+    _cyDepsPromise = (window.cytoscape ? Promise.resolve() : loadScript(CY_CDN.cy))
+      .then(function () { return window.dagre ? null : loadScript(CY_CDN.dagre); })
+      .then(function () { return loadScript(CY_CDN.cyDagre); })
+      .then(function () {
+        return loadScript(CY_CDN.navJs).then(function () {
+          return loadCss(CY_CDN.navCss);
+        }).catch(function () { /* navigator is optional */ });
+      });
+    return _cyDepsPromise;
+  }
+
+  // Brand logo → tiny SVG data URI used as a node background-image.
+  function logoDataUri(logo) {
+    var svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' +
+      '<circle cx="12" cy="12" r="12" fill="' + logo.color + '"/>' +
+      '<g transform="scale(0.7) translate(5.14,5.14)" fill="#FFFFFF">' +
+      '<path d="' + logo.path + '"/></g></svg>';
+    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+  }
+
+  // Convert data.json diagram → Cytoscape elements.
+  function toElements(data) {
     var d = data.diagram || {};
-    var nodes = d.nodes || [];
-    var edges = d.edges || [];
-    var stage = make("section", { class: "lma-stage" });
-    var svg = svgEl("svg", {
-      viewBox: d.viewBox || "0 0 1200 800",
-      "aria-label": "Architecture diagram",
-      role: "img"
-    });
-
-    // Arrow marker
-    var defs = svgEl("defs");
-    var marker = svgEl("marker", {
-      id: "lma-arrow",
-      viewBox: "0 0 10 10",
-      refX: "9", refY: "5",
-      markerWidth: "7", markerHeight: "7",
-      orient: "auto-start-reverse"
-    });
-    marker.appendChild(svgEl("path", { d: "M0,0 L10,5 L0,10 Z", fill: "rgba(26,26,26,0.55)" }));
-    defs.appendChild(marker);
-    svg.appendChild(defs);
-
-    // Background grid (optional)
-    if (d.background_grid) {
-      var grid = svgEl("g", { class: "lma-grid" });
-      for (var x = 0; x <= 1200; x += 40) grid.appendChild(svgEl("path", { d: "M" + x + " 0 L" + x + " 800" }));
-      for (var y = 0; y <= 800; y += 40) grid.appendChild(svgEl("path", { d: "M0 " + y + " L1200 " + y }));
-      svg.appendChild(grid);
-    }
-
-    // Edges first (so nodes paint over them)
-    var idMap = {};
-    nodes.forEach(function (n) { idMap[n.id] = n; });
-    var edgeIndex = {}; // edge_id -> { fromId, toId, particleEl }
-    edges.forEach(function (e, edgeIdx) {
-      var a = idMap[e.from], b = idMap[e.to];
-      if (!a || !b) return;
-      var ax = a.x + a.width / 2, ay = a.y + a.height / 2;
-      var bx = b.x + b.width / 2, by = b.y + b.height / 2;
-      var dx = bx - ax, dy = by - ay;
-      // Anchor at rectangle edge along the line from center to center.
-      var halfAW = a.width / 2, halfAH = a.height / 2;
-      var scaleA = Math.min(halfAW / Math.max(1, Math.abs(dx)), halfAH / Math.max(1, Math.abs(dy)));
-      var startX = ax + dx * scaleA, startY = ay + dy * scaleA;
-      var halfBW = b.width / 2, halfBH = b.height / 2;
-      var scaleB = Math.min(halfBW / Math.max(1, Math.abs(dx)), halfBH / Math.max(1, Math.abs(dy)));
-      var endX = bx - dx * scaleB, endY = by - dy * scaleB;
-      var midX = (startX + endX) / 2, midY = (startY + endY) / 2;
-
-      var edgeId = "lma-edge-" + edgeIdx;
-      var path = svgEl("path", {
-        id: edgeId,
-        d: "M" + startX + " " + startY + " L" + endX + " " + endY,
-        class: "lma-edge",
-        "marker-end": "url(#lma-arrow)",
-        "data-edge-from": e.from,
-        "data-edge-to": e.to
-      });
-      svg.appendChild(path);
-
-      // Single sage particle flowing along edge, staggered start by edge index
-      var particle = svgEl("circle", {
-        class: "lma-particle",
-        r: 3.5,
-        cx: startX,
-        cy: startY
-      });
-      var anim = svgEl("animateMotion", {
-        dur: "3.6s",
-        repeatCount: "indefinite",
-        begin: (edgeIdx * 0.28) + "s"
-      });
-      var mpath = svgEl("mpath", { "href": "#" + edgeId });
-      anim.appendChild(mpath);
-      particle.appendChild(anim);
-      svg.appendChild(particle);
-
-      edgeIndex[edgeId] = { fromId: e.from, toId: e.to, pathEl: path, particleEl: particle };
-
-      // Hover edge → highlight source/target nodes
-      path.addEventListener("mouseenter", function () {
-        path.classList.add("is-hover");
-        [e.from, e.to].forEach(function (nid) {
-          var el = svg.querySelector('[data-node-id="' + nid + '"]');
-          if (el) el.classList.add("is-edge-hover");
-        });
-      });
-      path.addEventListener("mouseleave", function () {
-        path.classList.remove("is-hover");
-        [e.from, e.to].forEach(function (nid) {
-          var el = svg.querySelector('[data-node-id="' + nid + '"]');
-          if (el) el.classList.remove("is-edge-hover");
-        });
-      });
-
-      if (e.label) {
-        // Render a white pill behind the label so it doesn't sit on the line.
-        var labelText = String(e.label);
-        var charW = 6.2;
-        var pillW = labelText.length * charW + 12;
-        var pillH = 16;
-        var bg = svgEl("rect", {
-          x: midX - pillW / 2, y: midY - 6 - pillH + 4,
-          width: pillW, height: pillH,
-          rx: 8, ry: 8,
-          class: "lma-edge-label-bg"
-        });
-        svg.appendChild(bg);
-        var lbl = svgEl("text", { x: midX, y: midY - 6, class: "lma-edge-label" });
-        lbl.textContent = labelText;
-        svg.appendChild(lbl);
-        if (window.LM.editMode && window.LM.editMode.enabled()) {
-          window.LM.editMode.registerField(lbl, "diagram.edges[" + edgeIdx + "].label");
-        }
-      }
-    });
-
-    // Nodes
-    nodes.forEach(function (n, idx) {
-      var g = svgEl("g", {
-        class: "lma-node t-" + (n.type || "transform"),
-        "data-node-id": n.id,
-        tabindex: "0",
-        role: "button",
-        "aria-label": "Open detail for " + (n.label || n.id)
-      });
-      // Mark visited from KV
-      if (state.viewedNodes[n.id]) g.setAttribute("class", g.getAttribute("class") + " is-visited");
-
-      // Glow/pulse halo behind node (per-type tint)
-      var halo = svgEl("rect", {
-        class: "lma-node-halo",
-        x: n.x - 4, y: n.y - 4,
-        width: n.width + 8, height: n.height + 8,
-        rx: 12, ry: 12
-      });
-      g.appendChild(halo);
-
-      var rect = svgEl("rect", {
-        class: "lma-node-rect",
-        x: n.x, y: n.y, width: n.width, height: n.height,
-        rx: 10, ry: 10
-      });
-      g.appendChild(rect);
-
-      // Brand/type logo — top-left corner inside the rect
+    var els = [];
+    (d.nodes || []).forEach(function (n) {
       var logo = findLogo(n.label, n.type);
-      var logoSize = 22;
-      var logoPad = 12;
-      var logoG = svgEl("g", {
-        class: "lma-node-logo",
-        transform: "translate(" + (n.x + logoPad) + "," + (n.y + logoPad) + ") scale(" + (logoSize / 24) + ")"
+      els.push({
+        group: "nodes",
+        data: {
+          id: n.id,
+          label: n.label || n.id,
+          type: n.type || "transform",
+          typeLabel: (n.type || "transform").toUpperCase(),
+          logoUri: logoDataUri(logo),
+          panel: n.panel || {},
+          visited: !!state.viewedNodes[n.id]
+        }
       });
-      var logoBg = svgEl("circle", {
-        class: "lma-node-logo-bg",
-        cx: 12, cy: 12, r: 13,
-        fill: logo.color
+    });
+    (d.edges || []).forEach(function (e, i) {
+      els.push({
+        group: "edges",
+        data: {
+          id: "e_" + i,
+          source: e.from,
+          target: e.to,
+          label: e.label || "",
+          edgeIdx: i
+        }
       });
-      logoG.appendChild(logoBg);
-      var logoPath = svgEl("path", {
-        d: logo.path,
-        fill: "#FFFFFF",
-        transform: "scale(0.72) translate(4.6,4.6)"
-      });
-      logoG.appendChild(logoPath);
-      g.appendChild(logoG);
+    });
+    return els;
+  }
 
-      var typeText = svgEl("text", {
-        class: "lma-node-type",
-        x: n.x + n.width - 14, y: n.y + 22,
-        "text-anchor": "end"
-      });
-      typeText.textContent = (n.type || "transform").toUpperCase();
-      g.appendChild(typeText);
+  // Cytoscape style sheet (DM Serif Display + Source Serif 4 to match the brand).
+  function cyStyle() {
+    return [
+      { selector: "node", style: {
+        "shape": "round-rectangle",
+        "background-color": "#FFFFFF",
+        "background-image": "data(logoUri)",
+        "background-image-containment": "inside",
+        "background-fit": "none",
+        "background-width": "30px",
+        "background-height": "30px",
+        "background-position-x": "16px",
+        "background-position-y": "16px",
+        "background-clip": "none",
+        "border-color": "#1A1A1A",
+        "border-width": 1.5,
+        "border-opacity": 0.85,
+        "width": 260,
+        "height": 96,
+        "label": "data(label)",
+        "color": "#1A1A1A",
+        "font-family": "DM Serif Display, Georgia, serif",
+        "font-size": 18,
+        "font-weight": 400,
+        "text-valign": "center",
+        "text-halign": "center",
+        "text-wrap": "wrap",
+        "text-max-width": "210px",
+        "text-margin-y": 10,
+        "padding": 10
+      }},
+      // Type pill (top-right corner) implemented via overlay label
+      { selector: "node[typeLabel]", style: {
+        "text-outline-color": "#FFFFFF",
+        "text-outline-width": 0
+      }},
+      { selector: 'node[type = "trigger"]',   style: { "background-color": "#FFF7E4" }},
+      { selector: 'node[type = "transform"]', style: { "background-color": "#EAF3FB" }},
+      { selector: 'node[type = "output"]',    style: { "background-color": "#E4F2EB" }},
+      { selector: 'node[type = "decision"]',  style: { "background-color": "#F4ECF8" }},
+      { selector: 'node[type = "storage"]',   style: { "background-color": "#FBE9DD" }},
+      { selector: "node[?visited]", style: { "border-color": "#2A8F65" }},
+      { selector: "node:active, node.is-active", style: {
+        "border-color": "#2A8F65",
+        "border-width": 3,
+        "shadow-blur": 18,
+        "shadow-color": "#2A8F65",
+        "shadow-opacity": 0.25
+      }},
+      { selector: "node:selected", style: {
+        "border-color": "#2A8F65",
+        "border-width": 3,
+        "overlay-opacity": 0
+      }},
+      // Edges
+      { selector: "edge", style: {
+        "width": 1.8,
+        "line-color": "rgba(26,26,26,0.45)",
+        "curve-style": "bezier",
+        "target-arrow-shape": "triangle",
+        "target-arrow-color": "rgba(26,26,26,0.55)",
+        "arrow-scale": 1.05,
+        "label": "data(label)",
+        "font-family": "Source Serif 4, Georgia, serif",
+        "font-size": 11,
+        "font-weight": 600,
+        "color": "#4A4A48",
+        "text-background-color": "#FFFFFF",
+        "text-background-opacity": 1,
+        "text-background-padding": 4,
+        "text-background-shape": "roundrectangle",
+        "text-border-color": "rgba(26,26,26,0.08)",
+        "text-border-width": 1,
+        "text-border-opacity": 1,
+        "line-dash-pattern": [6, 5],
+        "line-dash-offset": 0
+      }},
+      { selector: "edge.is-flow-hover, edge:selected", style: {
+        "line-color": "#2A8F65",
+        "target-arrow-color": "#2A8F65",
+        "width": 2.6,
+        "z-index": 10
+      }}
+    ];
+  }
 
-      var label = svgEl("text", {
-        class: "lma-node-label",
-        x: n.x + n.width / 2,
-        y: n.y + n.height / 2 + 18
-      });
-      label.textContent = n.label || n.id;
-      g.appendChild(label);
+  function renderCy(data) {
+    var stage = make("section", { class: "lma-stage" });
+    var loading = make("div", { class: "lma-cy-loading" }, "Loading diagram…");
+    stage.appendChild(loading);
 
-      var dot = svgEl("circle", {
-        class: "lma-node-dot",
-        cx: n.x + n.width - 14, cy: n.y + n.height - 14, r: 4
-      });
-      g.appendChild(dot);
+    var holder = make("div", { class: "lma-cy-holder" });
+    var cyContainer = make("div", { class: "lma-cy-container", id: "lma-cy-container" });
+    var minimap = make("div", { class: "lma-cy-minimap", id: "lma-cy-minimap" });
+    var controls = make("div", { class: "lma-cy-controls" });
+    controls.innerHTML =
+      '<button type="button" data-cy-act="zoom-in"  aria-label="Zoom in">+</button>' +
+      '<button type="button" data-cy-act="zoom-out" aria-label="Zoom out">−</button>' +
+      '<button type="button" data-cy-act="fit"      aria-label="Fit to view">⤧</button>' +
+      '<button type="button" data-cy-act="reset"    aria-label="Reset view">⟲</button>' +
+      '<button type="button" data-cy-act="minimap"  aria-label="Toggle minimap">▢</button>';
+    holder.appendChild(cyContainer);
+    holder.appendChild(controls);
+    holder.appendChild(minimap);
+    holder.style.display = "none";
+    controls.style.display = "none";
+    stage.appendChild(holder);
 
-      // Hover-on-node → highlight outgoing edges
-      g.addEventListener("mouseenter", function () {
-        svg.querySelectorAll('.lma-edge[data-edge-from="' + n.id + '"], .lma-edge[data-edge-to="' + n.id + '"]').forEach(function (p) {
-          p.classList.add("is-node-hover");
+    loadCytoscapeDeps().then(function () {
+      try {
+        // Register dagre extension
+        if (window.cytoscape && window.cytoscapeDagre) {
+          window.cytoscape.use(window.cytoscapeDagre);
+        }
+        var cy = window.cytoscape({
+          container: cyContainer,
+          elements: toElements(data),
+          style: cyStyle(),
+          layout: {
+            name: "dagre",
+            rankDir: (data.diagram && data.diagram.rankDir) || "TB",
+            nodeSep: 80,
+            edgeSep: 22,
+            rankSep: 48,
+            padding: 28,
+            animate: false,
+            ranker: "tight-tree"
+          },
+          minZoom: 0.25,
+          maxZoom: 2.5,
+          wheelSensitivity: 0.22,
+          boxSelectionEnabled: false,
+          autoungrabify: true
         });
-      });
-      g.addEventListener("mouseleave", function () {
-        svg.querySelectorAll('.lma-edge.is-node-hover').forEach(function (p) {
-          p.classList.remove("is-node-hover");
-        });
-      });
 
-      svg.appendChild(g);
-      if (window.LM.editMode && window.LM.editMode.enabled()) {
-        window.LM.editMode.registerField(label, "diagram.nodes[" + idx + "].label");
+        state.cy = cy;
+
+        // Navigator (minimap) is lazy-initialized when the user toggles it on.
+        function ensureMinimap() {
+          if (state.navigator || !cy.navigator) return;
+          try {
+            state.navigator = cy.navigator({
+              container: minimap,
+              viewLiveFramerate: 0,
+              thumbnailEventFramerate: 30,
+              dblClickDelay: 200,
+              removeCustomContainer: false,
+              rerenderDelay: 100
+            });
+          } catch (_) {}
+        }
+        state.ensureMinimap = ensureMinimap;
+
+        // Tap node → drawer
+        cy.on("tap", "node", function (evt) {
+          var d = evt.target.data();
+          // Build a node-like object for openDrawerForNode
+          openDrawerForNode({
+            id: d.id, label: d.label, type: d.type, panel: d.panel
+          });
+        });
+        // Tap empty space → close drawer
+        cy.on("tap", function (evt) {
+          if (evt.target === cy) closeDrawer();
+        });
+        // Hover edge → emphasize endpoints
+        cy.on("mouseover", "edge", function (evt) {
+          evt.target.addClass("is-flow-hover");
+          evt.target.connectedNodes().addClass("is-active");
+        });
+        cy.on("mouseout", "edge", function (evt) {
+          evt.target.removeClass("is-flow-hover");
+          evt.target.connectedNodes().removeClass("is-active");
+        });
+        // Hover node → emphasize incident edges
+        cy.on("mouseover", "node", function (evt) {
+          evt.target.connectedEdges().addClass("is-flow-hover");
+        });
+        cy.on("mouseout", "node", function (evt) {
+          evt.target.connectedEdges().removeClass("is-flow-hover");
+        });
+
+        // Animate edge dash offset for a subtle flow effect
+        var dashOffset = 0;
+        if (state.cyAnimInterval) clearInterval(state.cyAnimInterval);
+        state.cyAnimInterval = setInterval(function () {
+          dashOffset = (dashOffset - 1) % 11;
+          cy.edges().style("line-dash-offset", dashOffset);
+        }, 90);
+
+        // Wire controls
+        controls.addEventListener("click", function (ev) {
+          var btn = ev.target.closest("[data-cy-act]");
+          if (!btn) return;
+          var act = btn.getAttribute("data-cy-act");
+          if (act === "zoom-in") cy.zoom({ level: cy.zoom() * 1.25, renderedPosition: { x: cy.width()/2, y: cy.height()/2 } });
+          else if (act === "zoom-out") cy.zoom({ level: cy.zoom() * 0.8, renderedPosition: { x: cy.width()/2, y: cy.height()/2 } });
+          else if (act === "fit") cy.fit(null, 40);
+          else if (act === "reset") { cy.reset(); cy.fit(null, 40); }
+          else if (act === "minimap") {
+            var willShow = !minimap.classList.contains("is-visible");
+            if (willShow) ensureMinimap();
+            minimap.classList.toggle("is-visible");
+            btn.classList.toggle("is-active");
+          }
+        });
+
+        // Fit to viewport. Cap UP only (avoid huge nodes on tiny graphs);
+        // never floor — fitting everything beats arbitrary cropping.
+        function refit() {
+          try {
+            cy.resize();
+            cy.fit(null, 32);
+            if (cy.zoom() > 1.1) {
+              cy.zoom(1.1);
+              cy.center();
+            }
+          } catch (_) {}
+        }
+        cy.one("layoutstop", function () { refit(); });
+        setTimeout(refit, 80);
+        setTimeout(refit, 320);
+        // Refit on container resize
+        var ro = (typeof ResizeObserver !== "undefined") ? new ResizeObserver(function () {
+          refit();
+        }) : null;
+        if (ro) ro.observe(cyContainer);
+        state._ro = ro;
+
+        loading.remove();
+        holder.style.display = "block";
+        controls.style.display = "flex";
+        // Minimap is opt-in via the [▢] control to avoid sizing quirks on first paint.
+      } catch (e) {
+        loading.textContent = "Diagram failed to load: " + (e && e.message);
       }
+    }).catch(function (e) {
+      loading.textContent = "Diagram dependencies failed to load: " + (e && e.message);
     });
 
-    if (window.LM.editMode && window.LM.editMode.enabled()) {
-      window.LM.editMode.registerArray(svg, "diagram.nodes", { itemLabel: "node" });
-      window.LM.editMode.registerArray(svg, "diagram.edges", {
-        itemLabel: "edge",
-        template: { from: "", to: "", label: "" }
-      });
-    }
-
-    stage.appendChild(svg);
     return stage;
   }
 
@@ -396,9 +503,15 @@
   }
   function clearActiveMarker() {
     if (!state.activeNodeId) return;
+    // Mobile card
     var sel = '[data-node-id="' + state.activeNodeId + '"]';
-    var prev = state.root.querySelector(sel);
+    var prev = state.root && state.root.querySelector(sel);
     if (prev) prev.classList.remove("is-active");
+    // Cytoscape node
+    if (state.cy) {
+      var el = state.cy.getElementById(state.activeNodeId);
+      if (el && el.length) { el.unselect(); el.removeClass("is-active"); }
+    }
   }
   function closeDrawer() {
     if (!state.drawer) return;
@@ -410,11 +523,23 @@
   function openDrawerForNode(node) {
     var drawer = ensureDrawer();
     if (state.activeNodeId && state.activeNodeId !== node.id) clearActiveMarker();
-    // Mark all matching elements (SVG + mobile card) as active/visited
+    // Mark mobile card as active/visited
     var sel = '[data-node-id="' + node.id + '"]';
-    state.root.querySelectorAll(sel).forEach(function (el) {
+    if (state.root) state.root.querySelectorAll(sel).forEach(function (el) {
       el.classList.add("is-active", "is-visited");
     });
+    // Mark cy node as active + select + bring into view
+    if (state.cy) {
+      var cyNode = state.cy.getElementById(node.id);
+      if (cyNode && cyNode.length) {
+        cyNode.addClass("is-active");
+        cyNode.data("visited", true);
+        cyNode.select();
+        try {
+          state.cy.animate({ center: { eles: cyNode }, zoom: Math.max(state.cy.zoom(), 1.0) }, { duration: 320 });
+        } catch (_) {}
+      }
+    }
     state.activeNodeId = node.id;
 
     var panel = node.panel || {};
@@ -525,21 +650,7 @@
     var idMap = {};
     nodes.forEach(function (n) { idMap[n.id] = n; });
 
-    // SVG node groups
-    state.root.querySelectorAll(".lma-node").forEach(function (g) {
-      g.addEventListener("click", function () {
-        var n = idMap[g.getAttribute("data-node-id")];
-        if (n) openDrawerForNode(n);
-      });
-      g.addEventListener("keydown", function (ev) {
-        if (ev.key === "Enter" || ev.key === " ") {
-          ev.preventDefault();
-          g.dispatchEvent(new Event("click"));
-        }
-      });
-    });
-
-    // Mobile cards
+    // Mobile cards (cy node taps are wired inside renderCy)
     state.root.querySelectorAll(".lma-mobile-card").forEach(function (c) {
       c.addEventListener("click", function () {
         var n = idMap[c.getAttribute("data-node-id")];
@@ -547,15 +658,16 @@
       });
     });
 
-    // ESC closes
+    // ESC closes drawer
     document.addEventListener("keydown", function (ev) {
       if (ev.key === "Escape") closeDrawer();
     });
-    // Click outside the drawer closes it (but not clicks on nodes / cards)
+    // Click outside drawer closes it (but not clicks on the diagram or mobile cards)
     document.addEventListener("click", function (ev) {
       if (!state.drawer || !state.drawer.classList.contains("open")) return;
       if (state.drawer.contains(ev.target)) return;
-      if (ev.target.closest && ev.target.closest(".lma-node")) return;
+      if (ev.target.closest && ev.target.closest(".lma-cy-container")) return;
+      if (ev.target.closest && ev.target.closest(".lma-cy-controls")) return;
       if (ev.target.closest && ev.target.closest(".lma-mobile-card")) return;
       closeDrawer();
     });
@@ -604,30 +716,46 @@
     return (safe || "diagram") + "-" + ymd + ".png";
   }
   function downloadDiagramAsPng() {
-    var stage = state.root.querySelector(".lma-stage");
-    if (!stage || stage.offsetParent === null) {
-      // Mobile: capture the mobile list instead
-      stage = state.root.querySelector(".lma-mobile-list");
-    }
-    if (!stage) return;
     var btn = $("#lma-download");
     var orig = btn ? btn.textContent : null;
     if (btn) { btn.disabled = true; btn.textContent = "Preparing…"; }
-    loadHtml2Canvas().then(function (h2c) {
-      return h2c(stage, { backgroundColor: "#FFFFFF", scale: 2, useCORS: true });
-    }).then(function (canvas) {
+
+    // Prefer cy.png() if the diagram is mounted; fallback to html2canvas on mobile.
+    var triggerDownload = function (dataUrl) {
       var a = document.createElement("a");
       a.download = pngFilename(SLUG());
-      a.href = canvas.toDataURL("image/png");
+      a.href = dataUrl;
       document.body.appendChild(a);
       a.click();
       a.remove();
       beacon("share", { answers: { format: "png" } });
+    };
+    var done = function () {
+      if (btn) { btn.disabled = false; btn.textContent = orig || "Download as PNG"; }
+    };
+
+    var stage = state.root && state.root.querySelector(".lma-cy-container");
+    if (state.cy && stage && stage.offsetParent !== null) {
+      try {
+        var url = state.cy.png({ full: true, scale: 2, bg: "#FFFFFF" });
+        triggerDownload(url);
+      } catch (e) {
+        if (window.LM.toast) window.LM.toast("Download failed: " + e.message);
+      }
+      done();
+      return;
+    }
+
+    // Mobile / non-cy fallback
+    var fallback = state.root.querySelector(".lma-mobile-list") || state.root.querySelector(".lma-stage");
+    if (!fallback) { done(); return; }
+    loadHtml2Canvas().then(function (h2c) {
+      return h2c(fallback, { backgroundColor: "#FFFFFF", scale: 2, useCORS: true });
+    }).then(function (canvas) {
+      triggerDownload(canvas.toDataURL("image/png"));
     }).catch(function (e) {
       if (window.LM.toast) window.LM.toast("Download failed: " + e.message);
-    }).finally(function () {
-      if (btn) { btn.disabled = false; btn.textContent = orig || "Download as PNG"; }
-    });
+    }).finally(done);
   }
 
   // ── Render orchestration ───────────────────────────────────────────────
@@ -640,7 +768,7 @@
     state.viewStartedAt = Date.now();
     root.innerHTML = "";
     root.appendChild(renderHero(data));
-    root.appendChild(renderSvg(data));
+    root.appendChild(renderCy(data));
     root.appendChild(renderMobileList(data));
 
     var actions = make("div", { class: "lma-actions", id: "lma-actions" });
