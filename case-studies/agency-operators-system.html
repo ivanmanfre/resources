@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The LinkedIn Engine for Agency Operators • Iván Manfredi</title>
+<meta name="description" content="A done-for-you LinkedIn content + lead magnet system for agency owners. Daily posts in your voice, lead magnets that filter for buyers, a 90-day plan that turns content into pipeline.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#F7F4EF;
+  --paper-sunk:#EFEBE3;
+  --paper-raise:#FFFFFF;
+  --ink:#1A1A1A;
+  --ink-soft:#4A4A48;
+  --ink-mute:#5A5752;
+  --hairline:rgba(26,26,26,.15);
+  --hairline-bold:rgba(26,26,26,.25);
+  --accent:#4C6E3D;
+  --accent-ink:#344B29;
+  --accent-soft:rgba(76,110,61,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+
+/* COVER */
+.cover{min-height:90vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;justify-content:center}
+.cover-nav{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:40px;height:40px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.05em;color:var(--ink)}
+.logo-text{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.cover-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-tag{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px;align-self:flex-start}
+.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,7vw,96px);font-weight:400;line-height:1.0;letter-spacing:-.025em;color:var(--ink);margin-bottom:32px;max-width:1000px}
+.cover h1 em{font-style:italic;color:var(--ink);position:relative;display:inline-block}
+.cover h1 em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:.18em;height:.44em;background:rgba(76,110,61,.22);z-index:-1;pointer-events:none}
+.cover-sub{font-size:20px;line-height:1.65;color:var(--ink-soft);max-width:720px;border-left:2px solid var(--accent);padding-left:22px;margin-bottom:48px}
+.cover-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.cover-meta-line{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* BUTTON */
+.btn-primary{display:inline-block;background:var(--ink);color:var(--paper);padding:18px 36px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;transition:background .2s,transform .15s;cursor:pointer;border:none}
+.btn-primary:hover{background:var(--accent-ink);transform:translateY(-1px)}
+
+/* SECTION */
+.section{padding:96px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;position:relative}
+.section-number{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,52px);font-weight:400;line-height:1.08;letter-spacing:-.01em;margin-bottom:32px;color:var(--ink);max-width:1000px}
+.section h2 em{font-style:italic;color:var(--accent)}
+.section h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-top:56px;margin-bottom:20px;padding-left:14px;border-left:2px solid var(--accent);font-family:'IBM Plex Mono',monospace}
+.section p{font-size:17px;color:var(--ink-soft);line-height:1.75;max-width:780px;margin-bottom:20px}
+.section p strong{color:var(--ink);font-weight:600}
+.section p em{font-style:italic;color:var(--ink)}
+
+/* PAIN LIST */
+.pain-list{list-style:none;padding:0;margin:24px 0 0;max-width:760px;display:grid;gap:14px}
+.pain-list li{font-size:17px;color:var(--ink-soft);padding:18px 22px;background:var(--paper-sunk);border-left:2px solid var(--ink);line-height:1.55}
+.pain-list li strong{color:var(--ink);font-weight:600}
+
+/* BENEFIT BLOCKS */
+.benefit{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;margin-top:64px;align-items:center}
+.benefit:nth-child(even){grid-template-columns:1.2fr 1fr}
+.benefit:nth-child(even) .benefit-text{order:2}
+.benefit:nth-child(even) .benefit-visual{order:1}
+.benefit-text h3{padding-left:0;border-left:none;font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;font-style:italic;color:var(--ink);text-transform:none;letter-spacing:-.01em;line-height:1.15;margin-top:0;margin-bottom:18px}
+.benefit-text h3 em{font-style:italic;color:var(--accent)}
+.benefit-tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px;display:inline-block;padding:5px 11px;background:var(--accent-soft);border-radius:2px}
+.benefit-text p{font-size:17px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px;max-width:100%}
+.benefit-text p:last-child{margin-bottom:0}
+.benefit-visual{position:relative}
+.benefit-visual img{width:100%;height:auto;display:block;border:1px solid var(--hairline);box-shadow:0 12px 32px -8px rgba(26,26,26,.18);cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease}
+.benefit-visual img:hover{transform:translateY(-3px);box-shadow:0 18px 44px -8px rgba(26,26,26,.25)}
+.benefit-visual-caption{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute);margin-top:14px;text-align:center}
+
+/* TABS */
+.tabs-section{margin-top:56px}
+.tabs-nav{display:flex;gap:0;border-bottom:1px solid var(--hairline);margin-bottom:32px;overflow-x:auto;scrollbar-width:none}
+.tabs-nav::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;padding:18px 24px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s ease;white-space:nowrap;margin-bottom:-1px}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--accent)}
+.tab-panel{display:none;animation:fadeIn .3s ease}
+.tab-panel.active{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.tab-panel img{width:100%;height:auto;border:1px solid var(--hairline);box-shadow:0 10px 28px -8px rgba(26,26,26,.18);cursor:zoom-in;transition:transform .2s}
+.tab-panel img:hover{transform:translateY(-2px)}
+.tab-content h4{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;font-style:italic;color:var(--ink);margin-bottom:14px;line-height:1.15}
+.tab-content h4 em{color:var(--accent)}
+.tab-content p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px}
+.tab-content ul{list-style:none;padding:0;margin:18px 0 0}
+.tab-content ul li{font-size:15.5px;color:var(--ink-soft);padding:7px 0 7px 22px;position:relative;line-height:1.55}
+.tab-content ul li::before{content:'→';position:absolute;left:0;top:7px;color:var(--accent);font-weight:700}
+
+/* SOCIAL PROOF */
+.proof-band{padding:80px 80px;background:var(--paper-sunk);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);text-align:center;max-width:1400px;margin:0 auto}
+.proof-band-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:24px}
+.proof-band h3{font-family:'DM Serif Display',serif;font-size:clamp(26px,3vw,42px);font-weight:400;font-style:italic;line-height:1.2;color:var(--ink);max-width:880px;margin:0 auto 28px;text-transform:none;padding:0;border:none}
+.proof-band h3 em{color:var(--accent)}
+.proof-stats{display:flex;gap:64px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.proof-stat{text-align:center}
+.proof-stat-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;color:var(--accent);line-height:1;margin-bottom:8px;letter-spacing:-.02em}
+.proof-stat-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* HOW IT WORKS — STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.step{background:var(--paper-raise);border:1px solid var(--hairline);padding:28px;position:relative}
+.step-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:48px;color:var(--accent);line-height:1;margin-bottom:14px;opacity:.92}
+.step-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.step-body{font-size:15px;color:var(--ink-soft);line-height:1.6}
+
+/* CTA */
+.cta-section{padding:120px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;text-align:center;background:var(--paper-sunk)}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(36px,5.4vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px;max-width:880px;margin-left:auto;margin-right:auto}
+.cta-section h2 em{font-style:italic;color:var(--accent)}
+.cta-section p{font-size:19px;color:var(--ink-soft);line-height:1.65;max-width:640px;margin:0 auto 40px}
+.cta-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-top:24px}
+
+/* FOOTER */
+.footer{padding:40px 80px;max-width:1240px;margin:0 auto;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.footer a:hover{color:var(--accent-ink)}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;padding:32px}
+.lightbox.active{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;object-fit:contain;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:24px;right:24px;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:none;border:none;cursor:pointer;padding:8px 12px}
+
+/* MOBILE */
+@media(max-width:880px){
+  .cover{padding:120px 28px 60px;min-height:auto}
+  .cover-nav{left:28px;right:28px;top:32px}
+  .section{padding:64px 28px}
+  .benefit,.benefit:nth-child(even){grid-template-columns:1fr;gap:28px}
+  .benefit:nth-child(even) .benefit-text,.benefit:nth-child(even) .benefit-visual{order:initial}
+  .tab-panel.active{grid-template-columns:1fr;gap:24px}
+  .steps{grid-template-columns:1fr;gap:16px}
+  .cta-section{padding:80px 28px}
+  .proof-band{padding:60px 28px}
+  .proof-stats{gap:32px}
+  .proof-stat-num{font-size:48px}
+  .footer{padding:32px 28px;flex-direction:column;align-items:flex-start;gap:16px}
+  .tabs-nav{margin-bottom:24px}
+  .tab-btn{padding:14px 16px;font-size:10.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-nav">
+    <div class="logo">
+      <div class="logo-mark">IM</div>
+      <span class="logo-text">Iván Manfredi</span>
+    </div>
+    <span class="cover-meta">For Agency Operators • 2026</span>
+  </div>
+  <span class="cover-tag">A LinkedIn engine for agency owners</span>
+  <h1>Daily posts. Qualified leads. A 90-day plan. <em>Built once</em>, runs without you.</h1>
+  <p class="cover-sub">For agency owners running $50k-$300k/mo who stopped posting six weeks ago because writing every post by hand is eating time you can't afford. This system gives you back the channel — without giving up your voice or your standards.</p>
+  <div class="cover-cta">
+    <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">See if it fits your business</a>
+    <span class="cover-meta-line">30-min discovery · No pitch</span>
+  </div>
+</div>
+
+<!-- Section 1: The pain -->
+<div class="section">
+  <span class="section-number">01 • The honest read</span>
+  <h2>If you're an agency operator, your LinkedIn is probably <em>costing</em> you, not earning.</h2>
+  <p>Not because you don't know how. Because the work of doing it well, daily, in your voice, while also running an agency, is a part-time job nobody wants. Most operators I talk to are stuck in one of these four spots:</p>
+  <ul class="pain-list">
+    <li>You <strong>stopped posting</strong> six weeks ago. The drafts folder has eleven half-posts. You feel guilty every time you open the app.</li>
+    <li>You're <strong>posting through a ghostwriter</strong> and the content sounds like nobody specifically. Engagement is fine, leads are zero.</li>
+    <li>You ran <strong>one lead magnet two years ago</strong>, got fifty downloads, none turned into calls. You haven't tried again.</li>
+    <li>You know you should <strong>repurpose your client calls</strong> into content, but nobody on your team has the time to listen, transcribe, and rewrite.</li>
+  </ul>
+</div>
+
+<!-- Section 2: Benefits with screenshots -->
+<div class="section">
+  <span class="section-number">02 • What you actually get</span>
+  <h2>Three things working together. None of them ask for your time after week three.</h2>
+
+  <div class="benefit">
+    <div class="benefit-text">
+      <span class="benefit-tag">Daily Posts</span>
+      <h3>Posts in <em>your voice</em>, every weekday, scored before they ship.</h3>
+      <p>The engine pulls from your call transcripts, your seed ideas, what competitors are posting, and live research. A five-step agent pipeline drafts, scores, and refines each post until it sounds like you wrote it — fast, blunt, and on-topic for your buyer.</p>
+      <p>You see a queue in ClickUp every Sunday. Edit anything you want, approve, posts go out automatically across the week. No more drafts folder. No more guilt scroll.</p>
+    </div>
+    <div class="benefit-visual">
+      <img src="images/carousel-cta.png" alt="LinkedIn carousel post with CTA" loading="lazy">
+      <div class="benefit-visual-caption">Sample carousel · ready to ship</div>
+    </div>
+  </div>
+
+  <div class="benefit">
+    <div class="benefit-text">
+      <span class="benefit-tag">Lead Magnets</span>
+      <h3>Interactive lead magnets that <em>filter for actual buyers</em>.</h3>
+      <p>Three engine types — Checklist, Calculator, Assessment — each one delivers an immediate result the visitor wanted in exchange for a qualified email. Tire-kickers self-select out. Buyers raise their hand.</p>
+      <p>Twenty-four hours after they download, they get a personalized email based on the answers they gave. Not a generic drip. A real read on their situation. By the time they hit your calendar, they're warm.</p>
+    </div>
+    <div class="benefit-visual">
+      <img src="images/interactive-assessment.png" alt="Interactive lead magnet assessment" loading="lazy">
+      <div class="benefit-visual-caption">Interactive assessment · scores intent</div>
+    </div>
+  </div>
+
+  <div class="benefit">
+    <div class="benefit-text">
+      <span class="benefit-tag">Audit + 90-Day Plan</span>
+      <h3>A strategic audit that turns content into <em>a pipeline plan</em>.</h3>
+      <p>Month one delivers a full strategic audit of your offers, your content history, your positioning, and what's actually converting. Paired with a 90-day priority build list so you know exactly what to do next.</p>
+      <p>You don't leave with "a working system." You leave with a roadmap.</p>
+    </div>
+    <div class="benefit-visual">
+      <img src="images/guide.png" alt="Strategy guide and 90-day plan" loading="lazy">
+      <div class="benefit-visual-caption">Strategic audit + 90-day priority plan</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 3: Interactive tabs -->
+<div class="section">
+  <span class="section-number">03 • Under the hood</span>
+  <h2>Click through what the system actually <em>looks like</em>.</h2>
+  <p>Most "content systems" are a Notion template. This is real infrastructure — running in your ClickUp, your Supabase, your domain, your branding. You own it after month three.</p>
+
+  <div class="tabs-section">
+    <div class="tabs-nav" role="tablist">
+      <button class="tab-btn active" data-tab="pipeline">Post Pipeline</button>
+      <button class="tab-btn" data-tab="landing">Landing Page</button>
+      <button class="tab-btn" data-tab="assessment">Lead Magnet</button>
+      <button class="tab-btn" data-tab="guide">Strategy Plan</button>
+    </div>
+
+    <div class="tab-panel active" data-tab="pipeline">
+      <div class="tab-content">
+        <h4>The <em>pipeline</em> view</h4>
+        <p>Every post lives in ClickUp. You see what's coming, what's drafted, what shipped, and what's queued. Edit anything before approval.</p>
+        <ul>
+          <li>Sortable by topic, hook score, ship date</li>
+          <li>Click into any post to see the full draft + research</li>
+          <li>Approve in bulk or one at a time</li>
+        </ul>
+      </div>
+      <img src="images/clickup-view.png" alt="ClickUp post pipeline view" loading="lazy">
+    </div>
+
+    <div class="tab-panel" data-tab="landing">
+      <div class="tab-content">
+        <h4>Each lead magnet gets its <em>own page</em></h4>
+        <p>Designed in your brand. Hosted on your domain. SEO-indexed. The page itself converts at 35-50% from cold LinkedIn traffic.</p>
+        <ul>
+          <li>One page per magnet — keeps each topic focused</li>
+          <li>Mobile-optimized, fast load, accessible</li>
+          <li>Captures email + answers in one flow</li>
+        </ul>
+      </div>
+      <img src="images/landing-page.png" alt="Lead magnet landing page" loading="lazy">
+    </div>
+
+    <div class="tab-panel" data-tab="assessment">
+      <div class="tab-content">
+        <h4>The visitor gets a <em>real result</em></h4>
+        <p>Not a PDF. An actual scored answer based on what they filled in. They feel like they got something useful — because they did.</p>
+        <ul>
+          <li>Branching logic personalizes per answer</li>
+          <li>Score and category drive the 24h follow-up email</li>
+          <li>You see every result in your dashboard</li>
+        </ul>
+      </div>
+      <img src="images/interactive-assessment.png" alt="Interactive assessment with results" loading="lazy">
+    </div>
+
+    <div class="tab-panel" data-tab="guide">
+      <div class="tab-content">
+        <h4>The <em>90-day plan</em> turns the audit into action</h4>
+        <p>Five to seven priority builds, each scoped, sequenced, and tied to a business outcome. You read it and know what to do next.</p>
+        <ul>
+          <li>Specific to your offers and content history</li>
+          <li>Ranked by impact, not effort</li>
+          <li>Doubles as your m2-m3 roadmap if you continue</li>
+        </ul>
+      </div>
+      <img src="images/guide.png" alt="Strategic 90-day plan document" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- Social proof band -->
+<div class="proof-band">
+  <div class="proof-band-eyebrow">Recent builds · 2026</div>
+  <h3>Currently running for <em>4 Creatives</em> and <em>Interlude Studio</em> — both creative agencies referred through the <em>Agency Operators</em> program.</h3>
+  <div class="proof-stats">
+    <div class="proof-stat">
+      <div class="proof-stat-num">3</div>
+      <div class="proof-stat-label">Weeks to launch</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-stat-num">5+</div>
+      <div class="proof-stat-label">Hours/week back</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-stat-num">Daily</div>
+      <div class="proof-stat-label">Posts shipping</div>
+    </div>
+  </div>
+</div>
+
+<!-- How it works -->
+<div class="section">
+  <span class="section-number">04 • How we work together</span>
+  <h2>Three steps. No surprises.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Discovery · 30 min</div>
+      <div class="step-body">We talk about your offers, your audience, where you stopped posting and why. If it's a fit, I send a scoped proposal within 48 hours. If not, you walk with a few useful pointers.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Build · 3 weeks</div>
+      <div class="step-body">I build the system end-to-end. Post pipeline, lead magnet, landing page, audit. Weekly working sessions, async Slack for everything else. You stay hands-off if you want.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Plan · End of month one</div>
+      <div class="step-body">Full audit + 90-day priority plan delivered. Either keep going on a Fractional engagement, or take the system and run it yourself. Your call, no pressure either way.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Final CTA -->
+<div class="cta-section">
+  <h2>Want to see if this would <em>actually work</em> for your business?</h2>
+  <p>30-minute call. I look at your offers, your content situation, your audience. You leave with a clear yes/no and a few specific suggestions either way.</p>
+  <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">Book a discovery call</a>
+  <div class="cta-meta">No pitch · No obligation · Calendly link opens in new tab</div>
+</div>
+
+<div class="footer">
+  <div>Iván Manfredi · 2026</div>
+  <div>
+    <a href="https://ivanmanfredi.com">ivanmanfredi.com</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/ivanmanfredi">LinkedIn</a>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">✕ Close</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+// Tab switcher
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector(`.tab-panel[data-tab="${target}"]`).classList.add('active');
+  });
+});
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+
+document.querySelectorAll('.benefit-visual img, .tab-panel img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target === lightboxImg) closeLightbox(); });
+lightboxClose.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
