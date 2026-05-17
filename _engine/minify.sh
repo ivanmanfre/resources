@@ -30,3 +30,12 @@ npx -y lightningcss-cli --minify -o architecture.css .architecture.css.bak
 node -c architecture.js
 rm .architecture.js.bak .architecture.css.bak
 echo "Architecture minified. JS: $(wc -c < architecture.js) bytes, CSS: $(wc -c < architecture.css) bytes"
+
+# AI Walkthrough engine
+cp ai-walkthrough.js .ai-walkthrough.js.bak
+cp ai-walkthrough.css .ai-walkthrough.css.bak
+npx -y terser .ai-walkthrough.js.bak -c -m -o ai-walkthrough.js
+npx -y lightningcss-cli --minify -o ai-walkthrough.css .ai-walkthrough.css.bak
+node -c ai-walkthrough.js
+rm .ai-walkthrough.js.bak .ai-walkthrough.css.bak
+echo "AI Walkthrough minified. JS: $(wc -c < ai-walkthrough.js) bytes, CSS: $(wc -c < ai-walkthrough.css) bytes"
