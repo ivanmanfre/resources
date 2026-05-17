@@ -199,29 +199,21 @@
       });
       svg.appendChild(path);
 
-      // Particle pair flowing along edge (leader + trailing echo, staggered start)
-      function makeParticle(radius, delay, opacity) {
-        var p = svgEl("circle", {
-          class: "lma-particle",
-          r: radius,
-          cx: startX,
-          cy: startY,
-          opacity: opacity
-        });
-        var a = svgEl("animateMotion", {
-          dur: "3.2s",
-          repeatCount: "indefinite",
-          begin: ((edgeIdx * 0.18) + delay) + "s",
-          rotate: "auto"
-        });
-        var m = svgEl("mpath", { "href": "#" + edgeId });
-        a.appendChild(m);
-        p.appendChild(a);
-        return p;
-      }
-      var particle = makeParticle(4, 0, 1);
-      var particleEcho = makeParticle(2.5, 0.12, 0.55);
-      svg.appendChild(particleEcho);
+      // Single sage particle flowing along edge, staggered start by edge index
+      var particle = svgEl("circle", {
+        class: "lma-particle",
+        r: 3.5,
+        cx: startX,
+        cy: startY
+      });
+      var anim = svgEl("animateMotion", {
+        dur: "3.6s",
+        repeatCount: "indefinite",
+        begin: (edgeIdx * 0.28) + "s"
+      });
+      var mpath = svgEl("mpath", { "href": "#" + edgeId });
+      anim.appendChild(mpath);
+      particle.appendChild(anim);
       svg.appendChild(particle);
 
       edgeIndex[edgeId] = { fromId: e.from, toId: e.to, pathEl: path, particleEl: particle };
@@ -505,6 +497,10 @@
     }
 
     drawer.classList.add("open");
+    // Replay one-shot fade-in animations only on fresh open
+    drawer.classList.remove("is-fresh");
+    void drawer.offsetWidth; // force reflow so the animation restarts
+    drawer.classList.add("is-fresh");
     drawer.setAttribute("aria-hidden", "false");
 
     // Track visit + persist
@@ -522,48 +518,6 @@
       answers: { node_id: node.id, headline: panel.headline || null }
     });
     refreshFloatingCta();
-  }
-
-  // ── Auto-tour: pulse each node in sequence on first load ───────────────
-  function startAutoTour() {
-    if (state.autoTourRan) return;
-    state.autoTourRan = true;
-    // Skip tour for users who have already explored
-    if (uniqueViewedCount() >= 3) return;
-    // Respect reduced motion
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var nodes = (state.data.diagram && state.data.diagram.nodes) || [];
-    if (!nodes.length) return;
-    var idx = 0;
-    var cancelled = false;
-
-    function cancel() {
-      cancelled = true;
-      state.root.querySelectorAll(".lma-node.is-tour").forEach(function (g) {
-        g.classList.remove("is-tour");
-      });
-    }
-    // Cancel on any user interaction
-    var cancelEvents = ["click", "keydown", "wheel", "touchstart"];
-    cancelEvents.forEach(function (ev) {
-      window.addEventListener(ev, cancel, { once: true, passive: true });
-    });
-
-    function step() {
-      if (cancelled) return;
-      // clear prior
-      state.root.querySelectorAll(".lma-node.is-tour").forEach(function (g) {
-        g.classList.remove("is-tour");
-      });
-      if (idx >= nodes.length) return; // done
-      var n = nodes[idx];
-      var el = state.root.querySelector('[data-node-id="' + n.id + '"]');
-      if (el) el.classList.add("is-tour");
-      idx += 1;
-      setTimeout(step, 650);
-    }
-    // Initial delay so the user sees the diagram first
-    setTimeout(step, 800);
   }
 
   function wireNodeClicks() {
@@ -704,7 +658,6 @@
 
     wireNodeClicks();
     refreshFloatingCta();
-    startAutoTour();
     beacon("view", {
       answers: { node_count: (data.diagram && data.diagram.nodes || []).length }
     });
