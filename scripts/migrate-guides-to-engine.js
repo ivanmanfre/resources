@@ -20,7 +20,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const RESOURCES_ROOT = resolve(__dirname, "..");
 const OUTPUT_DIR = resolve(__dirname, "..", "migration-output");
 const LIVE_BASE = "https://resources.ivanmanfredi.com";
-const DIFF_THRESHOLD_PCT = 5.0;
+// Threshold = catastrophic-only. The engine intentionally restyles guides from
+// the old Tailwind/comic baked palette to the paper/sage brand + adds Ivan's
+// portrait, so a 5–25% pixel diff is expected design migration. We only refuse
+// to commit when drift exceeds 50% (signals a totally broken render) OR when
+// the parser produced 0 sections (signals structural extraction failure).
+const DIFF_THRESHOLD_PCT = 50.0;
+const MIN_SECTIONS = 1;
 
 const argv = process.argv.slice(2);
 const args = new Set(argv);
@@ -34,8 +40,16 @@ const SKIP_DIRS = new Set([
   "scripts", "migration-output", ".git", ".github", "node_modules",
 ]);
 
+// Slugs to skip from migration. Reasoned exclusions only.
+// - how-to-document-...specialist: content lives in a Google Sheet <iframe>;
+//   .resource-content is empty. Migration would discard the iframe payload.
+const SKIP_SLUGS = new Set([
+  "how-to-document-your-processes-for-automation-the-right-way-to-brief-an-automation-specialist",
+]);
+
 function isBakedGuide(slug) {
   if (SKIP_DIRS.has(slug)) return false;
+  if (SKIP_SLUGS.has(slug)) return false;
   if (slug.startsWith("test-") || slug.startsWith(".") || slug.startsWith("_")) return false;
   const dir = resolve(RESOURCES_ROOT, slug);
   if (!existsSync(join(dir, "index.html"))) return false;
@@ -115,6 +129,11 @@ async function migrateOne(slug, opts) {
   const data = parseBakedGuide(html, slug);
   const wrapper = buildThinWrapper(slug, data);
   console.log(`  parsed: ${data.sections.length} sections · ${data.estimated_minutes} min · "${data.title}"`);
+
+  if (data.sections.length < MIN_SECTIONS) {
+    console.log(`  ✕ parser produced ${data.sections.length} sections (< ${MIN_SECTIONS}) — refusing`);
+    return { slug, ok: false, reason: "no_sections_extracted" };
+  }
 
   const outDir = opts.commit ? dir : join(OUTPUT_DIR, slug);
   if (!opts.commit) {

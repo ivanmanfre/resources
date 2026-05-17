@@ -19,7 +19,25 @@ export async function captureToBuffer(url, opts) {
       });
     }
     await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
-    await page.waitForTimeout(800); // settle animations + reveal-on-scroll
+    await page.waitForTimeout(400);
+    // The engine uses IntersectionObserver to add .in-view (opacity:0 → 1) on
+    // .lmg-section / .lmc-section elements. Scroll the page top-to-bottom in
+    // small steps so every section enters the viewport and the observer fires.
+    const height = await page.evaluate(() => document.body.scrollHeight);
+    for (let y = 0; y < height; y += 400) {
+      await page.evaluate((_y) => window.scrollTo(0, _y), y);
+      await page.waitForTimeout(80);
+    }
+    // Belt + suspenders: also force-mark .in-view for anything the observer missed.
+    await page.evaluate(() => {
+      document.querySelectorAll('.lmg-section, .lmc-section, [class*="reveal"]').forEach((el) => {
+        el.classList.add('in-view');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(500);
     const buf = await page.screenshot({ fullPage: true, type: "png" });
     return buf;
   } finally {

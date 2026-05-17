@@ -123,3 +123,19 @@ test("parseBakedGuide defaults estimated_minutes when chip missing", () => {
   assert.equal(typeof data.estimated_minutes, "number");
   assert.ok(data.estimated_minutes > 0);
 });
+
+// Edge case: empty .resource-content (e.g. content lives in an iframe).
+// Parser returns 0 sections — caller is responsible for the SKIP_SLUGS guard.
+const FIXTURE_EMPTY_CONTENT = `<!DOCTYPE html><html><head>
+<title>IframeOnly</title><meta name="description" content="iframe-driven"/>
+</head><body>
+<div class="hero-title">IframeOnly</div>
+<div>10 Min Read</div>
+<div class="resource-content"></div>
+<iframe src="https://example.com/sheet"></iframe>
+</body></html>`;
+test("parseBakedGuide returns 0 sections when resource-content is empty", () => {
+  const data = parseBakedGuide(FIXTURE_EMPTY_CONTENT, "iframe-only");
+  assert.equal(data.sections.length, 0);
+  assert.equal(data.title, "IframeOnly");
+});

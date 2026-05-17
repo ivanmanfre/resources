@@ -1,0 +1,4 @@
+migration-output/
+scripts/node_modules/
+*.log
+.DS_Store
