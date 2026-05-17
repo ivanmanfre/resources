@@ -1,6 +1,8 @@
 /* Shared brand tokens + base primitives for every LM engine.
    Imported by checklist / assessment / calculator / template / guide / swipe. */
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap');
+
 :root {
   --paper: #F7F4EF;
   --paper-sunk: #EFEBE3;
@@ -24,7 +26,7 @@
 
 /* Body texture (fractal noise) — engines opt in by applying .lmc-root */
 .lmc-root {
-  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   color: var(--ink);
   background: var(--paper);
   position: relative;
@@ -55,41 +57,44 @@
 .lmc-badge {
   display: inline-flex;
   align-items: center;
-  gap: .6rem;
-  padding: .45rem 1rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: .72rem;
-  font-weight: 700;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .22em;
+  letter-spacing: .08em;
   margin-bottom: 1.5rem;
+  border: none;
 }
-.lmc-badge::before { content: ""; width: 8px; height: 8px; background: var(--accent); display: inline-block; }
+.lmc-badge::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
 .lmc-h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
   font-size: clamp(2.25rem, 6vw, 3.75rem);
-  font-weight: 900;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   margin: 0 0 1.25rem;
   max-width: 42rem;
   color: var(--ink);
 }
-.lmc-h1 em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); letter-spacing: -0.01em; }
+.lmc-h1 em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; letter-spacing: 0; }
 .lmc-sub {
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 1.15rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.55;
   color: var(--ink-soft);
   max-width: 38rem;
   margin: 0 0 2rem;
   padding-left: 1.25rem;
-  border-left: 2px solid rgba(76, 110, 61, 0.4);
+  border-left: 2px solid rgba(42, 143, 101, 0.4);
 }
-.lmc-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .82rem; color: var(--ink-mute); font-family: 'IBM Plex Mono', ui-monospace, monospace; }
-.lmc-meta-chip { display: inline-flex; align-items: center; gap: .45rem; letter-spacing: .08em; text-transform: uppercase; }
-.lmc-meta-chip::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
+.lmc-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 13px; color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; }
+.lmc-meta-chip { display: inline-flex; align-items: center; gap: 6px; letter-spacing: .08em; text-transform: uppercase; }
+.lmc-meta-chip::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
 
 /* ── Shared intro / welcome block ─────────────────────────────────────── */
 .lmc-intro {
@@ -116,23 +121,27 @@
 }
 .lmc-intro-avatar:hover { transform: translateY(-2px); }
 .lmc-intro-badge {
-  display: inline-block;
-  padding: .35rem .9rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: .68rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .22em;
+  letter-spacing: .08em;
   margin-bottom: 1rem;
+  border: none;
 }
-.lmc-intro-h { font-size: clamp(1.6rem, 3.2vw, 2.15rem); font-weight: 900; line-height: 1.05; margin: 0 0 .85rem; color: var(--ink); letter-spacing: -0.02em; }
-.lmc-intro-h em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); letter-spacing: 0; }
-.lmc-intro-p { font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 1.5rem; max-width: 38rem; }
+.lmc-intro-badge::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
+.lmc-intro-h { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.6rem, 3.2vw, 2.15rem); font-weight: 400; line-height: 1.1; margin: 0 0 .85rem; color: var(--ink); letter-spacing: -0.01em; }
+.lmc-intro-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; letter-spacing: 0; }
+.lmc-intro-p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 1.5rem; max-width: 38rem; }
 .lmc-intro-points { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-direction: column; gap: .65rem; font-size: .96rem; color: var(--ink); }
 .lmc-intro-points li { display: flex; gap: .8rem; align-items: center; }
-.lmc-intro-icon { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: var(--ink); color: var(--paper); font-size: .85rem; font-weight: 900; flex-shrink: 0; border-radius: var(--radius-sm); }
+.lmc-intro-icon { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-size: .85rem; font-weight: 600; flex-shrink: 0; border-radius: var(--radius-sm); }
 .lmc-intro-icon.a { background: var(--accent); color: var(--paper); }
 .lmc-intro-icon.b { background: var(--ink); color: var(--paper); }
 .lmc-intro-icon.c { background: transparent; color: var(--ink); border: 1px solid var(--hairline-bold); }
@@ -141,22 +150,24 @@
   padding: .9rem 1.75rem;
   background: var(--ink);
   color: var(--paper);
-  font-size: .95rem; font-weight: 700; letter-spacing: .02em;
-  border: none; cursor: pointer; font-family: inherit; text-decoration: none;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: .95rem; font-weight: 600; letter-spacing: .02em;
+  border: none; cursor: pointer; text-decoration: none;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-subtle);
   transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
 }
 .lmc-intro-start:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); background: var(--accent-ink); }
-.lmc-intro-note { font-size: .82rem; color: var(--ink-mute); margin-top: 1rem; max-width: 34rem; }
+.lmc-intro-note { font-family: 'Source Serif 4', Georgia, serif; font-size: .82rem; color: var(--ink-mute); margin-top: 1rem; max-width: 34rem; }
 
 /* ── Shared buttons ──────────────────────────────────────────────────── */
 .lmc-btn {
   padding: .85rem 1.5rem;
   background: var(--accent);
   color: var(--paper);
-  font-size: .92rem; font-weight: 700; letter-spacing: .02em;
-  border: none; cursor: pointer; font-family: inherit;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: .92rem; font-weight: 600; letter-spacing: .02em;
+  border: none; cursor: pointer;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-subtle);
   transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
@@ -180,14 +191,14 @@
 .lmc-tier-growth { border-left-color: var(--accent-light); }
 .lmc-tier-optimized { border-left-color: var(--accent); }
 .lmc-tier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.lmc-tier-label { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--ink); }
+.lmc-tier-label { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
 .lmc-tier-score { display: inline-flex; align-items: baseline; gap: .15rem; color: var(--ink); }
-.lmc-tier-score em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; font-size: 3.25rem; line-height: 1; color: var(--accent); letter-spacing: -0.02em; }
-.lmc-tier-score span { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .85rem; color: var(--ink-mute); font-weight: 700; }
-.lmc-tier-note { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+.lmc-tier-score em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 3.25rem; line-height: 1; color: #2A8F65; letter-spacing: 0; }
+.lmc-tier-score span { font-family: 'Source Serif 4', Georgia, serif; font-size: .85rem; color: var(--ink-mute); font-weight: 600; }
+.lmc-tier-note { font-family: 'Source Serif 4', Georgia, serif; margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
 
-.lmc-results-h { font-size: 1.35rem; font-weight: 900; margin: 0 0 1.25rem; letter-spacing: -0.02em; color: var(--ink); }
-.lmc-results-h em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
+.lmc-results-h { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.65rem; font-weight: 400; margin: 0 0 1.25rem; letter-spacing: -0.01em; color: var(--ink); }
+.lmc-results-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
 .lmc-gap-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .85rem; }
 .lmc-gap {
   display: grid; grid-template-columns: auto 1fr; gap: 1.25rem;
@@ -199,18 +210,18 @@
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .lmc-gap:hover { transform: translateY(-1px); box-shadow: var(--shadow-lift); }
-.lmc-gap-rank { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; font-size: 2.25rem; line-height: 1; color: var(--accent); letter-spacing: -0.02em; min-width: 1.5ch; }
+.lmc-gap-rank { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 2.25rem; line-height: 1; color: #2A8F65; letter-spacing: 0; min-width: 1.5ch; }
 .lmc-gap-body { min-width: 0; }
 .lmc-gap-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.lmc-gap-text { font-weight: 600; color: var(--ink); font-size: 1.02rem; line-height: 1.45; }
-.lmc-gap-fix { margin-top: .6rem; font-size: .92rem; line-height: 1.55; color: var(--ink-soft); padding-left: .9rem; border-left: 2px solid rgba(76, 110, 61, 0.35); }
-.lmc-gap-fix-label { display: inline-block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-right: .5rem; }
+.lmc-gap-text { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; color: var(--ink); font-size: 1.02rem; line-height: 1.45; }
+.lmc-gap-fix { font-family: 'Source Serif 4', Georgia, serif; margin-top: .6rem; font-size: .92rem; line-height: 1.55; color: var(--ink-soft); padding-left: .9rem; border-left: 2px solid rgba(42, 143, 101, 0.35); }
+.lmc-gap-fix-label { display: inline-block; font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #2A8F65; margin-right: .5rem; }
 
-.lmc-next-move { display: block; padding: 1rem 1.25rem; background: var(--ink); color: var(--paper); border-radius: var(--radius-md); font-size: 1rem; line-height: 1.55; margin: 0 0 1.5rem; box-shadow: var(--shadow-subtle); }
-.lmc-next-label { display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .68rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--accent-light); margin-bottom: .35rem; }
+.lmc-next-move { font-family: 'Source Serif 4', Georgia, serif; display: block; padding: 1rem 1.25rem; background: var(--ink); color: var(--paper); border-radius: var(--radius-md); font-size: 1rem; line-height: 1.55; margin: 0 0 1.5rem; box-shadow: var(--shadow-subtle); }
+.lmc-next-label { font-family: 'Source Serif 4', Georgia, serif; display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #2A8F65; margin-bottom: .35rem; }
 
 /* ── Shared impact pills ─────────────────────────────────────────────── */
-.lmc-impact { display: inline-block; padding: .22rem .6rem; font-size: .68rem; font-weight: 700; font-family: 'IBM Plex Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: .12em; margin-top: .6rem; margin-right: .4rem; border-radius: 2px; }
+.lmc-impact { display: inline-block; padding: .22rem .6rem; font-size: 12px; font-weight: 600; font-family: 'Source Serif 4', Georgia, serif; text-transform: uppercase; letter-spacing: .08em; margin-top: .6rem; margin-right: .4rem; border-radius: 2px; }
 .lmc-impact-high { background: var(--accent); color: var(--paper); }
 .lmc-impact-medium { background: var(--ink); color: var(--paper); }
 .lmc-impact-low { background: transparent; color: var(--ink-mute); border: 1px solid var(--hairline-bold); }
@@ -227,17 +238,17 @@
 }
 .lmc-capture::before { content: ""; position: absolute; inset: 0; opacity: .05; background-size: 40px 40px; background-image: linear-gradient(to right, var(--accent) 1px, transparent 1px), linear-gradient(to bottom, var(--accent) 1px, transparent 1px); pointer-events: none; }
 .lmc-capture > * { position: relative; z-index: 1; }
-.lmc-capture h2 { font-size: 1.6rem; font-weight: 900; margin: 0 0 .6rem; letter-spacing: -0.01em; }
-.lmc-capture h2 em { font-family: 'Bodoni Moda', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent-light); }
-.lmc-capture p { font-size: 1rem; margin: 0 0 1.5rem; max-width: 34rem; color: rgba(247, 244, 239, 0.82); line-height: 1.55; }
+.lmc-capture h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.85rem; font-weight: 400; margin: 0 0 .6rem; letter-spacing: 0; line-height: 1.1; }
+.lmc-capture h2 em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
+.lmc-capture p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; margin: 0 0 1.5rem; max-width: 34rem; color: rgba(247, 244, 239, 0.82); line-height: 1.55; }
 .lmc-form { display: flex; flex-wrap: wrap; gap: .75rem; align-items: stretch; }
-.lmc-input { flex: 1 1 260px; min-width: 0; padding: .85rem 1.1rem; border: 1px solid rgba(247, 244, 239, 0.25); background: rgba(247, 244, 239, 0.05); color: var(--paper); font-size: 1rem; font-family: inherit; border-radius: var(--radius-md); transition: border-color .2s var(--ease), background .2s var(--ease); }
+.lmc-input { flex: 1 1 260px; min-width: 0; padding: .85rem 1.1rem; border: 1px solid rgba(247, 244, 239, 0.25); background: rgba(247, 244, 239, 0.05); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; border-radius: var(--radius-md); transition: border-color .2s var(--ease), background .2s var(--ease); }
 .lmc-input::placeholder { color: rgba(247, 244, 239, 0.4); }
-.lmc-input:focus { outline: none; border-color: var(--accent-light); background: rgba(247, 244, 239, 0.1); }
-.lmc-note { font-size: .85rem; color: rgba(247, 244, 239, 0.6); margin-top: 1rem; font-family: 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: .05em; }
+.lmc-input:focus { outline: none; border-color: #2A8F65; background: rgba(247, 244, 239, 0.1); }
+.lmc-note { font-family: 'Source Serif 4', Georgia, serif; font-size: .85rem; color: rgba(247, 244, 239, 0.6); margin-top: 1rem; letter-spacing: 0; }
 
 /* ── Shared toast ────────────────────────────────────────────────────── */
-.lmc-toast { position: fixed; bottom: 1.25rem; right: 1.25rem; padding: .85rem 1.35rem; background: var(--ink); color: var(--paper); font-weight: 700; font-size: .9rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); transform: translateY(12px); }
+.lmc-toast { position: fixed; bottom: 1.25rem; right: 1.25rem; padding: .85rem 1.35rem; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: .9rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); transform: translateY(12px); }
 .lmc-toast.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
 /* ── Motion-safe ─────────────────────────────────────────────────────── */
