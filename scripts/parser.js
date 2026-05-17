@@ -28,6 +28,7 @@ export function parseBakedGuide(html, slug) {
   const $ = cheerio.load(html);
 
   const title = $(".hero-title").first().text().trim()
+    || $("h1").first().text().trim()
     || $("title").first().text().split("|")[0].trim()
     || slug;
 
