@@ -32,9 +32,19 @@ export function parseBakedGuide(html, slug) {
     || $("title").first().text().split("|")[0].trim()
     || slug;
 
-  const subtitle = $('meta[name="description"]').attr("content")
-    || $(".hero-intro").first().text().trim()
-    || "";
+  // Subtitle: prefer .hero-intro (visible page copy) over meta description,
+  // because some baked guides have polluted meta descriptions containing raw
+  // markdown like "## Resource Page Copy **Headline:** ...".
+  function isPolluted(s) {
+    return /^\s*(##|\*\*Headline:|\*\*Resource Type:|\*\*Introduction:)/.test(s || "");
+  }
+  let subtitle = $(".hero-intro").first().text().trim() || "";
+  if (!subtitle || isPolluted(subtitle)) {
+    const meta = $('meta[name="description"]').attr("content") || "";
+    if (meta && !isPolluted(meta)) subtitle = meta.trim();
+  }
+  // Final guard: if still polluted, blank it rather than show garbage
+  if (isPolluted(subtitle)) subtitle = "";
 
   // Estimated minutes from "X Min Read" chip
   let estimated_minutes = 10;
