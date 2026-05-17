@@ -9,6 +9,44 @@
   var TOOL = "architecture";
   var SVG_NS = "http://www.w3.org/2000/svg";
 
+  // ── Brand logo registry ───────────────────────────────────────────────
+  // Each entry: { color, path, viewBox (default "0 0 24 24"), match: [keywords] }
+  // Paths are simpleicons.org-style single-path SVGs. Color is brand primary.
+  var LOGOS = {
+    clickup:  { color: "#7B68EE", match: ["clickup"], path: "M2.035 17.039l3.78-2.9c2.013 2.625 4.155 3.84 6.508 3.84 2.34 0 4.421-1.227 6.34-3.794l3.806 2.852c-2.766 3.717-6.197 5.704-10.146 5.704-3.937 0-7.376-1.974-10.288-5.703zM12.31.918l-7.706 6.643 3.092 3.59 4.628-3.99 4.605 3.997 3.103-3.585L12.31.918z" },
+    claude:   { color: "#D97757", match: ["claude", "anthropic"], path: "M4.709 15.955l4.72-2.647.079-.23-.079-.128h-.23l-.79-.048-2.695-.073-2.337-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.517.103 2.276.158 1.65.097 2.447.255h.388l.055-.157-.134-.098-.103-.097-2.358-1.599-2.552-1.687-1.336-.972-.722-.491-.365-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.146-.103.018-.072-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.276.156 6.68 0l.971.398 1.247 1.392 1.604 2.7L7.122 4.61l.85 2.78 1.541-.486.085.523-.395.078-2.05.42 1.166 5.31z" },
+    anthropic:{ color: "#D97757", match: ["anthropic"], path: "M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.461H0L6.57 3.52zm4.132 9.953L8.453 7.687 6.205 13.473z" },
+    supabase: { color: "#3ECF8E", match: ["supabase"], path: "M11.9 1.531 1.522 14.366c-.71.878-.087 2.183 1.04 2.183h10.378v6.92c0 1.524 1.93 2.18 2.86.97L24.478 9.634c.71-.878.087-2.183-1.04-2.183H13.06V.531c0-1.524-1.93-2.18-2.86-.97 0 0-.001 0-.001 0z" },
+    n8n:      { color: "#EA4B71", match: ["n8n"], path: "M21 8a3 3 0 0 0-2.83 2H15.83A3 3 0 0 0 13 7.17V5.83a3 3 0 1 0-2 0v1.34A3 3 0 0 0 8.17 10H6.83A3 3 0 1 0 8 13H6.83A3 3 0 0 0 4 15.83v2.34a3 3 0 1 0 2 0v-2.34A3 3 0 0 0 7 13h1.17A3 3 0 0 0 11 15.83v2.34a3 3 0 1 0 2 0v-2.34A3 3 0 0 0 15.83 13h2.34A3 3 0 1 0 21 8z" },
+    linkedin: { color: "#0A66C2", match: ["linkedin", "li-"], path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" },
+    resend:   { color: "#000000", match: ["resend", "email", "nurture"], path: "M22 5.508v12.984A3.515 3.515 0 0 1 18.494 22H5.506A3.515 3.515 0 0 1 2 18.492V5.508A3.515 3.515 0 0 1 5.506 2h12.988A3.515 3.515 0 0 1 22 5.508zM10.484 6.04H7.41c-.247 0-.439.198-.439.444v11.022c0 .247.192.451.439.451h2.137c.246 0 .438-.204.438-.45v-3.518h1.42l2.16 3.701c.094.155.255.267.43.267h2.473c.34 0 .553-.366.382-.66l-2.298-3.927c1.305-.572 2.221-1.886 2.221-3.414 0-2.183-1.755-3.916-3.927-3.916h-.001zm-.001 5.687h-1.487V8.39h1.487c.91 0 1.66.749 1.66 1.668 0 .92-.75 1.669-1.66 1.669z" },
+    whatsapp: { color: "#25D366", match: ["whatsapp", "whapi"], path: "M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.711.306 1.265.489 1.698.626.713.226 1.362.194 1.876.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" },
+    apify:    { color: "#00B886", match: ["apify"], path: "M12 0 0 12l12 12 12-12L12 0zm0 4.5L19.5 12 12 19.5 4.5 12 12 4.5z" },
+    openai:   { color: "#412991", match: ["openai", "gpt"], path: "M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.677l5.815 3.354-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.787a4.49 4.49 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" },
+    unipile:  { color: "#5B6CFF", match: ["unipile", "dm send"], path: "M2 21l21-9L2 3v7l15 2-15 2v7z" },
+    railway:  { color: "#0B0D0E", match: ["railway"], path: "M22 11.1c-1.7.2-9.3 1.4-12.4 1.4-2.5 0-7-.7-9.6-1.1v1.9c2.6.4 7.1 1.1 9.6 1.1 3.1 0 10.7-1.2 12.4-1.4v-1.9zM22 7c-1.7.5-9.3 2.2-12.4 2.2-2.5 0-7-1.2-9.6-1.9V9c2.6.7 7.1 1.9 9.6 1.9C12.7 10.9 20.3 9.3 22 8.8V7zm-4.5 8.4c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3z" }
+  };
+
+  // Generic glyphs by node type (used when no brand match).
+  var TYPE_GLYPHS = {
+    trigger:   { color: "#B8860B", path: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },                                    // lightning bolt
+    transform: { color: "#1E5B8C", path: "M12 2l2.5 5 5.5.8-4 4 1 5.5L12 14.8 7 17.3l1-5.5-4-4 5.5-.8L12 2z" },  // star (transform)
+    decision:  { color: "#7A2E8C", path: "M12 2L2 12l10 10 10-10L12 2zm0 4.4L17.6 12 12 17.6 6.4 12 12 6.4z" }, // diamond
+    storage:   { color: "#A0522D", path: "M12 3c-4.4 0-8 1.3-8 3v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3zm0 2c3.9 0 6 1 6 1s-2.1 1-6 1-6-1-6-1 2.1-1 6-1z" }, // cylinder
+    output:    { color: "#1A6B3F", path: "M2 21l21-9L2 3v7l15 2-15 2v7z" }                                       // paper plane
+  };
+
+  function findLogo(label, type) {
+    var lc = String(label || "").toLowerCase();
+    for (var k in LOGOS) {
+      var entry = LOGOS[k];
+      for (var i = 0; i < entry.match.length; i++) {
+        if (lc.indexOf(entry.match[i]) !== -1) return entry;
+      }
+    }
+    return TYPE_GLYPHS[type] || TYPE_GLYPHS.transform;
+  }
+
   function SLUG() { return window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || ""; }
   function $(s, c) { return (c || document).querySelector(s); }
   function make(tag, attrs, html) { return window.LM.make(tag, attrs, html); }
@@ -134,6 +172,7 @@
     // Edges first (so nodes paint over them)
     var idMap = {};
     nodes.forEach(function (n) { idMap[n.id] = n; });
+    var edgeIndex = {}; // edge_id -> { fromId, toId, particleEl }
     edges.forEach(function (e, edgeIdx) {
       var a = idMap[e.from], b = idMap[e.to];
       if (!a || !b) return;
@@ -149,12 +188,60 @@
       var endX = bx - dx * scaleB, endY = by - dy * scaleB;
       var midX = (startX + endX) / 2, midY = (startY + endY) / 2;
 
+      var edgeId = "lma-edge-" + edgeIdx;
       var path = svgEl("path", {
+        id: edgeId,
         d: "M" + startX + " " + startY + " L" + endX + " " + endY,
         class: "lma-edge",
-        "marker-end": "url(#lma-arrow)"
+        "marker-end": "url(#lma-arrow)",
+        "data-edge-from": e.from,
+        "data-edge-to": e.to
       });
       svg.appendChild(path);
+
+      // Particle pair flowing along edge (leader + trailing echo, staggered start)
+      function makeParticle(radius, delay, opacity) {
+        var p = svgEl("circle", {
+          class: "lma-particle",
+          r: radius,
+          cx: startX,
+          cy: startY,
+          opacity: opacity
+        });
+        var a = svgEl("animateMotion", {
+          dur: "3.2s",
+          repeatCount: "indefinite",
+          begin: ((edgeIdx * 0.18) + delay) + "s",
+          rotate: "auto"
+        });
+        var m = svgEl("mpath", { "href": "#" + edgeId });
+        a.appendChild(m);
+        p.appendChild(a);
+        return p;
+      }
+      var particle = makeParticle(4, 0, 1);
+      var particleEcho = makeParticle(2.5, 0.12, 0.55);
+      svg.appendChild(particleEcho);
+      svg.appendChild(particle);
+
+      edgeIndex[edgeId] = { fromId: e.from, toId: e.to, pathEl: path, particleEl: particle };
+
+      // Hover edge → highlight source/target nodes
+      path.addEventListener("mouseenter", function () {
+        path.classList.add("is-hover");
+        [e.from, e.to].forEach(function (nid) {
+          var el = svg.querySelector('[data-node-id="' + nid + '"]');
+          if (el) el.classList.add("is-edge-hover");
+        });
+      });
+      path.addEventListener("mouseleave", function () {
+        path.classList.remove("is-hover");
+        [e.from, e.to].forEach(function (nid) {
+          var el = svg.querySelector('[data-node-id="' + nid + '"]');
+          if (el) el.classList.remove("is-edge-hover");
+        });
+      });
+
       if (e.label) {
         // Render a white pill behind the label so it doesn't sit on the line.
         var labelText = String(e.label);
@@ -188,23 +275,79 @@
       });
       // Mark visited from KV
       if (state.viewedNodes[n.id]) g.setAttribute("class", g.getAttribute("class") + " is-visited");
-      var rect = svgEl("rect", { x: n.x, y: n.y, width: n.width, height: n.height });
-      var typeText = svgEl("text", { class: "lma-node-type", x: n.x + n.width / 2, y: n.y + 22 });
+
+      // Glow/pulse halo behind node (per-type tint)
+      var halo = svgEl("rect", {
+        class: "lma-node-halo",
+        x: n.x - 4, y: n.y - 4,
+        width: n.width + 8, height: n.height + 8,
+        rx: 12, ry: 12
+      });
+      g.appendChild(halo);
+
+      var rect = svgEl("rect", {
+        class: "lma-node-rect",
+        x: n.x, y: n.y, width: n.width, height: n.height,
+        rx: 10, ry: 10
+      });
+      g.appendChild(rect);
+
+      // Brand/type logo — top-left corner inside the rect
+      var logo = findLogo(n.label, n.type);
+      var logoSize = 22;
+      var logoPad = 12;
+      var logoG = svgEl("g", {
+        class: "lma-node-logo",
+        transform: "translate(" + (n.x + logoPad) + "," + (n.y + logoPad) + ") scale(" + (logoSize / 24) + ")"
+      });
+      var logoBg = svgEl("circle", {
+        class: "lma-node-logo-bg",
+        cx: 12, cy: 12, r: 13,
+        fill: logo.color
+      });
+      logoG.appendChild(logoBg);
+      var logoPath = svgEl("path", {
+        d: logo.path,
+        fill: "#FFFFFF",
+        transform: "scale(0.72) translate(4.6,4.6)"
+      });
+      logoG.appendChild(logoPath);
+      g.appendChild(logoG);
+
+      var typeText = svgEl("text", {
+        class: "lma-node-type",
+        x: n.x + n.width - 14, y: n.y + 22,
+        "text-anchor": "end"
+      });
       typeText.textContent = (n.type || "transform").toUpperCase();
+      g.appendChild(typeText);
+
       var label = svgEl("text", {
         class: "lma-node-label",
         x: n.x + n.width / 2,
-        y: n.y + n.height / 2 + 12
+        y: n.y + n.height / 2 + 18
       });
       label.textContent = n.label || n.id;
+      g.appendChild(label);
+
       var dot = svgEl("circle", {
         class: "lma-node-dot",
-        cx: n.x + n.width - 14, cy: n.y + 14, r: 4
+        cx: n.x + n.width - 14, cy: n.y + n.height - 14, r: 4
       });
-      g.appendChild(rect);
-      g.appendChild(typeText);
-      g.appendChild(label);
       g.appendChild(dot);
+
+      // Hover-on-node → highlight outgoing edges
+      g.addEventListener("mouseenter", function () {
+        svg.querySelectorAll('.lma-edge[data-edge-from="' + n.id + '"], .lma-edge[data-edge-to="' + n.id + '"]').forEach(function (p) {
+          p.classList.add("is-node-hover");
+        });
+      });
+      g.addEventListener("mouseleave", function () {
+        svg.querySelectorAll('.lma-edge.is-node-hover').forEach(function (p) {
+          p.classList.remove("is-node-hover");
+        });
+      });
+
       svg.appendChild(g);
       if (window.LM.editMode && window.LM.editMode.enabled()) {
         window.LM.editMode.registerField(label, "diagram.nodes[" + idx + "].label");
@@ -381,6 +524,48 @@
     refreshFloatingCta();
   }
 
+  // ── Auto-tour: pulse each node in sequence on first load ───────────────
+  function startAutoTour() {
+    if (state.autoTourRan) return;
+    state.autoTourRan = true;
+    // Skip tour for users who have already explored
+    if (uniqueViewedCount() >= 3) return;
+    // Respect reduced motion
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var nodes = (state.data.diagram && state.data.diagram.nodes) || [];
+    if (!nodes.length) return;
+    var idx = 0;
+    var cancelled = false;
+
+    function cancel() {
+      cancelled = true;
+      state.root.querySelectorAll(".lma-node.is-tour").forEach(function (g) {
+        g.classList.remove("is-tour");
+      });
+    }
+    // Cancel on any user interaction
+    var cancelEvents = ["click", "keydown", "wheel", "touchstart"];
+    cancelEvents.forEach(function (ev) {
+      window.addEventListener(ev, cancel, { once: true, passive: true });
+    });
+
+    function step() {
+      if (cancelled) return;
+      // clear prior
+      state.root.querySelectorAll(".lma-node.is-tour").forEach(function (g) {
+        g.classList.remove("is-tour");
+      });
+      if (idx >= nodes.length) return; // done
+      var n = nodes[idx];
+      var el = state.root.querySelector('[data-node-id="' + n.id + '"]');
+      if (el) el.classList.add("is-tour");
+      idx += 1;
+      setTimeout(step, 650);
+    }
+    // Initial delay so the user sees the diagram first
+    setTimeout(step, 800);
+  }
+
   function wireNodeClicks() {
     var nodes = (state.data.diagram && state.data.diagram.nodes) || [];
     var idMap = {};
@@ -519,6 +704,7 @@
 
     wireNodeClicks();
     refreshFloatingCta();
+    startAutoTour();
     beacon("view", {
       answers: { node_count: (data.diagram && data.diagram.nodes || []).length }
     });
