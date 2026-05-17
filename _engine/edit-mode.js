@@ -145,12 +145,66 @@
     location.href = url.toString();
   }
 
+  // ── DOMPurify lazy-load (for contenteditable HTML sanitization) ───────
+  var _purifyLoading = null;
+  function loadPurify() {
+    if (window.DOMPurify) return Promise.resolve(window.DOMPurify);
+    if (_purifyLoading) return _purifyLoading;
+    _purifyLoading = new Promise(function (resolve) {
+      var s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js";
+      s.onload = function () { resolve(window.DOMPurify || null); };
+      s.onerror = function () { resolve(null); };
+      document.head.appendChild(s);
+    });
+    return _purifyLoading;
+  }
+  function sanitizeHtml(html) {
+    if (window.DOMPurify) {
+      return window.DOMPurify.sanitize(html, {
+        ALLOWED_TAGS: ["p", "h2", "h3", "h4", "ul", "ol", "li", "blockquote", "strong", "em", "a", "code", "pre", "hr", "br", "table", "thead", "tbody", "tr", "th", "td", "div", "span"],
+        ALLOWED_ATTR: ["href", "target", "rel", "style", "class"],
+      });
+    }
+    // Fallback: strip script/style tags only. DOMPurify lazy-loads on mount
+    // so by the time a user blurs a contenteditable field, it should be ready.
+    return String(html || "")
+      .replace(/<\/?script[^>]*>/gi, "")
+      .replace(/<\/?style[^>]*>/gi, "")
+      .replace(/\son\w+=("[^"]*"|'[^']*')/gi, "");
+  }
+
   // ── Field attach ──────────────────────────────────────────────────────
   function attachField(el, path, opts) {
     if (!el) return;
     state.fieldEls.push({ el: el, path: path });
     el.setAttribute("data-lme-field", path);
     if (opts && opts.locked) el.classList.add("lme-field-locked");
+
+    // contenteditable path — for rich HTML editing (guide section bodies).
+    // Direct contentEditable on the element, sanitize on blur.
+    if (opts && opts.contenteditable) {
+      el.contentEditable = "true";
+      el.spellcheck = true;
+      el.classList.add("lme-field-contenteditable");
+      el.addEventListener("focus", function () { el.setAttribute("data-lme-field-editing", "true"); });
+      el.addEventListener("blur", function () {
+        el.removeAttribute("data-lme-field-editing");
+        var raw = el.innerHTML;
+        var clean = sanitizeHtml(raw);
+        if (clean !== raw) el.innerHTML = clean;
+        setByPath(state.data, path, clean);
+        markDirty();
+      });
+      // Plain-text paste so users don't drop styled HTML from Word/Notion.
+      el.addEventListener("paste", function (e) {
+        e.preventDefault();
+        var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+        document.execCommand("insertText", false, text);
+      });
+      return;
+    }
+
     el.addEventListener("click", function (e) {
       // Don't trigger on nested links/buttons
       if (e.target !== el && (e.target.closest("a") || e.target.closest("button"))) return;
@@ -262,6 +316,32 @@
       markDirty();
       showToast("Reordered — refresh after save");
     });
+
+    // "+ Add between" button — inserts a new item AFTER this item. The
+    // trailing "+ Add item" appended by attachArray covers the end-of-list.
+    var between = make("button", { class: "lme-add-btn lme-add-between", type: "button" }, "+ Add between");
+    between.addEventListener("click", function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var arr = getByPath(state.data, arrayPath) || [];
+      // Infer template shape from a sibling so insertions match the array's element type.
+      var sibling = arr[idx] || arr[idx + 1] || arr[idx - 1] || {};
+      var template = { id: genId() };
+      Object.keys(sibling).forEach(function (k) {
+        if (k === "id") return;
+        var v = sibling[k];
+        if (typeof v === "string") template[k] = "";
+        else if (Array.isArray(v)) template[k] = [];
+        else if (v && typeof v === "object") template[k] = {};
+        else template[k] = v;
+      });
+      arr.splice(idx + 1, 0, template);
+      setByPath(state.data, arrayPath, arr);
+      markDirty();
+      showToast("Inserted — save and reload to see new item");
+    });
+    if (itemEl.parentNode) {
+      itemEl.parentNode.insertBefore(between, itemEl.nextSibling);
+    }
   }
 
   // ── Save flow ─────────────────────────────────────────────────────────
@@ -454,6 +534,9 @@
     try {
       sessionStorage.setItem("ivan.lm.pre_edit." + state.slug, JSON.stringify(state.originalData));
     } catch (_) {}
+    // Guides use contenteditable section bodies — warm DOMPurify so the first
+    // blur doesn't drop through the unsafe fallback path.
+    if (state.format === "guide") loadPurify();
   }
 
   // ── Expose API ────────────────────────────────────────────────────────

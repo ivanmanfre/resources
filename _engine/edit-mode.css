@@ -262,3 +262,32 @@
   cursor: pointer;
 }
 .lme-revert-btn:hover { background: #ff6b6b; color: #fff; }
+
+/* Contenteditable rich-text field (guide section bodies) */
+.lme-field-contenteditable {
+  outline: 2px dashed rgba(76, 110, 61, 0.35);
+  outline-offset: 6px;
+  border-radius: 4px;
+  transition: outline-color .15s ease, background .15s ease;
+  cursor: text;
+}
+.lme-field-contenteditable:hover {
+  outline-color: rgba(76, 110, 61, 0.65);
+  background: rgba(76, 110, 61, 0.04);
+}
+.lme-field-contenteditable[data-lme-field-editing="true"] {
+  outline-color: #4C6E3D;
+  outline-style: solid;
+  background: rgba(247, 244, 239, 0.55);
+}
+
+/* Between-item add button (insert mid-array) */
+.lme-add-between {
+  display: block;
+  margin: 8px auto;
+  font-size: 11px;
+  padding: 4px 12px;
+  opacity: 0.55;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.lme-add-between:hover { opacity: 1; transform: scale(1.05); }

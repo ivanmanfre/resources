@@ -28,6 +28,12 @@
         "Self-placement"
       ]
     }));
+
+    // Editor hooks: wrap hero title + subtitle for inline edit
+    var heroH1 = root.querySelector(".lmc-h1");
+    var heroSub = root.querySelector(".lmc-sub");
+    if (heroH1 && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroH1, "title");
+    if (heroSub && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroSub, "subtitle");
     root.appendChild(L.buildIntro(data, ".lmg-progress-wrap", {
       tool_type: "guide",
       defaultValueBullet: "Rate your team's current practice at the bottom of each section",
@@ -36,18 +42,29 @@
       defaultNote: "You don't have to rate anything. But rating unlocks a personalized summary."
     }));
 
-    // Sections
+    // Sections — wrapped in a container so registerArray has a handle for
+    // add / drag-reorder / between-add affordances.
     var main = L.make("main", { class: "lmc-container lmg-prose" });
-    (data.sections || []).forEach(function (s) {
+    var sectionsContainer = L.make("div", { class: "lmg-sections-container" });
+    (data.sections || []).forEach(function (s, sIdx) {
       var sec = L.make("section", { class: "lmg-section", id: s.id ? ("section-" + s.id) : null });
       sec.setAttribute("data-section-id", s.id || s.title);
-      if (s.title) sec.appendChild(L.make("h2", null, L.esc(s.title)));
+      if (s.title) {
+        var h2 = L.make("h2", null, L.esc(s.title));
+        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h2, "sections[" + sIdx + "].title");
+        sec.appendChild(h2);
+      }
       if (s.html) {
         var body = L.make("div");
         body.innerHTML = s.html;
+        // contenteditable:true is the rich-HTML path — edit-mode sanitizes via
+        // DOMPurify on blur and writes back the sanitized innerHTML to s.html.
+        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(body, "sections[" + sIdx + "].html", { contenteditable: true });
         sec.appendChild(body);
       } else if (s.text) {
-        sec.appendChild(L.make("p", null, L.esc(s.text)));
+        var p = L.make("p", null, L.esc(s.text));
+        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(p, "sections[" + sIdx + "].text", { multiline: true });
+        sec.appendChild(p);
       }
       // Self-placement block
       var prompt = s.self_prompt || "Is your team already doing this?";
@@ -62,8 +79,13 @@
           }).join('') +
         '</div>';
       sec.appendChild(self);
-      main.appendChild(sec);
+      sectionsContainer.appendChild(sec);
     });
+    if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(sectionsContainer, "sections", {
+      itemLabel: "section",
+      template: { id: "", title: "New section", html: "<p>Write the section body here.</p>", self_prompt: "Is your team already doing this?" },
+    });
+    main.appendChild(sectionsContainer);
 
     // Summary panel (hidden until at least one rated)
     var pending = L.make("p", { class: "lmg-summary-pending" }, "Rate a section above to start building your personalized summary.");
