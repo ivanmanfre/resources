@@ -48,6 +48,35 @@
     return { checked: checked, email: email };
   }
 
+  // D1.1: Section progress ring SVG. Sage stroke arcs around a hairline circle.
+  // pct = 0..100. Used both for initial render and update().
+  function ringSvg(pct) {
+    var circ = 2 * Math.PI * 9;
+    var offset = circ - (Math.max(0, Math.min(100, pct)) / 100) * circ;
+    return '<svg class="lmc-section-ring-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">' +
+      '<circle cx="12" cy="12" r="9" fill="none" stroke="rgba(26,26,26,0.15)" stroke-width="2.5" />' +
+      '<circle cx="12" cy="12" r="9" fill="none" stroke="#2A8F65" stroke-width="2.5" stroke-linecap="round" ' +
+        'stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + offset.toFixed(2) + '" ' +
+        'transform="rotate(-90 12 12)" />' +
+      '</svg>';
+  }
+
+  // D1.3: Lazy-load canvas-confetti from CDN on first 100% trigger.
+  // Resolves to null on network failure so the celebration panel still appears.
+  var _confettiLoading = null;
+  function loadConfetti() {
+    if (window.confetti) return Promise.resolve(window.confetti);
+    if (_confettiLoading) return _confettiLoading;
+    _confettiLoading = new Promise(function (resolve) {
+      var s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
+      s.onload = function () { resolve(window.confetti || null); };
+      s.onerror = function () { resolve(null); };
+      document.head.appendChild(s);
+    });
+    return _confettiLoading;
+  }
+
 
   function buildIntro(data, startTargetSelector, opts) {
     opts = opts || {};
@@ -128,9 +157,15 @@
     var content = make("main", { class: "lmc-container" });
     (data.sections || []).forEach(function (s, sIdx) {
       var sec = make("section", { class: "lmc-section" });
+      sec.setAttribute("data-section-id", s.id || s.title || ("section-" + sIdx));
+      // D1.1: section title wrap with progress ring (initial pct computed below in update())
+      var secTitleWrap = make("div", { class: "lmc-section-title-wrap" });
+      var ringEl = make("span", { class: "lmc-section-ring", "data-section-id": s.id || s.title || ("section-" + sIdx) }, ringSvg(0));
       var secTitle = make("h2", { class: "lmc-section-title" }, escapeHtml(s.title || ""));
       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(secTitle, "sections[" + sIdx + "].title");
-      sec.appendChild(secTitle);
+      secTitleWrap.appendChild(ringEl);
+      secTitleWrap.appendChild(secTitle);
+      sec.appendChild(secTitleWrap);
       if (s.description) {
         var secDesc = make("p", { class: "lmc-section-desc" }, escapeHtml(s.description));
         if (window.LM && window.LM.editMode) window.LM.editMode.registerField(secDesc, "sections[" + sIdx + "].description");
@@ -177,6 +212,7 @@
       '<input class="lmc-input" id="lmc-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" value="' + escapeHtml(state.email) + '" />' +
       '<button class="lmc-btn" type="submit">Email me my plan</button>' +
       '</form>' +
+      '<label class="lmc-checkbox-label" for="lmc-7day-optin"><input type="checkbox" id="lmc-7day-optin" checked /> Remind me about the items I didn\'t check, in 7 days</label>' +
       '<p class="lmc-note">No spam. One email, then you decide.</p>';
     content.appendChild(capture);
 
@@ -196,15 +232,87 @@
     function update() {
       var current = readState(data.slug);
       var done = 0, highGaps = 0, totalItems = 0;
-      (data.sections || []).forEach(function (s) {
-        (s.items || []).forEach(function (it) {
+      (data.sections || []).forEach(function (s, sIdx) {
+        var sectionItems = s.items || [];
+        var sectionDone = 0;
+        sectionItems.forEach(function (it) {
           totalItems++;
-          if (current.checked[it.id]) done++;
+          if (current.checked[it.id]) { done++; sectionDone++; }
           else if (it.impact === "high") highGaps++;
         });
+        // D1.1: recompute per-section ring on every toggle
+        var sid = s.id || s.title || ("section-" + sIdx);
+        var sectionPct = sectionItems.length ? Math.round((sectionDone / sectionItems.length) * 100) : 0;
+        var ringEl = root.querySelector('.lmc-section-ring[data-section-id="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
+        if (ringEl) ringEl.innerHTML = ringSvg(sectionPct);
       });
+      // D1.3: detect transition to 100% complete (only once per session)
+      try {
+        var celebratedKey = "ivan.checklist." + data.slug + ".celebrated";
+        var alreadyCelebrated = sessionStorage.getItem(celebratedKey) === "1";
+        if (done > 0 && done === totalItems && !alreadyCelebrated) {
+          sessionStorage.setItem(celebratedKey, "1");
+          fireCelebration(data, totalItems);
+        }
+      } catch (_) {}
     }
     update();
+
+    // D1.3: 100% completion celebration — confetti + LinkedIn badge generator
+    function fireCelebration(data, totalItems) {
+      loadConfetti().then(function (confetti) {
+        if (confetti) {
+          try {
+            confetti({
+              particleCount: 120,
+              spread: 80,
+              origin: { y: 0.4 },
+              colors: ["#2A8F65", "#4C6E3D", "#709A5D", "#F7F4EF"],
+            });
+            // Second burst from sides
+            setTimeout(function () {
+              try {
+                confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0, y: 0.6 }, colors: ["#2A8F65", "#4C6E3D"] });
+                confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1, y: 0.6 }, colors: ["#2A8F65", "#4C6E3D"] });
+              } catch (_) {}
+            }, 180);
+          } catch (_) {}
+        }
+        showCelebrationPanel(data, totalItems);
+        beacon("complete_celebrate", { answers: { total_items: totalItems } });
+      });
+    }
+
+    function showCelebrationPanel(data, totalItems) {
+      if (document.getElementById("lmc-celebration")) return;
+      var panel = make("div", { id: "lmc-celebration", class: "lmc-celebration", role: "dialog", "aria-modal": "true", "aria-labelledby": "lmc-celebration-h" });
+      panel.innerHTML =
+        '<div class="lmc-celebration-card">' +
+          '<div class="lmc-celebration-badge">Complete</div>' +
+          '<h3 id="lmc-celebration-h">You finished ' + escapeHtml(data.title || "the checklist") + '.</h3>' +
+          '<p>Save the win — generate a shareable Markdown badge for LinkedIn.</p>' +
+          '<div class="lmc-celebration-actions">' +
+            '<button class="lmc-btn" id="lmc-celebrate-share" type="button">Generate LinkedIn badge</button>' +
+            '<button class="lmc-btn lmc-btn-secondary" id="lmc-celebrate-close" type="button">Close</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(panel);
+      var close = function () { try { panel.remove(); } catch (_) {} };
+      document.getElementById("lmc-celebrate-close").addEventListener("click", close);
+      panel.addEventListener("click", function (e) { if (e.target === panel) close(); });
+      document.addEventListener("keydown", function escHandler(e) {
+        if (e.key === "Escape") { close(); document.removeEventListener("keydown", escHandler); }
+      });
+      document.getElementById("lmc-celebrate-share").addEventListener("click", function () {
+        var md = "Shipped all " + totalItems + " items from " + (data.title || "Ivan Manfredi's checklist") + ".\n\n" + location.href.split("?")[0];
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(md).then(function () { toast("Badge copied — paste into LinkedIn"); });
+        } else {
+          toast("Copy not supported in this browser");
+        }
+        beacon("share", { answers: { target: "celebration_badge" } });
+      });
+    }
 
     // Checkbox toggles
     root.querySelectorAll(".lmc-item").forEach(function (row) {
@@ -233,7 +341,8 @@
         var st = readState(data.slug); st.email = email; saveState(data.slug, st);
         var unchecked = [];
         (data.sections || []).forEach(function (s) { (s.items || []).forEach(function (it) { if (!st.checked[it.id]) unchecked.push({ section: s.id, item_id: it.id, impact: it.impact || null, text: (it.text || "").slice(0, 200) }); }); });
-        beacon("capture", { email: email, answers: { unchecked: unchecked, completion_pct: Math.round(((Object.keys(st.checked).filter(function (k) { return st.checked[k]; }).length) / (function(){var n=0;(data.sections||[]).forEach(function(s){n+=(s.items||[]).length;});return n||1;})()) * 100) } });
+        var sevenDay = !!((document.getElementById("lmc-7day-optin") || {}).checked);
+        beacon("capture", { email: email, answers: { unchecked: unchecked, want_7day_followup: sevenDay, completion_pct: Math.round(((Object.keys(st.checked).filter(function (k) { return st.checked[k]; }).length) / (function(){var n=0;(data.sections||[]).forEach(function(s){n+=(s.items||[]).length;});return n||1;})()) * 100) } });
         toast("Got it. Check your inbox in the next few minutes.");
         form.innerHTML = '<p style="font-weight:700;color:#00E676">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
       });
@@ -274,6 +383,20 @@
         location.reload();
       });
     }
+
+    // D1.2: observe high-impact items so the pulse animation fires when they enter viewport
+    try {
+      if (window.IntersectionObserver) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add("in-view"); io.unobserve(entry.target); }
+          });
+        }, { rootMargin: "0px 0px -10% 0px", threshold: 0.1 });
+        root.querySelectorAll(".lmc-item").forEach(function (el) { io.observe(el); });
+      } else {
+        root.querySelectorAll(".lmc-item").forEach(function (el) { el.classList.add("in-view"); });
+      }
+    } catch (_) {}
 
     // Fire view
     beacon("view", {});
