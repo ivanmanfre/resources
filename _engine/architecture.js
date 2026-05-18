@@ -1,7 +1,7 @@
-/* LM Architecture Engine — vanilla JS, renders an SVG system diagram from data.json,
- * opens a non-blocking side drawer per node, tracks visits in localStorage via
- * LM.readKV/writeKV, fires beacon events, evaluates gated CTAs, and exposes
- * LM.editMode wraps for inline editing of labels / panel content / edge labels.
+/* LM Architecture Engine — vanilla SVG renderer.
+ * Renders an interactive system diagram from data.json with click-to-drawer,
+ * inline brand-logo nodes, orthogonal edge routing, and a single flow pulse.
+ * No Cytoscape, no canvas, no data-URI hacks — every SVG element is real DOM.
  */
 (function () {
   "use strict";
@@ -9,66 +9,58 @@
   var TOOL = "architecture";
   var SVG_NS = "http://www.w3.org/2000/svg";
 
-  // ── Brand logo registry ───────────────────────────────────────────────
-  // Each entry: { color, path, viewBox (default "0 0 24 24"), match: [keywords] }
-  // Paths are simpleicons.org-style single-path SVGs. Color is brand primary.
+  // ── Brand registry ────────────────────────────────────────────────────
+  // Authoritative simpleicons.org 24×24 viewBox paths. Inline → no clipping.
   var LOGOS = {
-    clickup:  { color: "#7B68EE", match: ["clickup"], path: "M2.035 17.039l3.78-2.9c2.013 2.625 4.155 3.84 6.508 3.84 2.34 0 4.421-1.227 6.34-3.794l3.806 2.852c-2.766 3.717-6.197 5.704-10.146 5.704-3.937 0-7.376-1.974-10.288-5.703zM12.31.918l-7.706 6.643 3.092 3.59 4.628-3.99 4.605 3.997 3.103-3.585L12.31.918z" },
-    claude:   { color: "#D97757", match: ["claude", "anthropic"], path: "M4.709 15.955l4.72-2.647.079-.23-.079-.128h-.23l-.79-.048-2.695-.073-2.337-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.517.103 2.276.158 1.65.097 2.447.255h.388l.055-.157-.134-.098-.103-.097-2.358-1.599-2.552-1.687-1.336-.972-.722-.491-.365-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.146-.103.018-.072-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.276.156 6.68 0l.971.398 1.247 1.392 1.604 2.7L7.122 4.61l.85 2.78 1.541-.486.085.523-.395.078-2.05.42 1.166 5.31z" },
-    anthropic:{ color: "#D97757", match: ["anthropic"], path: "M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.461H0L6.57 3.52zm4.132 9.953L8.453 7.687 6.205 13.473z" },
-    supabase: { color: "#3ECF8E", match: ["supabase"], path: "M11.9 1.531 1.522 14.366c-.71.878-.087 2.183 1.04 2.183h10.378v6.92c0 1.524 1.93 2.18 2.86.97L24.478 9.634c.71-.878.087-2.183-1.04-2.183H13.06V.531c0-1.524-1.93-2.18-2.86-.97 0 0-.001 0-.001 0z" },
-    n8n:      { color: "#EA4B71", match: ["n8n"], path: "M21 8a3 3 0 0 0-2.83 2H15.83A3 3 0 0 0 13 7.17V5.83a3 3 0 1 0-2 0v1.34A3 3 0 0 0 8.17 10H6.83A3 3 0 1 0 8 13H6.83A3 3 0 0 0 4 15.83v2.34a3 3 0 1 0 2 0v-2.34A3 3 0 0 0 7 13h1.17A3 3 0 0 0 11 15.83v2.34a3 3 0 1 0 2 0v-2.34A3 3 0 0 0 15.83 13h2.34A3 3 0 1 0 21 8z" },
-    linkedin: { color: "#0A66C2", match: ["linkedin", "li-"], path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" },
-    resend:   { color: "#000000", match: ["resend", "email", "nurture"], path: "M22 5.508v12.984A3.515 3.515 0 0 1 18.494 22H5.506A3.515 3.515 0 0 1 2 18.492V5.508A3.515 3.515 0 0 1 5.506 2h12.988A3.515 3.515 0 0 1 22 5.508zM10.484 6.04H7.41c-.247 0-.439.198-.439.444v11.022c0 .247.192.451.439.451h2.137c.246 0 .438-.204.438-.45v-3.518h1.42l2.16 3.701c.094.155.255.267.43.267h2.473c.34 0 .553-.366.382-.66l-2.298-3.927c1.305-.572 2.221-1.886 2.221-3.414 0-2.183-1.755-3.916-3.927-3.916h-.001zm-.001 5.687h-1.487V8.39h1.487c.91 0 1.66.749 1.66 1.668 0 .92-.75 1.669-1.66 1.669z" },
-    whatsapp: { color: "#25D366", match: ["whatsapp", "whapi"], path: "M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.711.306 1.265.489 1.698.626.713.226 1.362.194 1.876.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" },
-    apify:    { color: "#00B886", match: ["apify"], path: "M12 0 0 12l12 12 12-12L12 0zm0 4.5L19.5 12 12 19.5 4.5 12 12 4.5z" },
-    openai:   { color: "#412991", match: ["openai", "gpt"], path: "M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.677l5.815 3.354-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.787a4.49 4.49 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" },
-    unipile:  { color: "#5B6CFF", match: ["unipile", "dm send"], path: "M2 21l21-9L2 3v7l15 2-15 2v7z" },
-    railway:  { color: "#0B0D0E", match: ["railway"], path: "M22 11.1c-1.7.2-9.3 1.4-12.4 1.4-2.5 0-7-.7-9.6-1.1v1.9c2.6.4 7.1 1.1 9.6 1.1 3.1 0 10.7-1.2 12.4-1.4v-1.9zM22 7c-1.7.5-9.3 2.2-12.4 2.2-2.5 0-7-1.2-9.6-1.9V9c2.6.7 7.1 1.9 9.6 1.9C12.7 10.9 20.3 9.3 22 8.8V7zm-4.5 8.4c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3z" },
-    firecrawl:{ color: "#F25C36", match: ["firecrawl", "crawl", "scrape"], path: "M13.5 1.5c-.5 3-2.5 4.5-4 6-2 2-3.5 4-3.5 7 0 4.7 3.8 8.5 8.5 8.5s8.5-3.8 8.5-8.5c0-3.5-2-6.5-4.5-9-1.5-1.5-3.5-2.5-5-4zm-.5 7c1 1.5 3 3 3 5.5 0 2-1.5 3.5-3.5 3.5s-3.5-1.5-3.5-3.5c0-1.5 1-2.5 2-3.5.7-.7 1.5-1.3 2-2z" }
+    clickup:  { color: "#7B68EE", path: "M2 18.439l3.69-2.828c1.961 2.56 4.044 3.739 6.363 3.739 2.307 0 4.33-1.166 6.203-3.704L22 18.405C19.298 22.065 15.941 24 12.053 24 8.178 24 4.788 22.078 2 18.439zM12.04 6.15l-6.568 5.66-3.036-3.52L12.055 0l9.543 8.296-3.05 3.509z" },
+    anthropic:{ color: "#D97757", path: "M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z" },
+    claude:   { color: "#D97757", path: "m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z" },
+    supabase: { color: "#3ECF8E", path: "M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z" },
+    n8n:      { color: "#EA4B71", path: "M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632" },
+    resend:   { color: "#000000", path: "M14.679 0c4.648 0 7.413 2.765 7.413 6.434s-2.765 6.434-7.413 6.434H12.33L24 24h-8.245l-8.88-8.44c-.636-.588-.93-1.273-.93-1.86 0-.831.587-1.565 1.713-1.883l4.574-1.224c1.737-.465 2.936-1.81 2.936-3.572 0-2.153-1.761-3.4-3.939-3.4H0V0z" },
+    linkedin: { color: "#0A66C2", path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" },
+    // Custom (no simpleicons coverage)
+    firecrawl:{ color: "#F25C36", path: "M13 1.5c-.2 2.4-1.4 4.4-3 6-2 2-3.5 4-3.5 7 0 4.4 3 7.5 6.5 7.5s6.5-3.1 6.5-7.5c0-3-1.5-5.3-3.4-7.5C14.6 5.5 13.4 3.7 13 1.5zm-1 7c.7 1.2 2 2.5 2 4.5 0 1.7-1.3 3-3 3s-3-1.3-3-3c0-1.2.6-2 1.4-2.7.6-.5 1.2-1.1 1.6-1.8z" },
+    unipile:  { color: "#5B6CFF", path: "M2 21l21-9L2 3l3 9-3 9zm4-7.5L19 12 6 10.5l1 1.5-1 1.5z" }
   };
 
-  // Normalize a brand label (from data.json `stack[0]`) → registry key.
-  // "Anthropic Claude" → "claude", "Supabase Postgres" → "supabase",
-  // "UniPile webhook" → "unipile", "n8n schedule trigger" → "n8n", etc.
-  function logoForStack(stackEntry) {
-    if (!stackEntry) return null;
-    var s = String(stackEntry).toLowerCase();
-    for (var k in LOGOS) {
-      var entry = LOGOS[k];
-      for (var i = 0; i < entry.match.length; i++) {
-        if (s.indexOf(entry.match[i]) !== -1) return entry;
+  // Match by label first, then by panel.stack[0].
+  // Order matters — specific names first.
+  var LOGO_MATCH = [
+    { keys: ["clickup"],                              brand: "clickup" },
+    { keys: ["claude", "anthropic"],                  brand: "claude" },
+    { keys: ["linkedin"],                             brand: "linkedin" },
+    { keys: ["supabase"],                             brand: "supabase" },
+    { keys: ["resend", "nurture"],                    brand: "resend" },
+    { keys: ["whatsapp", "whapi"],                    brand: "anthropic" }, // unused fallback
+    { keys: ["firecrawl", "crawl", "scrape", "research"], brand: "firecrawl" },
+    { keys: ["unipile", "dm send", "comment gate"],   brand: "unipile" },
+    { keys: ["n8n", "compile", "schedule", "cadence"], brand: "n8n" }
+  ];
+
+  function findBrand(node) {
+    var lc = String((node && node.label) || "").toLowerCase();
+    var i, j, m;
+    for (i = 0; i < LOGO_MATCH.length; i++) {
+      m = LOGO_MATCH[i];
+      for (j = 0; j < m.keys.length; j++) {
+        if (lc.indexOf(m.keys[j]) !== -1) return LOGOS[m.brand];
+      }
+    }
+    var stack0 = node && node.panel && node.panel.stack && node.panel.stack[0];
+    if (stack0) {
+      var sc = String(stack0).toLowerCase();
+      for (i = 0; i < LOGO_MATCH.length; i++) {
+        m = LOGO_MATCH[i];
+        for (j = 0; j < m.keys.length; j++) {
+          if (sc.indexOf(m.keys[j]) !== -1) return LOGOS[m.brand];
+        }
       }
     }
     return null;
   }
 
-  // Generic glyphs by node type (used when no brand match).
-  var TYPE_GLYPHS = {
-    trigger:   { color: "#B8860B", path: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },                                    // lightning bolt
-    transform: { color: "#1E5B8C", path: "M12 2l2.5 5 5.5.8-4 4 1 5.5L12 14.8 7 17.3l1-5.5-4-4 5.5-.8L12 2z" },  // star (transform)
-    decision:  { color: "#7A2E8C", path: "M12 2L2 12l10 10 10-10L12 2zm0 4.4L17.6 12 12 17.6 6.4 12 12 6.4z" }, // diamond
-    storage:   { color: "#A0522D", path: "M12 3c-4.4 0-8 1.3-8 3v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3zm0 2c3.9 0 6 1 6 1s-2.1 1-6 1-6-1-6-1 2.1-1 6-1z" }, // cylinder
-    output:    { color: "#1A6B3F", path: "M2 21l21-9L2 3v7l15 2-15 2v7z" }                                       // paper plane
-  };
-
-  // Resolve a logo for a node. Priority: label keyword (e.g. "LinkedIn publish"
-  // → LinkedIn brand reads instantly), then panel.stack[0] (the technical tool
-  // when the label is generic — "Compile context" → n8n), then type glyph.
-  function findLogo(node) {
-    var lc = String((node && node.label) || "").toLowerCase();
-    for (var k in LOGOS) {
-      var entry = LOGOS[k];
-      for (var i = 0; i < entry.match.length; i++) {
-        if (lc.indexOf(entry.match[i]) !== -1) return entry;
-      }
-    }
-    var stack0 = node && node.panel && Array.isArray(node.panel.stack) && node.panel.stack[0];
-    var fromStack = logoForStack(stack0);
-    if (fromStack) return fromStack;
-    return TYPE_GLYPHS[(node && node.type) || "transform"] || TYPE_GLYPHS.transform;
-  }
-
+  // ── Helpers ───────────────────────────────────────────────────────────
   function SLUG() { return window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || ""; }
   function $(s, c) { return (c || document).querySelector(s); }
   function make(tag, attrs, html) { return window.LM.make(tag, attrs, html); }
@@ -80,14 +72,11 @@
   }
   function beacon(event, extra) { window.LM.beacon(TOOL, event, extra || {}); }
 
-  // ── State (per page load) ──────────────────────────────────────────────
+  // ── State ─────────────────────────────────────────────────────────────
   var state = {
-    data: null,
-    root: null,
-    drawer: null,
-    activeNodeId: null,
-    viewedNodes: {},
-    viewStartedAt: Date.now()
+    data: null, root: null, drawer: null, activeNodeId: null,
+    viewedNodes: {}, viewStartedAt: Date.now(),
+    svg: null, nodeEls: {}, edgeEls: [], flowPulseTimer: null
   };
 
   function getViewedKV() { return window.LM.readKV(TOOL, SLUG(), "viewed", {}) || {}; }
@@ -99,7 +88,7 @@
     return n;
   }
 
-  // ── CTA gating ─────────────────────────────────────────────────────────
+  // ── CTA gating ────────────────────────────────────────────────────────
   function ctaCtx() {
     return {
       viewed_node_count: totalViewedCount(),
@@ -107,7 +96,6 @@
       time_on_page: Math.round((Date.now() - state.viewStartedAt) / 1000)
     };
   }
-  // Whitelist mirrors checklist / calculator engines.
   function evalWhen(expr, ctx) {
     try {
       var allowed = /^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\"\']+$/;
@@ -120,18 +108,15 @@
     if (!Array.isArray(data.ctas) || !data.ctas.length) return null;
     for (var i = 0; i < data.ctas.length; i++) {
       var c = data.ctas[i];
-      if (c && c.when) {
-        if (evalWhen(c.when, ctx)) return c;
-      }
+      if (c && c.when && evalWhen(c.when, ctx)) return c;
     }
-    // Final fallback = the last entry (whether or not it has a `when`).
     for (var j = data.ctas.length - 1; j >= 0; j--) {
       if (!data.ctas[j].when) return data.ctas[j];
     }
     return data.ctas[data.ctas.length - 1] || null;
   }
 
-  // ── Hero ───────────────────────────────────────────────────────────────
+  // ── Hero ──────────────────────────────────────────────────────────────
   function renderHero(data) {
     var hero = make("section", { class: "lma-hero" });
     hero.appendChild(make("span", { class: "lma-badge" }, "System diagram"));
@@ -158,427 +143,325 @@
     return hero;
   }
 
-  // ── Cytoscape.js diagram ──────────────────────────────────────────────
-  // CDN scripts loaded on-demand the first time a diagram renders.
-  var CY_CDN = {
-    cy:        "https://cdn.jsdelivr.net/npm/cytoscape@3.30.4/dist/cytoscape.min.js",
-    dagre:     "https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js",
-    cyDagre:   "https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.js",
-    navJs:     "https://cdn.jsdelivr.net/npm/cytoscape-navigator@2.0.2/cytoscape-navigator.min.js",
-    navCss:    "https://cdn.jsdelivr.net/npm/cytoscape-navigator@2.0.2/cytoscape.js-navigator.css"
-  };
-  function loadScript(src) {
-    return new Promise(function (res, rej) {
-      var s = document.createElement("script");
-      s.src = src; s.async = true;
-      s.onload = function () { res(); };
-      s.onerror = function () { rej(new Error("load failed: " + src)); };
-      document.head.appendChild(s);
-    });
-  }
-  function loadCss(href) {
-    return new Promise(function (res) {
-      var l = document.createElement("link");
-      l.rel = "stylesheet"; l.href = href;
-      l.onload = function () { res(); };
-      l.onerror = function () { res(); }; // CSS load failure is non-fatal
-      document.head.appendChild(l);
-    });
-  }
-  var _cyDepsPromise = null;
-  function loadCytoscapeDeps() {
-    if (_cyDepsPromise) return _cyDepsPromise;
-    // Core (cy + dagre) must succeed. Navigator (minimap) is optional.
-    _cyDepsPromise = (window.cytoscape ? Promise.resolve() : loadScript(CY_CDN.cy))
-      .then(function () { return window.dagre ? null : loadScript(CY_CDN.dagre); })
-      .then(function () { return loadScript(CY_CDN.cyDagre); })
-      .then(function () {
-        return loadScript(CY_CDN.navJs).then(function () {
-          return loadCss(CY_CDN.navCss);
-        }).catch(function () { /* navigator is optional */ });
-      });
-    return _cyDepsPromise;
-  }
+  // ── SVG diagram ───────────────────────────────────────────────────────
+  // Layout constants. Hand-tuned x/y from data.json are scaled to give
+  // breathing room — original 200×90 nodes had 60px x-stride, my 240×88
+  // nodes need ~78px stride, so x*1.30.
+  var NODE_W = 240;
+  var NODE_H = 88;
+  var TILE_SIZE = 56;
+  var TILE_RX = 12;
+  var TILE_MARGIN = 14;
+  var ICON_PAD = 7;
+  var ICON_SCALE = (TILE_SIZE - ICON_PAD * 2) / 24;  // 24-unit viewBox → fits tile
+  var SCALE_X = 1.30;
+  var SCALE_Y = 1.10;
+  var VB_PAD = 36;
+  var EDGE_R = 10;        // corner radius on orthogonal turns
 
-  // Brand logo → SVG data URI used as the node's primary visual element.
-  // Renders the brand mark on a soft rounded-square tile (premium card feel)
-  // at 82% scale so the icon reads instantly, not as a dot in white space.
-  function logoDataUri(logo) {
-    // scale(0.82) keeps the icon at 19.7/24 ≈ 82% of the tile, centered.
-    // Math: (24 - 24*0.82)/2 / 0.82 = 2.634 → translate(2.634,2.634).
-    var svg =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' +
-      '<rect x="0" y="0" width="24" height="24" rx="6" ry="6" fill="' + logo.color + '"/>' +
-      '<g transform="scale(0.82) translate(2.634,2.634)" fill="#FFFFFF">' +
-      '<path d="' + logo.path + '"/></g></svg>';
-    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
-  }
-
-  // Convert data.json diagram → Cytoscape elements.
-  function toElements(data) {
-    var d = data.diagram || {};
-    var els = [];
-    (d.nodes || []).forEach(function (n) {
-      var logo = findLogo(n);
-      var el = {
-        group: "nodes",
-        data: {
-          id: n.id,
-          label: n.label || n.id,
-          type: n.type || "transform",
-          typeLabel: (n.type || "transform").toUpperCase(),
-          logoUri: logoDataUri(logo),
-          panel: n.panel || {},
-          visited: !!state.viewedNodes[n.id]
-        }
-      };
-      // Honor hand-tuned positions, but scale them up: the original SVG
-      // coords assume 200×90 nodes (60px x-stride gaps); cy renders nodes
-      // at 260×96, so without scaling adjacent nodes touch.
-      if (typeof n.x === "number" && typeof n.y === "number") {
-        el.position = { x: n.x * 1.40, y: n.y * 1.10 };
-      }
-      els.push(el);
-    });
-    (d.edges || []).forEach(function (e, i) {
-      els.push({
-        group: "edges",
-        data: {
-          id: "e_" + i,
-          source: e.from,
-          target: e.to,
-          label: e.label || "",
-          edgeIdx: i
-        }
-      });
-    });
-    return els;
-  }
-
-  // Use preset positions when the data has them (every node has x,y);
-  // fall back to dagre LR for graphs authored without coordinates.
-  function pickLayout(data) {
-    var nodes = (data.diagram && data.diagram.nodes) || [];
-    var allPositioned = nodes.length > 0 && nodes.every(function (n) {
-      return typeof n.x === "number" && typeof n.y === "number";
-    });
-    if (allPositioned) {
-      return { name: "preset", padding: 24, fit: true, animate: false };
-    }
+  function nodeBox(n) {
+    var cx = (n.x || 0) * SCALE_X;
+    var cy = (n.y || 0) * SCALE_Y;
     return {
-      name: "dagre",
-      rankDir: (data.diagram && data.diagram.rankDir) || "LR",
-      nodeSep: 36,
-      edgeSep: 18,
-      rankSep: 90,
-      padding: 24,
-      animate: false,
-      ranker: "tight-tree"
+      cx: cx, cy: cy,
+      x: cx - NODE_W / 2, y: cy - NODE_H / 2,
+      w: NODE_W, h: NODE_H,
+      left: cx - NODE_W / 2, right: cx + NODE_W / 2,
+      top: cy - NODE_H / 2, bottom: cy + NODE_H / 2
     };
   }
 
-  // Cytoscape style sheet (DM Serif Display + Source Serif 4 to match the brand).
-  function cyStyle() {
-    return [
-      { selector: "node", style: {
-        "shape": "round-rectangle",
-        "background-color": "#FFFFFF",
-        "background-image": "data(logoUri)",
-        "background-image-containment": "inside",
-        "background-fit": "none",
-        "background-width": 64,
-        "background-height": 64,
-        "background-position-x": "0%",
-        "background-position-y": "50%",
-        "background-offset-x": 18,
-        "background-offset-y": 0,
-        "background-clip": "none",
-        "border-color": "rgba(26,26,26,0.16)",
-        "border-width": 1,
-        "border-opacity": 1,
-        "width": 280,
-        "height": 104,
-        "label": "data(label)",
-        "color": "#1A1A1A",
-        "font-family": "DM Serif Display, Georgia, serif",
-        "font-size": 20,
-        "font-weight": 400,
-        "text-valign": "center",
-        "text-halign": "center",
-        "text-wrap": "wrap",
-        "text-max-width": 170,
-        "text-margin-x": 36,
-        "padding": 12,
-        "transition-property": "border-color, border-width, overlay-opacity",
-        "transition-duration": "180ms"
-      }},
-      // Hover lift — slight glow so the cursor feels reactive.
-      { selector: "node:active, node.is-hover", style: {
-        "border-width": 2.5,
-        "overlay-color": "#1A1A1A",
-        "overlay-opacity": 0.04,
-        "overlay-padding": 4
-      }},
-      // Type pill (top-right corner) implemented via overlay label
-      { selector: "node[typeLabel]", style: {
-        "text-outline-color": "#FFFFFF",
-        "text-outline-width": 0
-      }},
-      { selector: 'node[type = "trigger"]',   style: { "background-color": "#FFF7E4" }},
-      { selector: 'node[type = "transform"]', style: { "background-color": "#EAF3FB" }},
-      { selector: 'node[type = "output"]',    style: { "background-color": "#E4F2EB" }},
-      { selector: 'node[type = "decision"]',  style: { "background-color": "#F4ECF8" }},
-      { selector: 'node[type = "storage"]',   style: { "background-color": "#FBE9DD" }},
-      { selector: "node[?visited]", style: { "border-color": "#2A8F65" }},
-      { selector: "node:active, node.is-active", style: {
-        "border-color": "#2A8F65",
-        "border-width": 4,
-        "overlay-color": "#2A8F65",
-        "overlay-opacity": 0.08,
-        "overlay-padding": 6
-      }},
-      { selector: "node:selected", style: {
-        "border-color": "#2A8F65",
-        "border-width": 3,
-        "overlay-opacity": 0
-      }},
-      // Edges — orthogonal routing (taxi) so paths never cut through node
-      // bodies; rounded corners; horizontal labels offset 35% from source so
-      // they sit cleanly on the elbow rather than the midpoint.
-      { selector: "edge", style: {
-        "width": 2,
-        "line-color": "rgba(26,26,26,0.55)",
-        "curve-style": "taxi",
-        "taxi-direction": "auto",
-        "taxi-turn": "50%",
-        "taxi-turn-min-distance": 18,
-        "taxi-radius": 8,
-        "target-arrow-shape": "triangle-backcurve",
-        "target-arrow-color": "rgba(26,26,26,0.78)",
-        "target-arrow-fill": "filled",
-        "arrow-scale": 1.4,
-        "label": "data(label)",
-        "font-family": "Source Serif 4, Georgia, serif",
-        "font-size": 12,
-        "font-weight": 600,
-        "color": "#1A1A1A",
-        "text-background-color": "#FFFFFF",
-        "text-background-opacity": 1,
-        "text-background-padding": "5px",
-        "text-background-shape": "roundrectangle",
-        "text-border-color": "rgba(26,26,26,0.16)",
-        "text-border-width": 1,
-        "text-border-opacity": 1,
-        "z-index": 5
-      }},
-      // Carry the green flow when the edge is being "pulsed" or hovered.
-      { selector: "edge.is-flow-hover, edge:selected, edge.is-pulsing", style: {
-        "line-color": "#2A8F65",
-        "target-arrow-color": "#2A8F65",
-        "width": 2.8,
-        "z-index": 20
-      }},
-      // Heartbeat halo on trigger nodes — set/cleared by the pulse loop.
-      { selector: "node.is-heartbeat", style: {
-        "overlay-color": "#2A8F65",
-        "overlay-opacity": 0.14,
-        "overlay-padding": 8
-      }}
-    ];
+  function computeViewBox(nodes) {
+    if (!nodes.length) return { x: 0, y: 0, w: 1000, h: 600 };
+    var boxes = nodes.map(nodeBox);
+    var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    boxes.forEach(function (b) {
+      if (b.left < minX) minX = b.left;
+      if (b.right > maxX) maxX = b.right;
+      if (b.top < minY) minY = b.top;
+      if (b.bottom > maxY) maxY = b.bottom;
+    });
+    return {
+      x: minX - VB_PAD, y: minY - VB_PAD,
+      w: (maxX - minX) + VB_PAD * 2,
+      h: (maxY - minY) + VB_PAD * 2
+    };
   }
 
-  function renderCy(data) {
-    var stage = make("section", { class: "lma-stage" });
-    var loading = make("div", { class: "lma-cy-loading" }, "Loading diagram…");
-    stage.appendChild(loading);
+  // Orthogonal L-path. Picks source/target sides based on dominant delta,
+  // routes through a single elbow with rounded corners.
+  function edgePath(s, t) {
+    var dx = t.cx - s.cx, dy = t.cy - s.cy;
+    var horizontal = Math.abs(dx) >= Math.abs(dy);
+    var sx, sy, tx, ty, lx, ly, d;
 
-    var holder = make("div", { class: "lma-cy-holder" });
-    var cyContainer = make("div", { class: "lma-cy-container", id: "lma-cy-container" });
-    var minimap = make("div", { class: "lma-cy-minimap", id: "lma-cy-minimap" });
-    var controls = make("div", { class: "lma-cy-controls" });
-    controls.innerHTML =
-      '<button type="button" data-cy-act="zoom-in"  aria-label="Zoom in">+</button>' +
-      '<button type="button" data-cy-act="zoom-out" aria-label="Zoom out">−</button>' +
-      '<button type="button" data-cy-act="fit"      aria-label="Fit to view">⤧</button>' +
-      '<button type="button" data-cy-act="reset"    aria-label="Reset view">⟲</button>' +
-      '<button type="button" data-cy-act="minimap"  aria-label="Toggle minimap">▢</button>';
-    holder.appendChild(cyContainer);
-    holder.appendChild(controls);
-    holder.appendChild(minimap);
-    holder.style.display = "none";
-    controls.style.display = "none";
+    if (horizontal) {
+      sx = dx > 0 ? s.right : s.left;
+      tx = dx > 0 ? t.left  : t.right;
+      sy = s.cy; ty = t.cy;
+      // Stop short of the target by 4px so the arrowhead sits just outside the card edge
+      var endTx = tx + (dx > 0 ? -2 : 2);
+      if (Math.abs(sy - ty) < 1) {
+        d = "M" + sx + " " + sy + " L" + endTx + " " + ty;
+        lx = (sx + endTx) / 2; ly = sy - 10;
+      } else {
+        var midX = (sx + endTx) / 2;
+        var hDir = Math.sign(endTx - sx);
+        var vDir = Math.sign(ty - sy);
+        d = "M" + sx + " " + sy +
+            " L" + (midX - EDGE_R * hDir) + " " + sy +
+            " Q" + midX + " " + sy + " " + midX + " " + (sy + EDGE_R * vDir) +
+            " L" + midX + " " + (ty - EDGE_R * vDir) +
+            " Q" + midX + " " + ty + " " + (midX + EDGE_R * hDir) + " " + ty +
+            " L" + endTx + " " + ty;
+        lx = midX; ly = (sy + ty) / 2;
+      }
+    } else {
+      sx = s.cx; tx = t.cx;
+      sy = dy > 0 ? s.bottom : s.top;
+      ty = dy > 0 ? t.top    : t.bottom;
+      var endTy = ty + (dy > 0 ? -2 : 2);
+      if (Math.abs(sx - tx) < 1) {
+        d = "M" + sx + " " + sy + " L" + tx + " " + endTy;
+        lx = sx + 10; ly = (sy + endTy) / 2;
+      } else {
+        var midY = (sy + endTy) / 2;
+        var vDir2 = Math.sign(endTy - sy);
+        var hDir2 = Math.sign(tx - sx);
+        d = "M" + sx + " " + sy +
+            " L" + sx + " " + (midY - EDGE_R * vDir2) +
+            " Q" + sx + " " + midY + " " + (sx + EDGE_R * hDir2) + " " + midY +
+            " L" + (tx - EDGE_R * hDir2) + " " + midY +
+            " Q" + tx + " " + midY + " " + tx + " " + (midY + EDGE_R * vDir2) +
+            " L" + tx + " " + endTy;
+        lx = (sx + tx) / 2; ly = midY;
+      }
+    }
+    return { d: d, lx: lx, ly: ly };
+  }
+
+  function buildLogoTile(brand) {
+    var g = svgEl("g", { class: "lma-node-tile" });
+    var fill = (brand && brand.color) || "#5a5752";
+    g.appendChild(svgEl("rect", {
+      width: TILE_SIZE, height: TILE_SIZE,
+      rx: TILE_RX, ry: TILE_RX,
+      fill: fill
+    }));
+    if (brand && brand.path) {
+      var iconG = svgEl("g", {
+        transform: "translate(" + ICON_PAD + "," + ICON_PAD + ") scale(" + ICON_SCALE + ")",
+        fill: "#FFFFFF"
+      });
+      iconG.appendChild(svgEl("path", { d: brand.path }));
+      g.appendChild(iconG);
+    } else {
+      var dot = svgEl("circle", {
+        cx: TILE_SIZE / 2, cy: TILE_SIZE / 2, r: 8,
+        fill: "#FFFFFF"
+      });
+      g.appendChild(dot);
+    }
+    return g;
+  }
+
+  function renderSvg(data) {
+    var stage = make("section", { class: "lma-stage" });
+    var holder = make("div", { class: "lma-svg-holder" });
     stage.appendChild(holder);
 
-    loadCytoscapeDeps().then(function () {
-      try {
-        // Register dagre extension
-        if (window.cytoscape && window.cytoscapeDagre) {
-          window.cytoscape.use(window.cytoscapeDagre);
-        }
-        var cy = window.cytoscape({
-          container: cyContainer,
-          elements: toElements(data),
-          style: cyStyle(),
-          layout: pickLayout(data),
-          minZoom: 0.25,
-          maxZoom: 2.5,
-          wheelSensitivity: 0.22,
-          boxSelectionEnabled: false,
-          autoungrabify: true
-        });
+    var nodes = (data.diagram && data.diagram.nodes) || [];
+    var edges = (data.diagram && data.diagram.edges) || [];
+    var vb = computeViewBox(nodes);
 
-        state.cy = cy;
-
-        // Navigator (minimap) is lazy-initialized when the user toggles it on.
-        function ensureMinimap() {
-          if (state.navigator || !cy.navigator) return;
-          try {
-            state.navigator = cy.navigator({
-              container: minimap,
-              viewLiveFramerate: 0,
-              thumbnailEventFramerate: 30,
-              dblClickDelay: 200,
-              removeCustomContainer: false,
-              rerenderDelay: 100
-            });
-          } catch (_) {}
-        }
-        state.ensureMinimap = ensureMinimap;
-
-        // Tap node → drawer
-        cy.on("tap", "node", function (evt) {
-          var d = evt.target.data();
-          // Build a node-like object for openDrawerForNode
-          openDrawerForNode({
-            id: d.id, label: d.label, type: d.type, panel: d.panel
-          });
-        });
-        // Tap empty space → close drawer
-        cy.on("tap", function (evt) {
-          if (evt.target === cy) closeDrawer();
-        });
-        // Hover edge → emphasize endpoints
-        cy.on("mouseover", "edge", function (evt) {
-          evt.target.addClass("is-flow-hover");
-          evt.target.connectedNodes().addClass("is-active");
-        });
-        cy.on("mouseout", "edge", function (evt) {
-          evt.target.removeClass("is-flow-hover");
-          evt.target.connectedNodes().removeClass("is-active");
-        });
-        // Hover node → lift node + emphasize incident edges
-        cy.on("mouseover", "node", function (evt) {
-          evt.target.addClass("is-hover");
-          evt.target.connectedEdges().addClass("is-flow-hover");
-        });
-        cy.on("mouseout", "node", function (evt) {
-          evt.target.removeClass("is-hover");
-          evt.target.connectedEdges().removeClass("is-flow-hover");
-        });
-
-        // Motion system: heartbeat on triggers + periodic flow pulse along the
-        // longest source→sink path. No constant animation — it numbs the eye;
-        // periodic pulses read as "alive" without becoming background noise.
-        if (state.cyAnimInterval) clearInterval(state.cyAnimInterval);
-        if (state.cyHeartbeat) clearInterval(state.cyHeartbeat);
-        if (state.cyPulseTimer) clearTimeout(state.cyPulseTimer);
-
-        var triggerNodes = cy.nodes('node[type = "trigger"]');
-        // Heartbeat: trigger nodes pulse a sage halo every 2.6s.
-        state.cyHeartbeat = setInterval(function () {
-          triggerNodes.addClass("is-heartbeat");
-          setTimeout(function () { triggerNodes.removeClass("is-heartbeat"); }, 700);
-        }, 2600);
-
-        // Build the longest path from any trigger to any sink (BFS).
-        function longestPath() {
-          var sources = cy.nodes().filter(function (n) { return n.indegree(false) === 0; });
-          var best = [];
-          sources.forEach(function (src) {
-            var stack = [[src, [src]]];
-            while (stack.length) {
-              var top = stack.pop();
-              var n = top[0], path = top[1];
-              var outs = n.outgoers("node");
-              if (!outs.length) { if (path.length > best.length) best = path; continue; }
-              outs.forEach(function (o) {
-                if (path.indexOf(o) === -1) stack.push([o, path.concat([o])]);
-              });
-            }
-          });
-          return best;
-        }
-        var pulsePath = longestPath();
-
-        function runPulse() {
-          if (!pulsePath || pulsePath.length < 2) return;
-          for (var i = 0; i < pulsePath.length - 1; i++) {
-            (function (idx) {
-              setTimeout(function () {
-                var a = pulsePath[idx], b = pulsePath[idx + 1];
-                var e = a.edgesTo(b);
-                e.addClass("is-pulsing");
-                setTimeout(function () { e.removeClass("is-pulsing"); }, 520);
-              }, idx * 240);
-            })(i);
-          }
-        }
-        // First pulse after a beat so the diagram settles; then every ~5s.
-        state.cyPulseTimer = setTimeout(function loop() {
-          runPulse();
-          state.cyPulseTimer = setTimeout(loop, 5200);
-        }, 900);
-
-        // Wire controls
-        controls.addEventListener("click", function (ev) {
-          var btn = ev.target.closest("[data-cy-act]");
-          if (!btn) return;
-          var act = btn.getAttribute("data-cy-act");
-          if (act === "zoom-in") cy.zoom({ level: cy.zoom() * 1.25, renderedPosition: { x: cy.width()/2, y: cy.height()/2 } });
-          else if (act === "zoom-out") cy.zoom({ level: cy.zoom() * 0.8, renderedPosition: { x: cy.width()/2, y: cy.height()/2 } });
-          else if (act === "fit") cy.fit(null, 40);
-          else if (act === "reset") { cy.reset(); cy.fit(null, 40); }
-          else if (act === "minimap") {
-            var willShow = !minimap.classList.contains("is-visible");
-            if (willShow) ensureMinimap();
-            minimap.classList.toggle("is-visible");
-            btn.classList.toggle("is-active");
-          }
-        });
-
-        // Fit to viewport. No zoom cap — preset positions are designed
-        // for the container's aspect ratio; capping would crop edges.
-        function refit() {
-          try {
-            cy.resize();
-            cy.fit(null, 28);
-          } catch (_) {}
-        }
-        cy.one("layoutstop", function () { refit(); });
-        setTimeout(refit, 80);
-        setTimeout(refit, 320);
-        // Refit on container resize
-        var ro = (typeof ResizeObserver !== "undefined") ? new ResizeObserver(function () {
-          refit();
-        }) : null;
-        if (ro) ro.observe(cyContainer);
-        state._ro = ro;
-
-        loading.remove();
-        holder.style.display = "block";
-        controls.style.display = "flex";
-        // Minimap is opt-in via the [▢] control to avoid sizing quirks on first paint.
-      } catch (e) {
-        loading.textContent = "Diagram failed to load: " + (e && e.message);
-      }
-    }).catch(function (e) {
-      loading.textContent = "Diagram dependencies failed to load: " + (e && e.message);
+    var svg = svgEl("svg", {
+      viewBox: vb.x + " " + vb.y + " " + vb.w + " " + vb.h,
+      preserveAspectRatio: "xMidYMid meet",
+      class: "lma-diagram",
+      role: "img",
+      "aria-label": data.title || "System diagram"
     });
 
+    // Defs: two arrowhead markers (default + green for pulse).
+    var defs = svgEl("defs");
+    [{ id: "lma-arrow", fill: "rgba(26,26,26,0.7)" },
+     { id: "lma-arrow-green", fill: "#2A8F65" }].forEach(function (def) {
+      var m = svgEl("marker", {
+        id: def.id, viewBox: "0 0 10 10",
+        refX: "9", refY: "5",
+        markerWidth: "7", markerHeight: "7",
+        orient: "auto", markerUnits: "userSpaceOnUse"
+      });
+      m.appendChild(svgEl("path", { d: "M0 0 L10 5 L0 10 Z", fill: def.fill }));
+      defs.appendChild(m);
+    });
+    svg.appendChild(defs);
+
+    // ── Edges (below nodes)
+    var edgeLayer = svgEl("g", { class: "lma-edges" });
+    var boxesById = {};
+    nodes.forEach(function (n) { boxesById[n.id] = nodeBox(n); });
+    state.edgeEls = [];
+
+    var edgeLabelData = [];
+    edges.forEach(function (e, i) {
+      var s = boxesById[e.from], t = boxesById[e.to];
+      if (!s || !t) return;
+      var p = edgePath(s, t);
+      var edgeEl = svgEl("path", {
+        class: "lma-edge",
+        d: p.d, fill: "none",
+        "marker-end": "url(#lma-arrow)",
+        "data-edge-idx": String(i),
+        "data-from": e.from, "data-to": e.to
+      });
+      edgeLayer.appendChild(edgeEl);
+      state.edgeEls.push(edgeEl);
+      if (e.label) edgeLabelData.push({ x: p.lx, y: p.ly, text: e.label });
+    });
+    svg.appendChild(edgeLayer);
+
+    // ── Nodes
+    var nodeLayer = svgEl("g", { class: "lma-nodes" });
+    state.nodeEls = {};
+    nodes.forEach(function (n) {
+      var bx = nodeBox(n);
+      var brand = findBrand(n);
+      var type = n.type || "transform";
+      var visited = !!state.viewedNodes[n.id];
+
+      var g = svgEl("g", {
+        class: "lma-node t-" + type + (visited ? " is-visited" : ""),
+        transform: "translate(" + bx.x + "," + bx.y + ")",
+        role: "button", tabindex: "0",
+        "data-node-id": n.id,
+        "aria-label": n.label || n.id
+      });
+
+      g.appendChild(svgEl("rect", {
+        class: "lma-node-card",
+        width: NODE_W, height: NODE_H, rx: 14, ry: 14
+      }));
+
+      var tileG = buildLogoTile(brand);
+      tileG.setAttribute("transform", "translate(" + TILE_MARGIN + "," + ((NODE_H - TILE_SIZE) / 2) + ")");
+      g.appendChild(tileG);
+
+      var labelX = TILE_MARGIN + TILE_SIZE + 14;
+      var labelText = svgEl("text", {
+        class: "lma-node-label",
+        x: labelX, y: NODE_H / 2 + 1,
+        "dominant-baseline": "middle"
+      });
+      labelText.textContent = n.label || n.id;
+      g.appendChild(labelText);
+
+      g.addEventListener("click", function () { openDrawerForNode(n); });
+      g.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); openDrawerForNode(n); }
+      });
+      g.addEventListener("mouseenter", function () {
+        g.classList.add("is-hover");
+        state.edgeEls.forEach(function (eEl) {
+          if (eEl.getAttribute("data-from") === n.id || eEl.getAttribute("data-to") === n.id) {
+            eEl.classList.add("is-flow-hover");
+          }
+        });
+      });
+      g.addEventListener("mouseleave", function () {
+        g.classList.remove("is-hover");
+        state.edgeEls.forEach(function (eEl) { eEl.classList.remove("is-flow-hover"); });
+      });
+
+      nodeLayer.appendChild(g);
+      state.nodeEls[n.id] = g;
+    });
+    svg.appendChild(nodeLayer);
+
+    // ── Edge labels (rendered last so they sit on top of edges + nodes)
+    var labelLayer = svgEl("g", { class: "lma-edge-labels" });
+    edgeLabelData.forEach(function (lbl) {
+      var t = svgEl("text", {
+        class: "lma-edge-label",
+        x: lbl.x, y: lbl.y,
+        "text-anchor": "middle",
+        "dominant-baseline": "middle"
+      });
+      t.textContent = lbl.text;
+      labelLayer.appendChild(t);
+    });
+    svg.appendChild(labelLayer);
+
+    holder.appendChild(svg);
+    state.svg = svg;
+
+    setupFlowPulse(nodes, edges);
     return stage;
   }
 
-  // ── Mobile node list (rendered at any width, hidden via CSS on desktop) ─
+  // ── Flow pulse animation ──────────────────────────────────────────────
+  function setupFlowPulse(nodes, edges) {
+    var outAdj = {};
+    edges.forEach(function (e) {
+      if (!outAdj[e.from]) outAdj[e.from] = [];
+      outAdj[e.from].push(e.to);
+    });
+    var inCount = {};
+    nodes.forEach(function (n) { inCount[n.id] = 0; });
+    edges.forEach(function (e) {
+      if (typeof inCount[e.to] === "number") inCount[e.to]++;
+    });
+    var sources = nodes.filter(function (n) { return inCount[n.id] === 0; });
+
+    var longest = [];
+    sources.forEach(function (src) {
+      var stack = [[src.id, [src.id]]];
+      while (stack.length) {
+        var top = stack.pop();
+        var nid = top[0], path = top[1];
+        var outs = outAdj[nid] || [];
+        if (!outs.length) {
+          if (path.length > longest.length) longest = path;
+          continue;
+        }
+        outs.forEach(function (oid) {
+          if (path.indexOf(oid) === -1) stack.push([oid, path.concat([oid])]);
+        });
+      }
+    });
+    if (longest.length < 2) return;
+
+    var edgeMap = {};
+    state.edgeEls.forEach(function (eEl) {
+      edgeMap[eEl.getAttribute("data-from") + ">" + eEl.getAttribute("data-to")] = eEl;
+    });
+
+    function pulse() {
+      for (var i = 0; i < longest.length - 1; i++) {
+        (function (idx) {
+          setTimeout(function () {
+            var eEl = edgeMap[longest[idx] + ">" + longest[idx + 1]];
+            if (!eEl) return;
+            eEl.setAttribute("marker-end", "url(#lma-arrow-green)");
+            eEl.classList.add("is-pulsing");
+            setTimeout(function () {
+              eEl.classList.remove("is-pulsing");
+              eEl.setAttribute("marker-end", "url(#lma-arrow)");
+            }, 580);
+          }, idx * 220);
+        })(i);
+      }
+    }
+
+    if (state.flowPulseTimer) clearTimeout(state.flowPulseTimer);
+    function loop() {
+      pulse();
+      state.flowPulseTimer = setTimeout(loop, 5400);
+    }
+    state.flowPulseTimer = setTimeout(loop, 1200);
+  }
+
+  // ── Mobile node list ──────────────────────────────────────────────────
   function renderMobileList(data) {
     var nodes = (data.diagram && data.diagram.nodes) || [];
     var wrap = make("section", { class: "lma-mobile-list", "aria-label": "Node list (mobile)" });
@@ -601,7 +484,7 @@
     return wrap;
   }
 
-  // ── Drawer ─────────────────────────────────────────────────────────────
+  // ── Drawer ────────────────────────────────────────────────────────────
   function ensureDrawer() {
     if (state.drawer) return state.drawer;
     var d = make("aside", {
@@ -616,15 +499,11 @@
   }
   function clearActiveMarker() {
     if (!state.activeNodeId) return;
-    // Mobile card
     var sel = '[data-node-id="' + state.activeNodeId + '"]';
     var prev = state.root && state.root.querySelector(sel);
     if (prev) prev.classList.remove("is-active");
-    // Cytoscape node
-    if (state.cy) {
-      var el = state.cy.getElementById(state.activeNodeId);
-      if (el && el.length) { el.unselect(); el.removeClass("is-active"); }
-    }
+    var svgNode = state.nodeEls[state.activeNodeId];
+    if (svgNode) svgNode.classList.remove("is-active");
   }
   function closeDrawer() {
     if (!state.drawer) return;
@@ -636,32 +515,19 @@
   function openDrawerForNode(node) {
     var drawer = ensureDrawer();
     if (state.activeNodeId && state.activeNodeId !== node.id) clearActiveMarker();
-    // Mark mobile card as active/visited
     var sel = '[data-node-id="' + node.id + '"]';
     if (state.root) state.root.querySelectorAll(sel).forEach(function (el) {
       el.classList.add("is-active", "is-visited");
     });
-    // Mark cy node as active + select + bring into view
-    if (state.cy) {
-      var cyNode = state.cy.getElementById(node.id);
-      if (cyNode && cyNode.length) {
-        cyNode.addClass("is-active");
-        cyNode.data("visited", true);
-        cyNode.select();
-        try {
-          state.cy.animate({ center: { eles: cyNode }, zoom: Math.max(state.cy.zoom(), 1.0) }, { duration: 320 });
-        } catch (_) {}
-      }
-    }
+    var svgNode = state.nodeEls[node.id];
+    if (svgNode) svgNode.classList.add("is-active", "is-visited");
     state.activeNodeId = node.id;
 
     var panel = node.panel || {};
     drawer.innerHTML = "";
 
     var close = make("button", {
-      class: "lma-drawer-close",
-      type: "button",
-      "aria-label": "Close"
+      class: "lma-drawer-close", type: "button", "aria-label": "Close"
     }, "&times;");
     close.addEventListener("click", closeDrawer);
     drawer.appendChild(close);
@@ -713,9 +579,7 @@
       if (ctaDef && ctaDef.url) {
         var cta = make("a", {
           class: "lma-drawer-cta",
-          href: ctaDef.url,
-          target: "_blank",
-          rel: "noopener"
+          href: ctaDef.url, target: "_blank", rel: "noopener"
         });
         cta.textContent = ctaDef.button || ctaDef.headline || "Talk it through";
         cta.addEventListener("click", function () {
@@ -725,7 +589,6 @@
       }
     }
 
-    // edit-mode field wraps
     if (window.LM.editMode && window.LM.editMode.enabled()) {
       var nodeIdx = (state.data.diagram.nodes || []).findIndex(function (x) { return x.id === node.id; });
       if (nodeIdx >= 0) {
@@ -735,35 +598,29 @@
     }
 
     drawer.classList.add("open");
-    // Replay one-shot fade-in animations only on fresh open
     drawer.classList.remove("is-fresh");
-    void drawer.offsetWidth; // force reflow so the animation restarts
+    void drawer.offsetWidth;
     drawer.classList.add("is-fresh");
     drawer.setAttribute("aria-hidden", "false");
 
-    // Track visit + persist
     state.viewedNodes[node.id] = (state.viewedNodes[node.id] || 0) + 1;
     persistViewedKV();
     beacon("node_click", {
       answers: {
-        node_id: node.id,
-        node_type: node.type,
+        node_id: node.id, node_type: node.type,
         viewed_node_count: totalViewedCount(),
         unique_node_count: uniqueViewedCount()
       }
     });
-    beacon("panel_view", {
-      answers: { node_id: node.id, headline: panel.headline || null }
-    });
+    beacon("panel_view", { answers: { node_id: node.id, headline: panel.headline || null } });
     refreshFloatingCta();
   }
 
-  function wireNodeClicks() {
+  function wireGlobalHandlers() {
     var nodes = (state.data.diagram && state.data.diagram.nodes) || [];
     var idMap = {};
     nodes.forEach(function (n) { idMap[n.id] = n; });
 
-    // Mobile cards (cy node taps are wired inside renderCy)
     state.root.querySelectorAll(".lma-mobile-card").forEach(function (c) {
       c.addEventListener("click", function () {
         var n = idMap[c.getAttribute("data-node-id")];
@@ -771,16 +628,13 @@
       });
     });
 
-    // ESC closes drawer
     document.addEventListener("keydown", function (ev) {
       if (ev.key === "Escape") closeDrawer();
     });
-    // Click outside drawer closes it (but not clicks on the diagram or mobile cards)
     document.addEventListener("click", function (ev) {
       if (!state.drawer || !state.drawer.classList.contains("open")) return;
       if (state.drawer.contains(ev.target)) return;
-      if (ev.target.closest && ev.target.closest(".lma-cy-container")) return;
-      if (ev.target.closest && ev.target.closest(".lma-cy-controls")) return;
+      if (ev.target.closest && ev.target.closest(".lma-svg-holder")) return;
       if (ev.target.closest && ev.target.closest(".lma-mobile-card")) return;
       closeDrawer();
     });
@@ -807,19 +661,7 @@
     }
   }
 
-  // ── PNG download (lazy-loaded html2canvas) ─────────────────────────────
-  var H2C_URL = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
-  function loadHtml2Canvas() {
-    if (window.html2canvas) return Promise.resolve(window.html2canvas);
-    return new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = H2C_URL;
-      s.async = true;
-      s.onload = function () { resolve(window.html2canvas); };
-      s.onerror = function () { reject(new Error("html2canvas failed to load")); };
-      document.head.appendChild(s);
-    });
-  }
+  // ── PNG download (serialize SVG → canvas → PNG) ───────────────────────
   function pngFilename(slug) {
     var safe = String(slug || "diagram").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "");
     var d = new Date();
@@ -832,46 +674,54 @@
     var btn = $("#lma-download");
     var orig = btn ? btn.textContent : null;
     if (btn) { btn.disabled = true; btn.textContent = "Preparing…"; }
+    var done = function () { if (btn) { btn.disabled = false; btn.textContent = orig || "Download as PNG"; } };
 
-    // Prefer cy.png() if the diagram is mounted; fallback to html2canvas on mobile.
-    var triggerDownload = function (dataUrl) {
-      var a = document.createElement("a");
-      a.download = pngFilename(SLUG());
-      a.href = dataUrl;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      beacon("share", { answers: { format: "png" } });
-    };
-    var done = function () {
-      if (btn) { btn.disabled = false; btn.textContent = orig || "Download as PNG"; }
-    };
-
-    var stage = state.root && state.root.querySelector(".lma-cy-container");
-    if (state.cy && stage && stage.offsetParent !== null) {
-      try {
-        var url = state.cy.png({ full: true, scale: 2, bg: "#FFFFFF" });
-        triggerDownload(url);
-      } catch (e) {
-        if (window.LM.toast) window.LM.toast("Download failed: " + e.message);
-      }
-      done();
-      return;
-    }
-
-    // Mobile / non-cy fallback
-    var fallback = state.root.querySelector(".lma-mobile-list") || state.root.querySelector(".lma-stage");
-    if (!fallback) { done(); return; }
-    loadHtml2Canvas().then(function (h2c) {
-      return h2c(fallback, { backgroundColor: "#FFFFFF", scale: 2, useCORS: true });
-    }).then(function (canvas) {
-      triggerDownload(canvas.toDataURL("image/png"));
-    }).catch(function (e) {
+    if (!state.svg) { done(); return; }
+    try {
+      var clone = state.svg.cloneNode(true);
+      // Inline the computed CSS by walking the clone — simpler approach:
+      // wrap in a temp document and let the browser handle it via blob URL.
+      var vb = state.svg.viewBox.baseVal;
+      clone.setAttribute("width", vb.width);
+      clone.setAttribute("height", vb.height);
+      var serialized = new XMLSerializer().serializeToString(clone);
+      var blob = new Blob(['<?xml version="1.0"?>\n' + serialized], { type: "image/svg+xml;charset=utf-8" });
+      var url = URL.createObjectURL(blob);
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = function () {
+        var scale = 2;
+        var canvas = document.createElement("canvas");
+        canvas.width = vb.width * scale;
+        canvas.height = vb.height * scale;
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#FDFCF8";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        var pngUrl = canvas.toDataURL("image/png");
+        var a = document.createElement("a");
+        a.download = pngFilename(SLUG());
+        a.href = pngUrl;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        beacon("share", { answers: { format: "png" } });
+        done();
+      };
+      img.onerror = function () {
+        if (window.LM.toast) window.LM.toast("Download failed");
+        URL.revokeObjectURL(url);
+        done();
+      };
+      img.src = url;
+    } catch (e) {
       if (window.LM.toast) window.LM.toast("Download failed: " + e.message);
-    }).finally(done);
+      done();
+    }
   }
 
-  // ── Render orchestration ───────────────────────────────────────────────
+  // ── Render orchestration ──────────────────────────────────────────────
   function render(data, root) {
     window.__lm_slug = data.slug || window.__lm_slug;
     window.__lm_data = data;
@@ -881,14 +731,13 @@
     state.viewStartedAt = Date.now();
     root.innerHTML = "";
     root.appendChild(renderHero(data));
-    root.appendChild(renderCy(data));
+    root.appendChild(renderSvg(data));
     root.appendChild(renderMobileList(data));
 
     var actions = make("div", { class: "lma-actions", id: "lma-actions" });
     var dl = make("button", {
       class: "lma-btn lma-btn-secondary",
-      type: "button",
-      id: "lma-download"
+      type: "button", id: "lma-download"
     }, "Download as PNG");
     dl.addEventListener("click", downloadDiagramAsPng);
     actions.appendChild(dl);
@@ -897,7 +746,7 @@
     var ctaWrap = make("div", { id: "lma-floating-cta" });
     root.appendChild(ctaWrap);
 
-    wireNodeClicks();
+    wireGlobalHandlers();
     refreshFloatingCta();
     beacon("view", {
       answers: { node_count: (data.diagram && data.diagram.nodes || []).length }
@@ -909,10 +758,7 @@
     if (!root) return;
     var src = root.getAttribute("data-lm-architecture-src") || "./data.json";
     fetch(src, { credentials: "same-origin" })
-      .then(function (r) {
-        if (!r.ok) throw new Error("data.json " + r.status);
-        return r.json();
-      })
+      .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
       .then(function (data) { render(data, root); })
       .catch(function (e) {
         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading architecture:</strong> ' + esc(e.message) + '</div>';
@@ -925,15 +771,9 @@
     init();
   }
 
-  // Expose internals for tests / debugging
   window.__lm_architecture = {
-    state: state,
-    render: render,
-    beacon: beacon,
-    ctaCtx: ctaCtx,
-    pickCta: pickCta,
-    pngFilename: pngFilename,
-    openDrawerForNode: openDrawerForNode,
-    closeDrawer: closeDrawer
+    state: state, render: render, beacon: beacon,
+    ctaCtx: ctaCtx, pickCta: pickCta, pngFilename: pngFilename,
+    openDrawerForNode: openDrawerForNode, closeDrawer: closeDrawer
   };
 })();
