@@ -228,9 +228,11 @@
           visited: !!state.viewedNodes[n.id]
         }
       };
-      // Honor hand-tuned positions when present (used by preset layout).
+      // Honor hand-tuned positions, but scale them up: the original SVG
+      // coords assume 200×90 nodes (60px x-stride gaps); cy renders nodes
+      // at 260×96, so without scaling adjacent nodes touch.
       if (typeof n.x === "number" && typeof n.y === "number") {
-        el.position = { x: n.x, y: n.y };
+        el.position = { x: n.x * 1.30, y: n.y * 1.10 };
       }
       els.push(el);
     });
@@ -280,27 +282,27 @@
         "background-image": "data(logoUri)",
         "background-image-containment": "inside",
         "background-fit": "none",
-        "background-width": "30px",
-        "background-height": "30px",
-        "background-position-x": "16px",
-        "background-position-y": "16px",
+        "background-width": "32px",
+        "background-height": "32px",
+        "background-position-x": "18px",
+        "background-position-y": "18px",
         "background-clip": "none",
-        "border-color": "#1A1A1A",
-        "border-width": 1.5,
-        "border-opacity": 0.9,
+        "border-color": "rgba(26,26,26,0.16)",
+        "border-width": 1,
+        "border-opacity": 1,
         "width": 260,
-        "height": 96,
+        "height": 100,
         "label": "data(label)",
         "color": "#1A1A1A",
         "font-family": "DM Serif Display, Georgia, serif",
-        "font-size": 18,
+        "font-size": 19,
         "font-weight": 400,
         "text-valign": "center",
         "text-halign": "center",
         "text-wrap": "wrap",
-        "text-max-width": "210px",
-        "text-margin-y": 10,
-        "padding": 10,
+        "text-max-width": "200px",
+        "text-margin-y": 12,
+        "padding": 12,
         "transition-property": "border-color, border-width, overlay-opacity",
         "transition-duration": "180ms"
       }},

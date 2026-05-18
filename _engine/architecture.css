@@ -3,7 +3,7 @@
 /* === Architecture v3 (Cytoscape) === */
 /* Stage holds the cy container, the floating controls, and the minimap. */
 .lma-stage{position:relative}
-.lma-cy-holder{position:relative;background:#fff;border:1px solid rgba(26,26,26,.12);border-radius:14px;box-shadow:0 6px 24px rgba(26,26,26,.06);overflow:hidden}
+.lma-cy-holder{position:relative;background:#fdfcf8;background-image:radial-gradient(circle,rgba(26,26,26,.08) 1px,transparent 1px);background-size:22px 22px;background-position:0 0;border:1px solid rgba(26,26,26,.1);border-radius:16px;box-shadow:0 8px 32px rgba(26,26,26,.07),0 2px 6px rgba(26,26,26,.04);overflow:hidden}
 .lma-cy-container{width:100%;height:820px;display:block}
 .lma-cy-loading{padding:64px 24px;text-align:center;color:#4a4a48;font-family:"Source Serif 4",Georgia,serif;font-size:14px;background:#fff;border:1px solid rgba(26,26,26,.12);border-radius:14px}
 /* Floating zoom controls (top-right inside holder) */
