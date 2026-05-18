@@ -24,8 +24,24 @@
     apify:    { color: "#00B886", match: ["apify"], path: "M12 0 0 12l12 12 12-12L12 0zm0 4.5L19.5 12 12 19.5 4.5 12 12 4.5z" },
     openai:   { color: "#412991", match: ["openai", "gpt"], path: "M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.677l5.815 3.354-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.787a4.49 4.49 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" },
     unipile:  { color: "#5B6CFF", match: ["unipile", "dm send"], path: "M2 21l21-9L2 3v7l15 2-15 2v7z" },
-    railway:  { color: "#0B0D0E", match: ["railway"], path: "M22 11.1c-1.7.2-9.3 1.4-12.4 1.4-2.5 0-7-.7-9.6-1.1v1.9c2.6.4 7.1 1.1 9.6 1.1 3.1 0 10.7-1.2 12.4-1.4v-1.9zM22 7c-1.7.5-9.3 2.2-12.4 2.2-2.5 0-7-1.2-9.6-1.9V9c2.6.7 7.1 1.9 9.6 1.9C12.7 10.9 20.3 9.3 22 8.8V7zm-4.5 8.4c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3z" }
+    railway:  { color: "#0B0D0E", match: ["railway"], path: "M22 11.1c-1.7.2-9.3 1.4-12.4 1.4-2.5 0-7-.7-9.6-1.1v1.9c2.6.4 7.1 1.1 9.6 1.1 3.1 0 10.7-1.2 12.4-1.4v-1.9zM22 7c-1.7.5-9.3 2.2-12.4 2.2-2.5 0-7-1.2-9.6-1.9V9c2.6.7 7.1 1.9 9.6 1.9C12.7 10.9 20.3 9.3 22 8.8V7zm-4.5 8.4c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3zm-3.8 0c0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3z" },
+    firecrawl:{ color: "#F25C36", match: ["firecrawl", "crawl", "scrape"], path: "M13.5 1.5c-.5 3-2.5 4.5-4 6-2 2-3.5 4-3.5 7 0 4.7 3.8 8.5 8.5 8.5s8.5-3.8 8.5-8.5c0-3.5-2-6.5-4.5-9-1.5-1.5-3.5-2.5-5-4zm-.5 7c1 1.5 3 3 3 5.5 0 2-1.5 3.5-3.5 3.5s-3.5-1.5-3.5-3.5c0-1.5 1-2.5 2-3.5.7-.7 1.5-1.3 2-2z" }
   };
+
+  // Normalize a brand label (from data.json `stack[0]`) → registry key.
+  // "Anthropic Claude" → "claude", "Supabase Postgres" → "supabase",
+  // "UniPile webhook" → "unipile", "n8n schedule trigger" → "n8n", etc.
+  function logoForStack(stackEntry) {
+    if (!stackEntry) return null;
+    var s = String(stackEntry).toLowerCase();
+    for (var k in LOGOS) {
+      var entry = LOGOS[k];
+      for (var i = 0; i < entry.match.length; i++) {
+        if (s.indexOf(entry.match[i]) !== -1) return entry;
+      }
+    }
+    return null;
+  }
 
   // Generic glyphs by node type (used when no brand match).
   var TYPE_GLYPHS = {
@@ -36,15 +52,21 @@
     output:    { color: "#1A6B3F", path: "M2 21l21-9L2 3v7l15 2-15 2v7z" }                                       // paper plane
   };
 
-  function findLogo(label, type) {
-    var lc = String(label || "").toLowerCase();
+  // Resolve a logo for a node. Priority: label keyword (e.g. "LinkedIn publish"
+  // → LinkedIn brand reads instantly), then panel.stack[0] (the technical tool
+  // when the label is generic — "Compile context" → n8n), then type glyph.
+  function findLogo(node) {
+    var lc = String((node && node.label) || "").toLowerCase();
     for (var k in LOGOS) {
       var entry = LOGOS[k];
       for (var i = 0; i < entry.match.length; i++) {
         if (lc.indexOf(entry.match[i]) !== -1) return entry;
       }
     }
-    return TYPE_GLYPHS[type] || TYPE_GLYPHS.transform;
+    var stack0 = node && node.panel && Array.isArray(node.panel.stack) && node.panel.stack[0];
+    var fromStack = logoForStack(stack0);
+    if (fromStack) return fromStack;
+    return TYPE_GLYPHS[(node && node.type) || "transform"] || TYPE_GLYPHS.transform;
   }
 
   function SLUG() { return window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || ""; }
@@ -193,7 +215,7 @@
     var d = data.diagram || {};
     var els = [];
     (d.nodes || []).forEach(function (n) {
-      var logo = findLogo(n.label, n.type);
+      var logo = findLogo(n);
       var el = {
         group: "nodes",
         data: {
@@ -265,7 +287,7 @@
         "background-clip": "none",
         "border-color": "#1A1A1A",
         "border-width": 1.5,
-        "border-opacity": 0.85,
+        "border-opacity": 0.9,
         "width": 260,
         "height": 96,
         "label": "data(label)",
@@ -278,7 +300,16 @@
         "text-wrap": "wrap",
         "text-max-width": "210px",
         "text-margin-y": 10,
-        "padding": 10
+        "padding": 10,
+        "transition-property": "border-color, border-width, overlay-opacity",
+        "transition-duration": "180ms"
+      }},
+      // Hover lift — slight glow so the cursor feels reactive.
+      { selector: "node:active, node.is-hover", style: {
+        "border-width": 2.5,
+        "overlay-color": "#1A1A1A",
+        "overlay-opacity": 0.04,
+        "overlay-padding": 4
       }},
       // Type pill (top-right corner) implemented via overlay label
       { selector: "node[typeLabel]", style: {
@@ -303,34 +334,47 @@
         "border-width": 3,
         "overlay-opacity": 0
       }},
-      // Edges
+      // Edges — orthogonal routing (taxi) so paths never cut through node
+      // bodies; rounded corners; horizontal labels offset 35% from source so
+      // they sit cleanly on the elbow rather than the midpoint.
       { selector: "edge", style: {
-        "width": 1.8,
-        "line-color": "rgba(26,26,26,0.45)",
-        "curve-style": "bezier",
-        "target-arrow-shape": "triangle",
-        "target-arrow-color": "rgba(26,26,26,0.55)",
-        "arrow-scale": 1.05,
+        "width": 2,
+        "line-color": "rgba(26,26,26,0.55)",
+        "curve-style": "taxi",
+        "taxi-direction": "auto",
+        "taxi-turn": "50%",
+        "taxi-turn-min-distance": 18,
+        "taxi-radius": 8,
+        "target-arrow-shape": "triangle-backcurve",
+        "target-arrow-color": "rgba(26,26,26,0.78)",
+        "target-arrow-fill": "filled",
+        "arrow-scale": 1.4,
         "label": "data(label)",
         "font-family": "Source Serif 4, Georgia, serif",
-        "font-size": 11,
+        "font-size": 12,
         "font-weight": 600,
-        "color": "#4A4A48",
+        "color": "#1A1A1A",
         "text-background-color": "#FFFFFF",
         "text-background-opacity": 1,
-        "text-background-padding": 4,
+        "text-background-padding": "5px",
         "text-background-shape": "roundrectangle",
-        "text-border-color": "rgba(26,26,26,0.08)",
+        "text-border-color": "rgba(26,26,26,0.16)",
         "text-border-width": 1,
         "text-border-opacity": 1,
-        "line-dash-pattern": [6, 5],
-        "line-dash-offset": 0
+        "z-index": 5
       }},
-      { selector: "edge.is-flow-hover, edge:selected", style: {
+      // Carry the green flow when the edge is being "pulsed" or hovered.
+      { selector: "edge.is-flow-hover, edge:selected, edge.is-pulsing", style: {
         "line-color": "#2A8F65",
         "target-arrow-color": "#2A8F65",
-        "width": 2.6,
-        "z-index": 10
+        "width": 2.8,
+        "z-index": 20
+      }},
+      // Heartbeat halo on trigger nodes — set/cleared by the pulse loop.
+      { selector: "node.is-heartbeat", style: {
+        "overlay-color": "#2A8F65",
+        "overlay-opacity": 0.14,
+        "overlay-padding": 8
       }}
     ];
   }
@@ -414,21 +458,68 @@
           evt.target.removeClass("is-flow-hover");
           evt.target.connectedNodes().removeClass("is-active");
         });
-        // Hover node → emphasize incident edges
+        // Hover node → lift node + emphasize incident edges
         cy.on("mouseover", "node", function (evt) {
+          evt.target.addClass("is-hover");
           evt.target.connectedEdges().addClass("is-flow-hover");
         });
         cy.on("mouseout", "node", function (evt) {
+          evt.target.removeClass("is-hover");
           evt.target.connectedEdges().removeClass("is-flow-hover");
         });
 
-        // Animate edge dash offset for a subtle flow effect
-        var dashOffset = 0;
+        // Motion system: heartbeat on triggers + periodic flow pulse along the
+        // longest source→sink path. No constant animation — it numbs the eye;
+        // periodic pulses read as "alive" without becoming background noise.
         if (state.cyAnimInterval) clearInterval(state.cyAnimInterval);
-        state.cyAnimInterval = setInterval(function () {
-          dashOffset = (dashOffset - 1) % 11;
-          cy.edges().style("line-dash-offset", dashOffset);
-        }, 90);
+        if (state.cyHeartbeat) clearInterval(state.cyHeartbeat);
+        if (state.cyPulseTimer) clearTimeout(state.cyPulseTimer);
+
+        var triggerNodes = cy.nodes('node[type = "trigger"]');
+        // Heartbeat: trigger nodes pulse a sage halo every 2.6s.
+        state.cyHeartbeat = setInterval(function () {
+          triggerNodes.addClass("is-heartbeat");
+          setTimeout(function () { triggerNodes.removeClass("is-heartbeat"); }, 700);
+        }, 2600);
+
+        // Build the longest path from any trigger to any sink (BFS).
+        function longestPath() {
+          var sources = cy.nodes().filter(function (n) { return n.indegree(false) === 0; });
+          var best = [];
+          sources.forEach(function (src) {
+            var stack = [[src, [src]]];
+            while (stack.length) {
+              var top = stack.pop();
+              var n = top[0], path = top[1];
+              var outs = n.outgoers("node");
+              if (!outs.length) { if (path.length > best.length) best = path; continue; }
+              outs.forEach(function (o) {
+                if (path.indexOf(o) === -1) stack.push([o, path.concat([o])]);
+              });
+            }
+          });
+          return best;
+        }
+        var pulsePath = longestPath();
+
+        function runPulse() {
+          if (!pulsePath || pulsePath.length < 2) return;
+          for (var i = 0; i < pulsePath.length - 1; i++) {
+            (function (idx) {
+              setTimeout(function () {
+                var a = pulsePath[idx], b = pulsePath[idx + 1];
+                var e = a.edgesTo(b);
+                e.addClass("is-pulsing");
+                setTimeout(function () { e.removeClass("is-pulsing"); }, 520);
+              }, idx * 240);
+            })(i);
+          }
+        }
+        // First pulse after a beat so the diagram settles; then every ~5s.
+        state.cyPulseTimer = setTimeout(function loop() {
+          runPulse();
+          state.cyPulseTimer = setTimeout(loop, 5200);
+        }, 900);
 
         // Wire controls
         controls.addEventListener("click", function (ev) {
