@@ -190,7 +190,11 @@
 
   // Orthogonal L-path. Picks source/target sides based on dominant delta,
   // routes through a single elbow with rounded corners.
-  function edgePath(s, t) {
+  // `perpOffset` shifts the endpoints perpendicular to the dominant axis —
+  // used to separate bidirectional edge pairs so they don't render on top
+  // of each other.
+  function edgePath(s, t, perpOffset) {
+    perpOffset = perpOffset || 0;
     var dx = t.cx - s.cx, dy = t.cy - s.cy;
     var horizontal = Math.abs(dx) >= Math.abs(dy);
     var sx, sy, tx, ty, lx, ly, d;
@@ -198,7 +202,8 @@
     if (horizontal) {
       sx = dx > 0 ? s.right : s.left;
       tx = dx > 0 ? t.left  : t.right;
-      sy = s.cy; ty = t.cy;
+      // perpOffset on horizontal edges = vertical shift
+      sy = s.cy + perpOffset; ty = t.cy + perpOffset;
       // Stop short of the target by 4px so the arrowhead sits just outside the card edge
       var endTx = tx + (dx > 0 ? -2 : 2);
       if (Math.abs(sy - ty) < 1) {
@@ -217,7 +222,8 @@
         lx = midX; ly = (sy + ty) / 2;
       }
     } else {
-      sx = s.cx; tx = t.cx;
+      // perpOffset on vertical edges = horizontal shift
+      sx = s.cx + perpOffset; tx = t.cx + perpOffset;
       sy = dy > 0 ? s.bottom : s.top;
       ty = dy > 0 ? t.top    : t.bottom;
       var endTy = ty + (dy > 0 ? -2 : 2);
@@ -303,11 +309,24 @@
     nodes.forEach(function (n) { boxesById[n.id] = nodeBox(n); });
     state.edgeEls = [];
 
+    // Detect bidirectional pairs so paths + labels can be offset apart.
+    var edgeKeys = {};
+    edges.forEach(function (e) { edgeKeys[e.from + ">" + e.to] = true; });
+
     var edgeLabelData = [];
     edges.forEach(function (e, i) {
       var s = boxesById[e.from], t = boxesById[e.to];
       if (!s || !t) return;
-      var p = edgePath(s, t);
+      var hasReverse = !!edgeKeys[e.to + ">" + e.from];
+      // For bidirectional pairs, offset perpendicular to the edge so they
+      // don't render on top of each other. Forward (alphabetically smaller
+      // from) goes -, reverse goes +.
+      var perpOffset = 0;
+      if (hasReverse) {
+        var forward = e.from < e.to;
+        perpOffset = forward ? -16 : 16;
+      }
+      var p = edgePath(s, t, perpOffset);
       var edgeEl = svgEl("path", {
         class: "lma-edge",
         d: p.d, fill: "none",
@@ -679,16 +698,26 @@
     if (!state.svg) { done(); return; }
     try {
       var clone = state.svg.cloneNode(true);
-      // Inline the computed CSS by walking the clone — simpler approach:
-      // wrap in a temp document and let the browser handle it via blob URL.
       var vb = state.svg.viewBox.baseVal;
       clone.setAttribute("width", vb.width);
       clone.setAttribute("height", vb.height);
+      // CRITICAL: when an SVG is rendered via <img>, the page's external CSS
+      // does NOT apply — the browser treats the SVG as a standalone document.
+      // Embed a print stylesheet inline so cards/edges/labels render correctly.
+      var printCss =
+        '.lma-node-card{fill:#fff;stroke:rgba(26,26,26,.18);stroke-width:1}' +
+        '.lma-edge{fill:none;stroke:rgba(26,26,26,.5);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}' +
+        '.lma-edge-label{font-family:"Source Serif 4",Georgia,serif;font-size:11px;font-weight:600;fill:#1a1a1a;paint-order:stroke fill;stroke:#fdfcf8;stroke-width:4px;stroke-linejoin:round}' +
+        '.lma-node-label{fill:#1a1a1a;font-family:"DM Serif Display",Georgia,serif;font-size:18px;font-weight:400}';
+      var styleEl = document.createElementNS(SVG_NS, "style");
+      styleEl.setAttribute("type", "text/css");
+      styleEl.textContent = printCss;
+      // Insert as first child (inside <defs> would also work)
+      clone.insertBefore(styleEl, clone.firstChild);
       var serialized = new XMLSerializer().serializeToString(clone);
-      var blob = new Blob(['<?xml version="1.0"?>\n' + serialized], { type: "image/svg+xml;charset=utf-8" });
+      var blob = new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n' + serialized], { type: "image/svg+xml;charset=utf-8" });
       var url = URL.createObjectURL(blob);
       var img = new Image();
-      img.crossOrigin = "anonymous";
       img.onload = function () {
         var scale = 2;
         var canvas = document.createElement("canvas");
