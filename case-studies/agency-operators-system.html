@@ -99,29 +99,29 @@ a{color:inherit;text-decoration:none}
 .section-dark::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--hairline)}
 
 /* SVG DIAGRAM */
-.diagram-wrap{margin:48px auto 56px;max-width:880px;padding:0 8px;perspective:1200px}
+.diagram-wrap{margin:48px auto 56px;max-width:880px;padding:0 8px}
 .flow-svg{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 56px rgba(26,26,26,.07))}
-.input-chip{opacity:0;animation:chip-rise 0.6s cubic-bezier(.22,.84,.36,1) forwards}
-.input-chip:nth-child(1){animation-delay:0.1s}
-.input-chip:nth-child(2){animation-delay:0.2s}
-.input-chip:nth-child(3){animation-delay:0.3s}
-.input-chip:nth-child(4){animation-delay:0.4s}
-@keyframes chip-rise{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+
+/* opacity-only entrance animations (transforms would override SVG translate attrs) */
+.input-chip,.diagram-queue,.diagram-output,.writer-node{opacity:0;animation:svg-fade-in 0.7s ease-out forwards}
+.input-chip{animation-delay:.1s}
+.input-chip:nth-of-type(2){animation-delay:.2s}
+.input-chip:nth-of-type(3){animation-delay:.3s}
+.input-chip:nth-of-type(4){animation-delay:.4s}
+.writer-node{animation-delay:1.0s}
+.diagram-queue{animation-delay:1.6s}
+.diagram-output{animation-delay:2.0s}
+@keyframes svg-fade-in{from{opacity:0}to{opacity:1}}
+
+/* motion that doesn't conflict with SVG transforms */
 .flow-dash{stroke-dasharray:4 6;animation:dash-flow 1.6s linear infinite}
 @keyframes dash-flow{to{stroke-dashoffset:-20}}
-.brain-pulse{transform-origin:center;animation:brain-breathe 3.4s ease-in-out infinite}
-@keyframes brain-breathe{0%,100%{opacity:0.85;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
-.writer-pulse-dot{animation:writer-travel 4.2s cubic-bezier(.65,0,.35,1) infinite}
+.brain-pulse{transform-origin:center;animation:brain-breathe 3.4s ease-in-out infinite;transform-box:view-box}
+@keyframes brain-breathe{0%,100%{opacity:0.7}50%{opacity:1}}
+.writer-pulse-dot{animation:writer-travel 4.2s cubic-bezier(.65,0,.35,1) 1.6s infinite}
 @keyframes writer-travel{0%{cx:110;opacity:0}5%{opacity:1}95%{opacity:1}100%{cx:630;opacity:0}}
 .trunk-line{stroke-dasharray:120;stroke-dashoffset:120;animation:trunk-reveal 1.4s cubic-bezier(.22,.84,.36,1) 0.6s forwards}
 @keyframes trunk-reveal{to{stroke-dashoffset:0}}
-.writer-node{opacity:0;animation:node-pop 0.5s cubic-bezier(.34,1.56,.64,1) 1s forwards;transform-box:fill-box;transform-origin:center}
-@keyframes node-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
-.diagram-queue,.diagram-output{opacity:0;animation:fadein-rise 0.7s ease-out forwards}
-.diagram-queue{animation-delay:1.6s}
-.diagram-output:nth-of-type(odd){animation-delay:2.0s}
-.diagram-output:nth-of-type(even){animation-delay:2.2s}
-@keyframes fadein-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 /* CALLOUT GRID */
 .callout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:48px;max-width:1080px}
