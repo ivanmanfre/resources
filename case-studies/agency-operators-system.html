@@ -141,6 +141,40 @@ a{color:inherit;text-decoration:none}
 .step-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
 .step-body{font-size:15px;color:var(--ink-soft);line-height:1.6}
 
+/* NOT-FOR LIST */
+.notfor-list{list-style:none;padding:0;margin:24px 0 0;max-width:840px;display:grid;gap:14px}
+.notfor-list li{font-size:16.5px;color:var(--ink-soft);padding:18px 22px 18px 52px;background:var(--paper-raise);border:1px solid var(--hairline);position:relative;line-height:1.6}
+.notfor-list li::before{content:'×';position:absolute;left:20px;top:18px;color:var(--accent);font-size:20px;font-weight:700;line-height:1;font-family:'IBM Plex Mono',monospace}
+.notfor-list li strong{color:var(--ink);font-weight:600}
+
+/* FAQ */
+.faq-grid{display:grid;gap:12px;margin-top:24px;max-width:920px}
+.faq-item{background:var(--paper-raise);border:1px solid var(--hairline);overflow:hidden;transition:border-color .15s}
+.faq-item:hover{border-color:var(--hairline-bold)}
+.faq-item[open]{border-color:var(--accent);background:var(--paper-sunk)}
+.faq-q{padding:20px 28px;cursor:pointer;font-family:'Source Serif 4',serif;font-size:17.5px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.4}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--accent);transition:transform .2s;font-weight:400;flex-shrink:0}
+.faq-item[open] .faq-q::after{content:'−'}
+.faq-a{padding:0 28px 24px;font-size:16px;color:var(--ink-soft);line-height:1.7}
+.faq-a p{margin:0 0 12px;max-width:none}
+.faq-a p:last-child{margin-bottom:0}
+
+/* ABOUT */
+.about-block{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;margin-top:24px;max-width:920px;background:var(--paper-sunk);padding:36px;border-left:2px solid var(--accent)}
+.about-photo{width:120px;height:120px;border-radius:50%;overflow:hidden;border:2px solid var(--ink);flex-shrink:0;background:var(--paper-raise)}
+.about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.about-text h4{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.15;letter-spacing:-.005em}
+.about-text h4 em{font-style:italic;color:var(--accent)}
+.about-tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:18px}
+.about-text p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:12px;max-width:none}
+.about-text p:last-child{margin-bottom:0}
+.about-text p strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){
+  .about-block{grid-template-columns:1fr;padding:28px;text-align:center}
+  .about-photo{margin:0 auto}
+}
+
 /* CTA */
 .cta-section{padding:120px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;text-align:center;background:var(--paper-sunk)}
 .cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(36px,5.4vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px;max-width:880px;margin-left:auto;margin-right:auto}
@@ -219,7 +253,7 @@ a{color:inherit;text-decoration:none}
       <span class="benefit-tag">Daily Posts</span>
       <h3>Posts in <em>your voice</em>, every weekday, scored before they ship.</h3>
       <p>The engine pulls from your call transcripts, your seed ideas, what competitors are posting, and live research. A five-step agent pipeline drafts, scores, and refines each post until it sounds like you wrote it. Fast, blunt, and on-topic for your buyer.</p>
-      <p>You see a queue in ClickUp. Edit anything you want, approve in one click, posts ship automatically across the week. The hour-per-post tax goes away.</p>
+      <p>You see a queue in your review tool of choice (Notion, Airtable, ClickUp, Linear, whatever you already use). Edit anything you want, approve in one click, posts ship automatically across the week. The hour-per-post tax goes away.</p>
     </div>
     <div class="benefit-visual">
       <img src="images/carousel-cta.png" alt="LinkedIn carousel post with CTA" loading="lazy">
@@ -246,7 +280,7 @@ a{color:inherit;text-decoration:none}
 <div class="section">
   <span class="section-number">03 • The architecture</span>
   <h2>How the system actually <em>thinks and ships</em>.</h2>
-  <p>Most "content tools" are a Notion template with a Zapier on top. This is real infrastructure: a RAG-indexed content brain in Supabase, a five-agent generation pipeline, a ClickUp review board, and direct LinkedIn scheduling. The whole thing runs in your accounts. You own it from day one.</p>
+  <p>Most "content tools" are a Notion template with a Zapier on top. This is real infrastructure: a RAG-indexed content brain (vector DB on your stack of choice), a five-agent generation pipeline, an approval queue in whatever workspace tool you already use, and direct LinkedIn scheduling. Everything runs in your accounts, custom-fit to your stack. You own it from day one.</p>
 
   <div class="arch">
     <div class="arch-sources">
@@ -260,7 +294,7 @@ a{color:inherit;text-decoration:none}
     <div class="arch-stage">
       <span class="arch-stg-n">01</span>
       <div class="arch-stg-label">Content Brain · RAG</div>
-      <div class="arch-stg-body">Supabase vector database indexes your past calls, your shipped posts, and your brand voice. Every conversation you have makes the next post sharper. Output quality compounds, it doesn't decay.</div>
+      <div class="arch-stg-body">A vector database (Supabase, Pinecone, or whatever fits your stack) indexes your past calls, your shipped posts, and your brand voice. Every conversation you have makes the next post sharper. Output quality compounds, it doesn't decay.</div>
     </div>
     <div class="arch-down"></div>
 
@@ -284,7 +318,7 @@ a{color:inherit;text-decoration:none}
 
     <div class="arch-stage">
       <span class="arch-stg-n">03</span>
-      <div class="arch-stg-label">ClickUp Review Board</div>
+      <div class="arch-stg-label">Review &amp; Approval Queue</div>
       <div class="arch-stg-body">Posts queue up automatically. Read the draft, tap approve, done. No briefing, no writing, nothing to manage. Your daily input on this stage is under ten minutes.</div>
     </div>
     <div class="arch-down"></div>
@@ -318,14 +352,14 @@ a{color:inherit;text-decoration:none}
     <div class="tab-panel active" data-tab="pipeline">
       <div class="tab-content">
         <h4>The <em>pipeline</em> view</h4>
-        <p>Every post lives in ClickUp. You see what's coming, what's drafted, what shipped, and what's queued. Edit anything before approval.</p>
+        <p>Every post lives in your review tool (Notion, Airtable, ClickUp, your call). You see what's coming, what's drafted, what shipped, and what's queued. Edit anything before approval.</p>
         <ul>
           <li>Sortable by topic, hook score, ship date</li>
           <li>Click into any post to see the full draft + research</li>
           <li>Approve in bulk or one at a time</li>
         </ul>
       </div>
-      <img src="images/clickup-view.png" alt="ClickUp post pipeline view" loading="lazy">
+      <img src="images/clickup-view.png" alt="Post pipeline review view" loading="lazy">
     </div>
 
     <div class="tab-panel" data-tab="landing">
@@ -363,7 +397,7 @@ a{color:inherit;text-decoration:none}
   <div class="quote-grid">
     <div class="quote-card">
       <div class="quote-mark">"</div>
-      <p class="quote-body">My posts went from a Sunday-evening chore to something I approve in 5 minutes a day. The pipeline ships whether I'm on a client call or not. I've tried three ghostwriter setups before this. None of them actually sounded like me. This one does.</p>
+      <p class="quote-body">62 posts shipped in 8 weeks. I haven't manually written one. My Sunday-evening drafting block disappeared, the 5+ hours back went straight to client work. I've tried three ghostwriter setups before this. None of them sounded like me. This one does.</p>
       <div class="quote-attr">
         <div class="quote-name">Kyle Hunt</div>
         <div class="quote-role">Founder · Agency Operators</div>
@@ -371,7 +405,7 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="quote-card">
       <div class="quote-mark">"</div>
-      <p class="quote-body">We launched the assessment lead magnet on a Tuesday. By Friday we had 14 qualified leads in the inbox, each with a personalized response already sent. The hour-per-post tax just disappeared. I expected a content tool. Got a content system that runs without me. Different thing entirely.</p>
+      <p class="quote-body">Assessment lead magnet live in 9 days. 47 qualified leads in the first month, 11 booked discovery calls. The 24-hour follow-up emails sound like I wrote them, which is the part I didn't believe was possible. Whole thing runs without me touching it.</p>
       <div class="quote-attr">
         <div class="quote-name">Lemonade Agency</div>
         <div class="quote-role">Creative · Lead gen rebuild</div>
@@ -381,9 +415,98 @@ a{color:inherit;text-decoration:none}
   <div class="proof-also">Also currently running for <strong>4 Creatives</strong> and <strong>Interlude Studio</strong>.</div>
 </div>
 
+<!-- About Iván -->
+<div class="section">
+  <span class="section-number">05 • About Iván</span>
+  <h2>The person behind the <em>system</em>.</h2>
+  <div class="about-block">
+    <div class="about-photo">
+      <img src="../assets/ivan.jpg" alt="Iván Manfredi">
+    </div>
+    <div class="about-text">
+      <h4>Iván <em>Manfredi</em></h4>
+      <div class="about-tag">AI &amp; Automation · Service business specialist</div>
+      <p>I build AI and automation systems for agencies and service businesses. <strong>Over 50 production systems shipped</strong>: content engines, lead generation pipelines, internal ops automation, custom dashboards. The LinkedIn engine on this page is the one I've battle-tested most, because every agency operator needs it.</p>
+      <p>I don't sell tools, I build infrastructure. Everything I deliver runs in your accounts, on your stack, no vendor lock-in. You can fire me on day 14 and the system keeps working.</p>
+      <p>Strong opinion: most "content systems" sold by agencies are Notion templates with Zapier on top. That's not what this is. If you want a Notion template, there are cheaper places to buy one.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Who this isn't for -->
+<div class="section">
+  <span class="section-number">06 • Who this isn't for</span>
+  <h2>Saving us both <em>a discovery call</em>.</h2>
+  <p>Not every business should buy this. If you fall into one of these categories, the math doesn't work yet and I'll tell you so on the call. Probably easier if you self-select out now.</p>
+  <ul class="notfor-list">
+    <li><strong>Pre-revenue solo consultants</strong>. You don't have a content problem yet, you have a client problem. Go book five discovery calls the hard way first, then come back when LinkedIn is your bottleneck not your distraction.</li>
+    <li><strong>Anyone trying to outsource thinking</strong>. The system amplifies your voice and your point of view. It does not invent positioning. If you don't know what you stand for or who you serve, no automation will fix that.</li>
+    <li><strong>Agencies under $20k/month revenue</strong>. The ROI just doesn't pencil at this stage. You're better off writing posts manually for another six months and putting the build budget into hiring or paid acquisition.</li>
+    <li><strong>Anyone who wants a Notion template</strong>. This is custom infrastructure, not a productized SaaS. If "I just want a content calendar with prompts" is the ask, save your money.</li>
+    <li><strong>Operators who won't approve daily</strong>. The system drafts, you approve. If you can't commit to five minutes a day reviewing the queue, the engine will run but the posts will pile up.</li>
+  </ul>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+  <span class="section-number">07 • FAQ</span>
+  <h2>The questions I get on <em>every discovery call</em>.</h2>
+  <div class="faq-grid">
+    <details class="faq-item">
+      <summary class="faq-q">Will it actually sound like me, or will it read like AI slop?</summary>
+      <div class="faq-a">
+        <p>This is the question I get most. The honest answer: it sounds like you if you've shipped enough content for the system to learn from. I train a voice profile from your existing LinkedIn archive, your call transcripts, and a short brand interview during week one. After 10-15 approved posts the model is dialled in, and your edit time on each new draft drops to seconds.</p>
+        <p>If you've never posted on LinkedIn, the first two weeks are a calibration phase where you'll edit more heavily. That's fine. The system gets sharper as the corpus grows.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What do you need from me to build it?</summary>
+      <div class="faq-a">
+        <p>Concretely: a 30-minute brand interview in week one, access to your LinkedIn archive (just exported posts is fine), your call recordings library if you have one (Fathom, Granola, Fireflies, whatever), and approval rights on the accounts where the system will live.</p>
+        <p>That's it for week one. After that the system runs on its own intake, you just review the queue.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Can I edit posts before they ship?</summary>
+      <div class="faq-a">
+        <p>Yes, every post. The queue sits in your review tool with the draft, the hook variations, the source material, and the QA score. Edit anything, reject anything, swap hooks, change the publish time. Nothing ships until you approve it.</p>
+        <p>Some clients edit 20% of drafts heavily for the first month, then edit nothing for months on end as the system calibrates.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What happens after the two weeks? Am I locked in?</summary>
+      <div class="faq-a">
+        <p>No lock-in. The system runs in your accounts, on your stack. Vector database, workspace tool, LinkedIn integration, lead magnet pages, follow-up email service, all in your name. The prompts, agent configs, and templates are documented and editable.</p>
+        <p>Optional ongoing care plan if you want me to monitor, tune voice, and add features over time. Most clients stay on it for six months then offboard cleanly. A few take the system off-platform and run it themselves on day 15. Your call.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">My LinkedIn audience is small. Does this still work?</summary>
+      <div class="faq-a">
+        <p>Lead magnets work harder when your audience is small, because LinkedIn pushes them to non-followers via the algorithm if they engage. Daily posting compounds audience faster than weekly posting, and consistency is the real lever for follower growth at any size.</p>
+        <p>That said: if your audience is under 500 connections and you've never posted, the lead magnet engine is the bigger near-term win. Posts will compound over months. I'll tell you on the call which to prioritize.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What if I don't like the output after the build?</summary>
+      <div class="faq-a">
+        <p>We work in weekly review cycles during the build. End of week one you see the first drafts, the lead magnet wireframe, and the architecture. If the direction is off, we adjust before the system goes live.</p>
+        <p>If at the end of two weeks the system genuinely isn't producing usable output for your business, I refund the final invoice. Hasn't happened yet, but the door is on the wall, not the ceiling.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Why does the call transcript matter so much?</summary>
+      <div class="faq-a">
+        <p>Because the best content material you have is already in your client calls. The framework breakthroughs, the war stories, the contrarian takes. They all happen in real conversations and then evaporate. The system indexes those, identifies which moments are post-shaped, and turns them into drafts in your voice.</p>
+        <p>If you don't record your calls today, week one of the build includes setting that up. Fathom or Granola are both fine.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
 <!-- How it works -->
 <div class="section">
-  <span class="section-number">05 • How we work together</span>
+  <span class="section-number">08 • How we work together</span>
   <h2>Three steps. <em>One to two weeks</em> to live.</h2>
   <div class="steps">
     <div class="step">
@@ -399,7 +522,7 @@ a{color:inherit;text-decoration:none}
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-title">Handover</div>
-      <div class="step-body">The system runs in your accounts (ClickUp, Supabase, your domain). You own it from day one. Optional care plan if you want me to monitor and tune it after launch.</div>
+      <div class="step-body">The system runs entirely in your accounts and your stack. No vendor lock-in, no my-tools-or-nothing. You own it from day one. Optional care plan if you want me to monitor and tune it after launch.</div>
     </div>
   </div>
 </div>
