@@ -194,7 +194,7 @@
     var els = [];
     (d.nodes || []).forEach(function (n) {
       var logo = findLogo(n.label, n.type);
-      els.push({
+      var el = {
         group: "nodes",
         data: {
           id: n.id,
@@ -205,7 +205,12 @@
           panel: n.panel || {},
           visited: !!state.viewedNodes[n.id]
         }
-      });
+      };
+      // Honor hand-tuned positions when present (used by preset layout).
+      if (typeof n.x === "number" && typeof n.y === "number") {
+        el.position = { x: n.x, y: n.y };
+      }
+      els.push(el);
     });
     (d.edges || []).forEach(function (e, i) {
       els.push({
@@ -220,6 +225,28 @@
       });
     });
     return els;
+  }
+
+  // Use preset positions when the data has them (every node has x,y);
+  // fall back to dagre LR for graphs authored without coordinates.
+  function pickLayout(data) {
+    var nodes = (data.diagram && data.diagram.nodes) || [];
+    var allPositioned = nodes.length > 0 && nodes.every(function (n) {
+      return typeof n.x === "number" && typeof n.y === "number";
+    });
+    if (allPositioned) {
+      return { name: "preset", padding: 24, fit: true, animate: false };
+    }
+    return {
+      name: "dagre",
+      rankDir: (data.diagram && data.diagram.rankDir) || "LR",
+      nodeSep: 36,
+      edgeSep: 18,
+      rankSep: 90,
+      padding: 24,
+      animate: false,
+      ranker: "tight-tree"
+    };
   }
 
   // Cytoscape style sheet (DM Serif Display + Source Serif 4 to match the brand).
@@ -266,10 +293,10 @@
       { selector: "node[?visited]", style: { "border-color": "#2A8F65" }},
       { selector: "node:active, node.is-active", style: {
         "border-color": "#2A8F65",
-        "border-width": 3,
-        "shadow-blur": 18,
-        "shadow-color": "#2A8F65",
-        "shadow-opacity": 0.25
+        "border-width": 4,
+        "overlay-color": "#2A8F65",
+        "overlay-opacity": 0.08,
+        "overlay-padding": 6
       }},
       { selector: "node:selected", style: {
         "border-color": "#2A8F65",
@@ -340,16 +367,7 @@
           container: cyContainer,
           elements: toElements(data),
           style: cyStyle(),
-          layout: {
-            name: "dagre",
-            rankDir: (data.diagram && data.diagram.rankDir) || "TB",
-            nodeSep: 80,
-            edgeSep: 22,
-            rankSep: 48,
-            padding: 28,
-            animate: false,
-            ranker: "tight-tree"
-          },
+          layout: pickLayout(data),
           minZoom: 0.25,
           maxZoom: 2.5,
           wheelSensitivity: 0.22,
@@ -429,16 +447,12 @@
           }
         });
 
-        // Fit to viewport. Cap UP only (avoid huge nodes on tiny graphs);
-        // never floor — fitting everything beats arbitrary cropping.
+        // Fit to viewport. No zoom cap — preset positions are designed
+        // for the container's aspect ratio; capping would crop edges.
         function refit() {
           try {
             cy.resize();
-            cy.fit(null, 32);
-            if (cy.zoom() > 1.1) {
-              cy.zoom(1.1);
-              cy.center();
-            }
+            cy.fit(null, 28);
           } catch (_) {}
         }
         cy.one("layoutstop", function () { refit(); });
