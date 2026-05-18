@@ -24,6 +24,22 @@
 }
 .lma-diagram{width:100%;height:auto;display:block;max-height:80vh}
 
+/* Section regions (soft tinted backgrounds behind everything) */
+.lma-region{
+  fill:rgba(42,143,101,.04);
+  stroke:rgba(42,143,101,.18);stroke-width:1;stroke-dasharray:4 5;
+  transition:fill .3s
+}
+.lma-region.is-loop{fill:rgba(123,104,238,.05);stroke:rgba(123,104,238,.22)}
+.lma-region-label{
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;
+  fill:rgba(42,143,101,.78);
+  pointer-events:none;user-select:none
+}
+.lma-region-label.is-loop{fill:rgba(123,104,238,.78)}
+
 /* Edges */
 .lma-edge{
   fill:none;stroke:rgba(26,26,26,.42);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
@@ -54,8 +70,14 @@
   fill:#ffffff;
   stroke:rgba(26,26,26,.10);stroke-width:1;
   filter:drop-shadow(0 1px 2px rgba(26,26,26,.05)) drop-shadow(0 4px 12px rgba(26,26,26,.06));
-  transition:stroke .18s,filter .18s
+  transition:stroke .18s,filter .18s,fill .18s
 }
+/* Type-based card tints — pastels that match the legend swatches. */
+.lma-node.t-trigger   .lma-node-card{fill:#FFFAEC}
+.lma-node.t-transform .lma-node-card{fill:#F2F7FB}
+.lma-node.t-decision  .lma-node-card{fill:#F7F1F9}
+.lma-node.t-storage   .lma-node-card{fill:#FCF2E5}
+.lma-node.t-output    .lma-node-card{fill:#EDF5EF}
 .lma-node:hover .lma-node-card,
 .lma-node.is-hover .lma-node-card{
   stroke:rgba(26,26,26,.32);
@@ -132,8 +154,32 @@
 .lma-drawer.is-fresh .lma-drawer-cta{animation-delay:.20s}
 @keyframes lmaDrawerIn{to{opacity:1;transform:translateY(0)}}
 
+/* Type legend (below the diagram on desktop) */
+.lma-legend{
+  max-width:1280px;margin:18px auto 0;padding:0 32px;
+  display:flex;flex-wrap:wrap;gap:18px 28px;
+  align-items:center;justify-content:center
+}
+.lma-legend-item{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+  color:#4a4a48
+}
+.lma-legend-swatch{
+  width:14px;height:14px;border-radius:4px;
+  border:1px solid rgba(26,26,26,.14);
+  display:inline-block;flex-shrink:0
+}
+.lma-legend-item.t-trigger   .lma-legend-swatch{background:#FFFAEC;border-color:#E8C97A}
+.lma-legend-item.t-transform .lma-legend-swatch{background:#F2F7FB;border-color:#A6C7DD}
+.lma-legend-item.t-decision  .lma-legend-swatch{background:#F7F1F9;border-color:#C6A6D0}
+.lma-legend-item.t-storage   .lma-legend-swatch{background:#FCF2E5;border-color:#D9B488}
+.lma-legend-item.t-output    .lma-legend-swatch{background:#EDF5EF;border-color:#9CC4AB}
+@media (max-width:980px){.lma-legend{display:none}}
+
 /* Actions row + floating CTA */
-.lma-actions{flex-wrap:wrap;justify-content:center;gap:12px;max-width:1280px;margin:36px auto 8px;padding:0 24px;display:flex}
+.lma-actions{flex-wrap:wrap;justify-content:center;gap:12px;max-width:1280px;margin:24px auto 8px;padding:0 24px;display:flex}
 .lma-btn{color:#f7f4ef;letter-spacing:.02em;cursor:pointer;background:#1a1a1a;border:0;border-radius:6px;padding:12px 22px;font-family:"Source Serif 4",Georgia,serif;font-size:14px;font-weight:600;transition:background .16s}
 .lma-btn:hover{background:#000}
 .lma-btn-secondary{color:#1a1a1a;background:0 0;border:1px solid rgba(26,26,26,.35)}

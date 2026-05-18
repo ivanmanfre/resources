@@ -303,6 +303,45 @@
     });
     svg.appendChild(defs);
 
+    // ── Region groupings (below everything else, soft tinted backgrounds)
+    var regionsLayer = svgEl("g", { class: "lma-regions" });
+    function regionBounds(nodeGroup, pad) {
+      if (!nodeGroup.length) return null;
+      var boxes = nodeGroup.map(nodeBox);
+      var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      boxes.forEach(function (b) {
+        if (b.left < minX) minX = b.left;
+        if (b.right > maxX) maxX = b.right;
+        if (b.top < minY) minY = b.top;
+        if (b.bottom > maxY) maxY = b.bottom;
+      });
+      return { x: minX - pad, y: minY - pad, w: (maxX - minX) + pad * 2, h: (maxY - minY) + pad * 2 };
+    }
+    // Split nodes by their y-coordinate: only the very bottom row (y >= 620)
+    // is the re-engagement loop; everything above (including LinkedIn publish
+    // at y=540) belongs to the main generation pipeline.
+    var mainNodes = nodes.filter(function (n) { return (n.y || 0) < 620; });
+    var loopNodes = nodes.filter(function (n) { return (n.y || 0) >= 620; });
+    [
+      { nodes: mainNodes, label: "Generation pipeline", cls: "is-main" },
+      { nodes: loopNodes, label: "Re-engagement loop", cls: "is-loop" }
+    ].forEach(function (region) {
+      var b = regionBounds(region.nodes, 28);
+      if (!b) return;
+      regionsLayer.appendChild(svgEl("rect", {
+        x: b.x, y: b.y, width: b.w, height: b.h,
+        rx: 20, ry: 20,
+        class: "lma-region " + region.cls
+      }));
+      var label = svgEl("text", {
+        x: b.x + 20, y: b.y + 24,
+        class: "lma-region-label " + region.cls
+      });
+      label.textContent = region.label;
+      regionsLayer.appendChild(label);
+    });
+    svg.appendChild(regionsLayer);
+
     // ── Edges (below nodes)
     var edgeLayer = svgEl("g", { class: "lma-edges" });
     var boxesById = {};
@@ -478,6 +517,28 @@
       state.flowPulseTimer = setTimeout(loop, 5400);
     }
     state.flowPulseTimer = setTimeout(loop, 1200);
+  }
+
+  // ── Type legend ───────────────────────────────────────────────────────
+  // Tells visitors what each node-type tint means. Renders below the
+  // diagram on desktop, hidden on mobile (where the type chip is in the
+  // mobile card eyebrow already).
+  function renderLegend() {
+    var items = [
+      { type: "trigger",   label: "Trigger" },
+      { type: "transform", label: "Process" },
+      { type: "decision",  label: "Decision" },
+      { type: "storage",   label: "Storage" },
+      { type: "output",    label: "Output"  }
+    ];
+    var wrap = make("div", { class: "lma-legend", "aria-label": "Node type legend" });
+    items.forEach(function (it) {
+      var el = make("div", { class: "lma-legend-item t-" + it.type });
+      el.appendChild(make("span", { class: "lma-legend-swatch" }));
+      el.appendChild(make("span", { class: "lma-legend-text" }, esc(it.label)));
+      wrap.appendChild(el);
+    });
+    return wrap;
   }
 
   // ── Mobile node list ──────────────────────────────────────────────────
@@ -706,6 +767,15 @@
       // Embed a print stylesheet inline so cards/edges/labels render correctly.
       var printCss =
         '.lma-node-card{fill:#fff;stroke:rgba(26,26,26,.18);stroke-width:1}' +
+        '.t-trigger .lma-node-card{fill:#FFFAEC}' +
+        '.t-transform .lma-node-card{fill:#F2F7FB}' +
+        '.t-decision .lma-node-card{fill:#F7F1F9}' +
+        '.t-storage .lma-node-card{fill:#FCF2E5}' +
+        '.t-output .lma-node-card{fill:#EDF5EF}' +
+        '.lma-region{fill:rgba(42,143,101,.04);stroke:rgba(42,143,101,.16);stroke-width:1;stroke-dasharray:4 4}' +
+        '.lma-region.is-loop{fill:rgba(123,104,238,.05);stroke:rgba(123,104,238,.20)}' +
+        '.lma-region-label{font-family:"Source Serif 4",Georgia,serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;fill:rgba(42,143,101,.75)}' +
+        '.lma-region-label.is-loop{fill:rgba(123,104,238,.75)}' +
         '.lma-edge{fill:none;stroke:rgba(26,26,26,.5);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}' +
         '.lma-edge-label{font-family:"Source Serif 4",Georgia,serif;font-size:11px;font-weight:600;fill:#1a1a1a;paint-order:stroke fill;stroke:#fdfcf8;stroke-width:4px;stroke-linejoin:round}' +
         '.lma-node-label{fill:#1a1a1a;font-family:"DM Serif Display",Georgia,serif;font-size:18px;font-weight:400}';
@@ -761,6 +831,7 @@
     root.innerHTML = "";
     root.appendChild(renderHero(data));
     root.appendChild(renderSvg(data));
+    root.appendChild(renderLegend());
     root.appendChild(renderMobileList(data));
 
     var actions = make("div", { class: "lma-actions", id: "lma-actions" });
