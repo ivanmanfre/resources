@@ -200,12 +200,16 @@
     return _cyDepsPromise;
   }
 
-  // Brand logo → tiny SVG data URI used as a node background-image.
+  // Brand logo → SVG data URI used as the node's primary visual element.
+  // Renders the brand mark on a soft rounded-square tile (premium card feel)
+  // at 82% scale so the icon reads instantly, not as a dot in white space.
   function logoDataUri(logo) {
+    // scale(0.82) keeps the icon at 19.7/24 ≈ 82% of the tile, centered.
+    // Math: (24 - 24*0.82)/2 / 0.82 = 2.634 → translate(2.634,2.634).
     var svg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' +
-      '<circle cx="12" cy="12" r="12" fill="' + logo.color + '"/>' +
-      '<g transform="scale(0.7) translate(5.14,5.14)" fill="#FFFFFF">' +
+      '<rect x="0" y="0" width="24" height="24" rx="6" ry="6" fill="' + logo.color + '"/>' +
+      '<g transform="scale(0.82) translate(2.634,2.634)" fill="#FFFFFF">' +
       '<path d="' + logo.path + '"/></g></svg>';
     return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
   }
@@ -232,7 +236,7 @@
       // coords assume 200×90 nodes (60px x-stride gaps); cy renders nodes
       // at 260×96, so without scaling adjacent nodes touch.
       if (typeof n.x === "number" && typeof n.y === "number") {
-        el.position = { x: n.x * 1.30, y: n.y * 1.10 };
+        el.position = { x: n.x * 1.40, y: n.y * 1.10 };
       }
       els.push(el);
     });
@@ -282,26 +286,28 @@
         "background-image": "data(logoUri)",
         "background-image-containment": "inside",
         "background-fit": "none",
-        "background-width": "32px",
-        "background-height": "32px",
-        "background-position-x": "18px",
-        "background-position-y": "18px",
+        "background-width": 64,
+        "background-height": 64,
+        "background-position-x": "0%",
+        "background-position-y": "50%",
+        "background-offset-x": 18,
+        "background-offset-y": 0,
         "background-clip": "none",
         "border-color": "rgba(26,26,26,0.16)",
         "border-width": 1,
         "border-opacity": 1,
-        "width": 260,
-        "height": 100,
+        "width": 280,
+        "height": 104,
         "label": "data(label)",
         "color": "#1A1A1A",
         "font-family": "DM Serif Display, Georgia, serif",
-        "font-size": 19,
+        "font-size": 20,
         "font-weight": 400,
         "text-valign": "center",
         "text-halign": "center",
         "text-wrap": "wrap",
-        "text-max-width": "200px",
-        "text-margin-y": 12,
+        "text-max-width": 170,
+        "text-margin-x": 36,
         "padding": 12,
         "transition-property": "border-color, border-width, overlay-opacity",
         "transition-duration": "180ms"
