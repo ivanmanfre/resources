@@ -1,0 +1,752 @@
+{
+  "slug": "lead-handoff-audit-12-checks-before-your-next-mql-goes-cold",
+  "title": "Lead Handoff Audit: 12 Checks Before Your Next MQL Goes Cold",
+  "subtitle": "A diagnostic for RevOps and ops leads at 20-80 person agencies. Score your sales-to-delivery handoff against the 12 checks that determine whether MQLs convert or quietly go cold.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "marketing and creative agency",
+    "locations": "the US, UK, and Canada",
+    "count_band": "20-80"
+  },
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your lead and handoff data is clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules your team follows to route, qualify, and pass leads can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not the entire pipeline at once.",
+      "Human-in-the-loop by design. Every handoff touches a person before it ships to the client side."
+    ],
+    "intro": "This assessment scores your lead handoff against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready for AI to carry weight. Miss one and any AI build will leak right where the leads are leaking now."
+  },
+  "proof_card": {
+    "score_label": "Handoff Health Score",
+    "sample_top_leak": "sales-to-delivery handoff (~9 hrs/week recoverable + 18% MQL slippage)",
+    "sample_score": 54
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your agency?",
+    "answers": [
+      {
+        "label": "Under 20 people. Founder still touches most deals.",
+        "tag": "boutique"
+      },
+      {
+        "label": "20-40 people. First ops or RevOps hire in place.",
+        "tag": "growing"
+      },
+      {
+        "label": "41-60 people. Dedicated sales and delivery functions.",
+        "tag": "established"
+      },
+      {
+        "label": "61-80+ people. Multiple pods or service lines running parallel.",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "lead-capture-quality",
+      "name": "Lead Capture & Data Quality",
+      "questions": [
+        {
+          "id": "intake-completeness",
+          "text": "How complete is the data captured when a lead first enters your system?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Name and email only. Everything else gets discovered on the call.",
+              "score": 1
+            },
+            {
+              "label": "2. Basic firmographics captured, but most fields are optional and skipped.",
+              "score": 2
+            },
+            {
+              "label": "3. Required fields enforce company size and budget range, the rest is inconsistent.",
+              "score": 3
+            },
+            {
+              "label": "4. Structured intake covers fit criteria, budget, timeline, and current stack.",
+              "score": 4
+            },
+            {
+              "label": "5. Intake captures everything sales needs before the first call, no re-asking.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "source-tracking",
+          "text": "How reliably can you trace where each MQL came from?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Source field is mostly blank or filled with 'website' or 'referral' as catch-alls.",
+              "score": 1
+            },
+            {
+              "label": "2. UTMs work sometimes. Direct and referral traffic loses attribution.",
+              "score": 2
+            },
+            {
+              "label": "3. We can trace channel for most leads, but not specific campaign or content piece.",
+              "score": 3
+            },
+            {
+              "label": "4. Channel, campaign, and first-touch content tracked for 90%+ of leads.",
+              "score": 4
+            },
+            {
+              "label": "5. Full multi-touch attribution. We know every touchpoint before the form fill.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "dedup-hygiene",
+          "text": "How well does your CRM handle duplicate or returning contacts?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Duplicates everywhere. Same lead shows up 3 times under different reps.",
+              "score": 1
+            },
+            {
+              "label": "2. We dedupe quarterly when someone notices.",
+              "score": 2
+            },
+            {
+              "label": "3. Email matching catches obvious duplicates, fuzzy matches still slip through.",
+              "score": 3
+            },
+            {
+              "label": "4. Automated dedup on email and domain. Manual review for edge cases.",
+              "score": 4
+            },
+            {
+              "label": "5. Real-time deduplication with fuzzy matching on name, company, and domain.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your intake is leaking before sales even sees the lead",
+          "text": "If intake is incomplete, every downstream step has to backfill. Sales burns the first call asking questions the form should have captured, and half the leads never make it to qualification because the data is too thin to route. The first fix is the intake form, not the CRM.",
+          "steps": [
+            "Audit your current form. Count required vs optional fields. Make budget range, company size, and timeline required.",
+            "Add UTM parameters to every outbound link and ad. Pipe them into hidden form fields.",
+            "Set a 'source' field with a controlled vocabulary, not free text. No more 'website' as a catch-all."
+          ]
+        },
+        "mid": {
+          "headline": "Intake works for the easy cases, leaks on edge cases",
+          "text": "You have structure, but it breaks when leads come from non-standard channels or fill out the form on mobile. The gap is between what the form captures and what sales actually needs to qualify in under 5 minutes.",
+          "steps": [
+            "Map the 5 most common 'I had to ask on the call' questions. Add them to intake.",
+            "Set up automated dedup on email + domain. Run it nightly until you trust it, then real-time.",
+            "Add a 'data completeness' score to each lead. Anything under 70% gets flagged for enrichment before routing."
+          ]
+        },
+        "high": {
+          "headline": "Intake is dialed. Next gain is enrichment depth",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Layer in enrichment from Clearbit, Apollo, or Cognism on company-level data.",
+            "Score leads on fit criteria automatically at form submission, before a human touches them.",
+            "Build a self-cleaning CRM workflow that flags stale or contradictory data weekly."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~6 hrs/week recoverable on sales backfilling intake gaps",
+        "lever": "My read: rebuild the intake form before touching anything else in the funnel. It is the cheapest fix with the biggest downstream effect.",
+        "talking_points": [
+          "Every incomplete lead costs sales 8-12 minutes on the first call asking questions the form should have captured.",
+          "Duplicate contacts are not a CRM problem, they are a routing problem. Two reps working the same lead is how deals get dropped.",
+          "Attribution gaps mean we cannot tell which marketing spend is producing the leads that actually close.",
+          "Form fixes pay back in 2-3 weeks. CRM migrations pay back in 6-9 months. Start with the form."
+        ],
+        "proof_of_concept": "Add 4 required fields to your intake form this week, then measure how many minutes sales saves on the first 10 calls after the change."
+      }
+    },
+    {
+      "id": "qualification-routing",
+      "name": "Qualification & Routing",
+      "questions": [
+        {
+          "id": "qualification-criteria",
+          "text": "How explicitly are your MQL criteria documented?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Sales decides on instinct. No written criteria.",
+              "score": 1
+            },
+            {
+              "label": "2. There is a doc somewhere from a year ago. Nobody references it.",
+              "score": 2
+            },
+            {
+              "label": "3. Criteria exist and reps mostly follow them. Some interpretation drift.",
+              "score": 3
+            },
+            {
+              "label": "4. Clear criteria with examples. New reps onboard in under a week.",
+              "score": 4
+            },
+            {
+              "label": "5. Scoring rubric is automated. Same input always produces the same MQL decision.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "routing-speed",
+          "text": "How fast does a qualified lead reach the right person?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. 24+ hours. Often longer on weekends.",
+              "score": 1
+            },
+            {
+              "label": "2. Same day, but only if someone notices the lead in the queue.",
+              "score": 2
+            },
+            {
+              "label": "3. Within a few hours during business hours. Slower off-hours.",
+              "score": 3
+            },
+            {
+              "label": "4. Under 30 minutes during business hours with automated assignment.",
+              "score": 4
+            },
+            {
+              "label": "5. Under 5 minutes any time, automated routing with on-call coverage.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "assignment-logic",
+          "text": "How is lead assignment to reps decided?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Whoever sees it first. Or whoever the founder forwards it to.",
+              "score": 1
+            },
+            {
+              "label": "2. Round-robin in spirit, but ignored when someone is 'closer to the deal'.",
+              "score": 2
+            },
+            {
+              "label": "3. Round-robin with manual overrides for vertical or size.",
+              "score": 3
+            },
+            {
+              "label": "4. Rules-based on vertical, deal size, and rep capacity. Reviewed quarterly.",
+              "score": 4
+            },
+            {
+              "label": "5. Dynamic routing on rep performance, capacity, vertical fit, and time zone.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "disqualification-loop",
+          "text": "How are disqualified leads handled?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Ghosted. We never tell them anything.",
+              "score": 1
+            },
+            {
+              "label": "2. Sometimes a rep sends a polite no, sometimes nothing.",
+              "score": 2
+            },
+            {
+              "label": "3. We send a templated decline. No nurture path after.",
+              "score": 3
+            },
+            {
+              "label": "4. Disqualified leads enter a nurture sequence. We retest fit in 6 months.",
+              "score": 4
+            },
+            {
+              "label": "5. Tiered disqualification with referrals to partners, nurture for future fit, and feedback loop to marketing.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Qualification is happening on vibes, not rules",
+          "text": "When MQL criteria live in someone's head, no two reps qualify the same way. The lead you would have closed gets disqualified by the rep who had a bad morning. And the lead that wastes 4 calls before going cold should have been disqualified at intake.",
+          "steps": [
+            "Write down the 5 hard criteria a lead must meet to be an MQL. Get sales and marketing to sign off.",
+            "Add a simple scoring formula in your CRM. Anything below the threshold routes to nurture, not to a rep.",
+            "Set a max time-to-assignment of 4 hours. Track it weekly."
+          ]
+        },
+        "mid": {
+          "headline": "Routing works but assignment logic is stale",
+          "text": "Reps are getting leads, but not always the right reps. Vertical and size routing matters more than round-robin fairness because the wrong rep on the wrong lead burns both calendars.",
+          "steps": [
+            "Rebuild assignment logic around vertical fit + capacity, not seniority or tenure.",
+            "Cut time-to-first-touch to under 30 minutes during business hours. Set up an on-call rotation off-hours.",
+            "Build a disqualification nurture sequence. 18% of disqualified leads come back qualified within 9 months."
+          ]
+        },
+        "high": {
+          "headline": "Qualification is sharp. Next frontier is routing intelligence",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Layer in deal-history routing: which rep has closed deals most similar to this lead.",
+            "Build a closed-loop feedback system from delivery back to qualification (which MQLs actually convert).",
+            "Add capacity-aware routing so reps already at quota stop getting the best leads."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~14% of MQLs misrouted to the wrong rep, costing ~$80K/quarter in slipped pipeline",
+        "lever": "Honest take: writing down the MQL criteria is a 1-day exercise that pays back faster than any tool you could buy.",
+        "talking_points": [
+          "Reps qualifying on instinct means every disagreement on a deal becomes a judgment call instead of a rule check.",
+          "Time-to-first-touch under 30 minutes is the single biggest correlate with MQL-to-SQL conversion in agency pipelines.",
+          "Disqualified does not mean dead. A nurture sequence on disqualified leads typically reactivates 15-20% within a year.",
+          "Round-robin is fair but rarely optimal. Vertical-matched routing converts 30-40% better."
+        ],
+        "proof_of_concept": "Pick the 10 most recent disqualified leads and have your best rep re-evaluate them this week. Track how many were actually qualifiable."
+      }
+    },
+    {
+      "id": "sales-to-delivery-handoff",
+      "name": "Sales-to-Delivery Handoff",
+      "questions": [
+        {
+          "id": "handoff-document",
+          "text": "How structured is the handoff document from sales to delivery?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. A Slack message. Maybe a meeting recording if we are lucky.",
+              "score": 1
+            },
+            {
+              "label": "2. A Google Doc per deal, format varies by rep.",
+              "score": 2
+            },
+            {
+              "label": "3. A standardized template, filled in inconsistently.",
+              "score": 3
+            },
+            {
+              "label": "4. Required fields enforced. Delivery cannot kick off without a complete brief.",
+              "score": 4
+            },
+            {
+              "label": "5. Auto-generated from CRM + call transcripts, reviewed by sales and delivery lead before kickoff.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "context-transfer",
+          "text": "How well does delivery understand the client's goals before the kickoff call?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They learn on the kickoff call. Sometimes the client has to repeat everything.",
+              "score": 1
+            },
+            {
+              "label": "2. They get a brief 30 minutes before the kickoff. Most of it gets skimmed.",
+              "score": 2
+            },
+            {
+              "label": "3. Delivery reviews the brief the day before. Big gaps surface on the call.",
+              "score": 3
+            },
+            {
+              "label": "4. Delivery has a 30-minute prep session with sales before the kickoff.",
+              "score": 4
+            },
+            {
+              "label": "5. Delivery has full context, call recordings, and a clear scope doc 48 hours before kickoff.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scope-precision",
+          "text": "How precisely is scope defined at handoff?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. 'We sold them a website.' Details to be determined.",
+              "score": 1
+            },
+            {
+              "label": "2. Top-level deliverables listed, no acceptance criteria.",
+              "score": 2
+            },
+            {
+              "label": "3. Deliverables and timeline locked, but edge cases come up weekly.",
+              "score": 3
+            },
+            {
+              "label": "4. Deliverables, acceptance criteria, and known out-of-scope items documented.",
+              "score": 4
+            },
+            {
+              "label": "5. Full SOW with deliverables, criteria, dependencies, change-order rules, and risk register.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The deal closes and then the silence starts",
+          "text": "When the handoff is a Slack message, the client repeats their goals four times in the first two weeks and trust erodes before delivery has done anything wrong. The fix is not better communication. It is a structured handoff that delivery cannot start work without.",
+          "steps": [
+            "Build a handoff template with required fields: client goals, success criteria, key contacts, scope, known risks.",
+            "Make 'handoff doc complete' a required stage transition in your CRM. No doc, no kickoff scheduled.",
+            "Run a 30-minute sales-to-delivery sync on every deal before kickoff, no exceptions."
+          ]
+        },
+        "mid": {
+          "headline": "Handoff exists but quality varies by rep",
+          "text": "Some reps write thorough briefs, others ship a paragraph. The variance creates churn risk on the deals where the brief is thin, because delivery is rebuilding context the client already gave during sales.",
+          "steps": [
+            "Make handoff fields required in the CRM, not optional. Sales cannot mark a deal closed-won without them.",
+            "Add auto-extracted call summaries from Gong, Grain, or Fathom to the handoff doc.",
+            "Set a 48-hour minimum lead time between deal close and kickoff call for delivery prep."
+          ]
+        },
+        "high": {
+          "headline": "Handoff is structured. Next gain is closing the feedback loop",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Build a post-kickoff review where delivery rates handoff quality. Feed the score back to sales weekly.",
+            "Auto-generate scope drafts from call transcripts, reviewed by sales before delivery sees them.",
+            "Track handoff-to-kickoff time and aim for the bottom quartile in your category."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~18% of new clients show early churn signals tied to bad handoff",
+        "lever": "What I'd do: make the handoff doc required in the CRM at deal close. No doc, no kickoff. The friction forces the fix.",
+        "talking_points": [
+          "Clients who repeat their goals more than twice in the first month have a 3x higher churn rate by month 6.",
+          "Sales is incentivized to close. Delivery is incentivized to ship. The handoff is the only place those incentives align, which is why it gets neglected.",
+          "A 30-minute internal sync before kickoff saves an average of 4 billable hours of rework in the first month.",
+          "The cost of a bad handoff is invisible because it shows up as 'scope creep' or 'client communication issues' months later."
+        ],
+        "proof_of_concept": "Pick your next 3 deals. Run a 30-minute mandatory sales-to-delivery sync before kickoff and survey delivery on handoff quality 2 weeks in."
+      }
+    },
+    {
+      "id": "follow-up-nurture",
+      "name": "Follow-up & Nurture",
+      "questions": [
+        {
+          "id": "followup-cadence",
+          "text": "How consistent is follow-up on leads that go silent?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Reps remember when they remember. Most leads ghost permanently.",
+              "score": 1
+            },
+            {
+              "label": "2. We follow up once or twice, then drop it.",
+              "score": 2
+            },
+            {
+              "label": "3. A defined cadence exists, reps follow it inconsistently.",
+              "score": 3
+            },
+            {
+              "label": "4. Automated cadence with personalization tokens. Reps add custom touches at key moments.",
+              "score": 4
+            },
+            {
+              "label": "5. Multi-channel sequence (email, LinkedIn, phone) with branching based on lead behavior.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "stalled-deal-recovery",
+          "text": "How effectively do you re-engage stalled deals?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Stalled deals just sit in the CRM forever, taking up space.",
+              "score": 1
+            },
+            {
+              "label": "2. We do an occasional cleanup, mark stuff lost.",
+              "score": 2
+            },
+            {
+              "label": "3. Reps re-engage on instinct. No systematic recovery program.",
+              "score": 3
+            },
+            {
+              "label": "4. Stalled deals enter a re-engagement sequence at 30/60/90 days.",
+              "score": 4
+            },
+            {
+              "label": "5. Behavior-triggered re-engagement (site visit, email open) plus quarterly review of cold deals.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "content-fit",
+          "text": "How well is your nurture content matched to where the lead is in the funnel?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Same newsletter goes to everyone.",
+              "score": 1
+            },
+            {
+              "label": "2. We have a 'leads' list and a 'clients' list. That is it.",
+              "score": 2
+            },
+            {
+              "label": "3. Content is segmented by vertical, not by funnel stage.",
+              "score": 3
+            },
+            {
+              "label": "4. Content varies by stage and vertical. Top of funnel gets education, bottom gets case studies.",
+              "score": 4
+            },
+            {
+              "label": "5. Content is matched to vertical, stage, and last-engaged topic. Mostly personalized.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Leads are dying in the silence between touches",
+          "text": "When follow-up is on-instinct, the best reps with great memory close deals and the rest let the pipeline rot. Most stalled deals are not dead, they are just waiting for someone to surface them with the right context.",
+          "steps": [
+            "Build a 7-touch follow-up sequence in your CRM. Trigger it automatically when a lead goes 5+ days without response.",
+            "Run a 'dead lead audit' on the last 90 days. Re-engage the top 20 with a personalized message and a relevant case study.",
+            "Set up a stalled-deal flag at 14 days no activity. Force a rep action or auto-route to re-engagement."
+          ]
+        },
+        "mid": {
+          "headline": "Cadence exists, personalization is missing",
+          "text": "You have the structure, but the messages read like every other follow-up email in the inbox. The win is matching content to the lead's vertical and stage, not just sending more touches.",
+          "steps": [
+            "Segment your nurture content by vertical and funnel stage. Build 3 tracks: education, social proof, urgency.",
+            "Add behavior-triggered branches: if a lead opens 3 emails or visits the pricing page, escalate to a rep.",
+            "Build a 30/60/90 re-engagement program for stalled deals with a different angle at each touch."
+          ]
+        },
+        "high": {
+          "headline": "Nurture is sharp. Next frontier is intent intelligence",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Layer in intent data (G2, Bombora, 6sense) to trigger outreach when leads are actively researching.",
+            "Build account-level nurture, not just contact-level. Multi-thread accounts where 3+ contacts have engaged.",
+            "Test AI-personalized opening lines in cold re-engagement. Measure reply rate vs templated."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~$240K annual pipeline recoverable from a structured re-engagement program",
+        "lever": "My read: a 7-touch sequence with vertical-matched content is the fastest pipeline lift you can ship in 2 weeks.",
+        "talking_points": [
+          "60-70% of stalled deals are not actually dead, they are unattended. The agency that follows up systematically wins them.",
+          "Vertical-matched content gets 2-3x the open rates of generic nurture across agency pipelines.",
+          "Most 'lost' deals were lost to no decision, not to a competitor. The right re-engagement angle is timing, not pitch.",
+          "A behavior-triggered escalation rule moves 5-10% more leads to first call without adding rep workload."
+        ],
+        "proof_of_concept": "Build a 3-touch sequence for the 20 most recent stalled deals this week. Measure reply rate and meeting-booked rate over the next 21 days."
+      }
+    },
+    {
+      "id": "feedback-attribution",
+      "name": "Feedback Loops & Attribution",
+      "questions": [
+        {
+          "id": "win-loss-analysis",
+          "text": "How systematically do you analyze why deals are won or lost?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We do not. Closed-lost reason is usually blank or 'no decision'.",
+              "score": 1
+            },
+            {
+              "label": "2. Reps fill in a reason field, no review of patterns.",
+              "score": 2
+            },
+            {
+              "label": "3. Quarterly win/loss review. Insights rarely change anything.",
+              "score": 3
+            },
+            {
+              "label": "4. Monthly review with closed-loop changes to ICP, messaging, or pricing.",
+              "score": 4
+            },
+            {
+              "label": "5. Structured win/loss interviews on 20%+ of closed deals, feeding directly into marketing and product.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "marketing-sales-alignment",
+          "text": "How aligned are marketing and sales on what a good lead looks like?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Marketing complains sales does not work the leads. Sales complains marketing sends junk.",
+              "score": 1
+            },
+            {
+              "label": "2. They agreed on a definition once. Both teams quietly ignore it.",
+              "score": 2
+            },
+            {
+              "label": "3. Shared MQL definition. Disagreements still surface monthly.",
+              "score": 3
+            },
+            {
+              "label": "4. Shared definition, monthly alignment meeting, agreed feedback rituals.",
+              "score": 4
+            },
+            {
+              "label": "5. Daily lead-quality feedback loop. Marketing adjusts campaigns based on sales-stage data.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "attribution-confidence",
+          "text": "How confident are you in which marketing activities produce revenue?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No idea. We spend on what feels right.",
+              "score": 1
+            },
+            {
+              "label": "2. We track last-touch attribution. Everything looks like 'direct' or 'referral'.",
+              "score": 2
+            },
+            {
+              "label": "3. Multi-touch attribution exists but the data has known gaps.",
+              "score": 3
+            },
+            {
+              "label": "4. We can attribute 70%+ of pipeline to specific channels and campaigns.",
+              "score": 4
+            },
+            {
+              "label": "5. Full revenue attribution with payback periods by channel. Budget allocated on the data.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You cannot fix what you do not measure",
+          "text": "Without win-loss data, every change to messaging, pricing, or ICP is a guess. Without marketing-sales alignment, marketing is shipping leads sales does not want and sales is dropping leads marketing knows will close. The fix is rituals, not tools.",
+          "steps": [
+            "Make closed-lost reason a required field with a controlled vocabulary, not free text.",
+            "Set up a 30-minute monthly marketing-sales sync. One agenda item: what is a good lead.",
+            "Run a win-loss interview on the next 5 closed-lost deals. Look for patterns."
+          ]
+        },
+        "mid": {
+          "headline": "Feedback loops exist but rarely change behavior",
+          "text": "You have the data, you have the meetings, but the insights are not reaching the people who can act on them. The gap is between observation and action.",
+          "steps": [
+            "Tie marketing-sales alignment to specific decisions: which campaigns to cut, which ICP to add, which messaging to test.",
+            "Build a closed-loop where lead quality scores from delivery flow back to sales weekly.",
+            "Run structured win-loss interviews on 20% of closed deals. Have a non-sales person conduct them."
+          ]
+        },
+        "high": {
+          "headline": "Feedback loops are tight. Next gain is predictive intelligence",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Build a predictive lead score using your historical win/loss data, not just demographic fit.",
+            "Add a delivery-to-marketing feedback loop on which clients actually become case studies vs. churn risks.",
+            "Test channel-specific payback windows and reallocate budget quarterly based on payback, not volume."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~22% of marketing spend going to channels with unknown payback",
+        "lever": "Honest take: the monthly marketing-sales sync is free. Skip it and every other RevOps investment underperforms.",
+        "talking_points": [
+          "Closed-lost reasons in free text are useless. A controlled vocabulary with 8-12 options gives you patterns within a quarter.",
+          "Marketing and sales misalignment is the most expensive recurring meeting cost in any agency over 30 people.",
+          "Last-touch attribution overweights the bottom of the funnel and starves the top. Multi-touch reveals where the real demand is built.",
+          "A win-loss program run by a non-sales person gets honest answers sales never will."
+        ],
+        "proof_of_concept": "Make closed-lost reason a required field this week. Review the data in 30 days and identify the top 3 loss reasons. That alone is worth more than most analytics tools."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'growing' || persona === 'established' || persona === 'scaling') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your lead handoff?",
+      "description": "Drop your email and I'll review your exact answers, stack them against agencies your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://ivanmanfredi.com/agent-ready-assessment"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'boutique'",
+      "headline": "Under 20 people? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer. Follow me on LinkedIn. I post tactical agency RevOps breakdowns 3x/week. When you cross 20 people, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight. Here's what agencies your size miss next.",
+      "description": "At your score, the low-hanging fruit is already picked. The next gains come from predictive lead scoring on historical win data, account-level nurture vs contact-level, and intent-data-triggered re-engagement. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly agency RevOps teardown",
+      "description": "One tactical case study plus one n8n workflow breakdown per week. How mid-market agencies run lean. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ]
+}
