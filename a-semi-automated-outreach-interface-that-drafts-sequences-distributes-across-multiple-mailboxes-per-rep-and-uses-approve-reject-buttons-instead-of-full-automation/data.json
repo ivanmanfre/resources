@@ -1,7 +1,7 @@
 {
   "slug": "a-semi-automated-outreach-interface-that-drafts-sequences-distributes-across-multiple-mailboxes-per-rep-and-uses-approve-reject-buttons-instead-of-full-automation",
-  "title": "The 4 Preconditions That Decide If Your AI Build Survives",
-  "subtitle": "A pre-build diagnostic for service-business owners at 11-100 employees who are about to spend $10k+ on automation and don't want it to die in 90 days.",
+  "title": "The 4-Precondition Agent-Ready Ops Readiness Spec",
+  "subtitle": "For 11-100 employee service businesses about to spend $20k+ on AI. Run this before you sign anything, or you'll be the 80% that ships a black box and blames the model.",
   "brand": {
     "accent": "#00E676",
     "hero_badge": "Action Checklist"
@@ -9,128 +9,147 @@
   "estimated_minutes": 30,
   "sections": [
     {
-      "id": "structured-input",
-      "title": "Structured Input — Can An Agent Actually Read Your Data?",
-      "description": "If your intake is free-text garbage, the agent breaks on day one. This section finds the leaks before you build.",
+      "id": "structured-input-data",
+      "title": "STRUCTURED INPUT DATA — Can an agent actually read your intake?",
+      "description": "If your intake collects free-text garbage and half the fields are optional, the agent breaks on day one. Fix the pipeline before you fix the AI.",
       "items": [
         {
-          "id": "intake-field-audit",
-          "text": "Pull every intake form your business uses and count the optional free-text fields",
-          "tip": "If more than 30% of fields are optional free-text, your agent is going to hallucinate scope. Tighten the form in HubSpot or Typeform first.",
+          "id": "audit-intake-form",
+          "text": "Open your client intake form and count how many fields are free-text vs. structured (dropdowns, dates, enums)",
+          "tip": "If more than 40% are free-text, rebuild it in Typeform or Tally before you touch any AI tool",
           "impact": "high"
         },
         {
-          "id": "data-source-map",
-          "text": "List every place client knowledge lives (Slack, Drive, Notion, CRM, that one spreadsheet on the ops lead's laptop)",
-          "tip": "If the count is higher than 3, your agent will be blind to most of the answer. Consolidate into Notion or Supabase before connecting AI.",
+          "id": "list-knowledge-sources",
+          "text": "List every place your team stores client knowledge (Notion, Drive, Slack, email, CRM, that one spreadsheet on Karen's laptop)",
+          "tip": "If the number is higher than 3, your AI will only see one source and hallucinate the rest. Consolidate into 1-2 structured sources first",
           "impact": "high"
         },
         {
-          "id": "field-naming-consistency",
-          "text": "Check that the same field is named the same thing across systems (client_name vs Client Name vs customer)",
-          "tip": "Fuzzy matching costs you weeks. Standardize keys in your source-of-truth table first.",
+          "id": "check-required-fields",
+          "text": "Mark every intake field as required or genuinely optional, then enforce it at the form level",
           "impact": "medium"
         },
         {
-          "id": "missing-data-rule",
-          "text": "Write down what happens when an upstream field is missing today (who fixes it, in what tool, how often)",
+          "id": "naming-conventions",
+          "text": "Write down your file and folder naming convention, then check 10 recent client folders for compliance",
+          "tip": "Inconsistent names are why your RAG returns the wrong document 30% of the time",
+          "impact": "medium"
+        },
+        {
+          "id": "data-freshness",
+          "text": "Identify the last time each knowledge source was updated and who owns it",
+          "tip": "Stale data is worse than no data. An agent will quote your 2023 pricing with full confidence",
+          "impact": "low"
+        }
+      ]
+    },
+    {
+      "id": "documentable-decision-logic",
+      "title": "DOCUMENTABLE DECISION LOGIC — Can your best person explain how they decide?",
+      "description": "If the answer is 'I just know,' you can't encode it. Tacit knowledge has to become explicit rules before any agent can replicate it.",
+      "items": [
+        {
+          "id": "lead-qualification-criteria",
+          "text": "Sit down with your top closer and have them write the exact criteria they use to qualify a lead",
+          "tip": "If two partners give you two different answers, that's the work. Do it now, not after you've paid for the build",
+          "impact": "high"
+        },
+        {
+          "id": "edge-case-inventory",
+          "text": "List the 10 most common edge cases your ops team handles weekly that aren't in any SOP",
+          "tip": "This is where 80% of the real work lives. The happy path is the easy 20%",
+          "impact": "high"
+        },
+        {
+          "id": "decision-tree-mapping",
+          "text": "Map one repeating decision (pricing, scoping, triage) as an if/then tree with no more than 7 branches",
+          "tip": "Use Whimsical or a Notion toggle list. If you can't get it under 7 branches, your scope is too wide",
+          "impact": "medium"
+        },
+        {
+          "id": "exception-handling",
+          "text": "Document who currently fixes things when the process breaks and what they do",
+          "impact": "medium"
+        },
+        {
+          "id": "judgment-call-flags",
+          "text": "Flag every step in the workflow that requires human judgment vs. pattern matching",
+          "tip": "Pattern matching = agent. Judgment = human-in-the-loop. Be honest about which is which",
+          "impact": "low"
+        }
+      ]
+    },
+    {
+      "id": "narrow-initial-scope",
+      "title": "NARROW INITIAL SCOPE — Did you pick one workflow, or are you boiling the ocean?",
+      "description": "Agents that try to handle every edge case on day one break on edge case #3. Start with the 80% of predictable cases and route the rest.",
+      "items": [
+        {
+          "id": "single-workflow-target",
+          "text": "Pick ONE workflow to automate first, with a clear start trigger and a clear end state",
+          "tip": "If you can't describe the trigger and end state in one sentence each, the scope is still too wide",
+          "impact": "high"
+        },
+        {
+          "id": "volume-metric",
+          "text": "Write down how many times per week this workflow runs and how long each run takes a human",
+          "tip": "Under 5 runs/week or under 30 min/run and you probably shouldn't build it. The 90-Day Payback Rule won't clear",
+          "impact": "high"
+        },
+        {
+          "id": "happy-path-percentage",
+          "text": "Estimate what % of runs follow the happy path vs. need exception handling",
+          "tip": "If the happy path is under 60%, narrow the scope further before building",
+          "impact": "medium"
+        },
+        {
+          "id": "kill-criteria",
+          "text": "Define what 'this isn't working' looks like with a specific metric and timeline",
+          "tip": "Example: 'If error rate is above 15% after 4 weeks, we kill it.' No kill criteria, no project",
           "impact": "medium"
         }
       ]
     },
     {
-      "id": "decision-logic",
-      "title": "Documentable Decision Logic — Can You Encode How Your Best Person Decides?",
-      "description": "Tacit knowledge has to become explicit rules before an agent can replicate it. Most teams skip this and wonder why the output feels off.",
+      "id": "human-in-the-loop",
+      "title": "HUMAN-IN-THE-LOOP DESIGN — Did you design the review layer on day one?",
+      "description": "Every agent I've shipped routes about 15-20% of cases to human review. That's not failure, that's the design working. Build it in from the start.",
       "items": [
         {
-          "id": "lead-qualification-rules",
-          "text": "Ask your two best people to write down lead qualification criteria separately, then compare answers",
-          "tip": "If the two lists don't overlap by at least 70%, you have a process problem wearing an AI costume. Resolve it before you build.",
+          "id": "review-routing-rules",
+          "text": "Define the confidence threshold or condition that routes a case to human review",
+          "tip": "In ClickUp or Slack, a 'needs review' queue with the agent's reasoning attached. Reviewer should decide in under 90 seconds",
           "impact": "high"
         },
         {
-          "id": "decision-tree-doc",
-          "text": "Document the 5 most common decision points in the workflow you want to automate (with the if/then logic)",
-          "tip": "Use a simple Google Doc or a ClickUp page. If you can't write it down, you can't ship it.",
+          "id": "reviewer-assigned",
+          "text": "Name the actual person who will review flagged cases and how much weekly time they're allocated",
+          "tip": "Unowned review queues become a graveyard. Budget 2-4 hours/week of a real human's time",
           "impact": "high"
-        },
-        {
-          "id": "edge-case-log",
-          "text": "Have ops log every edge case they handle for one full week",
-          "tip": "Expect 10-15 per week on a workflow leadership thinks is '5 clean steps'. That gap is where automation projects die.",
-          "impact": "medium"
-        },
-        {
-          "id": "tribal-knowledge-flag",
-          "text": "Flag every decision that currently relies on 'I just know' from one specific person",
-          "impact": "medium"
-        }
-      ]
-    },
-    {
-      "id": "narrow-scope",
-      "title": "Narrow Initial Scope — Are You Trying To Boil The Ocean?",
-      "description": "Agents that try to handle every case on day one break on case #3. Pick the 80% predictable work and route the rest.",
-      "items": [
-        {
-          "id": "happy-path-percent",
-          "text": "Estimate what percentage of cases follow the predictable happy path (look at last 30 days of work in ClickUp or your PM tool)",
-          "tip": "Target the 70-85% predictable slice for v1. Anything below 60% means the process isn't ready for an agent yet.",
-          "impact": "high"
-        },
-        {
-          "id": "scope-cut-list",
-          "text": "Write the explicit list of cases your v1 will NOT handle (and where they route instead)",
-          "tip": "If you can't name what you're cutting, you haven't narrowed the scope. You've just renamed the whole problem.",
-          "impact": "high"
-        },
-        {
-          "id": "90-day-payback-math",
-          "text": "Calculate hours-saved-per-week × loaded labor cost × 12 weeks vs. build cost",
-          "tip": "Apply the 90-Day Payback Rule. If the math doesn't return the build cost in 90 days, scope it down or kill it.",
-          "impact": "high"
-        },
-        {
-          "id": "single-workflow-pick",
-          "text": "Pick ONE workflow for the first build (not three, not the whole department)",
-          "impact": "medium"
-        }
-      ]
-    },
-    {
-      "id": "human-in-loop",
-      "title": "Human-In-The-Loop — Did You Design The Review Step On Day One?",
-      "description": "Every shipped agent routes 15-20% of cases to human review. That's the design working, not the design failing.",
-      "items": [
-        {
-          "id": "review-routing-rule",
-          "text": "Define the confidence threshold or trigger condition that routes a case to human review",
-          "tip": "In n8n or Make, this is usually an IF node after the LLM call checking confidence_score or a specific output field.",
-          "impact": "high"
-        },
-        {
-          "id": "review-owner-named",
-          "text": "Name the specific person who owns the review queue and how they get notified",
-          "tip": "Slack DM, ClickUp task, or email. Pick one. Reviews that go to a shared inbox become reviews that don't happen.",
-          "impact": "medium"
         },
         {
           "id": "feedback-loop",
-          "text": "Set up a way for the reviewer's corrections to feed back into the prompt or rules",
-          "tip": "A Supabase table logging overrides + reasons gives you the data to tighten the agent every 2 weeks.",
+          "text": "Build a way for the reviewer's corrections to feed back into the system prompt or rule set",
+          "tip": "Otherwise you fix the same mistake 40 times. A simple Supabase log + weekly prompt revision works",
           "impact": "medium"
         },
         {
-          "id": "kill-switch",
-          "text": "Document the kill switch — how you pause the agent in under 60 seconds if it goes sideways",
+          "id": "audit-trail",
+          "text": "Make sure every agent decision is logged with input, output, and reasoning",
+          "tip": "n8n execution logs or a Supabase audit table. When something goes wrong at 2am, you need the trace",
+          "impact": "medium"
+        },
+        {
+          "id": "rollback-plan",
+          "text": "Document how you turn the agent off and revert to manual in under 10 minutes",
           "impact": "low"
         }
       ]
     }
   ],
   "completion_cta": {
-    "headline": "Want me to look at your top 3 gaps?",
-    "description": "Reply to the follow-up email with your answers and I'll send back a 1-page Agent-Ready Blueprint showing which gap to close first and what the build looks like. No call required."
+    "headline": "Want me to score your top 3 gaps against the 90-Day Payback Rule?",
+    "description": "Reply with your results and I'll send back which precondition to fix first, what it'll cost in hours, and whether the build clears payback inside 90 days. No deck, no discovery call, just the math."
   }
 }
