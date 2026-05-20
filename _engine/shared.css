@@ -1,7 +1,17 @@
 /* Shared brand tokens + base primitives for every LM engine.
    Imported by checklist / assessment / calculator / template / guide / swipe. */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap');
+
+/* Global brand override — the per-LM HTML wrapper still ships an inline
+   `body { font-family: 'Space Grotesk' }` from the legacy n8n template. The
+   `html body` selector beats single-element specificity without !important. */
+html body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: #1A1A1A;
+  background: #F7F4EF;
+  margin: 0;
+}
 
 :root {
   --paper: #F7F4EF;
@@ -12,10 +22,13 @@
   --ink-mute: #5A5752;
   --hairline: rgba(26, 26, 26, 0.12);
   --hairline-bold: rgba(26, 26, 26, 0.22);
-  --accent: #4C6E3D;
-  --accent-light: #709A5D;
-  --accent-ink: #344B29;
-  --accent-soft: rgba(76, 110, 61, 0.08);
+  /* Sage = THE brand accent. Moss `#4C6E3D` retired 2026-05-20 — was creating
+     two-greens-on-one-page (sage punctuation + moss chrome). Brand rule §1
+     says ONE accent per surface. */
+  --accent: #2A8F65;
+  --accent-light: #4FB286;
+  --accent-ink: #1F6D4D;
+  --accent-soft: rgba(42, 143, 101, 0.08);
   --shadow-subtle: 0 1px 3px rgba(26,26,26,0.06), 0 1px 2px rgba(26,26,26,0.04);
   --shadow-lift: 0 8px 24px rgba(26,26,26,0.10), 0 2px 6px rgba(26,26,26,0.05);
   --radius-sm: 4px;

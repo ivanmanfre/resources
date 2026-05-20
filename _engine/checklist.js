@@ -61,6 +61,37 @@
       '</svg>';
   }
 
+  // E4 (2026-05-20): split a section title on em/en/hyphen-dash.
+  // Returns { label, question }. Used to render section heads as
+  // mono-uppercase label + DM Serif italic-pivot question.
+  function splitTitle(t) {
+    var s = String(t || "");
+    // Match " — ", " – ", " - " (with spaces around the dash)
+    var m = s.split(/\s+[—–\-]\s+/);
+    if (m.length >= 2) {
+      return { label: m[0].trim(), question: m.slice(1).join(" — ").trim() };
+    }
+    return { label: "", question: s.trim() };
+  }
+
+  // E4: auto-italicize the last meaningful word of a question.
+  // E.g. "Can an agent actually read your intake?" → "Can an agent actually read your <em>intake</em>?"
+  // Stays out of the way if the title already contains <em>.
+  function buildItalicizedTitle(text) {
+    var t = String(text || "");
+    if (/<em\b|<i\b/i.test(t)) return t; // respect existing markup
+    var esc = escapeHtml(t);
+    // Match the last word (optionally followed by ? . ! :) at end of string
+    var pivot = esc.match(/([A-Za-z][\w'\-]*)([?.!:]*)$/);
+    if (!pivot) return esc;
+    var word = pivot[1];
+    var trailing = pivot[2] || "";
+    // Skip if the last word is a short filler (e.g. "the", "a", "of", "is")
+    var fillers = ["the","a","an","of","is","it","to","in","on","at","or","and","but"];
+    if (fillers.indexOf(word.toLowerCase()) !== -1) return esc;
+    return esc.slice(0, -1 * (word.length + trailing.length)) + "<em>" + word + "</em>" + trailing;
+  }
+
   // D1.3: Lazy-load canvas-confetti from CDN on first 100% trigger.
   // Resolves to null on network failure so the celebration panel still appears.
   var _confettiLoading = null;
@@ -89,7 +120,7 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/profile.jpg", alt: "Ivan Manfredi" });
+    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
@@ -153,24 +184,68 @@
     });
     root.appendChild(introSection);
 
-    // Sections
+    // E2: Sticky TOC — section jump-list, replaces unused progress-wrap
+    var sections = data.sections || [];
+    if (sections.length > 1) {
+      var toc = make("nav", { class: "lmc-toc", "aria-label": "Sections" });
+      var tocInner = make("div", { class: "lmc-toc-inner" });
+      tocInner.appendChild(make("span", { class: "lmc-toc-label" }, "Jump to"));
+      var tocList = make("ul", { class: "lmc-toc-list" });
+      sections.forEach(function (s, sIdx) {
+        var sid = s.id || ("section-" + sIdx);
+        var split = splitTitle(s.title || ("Section " + (sIdx + 1)));
+        var label = split.label || split.question || ("Section " + (sIdx + 1));
+        var li = make("li");
+        var a = make("a", { class: "lmc-toc-link", href: "#sec-" + sid, "data-toc-section": sid }, escapeHtml(label));
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          var target = document.getElementById("sec-" + sid);
+          if (target) {
+            try { if (typeof target.open !== "undefined") target.open = true; } catch (_) {}
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            beacon("cta_click", { answers: { target: "toc_jump", section: sid } });
+          }
+        });
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+      tocInner.appendChild(tocList);
+      var tocProgress = make("span", { class: "lmc-toc-progress", id: "lmc-toc-progress" }, '<em>0</em>/' + (function(){var n=0;sections.forEach(function(s){n+=(s.items||[]).length;});return n;})() + " done");
+      tocInner.appendChild(tocProgress);
+      toc.appendChild(tocInner);
+      root.appendChild(toc);
+    }
+
+    // Sections — collapsible accordion via <details>
     var content = make("main", { class: "lmc-container" });
-    (data.sections || []).forEach(function (s, sIdx) {
-      var sec = make("section", { class: "lmc-section" });
-      sec.setAttribute("data-section-id", s.id || s.title || ("section-" + sIdx));
-      // D1.1: section title wrap with progress ring (initial pct computed below in update())
-      var secTitleWrap = make("div", { class: "lmc-section-title-wrap" });
-      var ringEl = make("span", { class: "lmc-section-ring", "data-section-id": s.id || s.title || ("section-" + sIdx) }, ringSvg(0));
-      var secTitle = make("h2", { class: "lmc-section-title" }, escapeHtml(s.title || ""));
+    sections.forEach(function (s, sIdx) {
+      var sid = s.id || ("section-" + sIdx);
+      var sec = make("details", { class: "lmc-section", id: "sec-" + sid, "data-section-id": sid });
+      // First section opens by default so reader sees value before scrolling
+      if (sIdx === 0) sec.setAttribute("open", "");
+
+      var head = make("summary", { class: "lmc-section-head" });
+      head.appendChild(make("span", { class: "lmc-section-num", "aria-hidden": "true" }, (sIdx + 1 < 10 ? "0" : "") + (sIdx + 1)));
+
+      var stack = make("div", { class: "lmc-section-title-stack" });
+      var split = splitTitle(s.title || "");
+      if (split.label) {
+        stack.appendChild(make("span", { class: "lmc-section-title-line label" }, escapeHtml(split.label)));
+      }
+      var secTitle = make("h2", { class: "lmc-section-title" });
+      secTitle.innerHTML = buildItalicizedTitle(split.question || s.title || "");
       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(secTitle, "sections[" + sIdx + "].title");
-      secTitleWrap.appendChild(ringEl);
-      secTitleWrap.appendChild(secTitle);
-      sec.appendChild(secTitleWrap);
+      stack.appendChild(secTitle);
       if (s.description) {
         var secDesc = make("p", { class: "lmc-section-desc" }, escapeHtml(s.description));
         if (window.LM && window.LM.editMode) window.LM.editMode.registerField(secDesc, "sections[" + sIdx + "].description");
-        sec.appendChild(secDesc);
+        stack.appendChild(secDesc);
       }
+      stack.appendChild(make("span", { class: "lmc-section-toggle" }, "Open the " + ((s.items || []).length) + " checks"));
+      head.appendChild(stack);
+      sec.appendChild(head);
+
+      var sectionBody = make("div", { class: "lmc-section-body" });
       var itemsContainer = make("div", { class: "lmc-items-container" });
       (s.items || []).forEach(function (it, iIdx) {
         var row = make("div", { class: "lmc-item" + (state.checked[it.id] ? " checked" : "") });
@@ -197,8 +272,27 @@
         itemLabel: "checklist item",
         template: { id: "", text: "New item" },
       });
-      sec.appendChild(itemsContainer);
+      sectionBody.appendChild(itemsContainer);
+      sec.appendChild(sectionBody);
+      sec.addEventListener("toggle", function () {
+        try { update(); } catch (_) {}
+        if (sec.open) beacon("cta_click", { answers: { target: "section_open", section: sid } });
+      });
       content.appendChild(sec);
+
+      // E3: mid-scroll CTA injected after first section (~25-30% scroll for 4-section page)
+      if (sIdx === 0 && sections.length >= 3) {
+        var midCtaCopy = (data.completion_cta && data.completion_cta.mid_headline) ||
+          "Want this <em>built</em>, not just audited?";
+        var midCta = make("aside", { class: "lmc-mid-cta", role: "complementary" });
+        midCta.innerHTML =
+          '<p class="lmc-mid-cta-text">' + midCtaCopy + '</p>' +
+          '<a class="lmc-btn lmc-mid-cta-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-mid-cta>Book a strategy call</a>';
+        midCta.querySelector("[data-mid-cta]").addEventListener("click", function () {
+          beacon("cta_click", { answers: { target: "mid_scroll_cta" } });
+        });
+        content.appendChild(midCta);
+      }
     });
 
     // Capture (collapsed until 50% done)
@@ -240,12 +334,26 @@
           if (current.checked[it.id]) { done++; sectionDone++; }
           else if (it.impact === "high") highGaps++;
         });
-        // D1.1: recompute per-section ring on every toggle
-        var sid = s.id || s.title || ("section-" + sIdx);
-        var sectionPct = sectionItems.length ? Math.round((sectionDone / sectionItems.length) * 100) : 0;
-        var ringEl = root.querySelector('.lmc-section-ring[data-section-id="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
-        if (ringEl) ringEl.innerHTML = ringSvg(sectionPct);
+        var sid = s.id || ("section-" + sIdx);
+        var pct = sectionItems.length ? sectionDone / sectionItems.length : 0;
+        // E2: TOC link `.done` reflects >= 50% checked
+        var tocLink = root.querySelector('.lmc-toc-link[data-toc-section="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
+        if (tocLink) tocLink.classList.toggle("done", pct >= 0.5);
+        // E4: section toggle copy reflects remaining
+        var sec = root.querySelector('.lmc-section[data-section-id="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
+        if (sec) {
+          var toggle = sec.querySelector(".lmc-section-toggle");
+          if (toggle) {
+            var remaining = sectionItems.length - sectionDone;
+            toggle.textContent = sec.open
+              ? (remaining > 0 ? remaining + " left in this section" : "All checked")
+              : "Open the " + sectionItems.length + " checks";
+          }
+        }
       });
+      // E2: TOC progress counter
+      var tp = root.querySelector("#lmc-toc-progress");
+      if (tp) tp.innerHTML = "<em>" + done + "</em>/" + totalItems + " done";
       // D1.3: detect transition to 100% complete (only once per session)
       try {
         var celebratedKey = "ivan.checklist." + data.slug + ".celebrated";
