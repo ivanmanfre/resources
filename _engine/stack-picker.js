@@ -206,7 +206,7 @@
         ? window.LM.buildIntro(data, ".lmc-sp-stage", {
             tool_type: TOOL,
             startLabel: "Start the decision tree",
-            defaultValueBullet: "Opinionated answer, not a feature matrix",
+            defaultValueBullet: "Built to give you one opinionated answer in 90 seconds",
             defaultNextBullet: "Result URL is shareable — send it to a teammate to decide together"
           })
         : null;

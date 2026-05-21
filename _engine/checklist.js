@@ -282,8 +282,9 @@
 
       // E3: mid-scroll CTA injected after first section (~25-30% scroll for 4-section page)
       if (sIdx === 0 && sections.length >= 3) {
+        // Mid-flow CTA copy. Avoid the AI "X, not Y" contrast tell — direct invitation only.
         var midCtaCopy = (data.completion_cta && data.completion_cta.mid_headline) ||
-          "Want this <em>built</em>, not just audited?";
+          "I build AI ops systems for service businesses. <em>Yours</em> next?";
         var midCta = make("aside", { class: "lmc-mid-cta", role: "complementary" });
         midCta.innerHTML =
           '<p class="lmc-mid-cta-text">' + midCtaCopy + '</p>' +
