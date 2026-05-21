@@ -21,6 +21,110 @@ html body {
    "Let's Talk" CTA). Hidden globally 2026-05-21 — the content is the CTA. */
 .im-nav { display: none !important; }
 
+/* Per-LM HTML wrapper also emits a generic footer CTA card. Flatten the
+   shadow-card chrome and apply editorial brand typography. The inner copy is
+   rewritten at runtime by shared.js → LM.rebrandFooter(). */
+.im-footer {
+  background: #1A1A1A !important;
+  color: #F7F4EF !important;
+  padding: 4.5rem 1.5rem 2.5rem !important;
+  border-top: none !important;
+  margin-top: 4rem !important;
+}
+.im-footer-inner { max-width: 860px !important; margin: 0 auto !important; }
+.im-footer-cta {
+  background: transparent !important;
+  color: #F7F4EF !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 3rem !important;
+  text-align: left !important;
+}
+.im-footer-label {
+  display: block;
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(247, 244, 239, 0.55);
+  margin-bottom: 1.25rem;
+}
+.im-footer-cta h2,
+.im-footer-h {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 0 1.25rem !important;
+  color: #F7F4EF !important;
+  max-width: 32rem;
+  text-align: left !important;
+}
+.im-footer-cta h2 em,
+.im-footer-h em {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #2A8F65 !important;
+}
+.im-footer-cta p,
+.im-footer-p {
+  font-family: 'Source Serif 4', Georgia, serif !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+  margin: 0 0 1.75rem !important;
+  max-width: 38rem;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  color: rgba(247, 244, 239, 0.82) !important;
+  text-align: left !important;
+}
+.im-footer-cta a,
+.im-footer-btn {
+  display: inline-block !important;
+  padding: 14px 28px !important;
+  background: #F7F4EF !important;
+  color: #1A1A1A !important;
+  font-family: 'Source Serif 4', Georgia, serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  border-radius: 0 !important;
+  transition: background 80ms;
+}
+.im-footer-cta a:hover,
+.im-footer-btn:hover {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+.im-footer-meta {
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .14em !important;
+  color: rgba(247, 244, 239, 0.45) !important;
+  padding-top: 2rem !important;
+  border-top: 1px solid rgba(247, 244, 239, 0.12) !important;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.im-footer-meta a {
+  color: rgba(247, 244, 239, 0.7) !important;
+  text-decoration: none !important;
+}
+.im-footer-meta a:hover { color: #F7F4EF !important; }
+
 :root {
   --paper: #F7F4EF;
   --paper-sunk: #EFEBE3;

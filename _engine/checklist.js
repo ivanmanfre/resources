@@ -184,37 +184,7 @@
     });
     root.appendChild(introSection);
 
-    // E2: Sticky TOC — section jump-list, replaces unused progress-wrap
     var sections = data.sections || [];
-    if (sections.length > 1) {
-      var toc = make("nav", { class: "lmc-toc", "aria-label": "Sections" });
-      var tocInner = make("div", { class: "lmc-toc-inner" });
-      tocInner.appendChild(make("span", { class: "lmc-toc-label" }, "Jump to"));
-      var tocList = make("ul", { class: "lmc-toc-list" });
-      sections.forEach(function (s, sIdx) {
-        var sid = s.id || ("section-" + sIdx);
-        var split = splitTitle(s.title || ("Section " + (sIdx + 1)));
-        var label = split.label || split.question || ("Section " + (sIdx + 1));
-        var li = make("li");
-        var a = make("a", { class: "lmc-toc-link", href: "#sec-" + sid, "data-toc-section": sid }, escapeHtml(label));
-        a.addEventListener("click", function (e) {
-          e.preventDefault();
-          var target = document.getElementById("sec-" + sid);
-          if (target) {
-            try { if (typeof target.open !== "undefined") target.open = true; } catch (_) {}
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            beacon("cta_click", { answers: { target: "toc_jump", section: sid } });
-          }
-        });
-        li.appendChild(a);
-        tocList.appendChild(li);
-      });
-      tocInner.appendChild(tocList);
-      var tocProgress = make("span", { class: "lmc-toc-progress", id: "lmc-toc-progress" }, '<em>0</em>/' + (function(){var n=0;sections.forEach(function(s){n+=(s.items||[]).length;});return n;})() + " done");
-      tocInner.appendChild(tocProgress);
-      toc.appendChild(tocInner);
-      root.appendChild(toc);
-    }
 
     // Sections — collapsible accordion via <details>
     var content = make("main", { class: "lmc-container" });
@@ -336,10 +306,6 @@
           else if (it.impact === "high") highGaps++;
         });
         var sid = s.id || ("section-" + sIdx);
-        var pct = sectionItems.length ? sectionDone / sectionItems.length : 0;
-        // E2: TOC link `.done` reflects >= 50% checked
-        var tocLink = root.querySelector('.lmc-toc-link[data-toc-section="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
-        if (tocLink) tocLink.classList.toggle("done", pct >= 0.5);
         // E4: section toggle copy reflects remaining
         var sec = root.querySelector('.lmc-section[data-section-id="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
         if (sec) {
@@ -352,9 +318,6 @@
           }
         }
       });
-      // E2: TOC progress counter
-      var tp = root.querySelector("#lmc-toc-progress");
-      if (tp) tp.innerHTML = "<em>" + done + "</em>/" + totalItems + " done";
       // D1.3: detect transition to 100% complete (only once per session)
       try {
         var celebratedKey = "ivan.checklist." + data.slug + ".celebrated";

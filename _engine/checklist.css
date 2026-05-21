@@ -41,9 +41,9 @@
 .lmc-section-title{font-family:var(--font-drama);font-size:clamp(1.65rem,2.6vw,2.1rem);font-weight:400;letter-spacing:-0.01em;margin:0 0 .35rem;color:var(--ink);text-transform:none;line-height:1.15;}
 .lmc-section-title em,.lmc-section-title i{font-family:var(--font-drama);font-style:italic;font-weight:400;color:#2A8F65;}
 .lmc-section-title-line{display:block;}
-.lmc-section-title-line.label{font-family:'Source Serif 4',Georgia,serif;font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-mute);margin-bottom:.5rem;}
+.lmc-section-title-line.label{font-family:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(26,26,26,0.55);margin-bottom:.6rem;}
 .lmc-section-desc{font-size:1.0625rem;font-weight:400;color:var(--ink-soft);margin:.65rem 0 0;line-height:1.65;max-width:42rem;}
-.lmc-section-toggle{font-family:'Source Serif 4',Georgia,serif;font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#2A8F65;margin-top:1.1rem;display:inline-flex;align-items:center;gap:.45rem;transition:color .15s;}
+.lmc-section-toggle{font-family:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:#2A8F65;margin-top:1.2rem;display:inline-flex;align-items:center;gap:.45rem;transition:color .15s;}
 .lmc-section[open] .lmc-section-toggle{color:#2A8F65;}
 .lmc-section-toggle::after{content:"\2192";display:inline-block;transition:transform .25s var(--ease,cubic-bezier(.25,.46,.45,.94));}
 .lmc-section[open] .lmc-section-toggle::after{transform:rotate(90deg);}
@@ -72,15 +72,16 @@
 .lmc-impact-medium{background:transparent;color:var(--ink-mute);border-color:rgba(26,26,26,0.15);}
 .lmc-impact-low{background:transparent;color:var(--ink-mute);border-color:rgba(26,26,26,0.08);}
 
-/* Capture */
-.lmc-capture{padding:4rem 2rem;background:var(--ink);color:var(--paper);border-radius:0;margin:5rem 0 3rem;box-shadow:none;}
-.lmc-capture h2{font-family:var(--font-drama);font-size:clamp(1.65rem,3vw,2.15rem);font-weight:400;line-height:1.15;letter-spacing:0;margin:0 0 .75rem;color:var(--paper);text-transform:none;}
+/* Capture — paper-sunk editorial card (Phase E3), replaces heavy dark block */
+.lmc-capture{position:relative;padding:3.25rem 2.5rem 3rem;background:var(--paper-sunk);color:var(--ink);border:none;border-left:3px solid #2A8F65;border-radius:0;margin:4rem 0 2.5rem;box-shadow:none;}
+.lmc-capture::before{content:"OPT IN";display:block;font-family:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(26,26,26,0.55);margin-bottom:1rem;}
+.lmc-capture h2{font-family:var(--font-drama);font-size:clamp(1.75rem,3.2vw,2.4rem);font-weight:400;line-height:1.15;letter-spacing:-0.01em;margin:0 0 .9rem;color:var(--ink);text-transform:none;max-width:32rem;}
 .lmc-capture h2 em,.lmc-capture h2 i{font-family:var(--font-drama);font-style:italic;font-weight:400;color:#2A8F65;}
-.lmc-capture p{font-size:1rem;margin:0 0 1.5rem;max-width:32rem;color:rgba(247,244,239,0.78);line-height:1.55;}
+.lmc-capture p{font-family:'Source Serif 4',Georgia,serif;font-size:1.0625rem;margin:0 0 1.75rem;max-width:34rem;color:var(--ink-soft);line-height:1.65;}
 .lmc-form{display:flex;flex-wrap:wrap;gap:.5rem;align-items:stretch;max-width:34rem;}
-.lmc-form-input{flex:1 1 240px;min-width:0;padding:.85rem 1rem;border:1px solid rgba(247,244,239,0.22);background:rgba(247,244,239,0.06);color:var(--paper);font-size:1rem;font-family:var(--font-sans);border-radius:4px;}
-.lmc-form-input::placeholder{color:rgba(247,244,239,0.45);}
-.lmc-form-input:focus{outline:none;border-color:var(--accent-light);box-shadow:0 0 0 3px rgba(112,154,93,0.18);background:rgba(247,244,239,0.10);}
+.lmc-form-input{flex:1 1 240px;min-width:0;padding:.85rem 1rem;border:1px solid rgba(26,26,26,0.2);background:rgba(255,255,255,0.5);color:var(--ink);font-size:1rem;font-family:var(--font-sans);border-radius:0;}
+.lmc-form-input::placeholder{color:rgba(26,26,26,0.4);}
+.lmc-form-input:focus{outline:none;border-color:#2A8F65;box-shadow:0 0 0 3px rgba(42,143,101,0.15);background:#fff;}
 
 /* Buttons */
 .lmc-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:14px 28px;background:#1A1A1A;color:#F7F4EF;font-family:'Source Serif 4',Georgia,serif;font-size:17px;font-weight:600;letter-spacing:0;border:none;cursor:pointer;border-radius:0;box-shadow:none;transition:background 80ms;text-transform:none;text-decoration:none;}
@@ -151,10 +152,11 @@
 .lmc-celebration-actions{display:flex;flex-wrap:wrap;gap:.5rem;}
 @media (prefers-reduced-motion:reduce){.lmc-celebration,.lmc-celebration-card{animation:none !important;}}
 
-/* D1.4: 7-day opt-in checkbox label inside dark capture card */
-.lmc-checkbox-label{display:flex;align-items:flex-start;gap:.55rem;margin-top:1rem;font-size:.92rem;color:rgba(247,244,239,0.78);cursor:pointer;line-height:1.5;font-family:var(--font-sans);}
+/* D1.4: 7-day opt-in checkbox label inside paper-sunk capture card */
+.lmc-checkbox-label{display:flex;align-items:flex-start;gap:.55rem;margin-top:1rem;font-size:.95rem;color:var(--ink-soft);cursor:pointer;line-height:1.55;font-family:var(--font-sans);}
 .lmc-checkbox-label input[type="checkbox"]{flex-shrink:0;width:16px;height:16px;margin-top:3px;accent-color:#2A8F65;cursor:pointer;}
-.lmc-checkbox-label:hover{color:#F7F4EF;}
+.lmc-checkbox-label:hover{color:var(--ink);}
+.lmc-capture .lmc-note{color:var(--ink-mute);}
 
 /* ── Phase E (2026-05-20): editorial polish + density reduction ─────────── */
 

@@ -321,6 +321,32 @@
   function progressMount() {}
   function progressUpdate() {}
 
+  // ── Footer rebrand (2026-05-21) ─────────────────────────────────────────
+  // Per-LM HTML wrapper ships a generic .im-footer-cta block. Replace its
+  // inner copy with editorial brand markup (mono label / italic DM Serif h2 /
+  // Source Serif p / paper-on-ink CTA). Restyling is in shared.css.
+  // Copy lives here because it's the same call-to-build for every LM.
+  function rebrandFooter() {
+    var cta = document.querySelector(".im-footer-cta");
+    if (cta) {
+      cta.innerHTML =
+        '<span class="im-footer-label">Want this built?</span>' +
+        '<h2 class="im-footer-h">I run a small studio that ships AI systems for <em>service firms</em>.</h2>' +
+        '<p class="im-footer-p">Forty live deployments. Six thousand automated hours. Eight industries. If you’re between 11 and 100 people and your last AI bet stalled in pilot, the calendar is open.</p>' +
+        '<a class="im-footer-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-footer-cta>Book a 30-minute call</a>';
+      var btn = cta.querySelector("[data-footer-cta]");
+      if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });
+    }
+    // Replace footer meta line with cleaner brand-correct version
+    var meta = document.querySelector(".im-footer-meta");
+    if (meta) {
+      var year = new Date().getFullYear();
+      meta.innerHTML =
+        '<span>© ' + year + ' Iván Manfredi</span>' +
+        '<span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>';
+    }
+  }
+
   // ── Resource tracker removed — was a "could be cool" Netflix-style widget,
   // but Ivan's audience arrives via DM/comment-gate for ONE specific LM, not browsing.
   // Kept as no-op so existing engine calls to LM.tracker.touch() don't throw.
@@ -352,13 +378,18 @@
     },
   };
 
-  // Auto-trigger edit-mode check on DOMContentLoaded. Each engine also
-  // checks LM.editMode.enabled() before assuming non-edit context.
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      editModeMaybeEnable();
-    });
-  } else {
+  // Expose for engines / debugging
+  window.LM.rebrandFooter = rebrandFooter;
+
+  // Auto-trigger edit-mode check + footer rebrand on DOMContentLoaded.
+  // Each engine also checks LM.editMode.enabled() before assuming non-edit context.
+  function bootstrapShared() {
     editModeMaybeEnable();
+    rebrandFooter();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootstrapShared);
+  } else {
+    bootstrapShared();
   }
 })();
