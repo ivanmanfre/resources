@@ -1,0 +1,190 @@
+{
+  "slug": "agency-capacity-calculator-how-many-clients-can-you-handle",
+  "title": "The Agency Capacity Calculator: How Many Clients You Can Run Before Delivery Breaks",
+  "subtitle": "For 10-50 person agencies: plug in your team, hours, and handoff overhead. Get your real client ceiling, your manual-gap cost, and how many slots automation buys back.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 4,
+  "inputs": [
+    {
+      "id": "team_size",
+      "label": "Delivery team size",
+      "type": "number",
+      "suffix": "people",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 12,
+      "slider": true,
+      "hint": "Full-time delivery only. Exclude owner, sales, admin."
+    },
+    {
+      "id": "productive_hours_per_week",
+      "label": "Productive hours per person per week",
+      "type": "number",
+      "suffix": "hrs/wk",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "default": 28,
+      "slider": true,
+      "hint": "After meetings, breaks, internal admin. Realistic range is 25-32. If you typed 40, you're wrong."
+    },
+    {
+      "id": "delivery_hours_per_client",
+      "label": "Delivery hours per client per month",
+      "type": "number",
+      "suffix": "hrs/client",
+      "min": 1,
+      "max": 80,
+      "step": 1,
+      "default": 12,
+      "slider": true,
+      "hint": "Actual delivery work only. No sales calls, no QBRs."
+    },
+    {
+      "id": "handoff_overhead",
+      "label": "Manual handoff overhead per client per month",
+      "type": "number",
+      "suffix": "hrs/client",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "default": 5,
+      "slider": true,
+      "hint": "Time moving info between intake, scoping, delivery, reporting, invoicing. Most agencies underestimate by 2-3x. Never measured? Start at 4."
+    },
+    {
+      "id": "active_clients",
+      "label": "Current active clients",
+      "type": "number",
+      "suffix": "clients",
+      "min": 1,
+      "max": 500,
+      "step": 1,
+      "default": 80,
+      "slider": true
+    },
+    {
+      "id": "cost_per_hour",
+      "label": "Fully-loaded cost per delivery hour",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 30,
+      "max": 250,
+      "step": 5,
+      "default": 85,
+      "slider": true,
+      "hint": "Salary + benefits + overhead divided by billable hours. Typical: $65-$120 for $1M-$10M agencies."
+    },
+    {
+      "id": "automation_coverage",
+      "label": "Handoff work currently automated end-to-end",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "slider": true,
+      "hint": "Most agencies sit between 5% and 20% even when they think they're 'fully on ClickUp.'"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "max_sustainable_clients",
+      "label": "Max sustainable clients on your current team",
+      "format": "integer",
+      "primary": true,
+      "formula": "Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100))))",
+      "tier_thresholds": {
+        "low": 0,
+        "mid": 50,
+        "high": 100,
+        "low_label": "Small shop ceiling",
+        "mid_label": "Mid-market range",
+        "high_label": "Built for scale"
+      }
+    },
+    {
+      "id": "capacity_headroom",
+      "label": "Headroom vs. your current book",
+      "format": "integer",
+      "formula": "max_sustainable_clients - active_clients"
+    },
+    {
+      "id": "monthly_capacity_hours",
+      "label": "Total monthly delivery capacity",
+      "format": "hours",
+      "formula": "Math.round(team_size * productive_hours_per_week * 4.3)"
+    },
+    {
+      "id": "manual_gap_cost_monthly",
+      "label": "Monthly cost of the manual handoff gap",
+      "format": "currency",
+      "formula": "Math.round(active_clients * handoff_overhead * (1 - automation_coverage / 100) * cost_per_hour)"
+    },
+    {
+      "id": "manual_gap_cost_annual",
+      "label": "Annual cost of the same gap",
+      "format": "currency",
+      "formula": "manual_gap_cost_monthly * 12"
+    },
+    {
+      "id": "max_clients_at_80_automation",
+      "label": "Max clients if handoff automation hits 80%",
+      "format": "integer",
+      "formula": "Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * 0.20)))"
+    },
+    {
+      "id": "slots_unlocked_by_automation",
+      "label": "Client slots unlocked by getting to 80% automation",
+      "format": "integer",
+      "formula": "Math.max(0, max_clients_at_80_automation - max_sustainable_clients)"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "Past the wall",
+      "when": "capacity_headroom <= -6",
+      "text": "You're already past the line. Delivery quality is what cracks first. Three moves, in order: pause new-business outreach for 30 days, raise prices on the bottom quartile to shed accounts, fix the handoff layer. The math doesn't bend, no matter how many account managers you add."
+    },
+    {
+      "tag": "Absorbing with overtime",
+      "when": "capacity_headroom > -6 && capacity_headroom <= 0",
+      "text": "You're covering the gap with overtime and goodwill. That works until someone senior burns out or a deliverable gets missed. Map your intake → scoping → delivery → reporting handoffs this week. The one with the most human touches is where the next break happens."
+    },
+    {
+      "tag": "One sale from the wall",
+      "when": "capacity_headroom >= 1 && capacity_headroom <= 9",
+      "text": "One big retainer lands and you're back here doing the same math at 2am. Audit handoff overhead this month, not next quarter. Start with intake — it's the cheapest to fix and the data quality downstream depends on it."
+    },
+    {
+      "tag": "Real headroom",
+      "when": "capacity_headroom >= 10",
+      "text": "You've got actual room. Lock in handoff automation before sales fills the slots and you're back at the ceiling in 6 months. The window to build the system is when you have time to build it, not when you need it."
+    },
+    {
+      "tag": "Hidden money",
+      "when": "manual_gap_cost_monthly >= 10000",
+      "text": "You're spending over $10k/month for humans to move information between systems. That's a fully-loaded mid-level hire bleeding out the side of the business every month. Cheapest fix is almost always intake — form data flowing into your PM tool, CRM, and engagement dashboard without a person retyping anything."
+    },
+    {
+      "tag": "Automation is the cheaper FTE",
+      "when": "slots_unlocked_by_automation >= 5 && automation_coverage < 60",
+      "text": "Getting your handoff automation to 80% buys you the same hours as hiring another delivery person, at roughly a quarter of the annual cost to maintain. The hiring instinct here is the expensive one. Fix the four handoff points before you write another offer letter."
+    },
+    {
+      "tag": "Productive hours fiction",
+      "when": "productive_hours_per_week >= 35",
+      "text": "35+ productive hours per person per week is almost never real once you back out meetings, internal admin, and context-switching. Re-run with 28 and see what your actual ceiling looks like. The number you're publishing is the one your team will quietly miss."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Want me to look at your numbers?",
+    "description": "Send me your inputs and the output ranges. I'll tell you which of the four handoff points — intake, scoping, delivery routing, reporting — is the highest-ROI one to fix first, with a build estimate and payback window."
+  }
+}
