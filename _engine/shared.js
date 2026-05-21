@@ -331,8 +331,7 @@
     if (cta) {
       cta.innerHTML =
         '<span class="im-footer-label">Want this built?</span>' +
-        '<h2 class="im-footer-h">I run a small studio that ships AI systems for <em>service firms</em>.</h2>' +
-        '<p class="im-footer-p">Forty live deployments. Six thousand automated hours. Eight industries. If you’re between 11 and 100 people and your last AI bet stalled in pilot, the calendar is open.</p>' +
+        '<h2 class="im-footer-h">Forty live AI systems. <em>Eight industries.</em></h2>' +
         '<a class="im-footer-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-footer-cta>Book a 30-minute call</a>';
       var btn = cta.querySelector("[data-footer-cta]");
       if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });
