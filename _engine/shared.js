@@ -344,8 +344,25 @@
   // inner copy with editorial brand markup (mono label / italic DM Serif h2 /
   // Source Serif p / paper-on-ink CTA). Restyling is in shared.css.
   // Copy lives here because it's the same call-to-build for every LM.
+  //
+  // Some engines (guide, ai-walkthrough, etc.) have a minimal per-LM HTML
+  // wrapper that doesn't include .im-footer at all. For those we INJECT the
+  // full footer at the end of <body>.
   function rebrandFooter() {
-    var cta = document.querySelector(".im-footer-cta");
+    var footer = document.querySelector(".im-footer");
+    if (!footer) {
+      // Inject a fresh editorial footer. Reuses .im-footer styles defined in
+      // shared.css so the look matches the per-LM-wrapped engines.
+      footer = document.createElement("footer");
+      footer.className = "im-footer";
+      footer.innerHTML =
+        '<div class="im-footer-inner">' +
+          '<div class="im-footer-cta"></div>' +
+          '<div class="im-footer-meta"></div>' +
+        '</div>';
+      document.body.appendChild(footer);
+    }
+    var cta = footer.querySelector(".im-footer-cta");
     if (cta) {
       // Footer pattern lifted from Lemonade-style demand-gen agency CTAs:
       // mono label / outcome question h2 / receipts + invitation body / button.
@@ -360,7 +377,7 @@
       if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });
     }
     // Replace footer meta line with cleaner brand-correct version
-    var meta = document.querySelector(".im-footer-meta");
+    var meta = footer.querySelector(".im-footer-meta");
     if (meta) {
       var year = new Date().getFullYear();
       meta.innerHTML =
