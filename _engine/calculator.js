@@ -211,9 +211,17 @@
     (data.inputs || []).forEach(function (inp, idx) {
       var field = make("div", { class: "lmc-field" });
       var labelId = "lmc-in-" + inp.id;
+      // Label row holds label + (?) hint chip when a hint exists
+      var labelRow = make("div", { class: "lmc-field-label-row" });
       var lbl = make("label", { for: labelId }, escapeHtml(inp.label || inp.id));
       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(lbl, "inputs[" + idx + "].label");
-      field.appendChild(lbl);
+      labelRow.appendChild(lbl);
+      var hintBtn = null;
+      if (inp.hint) {
+        hintBtn = make("button", { type: "button", class: "lmc-hint-btn", "aria-label": "Show hint", "aria-expanded": "false" }, "?");
+        labelRow.appendChild(hintBtn);
+      }
+      field.appendChild(labelRow);
       var wrap = make("div", { class: "lmc-input-wrap" });
       if (inp.prefix) wrap.appendChild(make("span", { class: "lmc-prefix" }, escapeHtml(inp.prefix)));
       var attrs = { id: labelId, class: "lmc-input", name: inp.id, type: inp.type === "range" ? "number" : (inp.type || "number"), inputmode: inp.type === "text" ? "text" : "decimal" };
@@ -232,7 +240,16 @@
         el.addEventListener("input", function () { if (!isNaN(Number(el.value))) r.value = el.value; });
         field.appendChild(r);
       }
-      if (inp.hint) field.appendChild(make("span", { class: "hint" }, escapeHtml(inp.hint)));
+      if (inp.hint) {
+        var hintEl = make("span", { class: "hint" }, escapeHtml(inp.hint));
+        field.appendChild(hintEl);
+        if (hintBtn) {
+          hintBtn.addEventListener("click", function () {
+            var open = field.classList.toggle("hint-open");
+            hintBtn.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+        }
+      }
       inputsCard.appendChild(field);
     });
     if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(inputsCard, "inputs", { itemLabel: "input", template: { id: "", label: "New input", type: "number", default: 0 } });
@@ -250,9 +267,12 @@
       outputsCard.appendChild(ring);
     }
     var secondaryWrap = make("div", { id: "lmc-secondary-outputs" });
+    var heroSeen = false;
     (data.outputs || []).forEach(function (out, idx) {
       if (out === primary) return;
-      var row = make("div", { class: "lmc-output-row" });
+      var isHero = !heroSeen;
+      heroSeen = true;
+      var row = make("div", { class: "lmc-output-row" + (isHero ? " lmc-output-row--hero" : "") });
       var lblSpan = make("span", { class: "label" }, escapeHtml(out.label || out.id));
       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(lblSpan, "outputs[" + idx + "].label");
       var valSpan = make("span", { class: "value", "data-out-id": out.id }, "—");
@@ -390,20 +410,32 @@
         }
       }
       // D2.2: Sensitivity bars (only shows when primary + ≥ 2 numeric inputs)
+      // Collapsed by default — click toggle to expand
       var sensEl = $("#lmc-sensitivity");
       if (sensEl && primary) {
         var sens = computeSensitivity(data, ctx, primary.id);
         var hasMeaningful = sens.length >= 2 && sens.some(function (s) { return s.contribution_pct > 0.5; });
         if (hasMeaningful) {
           sensEl.removeAttribute("hidden");
-          sensEl.innerHTML = '<h4>What\'s driving this number</h4>' +
-            sens.map(function (s) {
-              return '<div class="lmc-sens-row">' +
-                '<span class="lmc-sens-label">' + escapeHtml(s.label) + '</span>' +
-                '<div class="lmc-sens-bar"><div class="lmc-sens-fill" style="width:' + s.contribution_pct.toFixed(0) + '%"></div></div>' +
-                '<span class="lmc-sens-pct">' + s.contribution_pct.toFixed(0) + '%</span>' +
-              '</div>';
-            }).join('');
+          sensEl.innerHTML =
+            '<button class="lmc-sensitivity-toggle" type="button" aria-expanded="false">How was this calculated?</button>' +
+            '<div class="lmc-sensitivity-body">' +
+              sens.map(function (s) {
+                return '<div class="lmc-sens-row">' +
+                  '<span class="lmc-sens-label">' + escapeHtml(s.label) + '</span>' +
+                  '<div class="lmc-sens-bar"><div class="lmc-sens-fill" style="width:' + s.contribution_pct.toFixed(0) + '%"></div></div>' +
+                  '<span class="lmc-sens-pct">' + s.contribution_pct.toFixed(0) + '%</span>' +
+                '</div>';
+              }).join('') +
+            '</div>';
+          var sensToggle = sensEl.querySelector(".lmc-sensitivity-toggle");
+          if (sensToggle && !sensToggle.dataset.bound) {
+            sensToggle.dataset.bound = "1";
+            sensToggle.addEventListener("click", function () {
+              var open = sensEl.classList.toggle("open");
+              sensToggle.setAttribute("aria-expanded", open ? "true" : "false");
+            });
+          }
         } else {
           sensEl.setAttribute("hidden", "hidden");
         }

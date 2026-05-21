@@ -34,11 +34,15 @@
 .lmc-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:2.5rem 2.25rem;box-shadow:0 1px 3px rgba(26,26,26,0.04);border-radius:4px;}
 .lmc-card h2{font-family:var(--font-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(26,26,26,0.7);margin:0 0 1.75rem;padding-bottom:1rem;border-bottom:1px solid var(--hairline);}
 
-/* Fields */
-.lmc-field{margin-bottom:2rem;}
+/* Fields — tightened spacing + collapsible hints behind (?) chip */
+.lmc-field{margin-bottom:1.25rem;}
 .lmc-field:last-child{margin-bottom:0;}
-.lmc-field>label{display:block;font-family:var(--font-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:rgba(26,26,26,0.7);margin-bottom:.7rem;}
-.lmc-field .hint{display:block;font-family:var(--font-sans);font-size:.95rem;font-style:italic;font-weight:400;color:var(--ink-soft);margin-top:.55rem;text-transform:none;letter-spacing:0;line-height:1.55;}
+.lmc-field-label-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.55rem;}
+.lmc-field>label,.lmc-field-label-row>label{display:block;font-family:var(--font-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:rgba(26,26,26,0.7);margin:0;flex:1 1 auto;min-width:0;}
+.lmc-hint-btn{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;font-family:var(--font-mono);font-size:11px;font-weight:600;color:rgba(26,26,26,0.5);background:transparent;border:1px solid rgba(26,26,26,0.2);border-radius:50%;cursor:pointer;padding:0;line-height:1;transition:color 120ms,border-color 120ms,background 120ms;}
+.lmc-hint-btn:hover,.lmc-hint-btn[aria-expanded="true"]{color:#2A8F65;border-color:#2A8F65;background:rgba(42,143,101,0.06);}
+.lmc-field .hint{display:none;font-family:var(--font-sans);font-size:.95rem;font-style:italic;font-weight:400;color:var(--ink-soft);margin-top:.4rem;text-transform:none;letter-spacing:0;line-height:1.55;}
+.lmc-field.hint-open .hint{display:block;}
 
 /* Inputs — keep input visually prominent so users see what they're editing */
 .lmc-input-wrap{display:flex;align-items:stretch;border:1px solid var(--hairline-bold);background:var(--paper-raise);border-radius:4px;transition:border-color .15s,box-shadow .15s;}
@@ -71,10 +75,14 @@
 .lmc-tier-pill.low::before{background:var(--ink-mute);}
 
 /* Output rows */
-.lmc-output-row{display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid rgba(26,26,26,0.08);font-size:1.0625rem;gap:1rem;}
+.lmc-output-row{display:flex;justify-content:space-between;align-items:baseline;padding:.85rem 0;border-bottom:1px solid rgba(26,26,26,0.08);font-size:1rem;gap:1rem;}
 .lmc-output-row:last-of-type{border-bottom:none;}
 .lmc-output-row .label{font-family:var(--font-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-mute);}
 .lmc-output-row .value{font-family:var(--font-sans);font-size:1.0625rem;font-weight:600;color:var(--ink);font-feature-settings:'tnum' 1,'lnum' 1;font-variant-numeric:tabular-nums;text-align:right;}
+/* Hero secondary output — promoted to second-largest moment after big-num */
+.lmc-output-row--hero{padding:1.25rem 0;border-bottom:1px solid rgba(26,26,26,0.12);flex-direction:column;align-items:flex-start;gap:.3rem;}
+.lmc-output-row--hero .label{font-size:11px;letter-spacing:.16em;color:rgba(26,26,26,0.6);}
+.lmc-output-row--hero .value{font-family:var(--font-drama);font-style:italic;font-weight:400;font-size:clamp(28px,3.5vw,42px);line-height:1.05;letter-spacing:-0.01em;color:#2A8F65;text-align:left;}
 
 /* Recommendations */
 .lmc-recs{margin-top:2.25rem;}
@@ -126,6 +134,25 @@
 .lmc-intro-start{display:inline-flex;align-items:center;gap:.5rem;padding:14px 28px;background:#1A1A1A;color:#F7F4EF;font-family:'Source Serif 4',Georgia,serif;font-size:17px;font-weight:600;border:none;border-radius:0;box-shadow:none;cursor:pointer;transition:background 80ms;text-decoration:none;}
 .lmc-intro-start:hover{background:#000;color:#F7F4EF;}
 .lmc-intro-note{font-size:.82rem;color:var(--ink-mute);margin-top:1rem;max-width:32rem;line-height:1.5;}
+
+/* Sticky output card on desktop — result stays visible while user tweaks inputs */
+@media (min-width:900px){
+  .lmc-card#lmc-outputs{position:sticky;top:1.5rem;align-self:start;}
+}
+
+/* Sensitivity bars: collapsed by default, toggle to reveal */
+.lmc-sensitivity{margin-top:1.5rem;padding-top:0;border-top:1px solid var(--hairline);}
+.lmc-sensitivity-toggle{display:flex;align-items:center;justify-content:space-between;gap:.5rem;width:100%;padding:1rem 0;background:transparent;border:none;cursor:pointer;font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(26,26,26,0.55);text-align:left;}
+.lmc-sensitivity-toggle:hover{color:var(--ink);}
+.lmc-sensitivity-toggle::after{content:"+";font-family:var(--font-mono);font-size:14px;color:rgba(26,26,26,0.4);transition:transform 200ms ease;}
+.lmc-sensitivity.open .lmc-sensitivity-toggle::after{content:"\2212";}
+.lmc-sensitivity-body{display:none;padding-top:.5rem;}
+.lmc-sensitivity.open .lmc-sensitivity-body{display:block;}
+
+/* Mobile slider hide — sliders are awkward on touch; the number input is enough */
+@media (max-width:640px){
+  .lmc-range{display:none;}
+}
 
 /* Defensive overflow guards */
 .lmc-card{max-width:100%;min-width:0;}
