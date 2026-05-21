@@ -417,15 +417,55 @@
     },
   };
 
+  // ── Capture enhancer (2026-05-21) ─────────────────────────────────────
+  // Each engine renders its own .lmc-capture (PDF/email gate) — but the
+  // calendly footer is way below the fold and most readers stop at the
+  // capture form. Append a small secondary "Or book a call directly →"
+  // link inside every capture card so high-intent readers don't have to
+  // scroll past the email gate to find the calendly CTA.
+  // Uses MutationObserver because engines render asynchronously after the
+  // data.json fetch completes (post-DOMContentLoaded).
+  function enhanceCapture(captureEl) {
+    if (!captureEl || captureEl.dataset.lmEnhanced === "1") return;
+    captureEl.dataset.lmEnhanced = "1";
+    var alt = document.createElement("a");
+    alt.className = "lmc-capture-alt";
+    alt.href = "https://calendly.com/ivan-intelligents/30min";
+    alt.target = "_blank";
+    alt.rel = "noopener";
+    alt.innerHTML = "Or skip the PDF — <strong>book a 30-minute call</strong> directly →";
+    alt.addEventListener("click", function () { beacon("capture", "cta_click", { answers: { target: "capture_calendly_alt" } }); });
+    var note = captureEl.querySelector(".lmc-note");
+    if (note && note.parentNode === captureEl) {
+      captureEl.insertBefore(alt, note);
+    } else {
+      captureEl.appendChild(alt);
+    }
+  }
+  function scanCaptures() {
+    document.querySelectorAll(".lmc-capture").forEach(enhanceCapture);
+  }
+
   // Expose for engines / debugging
   window.LM.rebrandFooter = rebrandFooter;
   window.LM.italicizePivot = italicizePivot;
+  window.LM.enhanceCapture = enhanceCapture;
 
   // Auto-trigger edit-mode check + footer rebrand on DOMContentLoaded.
   // Each engine also checks LM.editMode.enabled() before assuming non-edit context.
   function bootstrapShared() {
     editModeMaybeEnable();
     rebrandFooter();
+    scanCaptures();
+    // Engines render asynchronously after data.json fetch — watch the LM
+    // root for late-arriving .lmc-capture nodes.
+    try {
+      var root = document.getElementById("lmc-root") || document.querySelector("[id$='-root']") || document.body;
+      var mo = new MutationObserver(function () { scanCaptures(); });
+      mo.observe(root, { childList: true, subtree: true });
+      // Stop observing after 30s to avoid leaks on long-lived pages.
+      setTimeout(function () { try { mo.disconnect(); } catch (_) {} }, 30000);
+    } catch (_) {}
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bootstrapShared);

@@ -445,7 +445,7 @@ html body {
   color: var(--ink-soft) !important;
   line-height: 1.65 !important;
 }
-.lmc-form { display: flex !important; flex-direction: column !important; gap: .6rem !important; align-items: stretch !important; max-width: 24rem; }
+.lmc-form { display: flex !important; flex-direction: column !important; gap: .6rem !important; align-items: stretch !important; max-width: 32rem !important; }
 .lmc-input,
 .lmc-form .lmc-input,
 .lmc-form-input,
@@ -482,6 +482,23 @@ html body {
   margin-top: 1rem !important;
   letter-spacing: 0 !important;
 }
+/* Secondary CTA inside capture cards (injected by shared.js enhanceCapture).
+   Lets high-intent readers jump to calendly without scrolling past the
+   email gate to the editorial footer. */
+.lmc-capture-alt {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: .95rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.18);
+  padding-bottom: 2px;
+  transition: color 120ms, border-color 120ms;
+}
+.lmc-capture-alt strong { color: var(--ink); font-weight: 600; }
+.lmc-capture-alt:hover { color: #2A8F65; border-bottom-color: #2A8F65; }
+.lmc-capture-alt:hover strong { color: #2A8F65; }
 
 /* ── Shared toast ────────────────────────────────────────────────────── */
 .lmc-toast { position: fixed; bottom: 1.25rem; right: 1.25rem; padding: .85rem 1.35rem; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: .9rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); transform: translateY(12px); }
@@ -530,22 +547,13 @@ html body {
 /* ─── Phase B: only WhatsApp share button remains. Sticky progress header
    and resource tracker widget removed — engines own their own progress UI. ── */
 
-/* Share row — proper gap between WhatsApp + LinkedIn buttons */
-.lmc-share, .lmg-share {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2rem;
-}
-
-/* WhatsApp share button — muted, matches paper+sage palette + outlined like other secondaries */
-.lm-share-whatsapp {
-  background: transparent !important;
-  color: #344B29 !important;
-  border: 1px solid #344B29 !important;
-}
-.lm-share-whatsapp:hover {
-  background: rgba(76, 110, 61, 0.08) !important;
-  color: #1a2914 !important;
+/* Share buttons removed 2026-05-21 — Ivan said they're not needed.
+   Hide all wrappers + WhatsApp class + any link pointing at sharing URLs. */
+.lmc-share,
+.lmg-share,
+.lm-share-whatsapp,
+a[href*="linkedin.com/sharing"],
+a[href*="wa.me"] {
+  display: none !important;
 }
 
