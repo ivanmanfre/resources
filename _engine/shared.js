@@ -329,13 +329,15 @@
   function rebrandFooter() {
     var cta = document.querySelector(".im-footer-cta");
     if (cta) {
-      // Label avoids "Want this built?" (ambiguous — refers to the LM you
-      // just used, not the AI system the reader wants for their biz).
-      // "Work with me" sets context for the calendly CTA below.
+      // Footer pattern lifted from Lemonade-style demand-gen agency CTAs:
+      // mono label / outcome question h2 / receipts + invitation body / button.
+      // Voice anchors: "scale without scaling payroll" + "Agent-Ready Ops"
+      // are Ivan's signature pivots per Voice §0. Italicize "scaling payroll".
       cta.innerHTML =
         '<span class="im-footer-label">Work with me</span>' +
-        '<h2 class="im-footer-h">Forty live AI systems across <em>eight industries</em>.</h2>' +
-        '<a class="im-footer-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-footer-cta>Book a 30-minute call</a>';
+        '<h2 class="im-footer-h">Ready to scale without <em>scaling payroll</em>?</h2>' +
+        '<p class="im-footer-p">See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free strategy call.</p>' +
+        '<a class="im-footer-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-footer-cta>Book a Call</a>';
       var btn = cta.querySelector("[data-footer-cta]");
       if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });
     }
