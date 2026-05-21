@@ -329,9 +329,12 @@
   function rebrandFooter() {
     var cta = document.querySelector(".im-footer-cta");
     if (cta) {
+      // Label avoids "Want this built?" (ambiguous — refers to the LM you
+      // just used, not the AI system the reader wants for their biz).
+      // "Work with me" sets context for the calendly CTA below.
       cta.innerHTML =
-        '<span class="im-footer-label">Want this built?</span>' +
-        '<h2 class="im-footer-h">Forty live AI systems. <em>Eight industries.</em></h2>' +
+        '<span class="im-footer-label">Work with me</span>' +
+        '<h2 class="im-footer-h">Forty live AI systems across <em>eight industries</em>.</h2>' +
         '<a class="im-footer-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-footer-cta>Book a 30-minute call</a>';
       var btn = cta.querySelector("[data-footer-cta]");
       if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });

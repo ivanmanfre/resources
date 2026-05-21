@@ -229,19 +229,38 @@
     });
     main.appendChild(sectionsContainer);
 
-    // D4.1: sticky mini-TOC on desktop right rail
+    // D4.1: sticky mini-TOC on desktop right rail, collapsible per user request 2026-05-21
     if ((data.sections || []).length >= 2) {
-      var toc = L.make("nav", { class: "lmg-toc", "aria-label": "Sections" });
-      toc.innerHTML = '<div class="lmg-toc-label">Sections</div><ol>' +
-        (data.sections || []).map(function (s, i) {
-          var sid = s.id || s.title || ("sec-" + i);
-          var anchor = s.id ? ("#section-" + s.id) : ("#section-sec-" + i);
-          return '<li><a href="' + L.esc(anchor) + '" data-section-id="' + L.esc(sid) + '">' +
-            '<span class="lmg-toc-dot"></span>' +
-            '<span class="lmg-toc-text">' + L.esc(s.title || ("Section " + (i + 1))) + '</span>' +
-          '</a></li>';
-        }).join('') + '</ol>';
+      var tocCollapsedKey = "ivan.guide." + (data.slug || "lm") + ".toc_collapsed";
+      var tocStartsCollapsed = false;
+      try { tocStartsCollapsed = localStorage.getItem(tocCollapsedKey) === "1"; } catch (_) {}
+      var toc = L.make("nav", { class: "lmg-toc" + (tocStartsCollapsed ? " collapsed" : ""), "aria-label": "Sections" });
+      toc.innerHTML =
+        '<button class="lmg-toc-toggle" type="button" aria-label="Toggle section navigation" aria-expanded="' + (tocStartsCollapsed ? "false" : "true") + '">' +
+          '<span class="lmg-toc-toggle-icon" aria-hidden="true">' + (tocStartsCollapsed ? "&#9776;" : "&#10005;") + '</span>' +
+        '</button>' +
+        '<div class="lmg-toc-body">' +
+          '<div class="lmg-toc-label">Sections</div><ol>' +
+          (data.sections || []).map(function (s, i) {
+            var sid = s.id || s.title || ("sec-" + i);
+            var anchor = s.id ? ("#section-" + s.id) : ("#section-sec-" + i);
+            return '<li><a href="' + L.esc(anchor) + '" data-section-id="' + L.esc(sid) + '">' +
+              '<span class="lmg-toc-dot"></span>' +
+              '<span class="lmg-toc-text">' + L.esc(s.title || ("Section " + (i + 1))) + '</span>' +
+            '</a></li>';
+          }).join('') +
+          '</ol>' +
+        '</div>';
       root.appendChild(toc);
+      var tocToggle = toc.querySelector(".lmg-toc-toggle");
+      var tocIcon = toc.querySelector(".lmg-toc-toggle-icon");
+      tocToggle.addEventListener("click", function () {
+        var nowCollapsed = !toc.classList.contains("collapsed");
+        toc.classList.toggle("collapsed", nowCollapsed);
+        tocToggle.setAttribute("aria-expanded", nowCollapsed ? "false" : "true");
+        if (tocIcon) tocIcon.innerHTML = nowCollapsed ? "&#9776;" : "&#10005;";
+        try { localStorage.setItem(tocCollapsedKey, nowCollapsed ? "1" : "0"); } catch (_) {}
+      });
     }
 
     // Summary panel only renders when self-placement is enabled (it shows

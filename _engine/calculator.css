@@ -30,8 +30,8 @@
 .lmc-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;padding:5rem 1.5rem;max-width:1024px;margin:0 auto;}
 @media (min-width:900px){.lmc-grid{grid-template-columns:minmax(320px,1fr) minmax(320px,1fr);padding:6rem 1.5rem;gap:3rem;}}
 
-/* Cards — generous breathing for readability */
-.lmc-card{background:var(--paper);border:1px solid var(--hairline);padding:2.5rem 2.25rem;box-shadow:none;border-radius:4px;}
+/* Cards — paper-raise lifts off the cream page bg for clear visual hierarchy */
+.lmc-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:2.5rem 2.25rem;box-shadow:0 1px 3px rgba(26,26,26,0.04);border-radius:4px;}
 .lmc-card h2{font-family:var(--font-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(26,26,26,0.55);margin:0 0 1.75rem;padding-bottom:1rem;border-bottom:1px solid var(--hairline);}
 
 /* Fields */
@@ -59,9 +59,9 @@
 .lmc-range::-moz-range-thumb:hover{transform:scale(1.08);background:var(--accent-ink);}
 .lmc-range:focus-visible::-webkit-slider-thumb{outline:2px solid var(--accent);outline-offset:2px;}
 
-/* Big number / output ring */
-.lmc-output-ring{display:flex;flex-direction:column;align-items:flex-start;padding:.5rem 0 1.5rem;border-bottom:1px solid var(--hairline);margin-bottom:1.5rem;}
-.lmc-big-num{font-family:var(--font-drama);font-size:clamp(56px,6vw,88px);font-weight:400;line-height:1.0;letter-spacing:-0.01em;color:var(--ink);font-feature-settings:'tnum' 1,'lnum' 1;font-variant-numeric:tabular-nums lining-nums;}
+/* Big number / output ring — sage italic for the headline result, the only sage in the calculator */
+.lmc-output-ring{display:flex;flex-direction:column;align-items:flex-start;padding:.5rem 0 1.75rem;border-bottom:1px solid rgba(26,26,26,0.08);margin-bottom:1.75rem;}
+.lmc-big-num{font-family:var(--font-drama);font-style:italic;font-size:clamp(72px,8vw,112px);font-weight:400;line-height:.95;letter-spacing:-0.02em;color:#2A8F65;font-feature-settings:'tnum' 1,'lnum' 1;font-variant-numeric:tabular-nums lining-nums;}
 .lmc-big-unit{font-family:var(--font-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;margin-top:.7rem;color:rgba(26,26,26,0.55);}
 .lmc-tier-pill{display:inline-flex;align-items:center;gap:6px;margin-top:1rem;padding:0;font-family:var(--font-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;border:none;background:transparent;color:#1A1A1A;border-radius:0;}
 .lmc-tier-pill::before{content:"";width:6px;height:6px;background:#2A8F65;display:inline-block;}
@@ -127,7 +127,15 @@
 .lmc-intro-start:hover{background:#000;color:#F7F4EF;}
 .lmc-intro-note{font-size:.82rem;color:var(--ink-mute);margin-top:1rem;max-width:32rem;line-height:1.5;}
 
-/* Mobile */
+/* Defensive overflow guards */
+.lmc-card{max-width:100%;min-width:0;}
+.lmc-input-wrap{min-width:0;overflow:hidden;}
+.lmc-output-row{flex-wrap:wrap;min-width:0;}
+.lmc-output-row .value{word-break:break-word;}
+.lmc-rec{word-break:break-word;}
+.lmc-big-num{word-break:keep-all;overflow-wrap:normal;}
+
+/* Mobile — tighter padding so cards don't crowd the viewport */
 @media (max-width:640px){
   .lmc-hero{padding:2.5rem 1.25rem 2rem;}
   .lmc-card{padding:1.5rem 1.25rem;}
@@ -136,6 +144,8 @@
   .lmc-intro{padding:2.5rem 1.25rem;}
   .lmc-intro-inner{gap:1.5rem;}
   .lmc-intro-avatar{width:96px;height:96px;}
+  .lmc-big-num{font-size:clamp(56px,14vw,80px);}
+  .lmc-prefix,.lmc-suffix{padding:0 .75rem;font-size:14px;}
 }
 
 /* ── Phase D ─────────────────────────────────────────────────────────── */
