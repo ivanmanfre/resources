@@ -1,0 +1,198 @@
+{
+  "slug": "a-calculator-that-converts-an-agency-s-weekly-manual-reporting-hours-into-annualized-cost-churn-risk-exposure",
+  "title": "The 90-Day Reporting Cost Calculator: What Your Weekly Status Decks Are Actually Costing You",
+  "subtitle": "For owners and ops leads at 11-100 employee service firms. Three numbers in five minutes: labor cost, churn exposure, and 90-day recovery delta.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 5,
+  "inputs": [
+    {
+      "id": "accounts",
+      "label": "Active client accounts requiring weekly or bi-weekly reports",
+      "type": "number",
+      "min": 1,
+      "max": 200,
+      "step": 1,
+      "default": 14,
+      "slider": true,
+      "hint": "Count every account that gets a recurring deliverable."
+    },
+    {
+      "id": "hours_per_report",
+      "label": "Average hours per report, per account, per week",
+      "type": "number",
+      "suffix": "hrs/wk",
+      "min": 0.25,
+      "max": 20,
+      "step": 0.25,
+      "default": 3.5,
+      "slider": true,
+      "hint": "Include data pulling, formatting, QA, and the quick tweak the account lead makes before sending."
+    },
+    {
+      "id": "hourly_cost",
+      "label": "Fully-loaded hourly cost of the person doing reporting",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 15,
+      "max": 250,
+      "step": 1,
+      "default": 58,
+      "slider": true,
+      "hint": "Salary + benefits + overhead ÷ 2,000. A $75k account manager is roughly $52/hr loaded."
+    },
+    {
+      "id": "late_skipped_rate",
+      "label": "Percentage of reports that arrive late or get skipped in a given month",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "default": 22,
+      "slider": true,
+      "hint": "Be honest. 'We always send them' usually means 75-85% on time, not 100%."
+    },
+    {
+      "id": "monthly_revenue",
+      "label": "Average monthly revenue per account",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/mo",
+      "min": 500,
+      "max": 100000,
+      "step": 100,
+      "default": 4800,
+      "slider": true,
+      "hint": "Your typical retainer or recurring fee."
+    },
+    {
+      "id": "tenure_months",
+      "label": "Average client tenure in months",
+      "type": "number",
+      "suffix": "months",
+      "min": 1,
+      "max": 60,
+      "step": 1,
+      "default": 11,
+      "slider": true,
+      "hint": "How long does a typical account stay before churning."
+    },
+    {
+      "id": "churn_lift",
+      "label": "Churn lift when reporting is inconsistent",
+      "type": "range",
+      "suffix": "%",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "default": 18,
+      "slider": true,
+      "hint": "Default 18% from service-firm churn audits. Inconsistent reporting is the #2 cited reason behind 'results weren't clear.'"
+    },
+    {
+      "id": "target_hours",
+      "label": "Target reporting time per account after automation",
+      "type": "number",
+      "suffix": "hrs/wk",
+      "min": 0.1,
+      "max": 5,
+      "step": 0.05,
+      "default": 0.5,
+      "slider": true,
+      "hint": "Most automated reporting flows land between 0.25 and 0.75 hours per account per week, including human review."
+    },
+    {
+      "id": "build_investment",
+      "label": "Expected build investment for the automation",
+      "type": "number",
+      "prefix": "$",
+      "min": 2000,
+      "max": 100000,
+      "step": 500,
+      "default": 12000,
+      "slider": true,
+      "hint": "What you'd budget for the reporting automation build itself."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "total_exposure",
+      "label": "Total annualized exposure (labor + churn risk)",
+      "format": "currency",
+      "primary": true,
+      "formula": "(accounts * hours_per_report * 52 * hourly_cost) + ((accounts * (late_skipped_rate / 100)) * (monthly_revenue * tenure_months) * (churn_lift / 100))",
+      "tier_thresholds": {
+        "low": 0,
+        "mid": 40000,
+        "high": 120000,
+        "low_label": "Manageable",
+        "mid_label": "Compounding",
+        "high_label": "Critical — an FTE you haven't named"
+      }
+    },
+    {
+      "id": "annualized_labor_cost",
+      "label": "Annualized reporting labor cost",
+      "format": "currency",
+      "formula": "accounts * hours_per_report * 52 * hourly_cost"
+    },
+    {
+      "id": "churn_risk_exposure",
+      "label": "Churn risk exposure",
+      "format": "currency",
+      "formula": "(accounts * (late_skipped_rate / 100)) * (monthly_revenue * tenure_months) * (churn_lift / 100)"
+    },
+    {
+      "id": "hours_recoverable",
+      "label": "Hours recoverable per year",
+      "format": "hours",
+      "formula": "accounts * Math.max(0, hours_per_report - target_hours) * 52"
+    },
+    {
+      "id": "payback_delta_90d",
+      "label": "90-day payback delta",
+      "format": "currency",
+      "formula": "(((accounts * hours_per_report * 52 * hourly_cost) - (accounts * target_hours * 52 * hourly_cost)) / 4) - build_investment"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "Stabilize before you automate",
+      "when": "total_exposure < 40000",
+      "text": "You're in the manageable tier. Reporting is a cost, not a leak yet. Document the current flow end-to-end before scaling. Make sure the manual version is stable before you wire automation on top of it. Premature automation locks in a broken process."
+    },
+    {
+      "tag": "Audit the handoffs",
+      "when": "total_exposure >= 40000 && total_exposure < 120000",
+      "text": "You're in the compounding tier. The reporting layer is starting to eat capacity, and you'll feel it most past 10 accounts or when you try to hire your way out. Audit the 7 handoff points in your reporting workflow. Start with one automation: the data pull and template assembly. Keep human review on the narrative."
+    },
+    {
+      "tag": "Full automation pass this quarter",
+      "when": "total_exposure >= 120000",
+      "text": "You're in the critical tier. Reporting is now a full-time hire you never put on the org chart, and the churn exposure is real, not theoretical. Run a full reporting automation pass within the next quarter. Target: drop per-account hours by 75%+ while keeping human review on every send. This is where the 90-Day Payback Rule kicks in hardest."
+    },
+    {
+      "tag": "Passes the 90-Day Payback Rule",
+      "when": "payback_delta_90d > 0",
+      "text": "Your build pays for itself inside 90 days at the inputs above. That's the bar I use before greenlighting any automation project. If the math holds when you stress-test the inputs, this is a build, not a debate."
+    },
+    {
+      "tag": "Don't build it yet",
+      "when": "payback_delta_90d <= 0",
+      "text": "At these inputs the build doesn't clear payback inside 90 days. Two options: narrow the scope (automate the data pull only, not the full report), or wait until your account count or hours-per-report grows. Don't force a build whose math doesn't work."
+    },
+    {
+      "tag": "Capacity unlocked",
+      "when": "hours_recoverable >= 800",
+      "text": "You'd recover between half and one full FTE of capacity. The question becomes what you redeploy that time to — strategy work, new account onboarding, or pulling forward retainer expansions. The recovered hours are the asset; the automation is just how you get them."
+    }
+  ],
+  "capture_cta": {
+    "headline": "If your Total Annualized Exposure cleared $80,000, send me your inputs",
+    "description": "I'll return a 1-page recovery plan with the specific automation sequence I'd run if it were my agency — the data pulls, the template assembly, the human-review gate, ranked by payback period."
+  }
+}
