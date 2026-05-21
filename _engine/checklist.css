@@ -79,7 +79,7 @@
 .lmc-capture h2 em,.lmc-capture h2 i{font-family:var(--font-drama);font-style:italic;font-weight:400;color:#2A8F65;}
 .lmc-capture p{font-family:'Source Serif 4',Georgia,serif;font-size:1.0625rem;margin:0 0 1.75rem;max-width:34rem;color:var(--ink-soft);line-height:1.65;}
 .lmc-form{display:flex;flex-direction:column;gap:.6rem;align-items:stretch;max-width:24rem;}
-.lmc-form .lmc-input,.lmc-form-input{width:100%;padding:.9rem 1rem;border:1px solid rgba(26,26,26,0.2);background:rgba(255,255,255,0.5);color:var(--ink);font-size:1rem;font-family:var(--font-sans);border-radius:0;}
+.lmc-form .lmc-input,.lmc-form-input{flex:0 0 auto;width:100%;padding:.9rem 1rem;border:1px solid rgba(26,26,26,0.2);background:rgba(255,255,255,0.5);color:var(--ink);font-size:1rem;line-height:1.4;font-family:var(--font-sans);border-radius:0;box-sizing:border-box;height:auto;}
 .lmc-form .lmc-input::placeholder,.lmc-form-input::placeholder{color:rgba(26,26,26,0.4);}
 .lmc-form .lmc-input:focus,.lmc-form-input:focus{outline:none;border-color:#2A8F65;box-shadow:0 0 0 3px rgba(42,143,101,0.15);background:#fff;}
 .lmc-form .lmc-btn{width:100%;}
