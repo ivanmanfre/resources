@@ -35,7 +35,7 @@
 .lms-ex-tags { display: flex; gap: .35rem; flex-wrap: wrap; }
 .lms-ex-tag { padding: .22rem .55rem; background: transparent; color: var(--ink-mute); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--hairline-bold); border-radius: 2px; }
 .lms-ex-body { background: var(--paper-sunk); padding: 1rem 1.25rem; border-radius: var(--radius-sm); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .92rem; line-height: 1.6; color: var(--ink); margin: 0 0 .85rem; white-space: pre-wrap; word-break: break-word; }
-.lms-ex-why { font-size: .92rem; color: var(--ink-soft); line-height: 1.55; padding-left: .9rem; border-left: 2px solid rgba(76,110,61,0.35); margin: 0 0 1rem; }
+.lms-ex-why { font-size: .92rem; color: var(--ink-soft); line-height: 1.55; padding-left: 0; border-left: none; margin: 0 0 1rem; font-style: italic; }
 .lms-ex-why::before { content: "Why it works"; display: block; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: .25rem; }
 .lms-ex-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
 .lms-take-btn { padding: .55rem 1rem; background: var(--ink); color: var(--paper); font-size: .8rem; font-weight: 700; letter-spacing: .05em; border: none; border-radius: var(--radius-md); cursor: pointer; font-family: inherit; transition: transform .2s var(--ease), background .2s var(--ease); }

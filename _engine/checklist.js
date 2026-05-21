@@ -186,15 +186,13 @@
 
     var sections = data.sections || [];
 
-    // Sections — collapsible accordion via <details>
+    // Sections — always open, editorial layout (no accordion)
     var content = make("main", { class: "lmc-container" });
     sections.forEach(function (s, sIdx) {
       var sid = s.id || ("section-" + sIdx);
-      var sec = make("details", { class: "lmc-section", id: "sec-" + sid, "data-section-id": sid });
-      // First section opens by default so reader sees value before scrolling
-      if (sIdx === 0) sec.setAttribute("open", "");
+      var sec = make("section", { class: "lmc-section", id: "sec-" + sid, "data-section-id": sid });
 
-      var head = make("summary", { class: "lmc-section-head" });
+      var head = make("div", { class: "lmc-section-head" });
       head.appendChild(make("span", { class: "lmc-section-num", "aria-hidden": "true" }, (sIdx + 1 < 10 ? "0" : "") + (sIdx + 1)));
 
       var stack = make("div", { class: "lmc-section-title-stack" });
@@ -211,7 +209,6 @@
         if (window.LM && window.LM.editMode) window.LM.editMode.registerField(secDesc, "sections[" + sIdx + "].description");
         stack.appendChild(secDesc);
       }
-      stack.appendChild(make("span", { class: "lmc-section-toggle" }, "Open the " + ((s.items || []).length) + " checks"));
       head.appendChild(stack);
       sec.appendChild(head);
 
@@ -244,10 +241,6 @@
       });
       sectionBody.appendChild(itemsContainer);
       sec.appendChild(sectionBody);
-      sec.addEventListener("toggle", function () {
-        try { update(); } catch (_) {}
-        if (sec.open) beacon("cta_click", { answers: { target: "section_open", section: sid } });
-      });
       content.appendChild(sec);
 
       // E3: mid-scroll CTA injected after first section (~25-30% scroll for 4-section page)
@@ -305,18 +298,6 @@
           if (current.checked[it.id]) { done++; sectionDone++; }
           else if (it.impact === "high") highGaps++;
         });
-        var sid = s.id || ("section-" + sIdx);
-        // E4: section toggle copy reflects remaining
-        var sec = root.querySelector('.lmc-section[data-section-id="' + (window.CSS && CSS.escape ? CSS.escape(sid) : sid) + '"]');
-        if (sec) {
-          var toggle = sec.querySelector(".lmc-section-toggle");
-          if (toggle) {
-            var remaining = sectionItems.length - sectionDone;
-            toggle.textContent = sec.open
-              ? (remaining > 0 ? remaining + " left in this section" : "All checked")
-              : "Open the " + sectionItems.length + " checks";
-          }
-        }
       });
       // D1.3: detect transition to 100% complete (only once per session)
       try {

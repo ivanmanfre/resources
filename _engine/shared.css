@@ -3,6 +3,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap');
 
+/* Smooth scroll for anchor jumps + general navigation feel.
+   Respect user's reduced-motion preference. */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 /* Global brand override — the per-LM HTML wrapper still ships an inline
    `body { font-family: 'Space Grotesk' }` from the legacy n8n template. The
    `html body` selector beats single-element specificity without !important. */
@@ -214,8 +221,8 @@ html body {
   color: var(--ink-soft);
   max-width: 38rem;
   margin: 0 0 2rem;
-  padding-left: 1.25rem;
-  border-left: 2px solid rgba(42, 143, 101, 0.4);
+  padding-left: 0;
+  border-left: none;
 }
 .lmc-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 13px; color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; }
 .lmc-meta-chip { display: inline-flex; align-items: center; gap: 6px; letter-spacing: .08em; text-transform: uppercase; }
@@ -361,26 +368,84 @@ html body {
 .lmc-impact-medium { background: var(--ink); color: var(--paper); }
 .lmc-impact-low { background: transparent; color: var(--ink-mute); border: 1px solid var(--hairline-bold); }
 
-/* ── Shared capture block (email gate) ───────────────────────────────── */
+/* ── Shared capture block — paper-flat editorial style (2026-05-21) ───── */
+/* Unified across every engine. Per-engine .lmc-capture overrides are
+   neutralized by the !important rules below. */
 .lmc-capture {
-  padding: 4rem 2rem;
-  background: var(--ink);
-  color: var(--paper);
-  margin: 5rem 0 3rem;
-  border-radius: 0;
-  box-shadow: none;
-  position: relative; overflow: hidden;
+  padding: 3rem 0 2.5rem !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  margin: 3rem 0 2rem !important;
+  border: none !important;
+  border-top: 1px solid rgba(26, 26, 26, 0.08) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  position: relative;
+  overflow: visible !important;
 }
-.lmc-capture::before { content: ""; position: absolute; inset: 0; opacity: .05; background-size: 40px 40px; background-image: linear-gradient(to right, var(--accent) 1px, transparent 1px), linear-gradient(to bottom, var(--accent) 1px, transparent 1px); pointer-events: none; }
+.lmc-capture::before { content: none !important; }
 .lmc-capture > * { position: relative; z-index: 1; }
-.lmc-capture h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.85rem; font-weight: 400; margin: 0 0 .6rem; letter-spacing: 0; line-height: 1.1; }
-.lmc-capture h2 em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
-.lmc-capture p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; margin: 0 0 1.5rem; max-width: 34rem; color: rgba(247, 244, 239, 0.82); line-height: 1.55; }
-.lmc-form { display: flex; flex-wrap: wrap; gap: .75rem; align-items: stretch; }
-.lmc-input { flex: 1 1 260px; min-width: 0; padding: .85rem 1.1rem; border: 1px solid rgba(247, 244, 239, 0.25); background: rgba(247, 244, 239, 0.05); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; border-radius: var(--radius-md); transition: border-color .2s var(--ease), background .2s var(--ease); }
-.lmc-input::placeholder { color: rgba(247, 244, 239, 0.4); }
-.lmc-input:focus { outline: none; border-color: #2A8F65; background: rgba(247, 244, 239, 0.1); }
-.lmc-note { font-family: 'Source Serif 4', Georgia, serif; font-size: .85rem; color: rgba(247, 244, 239, 0.6); margin-top: 1rem; letter-spacing: 0; }
+.lmc-capture h2 {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem) !important;
+  font-weight: 400 !important;
+  margin: 0 0 .9rem !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.15 !important;
+  color: var(--ink) !important;
+  max-width: 32rem;
+}
+.lmc-capture h2 em {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #2A8F65 !important;
+}
+.lmc-capture p {
+  font-family: 'Source Serif 4', Georgia, serif !important;
+  font-size: 1.0625rem !important;
+  margin: 0 0 1.75rem !important;
+  max-width: 34rem;
+  color: var(--ink-soft) !important;
+  line-height: 1.65 !important;
+}
+.lmc-form { display: flex !important; flex-direction: column !important; gap: .6rem !important; align-items: stretch !important; max-width: 24rem; }
+.lmc-input,
+.lmc-form .lmc-input,
+.lmc-form-input,
+.lmc-form .lmc-form-input {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: .9rem 1rem !important;
+  border: 1px solid rgba(26, 26, 26, 0.2) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: var(--ink) !important;
+  font-family: 'Source Serif 4', Georgia, serif !important;
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+}
+.lmc-input::placeholder,
+.lmc-form-input::placeholder {
+  color: rgba(26, 26, 26, 0.4) !important;
+}
+.lmc-input:focus,
+.lmc-form-input:focus {
+  outline: none !important;
+  border-color: #2A8F65 !important;
+  box-shadow: 0 0 0 3px rgba(42, 143, 101, 0.15) !important;
+  background: #fff !important;
+}
+.lmc-form .lmc-btn { width: 100% !important; }
+.lmc-note {
+  font-family: 'Source Serif 4', Georgia, serif !important;
+  font-size: .85rem !important;
+  color: var(--ink-mute) !important;
+  margin-top: 1rem !important;
+  letter-spacing: 0 !important;
+}
 
 /* ── Shared toast ────────────────────────────────────────────────────── */
 .lmc-toast { position: fixed; bottom: 1.25rem; right: 1.25rem; padding: .85rem 1.35rem; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: .9rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); transform: translateY(12px); }

@@ -79,7 +79,7 @@
 /* Recommendations */
 .lmc-recs{margin-top:2rem;}
 .lmc-recs h3{font-family:'Source Serif 4',Georgia,serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#1A1A1A;margin:0 0 1rem;}
-.lmc-rec{font-family:'Source Serif 4',Georgia,serif;padding:1rem 1.15rem;border-left:2px solid #2A8F65;background:var(--paper-sunk);margin-bottom:.75rem;font-size:1rem;line-height:1.55;color:var(--ink);border-radius:0 4px 4px 0;}
+.lmc-rec{font-family:'Source Serif 4',Georgia,serif;padding:1rem 1.15rem;border-left:none;background:var(--paper-sunk);margin-bottom:.75rem;font-size:1rem;line-height:1.55;color:var(--ink);border-radius:4px;}
 .lmc-rec strong{display:block;font-family:'Source Serif 4',Georgia,serif;font-weight:600;margin-bottom:.4rem;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#2A8F65;}
 
 /* Email capture */

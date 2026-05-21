@@ -198,7 +198,7 @@
 }
 .lmg-mini-checklist {
   background: var(--paper-sunk, #EFEBE3); border: 1px solid var(--hairline, rgba(26, 26, 26, 0.15));
-  border-left: 3px solid #2A8F65; padding: 1.25rem 1.5rem; border-radius: 4px;
+  padding: 1.25rem 1.5rem; border-radius: 4px;
   margin: 1.5rem 0;
 }
 .lmg-mini-item {
@@ -213,7 +213,7 @@
 
 .lmg-mini-calc {
   background: var(--paper-sunk, #EFEBE3); border: 1px solid var(--hairline, rgba(26, 26, 26, 0.15));
-  border-left: 3px solid #2A8F65; padding: 1.25rem 1.5rem; border-radius: 4px;
+  padding: 1.25rem 1.5rem; border-radius: 4px;
   margin: 1.5rem 0;
 }
 .lmg-mini-calc-inputs { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
