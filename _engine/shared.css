@@ -10,6 +10,26 @@ html { scroll-behavior: smooth; }
   html { scroll-behavior: auto; }
 }
 
+/* Global mono-label harmonization across all engines (2026-05-21).
+   Every engine had its own treatment of small uppercase labels. Force them
+   to IBM Plex Mono so checklist/calculator/guide/assessment/swipe/stack-picker
+   /architecture/ai-walkthrough/n8n-workflow all read as one brand system. */
+.lmc-badge, .lmc-meta-chip, .lmc-tier-pill, .lmc-big-unit,
+.lmc-celebration-badge, .lmc-toc-label, .lmc-section-title-line.label,
+.lmc-intro-badge, .lmc-tier-label, .lmc-next-label,
+.lmc-impact, .lmc-section-toggle, .lmc-progress-inner,
+.lmc-card h2, .lmc-field > label, .lmc-output-row .label, .lmc-recs h3,
+.lmw-badge, .lma-badge, .lms-badge, .lmg-badge,
+.lma-drawer-eyebrow, .lma-drawer-section-h, .lma-chip,
+.lmw-pill, .lmw-tool-chip,
+.lms-ex-tag,
+.lmc-rec strong,
+.lmc-meta-chip-text, .lmc-sens-pct, .lmc-bench-you {
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace !important;
+  font-weight: 500 !important;
+  letter-spacing: .14em !important;
+}
+
 /* Global brand override — the per-LM HTML wrapper still ships an inline
    `body { font-family: 'Space Grotesk' }` from the legacy n8n template. The
    `html body` selector beats single-element specificity without !important. */
