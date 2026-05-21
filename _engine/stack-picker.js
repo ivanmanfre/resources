@@ -189,7 +189,9 @@
         : (function () {
             var s = make("section", { class: "lmc-hero" });
             var i = make("div", { class: "lmc-hero-inner" });
-            i.appendChild(make("h1", { class: "lmc-h1" }, esc(data.title)));
+            var spH1 = make("h1", { class: "lmc-h1" });
+            spH1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "") : esc(data.title || "");
+            i.appendChild(spH1);
             s.appendChild(i);
             return s;
           })();

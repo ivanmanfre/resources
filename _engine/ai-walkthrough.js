@@ -78,7 +78,8 @@
 
     var hero = make("section", { class: "lmw-hero" });
     hero.appendChild(make("div", { class: "lmw-badge" }, "Live AI Analysis"));
-    var titleEl = make("h1", { class: "lmw-h1" }, esc(data.title || ""));
+    var titleEl = make("h1", { class: "lmw-h1" });
+    titleEl.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "") : esc(data.title || "");
     if (LM.editMode && LM.editMode.registerField) LM.editMode.registerField(titleEl, "title", { type: "text" });
     hero.appendChild(titleEl);
     if (data.subtitle) {

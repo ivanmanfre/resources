@@ -157,8 +157,8 @@ html body {
   --paper-sunk: #EFEBE3;
   --paper-raise: #FFFFFF;
   --ink: #1A1A1A;
-  --ink-soft: #4A4A48;
-  --ink-mute: #5A5752;
+  --ink-soft: #3D3D3B;
+  --ink-mute: #4D4A45;
   --hairline: rgba(26, 26, 26, 0.12);
   --hairline-bold: rgba(26, 26, 26, 0.22);
   /* Sage = THE brand accent. Moss `#4C6E3D` retired 2026-05-20 — was creating
@@ -204,7 +204,21 @@ html body {
     linear-gradient(to bottom, rgba(26,26,26,0.03) 1px, transparent 1px);
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
+/* Sage radial backdrop on every engine's hero (matches ivanmanfredi.com
+   sage cursor-spotlight feel, static version). The brand-visual-system rule
+   §4 calls for sage as punctuation — one moment per surface. The h1 italic
+   pivot is the punctuation; this gradient is the ambient context. */
+.lmc-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 70% 50% at 85% 30%, rgba(42,143,101,0.10), transparent 65%);
+}
+.lmc-hero > * { position: relative; z-index: 1; }
 .lmc-hero-inner { max-width: 860px; margin: 0 auto; }
 .lmc-badge {
   display: inline-flex;

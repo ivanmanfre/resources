@@ -159,7 +159,8 @@
     var hero = make("section", { class: "lmc-hero" });
     var heroInner = make("div", { class: "lmc-container" });
     heroInner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist")));
-    var h1 = make("h1", { class: "lmc-h1" }, escapeHtml(data.title || "Checklist"));
+    var h1 = make("h1", { class: "lmc-h1" });
+    h1.innerHTML = buildItalicizedTitle(data.title || "Checklist");
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
     heroInner.appendChild(h1);
     if (data.subtitle) {

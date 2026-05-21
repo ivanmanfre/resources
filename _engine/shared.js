@@ -104,13 +104,31 @@
     }
   }
 
+  // Auto-italicize the last meaningful word of a title for sage emphasis,
+  // unless the title already contains <em>/<i> markup (data-driven override).
+  // Returns HTML safe to assign via innerHTML.
+  function italicizePivot(text) {
+    var t = String(text || "");
+    if (/<em\b|<i\b/i.test(t)) return t;
+    var escaped = esc(t);
+    var m = escaped.match(/([A-Za-z][\w'\-]*)([?.!:]*)$/);
+    if (!m) return escaped;
+    var word = m[1];
+    var trailing = m[2] || "";
+    var fillers = ["the","a","an","of","is","it","to","in","on","at","or","and","but","yet","that","this","with"];
+    if (fillers.indexOf(word.toLowerCase()) !== -1) return escaped;
+    return escaped.slice(0, -1 * (word.length + trailing.length)) + "<em>" + word + "</em>" + trailing;
+  }
+
   // ── Hero section ──────────────────────────────────────────────────────
   function buildHero(data, opts) {
     opts = opts || {};
     var hero = make("section", { class: "lmc-hero" });
     var inner = make("div", { class: "lmc-hero-inner" });
     if (opts.badge) inner.appendChild(make("div", { class: "lmc-badge" }, esc(opts.badge)));
-    inner.appendChild(make("h1", { class: "lmc-h1" }, esc(data.title || "Resource")));
+    var h1 = make("h1", { class: "lmc-h1" });
+    h1.innerHTML = italicizePivot(data.title || "Resource");
+    inner.appendChild(h1);
     if (data.subtitle) inner.appendChild(make("p", { class: "lmc-sub" }, esc(data.subtitle)));
     var meta = make("div", { class: "lmc-meta" });
     (opts.metaChips || []).forEach(function (c) { meta.appendChild(make("div", { class: "lmc-meta-chip" }, esc(c))); });
@@ -384,6 +402,7 @@
 
   // Expose for engines / debugging
   window.LM.rebrandFooter = rebrandFooter;
+  window.LM.italicizePivot = italicizePivot;
 
   // Auto-trigger edit-mode check + footer rebrand on DOMContentLoaded.
   // Each engine also checks LM.editMode.enabled() before assuming non-edit context.

@@ -176,7 +176,8 @@
     var hero = make("section", { class: "lmc-hero" });
     var inner = make("div", { class: "lmc-container" });
     inner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Interactive Calculator")));
-    var h1 = make("h1", { class: "lmc-h1" }, escapeHtml(data.title || "Calculator"));
+    var h1 = make("h1", { class: "lmc-h1" });
+    h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Calculator") : escapeHtml(data.title || "Calculator");
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
     inner.appendChild(h1);
     if (data.subtitle) {

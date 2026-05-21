@@ -290,7 +290,8 @@
     var hero = make("section", { class: "lmc-hero" });
     var hi = make("div", { class: "lmc-container" });
     hi.appendChild(make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment")));
-    var h1 = make("h1", { class: "lmc-h1" }, esc(data.title || "Assessment"));
+    var h1 = make("h1", { class: "lmc-h1" });
+    h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
     hi.appendChild(h1);
     if (data.subtitle) {
