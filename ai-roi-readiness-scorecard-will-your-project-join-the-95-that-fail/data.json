@@ -595,5 +595,10 @@
     "description": "Book a 30-minute call. I'll walk through your scorecard, pinpoint the 2-3 fixes that will move you up a tier the fastest, and tell you straight whether your project is worth building or worth killing. No pitch, no slides, just a working session.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
   }
 }

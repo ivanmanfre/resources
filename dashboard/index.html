@@ -94,11 +94,11 @@ h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; text-transform: 
 
   <section class="tab-body active" id="tab-live">
     <section class="totals" id="totals">
-      <div class="stat"><div class="num" id="t-views">—</div><div class="lbl">Views · 30 days</div></div>
-      <div class="stat"><div class="num" id="t-captures">—</div><div class="lbl">Email captures · 30 days</div></div>
-      <div class="stat"><div class="num" id="t-completions">—</div><div class="lbl">Assessment completions · all time</div></div>
-      <div class="stat alt"><div class="num" id="t-rate">—</div><div class="lbl">Avg capture rate</div></div>
-      <div class="stat alt"><div class="num" id="t-lm">—</div><div class="lbl">Live lead magnets</div></div>
+      <div class="stat"><div class="num" id="t-views">, </div><div class="lbl">Views · 30 days</div></div>
+      <div class="stat"><div class="num" id="t-captures">, </div><div class="lbl">Email captures · 30 days</div></div>
+      <div class="stat"><div class="num" id="t-completions">, </div><div class="lbl">Assessment completions · all time</div></div>
+      <div class="stat alt"><div class="num" id="t-rate">, </div><div class="lbl">Avg capture rate</div></div>
+      <div class="stat alt"><div class="num" id="t-lm">, </div><div class="lbl">Live lead magnets</div></div>
     </section>
     <section class="grid">
       <div class="card">
@@ -141,12 +141,12 @@ h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; text-transform: 
 
   <section class="tab-body" id="tab-nurture">
     <section class="totals" id="nurture-totals">
-      <div class="stat"><div class="num" id="n-delivered">—</div><div class="lbl">Delivered · 7 days</div></div>
-      <div class="stat"><div class="num" id="n-opened">—</div><div class="lbl">Opened</div></div>
-      <div class="stat"><div class="num" id="n-clicked">—</div><div class="lbl">Clicked</div></div>
-      <div class="stat alt"><div class="num" id="n-open-rate">—</div><div class="lbl">Open rate</div></div>
-      <div class="stat alt"><div class="num" id="n-click-rate">—</div><div class="lbl">Click rate</div></div>
-      <div class="stat alt"><div class="num" id="n-bounces">—</div><div class="lbl">Bounces</div></div>
+      <div class="stat"><div class="num" id="n-delivered">, </div><div class="lbl">Delivered · 7 days</div></div>
+      <div class="stat"><div class="num" id="n-opened">, </div><div class="lbl">Opened</div></div>
+      <div class="stat"><div class="num" id="n-clicked">, </div><div class="lbl">Clicked</div></div>
+      <div class="stat alt"><div class="num" id="n-open-rate">, </div><div class="lbl">Open rate</div></div>
+      <div class="stat alt"><div class="num" id="n-click-rate">, </div><div class="lbl">Click rate</div></div>
+      <div class="stat alt"><div class="num" id="n-bounces">, </div><div class="lbl">Bounces</div></div>
     </section>
 
     <section style="margin:2rem 0">
@@ -180,15 +180,15 @@ const WEEKLY_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-wee
 const NURTURE_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-nurture-stats";
 
 function esc(s) { return String(s == null ? "" : s).replace(/[&<>\"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-function fmt(n) { return (n == null || isNaN(n)) ? "—" : Number(n).toLocaleString(); }
+function fmt(n) { return (n == null || isNaN(n)) ? ", " : Number(n).toLocaleString(); }
 function qualityChip(s) {
-  if (s == null) return '<span class="chip">—</span>';
+  if (s == null) return '<span class="chip">, </span>';
   if (s >= 7) return `<span class="chip high">${s}</span>`;
   if (s >= 5) return `<span class="chip mid">${s}</span>`;
   return `<span class="chip low">${s}</span>`;
 }
 function timeAgo(iso) {
-  if (!iso) return "—";
+  if (!iso) return ", ";
   const d = new Date(iso); const diff = (Date.now() - d.getTime()) / 1000;
   if (diff < 0) {
     const f = -diff;
@@ -236,7 +236,7 @@ function renderLive(d) {
   document.getElementById("t-views").textContent = fmt(t.views_30d);
   document.getElementById("t-captures").textContent = fmt(t.captures_30d);
   document.getElementById("t-completions").textContent = fmt(t.completions_all);
-  document.getElementById("t-rate").textContent = (t.avg_capture_rate_pct != null ? t.avg_capture_rate_pct + "%" : "—");
+  document.getElementById("t-rate").textContent = (t.avg_capture_rate_pct != null ? t.avg_capture_rate_pct + "%" : ", ");
   document.getElementById("t-lm").textContent = fmt(t.lm_count);
 
   const pl = document.querySelector("#per-lm-table tbody");
@@ -248,7 +248,7 @@ function renderLive(d) {
       <td>${qualityChip(r.content_quality_score)}</td>
       <td class="num-cell">${fmt(r.views_30d)}</td>
       <td class="num-cell">${fmt(r.captures_30d)}</td>
-      <td class="num-cell">${r.capture_rate_pct != null ? r.capture_rate_pct + "%" : "—"}</td>
+      <td class="num-cell">${r.capture_rate_pct != null ? r.capture_rate_pct + "%" : ", "}</td>
     </tr>`).join("");
 
   const feed = document.getElementById("feed");
@@ -265,7 +265,7 @@ function renderLive(d) {
   document.querySelector("#weakest-table tbody").innerHTML = weak.length === 0 ? '<tr><td colspan="4" class="empty">No assessment completions yet</td></tr>' : weak.map(w => `
     <tr>
       <td class="slug">${esc((w.assessment_slug || '').slice(0, 50))}</td>
-      <td><span class="chip">${esc(w.weakest_category || '—')}</span></td>
+      <td><span class="chip">${esc(w.weakest_category || ', ')}</span></td>
       <td class="num-cell">${fmt(w.n)}</td>
       <td class="num-cell">${fmt(w.avg_score)}</td>
     </tr>`).join("");
@@ -273,7 +273,7 @@ function renderLive(d) {
   const gate = d.gate_keyword_performance || [];
   document.querySelector("#gate-table tbody").innerHTML = gate.length === 0 ? '<tr><td colspan="4" class="empty">No comment-gate activity yet</td></tr>' : gate.map(g => `
     <tr>
-      <td><strong>${esc(g.gate_keyword || '—')}</strong></td>
+      <td><strong>${esc(g.gate_keyword || ', ')}</strong></td>
       <td class="slug">${esc((g.slug || '').slice(0, 50))}</td>
       <td class="num-cell">${fmt(g.comments_matched)}</td>
       <td class="num-cell">${fmt(g.dms_sent)}</td>
@@ -297,15 +297,15 @@ function renderNurture(d) {
   document.getElementById("n-delivered").textContent = fmt(t.delivered);
   document.getElementById("n-opened").textContent = fmt(t.opened);
   document.getElementById("n-clicked").textContent = fmt(t.clicked);
-  document.getElementById("n-open-rate").textContent = (t.open_rate_pct != null ? t.open_rate_pct + "%" : "—");
-  document.getElementById("n-click-rate").textContent = (t.click_rate_pct != null ? t.click_rate_pct + "%" : "—");
+  document.getElementById("n-open-rate").textContent = (t.open_rate_pct != null ? t.open_rate_pct + "%" : ", ");
+  document.getElementById("n-click-rate").textContent = (t.click_rate_pct != null ? t.click_rate_pct + "%" : ", ");
   document.getElementById("n-bounces").textContent = fmt(t.bounced);
 
   const seqList = document.getElementById("seq-list");
   const seqs = d.per_sequence || [];
   seqList.innerHTML = seqs.length === 0 ? '<div class="empty">No sequences</div>' : seqs.map(s => `
     <div class="seq-card" style="margin-bottom:1rem">
-      <h3>${esc(s.name || s.slug)} — <span style="color:#888;font-weight:500;letter-spacing:0">${esc(s.slug)}</span></h3>
+      <h3>${esc(s.name || s.slug)} ,  <span style="color:#888;font-weight:500;letter-spacing:0">${esc(s.slug)}</span></h3>
       <div class="seq-grid">
         <div class="seq-metric"><span class="v">${fmt(s.subscribers_total)}</span><span class="l">Subscribers</span></div>
         <div class="seq-metric"><span class="v">${fmt(s.emails_sent)}</span><span class="l">Sent</span></div>
@@ -320,7 +320,7 @@ function renderNurture(d) {
   document.querySelector("#upcoming-table tbody").innerHTML = upcoming.length === 0 ? '<tr><td colspan="4" class="empty">No pending sends</td></tr>' : upcoming.slice(0, 20).map(u => `
     <tr>
       <td>${esc(timeAgo(u.scheduled_for))}</td>
-      <td class="slug">${esc((u.subscriber?.email || '—').slice(0, 32))}</td>
+      <td class="slug">${esc((u.subscriber?.email || ', ').slice(0, 32))}</td>
       <td>${fmt(u.email?.step)}</td>
       <td class="slug">${esc((u.email?.subject || '').slice(0, 50))}</td>
     </tr>`).join("");
@@ -329,7 +329,7 @@ function renderNurture(d) {
   document.querySelector("#recent-table tbody").innerHTML = recent.length === 0 ? '<tr><td colspan="4" class="empty">No recent sends</td></tr>' : recent.slice(0, 20).map(r => `
     <tr>
       <td>${esc(timeAgo(r.sent_at))}</td>
-      <td class="slug">${esc((r.subscriber?.email || '—').slice(0, 32))}</td>
+      <td class="slug">${esc((r.subscriber?.email || ', ').slice(0, 32))}</td>
       <td>${fmt(r.email?.step)}</td>
       <td><span class="chip ${esc(r.status)}">${esc(r.status)}</span></td>
     </tr>`).join("");

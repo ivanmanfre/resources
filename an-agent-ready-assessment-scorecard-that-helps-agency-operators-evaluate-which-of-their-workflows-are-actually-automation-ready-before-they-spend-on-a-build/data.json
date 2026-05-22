@@ -12,15 +12,15 @@
     "text": "Which best describes you?",
     "answers": [
       {
-        "label": "Owner / Founder — I sign the build invoice",
+        "label": "Owner / Founder ,  I sign the build invoice",
         "tag": "owner"
       },
       {
-        "label": "Ops Lead / COO — I run the workflow today",
+        "label": "Ops Lead / COO ,  I run the workflow today",
         "tag": "ops"
       },
       {
-        "label": "Individual Contributor — I do the manual steps",
+        "label": "Individual Contributor ,  I do the manual steps",
         "tag": "ic"
       }
     ]
@@ -152,7 +152,7 @@
           "max_score": 5,
           "answers": [
             {
-              "label": "I just know — pure tacit knowledge",
+              "label": "I just know ,  pure tacit knowledge",
               "score": 1
             },
             {
@@ -643,5 +643,10 @@
     "description": "I run this assessment live with agency operators every week. Bring one workflow, leave with a build plan, a budget, and a payback estimate. No pitch, no slides.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
   }
 }

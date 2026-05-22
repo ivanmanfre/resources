@@ -739,5 +739,10 @@
       "button": "Follow on LinkedIn",
       "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
     }
-  ]
+  ],
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
 }

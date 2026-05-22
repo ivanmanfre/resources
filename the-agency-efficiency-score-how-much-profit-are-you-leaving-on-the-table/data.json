@@ -176,7 +176,7 @@
           "text": "You are losing deals to faster competitors and burning your best people on work that should not exist. Slow response time alone is probably costing you 20-30% of inbound revenue.",
           "steps": [
             "Set up an instant lead response automation that replies within 60 seconds with qualifying questions",
-            "Build an AI-powered qualification flow that scores leads and routes only the qualified ones to sales",
+            "Build an AI-built qualification flow that scores leads and routes only the qualified ones to sales",
             "Automate proposal generation from intake data so SOWs go out the same day a call ends"
           ]
         },
@@ -649,7 +649,7 @@
           "headline": "Turn Communication Into a Competitive Moat",
           "text": "You already communicate better than most. Now make it a reason clients stay and refer.",
           "steps": [
-            "Add AI-powered insights to your reports that recommend next actions, not just metrics",
+            "Add AI-built insights to your reports that recommend next actions, not just metrics",
             "Use predictive signals (engagement, sentiment) to flag churn risk before it happens",
             "Productize your client experience so it is consistent across every account, not founder-dependent"
           ]
@@ -785,7 +785,7 @@
           "steps": [
             "Connect time tracking, invoicing, and project data into one dashboard",
             "Automate milestone-based invoicing so cash flow improves without admin effort",
-            "Document your highest-leverage SOPs and link them directly to where the work happens"
+            "Document your highest-impact SOPs and link them directly to where the work happens"
           ]
         },
         "high": {
@@ -809,5 +809,10 @@
     "description": "Book a free 30-minute strategy call. We will map your biggest efficiency leaks to specific automations and show you the realistic ROI of fixing them. No pitch, just numbers.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
   }
 }

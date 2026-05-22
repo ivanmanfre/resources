@@ -535,7 +535,7 @@
         },
         "high": {
           "headline": "Synthesis is a defensible practice asset",
-          "text": "You have the systems most boutiques never get to. The leverage now is reducing senior hours per study without reducing rigor.",
+          "text": "You have the systems most boutiques never get to. The use now is reducing senior hours per study without reducing rigor.",
           "steps": [
             "Build a cross-study insights layer that surfaces patterns across past projects for repeat clients, this is a billable deliverable competitors cannot match",
             "Train a junior researcher to run end-to-end synthesis using your codebook and templates, your senior time should be on interpretation and client narrative",
@@ -667,8 +667,13 @@
   },
   "cta": {
     "headline": "Want the role-specific fix plan for your lowest category?",
-    "description": "Book a 30-minute strategy call. I'll walk you through your category scores, identify the single highest-leverage fix for your role, and sketch what a 90-day implementation looks like for a practice your size. No pitch, no slides. If it is not a fit you leave with the plan anyway.",
+    "description": "Book a 30-minute strategy call. I'll walk you through your category scores, identify the single highest-impact fix for your role, and sketch what a 90-day implementation looks like for a practice your size. No pitch, no slides. If it is not a fit you leave with the plan anyway.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
   }
 }

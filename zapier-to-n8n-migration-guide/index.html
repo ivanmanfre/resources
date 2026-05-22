@@ -21,7 +21,7 @@
 <p><em>Quick on who's talking:</em></p>
 
 <ul>
-<li><strong>AI ops operator for service firms</strong> — 40+ systems deployed for service businesses</li>
+<li><strong>AI ops operator for service firms</strong> ,  40+ systems deployed for service businesses</li>
 <li><strong>Built n8n + Claude workflows</strong> that have automated 6,000+ hours of repeat work</li>
 <li><strong>Work spans 8+ industries</strong> (construction, manufacturing, staffing, property management, agencies)</li>
 <li><strong>Systems run on self-hosted n8n + Supabase</strong>, not Zapier glue</li>
@@ -41,7 +41,7 @@
 
 <h3>Step 1: Export your zap inventory</h3>
 
-<p>Open your Zapier dashboard and document every active zap. For each one, capture trigger, actions, monthly task volume, and business criticality. A spreadsheet is fine — what matters is that nothing gets missed.</p>
+<p>Open your Zapier dashboard and document every active zap. For each one, capture trigger, actions, monthly task volume, and business criticality. A spreadsheet is fine ,  what matters is that nothing gets missed.</p>
 
 <table>
 <thead>
@@ -60,11 +60,11 @@
 <p>Look for the apps that show up across 60%+ of your zaps. Those are your core integrations and they need to work flawlessly in n8n before you migrate anything else.</p>
 
 <ul>
-<li><strong>CRM:</strong> HubSpot, Salesforce, Pipedrive — all have first-class n8n nodes</li>
-<li><strong>Accounting:</strong> Xero, QuickBooks — supported, sometimes via HTTP node for newer endpoints</li>
-<li><strong>Communication:</strong> Slack, Gmail, Microsoft Teams — native nodes, full feature parity</li>
-<li><strong>Project management:</strong> ClickUp, Notion, Asana — solid nodes, occasional gaps on niche endpoints</li>
-<li><strong>Forms:</strong> Typeform, Tally, Google Forms — webhook-based, more reliable than Zapier's polling</li>
+<li><strong>CRM:</strong> HubSpot, Salesforce, Pipedrive ,  all have first-class n8n nodes</li>
+<li><strong>Accounting:</strong> Xero, QuickBooks ,  supported, sometimes via HTTP node for newer endpoints</li>
+<li><strong>Communication:</strong> Slack, Gmail, Microsoft Teams ,  native nodes, full feature parity</li>
+<li><strong>Project management:</strong> ClickUp, Notion, Asana ,  solid nodes, occasional gaps on niche endpoints</li>
+<li><strong>Forms:</strong> Typeform, Tally, Google Forms ,  webhook-based, more reliable than Zapier's polling</li>
 </ul>
 
 <h3>Step 3: Flag the complex ones</h3>
@@ -87,7 +87,7 @@
 </tbody>
 </table>
 
-<p>Migrate high-volume, high-criticality, high-cost zaps first. Defer or delete the long tail. In a typical 80-zap account, roughly 20 zaps drive 80% of the cost — migrate those and you've already justified the entire project.</p>
+<p>Migrate high-volume, high-criticality, high-cost zaps first. Defer or delete the long tail. In a typical 80-zap account, roughly 20 zaps drive 80% of the cost ,  migrate those and you've already justified the entire project.</p>
 
 <blockquote>The migration is not "move every zap." The migration is "move the 20% of zaps generating 80% of your bill, then decide what's worth keeping at all."</blockquote>
 
@@ -121,7 +121,7 @@
 <li><strong>Set up a reverse proxy</strong> (Caddy or Nginx) with automatic HTTPS</li>
 <li><strong>Configure automated backups</strong> of the Postgres database to an off-server location daily</li>
 <li><strong>Enable basic auth or SSO</strong> before you put a single credential in</li>
-<li><strong>Set up an error workflow</strong> — every workflow you build will reference this one for failure alerts</li>
+<li><strong>Set up an error workflow</strong> ,  every workflow you build will reference this one for failure alerts</li>
 </ol>
 
 <h2>4. Map Zapier Concepts to n8n Equivalents</h2>
@@ -154,8 +154,8 @@
 <h3>The migration loop</h3>
 
 <ol>
-<li><strong>Document the zap end-to-end</strong> — trigger details, every field mapping, every filter condition, every formatter operation</li>
-<li><strong>Build the n8n workflow in parallel</strong> — do not turn off the zap yet</li>
+<li><strong>Document the zap end-to-end</strong> ,  trigger details, every field mapping, every filter condition, every formatter operation</li>
+<li><strong>Build the n8n workflow in parallel</strong> ,  do not turn off the zap yet</li>
 <li><strong>Use test data</strong> in n8n until outputs match the Zapier outputs node-for-node</li>
 <li><strong>Run both in parallel for 48-72 hours</strong>, comparing results daily</li>
 <li><strong>Cut over</strong> by disabling the Zapier zap and routing traffic to the n8n workflow</li>
@@ -165,11 +165,11 @@
 <h3>Common migration gotchas</h3>
 
 <ul>
-<li><strong>Date formats:</strong> Zapier silently coerces dates. n8n is stricter — you'll need explicit ISO 8601 formatting in many places.</li>
+<li><strong>Date formats:</strong> Zapier silently coerces dates. n8n is stricter ,  you'll need explicit ISO 8601 formatting in many places.</li>
 <li><strong>Empty fields:</strong> Zapier skips empty fields by default. n8n sends them as <code>null</code> or empty strings unless you handle it.</li>
-<li><strong>Rate limits:</strong> Zapier throttles you invisibly. n8n will hammer an API at whatever speed it can — use the "Limit" or "Wait" nodes for rate-sensitive integrations.</li>
+<li><strong>Rate limits:</strong> Zapier throttles you invisibly. n8n will hammer an API at whatever speed it can ,  use the "Limit" or "Wait" nodes for rate-sensitive integrations.</li>
 <li><strong>Error handling:</strong> Zapier emails you when a zap fails. In n8n, you must explicitly wire up an error workflow or you'll never know things broke.</li>
-<li><strong>Polling vs webhooks:</strong> Many Zapier triggers poll every 1-15 minutes. n8n webhook triggers fire instantly — your workflows often feel faster overnight.</li>
+<li><strong>Polling vs webhooks:</strong> Many Zapier triggers poll every 1-15 minutes. n8n webhook triggers fire instantly ,  your workflows often feel faster overnight.</li>
 </ul>
 
 <blockquote>Run old and new in parallel. Always. Every team I've watched skip the parallel-run phase has eaten a production incident inside the first 30 days.</blockquote>
@@ -180,7 +180,7 @@
 
 <h3>Zaps using Formatter heavily</h3>
 
-<p>Zapier Formatter is a black box. In n8n, you'll rewrite these using the Set node for simple transforms, the Code node for anything involving loops, regex, or conditional formatting. The Code node accepts plain JavaScript — most Formatter operations become 3-10 lines of code that you can actually read and debug.</p>
+<p>Zapier Formatter is a black box. In n8n, you'll rewrite these using the Set node for simple transforms, the Code node for anything involving loops, regex, or conditional formatting. The Code node accepts plain JavaScript ,  most Formatter operations become 3-10 lines of code that you can actually read and debug.</p>
 
 <h3>Multi-step Paths with deep branching</h3>
 
@@ -188,11 +188,11 @@
 
 <h3>Apps with no native n8n node</h3>
 
-<p>Use the HTTP Request node. Any app with a REST API works — and that's almost all of them. The HTTP node supports OAuth2, API keys, headers, query params, and JSON bodies. For apps you'll call repeatedly, save the credential once and reuse it across workflows.</p>
+<p>Use the HTTP Request node. Any app with a REST API works ,  and that's almost all of them. The HTTP node supports OAuth2, API keys, headers, query params, and JSON bodies. For apps you'll call repeatedly, save the credential once and reuse it across workflows.</p>
 
 <h3>Workflows that touch sensitive data</h3>
 
-<p>This is where self-hosted n8n earns its keep. Customer PII, financial data, health information — none of it has to leave your infrastructure. For one staffing client, moving candidate data workflows from Zapier to self-hosted n8n removed three vendors from their data processing inventory and simplified their SOC 2 review.</p>
+<p>This is where self-hosted n8n earns its keep. Customer PII, financial data, health information ,  none of it has to leave your infrastructure. For one staffing client, moving candidate data workflows from Zapier to self-hosted n8n removed three vendors from their data processing inventory and simplified their SOC 2 review.</p>
 
 <h3>Workflows that need AI agents</h3>
 
@@ -205,7 +205,7 @@
 <h3>The decommission sequence</h3>
 
 <ol>
-<li><strong>Audit what's still active in Zapier</strong> — anything still running after week 6 is either critical-and-stuck or forgotten</li>
+<li><strong>Audit what's still active in Zapier</strong> ,  anything still running after week 6 is either critical-and-stuck or forgotten</li>
 <li><strong>Make a kill/keep/migrate decision</strong> for each remaining zap with the actual workflow owner</li>
 <li><strong>Migrate the keepers</strong> as a final batch</li>
 <li><strong>Pause (don't delete) the kill list</strong> for 30 days to confirm nothing breaks</li>

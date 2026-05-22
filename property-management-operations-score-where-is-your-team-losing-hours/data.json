@@ -782,5 +782,10 @@
     "description": "Book a 30-minute strategy call and I will walk through your assessment results with you, identify the 2 to 3 automation opportunities that will give you the most hours back, and map out exactly what to build first. No pitch, no obligation, just a real conversation about where your operations are bleeding time and how to fix it.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
   }
 }

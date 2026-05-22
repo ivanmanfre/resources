@@ -164,7 +164,7 @@
         },
         "high": {
           "headline": "Intake is a real competitive advantage for you",
-          "text": "You are fast, structured, and your recruiters get high-context handoffs. Now the leverage is in pushing intake from reactive to proactive, using client signals to anticipate orders before they land.",
+          "text": "You are fast, structured, and your recruiters get high-context handoffs. Now the use is in pushing intake from reactive to proactive, using client signals to anticipate orders before they land.",
           "steps": [
             "Use client hiring patterns and historical data to forecast incoming orders weekly",
             "Pre-build candidate shortlists for recurring client needs before the order lands",
@@ -289,7 +289,7 @@
       "recommendations": {
         "low": {
           "headline": "You are sourcing from scratch every single time",
-          "text": "Your team is paying the full sourcing cost on every order, which means recruiters are spending more time hunting than placing. The fastest revenue unlock here is turning your ATS from a graveyard into an active pipeline.",
+          "text": "Your team is paying the full sourcing cost on every order, which means recruiters are spending more time hunting than placing. The fastest revenue surface here is turning your ATS from a graveyard into an active pipeline.",
           "steps": [
             "Run a one-time ATS cleanup focused on your top 3 most common role types",
             "Set up automated outreach sequences to re-engage past candidates monthly",
@@ -752,8 +752,13 @@
   },
   "cta": {
     "headline": "Ready to turn your score into more placements?",
-    "description": "You know where the bottleneck is. Now let's build the system that fixes it. Book a 30-minute strategy call and I'll walk you through exactly what to automate first, what to leave alone, and what one change will unlock the most placement capacity for your firm.",
+    "description": "You know where the bottleneck is. Now let's build the system that fixes it. Book a 30-minute strategy call and I'll walk you through exactly what to automate first, what to leave alone, and what one change will surface the most placement capacity for your firm.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
   }
 }

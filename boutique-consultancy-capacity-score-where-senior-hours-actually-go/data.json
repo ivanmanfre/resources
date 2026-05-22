@@ -264,7 +264,7 @@
         },
         "high": {
           "headline": "Sales motion is tight, raise the floor",
-          "text": "Your intake and proposal process is already efficient relative to peers. The next gain is qualification, not speed — say no faster to the wrong-fit work.",
+          "text": "Your intake and proposal process is already efficient relative to peers. The next gain is qualification, not speed ,  say no faster to the wrong-fit work.",
           "steps": [
             "Define a written ideal-client profile with hard disqualifiers and apply it before scoping calls",
             "Raise minimum engagement size by 25-40% and watch close rate, not just volume",
@@ -373,7 +373,7 @@
           ]
         },
         "mid": {
-          "headline": "Leverage exists but isn't compounding",
+          "headline": "use exists but isn't compounding",
           "text": "Juniors are involved but partners still rescue too many drafts. That pattern means templates are incomplete or briefs are verbal, and both are fixable in weeks not quarters.",
           "steps": [
             "Document the top 5 deliverables with structured templates, decision points, and example outputs",
@@ -383,7 +383,7 @@
         },
         "high": {
           "headline": "Senior hours are protected, push the ceiling",
-          "text": "Partner time is already going to high-value work. The next move is to compound that leverage with automation or fractional expertise.",
+          "text": "Partner time is already going to high-value work. The next move is to compound that use with automation or fractional expertise.",
           "steps": [
             "Identify the 3 most repeated analytical or research steps in delivery and automate them with AI tooling",
             "Add a fractional senior specialist (data, design, research) so partners stop being the last resort on edge work",
@@ -493,7 +493,7 @@
         },
         "mid": {
           "headline": "Boundaries exist, enforcement is patchy",
-          "text": "You've set some norms but partners still get pulled in too often. The leak now is cultural more than structural — clients learn what they can get away with within the first 30 days.",
+          "text": "You've set some norms but partners still get pulled in too often. The leak now is cultural more than structural ,  clients learn what they can get away with within the first 30 days.",
           "steps": [
             "Run a 30-day kickoff playbook that sets communication norms, change-order rules, and meeting cadence in writing",
             "Reduce recurring client meetings by 30% and replace with async written updates",
@@ -502,7 +502,7 @@
         },
         "high": {
           "headline": "Operations are clean, raise the bar",
-          "text": "Your client ops are already protecting partner time well. The next gain is using that protected time for higher-leverage work, not just more delivery.",
+          "text": "Your client ops are already protecting partner time well. The next gain is using that protected time for higher-use work, not just more delivery.",
           "steps": [
             "Cap recurring meetings per partner at 6 per week and protect 2 half-days for strategic work",
             "Productize one of your status update or reporting flows so it becomes a sellable add-on, not a cost center",
@@ -513,7 +513,7 @@
     },
     {
       "id": "systems_leverage",
-      "name": "Systems and Leverage",
+      "name": "Systems and use",
       "questions": [
         {
           "id": "knowledge_capture",
@@ -595,7 +595,7 @@
       "recommendations": {
         "low": {
           "headline": "You're rebuilding the wheel every engagement",
-          "text": "Without systems, every project starts close to zero and partners are the only ones who can fill the gaps. That's why senior hours feel so scarce — they're being spent recreating work that already exists in someone's head.",
+          "text": "Without systems, every project starts close to zero and partners are the only ones who can fill the gaps. That's why senior hours feel so scarce ,  they're being spent recreating work that already exists in someone's head.",
           "steps": [
             "Stand up one centralized knowledge base (Notion, ClickUp, or similar) and migrate the top 20 frameworks within 30 days",
             "Pick one repeatable workflow (proposal generation, weekly client report, research synthesis) and automate it with AI tools in 60 days",
@@ -603,7 +603,7 @@
           ]
         },
         "mid": {
-          "headline": "Tools exist, leverage doesn't",
+          "headline": "Tools exist, use doesn't",
           "text": "You have the pieces but they don't compound. Knowledge lives in too many places, AI is used by individuals not the firm, and productization is stuck at the talking stage.",
           "steps": [
             "Consolidate to one project management tool and sunset the others within 45 days",
@@ -613,7 +613,7 @@
         },
         "high": {
           "headline": "Systems are working, scale the moat",
-          "text": "You've built real operational leverage. The next move is using systems as a differentiator in sales and a barrier to peer competition.",
+          "text": "You've built real operational use. The next move is using systems as a differentiator in sales and a barrier to peer competition.",
           "steps": [
             "Package one of your internal workflows as a client-facing offering (audit, diagnostic, or implementation sprint)",
             "Build a proprietary data or benchmark asset that clients can only get by working with you",
@@ -629,8 +629,13 @@
   },
   "cta": {
     "headline": "See exactly where your senior hours are leaking",
-    "description": "Book a 30-minute working session. We'll walk through your scores category by category, identify the 2-3 highest-leverage fixes for your firm specifically, and you'll leave with a one-page action plan whether or not we work together.",
+    "description": "Book a 30-minute working session. We'll walk through your scores category by category, identify the 2-3 highest-impact fixes for your firm specifically, and you'll leave with a one-page action plan whether or not we work together.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
   }
 }
