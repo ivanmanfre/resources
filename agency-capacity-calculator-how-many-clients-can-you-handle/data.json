@@ -140,7 +140,7 @@
     {
       "tag": "low_automation_high_overhead",
       "when": "automation_coverage < 25 && handoff_overhead >= 4",
-      "text": "Handoff overhead is eating more than 4 hours per client per month and almost none of it is automated. This is the highest leverage fix in your business. Start with intake to scoping and reporting to invoicing, the two handoffs where data already lives in structured form."
+      "text": "Handoff overhead is eating more than 4 hours per client per month and almost none of it is automated. This is the highest use fix in your business. Start with intake to scoping and reporting to invoicing, the two handoffs where data already lives in structured form."
     },
     {
       "tag": "unrealistic_productive_hours",

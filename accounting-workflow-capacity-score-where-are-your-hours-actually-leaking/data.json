@@ -303,7 +303,7 @@
         },
         "high": {
           "headline": "Documents are a data layer, not a chore",
-          "text": "You've turned source documents into structured data. The leverage now is using that data for advisory insight, not just compliance.",
+          "text": "You've turned source documents into structured data. The use now is using that data for advisory insight, not just compliance.",
           "steps": [
             "Use parsed document data to populate first-draft workpapers automatically",
             "Surface anomalies and trends to clients proactively as part of monthly reporting",
@@ -440,13 +440,13 @@
           "text": "You've systematized the work but not the review. Partners are spending billable hours on quality control that software can flag. This caps how many clients each partner can carry.",
           "steps": [
             "Build automated pre-review checks that flag common workpaper exceptions before partner review",
-            "Codify the firm's top reconciliation precedents into a queryable knowledge base (Notion, Confluence, or AI-powered)",
+            "Codify the firm's top reconciliation precedents into a queryable knowledge base (Notion, Confluence, or AI-built)",
             "Add a deadline-management layer that automatically re-prices or re-scopes when clients block your close"
           ]
         },
         "high": {
           "headline": "Your close is a system, not a sprint",
-          "text": "You've turned monthly close from an event into a process. Leverage now means using the structured close data to power advisory conversations.",
+          "text": "You've turned monthly close from an event into a process. use now means using the structured close data to power advisory conversations.",
           "steps": [
             "Extract close-time data to identify which clients consistently consume the most senior time",
             "Build client-specific dashboards from close data to drive monthly advisory conversations",

@@ -307,7 +307,7 @@
               "score": 4
             },
             {
-              "label": "Instant search across all documents with AI-powered query",
+              "label": "Instant search across all documents with AI-built query",
               "score": 5
             }
           ]
@@ -337,7 +337,7 @@
           "text": "You are operating at the top tier here. Maintain the system and monitor for edge cases that break the automation. Focus your improvement energy on categories with more recoverable time.",
           "steps": [
             "Quarterly audit of leases that required manual intervention to find automation gaps",
-            "Add AI-powered clause review for non-standard leases or addenda",
+            "Add AI-built clause review for non-standard leases or addenda",
             "Use freed time to focus on tenant experience improvements at move-in"
           ]
         }
@@ -602,7 +602,7 @@
       "recommendations": {
         "low": {
           "headline": "Your financial operations are running on manual labor",
-          "text": "Month-end is painful, owner statements eat days, and late rent collection is a part-time job. This is one of the highest-leverage areas to automate because the work is rules-based and repetitive. Expect 10 to 15 hours a week recovered and a 5+ day reduction in close time within 60 days.",
+          "text": "Month-end is painful, owner statements eat days, and late rent collection is a part-time job. This is one of the highest-impact areas to automate because the work is rules-based and repetitive. Expect 10 to 15 hours a week recovered and a 5+ day reduction in close time within 60 days.",
           "steps": [
             "Move all rent collection to a single online platform with auto-applied late fees",
             "Set up automated payment reminders at day -3, day +1, day +5, and day +10",
@@ -615,12 +615,12 @@
           "steps": [
             "Map every manual step in your month-end close and tackle the top 3 longest ones first",
             "Automate owner statement generation and delivery with personalized commentary",
-            "Add AI-powered variance analysis to flag unusual P&L items for review before close"
+            "Add AI-built variance analysis to flag unusual P&L items for review before close"
           ]
         },
         "high": {
           "headline": "Your finance function is operating like a much larger company",
-          "text": "You have built infrastructure that most PM companies your size do not have. Use this to take on more doors without adding back-office headcount. The leverage is real here.",
+          "text": "You have built infrastructure that most PM companies your size do not have. Use this to take on more doors without adding back-office headcount. The use is real here.",
           "steps": [
             "Calculate your back-office cost per unit managed and benchmark it as a sales advantage",
             "Add predictive cash flow modeling for owners based on rent trends and maintenance patterns",
