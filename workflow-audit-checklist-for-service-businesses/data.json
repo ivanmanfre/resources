@@ -1,9 +1,9 @@
 {
   "slug": "workflow-audit-checklist-for-service-businesses",
-  "title": "Workflow Audit Checklist for Service Businesses",
-  "subtitle": "Find the broken processes bleeding time and money from your $1M-$20M service business in 60-90 minutes",
+  "title": "The 15-Point Workflow Audit Checklist for Service Businesses",
+  "subtitle": "Find the broken processes bleeding time and money from your $1M-$20M service business in 90 minutes",
   "brand": {
-    "accent": "#2A8F65",
+    "accent": "#00E676",
     "hero_badge": "Action Checklist"
   },
   "estimated_minutes": 75,
@@ -14,27 +14,27 @@
       "description": "This is where most service businesses start losing time before they even deliver anything. Every manual step here multiplies across every new client.",
       "items": [
         {
-          "id": "1-1",
-          "text": "Capture new client information in one system instead of scattering it across email, forms, and Slack",
-          "tip": "If your team searches three places to find a client detail, you have a data problem, not a memory problem.",
+          "id": "intake-1",
+          "text": "Centralize new client information capture in one system of record",
+          "tip": "Audit every place client data lives today (email, forms, Slack, spreadsheets) and pick one as the source of truth before automating anything",
           "impact": "high"
         },
         {
-          "id": "1-2",
-          "text": "Template onboarding tasks and assign them automatically when a deal closes",
-          "tip": "Map your last 5 onboardings and look for tasks that repeated every single time. Those are automation candidates.",
+          "id": "intake-2",
+          "text": "Template and auto-assign all client onboarding tasks",
+          "tip": "Map your last 5 client onboardings and look for the 80% of tasks that repeat every single time",
           "impact": "high"
         },
         {
-          "id": "1-3",
-          "text": "Trigger welcome emails and kickoff materials without anyone manually hitting send",
-          "tip": "Tie the trigger to a CRM stage change so nothing depends on someone remembering.",
+          "id": "intake-3",
+          "text": "Automate welcome emails and kickoff materials based on workflow triggers",
+          "tip": "Tie sends to CRM stage changes, not calendar reminders or manual buttons",
           "impact": "medium"
         },
         {
-          "id": "1-4",
-          "text": "Provision client access to portals, folders, and tools without opening an IT ticket",
-          "tip": "A shared access template per client type cuts provisioning from hours to minutes.",
+          "id": "intake-4",
+          "text": "Provision client access to portals, folders, and tools without IT tickets",
+          "tip": "Use role-based access templates so new clients get the right permissions in under 5 minutes",
           "impact": "medium"
         }
       ]
@@ -42,30 +42,30 @@
     {
       "id": "project-management",
       "title": "Project & Job Management",
-      "description": "If your team is copy-pasting job details between systems or chasing down status updates, you are paying for coordination instead of execution.",
+      "description": "If your team is copy-pasting job details between systems or chasing status updates, you're paying for coordination instead of execution.",
       "items": [
         {
-          "id": "2-1",
-          "text": "Create jobs once and push tasks into all relevant systems automatically",
-          "tip": "Count how many tools receive the same job data today. Every duplicate entry is a failure point.",
+          "id": "project-1",
+          "text": "Trigger tasks across all relevant systems when a new job is created",
+          "tip": "One job creation event should fan out to project management, billing, and team calendars simultaneously",
           "impact": "high"
         },
         {
-          "id": "2-2",
-          "text": "Route status updates to one place instead of siloing them in email threads or DMs",
-          "tip": "Pick one system as the source of truth and make every other tool read from it.",
+          "id": "project-2",
+          "text": "Consolidate status updates into one visible dashboard",
+          "tip": "If anyone has to ask 'where are we on this?', your system has failed",
           "impact": "high"
         },
         {
-          "id": "2-3",
-          "text": "Log handoffs between team members so they are visible rather than verbal or assumed",
-          "tip": "Dropped handoffs are the single biggest source of rework in service delivery.",
+          "id": "project-3",
+          "text": "Log and surface every team handoff in writing",
+          "tip": "Verbal handoffs are invisible work; add a required handoff comment or status change to make them traceable",
           "impact": "medium"
         },
         {
-          "id": "2-4",
-          "text": "Build reusable project templates for repeatable work instead of recreating them each time",
-          "tip": "If 70% of your projects follow a similar shape, a template pays for itself in the first use.",
+          "id": "project-4",
+          "text": "Build reusable project templates for every repeatable service",
+          "tip": "If you deliver the same engagement type more than 3 times a year, it deserves a template",
           "impact": "medium"
         }
       ]
@@ -73,30 +73,30 @@
     {
       "id": "communication",
       "title": "Communication & Notifications",
-      "description": "Most communication problems are actually workflow problems. If people need to ask for updates, the system is not doing its job.",
+      "description": "Most communication problems are actually workflow problems. If people need to ask for updates, the system isn't doing its job.",
       "items": [
         {
-          "id": "3-1",
-          "text": "Send clients automated updates at key milestones rather than waiting for someone to remember",
-          "tip": "Clients rarely complain about too many updates. They complain about silence.",
+          "id": "comm-1",
+          "text": "Send automated client updates at every key project milestone",
+          "tip": "Define 4-6 milestone triggers per service line and wire them to a templated message",
           "impact": "high"
         },
         {
-          "id": "3-2",
-          "text": "Trigger internal notifications from workflow events instead of manual pings",
-          "tip": "Every manual ping is a small tax on focus. Multiply it by your team size and it adds up fast.",
+          "id": "comm-2",
+          "text": "Trigger internal team notifications from workflow events, not manual pings",
+          "tip": "Replace Slack DMs with event-based alerts tied to status changes and SLA breaches",
           "impact": "medium"
         },
         {
-          "id": "3-3",
-          "text": "Maintain a single source of truth for client communication history",
-          "tip": "If onboarding a new account manager requires forwarding emails, your history is broken.",
+          "id": "comm-3",
+          "text": "Maintain a single source of truth for all client communication history",
+          "tip": "Pipe email, chat, and call notes into your CRM so anyone on the team has full context in 30 seconds",
           "impact": "medium"
         },
         {
-          "id": "3-4",
-          "text": "Escalate automatically when deadlines slip or tasks stall past a threshold",
-          "tip": "Define the threshold in days or hours so the system can enforce it without a human watching.",
+          "id": "comm-4",
+          "text": "Auto-route escalations when deadlines slip or tasks stall",
+          "tip": "Set SLA timers on every critical task and define escalation paths before you need them",
           "impact": "high"
         }
       ]
@@ -104,75 +104,31 @@
     {
       "id": "billing",
       "title": "Billing & Invoicing",
-      "description": "I have seen companies leave 10-15% of revenue on the table because invoicing is manual and inconsistent. This section finds that leak.",
+      "description": "I've seen companies leave 10-15% of revenue on the table because invoicing is manual and inconsistent. This section finds that leak.",
       "items": [
         {
-          "id": "4-1",
-          "text": "Generate invoices automatically from completed work or project milestones",
-          "tip": "Tie invoice creation to a status change so billing never waits on a human checklist.",
+          "id": "billing-1",
+          "text": "Generate invoices automatically from completed project milestones",
+          "tip": "Tie invoice triggers to deliverable acceptance, not a monthly manual review",
           "impact": "high"
         },
         {
-          "id": "4-2",
-          "text": "Reconcile payments against invoices without manual spreadsheet matching",
-          "tip": "Unreconciled payments hide revenue leaks worth thousands of USD per month.",
+          "id": "billing-2",
+          "text": "Reconcile payments and flag overdue invoices without spreadsheets",
+          "tip": "Connect your payment processor to your accounting system so collections work itself",
           "impact": "high"
         },
         {
-          "id": "4-3",
-          "text": "Trigger payment reminders on a schedule rather than when someone notices an overdue balance",
-          "tip": "A 3-step reminder sequence typically recovers 40% of late invoices without a human touch.",
-          "impact": "high"
-        },
-        {
-          "id": "4-4",
-          "text": "Surface revenue and AR data in one dashboard instead of pulling reports manually",
-          "tip": "If your finance lead exports CSVs every Monday, that is a 52-hour-per-year automation opportunity.",
+          "id": "billing-3",
+          "text": "Track time and expenses at the point of work, not end of week",
+          "tip": "Real-time capture recovers 8-12% of billable hours that get forgotten by Friday",
           "impact": "medium"
         }
       ]
     }
   ],
   "completion_cta": {
-    "headline": "You found the leaks. Now fix the biggest one.",
-    "description": "Every unchecked box is a workflow costing you time, money, or client trust. Pick the 3 highest-impact items you flagged and build or automate them first. If you want help designing the systems that replace those broken processes, reply to the email that sent you here and we will map your next automation together."
-  },
-  "ctas": [
-    {
-      "id": "high_gaps_blueprint",
-      "when": "gap_pct > 70",
-      "headline": "You found a system-wide leak. Want it mapped, not patched?",
-      "description": "Over 70% of these workflow controls are unchecked. At that gap level, fixing them one at a time is how leaks come back. The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I audit your client intake, project management, communication, and billing flows end-to-end, then deliver a 90-day deployment plan with sequenced fixes, vendor shortlists, and a phase-1 stop-loss gate. Budget-defensible whether or not you build with me.",
-      "button": "See the Blueprint →",
-      "url": "https://resources.ivanmanfredi.com/assessment",
-      "secondary": {
-        "button": "Or book a 30-min working call",
-        "url": "https://calendly.com/ivan-intelligents/30min"
-      }
-    },
-    {
-      "id": "mid_gaps_lms",
-      "when": "gap_pct >= 30 && gap_pct <= 70",
-      "headline": "Several real gaps, none catastrophic. See the system that closes them.",
-      "description": "30-70% gaps means your workflows are mostly there — but the unchecked items compound across every client. Tour the Lead Magnet System and Content System to see how I deployed pre-built n8n + Claude pipelines for service firms in your range. You can plug in the components your audit flagged.",
-      "button": "Tour the Lead Magnet System →",
-      "url": "https://ivanmanfredi.com/lead-magnet-system",
-      "secondary": {
-        "button": "Get the weekly ops teardown",
-        "url": "https://www.linkedin.com/in/ivanmanfredi/"
-      }
-    },
-    {
-      "id": "low_gaps_newsletter",
-      "headline": "You're running tight. Stay sharp — here's what firms like yours fix next.",
-      "description": "Under 30% gaps means the obvious leaks are closed. The next gains are in the kind of work most service firms never get to: event-sourced decision logs, capacity accounting, and confidence-gated review. Subscribe to the Agent-Ready Letter — one tactical n8n teardown + one ops case study per week.",
-      "button": "Follow on LinkedIn →",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/",
-      "secondary": {
-        "button": "Browse other resources",
-        "url": "https://resources.ivanmanfredi.com"
-      }
-    }
-  ],
-  "data_version": 1
+    "headline": "You've Found the Leaks. Now Plug Them.",
+    "description": "If you flagged 5+ items as broken, you're likely losing 20+ hours per week and 10-15% of revenue to manual workflows. Book a free 30-minute audit call and I'll show you exactly which 2-3 workflows to automate first for the biggest ROI."
+  }
 }
