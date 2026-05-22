@@ -1,118 +1,170 @@
 {
-  "public": false,
-  "hide_from_library": true,
   "slug": "property-management-operations-score-where-is-your-team-losing-hours",
-  "title": "Property Management Operations Score — Where Is Your Team Losing Hours?",
-  "subtitle": "A 15-minute diagnostic for property management owners running 10-75 employees. Pinpoint the exact workflows bleeding 15-30+ hours a week so you can scale without scaling payroll.",
+  "title": "Property Management Operations Score",
+  "subtitle": "Find the exact workflows where your team is losing hours every week",
   "brand": {
-    "accent": "#2A8F65",
+    "accent": "#00E676",
     "hero_badge": "Interactive Assessment"
   },
-  "estimated_minutes": 15,
+  "estimated_minutes": 18,
   "persona_selector": {
-    "id": "size",
-    "text": "Which best describes your property management firm?",
+    "id": "persona",
+    "text": "What best describes your role at the property management company?",
     "answers": [
       {
-        "label": "Boutique (10-20 employees, under ~500 doors)",
-        "tag": "boutique"
+        "label": "Owner or founder",
+        "tag": "owner"
       },
       {
-        "label": "Growing (21-35 employees, ~500-1,200 doors)",
-        "tag": "growing"
+        "label": "Operations lead or COO",
+        "tag": "ops"
       },
       {
-        "label": "Established (36-55 employees, ~1,200-2,500 doors)",
-        "tag": "established"
+        "label": "Office or property manager",
+        "tag": "manager"
       },
       {
-        "label": "Scaling (56-75 employees, 2,500+ doors)",
-        "tag": "scaling"
+        "label": "Other team member",
+        "tag": "team"
       }
     ]
   },
   "categories": [
     {
-      "id": "tenant-communication",
-      "name": "Tenant Communication & Response",
+      "id": "tenant_communication",
+      "name": "Tenant Communication & Request Handling",
       "questions": [
         {
-          "id": "inbound-response-time",
-          "text": "How quickly does your team respond to inbound tenant messages across email, SMS, and portal?",
+          "id": "tc_1",
+          "text": "How are inbound tenant requests (maintenance, general inquiries, complaints) captured today?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Often 24+ hours, depending on who is covering",
+              "label": "Phone calls and texts to staff personal numbers, no central log",
               "score": 1
             },
             {
-              "label": "2 — Same-day during business hours, nothing after",
+              "label": "Shared email inbox, manually triaged each morning",
               "score": 2
             },
             {
-              "label": "3 — Within a few hours during business hours",
+              "label": "Portal or form, but staff manually re-enter into other systems",
               "score": 3
             },
             {
-              "label": "4 — Within an hour via templated replies plus triage",
+              "label": "Portal feeds directly into our PM software, minimal manual routing",
               "score": 4
             },
             {
-              "label": "5 — Instant acknowledgement 24/7 with AI triage and routing",
+              "label": "Fully automated intake with AI categorization and auto-routing to the right person",
               "score": 5
             }
           ]
         },
         {
-          "id": "channel-consolidation",
-          "text": "How consolidated are your tenant communication channels into one system of record?",
+          "id": "tc_2",
+          "text": "How quickly does a typical tenant request get a first response?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Email, personal phones, and texts scattered everywhere",
+              "label": "More than 24 hours, sometimes days",
               "score": 1
             },
             {
-              "label": "2 — Most lives in email but key threads get lost",
+              "label": "Same business day, but no guarantee",
               "score": 2
             },
             {
-              "label": "3 — Central inbox exists but staff still use side channels",
+              "label": "Within 4 to 8 hours during business hours",
               "score": 3
             },
             {
-              "label": "4 — One inbox, all channels routed in, logged to property record",
+              "label": "Within 1 hour during business hours via auto-acknowledgment plus human follow-up",
               "score": 4
             },
             {
-              "label": "5 — Unified inbox with full history, auto-tagged, searchable by unit",
+              "label": "Instant auto-response with status, and human reply within 1 hour",
               "score": 5
             }
           ]
         },
         {
-          "id": "routine-question-deflection",
-          "text": "How automated is handling of routine tenant questions (rent balance, lease terms, amenity hours)?",
+          "id": "tc_3",
+          "text": "When a tenant asks a repeat question (rent due date, lease terms, pet policy), how is it answered?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Every question gets a human reply from scratch",
+              "label": "A human types out the answer every single time",
               "score": 1
             },
             {
-              "label": "2 — Staff use copy-paste templates they maintain manually",
+              "label": "Staff copy-paste from a saved doc or email",
               "score": 2
             },
             {
-              "label": "3 — Portal FAQ deflects some but most still hits staff",
+              "label": "We have canned responses in our PM software, used inconsistently",
               "score": 3
             },
             {
-              "label": "4 — AI assistant answers routine questions, escalates edge cases",
+              "label": "Tenant portal FAQ handles most repeat questions, staff handles the rest",
               "score": 4
             },
             {
-              "label": "5 — Fully automated tenant assistant with CRM-grounded answers",
+              "label": "AI chatbot or assistant handles 80%+ of repeat questions automatically",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "tc_4",
+          "text": "How do you track communication history with each tenant?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Scattered across email, text, phone notes, paper",
+              "score": 1
+            },
+            {
+              "label": "Mostly in email, occasionally logged in PM software",
+              "score": 2
+            },
+            {
+              "label": "Logged in PM software when staff remember to",
+              "score": 3
+            },
+            {
+              "label": "All channels feed into one tenant record automatically",
+              "score": 4
+            },
+            {
+              "label": "Unified record with AI-generated summaries and sentiment flags",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "tc_5",
+          "text": "How many hours per week does your team spend on tenant communication tasks that feel repetitive?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "30+ hours across the team",
+              "score": 1
+            },
+            {
+              "label": "20 to 30 hours",
+              "score": 2
+            },
+            {
+              "label": "10 to 20 hours",
+              "score": 3
+            },
+            {
+              "label": "5 to 10 hours",
+              "score": 4
+            },
+            {
+              "label": "Under 5 hours",
               "score": 5
             }
           ]
@@ -120,142 +172,142 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Your tenant inbox is the single biggest time sink",
-          "text": "Scattered channels and slow response times are costing your team 10+ hours a week on triage alone. The first fix is not a chatbot — it is getting every channel into one logged inbox so you can actually see the volume.",
+          "headline": "Your tenant communication is the single biggest time leak in your business",
+          "text": "You are likely losing 20 to 35 hours a week to manual triage, repeat answers, and chasing replies. The good news is this area gives the fastest ROI when fixed. A simple intake portal plus an AI assistant handling repeat questions can recover 15+ hours a week within 30 days.",
           "steps": [
-            "Pick one system of record (portal, shared inbox, or CRM) and route email, SMS, and voicemail transcripts into it this week",
-            "Write a 10-line response SLA and post it where staff can see it (ack within 1h, resolve within 24h)",
-            "Audit last month's inbox: tag the top 20 recurring questions — those become your first automation targets"
+            "Set up a single intake channel (portal or form) and route everything through it for 2 weeks to measure volume",
+            "Log the 20 most common tenant questions and draft canned answers for each",
+            "Pilot an AI chatbot trained on your lease terms, building rules, and FAQ to handle tier-1 questions automatically"
           ]
         },
         "mid": {
-          "headline": "Consolidated but still human-heavy",
-          "text": "You have structure, now you need use. Routine questions are eating your team's focus even when response times look acceptable. Add an AI assistant layer on top of your unified inbox to deflect the repeat 60%.",
+          "headline": "Solid foundation, but you are leaving 8 to 12 hours a week on the table",
+          "text": "Your team has tools in place, but the workflows are not stitched together. Tenants are getting responses, but staff are still doing too much manual re-entry and triage. The next move is automation between your existing tools.",
           "steps": [
-            "Build an AI first-responder that pulls tenant ledger, lease, and unit data to answer the top 20 questions",
-            "Route anything it cannot answer to a human with the context pre-summarized",
-            "Measure deflection rate weekly — aim for 50%+ within 60 days"
+            "Audit every place a staff member retypes tenant info from one system to another and list the top 3",
+            "Build automations (n8n, Zapier, or native) to eliminate those 3 manual handoffs",
+            "Add auto-acknowledgment with expected response time to every inbound channel"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — here's the frontier",
-          "text": "Response speed is a solved problem for you. The next gains come from proactive tenant communication that prevents tickets from being opened in the first place.",
+          "headline": "You are running tenant comms at a level most PM companies do not reach",
+          "text": "Hold this standard and focus optimization elsewhere. The marginal hour saved here is smaller than in other categories. Use the leftover capacity to improve the human touch on high-value tenant moments.",
           "steps": [
-            "Add proactive outreach: renewal nudges, rent reminders, and maintenance follow-ups triggered by events not calendars",
-            "Build sentiment scoring on inbound messages to flag churn risk to PMs before renewal window",
-            "Instrument 'questions we should not be getting' — feed them back into tenant onboarding and portal UX"
+            "Quarterly review the AI assistant's accuracy and add new FAQ patterns",
+            "Identify the 10% of conversations the AI escalates and look for new automation opportunities",
+            "Reallocate freed staff time to proactive tenant retention outreach"
           ]
         }
       }
     },
     {
-      "id": "maintenance-workflow",
-      "name": "Maintenance & Work Order Flow",
+      "id": "lease_document",
+      "name": "Lease & Document Management",
       "questions": [
         {
-          "id": "work-order-intake",
-          "text": "How standardized is your maintenance intake from first tenant report to assigned work order?",
+          "id": "ld_1",
+          "text": "How are new leases created and customized for each unit?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Requests come in every channel, staff manually enter them",
+              "label": "From scratch or by copying an old Word doc",
               "score": 1
             },
             {
-              "label": "2 — Portal exists but tenants still call and email",
+              "label": "From a template, manually edited for each tenant",
               "score": 2
             },
             {
-              "label": "3 — Most go through portal, staff triage and categorize by hand",
+              "label": "From a template with merge fields filled in by staff",
               "score": 3
             },
             {
-              "label": "4 — Intake form captures structured data, auto-routes by category",
+              "label": "Auto-generated from tenant and unit data in our system",
               "score": 4
             },
             {
-              "label": "5 — Any-channel intake, AI categorizes urgency and vendor, creates work order",
+              "label": "Auto-generated, auto-sent for e-signature, auto-filed when signed",
               "score": 5
             }
           ]
         },
         {
-          "id": "vendor-dispatch",
-          "text": "How automated is vendor selection and dispatch once a work order is created?",
+          "id": "ld_2",
+          "text": "How does lease signing happen?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Staff calls or texts a vendor they remember is available",
+              "label": "In person or printed and scanned back",
               "score": 1
             },
             {
-              "label": "2 — Spreadsheet of vendors, manual pick based on trade",
+              "label": "PDF emailed back and forth",
               "score": 2
             },
             {
-              "label": "3 — Preferred vendor list by trade, rotated manually",
+              "label": "E-signature tool, but staff manually upload signed copies into PM software",
               "score": 3
             },
             {
-              "label": "4 — System auto-suggests vendor by trade, area, and past performance",
+              "label": "Integrated e-signature that files signed leases automatically",
               "score": 4
             },
             {
-              "label": "5 — Auto-dispatch with vendor confirmation loop and tenant scheduling",
+              "label": "Fully automated: generate, send, sign, file, and trigger move-in workflow",
               "score": 5
             }
           ]
         },
         {
-          "id": "status-updates",
-          "text": "How proactive are status updates to tenants and owners through the lifecycle of a work order?",
+          "id": "ld_3",
+          "text": "How do you track lease renewals and expirations?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Tenants and owners call us asking for updates",
+              "label": "A spreadsheet someone updates manually",
               "score": 1
             },
             {
-              "label": "2 — Staff sends manual updates when they remember",
+              "label": "Calendar reminders set by individual staff",
               "score": 2
             },
             {
-              "label": "3 — Updates at key milestones, sent by staff from templates",
+              "label": "PM software shows expirations but no automatic outreach",
               "score": 3
             },
             {
-              "label": "4 — Automated updates at status changes, staff handles exceptions",
+              "label": "Automated renewal reminders sent 60 and 90 days out",
               "score": 4
             },
             {
-              "label": "5 — Fully automated lifecycle updates with photos and ETA to both sides",
+              "label": "Automated renewal sequence with offer, follow-up, and signed renewal flowing back to the system",
               "score": 5
             }
           ]
         },
         {
-          "id": "invoice-reconciliation",
-          "text": "How automated is reconciling vendor invoices against the work order and owner statement?",
+          "id": "ld_4",
+          "text": "When you need to find a specific document (signed lease, addendum, inspection report), how long does it take?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Paper or PDF invoices, bookkeeper matches manually",
+              "label": "15+ minutes, sometimes we cannot find it",
               "score": 1
             },
             {
-              "label": "2 — Digital invoices but still manual matching and coding",
+              "label": "5 to 15 minutes of searching",
               "score": 2
             },
             {
-              "label": "3 — Invoices attached to work orders, manual posting to GL",
+              "label": "2 to 5 minutes if filed correctly",
               "score": 3
             },
             {
-              "label": "4 — Invoice parsing auto-matches to work order and owner",
+              "label": "Under 2 minutes from the tenant or property record",
               "score": 4
             },
             {
-              "label": "5 — Straight-through: parse, match, approve by rule, post, notify owner",
+              "label": "Instant search across all documents with AI-powered query",
               "score": 5
             }
           ]
@@ -263,115 +315,142 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Maintenance is where your team actually lives",
-          "text": "Unstructured intake and manual dispatch are where the hours disappear. Every call that becomes a work order is 10-15 minutes of clerical work per ticket. Structured intake alone will return 5+ hours a week.",
+          "headline": "Your lease workflow is costing you rent days and staff sanity",
+          "text": "Slow lease processing means delayed move-ins and lost revenue. Manual document handling also creates compliance risk. A modern lease workflow can cut 5 to 10 days off your average lease-to-occupancy time and free up 6+ hours a week of admin work.",
           "steps": [
-            "Force every request through one intake form — even if staff fill it in on the tenant's behalf for a quarter",
-            "Build a vendor matrix: trade, area, response time, approved rate — make it the source of dispatch decisions",
-            "Template the three status updates that matter: received, scheduled, completed"
+            "Standardize on one lease template per property type with merge fields for tenant and unit data",
+            "Adopt an e-signature tool that integrates with your PM software, not a standalone one",
+            "Build an automated renewal sequence starting 90 days before expiration"
           ]
         },
         "mid": {
-          "headline": "Good intake, leaky middle",
-          "text": "Your pipeline captures work orders well but the vendor and invoice legs are still human-driven. That middle layer is where AI dispatch and invoice parsing pay back fastest — typically inside 90 days.",
+          "headline": "Lease ops are functional but not yet driving renewal revenue",
+          "text": "You have signatures and storage handled, but renewals are still a manual push. PM companies that automate renewal sequences typically lift renewal rates 8 to 15% and recover 4 to 6 hours of staff time per week.",
           "steps": [
-            "Add AI categorization on intake that sets urgency, trade, and suggested vendor before a human sees it",
-            "Automate the status update layer completely — staff should never manually type 'vendor scheduled for Tuesday' again",
-            "Pilot invoice OCR + auto-match on your top 3 vendors first, then expand"
+            "Map your current renewal process end-to-end and identify the 3 manual touch points",
+            "Build an automated 90-60-30 day renewal sequence with personalized offers",
+            "Connect signed leases and renewals to auto-trigger billing, key handoff, and welcome sequences"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — here's the frontier",
-          "text": "You have a real maintenance operations engine. The next edge comes from predictive and portfolio-level intelligence — catching issues before tenants report them.",
+          "headline": "Lease management is fully automated, protect it",
+          "text": "You are operating at the top tier here. Maintain the system and monitor for edge cases that break the automation. Focus your improvement energy on categories with more recoverable time.",
           "steps": [
-            "Mine 12 months of work orders to predict seasonal spikes per property and pre-stage vendor capacity",
-            "Add owner-facing proactive reporting that flags properties trending above peer cost benchmarks",
-            "Build automated vendor scorecards and auto-retire underperformers without manager review"
+            "Quarterly audit of leases that required manual intervention to find automation gaps",
+            "Add AI-powered clause review for non-standard leases or addenda",
+            "Use freed time to focus on tenant experience improvements at move-in"
           ]
         }
       }
     },
     {
-      "id": "leasing-onboarding",
-      "name": "Leasing & Tenant Onboarding",
+      "id": "maintenance",
+      "name": "Maintenance & Work Order Operations",
       "questions": [
         {
-          "id": "lead-response",
-          "text": "How fast and consistent is your response to new rental inquiries across Zillow, Apartments.com, and direct?",
+          "id": "mo_1",
+          "text": "How does a maintenance request get from tenant to vendor?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Leads get missed or answered a day later",
+              "label": "Office manager calls or texts vendors after taking the request",
               "score": 1
             },
             {
-              "label": "2 — Leasing agents reply when they can, quality varies",
+              "label": "Staff emails vendors and tracks status manually",
               "score": 2
             },
             {
-              "label": "3 — Shared inbox, same-day response, some templating",
+              "label": "PM software creates work order, staff assigns vendor manually",
               "score": 3
             },
             {
-              "label": "4 — Auto-response within minutes, human follow-up same hour",
+              "label": "Auto-routing rules send most work orders to the right vendor automatically",
               "score": 4
             },
             {
-              "label": "5 — AI handles qualification and booking in minutes, 24/7",
+              "label": "AI categorizes issue, matches to best vendor, sends work order, and tracks acceptance",
               "score": 5
             }
           ]
         },
         {
-          "id": "tour-scheduling",
-          "text": "How automated is tour scheduling including self-showings and follow-up?",
+          "id": "mo_2",
+          "text": "How do you track work order status and vendor follow-up?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — All back-and-forth by phone and text to land a time",
+              "label": "Whoever assigned it has to remember to follow up",
               "score": 1
             },
             {
-              "label": "2 — Booking link exists but agents still coordinate manually often",
+              "label": "Weekly meeting where we review open work orders",
               "score": 2
             },
             {
-              "label": "3 — Online booking works but no reminders or no-show follow-up",
+              "label": "PM software dashboard, staff checks daily",
               "score": 3
             },
             {
-              "label": "4 — Booking + reminders + auto follow-up after tour",
+              "label": "Automated reminders to vendors and escalations after SLA breach",
               "score": 4
             },
             {
-              "label": "5 — Self-showing enabled where legal, full pre and post tour automation",
+              "label": "Real-time tracking with auto-escalation, vendor scorecards, and tenant updates",
               "score": 5
             }
           ]
         },
         {
-          "id": "application-screening",
-          "text": "How automated is the application review and screening decision workflow?",
+          "id": "mo_3",
+          "text": "How are vendor invoices received, approved, and paid?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — PDF applications emailed back and forth, manual credit and income checks",
+              "label": "Paper or PDF emailed, manually entered into accounting",
               "score": 1
             },
             {
-              "label": "2 — Online application but staff reviews every field manually",
+              "label": "Email collection, staff matches to work order manually",
               "score": 2
             },
             {
-              "label": "3 — Screening service integrated, staff decides each file",
+              "label": "Vendor portal for invoices, staff approves and exports to accounting",
               "score": 3
             },
             {
-              "label": "4 — Rules-based auto-approve for clean files, escalate borderline",
+              "label": "Invoices auto-match to work orders, approval workflow in system",
               "score": 4
             },
             {
-              "label": "5 — Full decisioning workflow with documented rules and audit trail",
+              "label": "End-to-end: invoice received, AI-matched, auto-approved within rules, paid",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "mo_4",
+          "text": "How do tenants get updates on their maintenance request status?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "They have to call or email to ask",
+              "score": 1
+            },
+            {
+              "label": "Staff manually sends updates when they remember",
+              "score": 2
+            },
+            {
+              "label": "Tenants can check status in the portal",
+              "score": 3
+            },
+            {
+              "label": "Automated updates sent at each status change",
+              "score": 4
+            },
+            {
+              "label": "Proactive updates with photos, ETAs, and post-work satisfaction survey",
               "score": 5
             }
           ]
@@ -379,115 +458,142 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "You are losing deals before your team sees the lead",
-          "text": "Slow lead response and manual scheduling kill conversion. At your size, each unit that sits an extra week is measurable money, and leasing staff are spending their day on clerical work not conversion.",
+          "headline": "Maintenance ops are the second-biggest time drain after tenant comms",
+          "text": "Your team is spending 15 to 25 hours a week on routing, follow-up, and chasing vendors. Tenants are frustrated because they have no visibility. Vendors are slower because there is no accountability system. Automating this area typically returns 12+ hours a week and improves tenant satisfaction scores measurably.",
           "steps": [
-            "Deploy instant lead auto-response tied to a booking link — this alone lifts tour rate 20-40%",
-            "Move application intake fully online and standardize the required documents",
-            "Write down your screening rules explicitly so they can be automated next"
+            "Document your current vendor list with specialties, response times, and pricing",
+            "Build auto-routing rules: plumbing goes to vendor A, electrical to vendor B, etc.",
+            "Set up automated tenant status updates at: received, assigned, scheduled, complete"
           ]
         },
         "mid": {
-          "headline": "Pipeline works, decisions still bottleneck",
-          "text": "You capture leads cleanly, now it is the decision layer that slows you down. Rules-based screening and structured follow-up will compress days-to-lease without hiring.",
+          "headline": "Work orders flow, but vendor accountability and tenant visibility need work",
+          "text": "You have routing in place but the loop is not closed. Vendors are not held to SLAs and tenants still feel in the dark. Closing this loop typically saves 5 to 8 hours a week and reduces tenant complaints by 30 to 50%.",
           "steps": [
-            "Codify your auto-approve, auto-decline, and escalate criteria as a written rule set",
-            "Automate the between-tour-and-application nudge sequence — most drop-off happens there",
-            "Build a weekly leasing dashboard (lead-to-tour, tour-to-app, app-to-signed) so the team sees their own funnel"
+            "Define SLAs by issue priority (emergency: 2 hours, standard: 48 hours, etc.) and program escalations",
+            "Add vendor scorecards based on response time, completion time, and quality",
+            "Automate post-completion tenant satisfaction surveys to catch problems early"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — here's the frontier",
-          "text": "Your leasing funnel is tight. The next gains are predictive pricing and portfolio-level vacancy intelligence.",
+          "headline": "Maintenance ops are dialed in, use it as a competitive advantage",
+          "text": "Your maintenance operation is in the top 10% of PM companies. This is a sales asset when pitching new owners. Document the system so it scales as you grow without degrading.",
           "steps": [
-            "Add dynamic rent recommendations based on comps and days-on-market signal",
-            "Build vacancy forecasting 60 days out so marketing spend is front-loaded, not reactive",
-            "Deploy post-move-in sentiment capture at day 30 and day 90 to predict renewal"
+            "Build a one-page sales sheet showing your maintenance SLA and tenant satisfaction metrics",
+            "Quarterly vendor review using your scorecard data, prune the bottom performers",
+            "Pilot predictive maintenance for HVAC, water heaters, and other equipment with known lifecycles"
           ]
         }
       }
     },
     {
-      "id": "rent-collection-financial",
-      "name": "Rent Collection & Financial Ops",
+      "id": "financial",
+      "name": "Financial Operations & Reporting",
       "questions": [
         {
-          "id": "delinquency-workflow",
-          "text": "How systematic is your delinquency workflow from day 1 late to resolution?",
+          "id": "fo_1",
+          "text": "How is rent collected and tracked?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Staff manually chases each delinquent tenant on their own schedule",
+              "label": "Checks, cash, and some online payments tracked in a spreadsheet",
               "score": 1
             },
             {
-              "label": "2 — Standard reminder dates but sent manually",
+              "label": "Most online, but late payments require manual chasing",
               "score": 2
             },
             {
-              "label": "3 — Automated first notice, manual from there",
+              "label": "Online portal with manual late fee assessment",
               "score": 3
             },
             {
-              "label": "4 — Full automated cadence, staff handles only non-responders",
+              "label": "Automated collection with auto-applied late fees and reminders",
               "score": 4
             },
             {
-              "label": "5 — Automated cadence + AI follow-up + structured payment plan offers",
+              "label": "Fully automated with AI-driven payment plans for at-risk tenants",
               "score": 5
             }
           ]
         },
         {
-          "id": "owner-reporting",
-          "text": "How automated is monthly owner reporting and distribution?",
+          "id": "fo_2",
+          "text": "How are owner statements and reports prepared?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Bookkeeper builds owner reports mostly by hand",
+              "label": "Manually built in Excel each month",
               "score": 1
             },
             {
-              "label": "2 — Reports generated from software but need heavy manual cleanup",
+              "label": "Generated from PM software but heavily edited",
               "score": 2
             },
             {
-              "label": "3 — Reports auto-generate, staff reviews and emails each owner",
+              "label": "Generated from PM software, light formatting",
               "score": 3
             },
             {
-              "label": "4 — Reports auto-generate and auto-distribute with narrative summary",
+              "label": "Fully automated generation and delivery on schedule",
               "score": 4
             },
             {
-              "label": "5 — Owners get self-serve portal + AI-written performance summary",
+              "label": "Automated with AI-written executive summary and benchmarks per property",
               "score": 5
             }
           ]
         },
         {
-          "id": "owner-questions",
-          "text": "How automated is handling of recurring owner questions (statements, draws, property performance)?",
+          "id": "fo_3",
+          "text": "How do you handle accounts payable for property expenses?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — PMs or bookkeeper answer every owner email individually",
+              "label": "Paper checks, manual entry",
               "score": 1
             },
             {
-              "label": "2 — Standard email templates but still human-sent",
+              "label": "ACH payments, manual entry from invoices",
               "score": 2
             },
             {
-              "label": "3 — Owner portal handles some, staff handles the rest",
+              "label": "Bills entered in accounting software, paid in batches",
               "score": 3
             },
             {
-              "label": "4 — AI assistant answers owner questions from live data",
+              "label": "Invoices auto-extracted and entered, approval workflow in place",
               "score": 4
             },
             {
-              "label": "5 — Full owner AI assistant with ledger access and escalation rules",
+              "label": "End-to-end automated AP with AI invoice processing and rule-based payments",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "fo_4",
+          "text": "How long does month-end close take?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 10 business days",
+              "score": 1
+            },
+            {
+              "label": "5 to 10 business days",
+              "score": 2
+            },
+            {
+              "label": "3 to 5 business days",
+              "score": 3
+            },
+            {
+              "label": "1 to 2 business days",
+              "score": 4
+            },
+            {
+              "label": "Same-day automated close with exception review only",
               "score": 5
             }
           ]
@@ -495,142 +601,142 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Finance is quietly the most expensive department",
-          "text": "Manual delinquency chasing and hand-built owner reports do not just cost hours, they cost consistency. Automating the cadence here usually frees a full FTE of bookkeeper time inside a quarter.",
+          "headline": "Your financial operations are running on manual labor",
+          "text": "Month-end is painful, owner statements eat days, and late rent collection is a part-time job. This is one of the highest-leverage areas to automate because the work is rules-based and repetitive. Expect 10 to 15 hours a week recovered and a 5+ day reduction in close time within 60 days.",
           "steps": [
-            "Write the exact delinquency cadence (day 1, 3, 5, 10 notices) and automate the first three notices this month",
-            "Audit your owner report template — kill any field that requires manual lookup",
-            "Set a rule: any owner question asked more than 3x per month becomes a portal or automation target"
+            "Move all rent collection to a single online platform with auto-applied late fees",
+            "Set up automated payment reminders at day -3, day +1, day +5, and day +10",
+            "Implement AI invoice processing (Bill.com, Stampli, or similar) to eliminate manual AP entry"
           ]
         },
         "mid": {
-          "headline": "Automated in parts, still human-gated",
-          "text": "The infrastructure is there, but humans are still the final step on too many workflows. Removing the manual review on reports and the manual answers on routine owner questions is the next use point.",
+          "headline": "Financial ops work, but they are slower and more expensive than they need to be",
+          "text": "You have systems but not full automation. The remaining manual work is concentrated at month-end and in exception handling. Targeted automation here typically cuts close time in half and saves 6 to 8 hours a week.",
           "steps": [
-            "Move owner report distribution to fully automated with a standard AI-written narrative summary",
-            "Deploy an AI owner assistant that can answer statement and draw questions from live ledger data",
-            "Build structured payment plan offers into the delinquency cadence so staff stops negotiating one-off"
+            "Map every manual step in your month-end close and tackle the top 3 longest ones first",
+            "Automate owner statement generation and delivery with personalized commentary",
+            "Add AI-powered variance analysis to flag unusual P&L items for review before close"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — here's the frontier",
-          "text": "Collections and reporting are running themselves. The frontier is portfolio-level financial intelligence — giving owners insight, not just reports.",
+          "headline": "Your finance function is operating like a much larger company",
+          "text": "You have built infrastructure that most PM companies your size do not have. Use this to take on more doors without adding back-office headcount. The leverage is real here.",
           "steps": [
-            "Build benchmark reporting: how each property performs vs peer properties in your portfolio",
-            "Add predictive delinquency scoring to flag at-risk tenants 30 days before they go late",
-            "Offer owners an AI financial analyst layer — 'what if I raised rents 3%, what if I replaced the roof' scenarios"
+            "Calculate your back-office cost per unit managed and benchmark it as a sales advantage",
+            "Add predictive cash flow modeling for owners based on rent trends and maintenance patterns",
+            "Quarterly review of exception items to find new automation rules"
           ]
         }
       }
     },
     {
-      "id": "team-operations",
-      "name": "Team Operations & Knowledge",
+      "id": "leasing_marketing",
+      "name": "Leasing & Marketing Operations",
       "questions": [
         {
-          "id": "sop-documentation",
-          "text": "How documented and accessible are your standard operating procedures for daily tasks?",
+          "id": "lm_1",
+          "text": "How are vacant units marketed?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — SOPs live in people's heads, knowledge walks out the door",
+              "label": "We post manually to one or two sites when we remember",
               "score": 1
             },
             {
-              "label": "2 — Some docs exist in a shared drive, mostly outdated",
+              "label": "Manual posting to multiple sites by staff",
               "score": 2
             },
             {
-              "label": "3 — Core SOPs documented, not consistently followed",
+              "label": "Syndication tool pushes listings to major sites",
               "score": 3
             },
             {
-              "label": "4 — Living SOP system, staff actually uses it",
+              "label": "Automated syndication plus AI-written listing copy",
               "score": 4
             },
             {
-              "label": "5 — SOPs are structured, searchable, and feed AI assistants staff use daily",
+              "label": "Full pipeline: AI copy, professional media, multi-channel ads, retargeting",
               "score": 5
             }
           ]
         },
         {
-          "id": "onboarding-speed",
-          "text": "How fast and consistent is your onboarding of a new property manager or leasing agent?",
+          "id": "lm_2",
+          "text": "How are prospect inquiries handled?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Shadow a teammate for a few weeks and hope they pick it up",
+              "label": "Calls and emails go to whoever picks up",
               "score": 1
             },
             {
-              "label": "2 — Checklist exists but ramp quality varies by trainer",
+              "label": "Leasing agent responds during business hours",
               "score": 2
             },
             {
-              "label": "3 — Structured 2-4 week plan, mostly shadowing-based",
+              "label": "CRM captures leads, agent follows up",
               "score": 3
             },
             {
-              "label": "4 — Structured onboarding with measurable milestones and video training",
+              "label": "AI chatbot or auto-responder handles initial qualification 24/7",
               "score": 4
             },
             {
-              "label": "5 — New hires productive in under 2 weeks via AI-assisted playbooks and Q&A",
+              "label": "AI handles qualification, scheduling, and pre-screening end-to-end",
               "score": 5
             }
           ]
         },
         {
-          "id": "handoffs-between-roles",
-          "text": "How clean are handoffs between leasing, property management, maintenance, and accounting?",
+          "id": "lm_3",
+          "text": "How are showings scheduled and conducted?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — Dropped balls and finger-pointing are a weekly occurrence",
+              "label": "Staff coordinates every showing manually by phone",
               "score": 1
             },
             {
-              "label": "2 — Handoffs happen but rely on individual diligence",
+              "label": "Email back-and-forth to pick a time",
               "score": 2
             },
             {
-              "label": "3 — Checklists exist, sometimes followed",
+              "label": "Online booking link, in-person showings only",
               "score": 3
             },
             {
-              "label": "4 — System-enforced handoffs with triggers and owners",
+              "label": "Self-showing tech (smart locks, codes) for qualified prospects",
               "score": 4
             },
             {
-              "label": "5 — Workflow automation makes dropped handoffs structurally impossible",
+              "label": "AI-screened, self-guided showings with automated follow-up and application prompt",
               "score": 5
             }
           ]
         },
         {
-          "id": "management-visibility",
-          "text": "How clear is your visibility as an owner into where time and money are actually going this week?",
+          "id": "lm_4",
+          "text": "How do you track time-to-lease for vacant units?",
           "max_score": 5,
           "answers": [
             {
-              "label": "1 — I find out about problems when they blow up",
+              "label": "We do not track it consistently",
               "score": 1
             },
             {
-              "label": "2 — Weekly meetings are my main source of truth",
+              "label": "Tracked manually, reviewed occasionally",
               "score": 2
             },
             {
-              "label": "3 — Dashboards exist but I have to go hunt them down",
+              "label": "Tracked in PM software, reviewed monthly",
               "score": 3
             },
             {
-              "label": "4 — Weekly automated digest of the key operational metrics hits my inbox",
+              "label": "Dashboard with vacancy days and conversion rates by property",
               "score": 4
             },
             {
-              "label": "5 — Real-time view with AI-written weekly narrative of what changed and why",
+              "label": "Real-time dashboard with AI-flagged underperforming listings and recommendations",
               "score": 5
             }
           ]
@@ -638,30 +744,30 @@
       ],
       "recommendations": {
         "low": {
-          "headline": "Your operation is running on tribal knowledge",
-          "text": "Undocumented SOPs and loose handoffs are the hidden reason every new hire takes 3 months to ramp and every vacation creates a crisis. Documentation is not a vanity project at your size — it is the single biggest open up.",
+          "headline": "Vacancy days are eating your owner relationships",
+          "text": "Every day a unit sits vacant costs your owner real money and erodes their trust in you. Manual marketing and slow inquiry response is costing you 5 to 15 vacancy days per turnover. Modernizing this pipeline typically cuts time-to-lease by 40% and recovers 8 to 10 hours a week of leasing staff time.",
           "steps": [
-            "Pick the 10 workflows your team runs most often and document them as screen-recorded walkthroughs this month",
-            "Define handoff triggers in writing: leasing to PM, PM to maintenance, maintenance to accounting",
-            "Set up a weekly owner digest — even a manual one — so you stop finding out about problems on Fridays"
+            "Adopt a listing syndication tool that pushes to Zillow, Apartments.com, and 10+ other sites automatically",
+            "Set up an AI chatbot or auto-responder to engage prospects within 60 seconds, 24/7",
+            "Pilot self-showing technology on 2 to 3 properties to test prospect response"
           ]
         },
         "mid": {
-          "headline": "Documented but not leveraged",
-          "text": "You have the raw material, now you need to turn it into use. SOPs that sit in a folder do nothing; SOPs that feed an AI assistant your team actually uses change your ramp time and your handoff quality overnight.",
+          "headline": "Leasing works, but you are not winning the speed-to-lead game",
+          "text": "Your competitors with faster response times and self-showings are converting prospects you are losing. Adding 24/7 AI qualification and self-showings typically improves conversion by 25 to 40% and cuts vacancy days by 3 to 7.",
           "steps": [
-            "Move your SOPs into a structured, searchable format and make them the source for an internal AI assistant",
-            "Enforce handoffs in your software, not in meetings — triggers, required fields, owners",
-            "Replace the weekly ops meeting with an automated digest plus a 20-minute exceptions-only review"
+            "Measure your current speed-to-first-response and aim for under 5 minutes",
+            "Implement AI qualification that pre-screens budget, move-in date, and basic criteria",
+            "Expand self-showing tech to all units where it is legally and physically feasible"
           ]
         },
         "high": {
-          "headline": "Keep sharpening — here's the frontier",
-          "text": "Your team runs on systems, not heroes. The next edge is turning your operational data into forward-looking intelligence — and making the org truly hire-and-plug-in.",
+          "headline": "Leasing pipeline is a competitive moat, lean into it",
+          "text": "You are converting prospects faster than your competition. This is a winning story for new owner pitches and portfolio growth. Document the metrics and use them.",
           "steps": [
-            "Build a '2-week productive' new hire path using AI-assisted playbooks and shadowing transcripts",
-            "Instrument every handoff with cycle-time metrics and publish them — what gets measured gets faster",
-            "Add predictive staffing: model which weeks your team will be underwater 30 days out"
+            "Build a case study showing time-to-lease and conversion rates vs market averages",
+            "Add A/B testing on listing copy and photos to keep optimizing",
+            "Use the leasing data to advise owners on rent pricing and unit improvements"
           ]
         }
       }
@@ -671,36 +777,10 @@
     "low": 40,
     "mid": 70
   },
-  "ctas": [
-    {
-      "id": "qualified_call",
-      "when": "(persona === \"growing\" || persona === \"established\" || persona === \"scaling\") && overall_score < 70",
-      "headline": "Want a working call on your property management ops score?",
-      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against property management firms your size, and pinpoint the ONE fix I'd prioritize first. No pitch — if we both see signal, we keep going.",
-      "button": "Book a 30-min working call →",
-      "url": "https://ivanmanfredi.com/start"
-    },
-    {
-      "id": "too_small",
-      "when": "persona === \"boutique\"",
-      "headline": "Under 20 employees? You're early for a custom audit.",
-      "description": "Automation ROI at your scale is real but payback is longer and the obvious fixes are usually process before tooling. Follow me on LinkedIn where I post tactical property management automation breakdowns 3x a week. When you cross 20 employees, come back and retake — the CTA will change.",
-      "button": "Follow on LinkedIn →",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/"
-    },
-    {
-      "id": "dialed_content",
-      "when": "overall_score >= 70",
-      "headline": "You're running tight — here's what property management firms your size miss next.",
-      "description": "At your score, the low-hanging fruit is already picked. The next gains come from predictive maintenance and vacancy modeling, AI-written owner narratives that actually drive retention, and structural handoff instrumentation that makes dropped balls impossible. I'm writing teardowns on each — follow along.",
-      "button": "Follow for the teardowns →",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/"
-    },
-    {
-      "headline": "Get the weekly property management ops teardown",
-      "description": "One tactical case study plus one n8n workflow breakdown per week. How mid-market property management firms run lean, scale without scaling payroll, and hit the 90-Day Payback Rule on every automation. No fluff, no pitch.",
-      "button": "Follow on LinkedIn →",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/"
-    }
-  ]
+  "cta": {
+    "headline": "Get a custom 7-day action plan based on your score",
+    "description": "Book a 30-minute strategy call and I will walk through your assessment results with you, identify the 2 to 3 automation opportunities that will give you the most hours back, and map out exactly what to build first. No pitch, no obligation, just a real conversation about where your operations are bleeding time and how to fix it.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
 }
