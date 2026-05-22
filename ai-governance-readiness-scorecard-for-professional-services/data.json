@@ -298,7 +298,7 @@
         },
         "mid": {
           "headline": "Docs exist — decision logic is the gap",
-          "text": "You've got SOPs, but AI stalls when the rules are fuzzy. The next unlock is converting 'use your best judgment' lines into explicit criteria. That's the difference between a doc and an agent-ready spec.",
+          "text": "You've got SOPs, but AI stalls when the rules are fuzzy. The next open up is converting 'use your best judgment' lines into explicit criteria. That's the difference between a doc and an agent-ready spec.",
           "steps": [
             "Audit existing SOPs for every 'use your best judgment' phrase and replace with rules",
             "Add a decision-log field to your top processes so edge cases get captured",
@@ -307,7 +307,7 @@
         },
         "high": {
           "headline": "Your ops are a spec — AI can read them",
-          "text": "Keep sharpening — here's the frontier. Firms with real process docs can point narrow-scope agents at them and get leverage fast. The trap now is letting docs drift while you build on top.",
+          "text": "Keep sharpening — here's the frontier. Firms with real process docs can point narrow-scope agents at them and get use fast. The trap now is letting docs drift while you build on top.",
           "steps": [
             "Turn your tightest SOP into a prompted workflow an agent can execute",
             "Instrument exception logging so doc drift surfaces inside weeks, not quarters",
@@ -423,7 +423,7 @@
         },
         "high": {
           "headline": "You're running a Hire a System operation",
-          "text": "Keep sharpening — here's the frontier. Fully automated workflows with human-in-the-loop gates are exactly the setup narrow-scope agents thrive in. Protect the leverage and push into the next tier of work.",
+          "text": "Keep sharpening — here's the frontier. Fully automated workflows with human-in-the-loop gates are exactly the setup narrow-scope agents thrive in. Protect the use and push into the next tier of work.",
           "steps": [
             "Push automation into the next category of work (complex matters, multi-party)",
             "Benchmark your cycle times against firms 2x your size and find the deltas",

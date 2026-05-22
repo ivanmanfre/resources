@@ -725,7 +725,7 @@
       "id": "too_small",
       "when": "persona === \"micro_studio\"",
       "headline": "Solo or under 8 staff? You are early for a custom audit.",
-      "description": "Automation ROI at your scale is real, but payback is longer and the leverage points are different. Follow me on LinkedIn for tactical architecture and design studio ops breakdowns 3 times a week. When you cross 8 staff and start running multiple project teams, come back and retake. The recommendation will change.",
+      "description": "Automation ROI at your scale is real, but payback is longer and the use points are different. Follow me on LinkedIn for tactical architecture and design studio ops breakdowns 3 times a week. When you cross 8 staff and start running multiple project teams, come back and retake. The recommendation will change.",
       "button": "Follow on LinkedIn",
       "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
     },

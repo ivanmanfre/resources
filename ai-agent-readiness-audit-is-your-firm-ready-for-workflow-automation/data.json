@@ -418,7 +418,7 @@
           "steps": [
             "Confirm monthly volume of the target workflow is above 100 runs — otherwise pick a higher-volume neighbor",
             "Define a per-run success metric and start measuring it manually for a month",
-            "Lock the scope in writing so no stakeholder expands it mid-build"
+            "Lock the scope in writing so no team member expands it mid-build"
           ]
         },
         "high": {
@@ -682,7 +682,7 @@
         },
         "high": {
           "headline": "You're running the Hire a System playbook",
-          "text": "Keep sharpening — here's the frontier. At this level the compounding play is turning your systems into operating leverage that grows faster than headcount — the real definition of scaling without scaling payroll.",
+          "text": "Keep sharpening — here's the frontier. At this level the compounding play is turning your systems into operating use that grows faster than headcount — the real definition of scaling without scaling payroll.",
           "steps": [
             "Shift from payback-per-project to portfolio-level capacity freed per quarter",
             "Build a reinvestment loop: hours saved fund the next system, not discretionary spend",
@@ -717,7 +717,7 @@
       "id": "dialed_content",
       "when": "overall_score >= 70",
       "headline": "You're running tight — here's what professional services firms your size miss next.",
-      "description": "At your score, the obvious leaks are closed. The next gains come from event-sourced decision logs that let agents learn from overrides, confidence-gated sampling that replaces 100% review, and portfolio-level capacity accounting that turns hours saved into compounding leverage. I'm writing teardowns on each — follow along.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from event-sourced decision logs that let agents learn from overrides, confidence-gated sampling that replaces 100% review, and portfolio-level capacity accounting that turns hours saved into compounding use. I'm writing teardowns on each — follow along.",
       "button": "Follow for the teardowns →",
       "url": "https://www.linkedin.com/in/ivanmanfredi/"
     },

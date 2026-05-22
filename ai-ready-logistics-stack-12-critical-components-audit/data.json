@@ -504,7 +504,7 @@
         },
         {
           "id": "automation-platform",
-          "text": "How robust is your workflow automation layer (n8n, Make, Workato, custom)?",
+          "text": "How reliable is your workflow automation layer (n8n, Make, Workato, custom)?",
           "max_score": 5,
           "answers": [
             {

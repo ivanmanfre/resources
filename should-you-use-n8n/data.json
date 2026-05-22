@@ -183,7 +183,7 @@
     {
       "id": "n8n_done_for_you",
       "headline": "Want me to set up your n8n self-host?",
-      "description": "Full setup: Railway deploy, queue mode, Postgres, backups, monitoring, and 5 of your highest-leverage workflows live in 2 weeks. Fixed price, no retainer.",
+      "description": "Full setup: Railway deploy, queue mode, Postgres, backups, monitoring, and 5 of your highest-use workflows live in 2 weeks. Fixed price, no retainer.",
       "button": "Book a 30-min scoping call",
       "url": "https://ivanmanfredi.com/start",
       "when": "result_id == 'result_n8n'"

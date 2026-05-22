@@ -327,7 +327,7 @@
           ]
         },
         "mid": {
-          "headline": "Delivery is steady, but partner time still drains in low-leverage tasks",
+          "headline": "Delivery is steady, but partner time still drains in low-use tasks",
           "text": "You have templates and norms but they are inconsistently held. The leak is in the in-between work: status comms, follow-ups, and quick-question creep. My read: codify it, then automate the assembly layer.",
           "steps": [
             "Move status updates to an auto-drafted format pulled from project data.",
@@ -476,7 +476,7 @@
         "lever": "Treat your archive of frameworks and engagements as the firm's product, not a side effect of delivery.",
         "talking_points": [
           "Undocumented IP means every new hire ramps from zero on the same lessons.",
-          "A searchable engagement archive is the single biggest unlock for AI-assisted delivery later.",
+          "A searchable engagement archive is the single biggest open up for AI-assisted delivery later.",
           "Post-engagement retros that feed playbooks are how the firm gets smarter without the partners working more."
         ],
         "proof_of_concept": "In one week, centralize the last 10 engagements into one shared repository, tag them by sector and method, and require the next new project to start from that library."
@@ -628,7 +628,7 @@
         "headline_number": "~12 to 18 percent margin recoverable from priced-by-gut engagements",
         "lever": "Make banded pricing, engagement margin, and partner time visibility the spine of the weekly operating rhythm.",
         "talking_points": [
-          "We cannot fix what we do not measure. Activity-level partner time is the unlock.",
+          "We cannot fix what we do not measure. Activity-level partner time is the open up.",
           "Banded pricing protects margin without relying on partner negotiation skill on every deal.",
           "A 90-day pipeline plus capacity model is how we stop the boom-bust staffing cycle."
         ],
@@ -636,8 +636,8 @@
       }
     },
     {
-      "id": "team-and-leverage",
-      "name": "Team and Leverage",
+      "id": "team-and-use",
+      "name": "Team and use",
       "questions": [
         {
           "id": "delegation-depth",
@@ -732,7 +732,7 @@
           ]
         },
         "mid": {
-          "headline": "Leverage is partial. Partners still gate too much.",
+          "headline": "use is partial. Partners still gate too much.",
           "text": "You have roles and delegation but partners are still the bottleneck on client-facing output. The frontier is moving partners from doer to reviewer at named decision points.",
           "steps": [
             "Define which deliverables require partner sign-off and which do not.",
@@ -741,17 +741,17 @@
           ]
         },
         "high": {
-          "headline": "Leverage is real. Push into compounding leverage.",
+          "headline": "use is real. Push into compounding use.",
           "text": "Keep sharpening. The frontier is treating each new hire as a multiplier on systems already built, not a fresh ramp.",
           "steps": [
-            "Track partner hours per engagement as a leading indicator of leverage.",
+            "Track partner hours per engagement as a leading indicator of use.",
             "Use playbooks plus AI-assisted drafting to compress senior consultant ramp further.",
             "Build a clear path from senior consultant to partner so retention compounds."
           ]
         }
       },
       "operator_brief": {
-        "headline_number": "~30 to 50 percent more partner billable capacity unlocked at full leverage",
+        "headline_number": "~30 to 50 percent more partner billable capacity unlocked at full use",
         "lever": "Move partners from doer to named-checkpoint reviewer by giving senior consultants playbooks and first-draft ownership.",
         "talking_points": [
           "The firm cannot grow past the partners' calendars without delegation depth.",

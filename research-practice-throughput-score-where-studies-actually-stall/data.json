@@ -400,7 +400,7 @@
         },
         "mid": {
           "headline": "Pipeline exists but is still touching too many human hands.",
-          "text": "Honest take: the steps are there but each one still requires a person to babysit the handoff. Automating the routing, not the work itself, is usually the highest-leverage move next.",
+          "text": "Honest take: the steps are there but each one still requires a person to babysit the handoff. Automating the routing, not the work itself, is usually the highest-use move next.",
           "steps": [
             "Auto-route transcripts from the transcription tool into the project workspace with metadata attached.",
             "Templatize quant data cleaning into reusable scripts or flows tied to study type.",
@@ -487,8 +487,8 @@
           ]
         },
         {
-          "id": "analyst-leverage",
-          "text": "How much leverage do senior analysts have on synthesis (junior coders, AI-assist, structured templates) versus doing it all themselves?",
+          "id": "analyst-use",
+          "text": "How much use do senior analysts have on synthesis (junior coders, AI-assist, structured templates) versus doing it all themselves?",
           "max_score": 5,
           "answers": [
             {
@@ -508,7 +508,7 @@
               "score": 4
             },
             {
-              "label": "5. Senior analyst output per week has measurably increased through structured leverage.",
+              "label": "5. Senior analyst output per week has measurably increased through structured use.",
               "score": 5
             }
           ]
@@ -552,8 +552,8 @@
           ]
         },
         "mid": {
-          "headline": "Framework exists. Leverage and traceability are the next unlock.",
-          "text": "My read: the framework is doing its job, but senior analysts are still the bottleneck on synthesis itself. The next move is structured leverage (juniors plus templates plus selective AI-assist), with traceability built in so client trust does not drop.",
+          "headline": "Framework exists. use and traceability are the next open up.",
+          "text": "My read: the framework is doing its job, but senior analysts are still the bottleneck on synthesis itself. The next move is structured use (juniors plus templates plus selective AI-assist), with traceability built in so client trust does not drop.",
           "steps": [
             "Templatize synthesis output for common study types so analysts fill structured slots, not blank pages.",
             "Pilot AI-assisted theme extraction on coded transcripts with a senior analyst as final reviewer.",
@@ -571,8 +571,8 @@
         }
       },
       "operator_brief": {
-        "headline_number": "About 6 to 10 hours per study reclaimed when senior analysts have real synthesis leverage",
-        "lever": "Document the coding framework that lives in your top analyst's head, then build leverage and traceability on top of it in that order.",
+        "headline_number": "About 6 to 10 hours per study reclaimed when senior analysts have real synthesis use",
+        "lever": "Document the coding framework that lives in your top analyst's head, then build use and traceability on top of it in that order.",
         "talking_points": [
           "Synthesis variance is the single biggest drag on margin per study right now.",
           "AI-assist on synthesis without a documented framework is the fastest way to ship inconsistent findings.",
@@ -640,7 +640,7 @@
           ]
         },
         {
-          "id": "post-delivery-leverage",
+          "id": "post-delivery-use",
           "text": "How well do you reuse delivered reports, frameworks, and findings to inform future studies and pitches?",
           "max_score": 5,
           "answers": [
@@ -678,12 +678,12 @@
           ]
         },
         "mid": {
-          "headline": "Templates exist. Leverage from past work is where you are leaving value.",
+          "headline": "Templates exist. use from past work is where you are leaving value.",
           "text": "Honest take: the report-building stage is in shape, but past deliverables are sitting in archive without being reused for new pitches and studies. That archive is one of your most underused assets.",
           "steps": [
             "Tag every delivered report by industry, methodology, audience, and key themes.",
             "Build a retrieval habit into the proposal stage so prior relevant work surfaces by default.",
-            "Track how often archived work is referenced in new pitches as a leading indicator of leverage."
+            "Track how often archived work is referenced in new pitches as a leading indicator of use."
           ]
         },
         "high": {
@@ -702,7 +702,7 @@
         "talking_points": [
           "Blank-deck report building is the most visible cost to senior analyst time on every project.",
           "Last-minute reviews are the largest single cause of missed delivery dates this quarter.",
-          "Our archive of past reports is sitting unused. Retrieval is a fast unlock on pitch quality."
+          "Our archive of past reports is sitting unused. Retrieval is a fast open up on pitch quality."
         ],
         "proof_of_concept": "Componentize the last three strong reports into reusable sections this week and require the next two reports to be built from those components with a named review owner."
       }
@@ -725,7 +725,7 @@
       "id": "too_small",
       "when": "persona === \"micro\"",
       "headline": "Solo or 2 to 5 staff? You're early for a custom audit.",
-      "description": "Automation ROI at your scale is real, but payback windows are longer and the leverage points are different. Follow me on LinkedIn. I post tactical research and insights ops breakdowns several times a week. When you cross 6 staff and start running studies in parallel, come back and retake. The CTA will change.",
+      "description": "Automation ROI at your scale is real, but payback windows are longer and the use points are different. Follow me on LinkedIn. I post tactical research and insights ops breakdowns several times a week. When you cross 6 staff and start running studies in parallel, come back and retake. The CTA will change.",
       "button": "Follow on LinkedIn",
       "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
     },

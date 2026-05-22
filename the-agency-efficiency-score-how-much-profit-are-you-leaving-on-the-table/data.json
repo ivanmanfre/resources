@@ -531,7 +531,7 @@
         },
         "high": {
           "headline": "Your production is strong, now productize and scale it",
-          "text": "You run a tight shop. The next unlock is turning your delivery into a near-productized engine where AI handles first drafts, humans handle judgment, and margins expand with every new client instead of shrinking.",
+          "text": "You run a tight shop. The next open up is turning your delivery into a near-productized engine where AI handles first drafts, humans handle judgment, and margins expand with every new client instead of shrinking.",
           "steps": [
             "Build AI models tuned on each client's voice to cut drafting time on recurring deliverables",
             "Turn your best service lines into packaged offerings with fixed scope and automated kickoff",
@@ -898,7 +898,7 @@
       "id": "boutique",
       "when": "persona === \"boutique\"",
       "headline": "Founder-led boutique? Automation payback is slower at your scale.",
-      "description": "At 10-20 people you're best served by fixing 2-3 high-leverage workflows yourself. Follow me on LinkedIn for tactical breakdowns — when you cross 25 people, retake this and the CTA will change.",
+      "description": "At 10-20 people you're best served by fixing 2-3 high-use workflows yourself. Follow me on LinkedIn for tactical breakdowns — when you cross 25 people, retake this and the CTA will change.",
       "button": "Follow on LinkedIn →",
       "url": "https://www.linkedin.com/in/ivanmanfredi/"
     },

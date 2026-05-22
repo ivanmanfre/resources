@@ -8,7 +8,7 @@
   },
   "intro": {
     "paragraph": "Hey, you made a good call grabbing this. If you've been manually sorting client folders every time a deal closes - or worse, finding out three people created three different folders for the same client - this framework gives you the actual routing logic to fix that. Grab your CRM and project management tool, set aside a couple hours, and work through it with your ops lead.",
-    "bio_html": "<div class=\"lmg-bio\"><p>So who am I and why should you trust me? I'll keep this quick so we can get to the good stuff...</p>\n<ul><li>AI &amp; Automation Architect - designed and deployed systems for 100+ companies</li>\n<li>Built AI agents and n8n workflows that save teams 20+ hours every single week</li>\n<li>Helped businesses 3-5x their operational efficiency through smart automation</li>\n<li>Building and shipping AI solutions before most people knew what an LLM was</li>\n<li>Fueled by espresso and mass amounts of automation nodes</li>\n</ul></div>"
+    "bio_html": "<div class=\"lmg-bio\"><p>So who am I and why should you trust me? I'll keep this quick so we can get to the good stuff...</p>\n<ul><li>AI ops operator - designed and deployed systems for 100+ companies</li>\n<li>Built AI agents and n8n workflows that save teams 20+ hours every single week</li>\n<li>Helped businesses 3-5x their operational efficiency through smart automation</li>\n<li>Building and shipping AI solutions before most people knew what an LLM was</li>\n<li>Fueled by espresso and mass amounts of automation nodes</li>\n</ul></div>"
   },
   "sections": [
     {

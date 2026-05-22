@@ -130,7 +130,7 @@
         },
         "mid": {
           "headline": "Consolidated but still human-heavy",
-          "text": "You have structure, now you need leverage. Routine questions are eating your team's focus even when response times look acceptable. Add an AI assistant layer on top of your unified inbox to deflect the repeat 60%.",
+          "text": "You have structure, now you need use. Routine questions are eating your team's focus even when response times look acceptable. Add an AI assistant layer on top of your unified inbox to deflect the repeat 60%.",
           "steps": [
             "Build an AI first-responder that pulls tenant ledger, lease, and unit data to answer the top 20 questions",
             "Route anything it cannot answer to a human with the context pre-summarized",
@@ -505,7 +505,7 @@
         },
         "mid": {
           "headline": "Automated in parts, still human-gated",
-          "text": "The infrastructure is there, but humans are still the final step on too many workflows. Removing the manual review on reports and the manual answers on routine owner questions is the next leverage point.",
+          "text": "The infrastructure is there, but humans are still the final step on too many workflows. Removing the manual review on reports and the manual answers on routine owner questions is the next use point.",
           "steps": [
             "Move owner report distribution to fully automated with a standard AI-written narrative summary",
             "Deploy an AI owner assistant that can answer statement and draw questions from live ledger data",
@@ -639,7 +639,7 @@
       "recommendations": {
         "low": {
           "headline": "Your operation is running on tribal knowledge",
-          "text": "Undocumented SOPs and loose handoffs are the hidden reason every new hire takes 3 months to ramp and every vacation creates a crisis. Documentation is not a vanity project at your size — it is the single biggest unlock.",
+          "text": "Undocumented SOPs and loose handoffs are the hidden reason every new hire takes 3 months to ramp and every vacation creates a crisis. Documentation is not a vanity project at your size — it is the single biggest open up.",
           "steps": [
             "Pick the 10 workflows your team runs most often and document them as screen-recorded walkthroughs this month",
             "Define handoff triggers in writing: leasing to PM, PM to maintenance, maintenance to accounting",
@@ -648,7 +648,7 @@
         },
         "mid": {
           "headline": "Documented but not leveraged",
-          "text": "You have the raw material, now you need to turn it into leverage. SOPs that sit in a folder do nothing; SOPs that feed an AI assistant your team actually uses change your ramp time and your handoff quality overnight.",
+          "text": "You have the raw material, now you need to turn it into use. SOPs that sit in a folder do nothing; SOPs that feed an AI assistant your team actually uses change your ramp time and your handoff quality overnight.",
           "steps": [
             "Move your SOPs into a structured, searchable format and make them the source for an internal AI assistant",
             "Enforce handoffs in your software, not in meetings — triggers, required fields, owners",

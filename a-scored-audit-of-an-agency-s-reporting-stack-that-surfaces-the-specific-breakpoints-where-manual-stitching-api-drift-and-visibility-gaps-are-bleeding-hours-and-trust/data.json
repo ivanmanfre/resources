@@ -625,8 +625,8 @@
       }
     },
     {
-      "id": "scalability-team-leverage",
-      "name": "Scalability & Team Leverage",
+      "id": "scalability-team-use",
+      "name": "Scalability & Team use",
       "questions": [
         {
           "id": "headcount-elasticity",
@@ -731,7 +731,7 @@
         },
         "high": {
           "headline": "Keep sharpening. Here is the frontier.",
-          "text": "You're running lean. Now make leverage your pricing advantage.",
+          "text": "You're running lean. Now make use your pricing advantage.",
           "steps": [
             "Productize reporting as a tiered offer with clear margin per tier.",
             "Add cross-client insight generation on top of the automated layer (benchmarking, anomalies).",

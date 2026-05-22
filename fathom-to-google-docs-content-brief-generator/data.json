@@ -8,7 +8,7 @@
   },
   "intro": {
     "paragraph": "This workflow contains 27 nodes across 11 different integration types.Integrations UsedstickyNotegoogleDrivewebhookcodehttpRequest@n8n/n8n-nodes-langchain.anthropicifmergegoogleDocsslack@n8n/n8n-nodes-langchain.toolThinkWorkflow Architecturegraph LR\n    N0[\"Client Folders\"] --> N",
-    "bio_html": "<div class=\"lmg-bio\"><ul><li>AI automation consultant</li>\n<li>Built AI-powered automation systems for 50+ businesses</li>\n<li>Designed workflows that save teams 20+ hours per week</li>\n<li>Created AI solutions that consistently 3-5x operational efficiency</li>\n<li>The guy who automates the boring stuff so you can do the interesting stuff</li>\n</ul></div>"
+    "bio_html": "<div class=\"lmg-bio\"><ul><li>AI AI ops operator</li>\n<li>Built AI-built automation systems for 50+ businesses</li>\n<li>Designed workflows that save teams 20+ hours per week</li>\n<li>Created AI solutions that consistently 3-5x operational efficiency</li>\n<li>The guy who automates the boring stuff so you can do the interesting stuff</li>\n</ul></div>"
   },
   "sections": [
     {
