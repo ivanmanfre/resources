@@ -265,7 +265,7 @@
     var capture = make("section", { class: "lmc-capture", id: "lmc-capture", "aria-hidden": "false" });
     capture.innerHTML =
       '<h2>' + escapeHtml(cta.headline || "Want the fix for your top 3 gaps?") + '</h2>' +
-      '<p>' + escapeHtml(cta.description || "Enter your email and I'll send you a tailored automation plan based on what you didn't check.") + '</p>' +
+      '<p>' + escapeHtml(cta.description || "If you want a next-step plan for the items you didn't check, drop your address. Otherwise bookmark this and revisit when you're ready.") + '</p>' +
       '<form class="lmc-form" id="lmc-capture-form">' +
       '<label class="sr-only" for="lmc-email">Email</label>' +
       '<input class="lmc-input" id="lmc-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" value="' + escapeHtml(state.email) + '" />' +
@@ -398,7 +398,7 @@
         var sevenDay = !!((document.getElementById("lmc-7day-optin") || {}).checked);
         beacon("capture", { email: email, answers: { unchecked: unchecked, want_7day_followup: sevenDay, completion_pct: Math.round(((Object.keys(st.checked).filter(function (k) { return st.checked[k]; }).length) / (function(){var n=0;(data.sections||[]).forEach(function(s){n+=(s.items||[]).length;});return n||1;})()) * 100) } });
         toast("Got it. Check your inbox in the next few minutes.");
-        form.innerHTML = '<p style="font-weight:700;color:#00E676">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
+        form.innerHTML = '<p style="font-weight:600;color:#2A8F65">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
       });
     }
 

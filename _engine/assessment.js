@@ -457,8 +457,8 @@
 
       // Bottom CTA if defined
       if (data.cta && data.cta.url) {
-        var ctaBox = make("div", { style: "margin-top:2rem;padding:1.5rem;border:4px solid #000;background:#fff;box-shadow:8px 8px 0 #00E676;text-align:center;" });
-        ctaBox.innerHTML = '<div style="font-size:1.25rem;font-weight:900;text-transform:uppercase;margin:0 0 .5rem;">' + esc(data.cta.headline || "Want help closing these gaps?") + '</div>' +
+        var ctaBox = make("div", { style: "margin-top:2rem;padding:1.5rem;border-top:1px solid rgba(26,26,26,0.12);background:#F7F4EF;text-align:center;" });
+        ctaBox.innerHTML = '<div style="font-family:\'DM Serif Display\',Georgia,serif;font-size:1.5rem;font-weight:400;margin:0 0 .5rem;">' + esc(data.cta.headline || "Want help closing these gaps?") + '</div>' +
           '<p style="margin:0 0 1rem;">' + esc(data.cta.description || "Book a 20-min working session. Free, no pitch.") + '</p>' +
           '<a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
         unl.appendChild(ctaBox);

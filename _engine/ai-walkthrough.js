@@ -160,7 +160,7 @@
       var card = make("div", { class: "lmw-gate-card" });
       card.innerHTML =
         '<h3>One more run is on me</h3>' +
-        '<p>Drop your email — I\'ll send the next analysis to your inbox too, and you can rerun anytime in the next 24h.</p>' +
+        '<p>Drop your email and I\'ll send the next analysis to your inbox too. You can rerun anytime in the next 24h.</p>' +
         '<input type="email" id="lmw-gate-email" placeholder="you@company.com" autocomplete="email" />';
       var btn = make("button", { class: "lmw-cta-btn", type: "button" }, "Run analysis");
       btn.style.cursor = "pointer";

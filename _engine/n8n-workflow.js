@@ -124,7 +124,7 @@
     }
 
     // Share row
-    var shareText = "Free n8n workflow: " + (data.title || "this one") + " — by Ivan Manfredi.";
+    var shareText = "Free n8n workflow: " + (data.title || "this one") + ", by Ivan Manfredi.";
     var shareRow = L.make("div", { class: "lmc-share lmw-share" });
     shareRow.innerHTML =
       '<a class="lmc-btn lm-share-whatsapp" target="_blank" rel="noopener" href="' +

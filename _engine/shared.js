@@ -433,7 +433,7 @@
     alt.href = "https://calendly.com/ivan-intelligents/30min";
     alt.target = "_blank";
     alt.rel = "noopener";
-    alt.innerHTML = "Or skip the PDF — <strong>book a 30-minute call</strong> directly →";
+    alt.innerHTML = "Or skip the PDF and <strong>book a 30-minute call</strong> directly →";
     alt.addEventListener("click", function () { beacon("capture", "cta_click", { answers: { target: "capture_calendly_alt" } }); });
     var note = captureEl.querySelector(".lmc-note");
     if (note && note.parentNode === captureEl) {

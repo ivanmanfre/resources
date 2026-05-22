@@ -413,11 +413,11 @@
         } else if (window.LM && window.LM.share && window.LM.share.copy) {
           channel = "clipboard";
           window.LM.share.copy(url).then(function (ok) {
-            if (ok) toast("Link copied — share your result");
+            if (ok) toast("Link copied. Share your result.");
           });
         } else if (navigator.clipboard && navigator.clipboard.writeText) {
           channel = "clipboard";
-          navigator.clipboard.writeText(url).then(function () { toast("Link copied — share your result"); });
+          navigator.clipboard.writeText(url).then(function () { toast("Link copied. Share your result."); });
         }
       } catch (_) {}
       beacon("share", { result_id: nodeId, channel: channel });
@@ -425,8 +425,8 @@
     shareRow.appendChild(shareBtn);
 
     if (window.LM && window.LM.share) {
-      var liUrl = window.LM.share.linkedIn(data.title + " — I got: " + node.headline);
-      var waUrl = window.LM.share.whatsapp(data.title + " — I got: " + node.headline);
+      var liUrl = window.LM.share.linkedIn(data.title + ". I got: " + node.headline);
+      var waUrl = window.LM.share.whatsapp(data.title + ". I got: " + node.headline);
       var li = make("a", { class: "lmc-btn lmc-btn-secondary", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn");
       li.addEventListener("click", function () { beacon("share", { result_id: nodeId, channel: "linkedin" }); });
       shareRow.appendChild(li);

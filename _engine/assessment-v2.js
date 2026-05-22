@@ -662,7 +662,7 @@
         '<h4>Save this for later?</h4>' +
         '<p>If you want a PDF version of this report emailed to you, drop your address. Otherwise feel free to close the tab or bookmark the page.</p>' +
         '<form class="lmc-form" id="lmc-optin-form">' +
-        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional — your email" />' +
+        '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional, your email" />' +
         '<button class="lmc-btn lmc-btn-secondary" type="submit">Send me a copy</button>' +
         '</form>';
       unl.appendChild(optin);

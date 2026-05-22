@@ -307,7 +307,7 @@
     var capture = make("section", { class: "lmc-capture" });
     capture.innerHTML =
       '<h2>' + escapeHtml(cta.headline || "Want the full breakdown?") + '</h2>' +
-      '<p>' + escapeHtml(cta.description || "Enter your email and I'll send you a PDF with your numbers, sensitivity analysis, and the next 3 automations I'd prioritize for your setup.") + '</p>' +
+      '<p>' + escapeHtml(cta.description || "If you want a PDF with your numbers plus the 3 automations I'd prioritize for this setup, drop your address. Otherwise screenshot the result and move on.") + '</p>' +
       '<form class="lmc-form" id="lmc-capture-form">' +
       '<label class="sr-only" for="lmc-email">Email</label>' +
       '<input class="lmc-form-input" id="lmc-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />' +
@@ -491,7 +491,7 @@
         var snap = compute();
         beacon("capture", { email: email, answers: { inputs: snap.ctx, outputs: snap.results, matched_recs: snap.matched_recs } });
         toast("Got it. Check your inbox.");
-        form.innerHTML = '<p style="font-weight:700;color:#00E676">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
+        form.innerHTML = '<p style="font-weight:600;color:#2A8F65">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
       });
     }
 
