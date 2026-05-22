@@ -1,88 +1,85 @@
 {
   "slug": "a-calculator-that-converts-an-agency-s-weekly-manual-reporting-hours-into-annualized-cost-churn-risk-exposure",
-  "title": "The 90-Day Reporting Cost Calculator: What Your Weekly Status Decks Are Actually Costing You",
-  "subtitle": "For owners and ops leads at 11-100 employee service firms. Three numbers in five minutes: labor cost, churn exposure, and 90-day recovery delta.",
+  "title": "The 90-Day Reporting Cost Calculator",
+  "subtitle": "Convert weekly manual reporting hours into annualized labor cost and churn risk exposure in under 5 minutes.",
   "brand": {
     "accent": "#00E676",
     "hero_badge": "Interactive Calculator"
   },
-  "estimated_minutes": 5,
+  "estimated_minutes": 4,
   "inputs": [
     {
       "id": "accounts",
-      "label": "Active client accounts requiring weekly or bi-weekly reports",
-      "type": "number",
+      "label": "Active client accounts requiring weekly reports",
+      "type": "range",
       "min": 1,
-      "max": 200,
+      "max": 80,
       "step": 1,
-      "default": 14,
+      "default": 12,
       "slider": true,
-      "hint": "Count every account that gets a recurring deliverable."
+      "hint": "Count every account that gets a recurring reporting deliverable."
     },
     {
       "id": "hours_per_report",
       "label": "Average hours per report, per account, per week",
-      "type": "number",
-      "suffix": "hrs/wk",
-      "min": 0.25,
-      "max": 20,
+      "type": "range",
+      "suffix": "hrs",
+      "min": 0.5,
+      "max": 15,
       "step": 0.25,
-      "default": 3.5,
+      "default": 6,
       "slider": true,
-      "hint": "Include data pulling, formatting, QA, and the quick tweak the account lead makes before sending."
+      "hint": "Include data pulling, formatting, QA, and last-mile tweaks."
     },
     {
-      "id": "hourly_cost",
+      "id": "loaded_hourly_cost",
       "label": "Fully-loaded hourly cost of the person doing reporting",
       "type": "number",
       "prefix": "$",
       "suffix": "/hr",
-      "min": 15,
-      "max": 250,
+      "min": 20,
+      "max": 200,
       "step": 1,
-      "default": 58,
-      "slider": true,
-      "hint": "Salary + benefits + overhead ÷ 2,000. A $75k account manager is roughly $52/hr loaded."
+      "default": 52,
+      "hint": "Salary plus benefits plus overhead divided by 2,000."
     },
     {
-      "id": "late_skipped_rate",
-      "label": "Percentage of reports that arrive late or get skipped in a given month",
+      "id": "late_or_skipped_pct",
+      "label": "Percent of reports that arrive late or get skipped monthly",
       "type": "range",
       "suffix": "%",
       "min": 0,
       "max": 60,
       "step": 1,
-      "default": 22,
+      "default": 20,
       "slider": true,
-      "hint": "Be honest. 'We always send them' usually means 75-85% on time, not 100%."
+      "hint": "Be honest. Most agencies land between 15 and 30 percent."
     },
     {
-      "id": "monthly_revenue",
+      "id": "monthly_revenue_per_account",
       "label": "Average monthly revenue per account",
       "type": "number",
       "prefix": "$",
-      "suffix": "/mo",
       "min": 500,
-      "max": 100000,
-      "step": 100,
-      "default": 4800,
-      "slider": true,
+      "max": 50000,
+      "step": 250,
+      "default": 6500,
       "hint": "Your typical retainer or recurring fee."
     },
     {
-      "id": "tenure_months",
+      "id": "avg_tenure_months",
       "label": "Average client tenure in months",
-      "type": "number",
-      "suffix": "months",
-      "min": 1,
+      "type": "range",
+      "suffix": "mo",
+      "min": 3,
       "max": 60,
       "step": 1,
-      "default": 11,
+      "default": 18,
       "slider": true,
-      "hint": "How long does a typical account stay before churning."
+      "hint": "How long a typical account stays before churning."
     },
     {
-      "id": "churn_lift",
+      "id": "churn_lift_pct",
       "label": "Churn lift when reporting is inconsistent",
       "type": "range",
       "suffix": "%",
@@ -91,108 +88,87 @@
       "step": 1,
       "default": 18,
       "slider": true,
-      "hint": "Default 18% from service-firm churn audits. Inconsistent reporting is the #2 cited reason behind 'results weren't clear.'"
+      "hint": "Default 18 percent based on service-firm churn audits."
     },
     {
-      "id": "target_hours",
+      "id": "target_hours_after",
       "label": "Target reporting time per account after automation",
-      "type": "number",
-      "suffix": "hrs/wk",
+      "type": "range",
+      "suffix": "hrs",
       "min": 0.1,
-      "max": 5,
+      "max": 3,
       "step": 0.05,
       "default": 0.5,
       "slider": true,
-      "hint": "Most automated reporting flows land between 0.25 and 0.75 hours per account per week, including human review."
-    },
-    {
-      "id": "build_investment",
-      "label": "Expected build investment for the automation",
-      "type": "number",
-      "prefix": "$",
-      "min": 2000,
-      "max": 100000,
-      "step": 500,
-      "default": 12000,
-      "slider": true,
-      "hint": "What you'd budget for the reporting automation build itself."
+      "hint": "Most automated flows land between 0.25 and 0.75 hours per account."
     }
   ],
   "outputs": [
     {
-      "id": "total_exposure",
-      "label": "Total annualized exposure (labor + churn risk)",
-      "format": "currency",
-      "primary": true,
-      "formula": "(accounts * hours_per_report * 52 * hourly_cost) + ((accounts * (late_skipped_rate / 100)) * (monthly_revenue * tenure_months) * (churn_lift / 100))",
-      "tier_thresholds": {
-        "low": 0,
-        "mid": 40000,
-        "high": 120000,
-        "low_label": "Manageable",
-        "mid_label": "Compounding",
-        "high_label": "Critical — an FTE you haven't named"
-      }
-    },
-    {
       "id": "annualized_labor_cost",
       "label": "Annualized reporting labor cost",
       "format": "currency",
-      "formula": "accounts * hours_per_report * 52 * hourly_cost"
+      "primary": true,
+      "formula": "accounts * hours_per_report * 52 * loaded_hourly_cost",
+      "tier_thresholds": {
+        "low": 50000,
+        "medium": 150000,
+        "high": 300000
+      }
     },
     {
       "id": "churn_risk_exposure",
-      "label": "Churn risk exposure",
+      "label": "Annual churn risk exposure",
       "format": "currency",
-      "formula": "(accounts * (late_skipped_rate / 100)) * (monthly_revenue * tenure_months) * (churn_lift / 100)"
+      "formula": "(accounts * (late_or_skipped_pct / 100)) * (monthly_revenue_per_account * avg_tenure_months) * (churn_lift_pct / 100)"
     },
     {
-      "id": "hours_recoverable",
-      "label": "Hours recoverable per year",
+      "id": "ninety_day_recovery",
+      "label": "90-day recovery delta",
+      "format": "currency",
+      "formula": "accounts * (hours_per_report - target_hours_after) * 13 * loaded_hourly_cost"
+    },
+    {
+      "id": "hours_reclaimed_annually",
+      "label": "Hours reclaimed per year",
       "format": "hours",
-      "formula": "accounts * Math.max(0, hours_per_report - target_hours) * 52"
-    },
-    {
-      "id": "payback_delta_90d",
-      "label": "90-day payback delta",
-      "format": "currency",
-      "formula": "(((accounts * hours_per_report * 52 * hourly_cost) - (accounts * target_hours * 52 * hourly_cost)) / 4) - build_investment"
+      "formula": "accounts * (hours_per_report - target_hours_after) * 52"
     }
   ],
   "recommendations": [
     {
-      "tag": "Stabilize before you automate",
-      "when": "total_exposure < 40000",
-      "text": "You're in the manageable tier. Reporting is a cost, not a leak yet. Document the current flow end-to-end before scaling. Make sure the manual version is stable before you wire automation on top of it. Premature automation locks in a broken process."
+      "tag": "high-labor-burn",
+      "when": "accounts * hours_per_report * 52 * loaded_hourly_cost > 200000",
+      "text": "Your manual reporting is the cost equivalent of a full-time hire that never made it to the org chart. Automating this is no longer optional, it is a margin recovery project."
     },
     {
-      "tag": "Audit the handoffs",
-      "when": "total_exposure >= 40000 && total_exposure < 120000",
-      "text": "You're in the compounding tier. The reporting layer is starting to eat capacity, and you'll feel it most past 10 accounts or when you try to hire your way out. Audit the 7 handoff points in your reporting workflow. Start with one automation: the data pull and template assembly. Keep human review on the narrative."
+      "tag": "churn-exposure-critical",
+      "when": "(accounts * (late_or_skipped_pct / 100)) * (monthly_revenue_per_account * avg_tenure_months) * (churn_lift_pct / 100) > 150000",
+      "text": "Your churn risk exposure is large enough that one or two preventable losses this year will eclipse any reporting tooling investment by 10x or more."
     },
     {
-      "tag": "Full automation pass this quarter",
-      "when": "total_exposure >= 120000",
-      "text": "You're in the critical tier. Reporting is now a full-time hire you never put on the org chart, and the churn exposure is real, not theoretical. Run a full reporting automation pass within the next quarter. Target: drop per-account hours by 75%+ while keeping human review on every send. This is where the 90-Day Payback Rule kicks in hardest."
+      "tag": "late-rate-warning",
+      "when": "late_or_skipped_pct >= 25",
+      "text": "More than 1 in 4 reports slipping is a renewal conversation problem, not a capacity problem. Clients quietly downgrade trust long before they churn."
     },
     {
-      "tag": "Passes the 90-Day Payback Rule",
-      "when": "payback_delta_90d > 0",
-      "text": "Your build pays for itself inside 90 days at the inputs above. That's the bar I use before greenlighting any automation project. If the math holds when you stress-test the inputs, this is a build, not a debate."
+      "tag": "high-volume-low-time",
+      "when": "accounts >= 15 && hours_per_report <= 3",
+      "text": "You have scale but your per-report time is already lean. The leverage here is consistency and on-time delivery, not raw hour reduction."
     },
     {
-      "tag": "Don't build it yet",
-      "when": "payback_delta_90d <= 0",
-      "text": "At these inputs the build doesn't clear payback inside 90 days. Two options: narrow the scope (automate the data pull only, not the full report), or wait until your account count or hours-per-report grows. Don't force a build whose math doesn't work."
+      "tag": "automation-ready",
+      "when": "hours_per_report >= 4 && target_hours_after <= 0.75",
+      "text": "The gap between your current and target time is exactly the sweet spot n8n plus Claude workflows close in 30 to 60 days. This is the highest ROI automation in your stack."
     },
     {
-      "tag": "Capacity unlocked",
-      "when": "hours_recoverable >= 800",
-      "text": "You'd recover between half and one full FTE of capacity. The question becomes what you redeploy that time to — strategy work, new account onboarding, or pulling forward retainer expansions. The recovered hours are the asset; the automation is just how you get them."
+      "tag": "tenure-amplifier",
+      "when": "avg_tenure_months >= 24 && monthly_revenue_per_account >= 5000",
+      "text": "Long tenure plus mid-to-high retainers means every prevented churn is worth six figures over the life of the account. Reporting reliability compounds here."
     }
   ],
   "capture_cta": {
-    "headline": "If your Total Annualized Exposure cleared $80,000, send me your inputs",
-    "description": "I'll return a 1-page recovery plan with the specific automation sequence I'd run if it were my agency — the data pulls, the template assembly, the human-review gate, ranked by payback period."
+    "headline": "See your 90-day automation roadmap",
+    "description": "Get a tailored breakdown of how to cut your reporting time from hours to minutes per account, with the exact workflow architecture used by agencies in the $1M to $20M range."
   }
 }
