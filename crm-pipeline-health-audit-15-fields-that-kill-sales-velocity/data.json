@@ -1,172 +1,141 @@
 {
   "slug": "crm-pipeline-health-audit-15-fields-that-kill-sales-velocity",
-  "title": "15 CRM Fields That Kill Sales Velocity",
-  "subtitle": "A pipeline health audit for RevOps managers at 10-200 employee B2B companies. Run it against one stage and find the fields that make your forecast lie.",
+  "title": "CRM Pipeline Health Audit: 15 Fields That Kill Sales Velocity",
+  "subtitle": "Run this audit against your top pipeline stage first. If three items fail, your forecast is already lying to you.",
   "brand": {
-    "accent": "#2A8F65",
+    "accent": "#00E676",
     "hero_badge": "Action Checklist"
   },
-  "estimated_minutes": 30,
+  "estimated_minutes": 25,
   "sections": [
     {
       "id": "stage-gate-fields",
-      "title": "Stage Gate Fields — The 5 That Move Deals",
-      "description": "These are the fields that decide whether a stage change means anything at all.",
+      "title": "Stage Gate Fields",
+      "description": "The 4 fields that actually move deals through the pipeline.",
       "items": [
         {
           "id": "exit-criteria-required",
-          "text": "Require Exit Criteria Met (Y/N) to advance each stage",
-          "tip": "If a rep can drag a deal to Proposal without checking this, the stage means nothing — enforce with HubSpot required-field logic or Salesforce validation rules",
+          "text": "Require Exit Criteria Met (Y/N) before any rep can advance a stage.",
+          "tip": "If a rep can drag a deal to Proposal without checking this, the stage means nothing.",
           "impact": "high"
         },
         {
-          "id": "next-step-date-populated",
-          "text": "Populate Next Step Date on every open opportunity",
-          "tip": "Flag anything blank or more than 14 days out — no date = no deal",
+          "id": "next-step-date",
+          "text": "Populate Next Step Date on every open opportunity.",
+          "tip": "Flag anything blank or scheduled more than 14 days out. No date equals no deal.",
           "impact": "high"
         },
         {
           "id": "decision-maker-confirmed",
-          "text": "Confirm Decision Maker (Y/N) before Proposal stage",
-          "tip": "Attended a call doesn't count — require explicit rep confirmation, not inferred attendance",
+          "text": "Confirm Decision Maker (Y/N) before the Proposal stage.",
+          "tip": "Attended a call does not count. Require explicit rep confirmation in the field.",
           "impact": "high"
         },
         {
-          "id": "validated-budget-range",
-          "text": "Fill Validated Budget Range before pricing goes out",
-          "tip": "Free-text TBD fails the check — use a picklist with USD bands ($0-25k, $25-100k, $100k+)",
+          "id": "validated-budget",
+          "text": "Fill Validated Budget Range before pricing goes out.",
+          "tip": "Free-text TBD fails the check. Use a picklist with bands.",
           "impact": "high"
         }
       ]
     },
     {
       "id": "data-hygiene-fields",
-      "title": "Data Hygiene Fields — The 4 That Kill Forecast Accuracy",
-      "description": "Stale contact data is the silent forecast killer nobody audits until Q3.",
+      "title": "Data Hygiene Fields",
+      "description": "The 4 fields that kill forecast accuracy when neglected.",
       "items": [
         {
-          "id": "email-verification-7-days",
-          "text": "Refresh email verification status every 7 days, not every 6 weeks",
-          "tip": "Prospeo hits 98% verified accuracy on a 7-day cycle — industry average of 6 weeks is why your sequences bounce",
+          "id": "email-verification-7day",
+          "text": "Refresh email verification status every 7 days, not every 6 weeks.",
+          "tip": "Tools like Prospeo hit 98% verified accuracy on a 7-day cycle versus the 6-week industry average.",
           "impact": "high"
         },
         {
-          "id": "phone-and-email-verified",
-          "text": "Verify both phone AND email on the primary contact, not one or the other",
-          "tip": "Single-channel contacts are the #1 source of ghost pipeline",
+          "id": "verified-phone-and-email",
+          "text": "Verify both phone AND email on every primary contact, not one or the other.",
+          "tip": "Single-channel contacts are the number one source of ghost pipeline.",
           "impact": "medium"
         },
         {
-          "id": "firmographics-auto-enriched",
-          "text": "Auto-enrich employee count, industry, and revenue band — never rep-typed",
-          "tip": "Rep-typed firmographics fail at 30%+ — use Clearbit, Apollo, or ZoomInfo enrichment on contact create",
+          "id": "auto-enrich-firmographics",
+          "text": "Auto-enrich firmographic fields (employee count, industry, revenue band) instead of letting reps type them.",
+          "tip": "Rep-typed firmographics fail accuracy checks at 30% or higher.",
           "impact": "medium"
         },
         {
-          "id": "duplicate-detection-weekly",
-          "text": "Run duplicate detection weekly with auto-merge rules for 95%+ matches",
-          "tip": "Manual dedupe never happens — automate it with HubSpot Operations Hub or a scheduled n8n workflow",
+          "id": "weekly-duplicate-detection",
+          "text": "Run duplicate detection weekly with auto-merge rules for matches above 95%.",
+          "tip": "Manual dedupe never actually happens. Automate or accept the mess.",
           "impact": "medium"
         }
       ]
     },
     {
       "id": "governance-fields",
-      "title": "Governance Fields — The 3 That Stop Rep Gaming",
-      "description": "Without these locks, reps will quietly reshape the pipeline to hit quota.",
+      "title": "Governance Fields",
+      "description": "The 3 fields that stop rep gaming and protect forecast integrity.",
       "items": [
         {
-          "id": "stage-history-locked",
-          "text": "Lock stage history from manual edits — zero exceptions",
-          "tip": "Reps should never be able to backdate a stage change — use field-level permissions or audit log enforcement",
+          "id": "lock-stage-history",
+          "text": "Lock stage history from manual edits across all roles.",
+          "tip": "Reps should never be able to backdate a stage change. Zero exceptions.",
           "impact": "high"
         },
         {
           "id": "close-date-reason-codes",
-          "text": "Log Close Date changes with a required reason code picklist",
-          "tip": "If a deal slips three times with no reason code, it's not a deal — it's wishful thinking",
+          "text": "Log every Close Date change with a reason code picklist.",
+          "tip": "If a deal slips three times with no reason code, it is not a deal anymore.",
           "impact": "high"
         },
         {
-          "id": "amount-change-approval",
-          "text": "Trigger manager approval on Amount changes over 20%",
-          "tip": "Silent pricing drops are how forecasts break mid-quarter — build the approval flow in HubSpot or Salesforce Flow",
+          "id": "amount-approval-workflow",
+          "text": "Trigger manager approval on Amount changes greater than 20%.",
+          "tip": "Silent pricing drops are how forecasts break mid-quarter.",
           "impact": "medium"
         }
       ]
     },
     {
       "id": "activity-fields",
-      "title": "Activity Fields — The 2 That Show Real Progress",
-      "description": "Opens and clicks don't move deals. These two fields separate real motion from noise.",
+      "title": "Activity Fields",
+      "description": "The 2 fields that surface real progress instead of vanity engagement.",
       "items": [
         {
           "id": "last-meaningful-activity",
-          "text": "Auto-update Last Meaningful Activity only from logged calls, meetings, or replied emails",
-          "tip": "Opens and clicks don't count — this is the single best stale deal filter you can build",
+          "text": "Auto-update Last Meaningful Activity only from logged calls, meetings, or replied emails.",
+          "tip": "Opens and clicks do not count. This is the single best stale-deal filter you can build.",
           "impact": "high"
         },
         {
           "id": "multithreading-count",
-          "text": "Track Multithreading Count (distinct contacts engaged per deal) at every stage gate",
-          "tip": "Single-threaded deals past Discovery are a forecast risk flag",
+          "text": "Track Multithreading Count (distinct contacts engaged per deal) at every stage gate.",
+          "tip": "Single-threaded deals past Discovery are a forecast risk flag.",
           "impact": "medium"
         }
       ]
     },
     {
-      "id": "weekly-scorecard-fields",
-      "title": "Weekly Scorecard Fields — The 1 That Keeps Everyone Honest",
-      "description": "Data quality only improves when reps hear about it from their manager, not from RevOps.",
+      "id": "weekly-scorecard",
+      "title": "Weekly Scorecard",
+      "description": "The 1 field that keeps reps, managers, and RevOps honest.",
       "items": [
         {
           "id": "field-completeness-score",
-          "text": "Publish Field Completeness Score per rep weekly, not monthly",
-          "tip": "RevOps owns the flag, managers own the conversation — reps should hear it from their manager using your scorecard",
+          "text": "Publish a Field Completeness Score per rep weekly, not monthly.",
+          "tip": "RevOps owns the flag, managers own the conversation. Reps should hear about bad data from their manager, using your scorecard.",
           "impact": "high"
+        },
+        {
+          "id": "scorecard-thresholds",
+          "text": "Set a minimum completeness threshold (90%+) tied to pipeline review eligibility.",
+          "tip": "If a rep is below threshold, their deals do not get reviewed in the forecast call.",
+          "impact": "medium"
         }
       ]
     }
   ],
   "completion_cta": {
-    "headline": "Want the fix for your top 3 gaps?",
-    "description": "Send me the fields that failed this audit and I'll return the specific enforcement rules — required-field logic, validation rules, and refresh cadence — matched to your CRM. One reply, no call required."
-  },
-  "ctas": [
-    {
-      "id": "high_gaps_blueprint",
-      "when": "gap_pct > 70",
-      "headline": "Your pipeline is leaking deals at the field level. Want it diagnosed, not guessed?",
-      "description": "Over 70% of these CRM fields and enforcement rules are missing or broken. At that level, no individual rep fix sticks — the system is selecting against velocity. The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I review your CRM (HubSpot/Salesforce/Pipedrive), audit field enforcement, validation rules, and refresh cadence, then deliver a 90-day cleanup plan with the exact required-field logic and weekly scorecard your reps need. Budget-defensible whether or not you build with me.",
-      "button": "See the Blueprint →",
-      "url": "https://resources.ivanmanfredi.com/assessment",
-      "secondary": {
-        "button": "Or book a 30-min working call",
-        "url": "https://calendly.com/ivan-intelligents/30min"
-      }
-    },
-    {
-      "id": "mid_gaps_lms",
-      "when": "gap_pct >= 30 && gap_pct <= 70",
-      "headline": "Real gaps in pipeline hygiene. See the system that enforces them.",
-      "description": "30-70% gaps means your CRM has the right fields but the enforcement is leaky. Tour the Lead Magnet System and Content System to see how I wire required-field gates, validation rules, and refresh cadence into n8n + Claude pipelines for sales teams — plug in the controls your audit flagged.",
-      "button": "Tour the Lead Magnet System →",
-      "url": "https://ivanmanfredi.com/lead-magnet-system",
-      "secondary": {
-        "button": "Get the weekly sales-ops teardown",
-        "url": "https://www.linkedin.com/in/ivanmanfredi/"
-      }
-    },
-    {
-      "id": "low_gaps_newsletter",
-      "headline": "Pipeline hygiene is dialed. Stay sharp — here's what comes next.",
-      "description": "Under 30% gaps means the field enforcement is mostly in place. The next gains live in stage-by-stage conversion analysis, deal-aging triggers, and forecast accuracy regressions — the kind of work most sales ops never get to. Subscribe to the Agent-Ready Letter — one tactical CRM teardown + one ops case study per week.",
-      "button": "Follow on LinkedIn →",
-      "url": "https://www.linkedin.com/in/ivanmanfredi/",
-      "secondary": {
-        "button": "Browse other resources",
-        "url": "https://resources.ivanmanfredi.com"
-      }
-    }
-  ]
+    "headline": "You finished the audit. Now fix one stage this week.",
+    "description": "Do not boil the ocean. Pick your top pipeline stage, run these 15 checks against it, and ship the fixes inside 7 days. Then move to the next stage. A clean pipeline is built one gate at a time, not in a quarterly overhaul."
+  }
 }
