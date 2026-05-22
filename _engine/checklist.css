@@ -40,7 +40,7 @@
 .lmc-section-title{font-family:var(--font-drama);font-size:clamp(1.65rem,2.6vw,2.1rem);font-weight:400;letter-spacing:-0.01em;margin:0 0 .35rem;color:var(--ink);text-transform:none;line-height:1.15;}
 .lmc-section-title em,.lmc-section-title i{font-family:var(--font-drama);font-style:italic;font-weight:400;color:#2A8F65;}
 .lmc-section-title-line{display:block;}
-.lmc-section-title-line.label{font-family:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(26,26,26,0.7);margin-bottom:.6rem;}
+.lmc-section-title-line.label{font-family:'Source Serif 4',Georgia,serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);margin-bottom:.6rem;}
 .lmc-section-desc{font-size:1.0625rem;font-weight:400;color:var(--ink-soft);margin:.65rem 0 0;line-height:1.65;max-width:42rem;}
 .lmc-section-toggle{display:none;}
 .lmc-section-body{padding-top:1.5rem;padding-left:0;margin-left:0;border-left:none;margin-top:1.5rem;}
@@ -72,7 +72,7 @@
 
 /* Capture — flat paper, no left rule (E3 polish) */
 .lmc-capture{position:relative;padding:3rem 0 2.5rem;background:transparent;color:var(--ink);border:none;border-top:1px solid rgba(26,26,26,0.08);border-radius:0;margin:3rem 0 2rem;box-shadow:none;}
-.lmc-capture::before{content:"OPT IN";display:block;font-family:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(26,26,26,0.7);margin-bottom:1rem;}
+.lmc-capture::before{content:"OPT IN";display:block;font-family:'Source Serif 4',Georgia,serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:1rem;}
 .lmc-capture h2{font-family:var(--font-drama);font-size:clamp(1.75rem,3.2vw,2.4rem);font-weight:400;line-height:1.15;letter-spacing:-0.01em;margin:0 0 .9rem;color:var(--ink);text-transform:none;max-width:32rem;}
 .lmc-capture h2 em,.lmc-capture h2 i{font-family:var(--font-drama);font-style:italic;font-weight:400;color:#2A8F65;}
 .lmc-capture p{font-family:'Source Serif 4',Georgia,serif;font-size:1.0625rem;margin:0 0 1.75rem;max-width:34rem;color:var(--ink-soft);line-height:1.65;}
