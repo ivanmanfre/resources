@@ -74,32 +74,20 @@ a{color:inherit;text-decoration:none}
 .benefit-text p{font-size:17px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px;max-width:100%}
 .benefit-text p:last-child{margin-bottom:0}
 .benefit-visual{position:relative}
-.benefit-visual img{width:100%;height:auto;display:block;border:1px solid var(--hairline);box-shadow:0 12px 32px -8px rgba(26,26,26,.18);cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease}
-.benefit-visual img:hover{transform:translateY(-3px);box-shadow:0 18px 44px -8px rgba(26,26,26,.25)}
+.benefit-visual img{width:100%;height:auto;display:block;border:1px solid var(--hairline);box-shadow:0 2px 8px rgba(26,26,26,.08);cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease}
+.benefit-visual img:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(26,26,26,.12)}
 .benefit-visual-caption{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute);margin-top:14px;text-align:center}
-
-/* TABS */
-.tabs-section{margin-top:56px}
-.tabs-nav{display:flex;gap:0;border-bottom:1px solid var(--hairline);margin-bottom:32px;overflow-x:auto;scrollbar-width:none}
-.tabs-nav::-webkit-scrollbar{display:none}
-.tab-btn{background:none;border:none;padding:18px 24px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s ease;white-space:nowrap;margin-bottom:-1px}
-.tab-btn:hover{color:var(--ink)}
-.tab-btn.active{color:var(--ink);border-bottom-color:var(--accent)}
-.tab-panel{display:none;animation:fadeIn .3s ease}
-.tab-panel.active{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.tab-panel img{width:100%;height:auto;border:1px solid var(--hairline);box-shadow:0 10px 28px -8px rgba(26,26,26,.18);cursor:zoom-in;transition:transform .2s}
-.tab-panel img:hover{transform:translateY(-2px)}
-.tab-content h4{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;font-style:italic;color:var(--ink);margin-bottom:14px;line-height:1.15}
-.tab-content h4 em{color:var(--accent)}
-.tab-content p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px}
-.tab-content ul{list-style:none;padding:0;margin:18px 0 0}
-.tab-content ul li{font-size:15.5px;color:var(--ink-soft);padding:7px 0 7px 22px;position:relative;line-height:1.55}
-.tab-content ul li::before{content:'→';position:absolute;left:0;top:7px;color:var(--accent);font-weight:700}
 
 /* SECTION COLOR ZONES */
 .section-dark{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-sunk) 100%)}
 .section-dark::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--hairline)}
+
+/* ROI STAT BLOCK */
+.roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px;max-width:980px}
+.roi-stat{padding:32px 28px;background:var(--paper-raise);border:1px solid var(--hairline);border-left:2px solid var(--accent)}
+.roi-stat-value{font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;line-height:.95;color:var(--accent);margin-bottom:14px;letter-spacing:-.02em}
+.roi-stat-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);line-height:1.4}
+@media(max-width:760px){.roi-grid{grid-template-columns:1fr;gap:14px}.roi-stat-value{font-size:48px}}
 
 /* SVG DIAGRAM */
 .diagram-wrap{margin:48px auto 56px;max-width:880px;padding:0 8px}
@@ -205,7 +193,7 @@ a{color:inherit;text-decoration:none}
 
 /* ABOUT */
 .about-block{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;margin-top:24px;max-width:920px;background:var(--paper-sunk);padding:36px;border-left:2px solid var(--accent)}
-.about-photo{width:120px;height:120px;border-radius:50%;overflow:hidden;border:2px solid var(--ink);flex-shrink:0;background:var(--paper-raise)}
+.about-photo{width:120px;height:120px;border-radius:12px;overflow:hidden;border:1px solid var(--ink);flex-shrink:0;background:var(--paper-raise)}
 .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .about-text h4{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.15;letter-spacing:-.005em}
 .about-text h4 em{font-style:italic;color:var(--accent)}
@@ -242,15 +230,10 @@ a{color:inherit;text-decoration:none}
   .section{padding:64px 28px}
   .benefit,.benefit:nth-child(even){grid-template-columns:1fr;gap:28px}
   .benefit:nth-child(even) .benefit-text,.benefit:nth-child(even) .benefit-visual{order:initial}
-  .tab-panel.active{grid-template-columns:1fr;gap:24px}
   .steps{grid-template-columns:1fr;gap:16px}
   .cta-section{padding:80px 28px}
   .proof-band{padding:60px 28px}
-  .proof-stats{gap:32px}
-  .proof-stat-num{font-size:48px}
   .footer{padding:32px 28px;flex-direction:column;align-items:flex-start;gap:16px}
-  .tabs-nav{margin-bottom:24px}
-  .tab-btn{padding:14px 16px;font-size:10.5px}
 }
 </style>
 </head>
@@ -276,7 +259,7 @@ a{color:inherit;text-decoration:none}
 <!-- Section 1: The pain -->
 <div class="section">
   <span class="section-number">01 • The honest read</span>
-  <h2>The math on LinkedIn <em>doesn't pencil out</em> by hand.</h2>
+  <h2>LinkedIn would work for your agency, if the math <em>penciled out</em>.</h2>
   <ul class="pain-list">
     <li><strong>Each post takes an hour.</strong> Five posts a week is a part-time job nobody on your team wants.</li>
     <li><strong>Lead magnets take a full week.</strong> Most never ship because by day four you remember you have an agency to run.</li>
@@ -291,9 +274,9 @@ a{color:inherit;text-decoration:none}
 
   <div class="benefit">
     <div class="benefit-text">
-      <span class="benefit-tag">Daily Posts</span>
-      <h3>Posts in <em>your voice</em>, scored before they ship.</h3>
-      <p>Five specialized agents draft each post. Approve in one tap, ships automatically.</p>
+      <span class="benefit-tag">Daily Posts · 10 Hook Variants</span>
+      <h3>Posts in your voice, scored before they ship.</h3>
+      <p>Five specialized agents draft each post. Ten hook variations per draft. Approve in one tap, ships automatically.</p>
     </div>
     <div class="benefit-visual">
       <img src="images/carousel-cta.png" alt="LinkedIn carousel post" loading="lazy">
@@ -303,9 +286,9 @@ a{color:inherit;text-decoration:none}
 
   <div class="benefit">
     <div class="benefit-text">
-      <span class="benefit-tag">Lead Magnets</span>
-      <h3>Interactive magnets that <em>filter for buyers</em>.</h3>
-      <p>Three engine types (Checklist, Calculator, Assessment). Visitor answers, gets a real result, you get a qualified email + a 24h personalized follow-up. Their email lands in your nurture list.</p>
+      <span class="benefit-tag">Lead Magnets · 5 Formats</span>
+      <h3>Interactive magnets that filter for buyers.</h3>
+      <p>Five formats off one engine: Checklist, Calculator, Assessment, Guide, and AI Walkthrough. Visitor answers, gets a real result, you get a qualified email plus a 24h personalized follow-up.</p>
     </div>
     <div class="benefit-visual">
       <img src="images/interactive-assessment.png" alt="Interactive assessment" loading="lazy">
@@ -316,7 +299,7 @@ a{color:inherit;text-decoration:none}
   <div class="benefit">
     <div class="benefit-text">
       <span class="benefit-tag">Nurture Newsletter</span>
-      <h3>Weekly to the list <em>your magnets built</em>.</h3>
+      <h3>Weekly to the list your magnets built.</h3>
       <p>Every email captured by a lead magnet lands in your list and gets a weekly nurture send, drafted by the same engine. Stays warm without you remembering to write it.</p>
     </div>
     <div class="benefit-visual">
@@ -326,10 +309,30 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- Section 3: The flow (SVG diagram) -->
+<!-- Section 3: ROI block -->
+<div class="section">
+  <span class="section-number">03 • The math, in three numbers</span>
+  <h2>What clients get back when the system runs.</h2>
+  <div class="roi-grid">
+    <div class="roi-stat">
+      <div class="roi-stat-value">20+</div>
+      <div class="roi-stat-label">Hours saved / month</div>
+    </div>
+    <div class="roi-stat">
+      <div class="roi-stat-value">Daily</div>
+      <div class="roi-stat-label">Post cadence, hands-off</div>
+    </div>
+    <div class="roi-stat">
+      <div class="roi-stat-value">5</div>
+      <div class="roi-stat-label">Lead magnet formats</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4: The flow (SVG diagram) -->
 <div class="section section-dark">
-  <span class="section-number">03 • How it works</span>
-  <h2>Four inputs in. Three outputs out. <em>One system in between</em>.</h2>
+  <span class="section-number">04 • How it works</span>
+  <h2>Four inputs in. Three outputs out. One system in between.</h2>
 
   <div class="diagram-wrap">
     <svg class="flow-svg" viewBox="0 0 900 1280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System flow diagram">
@@ -365,25 +368,25 @@ a{color:inherit;text-decoration:none}
       <g class="diagram-inputs">
         <g class="input-chip" transform="translate(40,40)">
           <rect x="0" y="0" width="180" height="62" rx="3" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1"/>
-          <circle cx="18" cy="31" r="4" fill="#4C6E3D"/>
+          <rect x="14" y="27" width="8" height="8" fill="#4C6E3D"/>
           <text x="34" y="26" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#4A4A48" letter-spacing="1.4">INPUT 01</text>
           <text x="34" y="46" font-family="'Source Serif 4',serif" font-size="14.5" font-weight="600" fill="#1A1A1A">Client calls</text>
         </g>
         <g class="input-chip" transform="translate(240,40)">
           <rect x="0" y="0" width="180" height="62" rx="3" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1"/>
-          <circle cx="18" cy="31" r="4" fill="#4C6E3D"/>
+          <rect x="14" y="27" width="8" height="8" fill="#4C6E3D"/>
           <text x="34" y="26" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#4A4A48" letter-spacing="1.4">INPUT 02</text>
           <text x="34" y="46" font-family="'Source Serif 4',serif" font-size="14.5" font-weight="600" fill="#1A1A1A">Your seed ideas</text>
         </g>
         <g class="input-chip" transform="translate(480,40)">
           <rect x="0" y="0" width="180" height="62" rx="3" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1"/>
-          <circle cx="18" cy="31" r="4" fill="#4C6E3D"/>
+          <rect x="14" y="27" width="8" height="8" fill="#4C6E3D"/>
           <text x="34" y="26" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#4A4A48" letter-spacing="1.4">INPUT 03</text>
           <text x="34" y="46" font-family="'Source Serif 4',serif" font-size="14.5" font-weight="600" fill="#1A1A1A">Competitor posts</text>
         </g>
         <g class="input-chip" transform="translate(680,40)">
           <rect x="0" y="0" width="180" height="62" rx="3" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1"/>
-          <circle cx="18" cy="31" r="4" fill="#4C6E3D"/>
+          <rect x="14" y="27" width="8" height="8" fill="#4C6E3D"/>
           <text x="34" y="26" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#4A4A48" letter-spacing="1.4">INPUT 04</text>
           <text x="34" y="46" font-family="'Source Serif 4',serif" font-size="14.5" font-weight="600" fill="#1A1A1A">Live research</text>
         </g>
@@ -425,34 +428,34 @@ a{color:inherit;text-decoration:none}
 
         <!-- 5 agents -->
         <g class="writer-node" transform="translate(130,98)">
-          <circle cx="0" cy="0" r="18" fill="#4C6E3D" filter="url(#softShadow)"/>
+          <rect x="-18" y="-18" width="36" height="36" fill="#1A1A1A" filter="url(#softShadow)"/>
           <text x="0" y="5" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" fill="#FFFFFF">1</text>
-          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">TOPIC</text>
-          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">Suggester</text>
+          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">CONTEXT</text>
+          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">Retrieval</text>
         </g>
         <g class="writer-node" transform="translate(290,98)">
-          <circle cx="0" cy="0" r="18" fill="#4C6E3D" filter="url(#softShadow)"/>
+          <rect x="-18" y="-18" width="36" height="36" fill="#1A1A1A" filter="url(#softShadow)"/>
           <text x="0" y="5" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" fill="#FFFFFF">2</text>
-          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">STRATEGY</text>
-          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">Scorer</text>
+          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">CATEGORIZE</text>
+          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">Format pick</text>
         </g>
         <g class="writer-node" transform="translate(450,98)">
-          <circle cx="0" cy="0" r="18" fill="#4C6E3D" filter="url(#softShadow)"/>
+          <rect x="-18" y="-18" width="36" height="36" fill="#1A1A1A" filter="url(#softShadow)"/>
           <text x="0" y="5" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" fill="#FFFFFF">3</text>
-          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">HOOK</text>
-          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">Generator</text>
+          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">HOOKS</text>
+          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">10 variants</text>
         </g>
         <g class="writer-node" transform="translate(610,98)">
-          <circle cx="0" cy="0" r="18" fill="#4C6E3D" filter="url(#softShadow)"/>
+          <rect x="-18" y="-18" width="36" height="36" fill="#1A1A1A" filter="url(#softShadow)"/>
           <text x="0" y="5" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" fill="#FFFFFF">4</text>
-          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">VOICE</text>
+          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">VOICE</text>
           <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">Writer</text>
         </g>
         <g class="writer-node" transform="translate(770,98)">
-          <circle cx="0" cy="0" r="18" fill="#4C6E3D" filter="url(#softShadow)"/>
+          <rect x="-18" y="-18" width="36" height="36" fill="#1A1A1A" filter="url(#softShadow)"/>
           <text x="0" y="5" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" fill="#FFFFFF">5</text>
-          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">QA</text>
-          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">9-Dim</text>
+          <text x="0" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" font-weight="700" fill="#1A1A1A" letter-spacing="0.6">QA</text>
+          <text x="0" y="60" text-anchor="middle" font-family="'Source Serif 4',serif" font-size="10.5" fill="#4A4A48" font-style="italic">9-dim review</text>
         </g>
       </g>
 
@@ -512,8 +515,8 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="callout">
       <div class="callout-num">02</div>
-      <div class="callout-title">5 agents, not 1</div>
-      <div class="callout-body">Topic Suggester, Strategy Scorer, Hook Generator, Voice Writer, 9-Dim QA. Each does one job well.</div>
+      <div class="callout-title">5-agent pipeline</div>
+      <div class="callout-body">Context Retrieval, Categorize, Hooks (10 variants), Voice Writer, 9-Dim QA. Each does one job well.</div>
     </div>
     <div class="callout">
       <div class="callout-num">03</div>
@@ -530,32 +533,39 @@ a{color:inherit;text-decoration:none}
 
 <!-- Quotes band -->
 <div class="proof-band">
-  <div class="proof-band-eyebrow">From people who use this system</div>
+  <div class="proof-band-eyebrow">Verified client reviews · Upwork</div>
   <div class="quote-grid">
     <div class="quote-card">
       <div class="quote-mark">"</div>
-      <p class="quote-body">62 posts shipped in 8 weeks. I haven't manually written one. My Sunday-evening drafting block disappeared, the 5+ hours back went straight to client work. I've tried three ghostwriter setups before this. None of them sounded like me. This one does.</p>
+      <p class="quote-body">Working with Ivan has been an absolute game-changer. He exceeded all expectations and saved our team countless hours.</p>
       <div class="quote-attr">
-        <div class="quote-name">Kyle Hunt</div>
-        <div class="quote-role">Founder · Agency Operators</div>
+        <div class="quote-name">Verified client</div>
+        <div class="quote-role">Lead Flow &amp; Slack Integration · 5.0 ★</div>
       </div>
     </div>
     <div class="quote-card">
       <div class="quote-mark">"</div>
-      <p class="quote-body">Assessment lead magnet live in 9 days. 47 qualified leads in the first month, 11 booked discovery calls. The 24-hour follow-up emails sound like I wrote them, which is the part I didn't believe was possible. Whole thing runs without me touching it.</p>
+      <p class="quote-body">Ivan is top notch. Response time is incredible, he is eager to do the work and deliverables are high functioning products.</p>
       <div class="quote-attr">
-        <div class="quote-name">Lemonade Agency</div>
-        <div class="quote-role">Creative · Lead gen rebuild</div>
+        <div class="quote-name">Verified client</div>
+        <div class="quote-role">n8n Autonomous System · 5.0 ★</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-body">His solutions helped uncover opportunities we were missing, directly impacting our bottom line.</p>
+      <div class="quote-attr">
+        <div class="quote-name">Verified client</div>
+        <div class="quote-role">Workflow Audit · 5.0 ★</div>
       </div>
     </div>
   </div>
-  <div class="proof-also">Also currently running for <strong>4 Creatives</strong> and <strong>Interlude Studio</strong>.</div>
 </div>
 
 <!-- About Iván -->
 <div class="section">
-  <span class="section-number">04 • About Iván</span>
-  <h2>The person behind the <em>system</em>.</h2>
+  <span class="section-number">05 • About Iván</span>
+  <h2>The person behind the system.</h2>
   <div class="about-block">
     <div class="about-photo">
       <img src="../assets/ivan.jpg" alt="Iván Manfredi">
@@ -563,7 +573,7 @@ a{color:inherit;text-decoration:none}
     <div class="about-text">
       <h4>Iván <em>Manfredi</em></h4>
       <div class="about-tag">AI &amp; Automation · Service business specialist</div>
-      <p>I build AI and automation systems for agencies and service businesses. <strong>50+ production systems shipped</strong>: content engines, lead generation pipelines, internal ops automation. The LinkedIn engine on this page is the one I've tested most, because every agency operator needs it.</p>
+      <p>I build AI and automation systems for agencies and service businesses. <strong>40+ production systems shipped</strong>: content engines, lead generation pipelines, internal ops automation. The LinkedIn engine on this page is the one I've tested most, because every agency operator needs it.</p>
       <p>Strong opinion: most "content systems" sold by agencies are Notion templates with Zapier on top. This is not that. Everything I build runs in your accounts, on your stack. Fire me on day 14, the system keeps working.</p>
     </div>
   </div>
@@ -571,8 +581,8 @@ a{color:inherit;text-decoration:none}
 
 <!-- Who this isn't for -->
 <div class="section">
-  <span class="section-number">05 • Not for everyone</span>
-  <h2>Three reasons to <em>save us both a call</em>.</h2>
+  <span class="section-number">06 • Not for everyone</span>
+  <h2>Three reasons to save us both a call.</h2>
   <ul class="notfor-list">
     <li><strong>Pre-revenue solo consultants.</strong> You don't have a content problem yet, you have a client problem. Book five discovery calls the hard way first.</li>
     <li><strong>Agencies under $20k/month.</strong> The ROI doesn't pencil at this stage. Keep writing manually for another quarter and put the build budget into hiring.</li>
@@ -582,8 +592,8 @@ a{color:inherit;text-decoration:none}
 
 <!-- FAQ -->
 <div class="section">
-  <span class="section-number">06 • FAQ</span>
-  <h2>The questions I get on <em>every discovery call</em>.</h2>
+  <span class="section-number">07 • FAQ</span>
+  <h2>The questions I get on every discovery call.</h2>
   <div class="faq-grid">
     <details class="faq-item">
       <summary class="faq-q">Will it actually sound like me?</summary>
@@ -620,8 +630,8 @@ a{color:inherit;text-decoration:none}
 
 <!-- How it works -->
 <div class="section">
-  <span class="section-number">07 • How we work together</span>
-  <h2>Three steps. <em>One to two weeks</em> to live.</h2>
+  <span class="section-number">08 • How we work together</span>
+  <h2>Three steps. One to two weeks to live.</h2>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
@@ -643,7 +653,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- Final CTA -->
 <div class="cta-section">
-  <h2>Want to see if this would <em>actually work</em> for your business?</h2>
+  <h2>Want to see if this would <em>actually work</em> for your agency?</h2>
   <p>30-minute call. I look at your offers, your content situation, your audience. You leave with a clear yes/no and a few specific suggestions either way.</p>
   <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">Book a discovery call</a>
   <div class="cta-meta">No pitch · No obligation · Calendly link opens in new tab</div>
@@ -664,23 +674,12 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script>
-// Tab switcher
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.dataset.tab;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelector(`.tab-panel[data-tab="${target}"]`).classList.add('active');
-  });
-});
-
 // Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxClose = document.getElementById('lightbox-close');
 
-document.querySelectorAll('.benefit-visual img, .tab-panel img').forEach(img => {
+document.querySelectorAll('.benefit-visual img').forEach(img => {
   img.addEventListener('click', () => {
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
