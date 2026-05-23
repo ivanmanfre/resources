@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The LinkedIn Engine for Agency Operators • Iván Manfredi</title>
-<meta name="description" content="A done-for-you LinkedIn content and lead magnet system for agency owners. Daily posts in your voice. Lead magnets that filter for buyers. Built in one to two weeks.">
+<meta name="description" content="LinkedIn content engine for agency owners who'd post daily if every draft didn't eat an hour. Running for Kyle Hunt. Two-week build.">
 <meta property="og:title" content="The LinkedIn Engine for Agency Operators">
 <meta property="og:description" content="Daily posts in your voice. Lead magnets that filter for buyers. Built in one to two weeks. Running for Kyle Hunt and others.">
 <meta property="og:type" content="article">
@@ -35,7 +35,8 @@ a{color:inherit;text-decoration:none}
 .scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9999;transition:width .1s linear;width:0}
 
 /* COVER */
-.cover{min-height:100vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end}
+.cover{min-height:92vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;justify-content:center}
+.cover-full{max-width:1000px}
 .cover-nav{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:14px}
 .logo-mark{width:40px;height:40px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.05em;color:var(--ink)}
@@ -43,7 +44,7 @@ a{color:inherit;text-decoration:none}
 .cover-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
 .cover-left{min-width:0}
 .cover-tag{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px}
-.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,6.4vw,84px);font-weight:400;line-height:1.0;letter-spacing:-.02em;color:var(--ink);margin-bottom:32px;max-width:880px;perspective:800px}
+.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(48px,8.5vw,112px);font-weight:400;line-height:0.94;letter-spacing:-.028em;color:var(--ink);margin-bottom:40px;max-width:1000px;perspective:800px}
 .cover h1 em{font-style:italic;color:var(--ink);position:relative;display:inline-block;transform-origin:bottom;transform-style:preserve-3d;animation:em-rotateX .9s cubic-bezier(.22,.84,.36,1) .8s both}
 .cover h1 em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:.18em;height:.44em;background:rgba(76,110,61,.22);z-index:-1;pointer-events:none;transform:scaleX(0);transform-origin:left;animation:sweep-x .7s cubic-bezier(.22,.84,.36,1) .9s both}
 @keyframes sweep-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -241,7 +242,22 @@ a{color:inherit;text-decoration:none}
 }
 
 /* ROI */
-.roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+/* TONAL VARIANT — sunk background for occasional rhythm break */
+.section-sunk{background:var(--paper-sunk);max-width:none;width:100%;padding-left:max(80px,calc((100vw - 1240px)/2));padding-right:max(80px,calc((100vw - 1240px)/2));position:relative}
+.section-sunk + .section{border-top:none}
+
+/* PAYOFF WALKTHROUGH */
+.payoff-lead{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;max-width:none}
+.payoff-grid{display:flex;flex-direction:column;gap:0;margin:32px 0;max-width:880px;border-top:1px solid var(--hairline)}
+.payoff-row{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:24px 0;border-bottom:1px solid var(--hairline);align-items:baseline}
+.payoff-time{font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;line-height:1;color:var(--accent);letter-spacing:-.01em;white-space:nowrap}
+.payoff-text{font-size:17px;color:var(--ink-soft);line-height:1.65}
+.payoff-close{font-size:17.5px;color:var(--ink);line-height:1.65;margin-top:32px;max-width:880px}
+.payoff-close strong{color:var(--ink);font-weight:700}
+@media(max-width:760px){.payoff-row{grid-template-columns:1fr;gap:8px}.payoff-time{font-size:24px}}
+
+.roi-grid{display:grid;grid-template-columns:2fr 1fr 1fr;margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.roi-grid .roi-stat:first-child .roi-stat-value{font-size:clamp(112px,18vw,200px)}
 .roi-stat{padding:56px 32px 56px 0;border-right:1px solid var(--hairline)}
 .roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:32px}
 .roi-stat:last-child{border-right:none}
@@ -376,27 +392,22 @@ a{color:inherit;text-decoration:none}
     <span class="cover-meta">Case Study · 2026</span>
   </div>
 
-  <div class="cover-left">
-    <h1><span class="wrd">Daily</span> <span class="wrd">posts.</span> <span class="wrd">Lead</span> <span class="wrd">magnets.</span><br><span class="wrd">Built</span> <span class="wrd">in</span> <span class="wrd"><em>two weeks.</em></span></h1>
-    <p class="cover-sub">Done-for-you LinkedIn content for agency owners who'd post if hand-writing every draft didn't take an hour. Runs daily for Kyle Hunt and others.</p>
+  <div class="cover-full">
+    <h1><span class="wrd">A</span> <span class="wrd">LinkedIn</span> <span class="wrd">engine</span> <span class="wrd">that</span> <span class="wrd">runs</span> <span class="wrd"><em>without you</em>.</span></h1>
+    <p class="cover-sub">For agency owners who'd post daily if every draft didn't eat an hour. The engine writes in your voice, ships the lead magnets that died in week two, and turns your discovery calls into next month's posts. Running for Kyle Hunt. Yours in two weeks.</p>
     <div class="cover-cta">
       <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">See if it fits</a>
-      <span class="cover-meta-line">30-min call · No pitch</span>
+      <span class="cover-meta-line">30-min call</span>
     </div>
   </div>
 
-  <div class="cover-right">
-    <div class="cover-numeral">40+</div>
-    <div class="cover-monthyear">Production systems shipped</div>
-  </div>
 </div>
 
 <!-- 01 — The honest read -->
 <div class="section">
-  <span class="section-number">01 · The honest read</span>
   <h2>You'd post if the math worked. It doesn't, yet.</h2>
   <div class="problem-card">
-    <p>I've audited workflows in dozens of $1–10M service businesses. The pattern is the same every time. The founder knows LinkedIn would build the brand. They have the opinions. They just don't have ninety minutes a day to draft, edit, find the hook, schedule, and write the lead magnet that follows.</p>
+    <p>I've audited workflows in dozens of $1–10M service businesses. The founder knows LinkedIn would build the brand. They have the opinions. They just don't have ninety minutes a day to draft, edit, find the hook, schedule, and write the lead magnet that follows.</p>
   </div>
   <div class="flow-grid">
     <div class="flow-step">
@@ -417,31 +428,30 @@ a{color:inherit;text-decoration:none}
     <div class="flow-step">
       <span class="flow-step-number">4</span>
       <div class="flow-step-title">Templates aren't the fix</div>
-      <div class="flow-step-desc">Notion-template content systems push the work back onto you. The system has to draft in your voice, not give you a calendar to fill out.</div>
+      <div class="flow-step-desc">Notion templates push the work back onto you. A calendar to fill out is the same problem with extra steps. The system has to draft in your voice.</div>
     </div>
   </div>
 </div>
 
 <!-- 02 — What we build -->
 <div class="section">
-  <span class="section-number">02 · What we build</span>
   <h2>Three outputs running off one <em>content brain</em>.</h2>
-  <p>The system reads your calls, your past posts, and your competitors' best work. It drafts. It scores. You approve. It ships. Three things come out the other side.</p>
+  <p>The engine reads your calls, your past posts, and your competitors' best work, then drafts in your voice and queues each piece for your one-tap approval.</p>
   <div class="skills-grid">
     <div class="skill-card">
       <span class="skill-num">1</span>
-      <div class="skill-name">Daily posts in your voice</div>
-      <div class="skill-outcome">Five agents draft each post. Ten hook variations per draft. Scored on a 9-dimension QA rubric. You approve in one tap, it schedules to LinkedIn at the time you set.</div>
+      <div class="skill-name">You show up on LinkedIn every day, hands off</div>
+      <div class="skill-outcome">Posts ship in your voice, scheduled to your slot. The engine writes the draft, picks the hook from ten variants, and runs it through a nine-dimension QA pass before it queues for your one-tap approval.</div>
     </div>
     <div class="skill-card">
       <span class="skill-num">2</span>
-      <div class="skill-name">Lead magnets that filter for buyers</div>
-      <div class="skill-outcome">Five formats off one engine. Checklist, Calculator, Assessment, Guide, Live AI Walkthrough. Each ships with a landing page, follow-up email, and qualified email capture.</div>
+      <div class="skill-name">Qualified leads land in your inbox while you sleep</div>
+      <div class="skill-outcome">Five lead-magnet formats off one engine: Checklist, Calculator, Assessment, Guide, Live AI Walkthrough. Each prospect answers, gets a real result, lands in your nurture list with a follow-up sent within 24 hours.</div>
     </div>
     <div class="skill-card">
       <span class="skill-num">3</span>
-      <div class="skill-name">Newsletter to the list you built</div>
-      <div class="skill-outcome">Every email captured by a lead magnet lands in your list. Weekly nurture send drafted by the same engine. Stays warm without you remembering to write it.</div>
+      <div class="skill-name">Your list stays warm without you remembering it exists</div>
+      <div class="skill-outcome">Every email captured by a magnet flows into your weekly nurture send, drafted by the same engine. The list compounds quietly between client work.</div>
     </div>
   </div>
 </div>
@@ -449,7 +459,6 @@ a{color:inherit;text-decoration:none}
 <!-- 03 — Architecture (dark band) -->
 <div class="section solution-dark-section">
   <div class="sysflow-wrap">
-    <span class="section-number">03 · How it works</span>
     <h2>Four sources in. Three outputs out. <em>One brain</em> in between.</h2>
 
     <div class="arch">
@@ -542,11 +551,34 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- 04 — The math -->
+<!-- 04 — Your Monday after we build it (payoff walkthrough) -->
+<div class="section section-sunk">
+  <h2>Your Monday, day thirty.</h2>
+  <p class="payoff-lead">A walkthrough of what the week looks like after the engine ships.</p>
+  <div class="payoff-grid">
+    <div class="payoff-row">
+      <div class="payoff-time">8:42 AM</div>
+      <div class="payoff-text">Coffee. You open the queue. Today's draft is waiting, hook already picked, formatted for your slot. You read it. Edit one line. Tap approve.</div>
+    </div>
+    <div class="payoff-row">
+      <div class="payoff-time">8:46 AM</div>
+      <div class="payoff-text">You're done with content for the day. The post will ship at 9:15. Tomorrow's draft is already being written off yesterday's discovery call.</div>
+    </div>
+    <div class="payoff-row">
+      <div class="payoff-time">11:30 AM</div>
+      <div class="payoff-text">Three lead magnet downloads overnight. Two replied to the follow-up email and asked for a call. The engine drafted the reply. You change the meeting time and send.</div>
+    </div>
+    <div class="payoff-row">
+      <div class="payoff-time">Friday</div>
+      <div class="payoff-text">Newsletter ships to the list the magnets built. You spent zero minutes on it this week. The list is up by 47.</div>
+    </div>
+  </div>
+  <p class="payoff-close"><strong>Total time on content this week: under 30 minutes.</strong> Every week without consistent presence is authority going to competitors who show up daily.</p>
+</div>
+
+<!-- 05 — The math -->
 <div class="section">
-  <span class="section-number">04 · The math</span>
   <h2>What the system gives back.</h2>
-  <p>You're spending five-plus hours a week hand-building posts that maybe ship. The system runs in the background. The hours come back.</p>
   <div class="roi-grid">
     <div class="roi-stat">
       <div class="roi-stat-value">20+</div>
@@ -565,7 +597,6 @@ a{color:inherit;text-decoration:none}
 
 <!-- 05 — Real proof -->
 <div class="section">
-  <span class="section-number">05 · Real proof</span>
   <h2>What it looks like <em>actually running</em>.</h2>
   <p>Screenshots from live deployments. The first two are <strong>Kyle Hunt's</strong> system, running daily through the same architecture. The last two are the lead magnet engine producing live interactive assessments.</p>
   <div class="proof-grid">
@@ -602,8 +633,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- 06 — Other recent builds -->
 <div class="section">
-  <span class="section-number">06 · Other recent builds</span>
-  <h2>Same builder, adjacent problems.</h2>
+  <h2>Same stack. Different problems.</h2>
   <p>Three current clients on different applications of the same Agent-Ready Ops stack.</p>
   <div class="builds-grid">
     <div class="build-card">
@@ -629,8 +659,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- 07 — Not for everyone -->
 <div class="section">
-  <span class="section-number">07 · Not for everyone</span>
-  <h2>Three reasons to save us both a call.</h2>
+  <h2>Skip the call if any of these are you.</h2>
   <ul class="notfor-list">
     <li><strong>Pre-revenue solo consultants.</strong> You don't have a content problem yet. You have a client problem. Book five discovery calls the hard way first, then come back.</li>
     <li><strong>Agencies under $20k/month.</strong> The ROI doesn't land at this stage. Keep writing manually for another quarter. Put the build budget into the next hire.</li>
@@ -640,8 +669,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- 08 — FAQ -->
 <div class="section">
-  <span class="section-number">08 · FAQ</span>
-  <h2>What people ask on every discovery call.</h2>
+  <h2>Questions that come up most.</h2>
   <div class="faq-grid">
     <details class="faq-item">
       <summary class="faq-q">Will it actually sound like me?</summary>
@@ -678,8 +706,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- 09 — About Iván -->
 <div class="section">
-  <span class="section-number">09 · About Iván</span>
-  <h2>The person behind the system.</h2>
+  <h2>Who's building this.</h2>
   <div class="about-block">
     <div class="about-photo">
       <img src="../assets/ivan.jpg" alt="Iván Manfredi">
@@ -687,20 +714,19 @@ a{color:inherit;text-decoration:none}
     <div class="about-text">
       <h4>Iván <em>Manfredi</em></h4>
       <div class="about-tag">AI &amp; Automation · Service-business specialist</div>
-      <p>I build AI and automation systems for agencies and service businesses. <strong>40+ production systems shipped</strong>: content engines, lead generation pipelines, internal operations automation. The LinkedIn engine on this page is the one I've stress-tested most, because every agency operator I've worked with needed it.</p>
+      <p>I build AI and automation systems for agencies and service businesses. <strong>40+ production systems shipped</strong>: content engines, lead generation pipelines, internal operations automation. The LinkedIn engine on this page is the one I've stress-tested most, because most agency operators I work with ask for it first.</p>
     </div>
   </div>
 </div>
 
 <!-- 10 — How we work together -->
 <div class="section">
-  <span class="section-number">10 · How we work together</span>
-  <h2>Three steps. One to two weeks to live.</h2>
+  <h2>Three steps. Live in 1–2 weeks.</h2>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-title">Discovery · 30 min</div>
-      <div class="step-body">We talk about your offers, your audience, and what's actually getting in the way. If it's a fit, I send a scoped proposal within 48 hours. If not, you walk with a few useful pointers.</div>
+      <div class="step-body">We talk about your offers, your audience, and what's actually getting in the way. Fit → scoped proposal in 48 hours. Not a fit → I tell you what to do instead.</div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
@@ -710,7 +736,7 @@ a{color:inherit;text-decoration:none}
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-title">Handover</div>
-      <div class="step-body">The system runs entirely in your accounts on your stack. No vendor lock-in. No my-tools-or-nothing. You own it from day one. Optional care plan if you want me to monitor and tune it after launch.</div>
+      <div class="step-body">The system runs on your stack, in your accounts. Yours from day one. Optional care plan if you want me to monitor and tune it after launch.</div>
     </div>
   </div>
 </div>
@@ -718,7 +744,7 @@ a{color:inherit;text-decoration:none}
 <!-- CTA -->
 <div class="cta-section">
   <h2>Want to see if this would <em>actually work</em> for your agency?</h2>
-  <p>30-minute call. I look at your offers, your content situation, your audience. You leave with a clear yes/no and a couple of specific suggestions either way.</p>
+  <p>30 minutes. I look at your offers, your content situation, your audience. You leave knowing whether to hire me, and what to do if not.</p>
   <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">Book a discovery call</a>
   <div class="cta-meta">No pitch · No obligation · Calendly opens in new tab</div>
 </div>
