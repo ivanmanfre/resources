@@ -293,84 +293,25 @@ a{color:inherit;text-decoration:none}
 .builds-row-desc{font-size:17px;color:var(--ink-soft);line-height:1.65}
 @media(max-width:760px){.builds-row{grid-template-columns:1fr;gap:14px;padding:28px 0}.builds-row-metric{font-size:48px;white-space:normal}.builds-row-body{padding-top:0}}
 
-/* CAROUSEL SHOWCASE — 4-style auto-rotating LinkedIn carousel preview */
-.car-showcase{max-width:760px;margin:40px auto 0;display:flex;flex-direction:column;gap:24px;align-items:center}
-.car-stage{position:relative;width:100%;height:460px;display:flex;justify-content:center;align-items:center}
-.car-slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;gap:18px;opacity:0;transform:translateY(10px);animation:car-cycle 14s infinite cubic-bezier(.22,.84,.36,1)}
-.car-slide:nth-child(1){animation-delay:0s}
-.car-slide:nth-child(2){animation-delay:3.5s}
-.car-slide:nth-child(3){animation-delay:7s}
-.car-slide:nth-child(4){animation-delay:10.5s}
-@keyframes car-cycle{
-  0%{opacity:0;transform:translateY(10px)}
-  4%,22%{opacity:1;transform:translateY(0)}
-  25%,100%{opacity:0;transform:translateY(-8px)}
+/* MEDIA EXAMPLES GRID — real samples masonry-ish */
+.media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:40px 0 0;max-width:1100px}
+.media-card{position:relative;overflow:hidden;background:var(--paper-raise);border:1px solid var(--hairline);box-shadow:0 2px 8px rgba(26,26,26,.05);transition:transform .25s ease,box-shadow .25s ease;cursor:zoom-in}
+.media-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,26,26,.12)}
+.media-card img{width:100%;height:280px;object-fit:cover;object-position:top center;display:block;border-bottom:1px solid var(--hairline)}
+.media-card.media-tall img{height:380px}
+.media-card.media-wide{grid-column:span 2}
+.media-card.media-wide img{height:280px;object-fit:cover}
+.media-card figcaption{padding:14px 18px;display:flex;flex-direction:column;gap:6px}
+.media-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.media-cap{font-size:14px;color:var(--ink-soft);line-height:1.5}
+@media(max-width:880px){
+  .media-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .media-card img,.media-card.media-tall img{height:220px}
+  .media-card.media-wide{grid-column:span 2}
 }
-.car-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
-
-/* Card frame with peek-through stack effect (mimics LI carousel) */
-.car-card{position:relative;width:340px;height:380px}
-.car-card-stack{position:absolute;inset:0;background:var(--paper-raise);border:1px solid var(--hairline);transform:translate(12px,12px);box-shadow:0 2px 8px rgba(26,26,26,.04)}
-.car-card-stack.stack-2{transform:translate(6px,6px)}
-.car-card-face{position:absolute;inset:0;background:var(--paper-raise);border:1px solid var(--hairline);padding:32px 28px;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(26,26,26,.08)}
-
-/* Step-by-Step style */
-.car-card-step .car-step-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:72px;line-height:.9;color:var(--accent);margin-bottom:4px}
-.car-card-step .car-step-title{font-family:'DM Serif Display',serif;font-size:24px;line-height:1.15;color:var(--ink);margin-bottom:14px;letter-spacing:-.015em}
-.car-card-step .car-step-body{font-size:14px;color:var(--ink-soft);line-height:1.55;flex:1}
-
-/* Data-Driven style */
-.car-card-data{}
-.car-card-data .car-card-face{justify-content:center;align-items:flex-start;text-align:left}
-.car-data-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
-.car-data-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:140px;line-height:.85;color:var(--accent);letter-spacing:-.04em;margin-bottom:14px}
-.car-data-unit{font-size:.5em;font-style:italic;color:var(--accent);vertical-align:0.5em;margin-left:4px}
-.car-data-label{font-size:16px;color:var(--ink);line-height:1.4;max-width:260px}
-
-/* Before-After style */
-.car-card-ba .car-card-face{justify-content:center}
-.car-ba-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;margin-bottom:24px;align-items:center}
-.car-ba-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:12px}
-.car-ba-tag.accent{color:var(--accent)}
-.car-ba-stat{font-family:'DM Serif Display',serif;font-style:italic;font-size:30px;line-height:1.05;color:var(--ink);letter-spacing:-.01em;margin-bottom:8px}
-.car-ba-note{font-size:12.5px;color:var(--ink-soft);line-height:1.45}
-.car-ba-divide{width:1px;height:90px;background:var(--hairline-bold);margin:0 auto}
-
-/* Framework style */
-.car-card-framework .car-card-face{padding:24px 22px}
-.car-fw-title{font-family:'DM Serif Display',serif;font-size:22px;line-height:1.1;color:var(--ink);letter-spacing:-.01em;margin-bottom:18px;border-bottom:1px solid var(--hairline);padding-bottom:12px}
-.car-fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
-.car-fw-cell{padding:14px 12px;background:var(--paper-sunk);border-left:2px solid var(--accent);display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--ink);line-height:1.35;font-weight:500}
-.car-fw-n{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
-
-/* Slide-indicator dots inside each card */
-.car-dots{display:flex;gap:5px;justify-content:center;margin-top:auto;padding-top:14px}
-.cd-dot{width:5px;height:5px;background:var(--hairline-bold);border-radius:50%}
-.cd-dot.on{background:var(--accent)}
-
-/* Outer pager dots (which style is active) */
-.car-pager{display:flex;gap:8px}
-.car-pg-dot{width:8px;height:8px;background:var(--hairline-bold);animation:car-pg-active 14s infinite}
-.car-pg-dot:nth-child(1){animation-delay:0s}
-.car-pg-dot:nth-child(2){animation-delay:3.5s}
-.car-pg-dot:nth-child(3){animation-delay:7s}
-.car-pg-dot:nth-child(4){animation-delay:10.5s}
-@keyframes car-pg-active{
-  0%,22%{background:var(--accent);transform:scale(1.2)}
-  25%,100%{background:var(--hairline-bold);transform:scale(1)}
-}
-
-@media(prefers-reduced-motion:reduce){
-  .car-slide{animation:none;opacity:1;position:static;display:none}
-  .car-slide:first-child{display:flex}
-  .car-pg-dot{animation:none}
-  .car-pg-dot:first-child{background:var(--accent)}
-}
-@media(max-width:680px){
-  .car-stage{height:480px}
-  .car-card{width:300px;height:400px}
-  .car-data-num{font-size:110px}
-  .car-card-step .car-step-num{font-size:60px}
+@media(max-width:520px){
+  .media-grid{grid-template-columns:1fr}
+  .media-card.media-wide{grid-column:auto}
 }
 
 /* LEAD MAGNET SHOWCASE — 5-format auto-rotating mockup */
@@ -727,85 +668,35 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- Carousel showcase (animated 4-style rotator) -->
+<!-- Media examples — real samples from shipped work -->
 <div class="section">
-  <h2>Eight carousel styles. <em>One brain</em>.</h2>
-  <p>Each approved post topic gets matched to the format that fits best. Four of the eight, in rotation.</p>
-  <div class="car-showcase" aria-label="Four carousel styles rotating">
-    <div class="car-stage">
-      <div class="car-slide" data-fmt="step">
-        <div class="car-label">Style 01 · Step-by-Step</div>
-        <div class="car-card car-card-step">
-          <div class="car-card-stack"></div>
-          <div class="car-card-stack stack-2"></div>
-          <div class="car-card-face">
-            <div class="car-step-num">01</div>
-            <div class="car-step-title">Map your current workflow end-to-end.</div>
-            <div class="car-step-body">Before automating anything, draw the actual steps a human takes today. Every handoff, every decision.</div>
-            <div class="car-dots"><span class="cd-dot on"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span></div>
-          </div>
-        </div>
-      </div>
-      <div class="car-slide" data-fmt="data">
-        <div class="car-label">Style 02 · Data-Driven</div>
-        <div class="car-card car-card-data">
-          <div class="car-card-stack"></div>
-          <div class="car-card-stack stack-2"></div>
-          <div class="car-card-face">
-            <div class="car-data-eyebrow">Per recent survey</div>
-            <div class="car-data-num">47<span class="car-data-unit">%</span></div>
-            <div class="car-data-label">of agency owners abandon LinkedIn within 90 days of starting.</div>
-            <div class="car-dots"><span class="cd-dot on"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span></div>
-          </div>
-        </div>
-      </div>
-      <div class="car-slide" data-fmt="ba">
-        <div class="car-label">Style 03 · Before / After</div>
-        <div class="car-card car-card-ba">
-          <div class="car-card-stack"></div>
-          <div class="car-card-stack stack-2"></div>
-          <div class="car-card-face">
-            <div class="car-ba-grid">
-              <div class="car-ba-col">
-                <div class="car-ba-tag">Before</div>
-                <div class="car-ba-stat">90 min / post</div>
-                <div class="car-ba-note">draft + tweak + hook hunt</div>
-              </div>
-              <div class="car-ba-divide"></div>
-              <div class="car-ba-col">
-                <div class="car-ba-tag accent">After</div>
-                <div class="car-ba-stat">12 min / day</div>
-                <div class="car-ba-note">read → tap approve → done</div>
-              </div>
-            </div>
-            <div class="car-dots"><span class="cd-dot on"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span></div>
-          </div>
-        </div>
-      </div>
-      <div class="car-slide" data-fmt="framework">
-        <div class="car-label">Style 04 · Framework</div>
-        <div class="car-card car-card-framework">
-          <div class="car-card-stack"></div>
-          <div class="car-card-stack stack-2"></div>
-          <div class="car-card-face">
-            <div class="car-fw-title">The 4 Preconditions</div>
-            <div class="car-fw-grid">
-              <div class="car-fw-cell"><span class="car-fw-n">01</span>Structured inputs</div>
-              <div class="car-fw-cell"><span class="car-fw-n">02</span>Documentable logic</div>
-              <div class="car-fw-cell"><span class="car-fw-n">03</span>Narrow first scope</div>
-              <div class="car-fw-cell"><span class="car-fw-n">04</span>Human-in-loop</div>
-            </div>
-            <div class="car-dots"><span class="cd-dot on"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="car-pager">
-      <span class="car-pg-dot"></span>
-      <span class="car-pg-dot"></span>
-      <span class="car-pg-dot"></span>
-      <span class="car-pg-dot"></span>
-    </div>
+  <h2>What the system actually outputs.</h2>
+  <p>Real samples from live deployments. Carousels, lead magnets, landing pages, the queue board you'd review.</p>
+  <div class="media-grid">
+    <figure class="media-card media-tall">
+      <img src="images/carousel-cta.png" alt="LinkedIn carousel slide generated by the engine" loading="lazy">
+      <figcaption><span class="media-tag">Carousel · Step-by-Step</span><span class="media-cap">Eight slides generated from one approved post topic, branded and ready to upload.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/framework-image.jpeg" alt="Framework-style carousel slide" loading="lazy">
+      <figcaption><span class="media-tag">Carousel · Framework</span><span class="media-cap">Same engine, different visual language.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/cover-lead-magnet.jpeg" alt="Lead magnet cover" loading="lazy">
+      <figcaption><span class="media-tag">Lead magnet · Cover</span><span class="media-cap">Branded asset cover, generated end-to-end from the approved topic.</span></figcaption>
+    </figure>
+    <figure class="media-card media-wide">
+      <img src="images/landing-page.png" alt="Lead magnet landing page" loading="lazy">
+      <figcaption><span class="media-tag">Landing page</span><span class="media-cap">Auto-generated landing + email capture for each magnet.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/interactive-assessment.png" alt="Interactive assessment lead magnet" loading="lazy">
+      <figcaption><span class="media-tag">Lead magnet · Assessment</span><span class="media-cap">Question flow + scoring + results page, all live.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/guide.png" alt="Guide-style lead magnet" loading="lazy">
+      <figcaption><span class="media-tag">Lead magnet · Guide</span><span class="media-cap">Long-form PDF generated by the same brain.</span></figcaption>
+    </figure>
   </div>
 </div>
 
@@ -1298,7 +1189,7 @@ if(window.matchMedia('(hover:hover)').matches){
   var li=document.createElement('img');ov.appendChild(li);document.body.appendChild(ov);
   ov.addEventListener('click',function(){ov.classList.remove('active')});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')ov.classList.remove('active')});
-  document.querySelectorAll('.proof-card img').forEach(function(img){
+  document.querySelectorAll('.proof-card img, .media-card img').forEach(function(img){
     img.addEventListener('click',function(e){e.stopPropagation();li.src=img.src;ov.classList.add('active')});
   });
 })();
