@@ -283,6 +283,30 @@ a{color:inherit;text-decoration:none}
 .build-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.7}
 @media(max-width:880px){.builds-grid{grid-template-columns:1fr}}
 
+/* COMMAND CENTER — full-bleed proof screenshot */
+.command-center{max-width:1080px;margin:0 auto}
+.command-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.command-lead{font-size:17px;color:var(--ink-soft);line-height:1.65;max-width:720px;margin-bottom:36px}
+.command-image-wrap{display:block;border:1px solid var(--hairline);background:var(--paper-raise);overflow:hidden;cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 2px 8px rgba(26,26,26,.06)}
+.command-image-wrap:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,26,26,.12)}
+.command-image-wrap img{display:block;width:100%;height:auto}
+
+/* DIFFERENTIATORS GRID — answers "why not $99 templates" */
+.diff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:32px 0;max-width:1080px}
+.diff-card{background:var(--paper-raise);border:1px solid var(--hairline);border-left:2px solid var(--accent);padding:32px 36px;display:flex;flex-direction:column;gap:12px}
+.diff-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:48px;line-height:1;color:var(--accent);letter-spacing:-.02em;margin-bottom:4px}
+.diff-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;line-height:1.4}
+.diff-body{font-size:16px;color:var(--ink-soft);line-height:1.65}
+@media(max-width:760px){.diff-grid{grid-template-columns:1fr;gap:16px}}
+
+/* TECH STACK TABLE */
+.stack-grid{display:grid;grid-template-columns:auto 1fr;gap:0;margin:32px 0;max-width:920px;border-top:1px solid var(--hairline)}
+.stack-row{display:contents}
+.stack-layer{padding:18px 32px 18px 0;border-bottom:1px solid var(--hairline);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);align-self:start}
+.stack-tools{padding:18px 0;border-bottom:1px solid var(--hairline);font-size:15.5px;color:var(--ink);line-height:1.6}
+.stack-tools strong{font-weight:600}
+@media(max-width:680px){.stack-grid{grid-template-columns:1fr;gap:0}.stack-layer{padding-bottom:4px;border-bottom:none}.stack-tools{padding-top:4px}}
+
 /* NOT-FOR LIST */
 .notfor-list{list-style:none;padding:0;margin:24px 0 0;max-width:880px;display:grid;gap:14px}
 .notfor-list li{font-size:16.5px;color:var(--ink-soft);padding:18px 22px 18px 52px;background:var(--paper-raise);border:1px solid var(--hairline);position:relative;line-height:1.6}
@@ -456,7 +480,19 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- 03 — Architecture (dark band) -->
+<!-- 03 — Command Center (real screenshot, closes "is this real" objection) -->
+<div class="section">
+  <div class="command-center">
+    <div class="command-eyebrow">Command Center · Kyle Hunt · Live</div>
+    <h2>This is what it looks like, running.</h2>
+    <p class="command-lead">The board you'd be reviewing every morning. Drafts queue here, you tap approve, the system ships.</p>
+    <a class="command-image-wrap" href="../proposals/assets/4creatives/kyle-content-system.png" target="_blank" rel="noopener">
+      <img src="../proposals/assets/4creatives/kyle-content-system.png" alt="Live ClickUp board of Kyle Hunt's LinkedIn content system" loading="lazy">
+    </a>
+  </div>
+</div>
+
+<!-- 04 — Architecture (dark band) -->
 <div class="section solution-dark-section">
   <div class="sysflow-wrap">
     <h2>Four sources in. Three outputs out. <em>One brain</em> in between.</h2>
@@ -548,6 +584,21 @@ a{color:inherit;text-decoration:none}
     <div class="problem-card">
       <p>Once it's running, your daily task is <strong>under ten minutes</strong>. Posts queue up in Airtable. Read the draft. Tap approve. LinkedIn schedules itself. Lead magnets branch from approved topics. No briefing, no writing, no calendar to fill out.</p>
     </div>
+  </div>
+</div>
+
+<!-- Tech stack — what's actually under the hood -->
+<div class="section">
+  <h2>What's actually under the hood.</h2>
+  <p>The system runs on your accounts, on your stack. You own the keys, you own the data, you can fire me on day 15 and the engine keeps shipping.</p>
+  <div class="stack-grid">
+    <div class="stack-row"><div class="stack-layer">Project Mgmt</div><div class="stack-tools"><strong>ClickUp</strong> · queue, prompt library, approval board</div></div>
+    <div class="stack-row"><div class="stack-layer">Workflow</div><div class="stack-tools"><strong>n8n</strong> (self-hosted) · 25+ workflows orchestrating the pipeline</div></div>
+    <div class="stack-row"><div class="stack-layer">AI Brain</div><div class="stack-tools"><strong>Claude</strong> · drafting, scoring, voice modeling</div></div>
+    <div class="stack-row"><div class="stack-layer">Vector DB</div><div class="stack-tools"><strong>Supabase</strong> (pgvector) · your call transcripts + shipped posts indexed for RAG</div></div>
+    <div class="stack-row"><div class="stack-layer">Landing Pages</div><div class="stack-tools"><strong>Webflow</strong> · branded lead-magnet pages auto-generated per asset</div></div>
+    <div class="stack-row"><div class="stack-layer">Distribution</div><div class="stack-tools"><strong>Unipile</strong> · scheduled LinkedIn publishing + DM follow-ups</div></div>
+    <div class="stack-row"><div class="stack-layer">Email Capture</div><div class="stack-tools"><strong>ConvertKit</strong> · lead-magnet email flow + weekly nurture send</div></div>
   </div>
 </div>
 
@@ -659,7 +710,32 @@ a{color:inherit;text-decoration:none}
 
 <!-- 07 — Not for everyone -->
 <div class="section">
-  <h2>Skip the call if any of these are you.</h2>
+  <h2>What sets this apart from a $99 template.</h2>
+  <p>Why this isn't another Notion-template content kit or a Hypefury subscription.</p>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <span class="diff-num">1</span>
+      <div class="diff-title">Brand depth, not templates</div>
+      <div class="diff-body">Seven strategic documents drive every draft: voice document, forbidden language, brand positioning, audience profile, offer ladder, format rubric, hook library. Templates are skin-deep. This engine is built on the way you actually think.</div>
+    </div>
+    <div class="diff-card">
+      <span class="diff-num">2</span>
+      <div class="diff-title">Five agents, not one prompt</div>
+      <div class="diff-body">Each post passes through context retrieval, format selection, hook generation, voice writing, and a nine-dimension QA pass. A single ChatGPT prompt can't catch its own mistakes. A pipeline of specialized agents can.</div>
+    </div>
+    <div class="diff-card">
+      <span class="diff-num">3</span>
+      <div class="diff-title">Your calls become content</div>
+      <div class="diff-body">Discovery calls and client work feed the brain through transcripts. The system gets sharper every week without you teaching it. Templates stay the same shape forever.</div>
+    </div>
+    <div class="diff-card">
+      <span class="diff-num">4</span>
+      <div class="diff-title">You own it on day fifteen</div>
+      <div class="diff-body">Everything runs on your accounts, your stack, your keys. No SaaS subscription, no vendor that disappears, no per-seat lock-in. The engine is yours the day you take handoff.</div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:80px">Skip the call if any of these are you.</h2>
   <ul class="notfor-list">
     <li><strong>Pre-revenue solo consultants.</strong> You don't have a content problem yet. You have a client problem. Book five discovery calls the hard way first, then come back.</li>
     <li><strong>Agencies under $20k/month.</strong> The ROI doesn't land at this stage. Keep writing manually for another quarter. Put the build budget into the next hire.</li>
