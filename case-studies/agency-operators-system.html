@@ -293,6 +293,97 @@ a{color:inherit;text-decoration:none}
 .builds-row-desc{font-size:17px;color:var(--ink-soft);line-height:1.65}
 @media(max-width:760px){.builds-row{grid-template-columns:1fr;gap:14px;padding:28px 0}.builds-row-metric{font-size:48px;white-space:normal}.builds-row-body{padding-top:0}}
 
+/* LEAD MAGNET SHOWCASE — 5-format auto-rotating mockup */
+.lm-showcase{max-width:720px;margin:40px auto 0;display:flex;flex-direction:column;gap:24px;align-items:center}
+.lm-frame{position:relative;width:100%;height:340px;background:var(--paper-raise);border:1px solid var(--hairline);box-shadow:0 2px 12px rgba(26,26,26,.05)}
+.lm-slide{position:absolute;inset:0;padding:28px 34px;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(8px);animation:lm-cycle 17.5s infinite cubic-bezier(.22,.84,.36,1)}
+.lm-slide:nth-child(1){animation-delay:0s}
+.lm-slide:nth-child(2){animation-delay:3.5s}
+.lm-slide:nth-child(3){animation-delay:7s}
+.lm-slide:nth-child(4){animation-delay:10.5s}
+.lm-slide:nth-child(5){animation-delay:14s}
+@keyframes lm-cycle{
+  0%{opacity:0;transform:translateY(8px)}
+  3%,17%{opacity:1;transform:translateY(0)}
+  20%,100%{opacity:0;transform:translateY(-6px)}
+}
+.lm-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.lm-mock{display:flex;flex-direction:column;gap:11px;flex:1;font-family:'Source Serif 4',serif}
+.lm-mock-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:22px;color:var(--ink);letter-spacing:-.01em;line-height:1.15;margin-bottom:4px}
+
+/* Checklist mock */
+.lm-check{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--ink-soft);line-height:1.4}
+.lm-check.done{color:var(--ink)}
+.lm-box{width:12px;height:12px;border:1.5px solid var(--accent);flex-shrink:0;position:relative}
+.lm-box.on{background:var(--accent)}
+.lm-box.on::after{content:'';position:absolute;left:2px;top:0px;width:3px;height:7px;border-right:1.5px solid var(--paper);border-bottom:1.5px solid var(--paper);transform:rotate(45deg)}
+
+/* Calculator mock */
+.lm-calc-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14.5px;color:var(--ink-soft);padding:8px 0;border-bottom:1px dashed var(--hairline)}
+.lm-calc-input{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:14px;color:var(--ink);background:var(--paper-sunk);padding:3px 10px;letter-spacing:.04em}
+.lm-calc-result{margin-top:10px;font-size:18px;color:var(--ink);line-height:1.3}
+.lm-calc-result em{font-style:italic;color:var(--accent);font-family:'DM Serif Display',serif;font-size:24px}
+
+/* Assessment mock */
+.lm-progress{width:100%;height:3px;background:var(--paper-sunk);position:relative;overflow:hidden}
+.lm-progress-fill{position:absolute;left:0;top:0;height:100%;width:0;background:var(--accent);animation:lm-progress-fill 17.5s infinite}
+@keyframes lm-progress-fill{
+  0%,40%{width:0}
+  45%{width:57%}
+  60%{width:57%}
+  62%,100%{width:0}
+}
+.lm-progress-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin-top:-4px}
+.lm-question{font-size:15.5px;color:var(--ink);line-height:1.4;font-weight:500;margin:4px 0}
+.lm-option{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-soft);padding:5px 0}
+.lm-option.selected{color:var(--ink);font-weight:500}
+.lm-radio{width:11px;height:11px;border:1.5px solid var(--ink-mute);border-radius:50%;flex-shrink:0;position:relative}
+.lm-radio.on{border-color:var(--accent)}
+.lm-radio.on::after{content:'';position:absolute;inset:2px;background:var(--accent);border-radius:50%}
+
+/* Guide mock */
+.lm-guide-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute)}
+.lm-guide-title{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.12;color:var(--ink);letter-spacing:-.015em;max-width:480px}
+.lm-guide-title em{font-style:italic;color:var(--accent)}
+.lm-guide-toc{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.lm-toc-row{font-size:14px;color:var(--ink-soft);display:flex;gap:14px;font-family:'Source Serif 4',serif}
+.lm-toc-row span{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--accent);min-width:24px}
+
+/* Walkthrough chat mock */
+.lm-chat{padding:11px 16px;font-size:14.5px;line-height:1.5;max-width:80%;border-radius:2px}
+.lm-chat.user{background:var(--paper-sunk);color:var(--ink);align-self:flex-end}
+.lm-chat.ai{background:var(--paper);border:1px solid var(--hairline);border-left:2px solid var(--accent);color:var(--ink);align-self:flex-start;max-width:88%}
+.lm-caret{display:inline-block;color:var(--accent);font-weight:700;animation:lm-caret-blink 1s infinite step-end;margin-left:2px}
+@keyframes lm-caret-blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+
+/* Dots indicator */
+.lm-dots{display:flex;gap:8px;align-items:center}
+.lm-dot{width:8px;height:8px;background:var(--hairline-bold);transition:background .3s;animation:lm-dot-active 17.5s infinite}
+.lm-dot:nth-child(1){animation-delay:0s}
+.lm-dot:nth-child(2){animation-delay:3.5s}
+.lm-dot:nth-child(3){animation-delay:7s}
+.lm-dot:nth-child(4){animation-delay:10.5s}
+.lm-dot:nth-child(5){animation-delay:14s}
+@keyframes lm-dot-active{
+  0%,18%{background:var(--accent);transform:scale(1.2)}
+  20%,100%{background:var(--hairline-bold);transform:scale(1)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .lm-slide{animation:none;opacity:1;position:static;display:none}
+  .lm-slide:first-child{display:flex}
+  .lm-dot{animation:none}
+  .lm-dot:first-child{background:var(--accent)}
+  .lm-caret{animation:none}
+  .lm-progress-fill{animation:none;width:57%}
+}
+@media(max-width:680px){
+  .lm-frame{height:380px}
+  .lm-slide{padding:20px 22px}
+  .lm-mock-title{font-size:18px}
+  .lm-guide-title{font-size:20px}
+}
+
 /* COMMAND CENTER — full-bleed proof screenshot */
 .command-center{max-width:1080px;margin:0 auto}
 .command-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
@@ -543,6 +634,76 @@ a{color:inherit;text-decoration:none}
       <span class="skill-num">3</span>
       <div class="skill-name">Your list stays warm without you remembering it exists</div>
       <div class="skill-outcome">Every email captured by a magnet flows into your weekly nurture send, drafted by the same engine. The list compounds quietly between client work.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Lead Magnet showcase (animated 5-format rotator) -->
+<div class="section section-sunk">
+  <h2>Five magnet shapes. One engine.</h2>
+  <p>The same content brain generates every format. Each prospect gets the one matched to their stage and answer.</p>
+  <div class="lm-showcase" aria-label="Five lead magnet formats rotating">
+    <div class="lm-frame">
+      <div class="lm-slide" data-fmt="checklist">
+        <div class="lm-label">Format 01 · Checklist</div>
+        <div class="lm-mock lm-mock-checklist">
+          <div class="lm-mock-title">Pre-flight readiness</div>
+          <div class="lm-check done"><span class="lm-box on"></span>Map the current workflow end-to-end</div>
+          <div class="lm-check done"><span class="lm-box on"></span>Score each step against the 4 preconditions</div>
+          <div class="lm-check"><span class="lm-box"></span>Document the decision logic</div>
+          <div class="lm-check"><span class="lm-box"></span>Pick the first cycle to automate</div>
+        </div>
+      </div>
+      <div class="lm-slide" data-fmt="calculator">
+        <div class="lm-label">Format 02 · Calculator</div>
+        <div class="lm-mock lm-mock-calculator">
+          <div class="lm-mock-title">Workflow cost calculator</div>
+          <div class="lm-calc-row"><span>Manual hrs / week</span><span class="lm-calc-input">18</span></div>
+          <div class="lm-calc-row"><span>Loaded rate / hr</span><span class="lm-calc-input">$72</span></div>
+          <div class="lm-calc-row"><span>Annual headcount drag</span><span class="lm-calc-input">$67,392</span></div>
+          <div class="lm-calc-result">Recoverable in <em>92 days</em></div>
+        </div>
+      </div>
+      <div class="lm-slide" data-fmt="assessment">
+        <div class="lm-label">Format 03 · Assessment</div>
+        <div class="lm-mock lm-mock-assessment">
+          <div class="lm-mock-title">Agent-Ready Audit</div>
+          <div class="lm-progress"><span class="lm-progress-fill"></span></div>
+          <div class="lm-progress-label">Step 4 of 7</div>
+          <div class="lm-question">Where does your team's time actually leak?</div>
+          <div class="lm-option"><span class="lm-radio"></span>Manual reporting compile</div>
+          <div class="lm-option selected"><span class="lm-radio on"></span>Lead qualification + intake</div>
+          <div class="lm-option"><span class="lm-radio"></span>Client onboarding</div>
+        </div>
+      </div>
+      <div class="lm-slide" data-fmt="guide">
+        <div class="lm-label">Format 04 · Guide</div>
+        <div class="lm-mock lm-mock-guide">
+          <div class="lm-guide-eyebrow">The Agent-Ready Ops Field Guide</div>
+          <div class="lm-guide-title">Build the first cycle <em>before</em> the second.</div>
+          <div class="lm-guide-toc">
+            <div class="lm-toc-row"><span>01</span> Map the bleed</div>
+            <div class="lm-toc-row"><span>02</span> Score the workflow</div>
+            <div class="lm-toc-row"><span>03</span> Pick the narrow cut</div>
+            <div class="lm-toc-row"><span>04</span> Ship the first loop</div>
+          </div>
+        </div>
+      </div>
+      <div class="lm-slide" data-fmt="walkthrough">
+        <div class="lm-label">Format 05 · Live AI Walkthrough</div>
+        <div class="lm-mock lm-mock-walkthrough">
+          <div class="lm-mock-title">Onboarding analyst</div>
+          <div class="lm-chat user">How would AI cut hours for a 12-person agency?</div>
+          <div class="lm-chat ai">Three places to start, in order of payback. First, your reporting compile<span class="lm-caret">▍</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="lm-dots">
+      <span class="lm-dot"></span>
+      <span class="lm-dot"></span>
+      <span class="lm-dot"></span>
+      <span class="lm-dot"></span>
+      <span class="lm-dot"></span>
     </div>
   </div>
 </div>
