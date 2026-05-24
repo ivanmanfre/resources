@@ -97,7 +97,7 @@ a{color:inherit;text-decoration:none}
 .flow-step-desc{font-size:15px;color:var(--ink-soft);line-height:1.7}
 
 /* SKILLS / BENEFIT GRID */
-.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
 .skill-card{padding:32px 28px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
 .skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:48px;line-height:.95;color:var(--accent);display:block;margin-bottom:14px;letter-spacing:-.02em}
 .skill-name{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em;line-height:1.25}
@@ -212,7 +212,7 @@ a{color:inherit;text-decoration:none}
   letter-spacing:.22em;text-transform:uppercase;
   color:rgba(112,154,93,.52);white-space:nowrap;
 }
-.arch-outs{display:flex;gap:16px;width:100%}
+.arch-outs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%}
 .arch-out{
   flex:1;position:relative;overflow:hidden;
   background:rgba(112,154,93,.08);
@@ -245,7 +245,7 @@ a{color:inherit;text-decoration:none}
   .sysflow-wrap{padding:56px max(32px,calc((100vw - 1080px)/2)) 44px}
 }
 @media(max-width:700px){
-  .arch-outs{flex-direction:column}
+  .arch-outs{grid-template-columns:1fr 1fr}
   .arch-sources{gap:6px}
   .arch-flow{gap:8px}
 }
@@ -621,7 +621,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- 02 — What we build -->
 <div class="section">
-  <h2>Three outputs running off one <em>content brain</em>.</h2>
+  <h2>Four outputs running off one <em>content brain</em>.</h2>
   <p>The engine reads your calls, your past posts, and your competitors' best work, then drafts in your voice and queues each piece for your one-tap approval.</p>
   <div class="skills-grid">
     <div class="skill-card">
@@ -632,10 +632,15 @@ a{color:inherit;text-decoration:none}
     <div class="skill-card">
       <span class="skill-num">2</span>
       <div class="skill-name">Qualified leads land in your inbox while you sleep</div>
-      <div class="skill-outcome">Five lead-magnet formats off one engine: Checklist, Calculator, Assessment, Guide, Live AI Walkthrough. Each prospect answers, gets a real result, lands in your nurture list with a follow-up sent within 24 hours.</div>
+      <div class="skill-outcome">Four lead-magnet formats off one engine: Checklist, Calculator, Assessment, Guide. Each prospect answers, gets a real result, lands in your nurture list with a follow-up sent within 24 hours.</div>
     </div>
     <div class="skill-card">
       <span class="skill-num">3</span>
+      <div class="skill-name">Branded carousels that earn the save</div>
+      <div class="skill-outcome">Eight carousel styles off the same brain: Educational Breakdown, Step-by-Step, Framework, Data-Driven, Before-After, Myth-Busting, Case Study, Comic Explainer. Generated from approved post topics, 1080×1350 ready to post.</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-num">4</span>
       <div class="skill-name">Your list stays warm without you remembering it exists</div>
       <div class="skill-outcome">Every email captured by a magnet flows into your weekly nurture send, drafted by the same engine. The list compounds quietly between client work.</div>
     </div>
@@ -794,6 +799,10 @@ a{color:inherit;text-decoration:none}
           <div class="arch-out-body">Unipile schedules it for the time slot you picked. Scored, in your voice, ready.</div>
         </div>
         <div class="arch-out">
+          <div class="arch-out-lbl">Carousel</div>
+          <div class="arch-out-body">Eight styles off the same engine. 1080×1350 slides generated from the approved post topic, ready to upload.</div>
+        </div>
+        <div class="arch-out">
           <div class="arch-out-lbl">Lead Magnet</div>
           <div class="arch-out-body">Landing page, resource page, cover image, follow-up email. One approval, the asset goes live.</div>
         </div>
@@ -847,7 +856,7 @@ a{color:inherit;text-decoration:none}
       <div class="payoff-text">Newsletter goes out to the list the magnets built. You spent zero minutes on it this week. The list is up by 47.</div>
     </div>
   </div>
-  <p class="payoff-close"><strong>Total time on content this week: under 30 minutes.</strong> Every week without consistent presence is authority going to competitors who show up daily.</p>
+  <p class="payoff-close"><strong>Total time on content this week: under 30 minutes.</strong></p>
 </div>
 
 <!-- 05 — The math -->
@@ -863,7 +872,7 @@ a{color:inherit;text-decoration:none}
       <div class="roi-stat-label">Post cadence, hands-off</div>
     </div>
     <div class="roi-stat">
-      <div class="roi-stat-value">5</div>
+      <div class="roi-stat-value">4</div>
       <div class="roi-stat-label">Lead magnet formats</div>
     </div>
   </div>
@@ -892,7 +901,7 @@ a{color:inherit;text-decoration:none}
       <img src="../proposals/assets/4creatives/ivan-assessment-scoring.png" alt="Interactive assessment scoring view" loading="lazy">
       <figcaption class="proof-card-body">
         <div class="proof-card-label">Live assessment lead magnet</div>
-        <div class="proof-card-caption">One of five lead magnet formats. Question-based, branded, scored, fully interactive. Generated end-to-end from one approved post topic.</div>
+        <div class="proof-card-caption">One of four lead magnet formats. Question-based, branded, scored, fully interactive. Generated end-to-end from one approved post topic.</div>
       </figcaption>
     </figure>
     <figure class="proof-card">
