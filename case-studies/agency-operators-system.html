@@ -97,11 +97,15 @@ a{color:inherit;text-decoration:none}
 .flow-step-desc{font-size:15px;color:var(--ink-soft);line-height:1.7}
 
 /* SKILLS / BENEFIT GRID */
-.skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
-.skill-card{padding:32px 28px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
-.skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:48px;line-height:.95;color:var(--accent);display:block;margin-bottom:14px;letter-spacing:-.02em}
-.skill-name{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em;line-height:1.25}
-.skill-outcome{font-size:14px;color:var(--ink-soft);line-height:1.65}
+/* EDITORIAL NUMERAL ROWS — applied to skills, diffs, steps */
+.skills-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px;margin:48px 0 0;padding-top:36px;border-top:1px solid var(--hairline);max-width:1180px}
+.skill-card{display:flex;flex-direction:column;gap:14px;position:relative;background:none;border:none;padding:0;min-width:0}
+.skill-card::before{content:'';position:absolute;top:-14px;left:0;width:14px;height:14px;background:var(--accent)}
+.skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:60px;line-height:.9;color:var(--ink);display:block;letter-spacing:-.03em;margin-bottom:4px}
+.skill-name{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);line-height:1.45;margin-bottom:4px}
+.skill-outcome{font-size:15px;color:var(--ink-soft);line-height:1.6}
+@media(max-width:980px){.skills-grid{grid-template-columns:repeat(2,1fr);gap:36px}}
+@media(max-width:560px){.skills-grid{grid-template-columns:1fr;gap:28px}}
 
 /* SOLUTION — full-width dark section */
 .solution-dark-section{padding-top:0;border-top-color:rgba(247,244,239,.06)}
@@ -412,12 +416,13 @@ a{color:inherit;text-decoration:none}
 .command-image-wrap img{display:block;width:100%;height:auto}
 
 /* DIFFERENTIATORS GRID — answers "why not $99 templates" */
-.diff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:32px 0;max-width:1080px}
-.diff-card{background:var(--paper-raise);border:1px solid var(--hairline);border-left:2px solid var(--accent);padding:32px 36px;display:flex;flex-direction:column;gap:12px}
-.diff-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:48px;line-height:1;color:var(--accent);letter-spacing:-.02em;margin-bottom:4px}
-.diff-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;line-height:1.4}
-.diff-body{font-size:16px;color:var(--ink-soft);line-height:1.65}
-@media(max-width:760px){.diff-grid{grid-template-columns:1fr;gap:16px}}
+.diff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px 56px;margin:48px 0 0;padding-top:36px;border-top:1px solid var(--hairline);max-width:1080px}
+.diff-card{display:flex;flex-direction:column;gap:12px;position:relative;background:none;border:none;padding:0}
+.diff-card::before{content:'';position:absolute;top:-14px;left:0;width:14px;height:14px;background:var(--accent)}
+.diff-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:84px;line-height:.85;color:var(--ink);letter-spacing:-.04em;margin-bottom:4px}
+.diff-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;line-height:1.4}
+.diff-body{font-size:16.5px;color:var(--ink-soft);line-height:1.65}
+@media(max-width:760px){.diff-grid{grid-template-columns:1fr;gap:48px}.diff-num{font-size:64px}}
 
 /* TECH STACK TABLE */
 .stack-grid{display:grid;grid-template-columns:auto 1fr;gap:0;margin:32px 0;max-width:920px;border-top:1px solid var(--hairline)}
@@ -462,11 +467,13 @@ a{color:inherit;text-decoration:none}
 }
 
 /* STEPS */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
-.step{background:var(--paper-raise);border:1px solid var(--hairline);padding:28px;position:relative}
-.step-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:48px;color:var(--accent);line-height:1;margin-bottom:14px;opacity:.92}
-.step-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
-.step-body{font-size:15px;color:var(--ink-soft);line-height:1.65}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:48px;padding-top:36px;border-top:1px solid var(--hairline)}
+.step{display:flex;flex-direction:column;gap:12px;position:relative;background:none;border:none;padding:0}
+.step::before{content:'';position:absolute;top:-14px;left:0;width:14px;height:14px;background:var(--accent)}
+.step-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;color:var(--ink);line-height:.9;letter-spacing:-.03em;margin-bottom:4px}
+.step-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+.step-body{font-size:15.5px;color:var(--ink-soft);line-height:1.65}
+@media(max-width:760px){.steps{grid-template-columns:1fr;gap:40px}.step-num{font-size:52px}}
 
 /* CTA */
 .cta-section{padding:120px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;text-align:center;background:var(--paper-sunk)}
@@ -501,7 +508,7 @@ a{color:inherit;text-decoration:none}
 @media(max-width:880px){
   .section{padding:64px 32px}
   .cta-section{padding:80px 32px}
-  .roi-grid,.flow-grid,.skills-grid{grid-template-columns:1fr}
+  .roi-grid,.flow-grid{grid-template-columns:1fr}
   .roi-stat{border-right:none;border-bottom:1px solid var(--hairline);padding:32px 0}
   .roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:0}
   .roi-stat:last-child{border-bottom:none}
