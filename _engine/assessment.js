@@ -122,6 +122,18 @@
     var startBtn = make("button", { class: "lmc-intro-start", type: "button", "aria-label": startLabel }, escapeHtml(startLabel) + " <span aria-hidden=\"true\">\u2193</span>");
     startBtn.addEventListener("click", function () {
       var target = document.querySelector(startTargetSelector);
+      // Reveal the gated widget (if any) and scroll to it.
+      if (target && target.classList && target.classList.contains("lmc-widget-gated")) {
+        target.classList.remove("lmc-widget-gated");
+        target.classList.add("lmc-widget-revealed");
+        // Trigger the first question's slide-in animation now that the
+        // widget is visible. The render() pass left it primed but hidden.
+        if (typeof window.__lmc_revealFirst === "function") {
+          // Small delay lets the widget fade-in start before the slide
+          // animation begins, so they stack into one continuous motion.
+          setTimeout(window.__lmc_revealFirst, 60);
+        }
+      }
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
       beacon("cta_click", { answers: { target: "intro_start" } });
     });
@@ -171,10 +183,12 @@
     hero.appendChild(hi);
     root.appendChild(hero);
 
+    // Dynamic start label: resume if any answers were saved, start otherwise.
+    var introHasProgress = Object.keys(answers).some(function (k) { return answers[k] != null; });
     var introSection = buildIntro(data, ".lmc-widget", {
       defaultValueBullet: "15-20 questions, 5 categories. Honest answers = honest result",
       defaultNextBullet: "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes",
-      startLabel: "Start the assessment",
+      startLabel: introHasProgress ? "Resume the assessment" : "Start the assessment",
       defaultNote: "No signup to take it. Results stay private until you unlock the full report."
     });
     root.appendChild(introSection);
@@ -185,14 +199,26 @@
     widget.appendChild(card);
     root.appendChild(widget);
 
-    function renderQuestion() {
-      if (idx >= questions.length) { renderResult(); return; }
-      card.innerHTML = "";
-      var q = questions[idx];
-      if (!q) { renderResult(); return; }
+    // Start gate: hide the widget if no progress yet. The intro Start button
+    // removes the gate class (defined in CSS) and triggers `revealFirst`.
+    var hasProgress = Object.keys(answers).some(function (k) { return answers[k] != null; });
+    if (!hasProgress) {
+      widget.classList.add("lmc-widget-gated");
+    }
+    // Expose a hook so the intro Start button can kick off the first slide
+    // entrance once the widget is visible.
+    window.__lmc_revealFirst = function () {
+      window.__lmc_revealFirst = null; // one-shot
+      if (idx === 0) renderQuestion("fwd");
+    };
 
-      if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
-      var qH = make("h2", { class: "lmc-question", id: "lmc-question-" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
+    function buildQuestionSlide(slideIdx) {
+      var q = questions[slideIdx];
+      var slide = make("div", { class: "lmc-slide", "data-idx": String(slideIdx) });
+      if (!q) return slide;
+
+      if (q.category_name) slide.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
+      var qH = make("h2", { class: "lmc-question", id: "lmc-question-" + slideIdx, tabindex: "-1" }, esc(q.text || q.label || ""));
       if (window.LM && window.LM.editMode && q.category_id && q.id) {
         var catIdx = (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
         var qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
@@ -200,10 +226,9 @@
           window.LM.editMode.registerField(qH, "categories[" + catIdx + "].questions[" + qIdx + "].text", { multiline: true });
         }
       }
-      card.appendChild(qH);
+      slide.appendChild(qH);
 
       var options = q.answers || [];
-      // If no answers array, default to 1-5 Likert
       if (!options.length) {
         options = [
           { label: "1 — Strongly disagree", score: 1 },
@@ -214,13 +239,13 @@
         ];
       }
 
-      var ul = make("ul", { class: "lmc-options", role: "radiogroup", "aria-labelledby": "lmc-question-" + idx });
+      var ul = make("ul", { class: "lmc-options", role: "radiogroup", "aria-labelledby": "lmc-question-" + slideIdx });
       options.forEach(function (opt, ix) {
         var li = make("li");
-        var inputId = "lmc-q" + idx + "-opt" + ix;
+        var inputId = "lmc-q" + slideIdx + "-opt" + ix;
         var checked = (answers[q.id || "__persona"] === ix);
         var label = make("label", { class: "lmc-opt" + (checked ? " selected" : ""), for: inputId });
-        var input = make("input", { type: "radio", name: "q" + idx, id: inputId, value: String(ix) });
+        var input = make("input", { type: "radio", name: "q" + slideIdx, id: inputId, value: String(ix) });
         if (checked) input.setAttribute("checked", "checked");
         label.appendChild(input);
         label.appendChild(make("span", null, esc(opt.label || opt.text || String(opt))));
@@ -231,53 +256,123 @@
           answers[q.id || "__persona"] = ix;
           if (opt.tag) answers[(q.id || "__persona") + "__tag"] = opt.tag;
           saveAnswers(data.slug, answers);
-          setTimeout(function () { goNext(); }, 200);
+          setTimeout(function () { goNext(); }, 220);
         });
       });
-      card.appendChild(ul);
+      slide.appendChild(ul);
 
       var nav = make("div", { class: "lmc-nav" });
       var back = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Back");
-      if (idx === 0) back.setAttribute("disabled", "disabled");
-      back.addEventListener("click", function () { if (idx > 0) { idx--; renderQuestion(); } });
-      var next = make("button", { class: "lmc-btn", type: "button", id: "lmc-next" }, idx === questions.length - 1 ? "See result →" : "Next →");
+      if (slideIdx === 0) back.setAttribute("disabled", "disabled");
+      back.addEventListener("click", function () { if (idx > 0) { idx--; renderQuestion("back"); } });
+      var next = make("button", { class: "lmc-btn", type: "button", id: "lmc-next" }, slideIdx === questions.length - 1 ? "See result →" : "Next →");
       if (answers[q.id || "__persona"] == null) next.setAttribute("disabled", "disabled");
-      next.addEventListener("click", goNext);
+      next.addEventListener("click", function () { goNext(); });
       nav.appendChild(back); nav.appendChild(next);
-      card.appendChild(nav);
+      slide.appendChild(nav);
 
-      // Focus management
-      setTimeout(function () { var h = $("#lmc-question-" + idx); if (h) h.focus(); }, 10);
+      return slide;
+    }
+
+    function renderQuestion(direction) {
+      if (idx >= questions.length) { renderResult(); return; }
+      direction = direction === "back" ? "back" : "fwd";
+      var newSlide = buildQuestionSlide(idx);
+      var current = card.querySelector(".lmc-slide");
+
+      // Honour reduced-motion: skip the slide animation entirely.
+      var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!current || reduced) {
+        card.innerHTML = "";
+        card.appendChild(newSlide);
+        setTimeout(function () { var h = $("#lmc-question-" + idx); if (h) h.focus(); }, 10);
+        return;
+      }
+
+      // Animate out the current slide, then swap in the new one.
+      newSlide.classList.add(direction === "fwd" ? "lmc-in-fwd" : "lmc-in-back");
+      current.classList.add(direction === "fwd" ? "lmc-out-fwd" : "lmc-out-back");
+
+      var swapped = false;
+      function swap() {
+        if (swapped) return; swapped = true;
+        if (current && current.parentNode === card) card.removeChild(current);
+        card.appendChild(newSlide);
+        // Force a reflow before removing the in-* class so the transition fires.
+        void newSlide.offsetWidth;
+        newSlide.classList.remove("lmc-in-fwd");
+        newSlide.classList.remove("lmc-in-back");
+        setTimeout(function () { var h = $("#lmc-question-" + idx); if (h) h.focus({ preventScroll: true }); }, 280);
+      }
+      // Wait for the outgoing transition. Fall back to a hard timeout in case
+      // transitionend doesn't fire (e.g. element pulled offscreen).
+      current.addEventListener("transitionend", swap, { once: true });
+      setTimeout(swap, 320);
     }
 
     function goNext() {
       var q = questions[idx];
       if (answers[q.id || "__persona"] == null) return;
-      if (idx < questions.length - 1) { idx++; renderQuestion(); }
+      if (idx < questions.length - 1) { idx++; renderQuestion("fwd"); }
       else renderResult();
     }
 
     function renderResult() {
       var res = computeResult(data, answers);
       card.innerHTML = "";
+      card.classList.add("lmc-result-card");
 
-      // ── Tier card (shared component) ───────────────────────────────
+      // ── Compute display data ────────────────────────────────────────
       var tierKey = res.tier.class === "low" ? "critical"
                    : res.tier.class === "medium" ? "growth"
                    : "optimized";
-      var tierNote = res.weakest
-        ? "Your weakest area is " + res.weakest.name + " (" + res.weakest.score + "/100). That's where the biggest leak usually lives."
+      // Headline copy: data.results_copy.tier_headline[tier] overrides
+      // the defaults; otherwise we use a generic italicised tier name.
+      var copyOverride = (data.results_copy && data.results_copy.tier_headline) || {};
+      var tierHeadlineMap = {
+        critical:  copyOverride.critical  || "You're at <em>critical</em> risk.",
+        growth:    copyOverride.growth    || "You're in <em>growth stage</em>.",
+        optimized: copyOverride.optimized || "You're running <em>optimized</em>."
+      };
+      var headlineHtml = tierHeadlineMap[tierKey] || ("<em>" + esc(res.tier.name || "Score") + "</em>");
+      var weakestName = res.weakest && res.weakest.name;
+      var weakestPct = res.weakest && res.weakest.score;
+      var noteHtml = res.weakest
+        ? "Your weakest area is <strong>" + esc(weakestName) + "</strong> (" + weakestPct + "/100). That's where the biggest leak usually lives."
         : "Your overall score tells the story; the category breakdown points to the specific fix.";
-      var tierBlock = make("div", { class: "lmc-tier lmc-tier-" + tierKey });
-      tierBlock.innerHTML =
-        '<div class="lmc-tier-head">' +
-          '<span class="lmc-tier-label">' + esc(res.tier.name || "Tier") + '</span>' +
-          '<span class="lmc-tier-score"><em>' + res.overall + '</em><span>/100</span></span>' +
-        '</div>' +
-        '<p class="lmc-tier-note">' + esc(tierNote) + '</p>';
-      card.appendChild(tierBlock);
 
-      // ── Top-3 gap questions (the 3 lowest-scoring answered items) ───
+      // ── Container ────────────────────────────────────────────────────
+      var wrap = make("div", { class: "lmc-result" });
+
+      // ── Score hero (sage progress ring + huge italic score + tier headline)
+      var hero = make("div", { class: "lmc-score-hero" });
+      hero.setAttribute("data-tier", tierKey);
+
+      // Ring: r=92, circumference ≈ 578. Animation starts at full offset
+      // and drops to (1 - score/100) * c on the next paint.
+      var R = 92;
+      var C = 2 * Math.PI * R;
+      var ring = make("div", { class: "lmc-score-ring" });
+      ring.innerHTML =
+        '<svg viewBox="0 0 200 200" aria-hidden="true">' +
+          '<circle class="ring-track" cx="100" cy="100" r="' + R + '"></circle>' +
+          '<circle class="ring-fill" cx="100" cy="100" r="' + R + '" stroke-dasharray="' + C.toFixed(2) + '" stroke-dashoffset="' + C.toFixed(2) + '"></circle>' +
+        '</svg>' +
+        '<div class="lmc-score-ring-center">' +
+          '<span class="lmc-score-number" data-target="' + res.overall + '">0</span>' +
+          '<span class="lmc-score-denom">out of 100</span>' +
+        '</div>';
+      hero.appendChild(ring);
+
+      var heroBody = make("div", { class: "lmc-score-body" });
+      heroBody.appendChild(make("div", { class: "lmc-score-eyebrow" }, "Your read"));
+      heroBody.appendChild(make("h2", { class: "lmc-score-headline" }, headlineHtml));
+      heroBody.appendChild(make("p", { class: "lmc-score-note" }, noteHtml));
+      hero.appendChild(heroBody);
+      wrap.appendChild(hero);
+
+      // ── Top-3 gap questions ────────────────────────────────────────
       var gaps = [];
       (data.categories || []).forEach(function (cat) {
         (cat.questions || []).forEach(function (q) {
@@ -306,11 +401,13 @@
       });
       gaps.sort(function (a, b) { return b.gapScore - a.gapScore; });
       var topGaps = gaps.filter(function (g) { return g.gapScore > 0.2; }).slice(0, 3);
+
       if (topGaps.length) {
+        var gapsSec = make("section", { class: "lmc-result-section" });
+        gapsSec.style.setProperty("--lmc-delay", "240ms");
         var h = make("h3", { class: "lmc-results-h" });
         h.innerHTML = "Top " + topGaps.length + " gap" + (topGaps.length === 1 ? "" : "s") + " to close <em>this week</em>";
-        card.appendChild(h);
-
+        gapsSec.appendChild(h);
         var list = make("ol", { class: "lmc-gap-list" });
         list.innerHTML = topGaps.map(function (g, i) {
           return '<li class="lmc-gap">' +
@@ -321,31 +418,37 @@
             '</div>' +
           '</li>';
         }).join("");
-        card.appendChild(list);
+        gapsSec.appendChild(list);
 
-        // "What to do Monday" — top-gap fix, or the fallback weakest-cat rec
-        var mondayTxt = (topGaps[0] && topGaps[0].fix) || tierNote;
+        var mondayTxt = (topGaps[0] && topGaps[0].fix) || (res.weakest ? "Start with your weakest category: " + res.weakest.name + "." : "Pick the gap that hurts most this week and ship one fix.");
         var nm = make("p", { class: "lmc-next-move" });
         nm.innerHTML = '<span class="lmc-next-label">What to do Monday</span>' + esc(mondayTxt);
-        card.appendChild(nm);
+        gapsSec.appendChild(nm);
+        wrap.appendChild(gapsSec);
       }
+
+      // ── Capture or unlocked ────────────────────────────────────────
+      var captureHost = make("div", { class: "lmc-result-section", id: "lmc-result-capture-host" });
+      captureHost.style.setProperty("--lmc-delay", "420ms");
+      wrap.appendChild(captureHost);
 
       if (!captured) {
         var gate = make("div", { class: "lmc-capture", id: "lmc-capture" });
         gate.innerHTML =
-          '<h3>Unlock your full report</h3>' +
-          '<p>Enter your email and we\'ll reveal your per-category breakdown, personalized recommendations, and the 3 fixes I\'d prioritize based on your weakest category.</p>' +
+          '<h2>Unlock your <em>full report</em></h2>' +
+          '<p>Enter your email and we\'ll reveal your per-category breakdown, personalised recommendations, and the 3 fixes I\'d prioritise based on your weakest category.</p>' +
           '<form class="lmc-form" id="lmc-capture-form">' +
           '<label class="sr-only" for="lmc-email">Email</label>' +
           '<input class="lmc-form-input" id="lmc-email" type="email" autocomplete="email" required placeholder="you@company.com" />' +
           '<button class="lmc-btn" type="submit">Unlock report</button>' +
           '</form>' +
           '<p class="lmc-note">No spam. One email with your report, then you decide.</p>';
-        card.appendChild(gate);
-        var form = $("#lmc-capture-form");
+        captureHost.appendChild(gate);
+        var form = gate.querySelector("#lmc-capture-form");
+        var emailInput = gate.querySelector("#lmc-email");
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          var em = ($("#lmc-email") || {}).value || "";
+          var em = (emailInput || {}).value || "";
           if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
           saveEmail(data.slug, em);
           captured = true;
@@ -358,15 +461,46 @@
             persona: typeof res.persona === "number" && data.persona_selector && data.persona_selector.answers ? (data.persona_selector.answers[res.persona] || {}).tag || null : null,
             answers: answers
           });
-          // Phase D3.3: generate share card + inject og:image meta
           generateShareCard(data, res);
-          renderUnlocked(res);
+          renderUnlocked(res, captureHost);
         });
       } else {
-        // Already captured on this device
         generateShareCard(data, res);
-        renderUnlocked(res);
+        renderUnlocked(res, captureHost);
       }
+
+      card.appendChild(wrap);
+
+      // ── Kick off score-ring + count-up animation after paint ────────
+      var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var fillEl = hero.querySelector(".ring-fill");
+      var numEl = hero.querySelector(".lmc-score-number");
+      if (reduced) {
+        if (fillEl) fillEl.style.strokeDashoffset = (C * (1 - res.overall / 100)).toFixed(2);
+        if (numEl) numEl.textContent = String(res.overall);
+      } else {
+        requestAnimationFrame(function () {
+          setTimeout(function () {
+            if (fillEl) fillEl.style.strokeDashoffset = (C * (1 - res.overall / 100)).toFixed(2);
+            if (numEl) countUp(numEl, 0, res.overall, 1300);
+          }, 220);
+        });
+      }
+    }
+
+    // Tween a number element from `from` to `to` over `duration` ms.
+    function countUp(el, from, to, duration) {
+      var start = null;
+      function step(ts) {
+        if (start == null) start = ts;
+        var t = Math.min(1, (ts - start) / duration);
+        // easeOutCubic
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = String(Math.round(from + (to - from) * eased));
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = String(to);
+      }
+      requestAnimationFrame(step);
     }
 
     // D3.3: best-effort share card generation (legacy engine)
@@ -398,20 +532,25 @@
       } catch (_) {}
     }
 
-    function renderUnlocked(res) {
-      // Remove any gate
-      var gate = $("#lmc-capture"); if (gate) gate.parentNode.removeChild(gate);
-      var unl = make("div", { class: "lmc-unlocked" });
-      unl.appendChild(make("h3", { style: "font-size:1.5rem;font-weight:900;text-transform:uppercase;margin:1rem 0 0.5rem;" }, "Per-Category Breakdown"));
+    function renderUnlocked(res, host) {
+      // host = the .lmc-result-section that previously held the gate.
+      // Replace its contents with the unlocked breakdown.
+      if (!host) host = card;
+      host.innerHTML = "";
 
+      host.appendChild(make("h3", { class: "lmc-result-unlock-h" }, "Per-category <em>breakdown</em>"));
+
+      var catFills = []; // collect to arm bar widths after paint
+      var catOrder = 0;
       (data.categories || []).forEach(function (cat) {
         var key = cat.id || cat.name;
         var catRes = res.per_category[key];
         if (!catRes) return;
         var block = make("div", { class: "lmc-category-block" });
+        block.style.setProperty("--lmc-delay", (catOrder * 90) + "ms");
         block.appendChild(make("h4", null, esc(cat.name || cat.id)));
         var bar = make("div", { class: "lmc-cat-bar" });
-        bar.innerHTML = '<div class="lmc-cat-track"><div class="lmc-cat-fill" style="width:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '/100</span>';
+        bar.innerHTML = '<div class="lmc-cat-track"><div class="lmc-cat-fill" style="--lmc-cat-target:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '<span style="font-size:.75em;color:rgba(26,26,26,.5)">/100</span></span>';
         block.appendChild(bar);
         var rec = pickRec(cat, catRes.score);
         if (rec) {
@@ -425,50 +564,47 @@
           rc.innerHTML = '<strong>' + esc(tag) + '</strong>' + esc(text) + (steps ? '<ul>' + steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul>' : "");
           block.appendChild(rc);
         }
-        unl.appendChild(block);
+        host.appendChild(block);
+        catFills.push({ el: block.querySelector(".lmc-cat-fill"), delayMs: 400 + catOrder * 90 });
+        catOrder++;
       });
 
-      // Share row
-      var share = make("div", { class: "lmc-share" });
-      var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the 10 min:";
-      var currentUrl = location.href.split("?")[0];
-      var liUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(currentUrl) + "&summary=" + encodeURIComponent(shareText);
-      var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
-      liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });
-      share.appendChild(liBtn);
-      var waUrl = window.LM && window.LM.share ? window.LM.share.whatsapp(shareText) : "#";
-      var waBtn = make("a", { class: "lmc-btn lm-share-whatsapp", href: waUrl, target: "_blank", rel: "noopener" }, "Share on WhatsApp");
-      waBtn.addEventListener("click", function () { beacon("share", { answers: { target: "whatsapp", score: res.overall } }); });
-      share.appendChild(waBtn);
-      var copy = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Copy result link");
-      copy.addEventListener("click", function () {
-        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(currentUrl).then(function () { toast("Link copied"); });
-        beacon("share", { answers: { target: "copy_link", score: res.overall } });
+      // Arm bar widths after their parent blocks fade in.
+      catFills.forEach(function (entry) {
+        setTimeout(function () { if (entry.el) entry.el.classList.add("lmc-cat-fill-armed"); }, entry.delayMs);
       });
-      share.appendChild(copy);
-      var retake = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Retake");
+
+      // Bottom CTA (if defined). Rendered as a flat editorial block.
+      if (data.cta && data.cta.url) {
+        var ctaBox = make("div", { class: "lmc-unlocked-cta" });
+        ctaBox.innerHTML =
+          '<p class="lmc-unlocked-cta-eyebrow">Next move</p>' +
+          '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3>' +
+          '<p>' + esc(data.cta.description || "Book a 20-min working session. Free, no pitch.") + '</p>' +
+          '<a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
+        host.appendChild(ctaBox);
+        ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
+      }
+
+      // Retake — quiet text link, not a hard button.
+      var retakeWrap = make("div", { class: "lmc-retake-wrap" });
+      var retake = make("button", { class: "lmc-retake", type: "button" }, "Retake the assessment");
       retake.addEventListener("click", function () {
         if (!confirm("Clear your answers and retake?")) return;
         try { localStorage.removeItem(storageKey(data.slug, "answers")); localStorage.removeItem(storageKey(data.slug, "email")); } catch (_) {}
         location.reload();
       });
-      share.appendChild(retake);
-      unl.appendChild(share);
-
-      // Bottom CTA if defined
-      if (data.cta && data.cta.url) {
-        var ctaBox = make("div", { style: "margin-top:2rem;padding:1.5rem;border-top:1px solid rgba(26,26,26,0.12);background:#F7F4EF;text-align:center;" });
-        ctaBox.innerHTML = '<div style="font-family:\'DM Serif Display\',Georgia,serif;font-size:1.5rem;font-weight:400;margin:0 0 .5rem;">' + esc(data.cta.headline || "Want help closing these gaps?") + '</div>' +
-          '<p style="margin:0 0 1rem;">' + esc(data.cta.description || "Book a 20-min working session. Free, no pitch.") + '</p>' +
-          '<a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
-        unl.appendChild(ctaBox);
-        ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
-      }
-
-      card.appendChild(unl);
+      retakeWrap.appendChild(retake);
+      host.appendChild(retakeWrap);
     }
 
-    renderQuestion();
+    // Initial render: if gated, wait for the intro Start button. Otherwise
+    // render the first slide (or jump straight to result) immediately.
+    if (hasProgress || idx >= questions.length) {
+      // Resuming — mark widget revealed and render in place.
+      widget.classList.add("lmc-widget-revealed");
+      renderQuestion();
+    }
     beacon("view", {});
   }
 
