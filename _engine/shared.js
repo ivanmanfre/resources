@@ -191,11 +191,18 @@
     return          { key: "optimized",label: "Optimized", note: "Maintain the streak and re-audit in 60 days." };
   }
 
-  // ── Edit mode (lazy-loaded only when ?edit=<token> in URL) ─────────────
+  // ── Edit mode ─────────────────────────────────────────────────────────
+  // Activation paths:
+  //   1. ?edit=<token> URL param — validates + caches + auto-activates (legacy)
+  //   2. Floating "✎ Edit" button — appears whenever localStorage has a valid
+  //      cached token. Click to activate without leaving the page.
+  //   3. Cmd+Shift+E / Ctrl+Shift+E shortcut — same as #2; falls back to
+  //      a token-paste modal when nothing is cached.
   var editModeState = {
     enabled: false,
     token: null,
-    sessionFlag: "ivan.lm.edit_session",
+    cacheKey: "ivan.lm.edit_token",  // localStorage (persists across tabs)
+    sessionFlag: "ivan.lm.edit_session", // legacy sessionStorage key (kept for back-compat reads)
     fields: [],         // [{el, path, opts}]
     arrays: [],         // [{el, arrayPath, opts}]
   };
@@ -269,42 +276,185 @@
     });
   }
 
+  function readCachedEditToken() {
+    var cached = null;
+    try { cached = JSON.parse(localStorage.getItem(editModeState.cacheKey) || "null"); } catch (_) {}
+    // Fallback: legacy sessionStorage cache from before 2026-05-26.
+    if (!cached) {
+      try { cached = JSON.parse(sessionStorage.getItem(editModeState.sessionFlag) || "null"); } catch (_) {}
+    }
+    if (cached && cached.token && cached.expires_at && cached.expires_at > Date.now()) return cached;
+    return null;
+  }
+
+  function writeCachedEditToken(token, expires_at) {
+    try {
+      localStorage.setItem(editModeState.cacheKey, JSON.stringify({ token: token, expires_at: expires_at }));
+    } catch (_) {}
+  }
+
+  function clearCachedEditToken() {
+    try { localStorage.removeItem(editModeState.cacheKey); } catch (_) {}
+    try { sessionStorage.removeItem(editModeState.sessionFlag); } catch (_) {}
+  }
+
+  // Mount edit mode using a validated token. Used by all activation paths.
+  function activateEditMode(token) {
+    editModeState.enabled = true;
+    editModeState.token = token;
+    // Replace LM.beacon with no-op so edits don't pollute analytics.
+    window.LM.beacon = function () {};
+    var pill = document.getElementById("lm-edit-launcher");
+    if (pill) pill.remove();
+    return loadEditModeAssets();
+  }
+
+  // Validate a token against the edge function. Resolves to `{ ok, expires_at }`
+  // on success, or `{ ok: false, error }` on failure.
+  function validateEditToken(token) {
+    return fetch(BEACON.replace(/\/lm-beacon$/, "/lm-edit-token-check"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: token }),
+    })
+      .then(function (r) { return r.json(); })
+      .catch(function () { return { ok: false, error: "network" }; });
+  }
+
+  // Activate from cache without re-validating against the edge function.
+  // Safe because the cache only stores tokens that *were* validated and
+  // includes the server-reported expires_at.
+  function activateEditModeFromCache() {
+    var cached = readCachedEditToken();
+    if (!cached) return false;
+    activateEditMode(cached.token);
+    return true;
+  }
+
   function editModeMaybeEnable() {
     try {
       var params = new URLSearchParams(location.search);
-      var token = params.get("edit");
-      if (!token) return Promise.resolve(false);
-      // Check sessionStorage first to avoid round-trip on every page load
-      var cached = null;
-      try { cached = JSON.parse(sessionStorage.getItem(editModeState.sessionFlag) || "null"); } catch (_) {}
-      if (cached && cached.token === token && cached.expires_at > Date.now()) {
-        editModeState.enabled = true;
-        editModeState.token = token;
-        // Replace LM.beacon with no-op (mitigation #6)
-        window.LM.beacon = function () {};
-        return loadEditModeAssets().then(function () { return true; });
+      var urlToken = params.get("edit");
+      if (urlToken) {
+        // URL token path: validate (or trust cache match), then activate.
+        var cached = readCachedEditToken();
+        if (cached && cached.token === urlToken) {
+          return activateEditMode(urlToken).then(function () { return true; });
+        }
+        return validateEditToken(urlToken).then(function (j) {
+          if (!j || !j.ok) return false;
+          writeCachedEditToken(urlToken, j.expires_at);
+          return activateEditMode(urlToken).then(function () { return true; });
+        });
       }
-      return fetch(BEACON.replace(/\/lm-beacon$/, "/lm-edit-token-check"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: token }),
-      })
-        .then(function (r) { return r.json(); })
-        .then(function (j) {
-          if (!j.ok) return false;
-          editModeState.enabled = true;
-          editModeState.token = token;
-          try {
-            sessionStorage.setItem(editModeState.sessionFlag, JSON.stringify({
-              token: token, expires_at: j.expires_at,
-            }));
-          } catch (_) {}
-          // Replace LM.beacon with no-op (mitigation #6)
-          window.LM.beacon = function () {};
-          return loadEditModeAssets().then(function () { return true; });
-        })
-        .catch(function () { return false; });
+      // No URL param. If we have a cached valid token, render the launcher
+      // so the admin can activate edit mode without going to the dashboard.
+      if (readCachedEditToken()) {
+        renderEditLauncher();
+      }
+      return Promise.resolve(false);
     } catch (_) { return Promise.resolve(false); }
+  }
+
+  // Floating "✎ Edit" button — only present when a valid token is cached.
+  // Invisible to public visitors (their localStorage has no token).
+  function renderEditLauncher() {
+    if (document.getElementById("lm-edit-launcher")) return;
+    if (editModeState.enabled) return;
+    var btn = document.createElement("button");
+    btn.id = "lm-edit-launcher";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Edit this page inline (admin)");
+    btn.title = "Edit this page (⇧⌘E)";
+    btn.innerHTML = '<span aria-hidden="true" style="font-size:14px;line-height:1">✎</span><span>Edit</span>';
+    btn.style.cssText =
+      "position:fixed;bottom:18px;right:18px;z-index:99998;" +
+      "display:inline-flex;align-items:center;gap:8px;" +
+      "padding:9px 14px;border-radius:999px;" +
+      "background:#1A1A1A;color:#F7F4EF;" +
+      "font-family:'Source Serif 4',Georgia,serif;font-size:13px;font-weight:600;" +
+      "letter-spacing:.04em;border:none;cursor:pointer;" +
+      "box-shadow:0 6px 18px rgba(26,26,26,.18),0 2px 6px rgba(26,26,26,.10);" +
+      "transition:transform 120ms,background 120ms;";
+    btn.addEventListener("mouseenter", function () { btn.style.transform = "translateY(-2px)"; btn.style.background = "#2A8F65"; });
+    btn.addEventListener("mouseleave", function () { btn.style.transform = ""; btn.style.background = "#1A1A1A"; });
+    btn.addEventListener("click", function () {
+      if (!activateEditModeFromCache()) showEditTokenModal();
+    });
+    document.body.appendChild(btn);
+  }
+
+  // Modal: paste a token to activate edit mode. Used when no cache exists
+  // or the cached token has expired.
+  function showEditTokenModal(prefill) {
+    if (document.getElementById("lm-edit-modal")) return;
+    var backdrop = document.createElement("div");
+    backdrop.id = "lm-edit-modal";
+    backdrop.style.cssText =
+      "position:fixed;inset:0;z-index:99999;background:rgba(26,26,26,0.45);" +
+      "display:flex;align-items:center;justify-content:center;padding:1rem;" +
+      "font-family:'Source Serif 4',Georgia,serif;";
+    var card = document.createElement("div");
+    card.style.cssText =
+      "background:#F7F4EF;color:#1A1A1A;max-width:440px;width:100%;" +
+      "padding:1.75rem;border-radius:6px;box-shadow:0 24px 48px rgba(0,0,0,.25);" +
+      "border-left:4px solid #2A8F65;";
+    card.innerHTML =
+      '<p style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2A8F65;margin:0 0 .35rem;">Inline editor</p>' +
+      '<h3 style="font-family:\'DM Serif Display\',Georgia,serif;font-size:1.6rem;font-weight:400;letter-spacing:-.01em;margin:0 0 .65rem;">Paste your <em style="font-style:italic;color:#2A8F65;">edit token</em>.</h3>' +
+      '<p style="font-size:.95rem;line-height:1.5;color:#3D3D3B;margin:0 0 1.25rem;">Get one from the dashboard at <a href="https://ivanmanfredi.com/dashboard/" target="_blank" rel="noopener" style="color:#2A8F65;text-decoration:underline;">Operations → Tools → Reveal token</a>. Cached locally for 24h after entry.</p>' +
+      '<input type="text" id="lm-edit-modal-input" autocomplete="off" spellcheck="false" placeholder="Paste token…" style="width:100%;box-sizing:border-box;padding:.85rem 1rem;border:1px solid rgba(26,26,26,.22);background:#fff;font-family:inherit;font-size:.95rem;color:#1A1A1A;border-radius:0;" />' +
+      '<p id="lm-edit-modal-err" style="font-size:.8rem;color:#A33;margin:.5rem 0 0;min-height:1em;"></p>' +
+      '<div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1rem;">' +
+        '<button type="button" id="lm-edit-modal-cancel" style="padding:10px 18px;background:transparent;border:1px solid rgba(26,26,26,.22);color:#1A1A1A;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Cancel</button>' +
+        '<button type="button" id="lm-edit-modal-ok" style="padding:10px 18px;background:#1A1A1A;border:none;color:#F7F4EF;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Activate</button>' +
+      '</div>';
+    backdrop.appendChild(card);
+    document.body.appendChild(backdrop);
+
+    var input = card.querySelector("#lm-edit-modal-input");
+    var err = card.querySelector("#lm-edit-modal-err");
+    var okBtn = card.querySelector("#lm-edit-modal-ok");
+    var cancelBtn = card.querySelector("#lm-edit-modal-cancel");
+    if (prefill) input.value = prefill;
+    setTimeout(function () { input.focus(); input.select(); }, 30);
+
+    function close() { backdrop.remove(); }
+    cancelBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", function (e) { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", function escHandler(e) {
+      if (e.key === "Escape") { close(); document.removeEventListener("keydown", escHandler); }
+    });
+
+    function submit() {
+      var token = (input.value || "").trim();
+      if (!token) { err.textContent = "Token required."; return; }
+      okBtn.disabled = true; okBtn.textContent = "Validating…"; err.textContent = "";
+      validateEditToken(token).then(function (j) {
+        if (!j || !j.ok) {
+          err.textContent = (j && j.error) || "Invalid or expired token.";
+          okBtn.disabled = false; okBtn.textContent = "Activate";
+          return;
+        }
+        writeCachedEditToken(token, j.expires_at);
+        close();
+        activateEditMode(token);
+      });
+    }
+    okBtn.addEventListener("click", submit);
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); submit(); } });
+  }
+
+  // Keyboard shortcut: ⌘⇧E (Mac) / Ctrl+Shift+E (other) toggles the editor.
+  function bindEditModeShortcut() {
+    document.addEventListener("keydown", function (e) {
+      var mod = (navigator.platform || "").toLowerCase().indexOf("mac") >= 0 ? e.metaKey : e.ctrlKey;
+      if (!mod || !e.shiftKey) return;
+      if (e.key !== "E" && e.key !== "e") return;
+      e.preventDefault();
+      if (editModeState.enabled) return; // already active
+      if (!activateEditModeFromCache()) showEditTokenModal();
+    });
   }
 
   // ── Share helpers ──────────────────────────────────────────────────────
@@ -404,6 +554,9 @@
       registerField: editModeRegisterField,
       registerArray: editModeRegisterArray,
       maybeEnable: editModeMaybeEnable,
+      activateFromCache: activateEditModeFromCache,
+      showTokenModal: showEditTokenModal,
+      clearCache: clearCachedEditToken,
     },
     tracker: { touch: trackerTouch },  // no-op stub, see comment above
     progress: {
@@ -455,6 +608,7 @@
   // Each engine also checks LM.editMode.enabled() before assuming non-edit context.
   function bootstrapShared() {
     editModeMaybeEnable();
+    bindEditModeShortcut();
     rebrandFooter();
     scanCaptures();
     // Engines render asynchronously after data.json fetch — watch the LM
