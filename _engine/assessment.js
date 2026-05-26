@@ -122,18 +122,6 @@
     var startBtn = make("button", { class: "lmc-intro-start", type: "button", "aria-label": startLabel }, escapeHtml(startLabel) + " <span aria-hidden=\"true\">\u2193</span>");
     startBtn.addEventListener("click", function () {
       var target = document.querySelector(startTargetSelector);
-      // Reveal the gated widget (if any) and scroll to it.
-      if (target && target.classList && target.classList.contains("lmc-widget-gated")) {
-        target.classList.remove("lmc-widget-gated");
-        target.classList.add("lmc-widget-revealed");
-        // Trigger the first question's slide-in animation now that the
-        // widget is visible. The render() pass left it primed but hidden.
-        if (typeof window.__lmc_revealFirst === "function") {
-          // Small delay lets the widget fade-in start before the slide
-          // animation begins, so they stack into one continuous motion.
-          setTimeout(window.__lmc_revealFirst, 60);
-        }
-      }
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
       beacon("cta_click", { answers: { target: "intro_start" } });
     });
@@ -220,23 +208,59 @@
     widget.appendChild(card);
     root.appendChild(widget);
 
-    // Start gate: hide the widget if no progress yet. The intro Start button
-    // removes the gate class (defined in CSS) and triggers `revealFirst`.
+    // Start screen: when there's no progress, the widget renders a visible
+    // start card (instead of hiding behind a gate). Click "Begin" slides to q1.
     var hasProgress = Object.keys(answers).some(function (k) { return answers[k] != null; });
-    if (!hasProgress) {
-      widget.classList.add("lmc-widget-gated");
+    var phase = hasProgress ? "question" : "start";
+
+    function buildStartSlide() {
+      var slide = make("div", { class: "lmc-slide lmc-start-slide", "data-idx": "start" });
+      slide.appendChild(make("div", { class: "lmc-category lmc-start-eyebrow" }, "Ready when you are"));
+      var h = make("h2", { class: "lmc-start-h", tabindex: "-1" });
+      h.innerHTML = "Find <em>where the rot lives</em> in your stack.";
+      slide.appendChild(h);
+      var p = make("p", { class: "lmc-start-p" });
+      var totalQs = questions.length;
+      var minutes = data.estimated_minutes || 12;
+      p.textContent = totalQs + " quick questions across " + (data.categories || []).length + " categories. About " + minutes + " minutes. Your progress auto-saves to this browser — close the tab and come back anytime.";
+      slide.appendChild(p);
+      var meta = make("div", { class: "lmc-start-meta" });
+      meta.innerHTML =
+        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>' + totalQs + ' questions</span>' +
+        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>' + minutes + ' min</span>' +
+        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>Auto-saves</span>' +
+        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>Score shown free</span>';
+      slide.appendChild(meta);
+      var nav = make("div", { class: "lmc-nav lmc-start-nav" });
+      var go = make("button", { class: "lmc-btn lmc-start-btn", type: "button" }, "Start the audit <span aria-hidden=\"true\">→</span>");
+      go.addEventListener("click", function () {
+        phase = "question";
+        renderQuestion("fwd");
+        beacon("cta_click", { answers: { target: "start_screen_begin" } });
+      });
+      nav.appendChild(go);
+      slide.appendChild(nav);
+      return slide;
     }
-    // Expose a hook so the intro Start button can kick off the first slide
-    // entrance once the widget is visible.
-    window.__lmc_revealFirst = function () {
-      window.__lmc_revealFirst = null; // one-shot
-      if (idx === 0) renderQuestion("fwd");
-    };
 
     function buildQuestionSlide(slideIdx) {
       var q = questions[slideIdx];
       var slide = make("div", { class: "lmc-slide", "data-idx": String(slideIdx) });
       if (!q) return slide;
+
+      // Progress row: "Question N of M" + hairline fill.
+      var totalQs = questions.length;
+      var pct = Math.round(((slideIdx + 1) / totalQs) * 100);
+      var prog = make("div", { class: "lmc-progress" });
+      prog.innerHTML =
+        '<div class="lmc-progress-row">' +
+          '<span class="lmc-progress-label">Question ' + (slideIdx + 1) + ' of ' + totalQs + '</span>' +
+          '<span class="lmc-progress-pct">' + pct + '%</span>' +
+        '</div>' +
+        '<div class="lmc-progress-track" role="progressbar" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100" aria-label="Assessment progress">' +
+          '<div class="lmc-progress-fill" style="width:' + pct + '%"></div>' +
+        '</div>';
+      slide.appendChild(prog);
 
       if (q.category_name) slide.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
       var qH = make("h2", { class: "lmc-question", id: "lmc-question-" + slideIdx, tabindex: "-1" }, esc(q.text || q.label || ""));
@@ -595,17 +619,26 @@
         setTimeout(function () { if (entry.el) entry.el.classList.add("lmc-cat-fill-armed"); }, entry.delayMs);
       });
 
-      // Bottom CTA (if defined). Rendered as a flat editorial block.
-      if (data.cta && data.cta.url) {
-        var ctaBox = make("div", { class: "lmc-unlocked-cta" });
-        ctaBox.innerHTML =
-          '<p class="lmc-unlocked-cta-eyebrow">Next move</p>' +
-          '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3>' +
-          '<p>' + esc(data.cta.description || "Book a 20-min working session. Free, no pitch.") + '</p>' +
-          '<a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
-        host.appendChild(ctaBox);
-        ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
+      // Bottom CTA — always renders. Falls back to Ivan's Calendly when
+      // data.cta is missing so every assessment ships with a clear next step.
+      var ctaConf = data.cta || {};
+      var ctaUrl = ctaConf.url || "https://calendly.com/ivan-intelligents/30min";
+      var ctaHeadlineHtml = ctaConf.headline_html || ctaConf.headline;
+      if (!ctaHeadlineHtml) {
+        ctaHeadlineHtml = res.tier && res.tier.class === "low"
+          ? "Want help <em>closing these gaps</em>?"
+          : "Want a second pair of eyes on <em>what to fix first</em>?";
       }
+      var ctaDescription = ctaConf.description || "Book a 20-min working session — I'll walk through your weakest category live and sketch the highest-leverage fix. Free, no pitch.";
+      var ctaButton = ctaConf.button || "Book a strategy call";
+      var ctaBox = make("div", { class: "lmc-unlocked-cta" });
+      ctaBox.innerHTML =
+        '<p class="lmc-unlocked-cta-eyebrow">Next move</p>' +
+        '<h3>' + ctaHeadlineHtml + '</h3>' +
+        '<p>' + esc(ctaDescription) + '</p>' +
+        '<a class="lmc-btn" href="' + esc(ctaUrl) + '" target="_blank" rel="noopener">' + esc(ctaButton) + ' <span aria-hidden="true">→</span></a>';
+      host.appendChild(ctaBox);
+      ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, default_cta: !data.cta } }); });
 
       // Retake — quiet text link, not a hard button.
       var retakeWrap = make("div", { class: "lmc-retake-wrap" });
@@ -619,11 +652,10 @@
       host.appendChild(retakeWrap);
     }
 
-    // Initial render: if gated, wait for the intro Start button. Otherwise
-    // render the first slide (or jump straight to result) immediately.
-    if (hasProgress || idx >= questions.length) {
-      // Resuming — mark widget revealed and render in place.
-      widget.classList.add("lmc-widget-revealed");
+    // Initial render: start screen (fresh) or first unanswered question (resume).
+    if (phase === "start") {
+      card.appendChild(buildStartSlide());
+    } else {
       renderQuestion();
     }
     beacon("view", {});
