@@ -160,12 +160,17 @@
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
-    body.appendChild(make("p", { class: "lmc-intro-p" }, esc(welcomeLine)));
+    var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
+    editModeRegisterField(introPara, "intro.paragraph", { multiline: true });
+    body.appendChild(introPara);
     var ul = make("ul", { class: "lmc-intro-points" });
-    [["a", "\u23F1", pointA], ["b", "\u2192", pointB], ["c", "\u2713", pointC]].forEach(function (p) {
+    var introPointPaths = ["intro.point_time", "intro.point_value", "intro.point_next"];
+    [["a", "\u23F1", pointA], ["b", "\u2192", pointB], ["c", "\u2713", pointC]].forEach(function (p, ix) {
       var li = make("li");
       li.appendChild(make("span", { class: "lmc-intro-icon " + p[0], "aria-hidden": "true" }, p[1]));
-      li.appendChild(make("span", null, esc(p[2])));
+      var pointSpan = make("span", null, esc(p[2]));
+      editModeRegisterField(pointSpan, introPointPaths[ix], { multiline: true });
+      li.appendChild(pointSpan);
       ul.appendChild(li);
     });
     body.appendChild(ul);
@@ -177,7 +182,11 @@
       beacon(opts.tool_type || "lm", "intro_start");
     });
     body.appendChild(startBtn);
-    if (note) body.appendChild(make("p", { class: "lmc-intro-note" }, esc(note)));
+    if (note) {
+      var noteEl = make("p", { class: "lmc-intro-note" }, esc(note));
+      editModeRegisterField(noteEl, "intro.note", { multiline: true });
+      body.appendChild(noteEl);
+    }
     inner.appendChild(img);
     inner.appendChild(body);
     sec.appendChild(inner);

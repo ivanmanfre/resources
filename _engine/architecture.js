@@ -136,7 +136,9 @@
     meta.appendChild(make("div", { class: "lma-meta-chip" }, ec + " connections"));
     meta.appendChild(make("div", { class: "lma-meta-chip" }, "Click any node"));
     hero.appendChild(meta);
-    if (window.LM.editMode && window.LM.editMode.enabled()) {
+    // Always call registerField — shared.js buffers until edit mode mounts.
+    // Gating on enabled() loses registrations because enabled flips async.
+    if (window.LM && window.LM.editMode) {
       window.LM.editMode.registerField(h1, "title");
       if (sub) window.LM.editMode.registerField(sub, "subtitle");
     }
@@ -669,7 +671,7 @@
       }
     }
 
-    if (window.LM.editMode && window.LM.editMode.enabled()) {
+    if (window.LM && window.LM.editMode) {
       var nodeIdx = (state.data.diagram.nodes || []).findIndex(function (x) { return x.id === node.id; });
       if (nodeIdx >= 0) {
         window.LM.editMode.registerField(h, "diagram.nodes[" + nodeIdx + "].panel.headline");

@@ -77,7 +77,11 @@
     root.innerHTML = "";
 
     var hero = make("section", { class: "lmw-hero" });
-    hero.appendChild(make("div", { class: "lmw-badge" }, "Live AI Analysis"));
+    var badgeEl = make("div", { class: "lmw-badge" }, esc((data.brand && data.brand.hero_badge) || "Live AI Analysis"));
+    if (window.LM && window.LM.editMode && window.LM.editMode.registerField) {
+      window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
+    }
+    hero.appendChild(badgeEl);
     var titleEl = make("h1", { class: "lmw-h1" });
     titleEl.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "") : esc(data.title || "");
     if (LM.editMode && LM.editMode.registerField) LM.editMode.registerField(titleEl, "title", { type: "text" });
@@ -96,6 +100,13 @@
       placeholder: (data.input && data.input.placeholder) || "",
     });
     inputWrap.appendChild(ta);
+    // Editable placeholder — exposed via a sibling hidden span so the inline
+    // editor can target the text without colliding with the textarea's input.
+    if (window.LM && window.LM.editMode && window.LM.editMode.registerField) {
+      var placeholderProxy = make("div", { class: "lmw-edit-only", style: "display:none" }, esc(ta.placeholder));
+      window.LM.editMode.registerField(placeholderProxy, "input.placeholder", { multiline: true });
+      inputWrap.appendChild(placeholderProxy);
+    }
     var metaRow = make("div", { class: "lmw-meta-row" });
     var cnt = make("span", { class: "lmw-step-count", id: "lmw-step-count" }, "0 steps");
     var hint = make("span", null, "Min " + ((data.input && data.input.min_steps) || 3) + " · Max " + ((data.input && data.input.max_steps) || 20));

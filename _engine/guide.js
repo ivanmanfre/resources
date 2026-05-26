@@ -137,6 +137,9 @@
         var bio = L.make("div", { class: "lmc-intro-bio" });
         bio.innerHTML = data.intro.bio_html;
         introBody.insertBefore(bio, startBtn);
+        if (window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(bio, "intro.bio_html", { multiline: true, contenteditable: true });
+        }
       }
     }
 
