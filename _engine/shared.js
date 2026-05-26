@@ -110,14 +110,44 @@
   function italicizePivot(text) {
     var t = String(text || "");
     if (/<em\b|<i\b/i.test(t)) return t;
-    var escaped = esc(t);
-    var m = escaped.match(/([A-Za-z][\w'\-]*)([?.!:]*)$/);
-    if (!m) return escaped;
-    var word = m[1];
-    var trailing = m[2] || "";
-    var fillers = ["the","a","an","of","is","it","to","in","on","at","or","and","but","yet","that","this","with"];
-    if (fillers.indexOf(word.toLowerCase()) !== -1) return escaped;
-    return escaped.slice(0, -1 * (word.length + trailing.length)) + "<em>" + word + "</em>" + trailing;
+    // Tokenize the ORIGINAL text (apostrophes intact), escape only the slices at the end.
+    // Walk tokens from the end, find the last meaningful word (letter-starting, non-filler/contraction)
+    // and italicize together with the immediately-preceding word when it's also content-bearing —
+    // e.g. "Survives Day 30" -> "<em>Survives Day</em> 30" not "<em>Day</em> 30".
+    var fillers = ["the","a","an","of","is","it","to","in","on","at","or","and","but","yet","that","this","with","you","your","my","i","we","our","be","are","was","were","not","no","yes","if","as","by"];
+    var contractions = ["im","its","youre","were","theyre","hes","shes","weve","youve","ive","dont","wont","cant","isnt","arent","wasnt","werent","didnt","doesnt"];
+    var tokenRe = /[A-Za-z][A-Za-z\u2019'\-]*/g;
+    var matches = [];
+    var m;
+    while ((m = tokenRe.exec(t)) !== null) {
+      matches.push({ word: m[0], start: m.index, end: m.index + m[0].length });
+    }
+    if (matches.length === 0) return esc(t);
+    function isStopword(w) {
+      var lc = w.toLowerCase().replace(/[\u2019']/g, "");
+      return fillers.indexOf(lc) !== -1 || contractions.indexOf(lc) !== -1;
+    }
+    var lastIdx = -1;
+    for (var i = matches.length - 1; i >= 0; i--) {
+      if (!isStopword(matches[i].word)) { lastIdx = i; break; }
+    }
+    if (lastIdx === -1) return esc(t);
+    var startTok = lastIdx;
+    if (lastIdx > 0) {
+      var prev = matches[lastIdx - 1];
+      var between = t.slice(prev.end, matches[lastIdx].start);
+      if (
+        /^[\s ]+$/.test(between) &&
+        !isStopword(prev.word) &&
+        prev.word.length <= 8 &&
+        matches[lastIdx].word.length <= 8
+      ) {
+        startTok = lastIdx - 1;
+      }
+    }
+    var pivotStart = matches[startTok].start;
+    var pivotEnd = matches[lastIdx].end;
+    return esc(t.slice(0, pivotStart)) + "<em>" + esc(t.slice(pivotStart, pivotEnd)) + "</em>" + esc(t.slice(pivotEnd));
   }
 
   // ── Hero section ──────────────────────────────────────────────────────
