@@ -110,12 +110,21 @@
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
-    body.appendChild(make("p", { class: "lmc-intro-p" }, escapeHtml(welcomeLine)));
+    var introPara = make("p", { class: "lmc-intro-p" }, escapeHtml(welcomeLine));
+    if (window.LM && window.LM.editMode) {
+      window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
+    }
+    body.appendChild(introPara);
     var ul = make("ul", { class: "lmc-intro-points" });
-    [["a", "\u23F1", pointA], ["b", "\u2192", pointB], ["c", "\u2713", pointC]].forEach(function (p) {
+    var introPointPaths = ["intro.point_time", "intro.point_value", "intro.point_next"];
+    [["a", "\u23F1", pointA], ["b", "\u2192", pointB], ["c", "\u2713", pointC]].forEach(function (p, ix) {
       var li = make("li");
       li.appendChild(make("span", { class: "lmc-intro-icon " + p[0], "aria-hidden": "true" }, p[1]));
-      li.appendChild(make("span", null, escapeHtml(p[2])));
+      var textSpan = make("span", null, escapeHtml(p[2]));
+      if (window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(textSpan, introPointPaths[ix], { multiline: true });
+      }
+      li.appendChild(textSpan);
       ul.appendChild(li);
     });
     body.appendChild(ul);
@@ -139,7 +148,13 @@
       resetWrap.appendChild(resetLink);
       body.appendChild(resetWrap);
     }
-    if (note) body.appendChild(make("p", { class: "lmc-intro-note" }, escapeHtml(note)));
+    if (note) {
+      var noteEl = make("p", { class: "lmc-intro-note" }, escapeHtml(note));
+      if (window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(noteEl, "intro.note", { multiline: true });
+      }
+      body.appendChild(noteEl);
+    }
     inner.appendChild(img);
     inner.appendChild(body);
     sec.appendChild(inner);
@@ -262,14 +277,26 @@
         '</div>';
       slide.appendChild(prog);
 
-      if (q.category_name) slide.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
-      var qH = make("h2", { class: "lmc-question", id: "lmc-question-" + slideIdx, tabindex: "-1" }, esc(q.text || q.label || ""));
-      if (window.LM && window.LM.editMode && q.category_id && q.id) {
-        var catIdx = (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
-        var qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
-        if (catIdx >= 0 && qIdx >= 0) {
-          window.LM.editMode.registerField(qH, "categories[" + catIdx + "].questions[" + qIdx + "].text", { multiline: true });
+      // Resolve data.json paths for this slide so we can wire edit-mode hooks
+      // for the category name, question text, and each answer label.
+      var isPersona = !!q.__persona;
+      var catIdx = isPersona ? -1 : (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
+      var qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
+      var basePath = isPersona
+        ? "persona_selector"
+        : (catIdx >= 0 && qIdx >= 0 ? "categories[" + catIdx + "].questions[" + qIdx + "]" : null);
+      var categoryPath = (!isPersona && catIdx >= 0) ? "categories[" + catIdx + "].name" : null;
+
+      if (q.category_name) {
+        var catEl = make("div", { class: "lmc-category" }, esc(q.category_name));
+        if (categoryPath && window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(catEl, categoryPath);
         }
+        slide.appendChild(catEl);
+      }
+      var qH = make("h2", { class: "lmc-question", id: "lmc-question-" + slideIdx, tabindex: "-1" }, esc(q.text || q.label || ""));
+      if (basePath && window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(qH, basePath + ".text", { multiline: true });
       }
       slide.appendChild(qH);
 
@@ -293,11 +320,24 @@
         var input = make("input", { type: "radio", name: "q" + slideIdx, id: inputId, value: String(ix) });
         if (checked) input.setAttribute("checked", "checked");
         label.appendChild(input);
-        label.appendChild(make("span", null, esc(opt.label || opt.text || String(opt))));
+        var labelSpan = make("span", null, esc(opt.label || opt.text || String(opt)));
+        label.appendChild(labelSpan);
         ul.appendChild(li);
         li.appendChild(label);
 
-        label.addEventListener("click", function () {
+        // Register the answer label text for inline editing.
+        if (basePath && window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(labelSpan, basePath + ".answers[" + ix + "].label", { multiline: true });
+        }
+
+        label.addEventListener("click", function (e) {
+          // In edit mode, clicks should go to the inline editor on the span,
+          // not record an answer. The span's edit-mode handler stops propagation,
+          // so this fires only for clicks outside the editable text.
+          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
+            e.preventDefault();
+            return;
+          }
           answers[q.id || "__persona"] = ix;
           if (opt.tag) answers[(q.id || "__persona") + "__tag"] = opt.tag;
           saveAnswers(data.slug, answers);
@@ -412,7 +452,11 @@
 
       var heroBody = make("div", { class: "lmc-score-body" });
       heroBody.appendChild(make("div", { class: "lmc-score-eyebrow" }, "Your read"));
-      heroBody.appendChild(make("h2", { class: "lmc-score-headline" }, headlineHtml));
+      var scoreHeadlineEl = make("h2", { class: "lmc-score-headline" }, headlineHtml);
+      if (window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(scoreHeadlineEl, "results_copy.tier_headline." + tierKey, { multiline: true });
+      }
+      heroBody.appendChild(scoreHeadlineEl);
       heroBody.appendChild(make("p", { class: "lmc-score-note" }, noteHtml));
       hero.appendChild(heroBody);
       wrap.appendChild(hero);
@@ -587,26 +631,55 @@
 
       var catFills = []; // collect to arm bar widths after paint
       var catOrder = 0;
-      (data.categories || []).forEach(function (cat) {
+      (data.categories || []).forEach(function (cat, catIdx) {
         var key = cat.id || cat.name;
         var catRes = res.per_category[key];
         if (!catRes) return;
         var block = make("div", { class: "lmc-category-block" });
         block.style.setProperty("--lmc-delay", (catOrder * 90) + "ms");
-        block.appendChild(make("h4", null, esc(cat.name || cat.id)));
+        var h4 = make("h4", null, esc(cat.name || cat.id));
+        if (window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(h4, "categories[" + catIdx + "].name");
+        }
+        block.appendChild(h4);
         var bar = make("div", { class: "lmc-cat-bar" });
         bar.innerHTML = '<div class="lmc-cat-track"><div class="lmc-cat-fill" style="--lmc-cat-target:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '<span style="font-size:.75em;color:rgba(26,26,26,.5)">/100</span></span>';
         block.appendChild(bar);
         var rec = pickRec(cat, catRes.score);
+        // Resolve which tier-key was picked so we can build the edit path.
+        var tierKey = catRes.score <= 40 ? "low" : (catRes.score <= 70 ? "mid" : "high");
+        // Some data.json files use {critical, growth, optimized} instead.
+        var altKey = ({ low: "critical", mid: "growth", high: "optimized" })[tierKey];
+        var recBranchKey = (cat.recommendations && (cat.recommendations[tierKey] != null ? tierKey : (cat.recommendations[altKey] != null ? altKey : tierKey)));
         if (rec) {
           var rc = make("div", { class: "lmc-rec" });
           var tag = "Next step";
           if (catRes.score <= 40) tag = "Critical — fix first";
           else if (catRes.score <= 70) tag = "Growth unlock";
           else tag = "Keep sharpening";
+          rc.appendChild(make("strong", null, esc(tag)));
+          var recPath = "categories[" + catIdx + "].recommendations." + recBranchKey;
           var text = typeof rec === "string" ? rec : (rec.text || rec.headline || "");
-          var steps = (typeof rec === "object" && rec.steps) ? rec.steps : null;
-          rc.innerHTML = '<strong>' + esc(tag) + '</strong>' + esc(text) + (steps ? '<ul>' + steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul>' : "");
+          var textNode = document.createTextNode(text);
+          // Wrap the text in an editable span so we can register it.
+          var textSpan = make("span", { class: "lmc-rec-text" });
+          textSpan.appendChild(textNode);
+          rc.appendChild(textSpan);
+          if (window.LM && window.LM.editMode && typeof rec !== "string") {
+            window.LM.editMode.registerField(textSpan, recPath + ".text", { multiline: true });
+          }
+          var steps = (typeof rec === "object" && Array.isArray(rec.steps)) ? rec.steps : null;
+          if (steps && steps.length) {
+            var ulSteps = make("ul");
+            steps.forEach(function (s, si) {
+              var li = make("li", null, esc(s));
+              if (window.LM && window.LM.editMode) {
+                window.LM.editMode.registerField(li, recPath + ".steps[" + si + "]", { multiline: true });
+              }
+              ulSteps.appendChild(li);
+            });
+            rc.appendChild(ulSteps);
+          }
           block.appendChild(rc);
         }
         host.appendChild(block);
@@ -632,13 +705,31 @@
       var ctaDescription = ctaConf.description || "Book a 20-min working session — I'll walk through your weakest category live and sketch the highest-leverage fix. Free, no pitch.";
       var ctaButton = ctaConf.button || "Book a strategy call";
       var ctaBox = make("div", { class: "lmc-unlocked-cta" });
-      ctaBox.innerHTML =
-        '<p class="lmc-unlocked-cta-eyebrow">Next move</p>' +
-        '<h3>' + ctaHeadlineHtml + '</h3>' +
-        '<p>' + esc(ctaDescription) + '</p>' +
-        '<a class="lmc-btn" href="' + esc(ctaUrl) + '" target="_blank" rel="noopener">' + esc(ctaButton) + ' <span aria-hidden="true">→</span></a>';
+      ctaBox.appendChild(make("p", { class: "lmc-unlocked-cta-eyebrow" }, "Next move"));
+      var ctaH3 = make("h3", null, ctaHeadlineHtml);
+      ctaBox.appendChild(ctaH3);
+      var ctaDescEl = make("p", null, esc(ctaDescription));
+      ctaBox.appendChild(ctaDescEl);
+      var ctaLink = make("a", { class: "lmc-btn", href: ctaUrl, target: "_blank", rel: "noopener" });
+      var ctaBtnSpan = make("span", { class: "lmc-cta-btn-text" }, esc(ctaButton));
+      ctaLink.appendChild(ctaBtnSpan);
+      ctaLink.appendChild(document.createTextNode(" "));
+      ctaLink.appendChild(make("span", { "aria-hidden": "true" }, "→"));
+      ctaBox.appendChild(ctaLink);
       host.appendChild(ctaBox);
-      ctaBox.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, default_cta: !data.cta } }); });
+      if (window.LM && window.LM.editMode) {
+        // Edit-mode hooks: writing here creates cta.{} if it doesn't exist.
+        window.LM.editMode.registerField(ctaH3, "cta.headline", { multiline: true });
+        window.LM.editMode.registerField(ctaDescEl, "cta.description", { multiline: true });
+        window.LM.editMode.registerField(ctaBtnSpan, "cta.button");
+      }
+      ctaLink.addEventListener("click", function (e) {
+        if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
+          e.preventDefault();
+          return;
+        }
+        beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, default_cta: !data.cta } });
+      });
 
       // Retake — quiet text link, not a hard button.
       var retakeWrap = make("div", { class: "lmc-retake-wrap" });
