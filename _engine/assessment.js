@@ -229,32 +229,71 @@
     var phase = hasProgress ? "question" : "start";
 
     function buildStartSlide() {
-      var slide = make("div", { class: "lmc-slide lmc-start-slide", "data-idx": "start" });
-      slide.appendChild(make("div", { class: "lmc-category lmc-start-eyebrow" }, "Ready when you are"));
-      var h = make("h2", { class: "lmc-start-h", tabindex: "-1" });
-      h.innerHTML = "Find <em>where the rot lives</em> in your stack.";
-      slide.appendChild(h);
-      var p = make("p", { class: "lmc-start-p" });
+      var startConf = data.start_screen || {};
       var totalQs = questions.length;
       var minutes = data.estimated_minutes || 12;
-      p.textContent = totalQs + " quick questions across " + (data.categories || []).length + " categories. About " + minutes + " minutes. Your progress auto-saves to this browser — close the tab and come back anytime.";
-      slide.appendChild(p);
+      var defaultChips = [
+        totalQs + " questions",
+        minutes + " min",
+        "Auto-saves",
+        "Score shown free"
+      ];
+      var chips = Array.isArray(startConf.chips) && startConf.chips.length ? startConf.chips : defaultChips;
+      var defaultDescription = totalQs + " quick questions across " + (data.categories || []).length + " categories. About " + minutes + " minutes. Your progress auto-saves to this browser — close the tab and come back anytime.";
+      var eyebrowText = startConf.eyebrow || "Ready when you are";
+      var headlineHtml = startConf.headline_html || "Find <em>where the rot lives</em> in your stack.";
+      var descriptionText = startConf.description || defaultDescription;
+      var buttonLabel = startConf.button || "Start the audit";
+
+      var slide = make("div", { class: "lmc-slide lmc-start-slide", "data-idx": "start" });
+      var eyebrowEl = make("div", { class: "lmc-category lmc-start-eyebrow" }, esc(eyebrowText));
+      slide.appendChild(eyebrowEl);
+      var h = make("h2", { class: "lmc-start-h", tabindex: "-1" });
+      h.innerHTML = headlineHtml;
+      slide.appendChild(h);
+      var pEl = make("p", { class: "lmc-start-p" }, esc(descriptionText));
+      slide.appendChild(pEl);
+
       var meta = make("div", { class: "lmc-start-meta" });
-      meta.innerHTML =
-        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>' + totalQs + ' questions</span>' +
-        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>' + minutes + ' min</span>' +
-        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>Auto-saves</span>' +
-        '<span class="lmc-start-meta-item"><span class="lmc-start-meta-dot"></span>Score shown free</span>';
+      var chipEls = chips.map(function (chipText) {
+        var item = make("span", { class: "lmc-start-meta-item" });
+        item.appendChild(make("span", { class: "lmc-start-meta-dot" }));
+        var labelEl = make("span", { class: "lmc-start-meta-text" }, esc(String(chipText)));
+        item.appendChild(labelEl);
+        meta.appendChild(item);
+        return labelEl;
+      });
       slide.appendChild(meta);
+
       var nav = make("div", { class: "lmc-nav lmc-start-nav" });
-      var go = make("button", { class: "lmc-btn lmc-start-btn", type: "button" }, "Start the audit <span aria-hidden=\"true\">→</span>");
+      var goLabelSpan = make("span", { class: "lmc-start-btn-text" }, esc(buttonLabel));
+      var go = make("button", { class: "lmc-btn lmc-start-btn", type: "button" });
+      go.appendChild(goLabelSpan);
+      go.appendChild(document.createTextNode(" "));
+      go.appendChild(make("span", { "aria-hidden": "true" }, "→"));
       go.addEventListener("click", function () {
+        // Allowed in edit mode too — Ivan needs to browse slides to edit them.
+        // The editable span (.lmc-start-btn-text) stops propagation, so this
+        // only fires when clicking the button outside the editable text.
         phase = "question";
         renderQuestion("fwd");
-        beacon("cta_click", { answers: { target: "start_screen_begin" } });
+        if (!(window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled())) {
+          beacon("cta_click", { answers: { target: "start_screen_begin" } });
+        }
       });
       nav.appendChild(go);
       slide.appendChild(nav);
+
+      // Register edit-mode hooks: every text element on the start screen.
+      if (window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(eyebrowEl, "start_screen.eyebrow");
+        window.LM.editMode.registerField(h, "start_screen.headline_html", { multiline: true });
+        window.LM.editMode.registerField(pEl, "start_screen.description", { multiline: true });
+        window.LM.editMode.registerField(goLabelSpan, "start_screen.button");
+        chipEls.forEach(function (chipEl, ix) {
+          window.LM.editMode.registerField(chipEl, "start_screen.chips[" + ix + "]");
+        });
+      }
       return slide;
     }
 
@@ -266,16 +305,21 @@
       // Progress row: "Question N of M" + hairline fill.
       var totalQs = questions.length;
       var pct = Math.round(((slideIdx + 1) / totalQs) * 100);
+      var progressWord = (data.results_copy && data.results_copy.progress_label) || "Question";
       var prog = make("div", { class: "lmc-progress" });
       prog.innerHTML =
         '<div class="lmc-progress-row">' +
-          '<span class="lmc-progress-label">Question ' + (slideIdx + 1) + ' of ' + totalQs + '</span>' +
+          '<span class="lmc-progress-label"><span class="lmc-progress-word">' + esc(progressWord) + '</span> ' + (slideIdx + 1) + ' of ' + totalQs + '</span>' +
           '<span class="lmc-progress-pct">' + pct + '%</span>' +
         '</div>' +
         '<div class="lmc-progress-track" role="progressbar" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100" aria-label="Assessment progress">' +
           '<div class="lmc-progress-fill" style="width:' + pct + '%"></div>' +
         '</div>';
       slide.appendChild(prog);
+      var progressWordEl = prog.querySelector(".lmc-progress-word");
+      if (progressWordEl && window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(progressWordEl, "results_copy.progress_label");
+      }
 
       // Resolve data.json paths for this slide so we can wire edit-mode hooks
       // for the category name, question text, and each answer label.
@@ -351,8 +395,17 @@
       if (slideIdx === 0) back.setAttribute("disabled", "disabled");
       back.addEventListener("click", function () { if (idx > 0) { idx--; renderQuestion("back"); } });
       var next = make("button", { class: "lmc-btn", type: "button", id: "lmc-next" }, slideIdx === questions.length - 1 ? "See result →" : "Next →");
-      if (answers[q.id || "__persona"] == null) next.setAttribute("disabled", "disabled");
-      next.addEventListener("click", function () { goNext(); });
+      var inEditMode = !!(window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled());
+      if (answers[q.id || "__persona"] == null && !inEditMode) next.setAttribute("disabled", "disabled");
+      next.addEventListener("click", function () {
+        if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
+          // Edit mode: free navigation. Skip the answer-required gate.
+          if (idx < questions.length - 1) { idx++; renderQuestion("fwd"); }
+          else renderResult();
+          return;
+        }
+        goNext();
+      });
       nav.appendChild(back); nav.appendChild(next);
       slide.appendChild(nav);
 
@@ -491,11 +544,21 @@
       gaps.sort(function (a, b) { return b.gapScore - a.gapScore; });
       var topGaps = gaps.filter(function (g) { return g.gapScore > 0.2; }).slice(0, 3);
 
+      // Result-copy config — editable text labels for generated sections.
+      var resultsCopy = (data.results_copy) || {};
+      var gapsHeadlineHtml = resultsCopy.gaps_headline_html ||
+        ("Top " + topGaps.length + " gap" + (topGaps.length === 1 ? "" : "s") + " to close <em>this week</em>");
+      var mondayLabel = resultsCopy.monday_label || "What to do Monday";
+      var gapFixLabel = resultsCopy.gap_fix_label || "Fix";
+
       if (topGaps.length) {
         var gapsSec = make("section", { class: "lmc-result-section" });
         gapsSec.style.setProperty("--lmc-delay", "240ms");
         var h = make("h3", { class: "lmc-results-h" });
-        h.innerHTML = "Top " + topGaps.length + " gap" + (topGaps.length === 1 ? "" : "s") + " to close <em>this week</em>";
+        h.innerHTML = gapsHeadlineHtml;
+        if (window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(h, "results_copy.gaps_headline_html", { multiline: true });
+        }
         gapsSec.appendChild(h);
         var list = make("ol", { class: "lmc-gap-list" });
         list.innerHTML = topGaps.map(function (g, i) {
@@ -503,7 +566,7 @@
             '<div class="lmc-gap-rank">' + (i + 1) + '</div>' +
             '<div class="lmc-gap-body">' +
               '<div class="lmc-gap-head"><span class="lmc-gap-text">' + esc(g.question) + '</span></div>' +
-              (g.fix ? '<div class="lmc-gap-fix"><span class="lmc-gap-fix-label">Fix</span>' + esc(g.fix) + '</div>' : '') +
+              (g.fix ? '<div class="lmc-gap-fix"><span class="lmc-gap-fix-label">' + esc(gapFixLabel) + '</span>' + esc(g.fix) + '</div>' : '') +
             '</div>' +
           '</li>';
         }).join("");
@@ -511,7 +574,15 @@
 
         var mondayTxt = (topGaps[0] && topGaps[0].fix) || (res.weakest ? "Start with your weakest category: " + res.weakest.name + "." : "Pick the gap that hurts most this week and ship one fix.");
         var nm = make("p", { class: "lmc-next-move" });
-        nm.innerHTML = '<span class="lmc-next-label">What to do Monday</span>' + esc(mondayTxt);
+        var mondayLabelEl = make("span", { class: "lmc-next-label" }, esc(mondayLabel));
+        var mondayBodyEl = document.createElement("span");
+        mondayBodyEl.className = "lmc-next-body";
+        mondayBodyEl.textContent = mondayTxt;
+        nm.appendChild(mondayLabelEl);
+        nm.appendChild(mondayBodyEl);
+        if (window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(mondayLabelEl, "results_copy.monday_label");
+        }
         gapsSec.appendChild(nm);
         wrap.appendChild(gapsSec);
       }
@@ -522,19 +593,37 @@
       wrap.appendChild(captureHost);
 
       if (!captured) {
+        var gateConf = data.capture_gate || {};
+        var gateHeadlineHtml = gateConf.headline_html || "Unlock your <em>full report</em>";
+        var gateDescription = gateConf.description || "Enter your email and we'll reveal your per-category breakdown, personalised recommendations, and the 3 fixes I'd prioritise based on your weakest category.";
+        var gateButton = gateConf.button || "Unlock report";
+        var gateNote = gateConf.note || "No spam. One email with your report, then you decide.";
+        var gatePlaceholder = gateConf.placeholder || "you@company.com";
+
         var gate = make("div", { class: "lmc-capture", id: "lmc-capture" });
         gate.innerHTML =
-          '<h2>Unlock your <em>full report</em></h2>' +
-          '<p>Enter your email and we\'ll reveal your per-category breakdown, personalised recommendations, and the 3 fixes I\'d prioritise based on your weakest category.</p>' +
+          '<h2>' + gateHeadlineHtml + '</h2>' +
+          '<p>' + esc(gateDescription) + '</p>' +
           '<form class="lmc-form" id="lmc-capture-form">' +
           '<label class="sr-only" for="lmc-email">Email</label>' +
-          '<input class="lmc-form-input" id="lmc-email" type="email" autocomplete="email" required placeholder="you@company.com" />' +
-          '<button class="lmc-btn" type="submit">Unlock report</button>' +
+          '<input class="lmc-form-input" id="lmc-email" type="email" autocomplete="email" required placeholder="' + esc(gatePlaceholder) + '" />' +
+          '<button class="lmc-btn" type="submit"><span class="lmc-capture-btn-text">' + esc(gateButton) + '</span></button>' +
           '</form>' +
-          '<p class="lmc-note">No spam. One email with your report, then you decide.</p>';
+          '<p class="lmc-note">' + esc(gateNote) + '</p>';
         captureHost.appendChild(gate);
         var form = gate.querySelector("#lmc-capture-form");
         var emailInput = gate.querySelector("#lmc-email");
+
+        if (window.LM && window.LM.editMode) {
+          var gateH2 = gate.querySelector("h2");
+          var gateDescEl = gate.querySelector("p");
+          var gateNoteEl = gate.querySelector(".lmc-note");
+          var gateBtnTextEl = gate.querySelector(".lmc-capture-btn-text");
+          if (gateH2)        window.LM.editMode.registerField(gateH2, "capture_gate.headline_html", { multiline: true });
+          if (gateDescEl)    window.LM.editMode.registerField(gateDescEl, "capture_gate.description", { multiline: true });
+          if (gateBtnTextEl) window.LM.editMode.registerField(gateBtnTextEl, "capture_gate.button");
+          if (gateNoteEl)    window.LM.editMode.registerField(gateNoteEl, "capture_gate.note", { multiline: true });
+        }
         form.addEventListener("submit", function (e) {
           e.preventDefault();
           var em = (emailInput || {}).value || "";
