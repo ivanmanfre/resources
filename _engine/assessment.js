@@ -138,6 +138,19 @@
       beacon("cta_click", { answers: { target: "intro_start" } });
     });
     body.appendChild(startBtn);
+    // Reset link: only surfaced when there are saved answers. Lets the user
+    // wipe localStorage progress without having to complete the gate flow.
+    if (opts.hasProgress && opts.onReset) {
+      var resetWrap = make("p", { class: "lmc-intro-reset" });
+      var resetLink = make("button", { class: "lmc-intro-reset-btn", type: "button" }, "Reset progress");
+      resetLink.addEventListener("click", function () {
+        if (!confirm("Clear your saved answers and start over?")) return;
+        opts.onReset();
+      });
+      resetWrap.appendChild(make("span", { class: "lmc-intro-reset-prefix" }, "Resuming where you left off. "));
+      resetWrap.appendChild(resetLink);
+      body.appendChild(resetWrap);
+    }
     if (note) body.appendChild(make("p", { class: "lmc-intro-note" }, escapeHtml(note)));
     inner.appendChild(img);
     inner.appendChild(body);
@@ -189,7 +202,15 @@
       defaultValueBullet: "15-20 questions, 5 categories. Honest answers = honest result",
       defaultNextBullet: "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes",
       startLabel: introHasProgress ? "Resume the assessment" : "Start the assessment",
-      defaultNote: "No signup to take it. Results stay private until you unlock the full report."
+      defaultNote: "No signup to take it. Results stay private until you unlock the full report.",
+      hasProgress: introHasProgress,
+      onReset: function () {
+        try {
+          localStorage.removeItem(storageKey(data.slug, "answers"));
+          localStorage.removeItem(storageKey(data.slug, "email"));
+        } catch (_) {}
+        location.reload();
+      }
     });
     root.appendChild(introSection);
 
