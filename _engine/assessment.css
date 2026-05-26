@@ -364,4 +364,72 @@
   .lmc-widget-gated { opacity: 1; transform: none; pointer-events: auto; min-height: 0; }
   .lmc-widget-gated > * { visibility: visible; }
   .lmc-cat-fill { width: var(--lmc-cat-target, 0%) !important; }
+}/* 2026-05-27 — Brand alignment with ivanmanfredi.com hero
+   - Sage highlight sweep behind italic pivot in start headline + intro headline
+   - More editorial portrait treatment
+   - Sage eyebrow color (matching hero) */
+
+/* Highlight sweep — encodes the same wavy SVG path used on ivanmanfredi.com hero italic.
+   Applied to em/i inside the start headline and intro headline. */
+.lmc-start-h em,
+.lmc-start-h i,
+.lmc-intro-h em,
+.lmc-intro-h i {
+  position: relative;
+  font-style: italic;
+  color: #1A1A1A !important; /* override the green em color — sage lives in the sweep, not the text */
+  display: inline-block;
+  isolation: isolate;
+  padding: 0 0.04em;
+}
+.lmc-start-h em::after,
+.lmc-start-h i::after,
+.lmc-intro-h em::after,
+.lmc-intro-h i::after {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  top: 0.18em;
+  width: 110%;
+  height: 0.78em;
+  z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%232A8F65' opacity='0.78'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* Sage eyebrow — match the small uppercase tag pattern on ivanmanfredi.com */
+.lmc-start-eyebrow {
+  color: #2A8F65 !important;
+  font-weight: 700;
+}
+
+/* Portrait — bigger + editorial magazine treatment. */
+.lmc-intro-avatar {
+  width: 168px !important;
+  height: 212px !important; /* ~3:4 portrait aspect like ivanmanfredi.com */
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 12px !important;
+  border: 1px solid rgba(26, 26, 26, 0.12) !important;
+  box-shadow: 0 16px 40px rgba(26, 26, 26, 0.12), 0 4px 12px rgba(26, 26, 26, 0.08) !important;
+  filter: saturate(0.85) contrast(1.05) !important; /* keep human warmth, less heavy duotone */
+}
+@media (max-width: 640px) {
+  .lmc-intro-avatar {
+    width: 128px !important;
+    height: 160px !important;
+  }
+}
+
+/* Slightly tighter intro headline for editorial feel */
+.lmc-intro-h {
+  letter-spacing: -0.02em;
+  line-height: 1.02 !important;
+}
+.lmc-start-h {
+  letter-spacing: -0.02em;
+  line-height: 1.02 !important;
 }
