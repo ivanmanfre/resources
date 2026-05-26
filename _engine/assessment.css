@@ -424,12 +424,53 @@
   }
 }
 
-/* Slightly tighter intro headline for editorial feel */
-.lmc-intro-h {
-  letter-spacing: -0.02em;
-  line-height: 1.02 !important;
-}
+/* Tight editorial headline metrics. The card has a generic `.lmc-card h2` rule
+   with `!important` font-family/font-weight/letter-spacing for tag-style uppercase
+   labels; without `!important` here the start headline inherits 0.08em which reads
+   as breathy uppercase even though the font is DM Serif Display. */
+.lmc-intro-h,
 .lmc-start-h {
-  letter-spacing: -0.02em;
-  line-height: 1.02 !important;
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.0 !important;
+  text-transform: none !important;
+}
+/* Page-title H1 inside the resource page (above the engine widget) gets the same
+   tight metrics + the italic-pivot sage sweep so we can add a highlight from the
+   data.json title without re-deploying the engine. */
+.lmc-h1 {
+  letter-spacing: -0.02em !important;
+  line-height: 0.98 !important;
+}
+.lmc-h1 em,
+.lmc-h1 i {
+  position: relative;
+  font-style: italic;
+  color: #1A1A1A !important;
+  display: inline-block;
+  isolation: isolate;
+  padding: 0 0.04em;
+}
+.lmc-h1 em::after,
+.lmc-h1 i::after {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  top: 0.18em;
+  width: 110%;
+  height: 0.78em;
+  z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%232A8F65' opacity='0.78'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+/* Same for the in-quiz question headline (it's also h2 inside .lmc-card) */
+.lmc-question {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
 }
