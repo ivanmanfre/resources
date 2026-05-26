@@ -401,13 +401,13 @@
       "border-left:4px solid #2A8F65;";
     card.innerHTML =
       '<p style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2A8F65;margin:0 0 .35rem;">Inline editor</p>' +
-      '<h3 style="font-family:\'DM Serif Display\',Georgia,serif;font-size:1.6rem;font-weight:400;letter-spacing:-.01em;margin:0 0 .65rem;">Paste your <em style="font-style:italic;color:#2A8F65;">edit token</em>.</h3>' +
-      '<p style="font-size:.95rem;line-height:1.5;color:#3D3D3B;margin:0 0 1.25rem;">Get one from the dashboard at <a href="https://ivanmanfredi.com/dashboard/" target="_blank" rel="noopener" style="color:#2A8F65;text-decoration:underline;">Operations → Tools → Reveal token</a>. Cached locally for 24h after entry.</p>' +
-      '<input type="text" id="lm-edit-modal-input" autocomplete="off" spellcheck="false" placeholder="Paste token…" style="width:100%;box-sizing:border-box;padding:.85rem 1rem;border:1px solid rgba(26,26,26,.22);background:#fff;font-family:inherit;font-size:.95rem;color:#1A1A1A;border-radius:0;" />' +
+      '<h3 style="font-family:\'DM Serif Display\',Georgia,serif;font-size:1.6rem;font-weight:400;letter-spacing:-.01em;margin:0 0 .65rem;">Enter the <em style="font-style:italic;color:#2A8F65;">admin password</em>.</h3>' +
+      '<p style="font-size:.95rem;line-height:1.5;color:#3D3D3B;margin:0 0 1.25rem;">Unlocks inline editing on every LM page. Cached locally for 24h after entry — re-enter when it expires.</p>' +
+      '<input type="password" id="lm-edit-modal-input" autocomplete="current-password" spellcheck="false" placeholder="Password" style="width:100%;box-sizing:border-box;padding:.85rem 1rem;border:1px solid rgba(26,26,26,.22);background:#fff;font-family:inherit;font-size:.95rem;color:#1A1A1A;border-radius:0;letter-spacing:.05em;" />' +
       '<p id="lm-edit-modal-err" style="font-size:.8rem;color:#A33;margin:.5rem 0 0;min-height:1em;"></p>' +
       '<div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1rem;">' +
         '<button type="button" id="lm-edit-modal-cancel" style="padding:10px 18px;background:transparent;border:1px solid rgba(26,26,26,.22);color:#1A1A1A;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Cancel</button>' +
-        '<button type="button" id="lm-edit-modal-ok" style="padding:10px 18px;background:#1A1A1A;border:none;color:#F7F4EF;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Activate</button>' +
+        '<button type="button" id="lm-edit-modal-ok" style="padding:10px 18px;background:#1A1A1A;border:none;color:#F7F4EF;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Unlock</button>' +
       '</div>';
     backdrop.appendChild(card);
     document.body.appendChild(backdrop);
@@ -428,12 +428,13 @@
 
     function submit() {
       var token = (input.value || "").trim();
-      if (!token) { err.textContent = "Token required."; return; }
-      okBtn.disabled = true; okBtn.textContent = "Validating…"; err.textContent = "";
+      if (!token) { err.textContent = "Password required."; return; }
+      okBtn.disabled = true; okBtn.textContent = "Checking…"; err.textContent = "";
       validateEditToken(token).then(function (j) {
         if (!j || !j.ok) {
-          err.textContent = (j && j.error) || "Invalid or expired token.";
-          okBtn.disabled = false; okBtn.textContent = "Activate";
+          err.textContent = (j && j.error) || "Incorrect password.";
+          okBtn.disabled = false; okBtn.textContent = "Unlock";
+          input.select();
           return;
         }
         writeCachedEditToken(token, j.expires_at);
