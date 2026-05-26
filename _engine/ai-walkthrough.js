@@ -74,6 +74,7 @@
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
+    window.__lm_format = "ai-walkthrough";
     root.innerHTML = "";
 
     var hero = make("section", { class: "lmw-hero" });
