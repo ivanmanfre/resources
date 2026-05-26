@@ -425,11 +425,15 @@
 }
 
 /* Tight editorial headline metrics. The card has a generic `.lmc-card h2` rule
-   with `!important` font-family/font-weight/letter-spacing for tag-style uppercase
-   labels; without `!important` here the start headline inherits 0.08em which reads
-   as breathy uppercase even though the font is DM Serif Display. */
-.lmc-intro-h,
-.lmc-start-h {
+   with `!important` for tag-style uppercase labels (0.08em letter-spacing). That
+   selector has specificity 0,2,1 — to beat it on the start headline (which IS
+   an h2 inside .lmc-card) we match the same specificity with `.lmc-card h2.lmc-start-h`
+   and use !important + later cascade order. */
+.lmc-card h2.lmc-start-h,
+.lmc-card h2.lmc-intro-h,
+.lmc-intro h2.lmc-intro-h,
+.lmc-root h2.lmc-start-h,
+.lmc-root h2.lmc-intro-h {
   font-family: 'DM Serif Display', Georgia, serif !important;
   font-weight: 400 !important;
   letter-spacing: -0.02em !important;
