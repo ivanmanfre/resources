@@ -1,0 +1,134 @@
+{
+  "slug": "ai-agent-safety-audit-12-controls-before-production-deployment",
+  "title": "12 Controls That Stop an AI Agent From Wiping Your Production Database",
+  "subtitle": "For CTOs and ops leaders at 10-200 person SaaS companies. Tick 10 of 12 before any agent touches production, or you ship a future incident report with a deployment date.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 30,
+  "sections": [
+    {
+      "id": "credential-permission-scoping",
+      "title": "Credential & Permission Scoping",
+      "description": "An agent inherits whatever keys it can reach, so the keys are the real guardrail.",
+      "items": [
+        {
+          "id": "dedicated-agent-identity",
+          "text": "Issue a dedicated agent identity per environment, never a developer token, root key, or CI service account.",
+          "tip": "One agent, one IAM role, one revocable key. If you can't kill it from a single console in under 30 seconds, it's wrong.",
+          "impact": "high"
+        },
+        {
+          "id": "scope-token-narrowly",
+          "text": "Scope every token to the narrowest resource and action set, read-only by default.",
+          "tip": "The PocketOS agent found a blanket Railway CLI token sitting in the environment. Scoped to staging, the database would still exist.",
+          "impact": "high"
+        },
+        {
+          "id": "block-destructive-verbs-iam",
+          "text": "Block destructive verbs at the IAM layer, not in the prompt.",
+          "tip": "DELETE, DROP, TRUNCATE, rm -rf, volume:delete denied by policy. A system prompt that says 'never delete prod' is a request. An IAM deny is a wall.",
+          "impact": "high"
+        },
+        {
+          "id": "rotate-credentials-cadence",
+          "text": "Rotate agent credentials on a fixed cadence and on every model upgrade.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "human-in-the-loop",
+      "title": "Human-in-the-Loop Checkpoints",
+      "description": "The 15-20% of cases you route to a human is the design working, not the agent failing.",
+      "items": [
+        {
+          "id": "confirm-production-mutations",
+          "text": "Require a named human to type the action for anything that mutates production state.",
+          "tip": "'Are you sure?' buttons get rubber-stamped. Forcing the operator to type the resource name forces them to actually read it.",
+          "impact": "high"
+        },
+        {
+          "id": "irreversibility-threshold",
+          "text": "Define the irreversibility threshold in writing and publish the list.",
+          "tip": "Rule of thumb: anything a junior engineer can't undo in under 5 minutes needs human approval.",
+          "impact": "high"
+        },
+        {
+          "id": "route-edge-cases-to-human",
+          "text": "Route 15-20% of edge cases to a human queue by design.",
+          "tip": "A 100% autonomous rate means your scope is too narrow or your guardrails are off. The review queue is the agent working correctly.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "backup-recovery-isolation",
+      "title": "Backup & Recovery Isolation",
+      "description": "If the agent can reach production, it must not be able to reach the backups.",
+      "items": [
+        {
+          "id": "separate-backup-scope",
+          "text": "Store backups on a separate volume, account, and credential scope from production.",
+          "tip": "PocketOS lost the backups because they lived on the same Railway volume the agent deleted. Cross-account backups would have saved the company.",
+          "impact": "high"
+        },
+        {
+          "id": "monthly-restore-drill",
+          "text": "Test restore from backup monthly with a real recovery drill.",
+          "tip": "Untested backups are theatre. You find out they're broken at the worst possible moment.",
+          "impact": "high"
+        },
+        {
+          "id": "point-in-time-recovery",
+          "text": "Maintain point-in-time recovery on the database itself, not just nightly snapshots.",
+          "tip": "Supabase and most managed Postgres give you PITR. Turn it on before you need it.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "logging-anomaly-detection",
+      "title": "Action Logging & Anomaly Detection",
+      "description": "You can't investigate what you didn't record, and the agent can't be trusted to record itself.",
+      "items": [
+        {
+          "id": "append-only-action-log",
+          "text": "Log every action with timestamp, tool call, arguments, and outcome to an append-only store the agent cannot write to.",
+          "tip": "The PocketOS agent self-admitted what it did. That only helped because the logs survived. Put them somewhere the agent has no credentials for.",
+          "impact": "high"
+        },
+        {
+          "id": "alert-on-novelty",
+          "text": "Alert on any first-time tool call, any call to a new resource, or any burst above 3x normal volume.",
+          "tip": "An agent that has never touched the production volume suddenly issuing a delete against it is the alert. Catch the novelty, not just the failure.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "blast-radius-controls",
+      "title": "Scope & Blast Radius Controls",
+      "description": "Shrink what a single bad decision can reach before it reaches anything.",
+      "items": [
+        {
+          "id": "single-environment-per-deployment",
+          "text": "Constrain each agent to a single environment with its own credentials.",
+          "tip": "One agent for staging, a separately credentialed agent for production. They share no keys, no env vars, no shell.",
+          "impact": "high"
+        },
+        {
+          "id": "wrap-tools-in-adapters",
+          "text": "Wrap every tool the agent can call in a thin adapter that enforces scope, irreversibility checks, logging, and rate limits.",
+          "tip": "The single most useful pattern here. The agent talks to your wrappers, never to raw SDKs or CLIs. It turns 'trust the model' into 'trust the wrapper.'",
+          "impact": "high"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "Want a second pair of eyes on the gaps you couldn't tick?",
+    "description": "Send me the list of tools your agent can call and the credential scope attached to each. I'll mark the ones I'd block before Monday and tell you which gap to close first."
+  }
+}
