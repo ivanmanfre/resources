@@ -1,0 +1,786 @@
+{
+  "slug": "is-it-really-possible-to-create-an-agency-that-can-run-without-you",
+  "title": "The Founder-Dependency Test: How Much of Your $1-10M Agency Still Runs Through You",
+  "subtitle": "A 17-question diagnostic for creative and marketing agency owners who can't take two weeks off without the work backing up. Score how much of the agency still lives in your head, and what to build first.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "creative and marketing agency",
+    "locations": "the US, UK, and Canada",
+    "count_band": "11-50"
+  },
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your data sources are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules a human follows can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep.",
+      "Human-in-the-loop by design. Every output touches a person before it ships externally."
+    ],
+    "intro": "This assessment scores against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready for AI to carry weight. Miss one and any AI build will leak."
+  },
+  "proof_card": {
+    "score_label": "Run-Without-You Score",
+    "sample_score": 58,
+    "sample_top_leak": "final deliverable sign-off (~9 hrs/week routed through the founder)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your agency?",
+    "answers": [
+      {
+        "label": "Solo or under $1M revenue, still mostly me plus contractors",
+        "tag": "tier_a"
+      },
+      {
+        "label": "$1-3M, small team, I'm still in most of the work",
+        "tag": "tier_b"
+      },
+      {
+        "label": "$3-6M, growing team, some delegation working",
+        "tag": "tier_c"
+      },
+      {
+        "label": "$6-10M+, established team and leadership layer",
+        "tag": "tier_d"
+      }
+    ]
+  },
+  "start_screen": {
+    "eyebrow": "Founder-dependency x-ray",
+    "headline_html": "Find the decisions in your agency that <em>only you</em> can make.",
+    "description": "For $1-10M creative and marketing agency owners. Seventeen questions about where the work still routes through you, then a 0-100 Run-Without-You Score and the first bottleneck to remove before you hire again.",
+    "button": "Score my dependency",
+    "chips": [
+      "No signup to score",
+      "Anonymous + auto-saved",
+      "12 mins, scored live",
+      "Email only for the report"
+    ]
+  },
+  "categories": [
+    {
+      "id": "decision-authority",
+      "name": "Decision Authority",
+      "questions": [
+        {
+          "id": "decisions-without-signoff",
+          "text": "How often can a real client decision get made without your sign-off?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Never. Every call routes to me.",
+              "score": 1
+            },
+            {
+              "label": "2. Rarely. Only the smallest stuff.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes, for routine decisions.",
+              "score": 3
+            },
+            {
+              "label": "4. Often. The team handles most calls.",
+              "score": 4
+            },
+            {
+              "label": "5. Almost always. I see the exceptions only.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "decision-logic-written",
+          "text": "How clearly is your decision logic written down for the team to follow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Not at all. It's all in my head.",
+              "score": 1
+            },
+            {
+              "label": "2. A few rough notes exist.",
+              "score": 2
+            },
+            {
+              "label": "3. Some areas documented, most not.",
+              "score": 3
+            },
+            {
+              "label": "4. Most key decisions have written rules.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully documented and the team uses it.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "work-stalls-offline",
+          "text": "When you're offline for a week, how often does work stall waiting on your call?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Constantly. Things grind to a halt.",
+              "score": 1
+            },
+            {
+              "label": "2. A lot. I come back to a backlog.",
+              "score": 2
+            },
+            {
+              "label": "3. Some pile-up, nothing critical.",
+              "score": 3
+            },
+            {
+              "label": "4. Rarely. A few things wait for me.",
+              "score": 4
+            },
+            {
+              "label": "5. Never. The week runs the same without me.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are the single point of failure",
+          "text": "Right now the agency cannot make a decision without you in the loop, which means your time off costs the team momentum every time. My read: pick the three decisions you get pulled into most and write down exactly how you make each one. That written logic is the thing that lets someone else carry it.",
+          "steps": [
+            "List every decision you were pulled into last week.",
+            "Pick the three most frequent and write the actual rules you use.",
+            "Hand one of those rules to a team member and let them own it for two weeks."
+          ]
+        },
+        "mid": {
+          "headline": "Delegation works for the easy calls only",
+          "text": "The team handles routine decisions, but the judgment calls still come back to you. That's the gap between a team that executes and a team that owns. What I'd do: document the gray-area decisions next, the ones where your team currently guesses or asks.",
+          "steps": [
+            "Track which decisions still escalate to you over one week.",
+            "Write the criteria you apply to the top two escalations.",
+            "Set a clear threshold for what reaches you versus what the team decides."
+          ]
+        },
+        "high": {
+          "headline": "Decisions live in the system, not your head",
+          "text": "The team makes the call and you see the exceptions. Keep sharpening. Here is the frontier: the decisions you still own are the ones genuinely worth your judgment, so make those explicit too.",
+          "steps": [
+            "Audit the exceptions that still reach you for hidden patterns.",
+            "Encode any repeatable exception into a written rule.",
+            "Review your decision docs quarterly so they stay current with how the work changes."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~7 hrs/week recoverable from decision routing",
+        "lever": "Write down the three decisions you get pulled into most and assign each a clear owner.",
+        "talking_points": [
+          "Every decision that routes through me is a decision the team can't make at 5pm on a Friday when I'm out.",
+          "Documented decision logic is the precondition for any AI or team member carrying that call.",
+          "The goal is not fewer decisions, it's fewer decisions that require me specifically."
+        ],
+        "proof_of_concept": "Pick one recurring decision, write the rule behind it, and have a team member run it solo for one week while you track the misses."
+      }
+    },
+    {
+      "id": "client-relationships",
+      "name": "Client Relationships",
+      "questions": [
+        {
+          "id": "relationships-team-owns",
+          "text": "How many of your key client relationships could a team member own without you in the room?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. None. Every account leans on me.",
+              "score": 1
+            },
+            {
+              "label": "2. One or two of the smaller ones.",
+              "score": 2
+            },
+            {
+              "label": "3. About half could survive without me.",
+              "score": 3
+            },
+            {
+              "label": "4. Most. I'm the relationship for a few.",
+              "score": 4
+            },
+            {
+              "label": "5. Nearly all. I'm rarely the contact.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "work-needs-your-voice",
+          "text": "How often does client-facing work need your personal voice before it feels right?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Always. Nothing sounds right without me.",
+              "score": 1
+            },
+            {
+              "label": "2. Usually. I rewrite most of it.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes, for important accounts.",
+              "score": 3
+            },
+            {
+              "label": "4. Rarely. The team matches the tone.",
+              "score": 4
+            },
+            {
+              "label": "5. Never. The voice is documented and reusable.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "team-handles-tension",
+          "text": "How well does your team handle a tense client conversation without escalating to you?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They can't. It always comes to me.",
+              "score": 1
+            },
+            {
+              "label": "2. They try, then hand it over.",
+              "score": 2
+            },
+            {
+              "label": "3. They manage small friction, escalate the rest.",
+              "score": 3
+            },
+            {
+              "label": "4. They handle most of it well.",
+              "score": 4
+            },
+            {
+              "label": "5. They own it end to end, I hear about it after.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "comms-documented",
+          "text": "How documented is your approach to client communication?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Not at all. It's instinct.",
+              "score": 1
+            },
+            {
+              "label": "2. A loose template or two.",
+              "score": 2
+            },
+            {
+              "label": "3. Some playbooks for common moments.",
+              "score": 3
+            },
+            {
+              "label": "4. Most touchpoints have a written approach.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully documented from kickoff to renewal.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The clients hired you, not the agency",
+          "text": "If every relationship leans on you, the agency's revenue is really your personal capacity wearing an agency logo. My read: start by moving yourself out of the day-to-day on one mid-size account and putting a team member in the lead seat with you as backup.",
+          "steps": [
+            "Pick one account that isn't your largest and name a new lead.",
+            "Sit in the next two calls silent, let the lead run them.",
+            "Write down the moments where the client looked to you, then close those gaps."
+          ]
+        },
+        "mid": {
+          "headline": "Half the room still needs you",
+          "text": "Some accounts run without you and some still can't. The pattern I'd watch for: the accounts that need you are usually the ones where your voice or judgment was never written down. Capture it so the team can carry it.",
+          "steps": [
+            "Identify which accounts still require you and ask why.",
+            "Document the communication style each of those clients expects.",
+            "Pair a team member with you on one of those accounts for a planned handoff."
+          ]
+        },
+        "high": {
+          "headline": "The relationships belong to the agency",
+          "text": "Team members own accounts and your voice is reusable. Keep sharpening. Here is the frontier: make sure relationship knowledge survives a team member leaving, not just you leaving.",
+          "steps": [
+            "Store account context and history in one shared system, not individual inboxes.",
+            "Document the renewal and escalation playbook so any lead can step in.",
+            "Run a fire drill where one account changes hands with zero client disruption."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~6 hrs/week of client touchpoints routed through you",
+        "lever": "Move yourself to backup on one mid-size account and put a named lead in front of the client.",
+        "talking_points": [
+          "Client relationships that depend on me personally cap the agency's value at my calendar.",
+          "Your voice and your judgment on accounts can be written down and reused by the team.",
+          "An account that survives a planned handoff is worth more than one only I can run."
+        ],
+        "proof_of_concept": "Hand one account to a team lead for two weeks, stay silent on calls, and log every moment the client reached for you instead."
+      }
+    },
+    {
+      "id": "documented-knowledge",
+      "name": "Documented Knowledge",
+      "questions": [
+        {
+          "id": "structured-intake",
+          "text": "How structured is your client intake before work starts?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Not at all. We figure it out as we go.",
+              "score": 1
+            },
+            {
+              "label": "2. A short form, mostly free text.",
+              "score": 2
+            },
+            {
+              "label": "3. A real intake, but fields get skipped.",
+              "score": 3
+            },
+            {
+              "label": "4. Structured intake the team mostly follows.",
+              "score": 4
+            },
+            {
+              "label": "5. Clean, structured intake every time, no exceptions.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "sops-vs-heads",
+          "text": "How much of your process lives in written SOPs versus people's heads?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. All in heads. Nothing written.",
+              "score": 1
+            },
+            {
+              "label": "2. A few SOPs, mostly tribal knowledge.",
+              "score": 2
+            },
+            {
+              "label": "3. Roughly half is documented.",
+              "score": 3
+            },
+            {
+              "label": "4. Most core processes are written down.",
+              "score": 4
+            },
+            {
+              "label": "5. Everything that repeats has a live SOP.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "process-followed-unwatched",
+          "text": "How consistently does the team follow the documented process when you're not watching?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They don't. The docs sit unused.",
+              "score": 1
+            },
+            {
+              "label": "2. Only when I'm checking.",
+              "score": 2
+            },
+            {
+              "label": "3. Mostly, with regular drift.",
+              "score": 3
+            },
+            {
+              "label": "4. Consistently, with rare slips.",
+              "score": 4
+            },
+            {
+              "label": "5. The process runs the same whether I'm there or not.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The agency runs on memory",
+          "text": "If the process lives in heads and intake is free text, every project starts from scratch and you become the lookup table. If your best person can't explain how they decide, you can't encode it. What I'd do: structure intake first, because clean inputs are what every later automation depends on.",
+          "steps": [
+            "Rebuild your intake form into structured fields, no free-text catch-alls.",
+            "Document the one process you explain most often this month.",
+            "Make the new SOP the default link in your next three project kickoffs."
+          ]
+        },
+        "mid": {
+          "headline": "Documented, but not lived",
+          "text": "You have SOPs and the team partly follows them, which means the docs exist but haven't become the default way work happens. The pattern I'd watch for: process drift when you're not watching usually means the doc is harder to follow than the workaround.",
+          "steps": [
+            "Watch one project run and note where the team skips the SOP.",
+            "Rewrite the steps that get skipped so they're easier than the shortcut.",
+            "Assign each core SOP an owner who keeps it current."
+          ]
+        },
+        "high": {
+          "headline": "The process is the operating system",
+          "text": "Structured intake, written SOPs, consistent execution without you. Keep sharpening. Here is the frontier: with clean inputs and documented logic, you've met two of the four Agent-Ready Ops preconditions, so this is where AI can start carrying real weight.",
+          "steps": [
+            "Pick one high-volume, well-documented workflow as your first automation target.",
+            "Keep scope narrow: automate a single decision, not the whole flow.",
+            "Route the output through a human review step before it ships."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~11 hrs/week lost to re-explaining process",
+        "lever": "Structure your intake into clean fields so every project starts with inputs the team and any future automation can read.",
+        "talking_points": [
+          "Free-text intake means every project restarts from zero and pulls me in to fill gaps.",
+          "Structured input data and documentable logic are two of the four preconditions before AI can help.",
+          "An SOP nobody follows is a sign the workaround is easier than the doc."
+        ],
+        "proof_of_concept": "Rebuild your intake form into structured fields, run the next two projects through it, and measure how many clarifying questions you still had to answer."
+      }
+    },
+    {
+      "id": "delivery-qa",
+      "name": "Delivery and Quality Control",
+      "questions": [
+        {
+          "id": "final-eyes-needed",
+          "text": "How often does the final deliverable need your eyes before it ships?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Always. Nothing leaves without me.",
+              "score": 1
+            },
+            {
+              "label": "2. Almost always, except tiny items.",
+              "score": 2
+            },
+            {
+              "label": "3. For anything client-facing or new.",
+              "score": 3
+            },
+            {
+              "label": "4. Rarely. The team owns most QA.",
+              "score": 4
+            },
+            {
+              "label": "5. Never. The standard is in the system.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "good-enough-defined",
+          "text": "How clearly is 'good enough to ship' defined without your judgment?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Not at all. It's my gut.",
+              "score": 1
+            },
+            {
+              "label": "2. A vague standard everyone interprets differently.",
+              "score": 2
+            },
+            {
+              "label": "3. A loose checklist for some work.",
+              "score": 3
+            },
+            {
+              "label": "4. Clear criteria for most deliverables.",
+              "score": 4
+            },
+            {
+              "label": "5. A written standard the team applies consistently.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "team-catches-issues",
+          "text": "How well does your team catch quality issues before they reach you?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They don't. I'm the safety net.",
+              "score": 1
+            },
+            {
+              "label": "2. They catch the obvious ones only.",
+              "score": 2
+            },
+            {
+              "label": "3. They catch most, miss the subtle ones.",
+              "score": 3
+            },
+            {
+              "label": "4. They catch nearly everything.",
+              "score": 4
+            },
+            {
+              "label": "5. Issues get caught at the source, not at my desk.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "delivery-automated",
+          "text": "How automated are the repetitive parts of your delivery workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Not at all. It's all manual.",
+              "score": 1
+            },
+            {
+              "label": "2. A couple of templates, nothing connected.",
+              "score": 2
+            },
+            {
+              "label": "3. Some steps automated, plenty of copy-paste left.",
+              "score": 3
+            },
+            {
+              "label": "4. Most repetitive steps run themselves.",
+              "score": 4
+            },
+            {
+              "label": "5. The repetitive work is automated end to end.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are the QA department",
+          "text": "If nothing ships without your eyes and the standard lives in your gut, you've made yourself the bottleneck on every deliverable. My read: write down what 'good' actually means before you try to delegate the review, because the team can't hit a standard they can't see.",
+          "steps": [
+            "Take your last five approved deliverables and list what made them pass.",
+            "Turn that into a written quality checklist for one work type.",
+            "Have the team self-check against it before anything reaches you."
+          ]
+        },
+        "mid": {
+          "headline": "The standard is half-written",
+          "text": "The team catches the obvious issues but the subtle calls still come to you, and that's usually where the standard was never made explicit. What I'd do: capture the subtle quality judgments you make so the team can apply them at the source.",
+          "steps": [
+            "Note the last three things you caught that the team missed.",
+            "Add those checks to the quality checklist with examples.",
+            "Shift your review to spot-checks instead of every single item."
+          ]
+        },
+        "high": {
+          "headline": "Quality is built in, not inspected in",
+          "text": "Issues get caught at the source and the repetitive work runs itself. Keep sharpening. Here is the frontier: with a clear standard and a human review step, your delivery flow is a strong candidate for AI-assisted QA on the first pass.",
+          "steps": [
+            "Map which review steps are pattern-matching versus real judgment.",
+            "Pilot an automated first-pass check on one pattern-matching step.",
+            "Keep a human approving the final ship so the loop stays closed."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~9 hrs/week spent as the final approver",
+        "lever": "Write down what 'good enough to ship' means for your top work type so the team can apply the standard without you.",
+        "talking_points": [
+          "If I'm the only QA gate, our throughput is capped at how fast I can review.",
+          "A written quality standard is what lets the team catch issues at the source instead of my desk.",
+          "Repetitive delivery steps are the cheapest things to automate and free the most senior time."
+        ],
+        "proof_of_concept": "Build a quality checklist from your last five approvals, have the team self-check against it for one week, and count how many items you still had to fix."
+      }
+    },
+    {
+      "id": "team-autonomy",
+      "name": "Team Autonomy",
+      "questions": [
+        {
+          "id": "gray-area-calls",
+          "text": "How confidently does your team make calls in the gray areas without checking with you?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They don't. Everything gets a check-in.",
+              "score": 1
+            },
+            {
+              "label": "2. Only when I'm unreachable.",
+              "score": 2
+            },
+            {
+              "label": "3. On familiar gray areas, yes.",
+              "score": 3
+            },
+            {
+              "label": "4. Most of the time, confidently.",
+              "score": 4
+            },
+            {
+              "label": "5. They decide and tell me, not ask me.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pulled-into-others-work",
+          "text": "How often do you get pulled into work that isn't yours to do?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Daily. I'm in everything.",
+              "score": 1
+            },
+            {
+              "label": "2. Most days, for something.",
+              "score": 2
+            },
+            {
+              "label": "3. A few times a week.",
+              "score": 3
+            },
+            {
+              "label": "4. Occasionally, on real escalations.",
+              "score": 4
+            },
+            {
+              "label": "5. Almost never. My work is my work.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "role-ownership-clear",
+          "text": "How clear is each role's ownership when something goes wrong?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Unclear. It all defaults to me.",
+              "score": 1
+            },
+            {
+              "label": "2. Loosely defined, lots of overlap.",
+              "score": 2
+            },
+            {
+              "label": "3. Clear for some roles, fuzzy for others.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly clear, rare confusion.",
+              "score": 4
+            },
+            {
+              "label": "5. Crystal clear. Everyone knows who owns what.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Everything defaults to you",
+          "text": "When ownership is fuzzy, the gap gets filled by the person who can't say no, and at a $1-10M agency that's usually the founder. My read: assign clear ownership for one function this month and resist the pull to step back in when it gets bumpy.",
+          "steps": [
+            "Pick one function and name a single accountable owner.",
+            "Write down what that owner decides without you.",
+            "When they bring you a problem, ask what they'd do before you answer."
+          ]
+        },
+        "mid": {
+          "headline": "Autonomy on the familiar, not the unfamiliar",
+          "text": "The team handles known gray areas but new situations still bounce to you. The pattern I'd watch for: that usually means they have permission but not the decision principles to apply when the situation is new.",
+          "steps": [
+            "Teach the principle behind your calls, not just the answer.",
+            "Set a clear list of decisions that never need your approval.",
+            "Track how often you still get pulled in and on what."
+          ]
+        },
+        "high": {
+          "headline": "The team owns, you observe",
+          "text": "Clear ownership, confident gray-area calls, you stay out of work that isn't yours. Keep sharpening. Here is the frontier: protect this by making sure autonomy survives growth, when new hires dilute the unwritten norms.",
+          "steps": [
+            "Document the decision principles so new hires absorb them fast.",
+            "Build a clear escalation path that doesn't default to you.",
+            "Review where you still get pulled in quarterly and close those gaps."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~8 hrs/week recovered by clearing ownership gaps",
+        "lever": "Assign one accountable owner per function and define what each owner decides without you.",
+        "talking_points": [
+          "Fuzzy ownership means every dropped ball lands on my desk by default.",
+          "Teaching the decision principle, not just the answer, is what makes autonomy hold in new situations.",
+          "The work I get pulled into that isn't mine is the clearest map of what to delegate next."
+        ],
+        "proof_of_concept": "Name one function owner, give them a written list of decisions they make without you, and log every time you still got pulled in over two weeks."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'tier_b' || persona === 'tier_c' || persona === 'tier_d') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of where your agency depends on you?",
+      "description": "Drop your email and I'll review your exact answers, stack them against creative and marketing agency firms your size, and send a 5-minute Loom within 48h with the ONE bottleneck I'd remove first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'tier_a'",
+      "headline": "Solo or under $1M? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback runs longer, and most of your dependency is just you being the whole team for now. Follow me on LinkedIn. I post tactical agency ops breakdowns 3x/week. When you cross $1M and a real team, come back and retake. The recommendations will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight. Here's what agencies your size miss next.",
+      "description": "At your score, the obvious dependencies are already closed. The next gains come from automating the documented delivery steps, encoding your gray-area decisions so autonomy survives new hires, and consolidating account knowledge so it outlives any one team member. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly agency ops teardown",
+      "description": "One tactical case study plus one n8n workflow breakdown per week. How mid-market creative and marketing agencies run lean and scale without scaling payroll. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ]
+}
