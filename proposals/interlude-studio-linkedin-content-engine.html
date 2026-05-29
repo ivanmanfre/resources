@@ -29,7 +29,7 @@ a{color:inherit}
 .cover::before{content:'';position:absolute;top:4%;right:-4%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(42,143,101,.22),transparent 62%);filter:blur(34px);z-index:0;pointer-events:none}
 .cover-left,.cover-details{position:relative;z-index:1}
 .cover-nav{z-index:2}
-.cover-sub{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:720px;margin-bottom:0;border-left:2px solid var(--accent);padding-left:20px;animation:clip-wipe 1.1s cubic-bezier(.22,.84,.36,1) 1.3s both}
+.cover-sub{font-size:20px;line-height:1.65;color:var(--ink);max-width:660px;margin-bottom:0;border-left:2px solid var(--accent);padding-left:20px;animation:clip-wipe 1.1s cubic-bezier(.22,.84,.36,1) 1.3s both}
 @keyframes clip-wipe{from{clip-path:inset(0 100% 0 0);opacity:0}to{clip-path:inset(0 0% 0 0);opacity:1}}
 .cover-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;text-align:right}
 .cover-numeral{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(140px,18vw,260px);line-height:.85;color:var(--accent);letter-spacing:-.04em;margin-bottom:12px}
@@ -159,8 +159,8 @@ a{color:inherit}
 .proof-card-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
 .proof-card-caption{font-size:14.5px;color:var(--ink);line-height:1.6}
 @media(max-width:760px){.proof-grid{grid-template-columns:1fr}}
-.investment-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;padding:24px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin:0 0 24px}
-.investment-meta .investment-term{display:flex;flex-direction:column;gap:6px}
+.investment-meta{display:block;padding:0;margin:0 0 28px}
+.investment-meta .investment-term{display:flex;flex-direction:row;align-items:baseline;gap:10px}
 @media (max-width:780px){.tiers-grid{grid-template-columns:1fr}}
 
 /* ROI */
@@ -168,7 +168,7 @@ a{color:inherit}
 .roi-stat{padding:56px 32px 56px 0;border-right:1px solid var(--hairline)}
 .roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:32px}
 .roi-stat:last-child{border-right:none}
-.roi-stat-value{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:112px;line-height:.9;color:var(--ink);letter-spacing:-.03em;margin-bottom:12px}
+.roi-stat-value{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:104px;line-height:.9;color:var(--ink);letter-spacing:-.03em;margin-bottom:6px}
 .roi-stat-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
 
 /* ACCESS LIST */
@@ -353,6 +353,7 @@ a{color:inherit}
 .net .detail{opacity:0;transition:opacity .25s ease;pointer-events:none}
 .net .node:hover .detail,.net .node:focus .detail{opacity:1}
 .net .detail rect{fill:rgba(18,28,23,.97);stroke:rgba(112,154,93,.45);stroke-width:1}
+.net .dconn{stroke:#7fd0a6;stroke-width:1.3;opacity:.8}
 .net .detail .dt-t{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.12em;fill:#9fe6c0}
 .net .detail .dt-b{font-family:'Source Serif 4',serif;font-size:12.5px;fill:rgba(247,244,239,.82)}
 .net .out-shape{fill:rgba(112,154,93,.1);stroke:#5fb98a;stroke-width:1.3;transform-box:fill-box;transform-origin:center;transition:transform .25s,filter .25s,fill .25s}
@@ -515,17 +516,17 @@ a:focus-visible,button:focus-visible,.btn-primary:focus-visible,.btn-secondary:f
         <g class="detail"><rect x="196" y="300" width="208" height="58" rx="3"/><text class="dt-t" x="208" y="320">RAG · SUPABASE VECTOR DB</text><text class="dt-b" x="208" y="338">Indexes your calls, post patterns</text><text class="dt-b" x="208" y="353">&amp; brand voice. Smarter every call.</text></g>
       </g>
       <g class="node" tabindex="0"><circle class="bead" cx="398" cy="240" r="15"/><text class="num" x="398" y="240">1</text><text class="cap" x="398" y="270">CONTEXT</text>
-        <g class="detail"><rect x="303" y="166" width="190" height="50" rx="3"/><text class="dt-t" x="315" y="185">CONTEXT RETRIEVAL</text><text class="dt-b" x="315" y="203">Pulls relevant past calls.</text></g></g>
+        <g class="detail"><rect x="303" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="398" y1="216" x2="398" y2="225"/><text class="dt-t" x="315" y="185">CONTEXT RETRIEVAL</text><text class="dt-b" x="315" y="203">Pulls relevant past calls.</text></g></g>
       <g class="node" tabindex="0"><circle class="bead" cx="456" cy="240" r="15"/><text class="num" x="456" y="240">2</text><text class="cap" x="456" y="270">SORT</text>
-        <g class="detail"><rect x="361" y="166" width="190" height="50" rx="3"/><text class="dt-t" x="373" y="185">CATEGORIZE</text><text class="dt-b" x="373" y="203">Sorts the topic to a format.</text></g></g>
+        <g class="detail"><rect x="361" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="456" y1="216" x2="456" y2="225"/><text class="dt-t" x="373" y="185">CATEGORIZE</text><text class="dt-b" x="373" y="203">Sorts the topic to a format.</text></g></g>
       <g class="node" tabindex="0"><circle class="bead" cx="514" cy="240" r="15"/><text class="num" x="514" y="240">3</text><text class="cap" x="514" y="270">EDIT</text>
-        <g class="detail"><rect x="419" y="166" width="190" height="50" rx="3"/><text class="dt-t" x="431" y="185">EDITORIAL</text><text class="dt-b" x="431" y="203">Checks it fits your ICP.</text></g></g>
+        <g class="detail"><rect x="419" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="514" y1="216" x2="514" y2="225"/><text class="dt-t" x="431" y="185">EDITORIAL</text><text class="dt-b" x="431" y="203">Checks it fits your ICP.</text></g></g>
       <g class="node" tabindex="0"><circle class="bead" cx="572" cy="240" r="15"/><text class="num" x="572" y="240">4</text><text class="cap" x="572" y="270">HOOKS</text>
-        <g class="detail"><rect x="477" y="166" width="190" height="50" rx="3"/><text class="dt-t" x="489" y="185">HOOK GENERATOR</text><text class="dt-b" x="489" y="203">10 hook options per post.</text></g></g>
+        <g class="detail"><rect x="477" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="572" y1="216" x2="572" y2="225"/><text class="dt-t" x="489" y="185">HOOK GENERATOR</text><text class="dt-b" x="489" y="203">10 hook options per post.</text></g></g>
       <g class="node" tabindex="0"><circle class="bead" cx="630" cy="240" r="15"/><text class="num" x="630" y="240">5</text><text class="cap" x="630" y="270">WRITE</text>
-        <g class="detail"><rect x="535" y="166" width="190" height="50" rx="3"/><text class="dt-t" x="547" y="185">COPYWRITER</text><text class="dt-b" x="547" y="203">Drafts it in your voice.</text></g></g>
+        <g class="detail"><rect x="535" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="630" y1="216" x2="630" y2="225"/><text class="dt-t" x="547" y="185">COPYWRITER</text><text class="dt-b" x="547" y="203">Drafts it in your voice.</text></g></g>
       <g class="node" tabindex="0"><circle class="bead" cx="688" cy="240" r="15"/><text class="num" x="688" y="240">6</text><text class="cap" x="688" y="270">QA</text>
-        <g class="detail"><rect x="593" y="166" width="190" height="50" rx="3"/><text class="dt-t" x="605" y="185">QA REVIEW</text><text class="dt-b" x="605" y="203">Strips AI tells before publish.</text></g></g>
+        <g class="detail"><rect x="593" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="688" y1="216" x2="688" y2="225"/><text class="dt-t" x="605" y="185">QA REVIEW</text><text class="dt-b" x="605" y="203">Strips AI tells before publish.</text></g></g>
       <g class="node" tabindex="0">
         <path class="gate" d="M782,240 L806,216 L830,240 L806,264 Z"/>
         <path class="check" d="M798,240 l5,6 l9,-12"/>
@@ -554,7 +555,7 @@ a:focus-visible,button:focus-visible,.btn-primary:focus-visible,.btn-secondary:f
       <circle class="dlv-dot" cx="994" cy="300" r="4"/><text class="dlv" x="1006" y="300">Landing page</text>
       <circle class="dlv-dot" cx="994" cy="328" r="4"/><text class="dlv" x="1006" y="328">Resource page</text>
       <circle class="dlv-dot" cx="994" cy="356" r="4"/><text class="dlv" x="1006" y="356">Cover image</text>
-      <circle class="dlv-dot" cx="994" cy="384" r="4"/><text class="dlv" x="1006" y="384">Email draft</text>
+      <circle class="dlv-dot" cx="994" cy="384" r="4"/><text class="dlv" x="1006" y="384">Email capture</text>
     </svg>
     <p class="net-hint">Swipe to explore the full flow →</p>
     </div>
@@ -609,7 +610,7 @@ a:focus-visible,button:focus-visible,.btn-primary:focus-visible,.btn-secondary:f
       <figure class="proof-card"><img src="assets/interlude/ivan-interactive-assessment.png" alt="Live interactive assessment lead magnet" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Interactive Assessment</div><div class="proof-card-caption">A live assessment, one of the formats. Branded, reader-facing, scored, generated end to end by the lead magnet engine.</div></figcaption></figure>
       <figure class="proof-card"><img src="assets/interlude/kyle-guides.png" alt="Published guide lead magnet landing page" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Guide</div><div class="proof-card-caption">A published Guide, another format. Branded resource page, opinionated copy, booking CTA, all generated automatically on your subdomain.</div></figcaption></figure>
       <figure class="proof-card"><img src="assets/interlude/assessment-start.png" alt="Start screen of a freshly generated interactive assessment" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Where it starts</div><div class="proof-card-caption">The opening screen of a freshly generated assessment, fully on brand: scored title, the reader's own welcome, an auto-saving quiz. This is what your audience lands on.</div></figcaption></figure>
-      <figure class="proof-card"><img src="assets/interlude/lemonade-thankyou.png" alt="Full branded Lemonade thank-you page" loading="lazy" style="height:300px;object-fit:cover;object-position:top"><figcaption class="proof-card-body"><div class="proof-card-label">A full branded page <span style="opacity:.6;font-weight:400;text-transform:none;letter-spacing:0">· click to expand</span></div><div class="proof-card-caption">A complete thank-you page we built in Lemonade's brand, end to end. Yours match Interlude exactly.</div></figcaption></figure>
+      <figure class="proof-card"><img src="assets/interlude/lemonade-thankyou.png" alt="Full branded Lemonade thank-you page" loading="lazy" style="height:340px;object-fit:cover;object-position:top"><figcaption class="proof-card-body"><div class="proof-card-label">A full branded page <span style="opacity:.6;font-weight:400;text-transform:none;letter-spacing:0">· click to expand</span></div><div class="proof-card-caption">A complete thank-you page we built in Lemonade's brand, end to end. Yours match Interlude exactly.</div></figcaption></figure>
     </div>
     <figure class="proof-card" style="max-width:360px;margin:24px auto 0">
       <img src="assets/interlude/lm-cover-portrait.jpg" alt="Branded AI-generated lead magnet cover featuring a portrait" loading="lazy">
@@ -769,10 +770,12 @@ a:focus-visible,button:focus-visible,.btn-primary:focus-visible,.btn-secondary:f
 <script>
 (function(){
   const bar=document.querySelector('.scroll-progress');
-  if(bar){window.addEventListener('scroll',()=>{
-    const h=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=h>0?(window.scrollY/h*100)+'%':'0';
-  },{passive:true})}
+  if(bar){
+    let docH=document.documentElement.scrollHeight-window.innerHeight,ticking=false;
+    const paint=()=>{bar.style.width=docH>0?(window.scrollY/docH*100)+'%':'0';ticking=false;};
+    window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(paint);}},{passive:true});
+    window.addEventListener('resize',()=>{docH=document.documentElement.scrollHeight-window.innerHeight;paint();},{passive:true});
+  }
   const obs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
   },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
@@ -806,13 +809,16 @@ a:focus-visible,button:focus-visible,.btn-primary:focus-visible,.btn-secondary:f
 })();
 
 // Cursor spotlight
-if(window.matchMedia('(hover:hover)').matches){
+if(window.matchMedia('(hover:hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   var sp=document.getElementById('cursor-spotlight');
+  var spx=0,spy=0,spPending=false;
   document.addEventListener('mousemove',function(e){
-    var x=(e.clientX/window.innerWidth*100).toFixed(1);
-    var y=(e.clientY/window.innerHeight*100).toFixed(1);
-    sp.style.background='radial-gradient(620px circle at '+x+'% '+y+'%, rgba(42,143,101,0.2), transparent 70%)';
-    sp.style.opacity='1';
+    spx=(e.clientX/window.innerWidth*100).toFixed(1);
+    spy=(e.clientY/window.innerHeight*100).toFixed(1);
+    if(!spPending){spPending=true;requestAnimationFrame(function(){
+      sp.style.background='radial-gradient(620px circle at '+spx+'% '+spy+'%, rgba(42,143,101,0.2), transparent 70%)';
+      sp.style.opacity='1';spPending=false;
+    });}
   },{passive:true});
 }
 
