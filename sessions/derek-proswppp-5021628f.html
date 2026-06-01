@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>AI Orientation Session — Plan · Derek (Pro SWPPP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F7F4EF; --paper-sunk:#EFEBE3; --ink:#1A1A1A; --ink-soft:#4A4A48; --ink-mute:#6B6861;
+    --accent:#2A8F65; --accent-deep:#1F6E4D; --hairline:rgba(26,26,26,.14);
+    --sans:'Source Serif 4',Georgia,serif; --display:'DM Serif Display',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.62;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");}
+  .wrap{max-width:760px;margin:0 auto;padding:64px 28px 96px}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+  header{margin-bottom:48px}
+  .draft{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    background:#F3E6C8;color:#7a5b18;border:1px solid #e3cf9e;padding:4px 9px;margin-bottom:22px}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,6.5vw,62px);line-height:.98;letter-spacing:-.02em;margin:0 0 14px}
+  h1 em{font-style:italic;position:relative;z-index:0}
+  h1 em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:.06em;height:.5em;background:rgba(42,143,101,.5);z-index:-1}
+  .sub{font-size:19px;color:var(--ink-soft);max-width:60ch}
+  .meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:28px;padding-top:22px;border-top:1px solid var(--hairline)}
+  .meta div{min-width:120px}
+  .meta .label{display:block;margin-bottom:4px}
+  .meta .val{font-size:16px;font-weight:600}
+  section{margin-top:46px}
+  h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.05;letter-spacing:-.01em;margin:0 0 16px;
+    padding-left:16px;border-left:3px solid var(--accent)}
+  h3{font-family:var(--sans);font-weight:600;font-size:18px;margin:26px 0 8px}
+  p{margin:0 0 16px}
+  ul,ol{margin:0 0 16px;padding-left:22px}
+  li{margin-bottom:9px}
+  li::marker{color:var(--accent)}
+  .callout{background:var(--paper-sunk);border-left:3px solid var(--accent);padding:16px 20px;margin:20px 0;font-size:16px}
+  .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);
+    background:rgba(42,143,101,.10);padding:2px 7px;border-radius:2px;white-space:nowrap}
+  .confirm{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#9a6b00;
+    background:#F6ECCF;padding:1px 6px;border-radius:2px}
+  .skill{border-top:1px solid var(--hairline);padding:13px 0}
+  .skill:first-child{border-top:none}
+  .skill b{font-weight:600}
+  hr{border:none;border-top:1px solid var(--hairline);margin:52px 0}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--hairline);color:var(--ink-mute);font-size:14px}
+  a{color:var(--accent-deep)}
+  @media print{.draft{display:none}body{font-size:12pt}.wrap{padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="draft">Draft · confirm on the call before sending</span>
+    <div class="label" style="margin-bottom:14px">AI Orientation Session — Your Plan</div>
+    <h1>Where to <em>start</em><br>with AI in your business.</h1>
+    <p class="sub">Get your agents actually working, and own the process instead of renting it. You already have the instinct right: a local model on the Mac Studio for the private, high-volume parsing, and Claude for the reasoning. This turns that instinct into a build order.</p>
+    <div class="meta">
+      <div><span class="label">Prepared for</span><span class="val">Derek · Pro SWPPP</span></div>
+      <div><span class="label">Session</span><span class="val">90-minute call + this plan</span></div>
+      <div><span class="label">Date</span><span class="val">[confirm]</span></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Your setup</h2>
+    <ul>
+      <li><b>Mac Studio</b> — your local inference box; runs a capable open model fully in memory.</li>
+      <li><b>Hermes</b> — your local model for parsing and extraction.</li>
+      <li><b>Claude</b> — your reasoning and agent brain.</li>
+      <li><b>n8n</b> — the orchestrator that ties it together. <span class="confirm">confirm</span></li>
+      <li><b>Business:</b> SWPPP / stormwater compliance — inspections, reports, permits, plus a sales pipeline. Document-heavy and regulated, which is exactly why local parsing fits.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>How the pieces fit</h2>
+    <p><b>Local (Hermes on the Mac Studio)</b> handles the cheap, private, bulk parsing of inspection docs, field notes, and permits. <b>Claude</b> handles reasoning, drafting, and agent decisions. <b>n8n</b> handles orchestration so it runs on triggers and schedules without you babysitting it.</p>
+    <div class="callout"><b>The routing rule:</b> sensitive or high-volume parsing goes local. Anything needing real reasoning or quality output goes to Claude. Don't push reasoning onto the local model; don't send private docs to the cloud.</div>
+  </section>
+
+  <section>
+    <h2>Set up first <span class="label" style="font-size:13px">(in order)</span></h2>
+    <ol>
+      <li><b>Claude Code + a <code>CLAUDE.md</code></b> for how you actually work — your repo, tools, conventions, the "never do X" rules.</li>
+      <li><b>Memory</b> — you're on Claude Code's native auto-memory (on by default, v2.1.59+). Nothing to build yet; <code>/memory</code> to view it.</li>
+      <li><b>Hermes on the Mac Studio</b> via MLX (fastest on Apple silicon) or Ollama (easiest). <span class="confirm">pick on call</span></li>
+      <li><b>Connect your tools</b> to Claude through MCP — CRM, docs, calendar, your data.</li>
+      <li><b>n8n orchestration</b> — wire the local-vs-Claude routing so workflows run hands-off.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Your first build</h2>
+    <p>Pick one. We scope it on the call and the rest becomes your backlog.</p>
+    <h3>Candidate A — Inspection-report parser <span class="tag">local · Hermes</span></h3>
+    <p>Raw field notes, PDFs, and photo captions → standardized compliance fields. Highest "own it + private + bulk" payoff.</p>
+    <h3>Candidate B — Hottest untouched leads <span class="tag">Claude</span></h3>
+    <p>Score leads, filter to the ones not yet contacted, rank by intent. Fastest revenue-facing win.</p>
+    <div class="callout"><b>Recommendation:</b> A if the parsing pain is the bigger time sink, B if the pipeline is. <span class="confirm">decide on call</span></div>
+  </section>
+
+  <section>
+    <h2>Skills worth <em>building</em></h2>
+    <p>Tailored to Pro SWPPP. Each notes what runs local vs Claude. Start with one or two; build the rest as the need shows up.</p>
+    <div class="skill"><b>Hottest untouched leads</b> — score + filter un-contacted, rank by intent. <span class="tag">Claude · CRM</span></div>
+    <div class="skill"><b>What's broken right now</b> — scan n8n executions, surface failures and likely cause. <span class="tag">Claude · n8n</span></div>
+    <div class="skill"><b>Inspection-report parser</b> — field notes / PDFs → structured compliance fields. <span class="tag">local · Hermes</span></div>
+    <div class="skill"><b>Report draft generator</b> — site data → SWPPP / report draft. <span class="tag">Hermes → Claude</span></div>
+    <div class="skill"><b>Compliance-gap flagger</b> — records vs permit requirements; flag missing or overdue (e.g. rain-event inspections). <span class="tag">Claude</span></div>
+    <div class="skill"><b>Reg-change digest</b> — new permit / regulation → what changed and the impact on active sites. <span class="tag">Hermes → Claude</span></div>
+    <div class="skill"><b>Site recall</b> — "everything we know about this site" on demand. <span class="tag">local files now</span></div>
+  </section>
+
+  <section>
+    <h2>Learning path <span class="label" style="font-size:13px">(what to study, in order)</span></h2>
+    <ol>
+      <li>Claude Code basics + <code>CLAUDE.md</code> + <code>/memory</code></li>
+      <li>Writing your first skill for a workflow you repeat</li>
+      <li>MCP — connecting Claude to your real tools</li>
+      <li>n8n orchestration — triggers, routing, error handling</li>
+      <li>Serving Hermes locally (MLX / Ollama) and calling it from n8n</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Leave alone <span class="label" style="font-size:13px">(for now)</span></h2>
+    <ul>
+      <li><b>No vector DB / "memory brain" yet.</b> Native auto-memory covers you until memory must reach other systems, needs semantic search at scale, or a team shares it. Climb that ladder only then.</li>
+      <li><b>Don't force everything local.</b> The Mac Studio earns its keep on private parsing; let Claude do the reasoning.</li>
+      <li><b>Don't build all the skills at once.</b> One working build beats ten half-built ones.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Next steps <span class="label" style="font-size:13px">(this week)</span></h2>
+    <ul>
+      <li>Install Claude Code + write your first <code>CLAUDE.md</code></li>
+      <li>Stand up Hermes on the Mac Studio (MLX or Ollama)</li>
+      <li>Build the first skill we picked</li>
+      <li>[Ivan] any follow-up resources promised on the call</li>
+    </ul>
+  </section>
+
+  <footer>
+    Iván Manfredi · <a href="https://ivanmanfredi.com">ivanmanfredi.com</a><br>
+    AI Orientation Session deliverable · prepared for Derek (Pro SWPPP)
+  </footer>
+
+</div>
+</body>
+</html>
