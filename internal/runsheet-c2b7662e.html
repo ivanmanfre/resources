@@ -108,7 +108,7 @@
     <div class="danger"><b>Gotchas — say these out loud:</b>
       <ul style="margin:8px 0 0">
         <li><b>Secrets never go to GitHub.</b> When Claude sets up the repo, have it confirm the <code>.env</code> / keys are gitignored — glance that nothing with a key got committed.</li>
-        <li><b>The local model (Hermes) stays on the Mac</b> — not in git, not on the PC. The PC uses Claude in the cloud, and can reach the Mac's model over the network if needed.</li>
+        <li><b>The local model stays on the Mac</b> — not in git, not on the PC. The PC uses Claude in the cloud, and can reach the Mac's model over the network if needed.</li>
         <li><b>Auto-memory is per-machine</b> (doesn't sync). Durable context goes in <code>CLAUDE.md</code> (which does sync). Don't promise his memory syncs across both.</li>
       </ul>
     </div>
@@ -116,12 +116,12 @@
   </section>
 
   <section>
-    <h2>Adding a local model <span class="label" style="font-size:13px">(Hermes on the Mac)</span></h2>
+    <h2>Adding a local model <span class="label" style="font-size:13px">(local model on the Mac)</span></h2>
     <p>Easier than it sounds, and — same as everything else — he can have <b>Claude Code do it in plain English</b>. Two newbie-friendly tools: <b>Ollama</b> (one app + one command) or <b>LM Studio</b> (full GUI, click to download and run). Ollama is the standard.</p>
     <h3>The whole thing (Ollama):</h3>
     <ol>
       <li>Install <b>Ollama</b> (ollama.com) — or tell Claude Code <i>"install Ollama on this Mac."</i></li>
-      <li><i>"Pull the Hermes model and run a quick test"</i> → Claude runs the pull and tests it. (Confirm the exact tag/size in the Ollama library; an 8B-class model runs almost anywhere.)</li>
+      <li><i>"Pull a local model and run a quick test"</i> → Claude runs the pull and tests it. (Confirm the exact tag/size in the Ollama library; an 8B-class model runs almost anywhere.)</li>
       <li>It now serves a local API at <code>http://localhost:11434</code> (OpenAI-compatible). That's the address n8n / his tools point at for the local-parse jobs.</li>
     </ol>
     <div class="q"><b>Memory rule of thumb:</b> the model has to fit in RAM. Mac Mini → an 8B-class model. Mac Studio (big unified memory) → 70B+. Don't pull a model bigger than the machine, or it crawls.</div>

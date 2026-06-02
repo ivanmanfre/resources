@@ -72,7 +72,7 @@
     <h2>Your setup</h2>
     <ul>
       <li><b>Mac Studio</b> — your local inference box; runs a capable open model fully in memory.</li>
-      <li><b>Hermes</b> — your local model for parsing and extraction.</li>
+      <li><b>A local model</b> — for parsing and extraction (we pick it on the call).</li>
       <li><b>Claude</b> — your reasoning and agent brain.</li>
       <li><b>n8n</b> — the orchestrator that ties it together. <span class="confirm">confirm</span></li>
       <li><b>Business:</b> SWPPP / stormwater compliance — inspections, reports, permits, plus a sales pipeline. Document-heavy and regulated, which is exactly why local parsing fits.</li>
@@ -81,7 +81,7 @@
 
   <section>
     <h2>How the pieces fit</h2>
-    <p><b>Local (Hermes on the Mac Studio)</b> handles the cheap, private, bulk parsing of inspection docs, field notes, and permits. <b>Claude</b> handles reasoning, drafting, and agent decisions. <b>n8n</b> handles orchestration so it runs on triggers and schedules without you babysitting it.</p>
+    <p><b>Local (a model on the Mac Studio)</b> handles the cheap, private, bulk parsing of inspection docs, field notes, and permits. <b>Claude</b> handles reasoning, drafting, and agent decisions. <b>n8n</b> handles orchestration so it runs on triggers and schedules without you babysitting it.</p>
     <div class="callout"><b>The routing rule:</b> sensitive or high-volume parsing goes local. Anything needing real reasoning or quality output goes to Claude. Don't push reasoning onto the local model; don't send private docs to the cloud.</div>
   </section>
 
@@ -90,7 +90,7 @@
     <ol>
       <li><b>Claude Code + a <code>CLAUDE.md</code></b> for how you actually work — your repo, tools, conventions, the "never do X" rules.</li>
       <li><b>Memory</b> — you're on Claude Code's native auto-memory (on by default, v2.1.59+). Nothing to build yet; <code>/memory</code> to view it.</li>
-      <li><b>Hermes on the Mac Studio</b> via MLX (fastest on Apple silicon) or Ollama (easiest). <span class="confirm">pick on call</span></li>
+      <li><b>Your local model on the Mac Studio</b> via MLX (fastest on Apple silicon) or Ollama (easiest). <span class="confirm">pick on call</span></li>
       <li><b>Connect your tools</b> to Claude through MCP — CRM, docs, calendar, your data.</li>
       <li><b>n8n orchestration</b> — wire the local-vs-Claude routing so workflows run hands-off.</li>
     </ol>
@@ -99,7 +99,7 @@
   <section>
     <h2>Your first build</h2>
     <p>Pick one. We scope it on the call and the rest becomes your backlog.</p>
-    <h3>Candidate A — Inspection-report parser <span class="tag">local · Hermes</span></h3>
+    <h3>Candidate A — Inspection-report parser <span class="tag">local model</span></h3>
     <p>Raw field notes, PDFs, and photo captions → standardized compliance fields. Highest "own it + private + bulk" payoff.</p>
     <h3>Candidate B — Hottest untouched leads <span class="tag">Claude</span></h3>
     <p>Score leads, filter to the ones not yet contacted, rank by intent. Fastest revenue-facing win.</p>
@@ -111,10 +111,10 @@
     <p>Tailored to Pro SWPPP. Each notes what runs local vs Claude. Start with one or two; build the rest as the need shows up.</p>
     <div class="skill"><b>Hottest untouched leads</b> — score + filter un-contacted, rank by intent. <span class="tag">Claude · CRM</span></div>
     <div class="skill"><b>What's broken right now</b> — scan n8n executions, surface failures and likely cause. <span class="tag">Claude · n8n</span></div>
-    <div class="skill"><b>Inspection-report parser</b> — field notes / PDFs → structured compliance fields. <span class="tag">local · Hermes</span></div>
-    <div class="skill"><b>Report draft generator</b> — site data → SWPPP / report draft. <span class="tag">Hermes → Claude</span></div>
+    <div class="skill"><b>Inspection-report parser</b> — field notes / PDFs → structured compliance fields. <span class="tag">local model</span></div>
+    <div class="skill"><b>Report draft generator</b> — site data → SWPPP / report draft. <span class="tag">local → Claude</span></div>
     <div class="skill"><b>Compliance-gap flagger</b> — records vs permit requirements; flag missing or overdue (e.g. rain-event inspections). <span class="tag">Claude</span></div>
-    <div class="skill"><b>Reg-change digest</b> — new permit / regulation → what changed and the impact on active sites. <span class="tag">Hermes → Claude</span></div>
+    <div class="skill"><b>Reg-change digest</b> — new permit / regulation → what changed and the impact on active sites. <span class="tag">local → Claude</span></div>
     <div class="skill"><b>Site recall</b> — "everything we know about this site" on demand. <span class="tag">local files now</span></div>
   </section>
 
@@ -125,7 +125,7 @@
       <li>Writing your first skill for a workflow you repeat</li>
       <li>MCP — connecting Claude to your real tools</li>
       <li>n8n orchestration — triggers, routing, error handling</li>
-      <li>Serving Hermes locally (MLX / Ollama) and calling it from n8n</li>
+      <li>Serving your local model (MLX / Ollama) and calling it from n8n</li>
     </ol>
   </section>
 
@@ -142,7 +142,7 @@
     <h2>Next steps <span class="label" style="font-size:13px">(this week)</span></h2>
     <ul>
       <li>Install Claude Code + write your first <code>CLAUDE.md</code></li>
-      <li>Stand up Hermes on the Mac Studio (MLX or Ollama)</li>
+      <li>Stand up your local model on the Mac Studio (MLX or Ollama)</li>
       <li>Build the first skill we picked</li>
       <li>[Ivan] any follow-up resources promised on the call</li>
     </ul>
