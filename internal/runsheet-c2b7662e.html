@@ -91,6 +91,31 @@
   </section>
 
   <section>
+    <h2>Two machines → GitHub sync <span class="label" style="font-size:13px">(e.g. office Mac + home PC)</span></h2>
+    <p>The setup lives in <b>files</b>, so keep it in a <b>private GitHub repo</b> and pull it on either machine. Install the apps once per machine; git carries the work, not the apps. Don't make them choose a machine — solve it with the repo.</p>
+    <h3>On the call (do it on the primary machine — the Mac):</h3>
+    <ol>
+      <li>Install <b>VS Code + the Claude Code extension</b>, sign in to Claude.</li>
+      <li>Create a <b>private</b> GitHub repo (e.g. <code>their-ai-workspace</code>).</li>
+      <li>In the project folder: <code>git init</code> → add a <code>.gitignore</code> → commit → push.</li>
+      <li>Put durable context in <code>CLAUDE.md</code> (it's in the repo, so it syncs).</li>
+    </ol>
+    <h3>Then on the second machine (the PC):</h3>
+    <ol>
+      <li>Install VS Code + Claude Code (works on Windows), sign in.</li>
+      <li><code>git clone</code> the repo → identical setup. <code>git pull</code> to stay in sync after.</li>
+    </ol>
+    <div class="danger"><b>Gotchas — say these out loud:</b>
+      <ul style="margin:8px 0 0">
+        <li><b>Secrets never go to GitHub.</b> <code>.gitignore</code> the <code>.env</code> / API keys from minute one. Keys get set per-machine, never committed.</li>
+        <li><b>The local model (Hermes) stays on the Mac</b> — not in git, not on the PC. The PC uses Claude in the cloud, and can reach the Mac's model over the network if needed.</li>
+        <li><b>Auto-memory is per-machine</b> (doesn't sync). Durable context goes in <code>CLAUDE.md</code> (which does sync). Don't promise their memory syncs across both.</li>
+      </ul>
+    </div>
+    <p style="margin-top:12px;font-size:15px;color:var(--ink-mute)">One-liner to leave them with: <i>"Install the tools on both, keep your work in a private GitHub repo, pull on either machine. Secrets stay local, the local model stays on the Mac."</i></p>
+  </section>
+
+  <section>
     <h2>Skills — what to teach &amp; install</h2>
     <h3>Teach / share (general-purpose)</h3>
     <ul>
