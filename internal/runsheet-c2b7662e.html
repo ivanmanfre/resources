@@ -92,27 +92,40 @@
 
   <section>
     <h2>Two machines → GitHub sync <span class="label" style="font-size:13px">(e.g. office Mac + home PC)</span></h2>
-    <p>The setup lives in <b>files</b>, so keep it in a <b>private GitHub repo</b> and pull it on either machine. Install the apps once per machine; git carries the work, not the apps. Don't make them choose a machine — solve it with the repo.</p>
-    <h3>On the call (do it on the primary machine — the Mac):</h3>
+    <p><b>He doesn't run git commands — he tells Claude Code in plain English and it does the git work.</b> That's the whole lesson: he directs, Claude executes, he reads what it did. The setup lives in files, so it goes in a private GitHub repo and pulls onto either machine.</p>
+    <h3>One-time, by hand (Claude can't do this part for him):</h3>
+    <p>Sign into GitHub once per machine — do the <code>gh</code> login together (opens a browser, he approves). That's the only manual bit; everything after is natural language.</p>
+    <h3>On the Mac — what he <i>says</i> to Claude Code:</h3>
     <ol>
-      <li>Install <b>VS Code + the Claude Code extension</b>, sign in to Claude.</li>
-      <li>Create a <b>private</b> GitHub repo (e.g. <code>their-ai-workspace</code>).</li>
-      <li>In the project folder: <code>git init</code> → add a <code>.gitignore</code> → commit → push.</li>
-      <li>Put durable context in <code>CLAUDE.md</code> (it's in the repo, so it syncs).</li>
+      <li><i>"Turn this project into a git repo, add a .gitignore that keeps my .env and API keys out, and push it to a new private GitHub repo called [name]."</i> → Claude does the init, the .gitignore, the commit, creates the repo, pushes.</li>
+      <li><i>"Write a CLAUDE.md for this project covering my stack, how I work, and the rules."</i> → durable context that syncs with the repo.</li>
     </ol>
-    <h3>Then on the second machine (the PC):</h3>
+    <h3>On the PC — what he says:</h3>
     <ol>
-      <li>Install VS Code + Claude Code (works on Windows), sign in.</li>
-      <li><code>git clone</code> the repo → identical setup. <code>git pull</code> to stay in sync after.</li>
+      <li><i>"Clone my private repo [name] and set it up here."</i> → identical setup.</li>
+      <li>To stay in sync after: <i>"Pull my latest from GitHub"</i> (or just "sync this with GitHub").</li>
     </ol>
     <div class="danger"><b>Gotchas — say these out loud:</b>
       <ul style="margin:8px 0 0">
-        <li><b>Secrets never go to GitHub.</b> <code>.gitignore</code> the <code>.env</code> / API keys from minute one. Keys get set per-machine, never committed.</li>
+        <li><b>Secrets never go to GitHub.</b> When Claude sets up the repo, have it confirm the <code>.env</code> / keys are gitignored — glance that nothing with a key got committed.</li>
         <li><b>The local model (Hermes) stays on the Mac</b> — not in git, not on the PC. The PC uses Claude in the cloud, and can reach the Mac's model over the network if needed.</li>
-        <li><b>Auto-memory is per-machine</b> (doesn't sync). Durable context goes in <code>CLAUDE.md</code> (which does sync). Don't promise their memory syncs across both.</li>
+        <li><b>Auto-memory is per-machine</b> (doesn't sync). Durable context goes in <code>CLAUDE.md</code> (which does sync). Don't promise his memory syncs across both.</li>
       </ul>
     </div>
-    <p style="margin-top:12px;font-size:15px;color:var(--ink-mute)">One-liner to leave them with: <i>"Install the tools on both, keep your work in a private GitHub repo, pull on either machine. Secrets stay local, the local model stays on the Mac."</i></p>
+    <p style="margin-top:12px;font-size:15px;color:var(--ink-mute)">The lesson under this: he never memorizes commands. He says what he wants in English, Claude runs it, he reads what it did. That's "owning it" without being a dev — and it's the thing that makes the $500 land.</p>
+  </section>
+
+  <section>
+    <h2>Adding a local model <span class="label" style="font-size:13px">(Hermes on the Mac)</span></h2>
+    <p>Easier than it sounds, and — same as everything else — he can have <b>Claude Code do it in plain English</b>. Two newbie-friendly tools: <b>Ollama</b> (one app + one command) or <b>LM Studio</b> (full GUI, click to download and run). Ollama is the standard.</p>
+    <h3>The whole thing (Ollama):</h3>
+    <ol>
+      <li>Install <b>Ollama</b> (ollama.com) — or tell Claude Code <i>"install Ollama on this Mac."</i></li>
+      <li><i>"Pull the Hermes model and run a quick test"</i> → Claude runs the pull and tests it. (Confirm the exact tag/size in the Ollama library; an 8B-class model runs almost anywhere.)</li>
+      <li>It now serves a local API at <code>http://localhost:11434</code> (OpenAI-compatible). That's the address n8n / his tools point at for the local-parse jobs.</li>
+    </ol>
+    <div class="q"><b>Memory rule of thumb:</b> the model has to fit in RAM. Mac Mini → an 8B-class model. Mac Studio (big unified memory) → 70B+. Don't pull a model bigger than the machine, or it crawls.</div>
+    <p style="margin-top:10px;font-size:15px;color:var(--ink-mute)">Do a 10-min dry run on your own Mac before Thursday: install Ollama, pull an 8B model, chat with it once. Then you're never lost live.</p>
   </section>
 
   <section>
