@@ -18,38 +18,34 @@
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.62;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");}
-  .wrap{max-width:760px;margin:0 auto;padding:64px 28px 96px}
+  .wrap{max-width:720px;margin:0 auto;padding:64px 28px 96px}
   .label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
-  header{margin-bottom:48px}
+  header{margin-bottom:44px}
   .draft{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
     background:#E7F0EA;color:#1F6E4D;border:1px solid #bcd9c8;padding:4px 9px;margin-bottom:22px}
-  h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,6.5vw,62px);line-height:.98;letter-spacing:-.02em;margin:0 0 14px}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,6vw,56px);line-height:1;letter-spacing:-.02em;margin:0 0 14px}
   h1 em{font-style:italic;position:relative;z-index:0}
   h1 em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:.06em;height:.5em;background:rgba(42,143,101,.5);z-index:-1}
-  .sub{font-size:19px;color:var(--ink-soft);max-width:62ch}
+  .sub{font-size:19px;color:var(--ink-soft);max-width:60ch}
   .meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:28px;padding-top:22px;border-top:1px solid var(--hairline)}
   .meta div{min-width:120px}
   .meta .label{display:block;margin-bottom:4px}
   .meta .val{font-size:16px;font-weight:600}
-  section{margin-top:46px}
-  h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.05;letter-spacing:-.01em;margin:0 0 16px;
+  section{margin-top:44px}
+  h2{font-family:var(--display);font-weight:400;font-size:29px;line-height:1.05;letter-spacing:-.01em;margin:0 0 16px;
     padding-left:16px;border-left:3px solid var(--accent)}
-  h3{font-family:var(--sans);font-weight:600;font-size:18px;margin:26px 0 8px}
+  h3{font-family:var(--sans);font-weight:600;font-size:17px;margin:24px 0 6px}
   p{margin:0 0 16px}
   ul,ol{margin:0 0 16px;padding-left:22px}
   li{margin-bottom:9px}
   li::marker{color:var(--accent)}
-  .callout{background:var(--paper-sunk);border-left:3px solid var(--accent);padding:16px 20px;margin:20px 0;font-size:16px}
-  .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);
-    background:rgba(42,143,101,.10);padding:2px 7px;border-radius:2px;white-space:nowrap}
+  .step{background:var(--paper-sunk);border-left:3px solid var(--accent);padding:16px 20px;margin:16px 0;font-size:16px}
+  .step .label{display:block;margin-bottom:6px}
+  .say{font-family:var(--mono);font-size:14px;background:#1A1A1A;color:#EDEAE2;padding:11px 14px;border-radius:5px;margin:8px 0;line-height:1.5}
   .checks{list-style:none;padding-left:0}
   .checks li{padding-left:28px;position:relative;margin-bottom:11px}
   .checks li::before{content:'\2713';position:absolute;left:0;top:0;color:var(--accent);font-weight:700}
-  .skill{border-top:1px solid var(--hairline);padding:13px 0}
-  .skill:first-child{border-top:none}
-  .skill b{font-weight:600}
-  .note{font-size:15px;color:var(--ink-mute);font-style:italic;margin-top:6px}
-  hr{border:none;border-top:1px solid var(--hairline);margin:52px 0}
+  .note{font-size:15px;color:var(--ink-mute);font-style:italic;margin-top:8px}
   footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--hairline);color:var(--ink-mute);font-size:14px}
   a{color:var(--accent-deep)}
   @media print{.draft{display:none}body{font-size:12pt}.wrap{padding:0}}
@@ -59,92 +55,76 @@
 <div class="wrap">
 
   <header>
-    <span class="draft">Session 1 of 2 · your plan + what's next</span>
+    <span class="draft">Session 1 of 2 · what to finish + what's next</span>
     <div class="label" style="margin-bottom:14px">AI Orientation Session — Your Plan</div>
     <h1>Where to <em>start</em><br>with AI in your business.</h1>
-    <p class="sub">You're already proving this works. You fed a 340-page permit, an example, and your template into Claude and got a compliant SWPPP draft that was 90% there. This plan turns that one win into a system: your pipeline, your outreach, your reporting. Most of it I build for you. The parts worth learning yourself are marked.</p>
+    <p class="sub">You're set up and it's working. Here's the short list to finish on your own before we meet again — including how to take it with you on the Dell while you travel.</p>
     <div class="meta">
       <div><span class="label">Prepared for</span><span class="val">Derek · Pro SWPPP</span></div>
-      <div><span class="label">Format</span><span class="val">Two 90-min calls + this plan</span></div>
+      <div><span class="label">Format</span><span class="val">Two 90-min calls</span></div>
       <div><span class="label">Status</span><span class="val">Session 1 done</span></div>
     </div>
   </header>
 
   <section>
     <h2>Where we got to</h2>
-    <p>Session 1 was setup. Here's what's live on your machine already:</p>
     <ul class="checks">
-      <li><b>Claude Code installed and running</b> on your Windows laptop.</li>
-      <li><b>Connected to your starter-skills repo</b> on GitHub — your kit travels with you.</li>
-      <li><b>Superpowers installed</b> — planning, research, and disciplined step-by-step building.</li>
-      <li><b>Permissions tuned</b> — auto-edit on, thinking levels explained, and the <b>$100 plan is plenty</b> for you (the $200 is overkill).</li>
-      <li><b>You saw the destination</b> — a content and lead system like the one on my screen.</li>
+      <li><b>Claude Code running</b> on your Windows laptop.</li>
+      <li><b>Connected to your starter-skills repo</b> on GitHub.</li>
+      <li><b>Superpowers installed</b> — planning, research, step-by-step building.</li>
+      <li><b>Permissions tuned</b> — auto-edit on; the <b>$100 plan is plenty</b> for you.</li>
     </ul>
   </section>
 
   <section>
-    <h2>Your stack <span class="label" style="font-size:13px">(how the pieces fit)</span></h2>
-    <p>Four pieces, cloud-first. You told me nothing you handle is truly sensitive, so we keep it simple and don't over-engineer:</p>
+    <h2>Finish this <span class="label" style="font-size:13px">(your homework)</span></h2>
+    <p>None of it's required — it's just where you'll learn the most. Poke at it in your free time:</p>
     <ul>
-      <li><b>Claude Code</b> — your cockpit. You ask it things, it builds, it runs your skills.</li>
-      <li><b>n8n</b> — the automation layer. Runs your flows on a schedule or a trigger, no babysitting.</li>
-      <li><b>Apollo + Pipedrive</b> — your pipeline. Leads in, enriched, every touch tracked in one place.</li>
-      <li><b>Slack</b> — where your reports land.</li>
-    </ul>
-    <div class="callout"><b>The Mac Studio (arriving ~July) is a bonus, not a dependency.</b> Because your data isn't sensitive, we go cloud-first. The Mac Studio just makes the heavy, repetitive jobs cheaper down the line. We don't build around it.</div>
-  </section>
-
-  <section>
-    <h2>Your proven win, made <em>repeatable</em></h2>
-    <p>You already did the hard part by hand. We turn it into something you run in minutes, not a weekend.</p>
-    <h3>The permit drafter <span class="tag">first build</span></h3>
-    <p>Drop in the permit and the site data, get a first-draft SWPPP or report in your format. You review and ship. The thing that eats your week becomes a ten-minute review.</p>
-    <h3>The permit-expiry lead engine <span class="tag">your edge</span></h3>
-    <p>Public permit data tells you who's expiring and when. Market six months ahead, state by state — the Texas multi-sector permit expiring in August is exactly the play. Nobody else in your niche is doing this.</p>
-    <div class="callout"><b>We pick which one leads on session 2.</b> One build, done right, before the next.</div>
-  </section>
-
-  <section>
-    <h2>What I'm building <em>for</em> you</h2>
-    <p>You don't build these. This is my side of the work, roughly in order:</p>
-    <div class="skill"><b>Your lead interface</b> — Apollo + Pipedrive, every touchpoint (call, email, LinkedIn) in one tracked view. <span class="tag">first up</span></div>
-    <div class="skill"><b>LinkedIn outreach</b> — I run it for you. Around ten personalized messages a day, plus a light personal-brand presence on both your pages.</div>
-    <div class="skill"><b>Content + lead magnets</b> — the system you saw on my screen, pointed at your niche.</div>
-    <div class="skill"><b>n8n wiring</b> — Claude Code connected to your pipeline so reports and flows run hands-off.</div>
-    <div class="skill"><b>Your status dashboard</b> — a task list so you can see what's moving without having to ask me.</div>
-  </section>
-
-  <section>
-    <h2>Your homework <span class="label" style="font-size:13px">(optional, your free time)</span></h2>
-    <p>None of this is required. It's just where you'll learn the most — and the more you poke at it, the better you'll know what to ask for.</p>
-    <ul>
-      <li><b>Run one real task in Claude Code</b> — your permit-draft flow, start to finish.</li>
+      <li><b>Run one real task</b> — your permit-draft flow, start to finish, inside Claude Code.</li>
       <li><b>Try the research skill</b> — point it at a real question, like which states' industrial permits expire next quarter.</li>
       <li><b>Try plan-then-build</b> — have it plan a small thing, tighten the plan, then let it go.</li>
-      <li><b>Send me the inputs</b> — drop permit lists in Slack, your industrial target-company list, and that Houston AI guy's scope.</li>
-      <li><b>When the Mac Studio lands (~July)</b> — we re-run the same install so your skills sync across machines.</li>
-      <li><b>Paste your keys</b> — when I send the steps, drop in your Pipedrive and n8n keys. Two-minute job.</li>
+      <li><b>Send me (Slack):</b> your permit lists, your industrial target-company list, and that Houston AI guy's scope.</li>
     </ul>
   </section>
 
   <section>
-    <h2>Session 2 <span class="label" style="font-size:13px">(what we'll cover)</span></h2>
+    <h2>Take it with you <span class="label" style="font-size:13px">(set up the Dell for vacation)</span></h2>
+    <p>Your instinct's right — VS Code, then sign into Claude + GitHub. The trick is you just <em>tell Claude</em> to do the heavy part. Three steps:</p>
+
+    <div class="step">
+      <span class="label">Step 1 · On your main laptop — save everything to GitHub</span>
+      Once you've poked around, open Claude Code and tell it, plain English:
+      <div class="say">"Save all my skills and my whole project to a new private GitHub repo called pro-swppp-ai."</div>
+      It creates the repo and uploads everything — all your skills, your whole setup.
+    </div>
+
+    <div class="step">
+      <span class="label">Step 2 · On the Dell — install the tools</span>
+      <ul style="margin-top:8px">
+        <li>Download and install <b>VS Code</b> (code.visualstudio.com).</li>
+        <li>Add the <b>Claude Code</b> extension, sign in with your Claude subscription.</li>
+        <li>Connect <b>GitHub</b> when it asks — approve in the browser.</li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <span class="label">Step 3 · On the Dell — pull everything back</span>
+      Tell Claude Code:
+      <div class="say">"Clone my pro-swppp-ai repo and set it up here."</div>
+      Everything comes back — same skills, same setup. Work on either machine; re-run Step 1 to keep them in sync.
+    </div>
+
+    <p class="note">n8n is a key, not a login — we finish wiring it together in Session 2, then you just paste your n8n key and it's connected. For vacation, Claude + GitHub is all you need.</p>
+  </section>
+
+  <section>
+    <h2>Session 2 <span class="label" style="font-size:13px">(what's next)</span></h2>
     <ul class="checks">
-      <li>Finish connecting Claude Code to n8n.</li>
-      <li>Add your Pipedrive and n8n keys.</li>
-      <li>Walk your new Apollo lead interface.</li>
+      <li>Finish connecting Claude Code to n8n + add your keys (Pipedrive + n8n).</li>
+      <li>Walk your new lead view.</li>
       <li>Turn on LinkedIn outreach.</li>
     </ul>
     <p class="note">On a paid Zoom this time, so we don't hit the 40-minute wall again.</p>
-  </section>
-
-  <section>
-    <h2>Leave alone <span class="label" style="font-size:13px">(for now)</span></h2>
-    <ul>
-      <li><b>No memory brain / vector database yet.</b> The built-in memory covers you until it has to reach other systems or a team shares it. Climb that ladder only then.</li>
-      <li><b>Cloud-first is right for you.</b> Don't force everything local just because you'll have the Mac Studio.</li>
-      <li><b>One build at a time.</b> One working thing beats ten half-built ones.</li>
-    </ul>
   </section>
 
   <footer>
