@@ -56,6 +56,14 @@
   code{font-family:var(--mono);font-size:.84em;background:var(--sunk);padding:1px 5px;border-radius:4px}
   .opt{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#9a6b00;
     background:#F6ECCF;padding:1px 7px;border-radius:4px;vertical-align:middle}
+  details{border:1px solid var(--line);border-radius:6px;margin:7px 0;background:rgba(255,255,255,.45)}
+  summary{cursor:pointer;padding:9px 12px;font-weight:600;font-size:14.5px;list-style:none;display:flex;align-items:center;gap:8px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"\25B8";color:var(--accent);font-size:11px;flex:none}
+  details[open] summary::before{content:"\25BE"}
+  details .body{padding:0 14px 11px;font-size:14px;line-height:1.45}
+  details .body ol,details .body ul{margin:5px 0;padding-left:19px}
+  details .body li{margin-bottom:4px}
   footer{margin-top:46px;padding-top:14px;border-top:1.5px solid var(--line);color:var(--mute);font-size:12px;font-family:var(--mono)}
 </style>
 </head>
@@ -166,6 +174,16 @@
       <li><code>/clear</code> — start fresh when he switches tasks.</li>
       <li><code>/compact</code> — shrink a long chat without losing the thread.</li>
     </ul>
+
+    <h3>D. Tools for his stack</h3>
+    <p><b>n8nac</b> — a CLI that lets Claude manage his n8n workflows as code + look up node configs (so it doesn't guess). Worth it since he's building in n8n:</p>
+    <div class="type"><span class="c">npm</span> install -g n8nac</div>
+    <p style="font-size:14px"><b>Optional power-ups</b> (add when he wants them):</p>
+    <ul style="font-size:14.5px">
+      <li><b>deep-research</b> — multi-source, fact-checked answers. Same <code>/plugin</code> marketplace as Superpowers.</li>
+      <li><b>Playwright</b> (browser automation) — Claude opens sites, screenshots, scrapes (e.g. pull from regulatory portals). Add the Playwright MCP.</li>
+      <li><b>computer-control MCP</b> <span class="opt">advanced</span> — lets Claude actually drive his screen + clicks. Powerful, lots of room to go wrong — only once he's comfortable.</li>
+    </ul>
   </section>
 
   <!-- 7 -->
@@ -207,13 +225,51 @@
   <!-- 10 -->
   <section class="part">
     <div class="phead"><span class="pnum">10</span><h2>Build one real thing</h2><span class="ptime">~20 min</span></div>
-    <p>The part he remembers. Pick <b>one</b> (rest is backlog):</p>
-    <ul>
-      <li><b>Inspection-report parser</b> — field notes/PDFs → clean compliance fields. (Private + bulk; local model.)</li>
-      <li><b>Hottest untouched leads</b> — pull from Pipedrive, show the un-contacted ones ranked. (Fast money win; Claude.)</li>
-    </ul>
-    <p>Sketch it: what kicks it off → the steps → where Claude, n8n + the local model each fit → what could break. He builds it WITH Claude in plain English.</p>
-    <div class="tip"><b>★ Most important habit:</b> make Claude prove it. He can't read code, so he says — <i>"write a test, run it, show me it passed."</i> That's how a non-dev trusts the output.</div>
+    <p>The part he remembers. Pick <b>one</b> — the rest is backlog. My pick is the daily brief: recurring value, and it shows off the whole stack.</p>
+
+    <h3>A — Daily brief <span class="opt">recommended</span></h3>
+    <p>A workflow that messages him every morning with what needs him today.</p>
+    <p><b>The n8n flow:</b> Schedule (7am) → pull Pipedrive (new + uncontacted leads, deals gone quiet) + n8n (overnight failures) + his site data (inspections due) → Claude summarizes → send.</p>
+    <p>Reads like: <i>"3 new leads to chase · 1 deal gone quiet · 2 sites due for inspection · 0 automations failed."</i></p>
+    <p style="font-size:13.5px;color:var(--mute)">Pick the channel + expand its steps (Derek has Slack):</p>
+
+    <details>
+      <summary>Slack &nbsp;<span class="opt">his workspace</span></summary>
+      <div class="body">
+        <ol>
+          <li>Go to <code>api.slack.com/apps</code> → <b>Create New App</b> → From scratch → pick his workspace.</li>
+          <li>Features → <b>Incoming Webhooks</b> → toggle On → <b>Add New Webhook to Workspace</b> → pick a channel → copy the Webhook URL.</li>
+          <li>In n8n: use the <b>Slack</b> node (or an HTTP Request node) to post the brief to that Webhook URL.</li>
+        </ol>
+        <p style="font-size:12.5px;color:var(--mute);margin:0">Private DM instead of a channel? Use a bot token with the <code>chat:write</code> scope.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Telegram &nbsp;<span class="opt">simplest · phone push</span></summary>
+      <div class="body">
+        <ol>
+          <li>In Telegram, message <b>@BotFather</b> → <code>/newbot</code> → name it → copy the bot <b>token</b>.</li>
+          <li>Message the new bot once (say hi). Get his chat ID from <b>@userinfobot</b>.</li>
+          <li>In n8n: add the Telegram credential (paste token) → <b>Telegram → Send Message</b> node with his chat ID.</li>
+        </ol>
+      </div>
+    </details>
+    <details>
+      <summary>Email &nbsp;<span class="opt">no bot</span></summary>
+      <div class="body">
+        <ol>
+          <li>In n8n: add an email credential — SMTP (his email) or a service like Resend (API key).</li>
+          <li>Use the <b>Send Email</b> node → to his address, subject "Morning Brief", body = Claude's summary.</li>
+        </ol>
+      </div>
+    </details>
+
+    <h3>B — Inspection-report parser</h3>
+    <p>Field notes/PDFs → clean compliance fields. Best private + bulk payoff; runs on the local model.</p>
+    <h3>C — Hottest untouched leads</h3>
+    <p>Pull from Pipedrive, rank the un-contacted ones. Fast money win; runs on Claude.</p>
+
+    <div class="tip"><b>★ Make Claude prove it:</b> he can't read code, so he says — <i>"test it end-to-end and show me the message it would send."</i> That's how a non-dev trusts the output.</div>
   </section>
 
   <!-- 11 -->
