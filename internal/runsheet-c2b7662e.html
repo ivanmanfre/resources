@@ -16,50 +16,47 @@
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
-    font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:800px;margin:0 auto;padding:52px 26px 120px}
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:30px 16px 80px}
 
-  /* header */
-  .internal{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-    background:#F2E0DE;color:#9a3b32;border:1px solid #e3b3ad;padding:5px 10px;border-radius:3px;margin-bottom:22px}
-  h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,6vw,52px);line-height:1.04;margin:0 0 12px}
-  .lead{font-size:19px;color:var(--soft);margin:14px 0 0}
-  .how{background:var(--sunk);border-radius:8px;padding:20px 22px;margin:28px 0 0;font-size:17px}
+  .internal{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    background:#F2E0DE;color:#9a3b32;border:1px solid #e3b3ad;padding:4px 8px;border-radius:3px;margin-bottom:14px}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(25px,5.2vw,36px);line-height:1.05;margin:0 0 8px}
+  .lead{font-size:15px;color:var(--soft);margin:8px 0 0}
+  .how{background:var(--sunk);border-radius:7px;padding:13px 15px;margin:18px 0 0;font-size:14px;line-height:1.45}
   .how b{color:var(--ink)}
-  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:14px;color:var(--mute)}
-  .legend span{display:inline-flex;align-items:center;gap:7px}
-  .dot{width:13px;height:13px;border-radius:3px;display:inline-block}
+  .legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:10px;font-size:12.5px;color:var(--mute)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
 
-  /* parts */
-  .part{margin-top:60px;padding-top:30px;border-top:2px solid var(--line)}
-  .part:first-of-type{border-top:none}
-  .phead{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
-  .pnum{font-family:var(--mono);font-weight:600;font-size:15px;color:#fff;background:var(--ink);
-    border-radius:6px;padding:4px 11px;flex:none}
-  .ptime{margin-left:auto;font-family:var(--mono);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-deep)}
-  h2{font-family:var(--display);font-weight:400;font-size:31px;line-height:1.1;margin:0}
-  h3{font-weight:600;font-size:19px;margin:26px 0 8px}
-  p{margin:0 0 15px}
-  ul,ol{margin:0 0 15px;padding-left:24px}
-  li{margin-bottom:9px}
+  .part{margin-top:30px;padding-top:16px;border-top:1.5px solid var(--line)}
+  .part:first-of-type{border-top:none;margin-top:20px}
+  .phead{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+  .pnum{font-family:var(--mono);font-weight:600;font-size:12.5px;color:#fff;background:var(--ink);
+    border-radius:5px;padding:3px 8px;flex:none}
+  .ptime{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-deep);flex:none}
+  h2{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.12;margin:0}
+  h3{font-weight:600;font-size:15.5px;margin:16px 0 5px}
+  p{margin:0 0 10px}
+  ul,ol{margin:0 0 10px;padding-left:21px}
+  li{margin-bottom:5px}
   li::marker{color:var(--accent)}
   b{font-weight:600}
 
-  /* callouts */
-  .say{background:#E9F2EC;border-left:4px solid var(--accent);border-radius:0 7px 7px 0;
-    padding:15px 18px;margin:16px 0;font-style:italic;font-size:18px}
-  .say::before{content:"He says to Claude:";display:block;font-style:normal;font-family:var(--mono);
-    font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:6px}
-  .type{background:#15201b;color:#cfe6d8;border-radius:7px;padding:13px 16px;margin:16px 0;
-    font-family:var(--mono);font-size:15px;line-height:1.5;overflow-x:auto;white-space:pre-wrap}
+  .say{background:#E9F2EC;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;
+    padding:10px 13px;margin:11px 0;font-style:italic;font-size:15px;line-height:1.45}
+  .say::before{content:"He tells Claude:";display:block;font-style:normal;font-family:var(--mono);
+    font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:4px}
+  .type{background:#15201b;color:#cfe6d8;border-radius:6px;padding:10px 12px;margin:11px 0;
+    font-family:var(--mono);font-size:13px;line-height:1.45;overflow-x:auto;white-space:pre-wrap}
   .type .c{color:#7fd0a6}
-  .warn{background:#F6E7E5;border-left:4px solid #b24a40;border-radius:0 7px 7px 0;padding:14px 18px;margin:16px 0;font-size:17px}
+  .warn{background:#F6E7E5;border-left:3px solid #b24a40;border-radius:0 6px 6px 0;padding:10px 13px;margin:11px 0;font-size:14.5px;line-height:1.45}
   .warn b{color:#9a3b32}
-  .tip{background:var(--sunk);border-left:4px solid var(--accent);border-radius:0 7px 7px 0;padding:14px 18px;margin:16px 0;font-size:17px}
-  code{font-family:var(--mono);font-size:.85em;background:var(--sunk);padding:2px 6px;border-radius:4px}
-  .opt{font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#9a6b00;
-    background:#F6ECCF;padding:2px 8px;border-radius:4px;vertical-align:middle}
-  footer{margin-top:70px;padding-top:20px;border-top:2px solid var(--line);color:var(--mute);font-size:14px;font-family:var(--mono)}
+  .tip{background:var(--sunk);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:10px 13px;margin:11px 0;font-size:14.5px;line-height:1.45}
+  code{font-family:var(--mono);font-size:.84em;background:var(--sunk);padding:1px 5px;border-radius:4px}
+  .opt{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#9a6b00;
+    background:#F6ECCF;padding:1px 7px;border-radius:4px;vertical-align:middle}
+  footer{margin-top:46px;padding-top:14px;border-top:1.5px solid var(--line);color:var(--mute);font-size:12px;font-family:var(--mono)}
 </style>
 </head>
 <body>
@@ -67,191 +64,193 @@
 
   <span class="internal">Internal · your call guide · not for clients</span>
   <h1>AI Orientation Session — Call Guide</h1>
-  <p class="lead">$500 · 90 minutes. Follow this top to bottom. The goal: get Derek set up to run Claude Code himself, and pick one real thing to build.</p>
+  <p class="lead">$500 · 90 min. Follow top to bottom. Goal: get Derek running Claude Code himself, and build one real thing.</p>
 
   <div class="how">
-    <b>How to use this:</b> You direct, Derek drives — <b>he</b> types, you talk him through it. He almost never runs a command himself; he tells Claude what he wants in plain English and Claude does it.
+    <b>How this works:</b> you direct, Derek drives — <b>he</b> types, you talk him through it. He almost never runs a command himself; he tells Claude what he wants in plain English and Claude does it.
     <div class="legend">
-      <span><span class="dot" style="background:var(--accent)"></span> Green box = what Derek <b>says to Claude</b></span>
-      <span><span class="dot" style="background:#15201b"></span> Dark box = a command to type once</span>
-      <span><span class="dot" style="background:#b24a40"></span> Red box = say this out loud (a gotcha)</span>
+      <span><span class="dot" style="background:var(--accent)"></span> Green = what Derek <b>tells Claude</b></span>
+      <span><span class="dot" style="background:#15201b"></span> Dark = type once</span>
+      <span><span class="dot" style="background:#b24a40"></span> Red = say out loud</span>
     </div>
   </div>
+
+  <!-- 0 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">0</span><h2>Before the call</h2><span class="ptime">prep</span></div>
+    <ul>
+      <li>Confirm his payment landed + he got the booking email (he did — delivered).</li>
+      <li>He should be at a <b>laptop on Zoom</b> (not his phone), tools open, with the one workflow eating his week + a sample doc handy.</li>
+      <li>Confirm he has a <b>Claude Pro or Max plan</b> — Claude Code won't run without one.</li>
+      <li><b>You:</b> do a 10-min Ollama dry run on your own Mac first (install, pull an 8B model, chat once) so you're not learning it live.</li>
+    </ul>
+  </section>
 
   <!-- 1 -->
   <section class="part">
     <div class="phead"><span class="pnum">1</span><h2>Open the call</h2><span class="ptime">~10 min</span></div>
-    <p>Set the frame: <b>"We'll set up your tools, then pick one real thing to build. You drive, I steer. After this you get a written plan."</b> Make sure you're on <b>Zoom</b> (so you can grab his screen if needed).</p>
-    <p>Then ask the two questions that decide everything:</p>
+    <p>Frame it: <b>"We set up your tools, then build one real thing. You drive, I steer. After this you get a written plan."</b></p>
+    <p><b>Screen:</b> he shares his screen and drives. In Zoom you can <b>Request Remote Control</b> to grab the keyboard for a tricky step — use it sparingly, he should be the one doing it.</p>
+    <p>Ask the two questions that decide everything:</p>
     <ol>
-      <li><b>"Is the data you'd automate something you <i>can't</i> send to a cloud like Claude?"</b> → decides what runs on his Mac vs in the cloud.</li>
-      <li><b>"What's the one job eating the most of your week?"</b> → that's the first thing you build.</li>
+      <li><b>"Is the data you'd automate something you <i>can't</i> send to the cloud?"</b> → decides Mac vs cloud.</li>
+      <li><b>"What's the one job eating the most of your week?"</b> → that's the first build.</li>
     </ol>
+    <div class="tip"><b>Discovery:</b> ask what he already uses. He mentioned <b>"Hermes"</b> (a premade agent) and <b>"Claude Cowork"</b> (a Claude tool) — find out what they are and what he uses them for, so you build on what he's got instead of duplicating it.</div>
   </section>
 
   <!-- 2 -->
   <section class="part">
-    <div class="phead"><span class="pnum">2</span><h2>Install the tools</h2><span class="ptime">~15 min</span></div>
-    <h3>Step 1 — VS Code + Claude Code</h3>
+    <div class="phead"><span class="pnum">2</span><h2>Install the tools</h2><span class="ptime">~10 min</span></div>
     <ul>
       <li>Download <b>VS Code</b> from <code>code.visualstudio.com</code> and install it.</li>
-      <li>Inside VS Code, install the <b>Claude Code</b> extension and sign in.</li>
+      <li>Inside VS Code, install the <b>Claude Code</b> extension and sign in to Claude.</li>
     </ul>
-    <div class="warn"><b>Check first:</b> Claude Code needs a <b>Claude Pro or Max plan</b> to run. If he doesn't have one, set it up now or it'll eat your call time. Max is better for his ambitions; Pro gets him through today.</div>
-    <h3>Step 2 — Sign into GitHub (the one manual thing)</h3>
-    <p>This is the only step Claude can't do for him. In the VS Code terminal:</p>
-    <div class="type"><span class="c">gh</span> auth login</div>
-    <p>It opens a browser, he clicks approve, done. <i>(If GitHub CLI isn't installed, he can just say it — see below — and Claude installs it.)</i></p>
-    <div class="say">Install the GitHub CLI and log me in.</div>
+    <div class="warn"><b>Blocker check:</b> no Claude Pro/Max plan = Claude Code won't run. Sort it before anything else.</div>
   </section>
 
   <!-- 3 -->
   <section class="part">
-    <div class="phead"><span class="pnum">3</span><h2>Set up his project + repo</h2><span class="ptime">~15 min</span></div>
-    <p>Open his project folder in VS Code. From here on, he talks to Claude in plain English. First, turn the folder into a synced, private repo:</p>
+    <div class="phead"><span class="pnum">3</span><h2>Project, GitHub + CLAUDE.md</h2><span class="ptime">~15 min</span></div>
+    <p>Open his project folder in VS Code. From here it's all plain English. First, make it a private synced repo:</p>
     <div class="say">Turn this folder into a git repo, add a .gitignore that keeps my .env and API keys out, and push it to a new private GitHub repo called [name].</div>
-    <p>Claude does all the git work. Then give it a memory of his setup:</p>
+    <p><b>GitHub sign-in is not a command he learns.</b> The first time Claude pushes, a browser pops up to sign into GitHub — he clicks <b>approve</b>. That one click is the only manual bit.</p>
+    <p style="font-size:13.5px;color:var(--mute);margin-bottom:6px">Fallback if Claude can't trigger the sign-in — type this once (it opens the same approve-popup):</p>
+    <div class="type"><span class="c">gh</span> auth login</div>
+    <p>Then give Claude a memory of his setup:</p>
     <div class="say">Write a CLAUDE.md for this project — my tools, how I work day to day, and the rules ("never do X"). Keep it short.</div>
-    <p>Read it together and fix anything wrong. <b>This file is the single most valuable thing</b> — Claude reads it every session, so he never re-explains his setup.</p>
+    <p>Read it together, fix anything wrong. <b>This file is the highest-value thing</b> — Claude reads it every session, so he never re-explains his setup.</p>
   </section>
 
   <!-- 4 -->
   <section class="part">
-    <div class="phead"><span class="pnum">4</span><h2>Permissions (so Claude stops asking)</h2><span class="ptime">~10 min</span></div>
-    <p>By default Claude asks before every command. For a beginner that's exhausting. Fix it:</p>
+    <div class="phead"><span class="pnum">4</span><h2>Permissions (so Claude stops asking)</h2><span class="ptime">~8 min</span></div>
+    <p>By default Claude asks before every command — exhausting for a beginner. Fix it:</p>
     <ul>
-      <li>Type <code>/permissions</code> to see and edit what Claude is allowed to do on its own.</li>
-      <li><b>Allowlist</b> his routine-safe commands so it stops asking — his git, ollama, etc.</li>
-      <li><b>Modes</b> (press <code>Shift+Tab</code> to cycle): <b>default</b> (asks each time) → <b>accept-edits</b> (auto-approves file edits once he trusts it). Start on default; move to accept-edits after a couple sessions.</li>
+      <li>Type <code>/permissions</code> to see + edit what Claude can do on its own.</li>
+      <li><b>Allowlist</b> his routine-safe commands so it stops asking (git, ollama, etc.).</li>
+      <li><b>Modes</b> — press <code>Shift+Tab</code> to cycle: <b>default</b> (asks) → <b>accept-edits</b> (auto-approves edits, once he trusts it). Start on default.</li>
     </ul>
-    <div class="warn"><b>Never</b> turn on "bypass permissions." That lets Claude run anything with no check — dangerous on a real machine.</div>
-    <p>A starter <code>.claude/settings.json</code> he can paste in (Claude can write it for him too):</p>
-    <div class="type">{
-  <span class="c">"permissions"</span>: {
-    <span class="c">"allow"</span>: [
-      "Bash(git commit *)",
-      "Bash(git push *)",
-      "Bash(ollama *)"
-    ]
-  },
-  <span class="c">"model"</span>: "claude-opus-4-8"
-}</div>
+    <div class="warn"><b>Never</b> turn on "bypass permissions" — that runs anything with no check.</div>
+    <p>He can just tell Claude to write the settings file:</p>
+    <div class="say">Create a .claude/settings.json that allows my git and ollama commands and sets the model to opus.</div>
   </section>
 
   <!-- 5 -->
   <section class="part">
-    <div class="phead"><span class="pnum">5</span><h2>Memory (it's automatic)</h2><span class="ptime">~5 min</span></div>
-    <p>Good news — there's nothing to build. Claude Code remembers his project on its own (on by default in recent versions). Type <code>/memory</code> to see it.</p>
-    <ul>
-      <li>Durable facts and rules → put them in <b>CLAUDE.md</b> (from Part 3).</li>
-      <li>The rest → Claude saves automatically as he works.</li>
-    </ul>
-    <div class="tip"><b>Say this:</b> "You do NOT need a database or a 'memory system' yet. The built-in memory covers you until you're way bigger. Skip it." Telling him what <b>not</b> to build is half the value.</div>
+    <div class="phead"><span class="pnum">5</span><h2>Memory (it's automatic)</h2><span class="ptime">~4 min</span></div>
+    <p>Nothing to build. Claude Code remembers his project on its own (on by default). Type <code>/memory</code> to see it. Durable rules go in <b>CLAUDE.md</b>; the rest saves itself.</p>
+    <div class="tip"><b>Say it:</b> "You do NOT need a database or a memory system. Built-in is enough until you're way bigger." Telling him what <b>not</b> to build is half the value.</div>
   </section>
 
   <!-- 6 -->
   <section class="part">
     <div class="phead"><span class="pnum">6</span><h2>Skills + commands</h2><span class="ptime">~15 min</span></div>
-    <div class="warn"><b>Clear up the #1 confusion:</b> you do <b>not</b> install a skill by telling Claude "install stochastic audit." That does nothing. Skills come from the <code>/plugin</code> menu, or they're just files in a folder.</div>
+    <div class="warn"><b>Clear the #1 confusion:</b> you do <b>not</b> install a skill by telling Claude "install X." That does nothing. Skills come from the <code>/plugin</code> menu, or they're just files in a folder.</div>
 
-    <h3>Install Superpowers (a great free pack)</h3>
-    <p>Type <code>/plugin</code> → it opens a menu. Add the official marketplace and install it. Or type it directly:</p>
+    <h3>A. Install Superpowers (free pack)</h3>
     <div class="type">/plugin marketplace add anthropics/claude-plugins-official
 /plugin install superpowers@claude-plugins-official</div>
-    <p>It adds disciplined workflows (planning, debugging, double-checking work). Worth it on day one.</p>
+    <p>Adds disciplined workflows — planning, debugging, double-checking work.</p>
 
-    <h3>Add the starter commands (yours, made generic)</h3>
-    <p>The 4 stochastic commands are just files. Drop them into his repo at <code>.claude/commands/</code> and they become <code>/stochastic-decision</code>, <code>/stochastic-research</code>, <code>/stochastic-audit</code>, <code>/stochastic-red-team</code>. Since they're in the repo, they sync to both his machines.</p>
-    <div class="say">Copy these four files into .claude/commands/ in this project.</div>
+    <h3>B. Get my shared starter commands</h3>
+    <p>My 4 stochastic commands, made generic. They live in my public repo. He pulls them in plain English:</p>
+    <div class="say">Download the 4 command files from github.com/ivanmanfre/resources (folder starter-skills/.claude/commands) and copy them into this project's .claude/commands folder.</div>
+    <p>Now he has <code>/stochastic-decision</code>, <code>/stochastic-research</code>, <code>/stochastic-audit</code>, <code>/stochastic-red-team</code>. They're in his repo, so they sync to both his machines automatically.</p>
+    <div class="warn"><b>For you, not him:</b> never hand over your own business skills — <code>recall</code>, <code>brain</code>, <code>negotiate</code>, <code>proposals</code>, <code>clickup-searcher</code>, <code>leverage-radar</code>, <code>n8n-execs</code>. They're wired to your systems and they're your edge. Demo the <i>idea</i>, never the files.</div>
 
-    <h3>The commands he'll use every day</h3>
+    <h3>C. Commands he'll use daily</h3>
     <ul>
-      <li><code>/init</code> — first time in a project: builds the CLAUDE.md for him.</li>
-      <li><b>Plan mode</b> (<code>Shift+Tab</code> to "plan") — <i>"make a plan before you build."</i> He reviews it, then says go. Safest habit.</li>
-      <li><code>/clear</code> — start fresh when he switches to a different task.</li>
+      <li><code>/init</code> — first time in a project: writes the CLAUDE.md for him.</li>
+      <li><b>Plan mode</b> (<code>Shift+Tab</code> to "plan") — <i>"plan it before you build."</i> He reviews, then says go. Safest habit.</li>
+      <li><code>/clear</code> — start fresh when he switches tasks.</li>
       <li><code>/compact</code> — shrink a long chat without losing the thread.</li>
     </ul>
   </section>
 
   <!-- 7 -->
   <section class="part">
-    <div class="phead"><span class="pnum">7</span><h2>Connect his tools</h2><span class="ptime">~10 min</span></div>
-    <h3>GitHub — already done</h3>
-    <p>The <code>gh auth login</code> from Part 2 is all he needs. Claude uses it for everything GitHub. <i>(There's also a GitHub MCP server and personal access tokens, but the CLI is the simple path — don't overcomplicate it for him.)</i></p>
-    <h3>His other tools — MCP</h3>
-    <p>MCP is how Claude connects to outside tools (his CRM, docs, calendar). Add only the 1–2 that matter; skip the rest.</p>
-    <div class="say">Add the [tool] MCP server so you can read my [CRM / docs / calendar].</div>
+    <div class="phead"><span class="pnum">7</span><h2>Let Claude peek at Pipedrive + n8n</h2><span class="ptime">~10 min</span></div>
+    <p>Where it gets useful — let Claude read his real tools. He runs <b>Pipedrive</b> (CRM) and <b>n8n</b>. Each needs an API key: a one-time grab from the tool's settings, saved in his <code>.env</code> (git-ignored, never pushed).</p>
+    <h3>Pipedrive (his CRM)</h3>
+    <p>Get the key: Pipedrive → Settings → Personal preferences → API → copy the token. Then:</p>
+    <div class="say">Save my Pipedrive API token in .env and use it to read my deals and leads.</div>
+    <p>Now he can ask: <i>"Show me my hottest leads I haven't contacted yet."</i></p>
+    <h3>n8n</h3>
+    <p>Get the key: n8n → Settings → n8n API → create an API key. Then:</p>
+    <div class="say">Save my n8n API key and URL in .env and use them to check my workflows.</div>
+    <p>Now: <i>"What failed in n8n today?"</i> · <i>"Is [workflow] running right now?"</i></p>
+    <div class="warn"><b>Keys go in .env</b> — git-ignored, so they never reach GitHub. (Pipedrive + n8n both have MCP servers too, but the API-key route is the simplest to teach.)</div>
   </section>
 
   <!-- 8 -->
   <section class="part">
     <div class="phead"><span class="pnum">8</span><h2>The local model</h2><span class="ptime">~10 min</span></div>
-    <p>Only if Part 1 flagged private data. Running a model on his Mac is simpler than it sounds: install one app, download one model.</p>
+    <p>Only if Part 1 flagged private data. It's simpler than it sounds: install one app, download one model.</p>
     <ol>
-      <li>Install <b>Ollama</b> from <code>ollama.com</code> (or say <i>"install Ollama"</i> and Claude does it).</li>
-      <li>Pull a model: <code>ollama pull llama3.1:8b</code> (or have Claude do it). 8B fits most Macs; the Mac Studio can run a bigger one.</li>
-      <li>It now runs at <code>localhost:11434</code> — that's the address n8n points to for private parsing.</li>
+      <li>Install <b>Ollama</b> from <code>ollama.com</code> (or say <i>"install Ollama"</i>).</li>
+      <li>Pull a model: <code>ollama pull llama3.1:8b</code> (or have Claude do it). 8B fits most Macs; the Studio runs bigger.</li>
+      <li>It runs at <code>localhost:11434</code> — the address n8n points to for private parsing.</li>
     </ol>
-    <div class="tip"><b>Plain terms:</b> Ollama is the engine; the model (Llama, Qwen…) is what it runs. You install the engine, then download a model into it.</div>
-    <div class="warn"><b>Do a 10-min dry run before the call</b> — install Ollama, pull an 8B model, chat with it once. Then you'll never be lost explaining it.</div>
+    <div class="tip"><b>Plain terms:</b> Ollama is the engine; the model (Llama, Qwen…) is what it runs.<br><b>The routing rule:</b> private or bulk work → the local model. Anything needing real thinking → Claude. Don't make the local model do the reasoning.</div>
   </section>
 
   <!-- 9 -->
   <section class="part">
-    <div class="phead"><span class="pnum">9</span><h2>Both machines (office Mac + home PC)</h2><span class="ptime">~5 min</span></div>
-    <p>He doesn't choose a machine — the repo lives on both. Install the tools on each, sign into GitHub on each, then it's all plain English:</p>
+    <div class="phead"><span class="pnum">9</span><h2>Both machines (Mac + PC)</h2><span class="ptime">~5 min</span></div>
+    <p>He doesn't choose a machine — the repo lives on both. Install the tools on each, then it's plain English:</p>
     <div class="say">Clone my private repo [name] and set it up here.</div>
     <div class="say">Pull my latest from GitHub.</div>
-    <div class="warn"><b>Say these out loud:</b> secrets never go to GitHub (they're git-ignored) · the local model stays on the Mac · his memory is per-machine, but CLAUDE.md syncs.</div>
+    <div class="warn"><b>Say out loud:</b> secrets never go to GitHub (git-ignored) · the local model stays on the Mac · memory is per-machine, but CLAUDE.md syncs.</div>
   </section>
 
   <!-- 10 -->
   <section class="part">
     <div class="phead"><span class="pnum">10</span><h2>Build one real thing</h2><span class="ptime">~20 min</span></div>
-    <p>This is the part he remembers. Pick <b>one</b> (the rest is his backlog):</p>
+    <p>The part he remembers. Pick <b>one</b> (rest is backlog):</p>
     <ul>
-      <li><b>Inspection-report parser</b> — raw field notes/PDFs → clean compliance fields. (Best private + bulk payoff; runs on the local model.)</li>
-      <li><b>Hottest untouched leads</b> — score his leads, show the ones not yet contacted. (Fastest money win; runs on Claude.)</li>
+      <li><b>Inspection-report parser</b> — field notes/PDFs → clean compliance fields. (Private + bulk; local model.)</li>
+      <li><b>Hottest untouched leads</b> — pull from Pipedrive, show the un-contacted ones ranked. (Fast money win; Claude.)</li>
     </ul>
-    <p>Sketch it together: what kicks it off → the steps → where Claude, n8n, and the local model each fit → what could break. Then he builds it WITH Claude in plain English.</p>
-    <div class="tip"><b>★ The habit that matters most:</b> make Claude prove it works. He can't read the code, so he says — <i>"write a test, run it, and show me it passed."</i> That's how a non-dev trusts the output.</div>
+    <p>Sketch it: what kicks it off → the steps → where Claude, n8n + the local model each fit → what could break. He builds it WITH Claude in plain English.</p>
+    <div class="tip"><b>★ Most important habit:</b> make Claude prove it. He can't read code, so he says — <i>"write a test, run it, show me it passed."</i> That's how a non-dev trusts the output.</div>
   </section>
 
   <!-- 11 -->
   <section class="part">
-    <div class="phead"><span class="pnum">11</span><h2>Optional: a live dashboard <span class="opt">if he's hungry</span></h2><span class="ptime">bonus</span></div>
-    <p>If the first build lands and there's time/appetite, the wow-moment is a simple web page that's <b>always on</b>. Keep it to <b>one useful number</b>, e.g. "sites needing an inspection this week" or "which automations ran / failed today."</p>
-    <div class="say">Build a simple one-page web dashboard that shows [the one number], and deploy it to Railway so it's always online at a link.</div>
-    <p>Claude builds it and walks him through deploying to <b>Railway</b> (free to start). Now he has a live URL he can check from his phone. Don't over-scope it — one number, one page.</p>
+    <div class="phead"><span class="pnum">11</span><h2>Optional: a live dashboard <span class="opt">if hungry</span></h2><span class="ptime">bonus</span></div>
+    <p>If the build lands and there's appetite, the wow-moment is a simple always-on web page. Keep it to <b>one useful number</b> (e.g. "sites needing inspection this week" or "what ran / failed today").</p>
+    <div class="say">Build a simple one-page web dashboard showing [the one number], and deploy it to Railway so it's always online at a link.</div>
+    <p>Claude builds it + walks him through deploying to <b>Railway</b> (free to start). One number, one page — don't over-scope.</p>
   </section>
 
   <!-- 12 -->
   <section class="part">
     <div class="phead"><span class="pnum">12</span><h2>The 5 habits + 3 traps</h2></div>
-    <h3>Drill these 5 habits</h3>
+    <h3>Drill these habits</h3>
     <ol>
-      <li><b>CLAUDE.md first</b> — keep it short and current.</li>
-      <li><b>Ask for a plan before building</b> — review, then go.</li>
-      <li><b>Point at files</b> — say <code>@filename</code> instead of describing it.</li>
-      <li><b>Make it verify</b> — "test it and show me it works."</li>
-      <li><b>Commit often</b> — checkpoints he can roll back to.</li>
+      <li><b>CLAUDE.md first</b> — short and current.</li>
+      <li><b>Plan before building</b> — review, then go.</li>
+      <li><b>Point at files</b> — <code>@filename</code>, don't describe.</li>
+      <li><b>Make it verify</b> — "test it, show me."</li>
+      <li><b>Commit often</b> — checkpoints to roll back to.</li>
     </ol>
-    <h3>Warn him off these 3 traps</h3>
+    <h3>Warn him off these traps</h3>
     <ul>
-      <li><b>Kitchen-sink chat</b> (ten unrelated tasks in one session → Claude loses the thread). Fix: <code>/clear</code> between tasks.</li>
-      <li><b>Bloated CLAUDE.md</b> (pasting whole docs → rules get buried). Fix: keep it tight, prune often.</li>
-      <li><b>Trusting without checking</b>. Fix: always make it test/show.</li>
+      <li><b>Kitchen-sink chat</b> (10 tasks in one session → Claude loses the thread) → <code>/clear</code> between tasks.</li>
+      <li><b>Bloated CLAUDE.md</b> (whole docs pasted → rules buried) → keep it tight.</li>
+      <li><b>Trusting without checking</b> → always make it test/show.</li>
     </ul>
   </section>
 
   <!-- 13 -->
   <section class="part">
     <div class="phead"><span class="pnum">13</span><h2>Leave alone + close</h2></div>
-    <h3>Tell him what NOT to build (yet)</h3>
+    <h3>What NOT to build (yet)</h3>
     <ul>
-      <li>No database / "memory brain" — the built-in memory is enough.</li>
-      <li>Don't force everything onto the local model — let Claude do the thinking.</li>
-      <li>Don't build all the skills at once — one working thing beats ten half-built ones.</li>
+      <li>No database / "memory brain" — built-in memory is enough.</li>
+      <li>Don't force everything onto the local model — let Claude think.</li>
+      <li>Don't build all the skills at once — one working thing beats ten half-built.</li>
     </ul>
     <h3>His next steps this week</h3>
     <ul>
