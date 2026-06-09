@@ -1,0 +1,54 @@
+{
+  "slug": "claude-for-agency-operations-the-plug-and-play-system-that-replaces-junior-ops-w",
+  "title": "Claude for Agency Operations: the plug-and-play system that replaces junior ops work (SOPs, onboarding, capacity)",
+  "subtitle": "",
+  "estimated_minutes": 10,
+  "brand": {
+    "accent": "#4C6E3D",
+    "hero_badge": "Guide"
+  },
+  "sections": [
+    {
+      "id": "s_0_why-this-matters",
+      "title": "Why This Matters",
+      "html": "<p>If you onboard 2 new clients a week, that is roughly 8 client setups a month, every one routed through a senior person who knows the prompts. At 50 minutes of hands-on shuffling per client, you burn a full senior workday every month moving text between tabs. That time produces nothing. The prompts already exist. The examples already exist. The cost is purely the human acting as a clipboard.</p>\n<blockquote>The bottleneck is rarely the intelligence. It is the transport between five systems that already know what to do.</blockquote>\n<p>The fix replaces the junior ops motion: intake comes in, five finished documents come out, and a person reviews instead of assembles.</p>\n<p>---</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_1_the-junior-ops-work-that-gets-replaced",
+      "title": "The Junior Ops Work That Gets Replaced",
+      "html": "<p>Most agency onboarding hides the same five deliverables under different names. Each one currently lives in its own Claude project with a dedicated prompt and example set.</p>\n<p>| Deliverable | Input it needs | What it produces |\n|---|---|---|\n| Client Fundamentals | Intake form answers | Name, website, target audience, problems solved |\n| Action Brief | Fundamentals doc | Prioritized first-90-day plan |\n| LinkedIn Branding | Fundamentals doc | Headline + About section |\n| Micro Offers / Prospecting | Fundamentals + audience | DM outreach scripts |\n| Strategy Components | All of the above | Sales Navigator lists, positioning notes |</p>\n<p>Notice the dependency chain. Fundamentals feeds every downstream document. That single fact is what makes the whole thing automatable in one sequential run instead of five manual visits.</p>\n<blockquote>Sequential wins beat parallel chaos. Build the chain once, and every later doc inherits the context for free.</blockquote>\n<p>---</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_2_the-architecture-form-in-five-docs-out",
+      "title": "The Architecture: Form In, Five Docs Out",
+      "html": "<p>The stack is deliberately boring. Boring survives client #50.</p>\n<ol><li><strong>Intake trigger:</strong> Client fills the existing Google Form. A new row fires the automation.</li><li><strong>Backend orchestration:</strong> Make.com (around $30/month) or a self-hosted n8n instance runs the sequence and passes each output into the next step.</li><li><strong>The model layer:</strong> Claude API runs each prompt in order, Fundamentals first, then the four dependent documents.</li><li><strong>Storage and examples:</strong> A free Supabase database holds approved past outputs so the model writes in your house style, not a generic one.</li><li><strong>Delivery:</strong> Google Docs API drops formatted documents straight into the client's existing ClickUp space, which you already automated.</li></ol>\nThe owner's job changes from assembler to reviewer. Documents arrive pre-built, you tweak the 25% that needs judgment, and you approve.\n<p>---</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_3_sops-live-in-a-document-never-in-the-nod",
+      "title": "SOPs Live in a Document, Never in the Node",
+      "html": "<p>This is the rule that keeps the system maintainable after launch. Every prompt sits in one editable doc (a ClickUp page or a Google Doc), and the automation references it by ID. When you improve a prompt, you edit the page. The workflow never gets touched.</p>\n<ul><li><strong>Prompt storage:</strong> One page per deliverable, all in a Prompts Library doc.</li><li><strong>Workflow reference:</strong> The node pulls the page text at runtime, so logic and copy stay separate.</li><li><strong>Why it holds up:</strong> A non-technical team member can refine onboarding language without opening the automation backend.</li></ul>\nThis is the difference between a system you own and a system your developer owns.\n<p>---</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_4_the-self-improving-loop",
+      "title": "The Self-Improving Loop",
+      "html": "<p>The part that turns this from a one-time build into an asset: approved outputs become future training examples.</p>\n<p>When you review a generated document and mark it approved, the automation writes that final version back into Supabase. The next onboarding retrieves your best approved examples and matches them. Quality climbs with every client instead of staying flat.</p>\n<blockquote>Every approval is a deposit. After 20 onboardings, the system writes more like your senior strategist than your senior strategist remembers to.</blockquote>\n<ul><li><strong>Round one:</strong> Output is 70% there, heavy human editing.</li><li><strong>Round ten:</strong> Output is 90% there, light tweaks.</li><li><strong>Round thirty:</strong> You are spot-checking, not rewriting.</li></ul>\n---",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_5_the-capacity-math",
+      "title": "The Capacity Math",
+      "html": "<p>Here is the worked example for an agency onboarding 2 clients a week.</p>\n<p>| Metric | Manual today | After the engine |\n|---|---|---|\n| Hands-on time per client | 50 min | 5 min (review only) |\n| Clients per month | 8 | 8 |\n| Senior time per month | ~6.7 hours | ~40 min |\n| Reclaimed senior capacity | None | ~6 hours / month |</p>\n<p>That recovered time is the real prize. Six senior hours a month is room for two extra clients before you hire, or the bandwidth to finally build the performance dashboard you keep postponing. Run the engine across a 10-step roadmap instead of 5 documents, and the reclaimed capacity roughly doubles.</p>\n<p>The running cost stays small:</p>\n<ul><li><strong>Make.com or self-hosted n8n:</strong> ~$30/month, or near-zero self-hosted.</li><li><strong>Claude API:</strong> pay-per-use, roughly $3–5 in tokens per full 5-document onboarding.</li><li><strong>Supabase + Google Docs API:</strong> free at this volume.</li></ul>\nAt 8 onboardings a month, the model spend lands around $30–40. You are trading roughly six hours of senior labor for the price of two coffees.\n<p>---</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_6_the-30-day-rollout",
+      "title": "The 30-Day Rollout",
+      "html": "<p>Build it as a paid test on one deliverable before you wire the full chain. I've built AI systems for 50+ companies, and the ones that last all started with a single automated document, proven, then expanded.</p>\n<ul><li><strong>Week 1:</strong> Automate Client Fundamentals only. Form in, one document out. Confirm formatting matches your current Google Docs.</li><li><strong>Week 2:</strong> Chain the four dependent documents off the Fundamentals output.</li><li><strong>Week 3:</strong> Wire the Supabase example store and the approval write-back loop.</li><li><strong>Week 4:</strong> Connect delivery into the client's ClickUp space and hand the prompts doc to your team.</li></ul>\nShip one document that works before you ship five that mostly do.\n<p>---</p>\n<p>Send me your current onboarding deliverable list and I'll mark which ones are automatable this week and which hold real judgment. <a href=\"https://ivanmanfredi.com/contact\" target=\"_blank\" rel=\"noopener noreferrer\">Get in Touch</a>.</p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ]
+}
