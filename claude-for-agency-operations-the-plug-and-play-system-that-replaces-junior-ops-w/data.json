@@ -1,54 +1,48 @@
 {
-"slug": "claude-for-agency-operations-the-plug-and-play-system-that-replaces-junior-ops-w",
-"title": "Claude for Agency Operations: the plug-and-play system that replaces junior ops work (SOPs, onboarding, capacity)",
-"subtitle": "",
-"estimated_minutes": 10,
-"brand": {
-"accent": "#4C6E3D",
-"hero_badge": "Guide"
-},
-"sections": [
-{
-"id": "s_0_why-this-matters",
-"title": "Why This Matters",
-"html": "<p>If you onboard 2 new clients a week, that is roughly 8 client setups a month, every one routed through a senior person who knows the prompts. At 50 minutes of hands-on shuffling per client, you burn a full senior workday every month moving text between tabs. That time produces nothing. The prompts already exist. The examples already exist. The cost is purely the human acting as a clipboard.</p>\n<blockquote>The bottleneck is rarely the intelligence. It is the transport between five systems that already know what to do.</blockquote>\n<p>The fix replaces the junior ops motion: intake comes in, five finished documents come out, and a person reviews instead of assembles.</p>\n",
-"self_prompt": "Is your team already doing this?"
-},
-{
-"id": "s_1_the-junior-ops-work-that-gets-replaced",
-"title": "The Junior Ops Work That Gets Replaced",
-"html": "<p>Most agency onboarding hides the same five deliverables under different names. Each one currently lives in its own Claude project with a dedicated prompt and example set.</p>\n<table><thead><tr><th>Deliverable</th><th>Input it needs</th><th>What it produces</th></tr></thead><tbody><tr><td>Client Fundamentals</td><td>Intake form answers</td><td>Name, website, target audience, problems solved</td></tr><tr><td>Action Brief</td><td>Fundamentals doc</td><td>Prioritized first-90-day plan</td></tr><tr><td>LinkedIn Branding</td><td>Fundamentals doc</td><td>Headline + About section</td></tr><tr><td>Micro Offers / Prospecting</td><td>Fundamentals + audience</td><td>DM outreach scripts</td></tr><tr><td>Strategy Components</td><td>All of the above</td><td>Sales Navigator lists, positioning notes</td></tr></tbody></table>\n<p>Notice the dependency chain. Fundamentals feeds every downstream document. That single fact is what makes the whole thing automatable in one sequential run instead of five manual visits.</p>\n<blockquote>Sequential wins beat parallel chaos. Build the chain once, and every later doc inherits the context for free.</blockquote>\n",
-"self_prompt": "Is your team already doing this?"
-},
-{
-"id": "s_2_the-architecture-form-in-five-docs-out",
-"title": "The Architecture: Form In, Five Docs Out",
-"html": "<p>The stack is deliberately boring. Boring survives client #50.</p>\n<ol><li><strong>Intake trigger:</strong> Client fills the existing Google Form. A new row fires the automation.</li><li><strong>Backend orchestration:</strong> Make.com (around $30/month) or a self-hosted n8n instance runs the sequence and passes each output into the next step.</li><li><strong>The model layer:</strong> Claude API runs each prompt in order, Fundamentals first, then the four dependent documents.</li><li><strong>Storage and examples:</strong> A free Supabase database holds approved past outputs so the model writes in your house style, not a generic one.</li><li><strong>Delivery:</strong> Google Docs API drops formatted documents straight into the client's existing ClickUp space, which you already automated.</li></ol>\nThe owner's job changes from assembler to reviewer. Documents arrive pre-built, you tweak the 25% that needs judgment, and you approve.\n",
-"self_prompt": "Is your team already doing this?"
-},
-{
-"id": "s_3_sops-live-in-a-document-never-in-the-nod",
-"title": "SOPs Live in a Document, Never in the Node",
-"html": "<p>This is the rule that keeps the system maintainable after launch. Every prompt sits in one editable doc (a ClickUp page or a Google Doc), and the automation references it by ID. When you improve a prompt, you edit the page. The workflow never gets touched.</p>\n<ul><li><strong>Prompt storage:</strong> One page per deliverable, all in a Prompts Library doc.</li><li><strong>Workflow reference:</strong> The node pulls the page text at runtime, so logic and copy stay separate.</li><li><strong>Why it holds up:</strong> A non-technical team member can refine onboarding language without opening the automation backend.</li></ul>\nThis is the difference between a system you own and a system your developer owns.\n",
-"self_prompt": "Is your team already doing this?"
-},
-{
-"id": "s_4_the-self-improving-loop",
-"title": "The Self-Improving Loop",
-"html": "<p>The part that turns this from a one-time build into an asset: approved outputs become future training examples.</p>\n<p>When you review a generated document and mark it approved, the automation writes that final version back into Supabase. The next onboarding retrieves your best approved examples and matches them. Quality climbs with every client instead of staying flat.</p>\n<blockquote>Every approval is a deposit. After 20 onboardings, the system writes more like your senior strategist than your senior strategist remembers to.</blockquote>\n<ul><li><strong>Round one:</strong> Output is 70% there, heavy human editing.</li><li><strong>Round ten:</strong> Output is 90% there, light tweaks.</li><li><strong>Round thirty:</strong> You are spot-checking, not rewriting.</li></ul>\n---",
-"self_prompt": "Is your team already doing this?"
-},
-{
-"id": "s_5_the-capacity-math",
-"title": "The Capacity Math",
-"html": "<p>Here is the worked example for an agency onboarding 2 clients a week.</p>\n<table><thead><tr><th>Metric</th><th>Manual today</th><th>After the engine</th></tr></thead><tbody><tr><td>Hands-on time per client</td><td>50 min</td><td>5 min (review only)</td></tr><tr><td>Clients per month</td><td>8</td><td>8</td></tr><tr><td>Senior time per month</td><td>~6.7 hours</td><td>~40 min</td></tr><tr><td>Reclaimed senior capacity</td><td>None</td><td>~6 hours / month</td></tr></tbody></table>\n<p>That recovered time is the real prize. Six senior hours a month is room for two extra clients before you hire, or the bandwidth to finally build the performance dashboard you keep postponing. Run the engine across a 10-step roadmap instead of 5 documents, and the reclaimed capacity roughly doubles.</p>\n<p>The running cost stays small:</p>\n<ul><li><strong>Make.com or self-hosted n8n:</strong> ~$30/month, or near-zero self-hosted.</li><li><strong>Claude API:</strong> pay-per-use, roughly $3–5 in tokens per full 5-document onboarding.</li><li><strong>Supabase + Google Docs API:</strong> free at this volume.</li></ul>\nAt 8 onboardings a month, the model spend lands around $30–40. You are trading roughly six hours of senior labor for the price of two coffees.\n",
-"self_prompt": "Is your team already doing this?"
-},
-{
-"id": "s_6_the-30-day-rollout",
-"title": "The 30-Day Rollout",
-"html": "<p>Build it as a paid test on one deliverable before you wire the full chain. I've built AI systems for 50+ companies, and the ones that last all started with a single automated document, proven, then expanded.</p>\n<ul><li><strong>Week 1:</strong> Automate Client Fundamentals only. Form in, one document out. Confirm formatting matches your current Google Docs.</li><li><strong>Week 2:</strong> Chain the four dependent documents off the Fundamentals output.</li><li><strong>Week 3:</strong> Wire the Supabase example store and the approval write-back loop.</li><li><strong>Week 4:</strong> Connect delivery into the client's ClickUp space and hand the prompts doc to your team.</li></ul>\nShip one document that works before you ship five that mostly do.\n\n<p>Send me your current onboarding deliverable list and I'll mark which ones are automatable this week and which hold real judgment. <a href=\"https://ivanmanfredi.com/contact\" target=\"_blank\" rel=\"noopener noreferrer\">Get in Touch</a>.</p>",
-"self_prompt": "Is your team already doing this?"
-}
-]
+  "slug": "claude-for-agency-operations-the-plug-and-play-system-that-replaces-junior-ops-w",
+  "title": "Claude for Agency Operations: the plug-and-play system that replaces junior ops work (SOPs, onboarding, capacity)",
+  "subtitle": "",
+  "estimated_minutes": 10,
+  "brand": {
+    "accent": "#4C6E3D",
+    "hero_badge": "Guide"
+  },
+  "sections": [
+    {
+      "id": "s_0_why-this-matters",
+      "title": "Why this matters",
+      "html": "<p>Most agency onboarding lives in a stack of separate Claude projects, one per deliverable. A human shuttles a Google Form export between them, runs each chat, edits, and saves to Google Docs. The work is simple. That is exactly why it drains you: it is too repetitive to think about and too important to skip.</p>\n<p>At two clients a week with 30 to 50 minutes per onboarding, you lose roughly a full work-month every year to data entry. The fix is one prompt set that takes the intake form once and returns all five first-cut documents in a single pass, ready for you to tweak and approve.</p>\n<blockquote>The goal is a first cut so close to done that your edit time drops from 50 minutes to under 10. Your job shrinks to approving drafts.</blockquote>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_1_what-junior-ops-actually-costs-you",
+      "title": "What junior ops actually costs you",
+      "html": "<p>Here is the five-deliverable onboarding chain from a real agency setup, with the time it eats before and after the stack.</p>\n<table><thead><tr><th>Deliverable</th><th>What it produces</th><th>Time before</th><th>Time after (edit only)</th></tr></thead><tbody><tr><td>Client Fundamentals</td><td>Name, website, audience, problems solved</td><td>10 min</td><td>2 min</td></tr><tr><td>Action Brief</td><td>30/60/90 priorities for the account</td><td>12 min</td><td>3 min</td></tr><tr><td>LinkedIn Branding</td><td>Headline + About section</td><td>10 min</td><td>2 min</td></tr><tr><td>Micro-Offer DM Scripts</td><td>Outreach DM sequence</td><td>12 min</td><td>2 min</td></tr><tr><td>SOP Capture</td><td>Reusable process doc for the team</td><td>6 min</td><td>1 min</td></tr><tr><td><strong>Per client</strong></td><td></td><td><strong>~50 min</strong></td><td><strong>~10 min</strong></td></tr></tbody></table>\n<strong>Time cost before:</strong> ~100 min/week at two clients. <strong>After one setup session:</strong> ~20 min/week. <strong>Recovered:</strong> over 65 hours a year, with no new hires.\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_2_how-the-stack-runs-the-4-step-loop-",
+      "title": "How the stack runs (the 4-step loop)",
+      "html": "<p>This is the whole operating loop. No code required to start.</p>\n<ol><li><strong>Capture once.</strong> Client fills your existing Google Form. You export or copy the answers into one variable block.</li><li><strong>Run the stack.</strong> Paste the intake into a single Claude project that holds all five prompts. Run them top to bottom. Every document comes out in the client's context, not a generic template.</li><li><strong>Tweak and approve.</strong> You edit the first cut, which now lands at 80 to 90 percent done. You approve.</li><li><strong>Feed the wins back.</strong> Paste your best approved outputs back into the project as reference examples. The next client's first cut starts from a higher floor.</li></ol>\n<blockquote>Step 4 is the part most agencies skip, and it is the one that compounds. Every approved document you save as an example makes the next one sharper. The system trains on your taste.</blockquote>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_3_the-5-prompts-paste-ready-",
+      "title": "The 5 prompts (paste-ready)",
+      "html": "<p>Each block takes the same <code>{{INTAKE}}</code> variable. Drop your form answers into one shared block at the top of the project, or paste them inline. Replace anything in <code>{{...}}</code>.</p>\n<h3>1. Client Fundamentals</h3>\n<pre><code>You are an agency strategist writing the Client Fundamentals doc for a new account.\n<p>INTAKE FORM ANSWERS:\n{{INTAKE}}</p>\n<p>Produce a clean Markdown document with these sections:\n<ol><li>Client Name &amp; Website</li><li>One-line positioning (who they help and the outcome)</li><li>Target Audience (job titles, company size, industry, where they gather)</li><li>Top 3 Problems Solved (in the client's own language, pulled from the intake)</li><li>Proof &amp; Differentiators (case studies, numbers, credentials present in the intake)</li><li>Voice notes (3 adjectives + 2 phrases the client actually uses)</li></ol>\nRules:\n<ul><li>Only use facts present in the intake. Where a field is missing, write \"GAP: [what to ask]\".</li><li>No filler, no adjectives you cannot source from the intake.</li><li>Keep each section to 4 lines or fewer.</li></ul></code></pre></p>\n<h3>2. Action Brief</h3>\n<pre><code>You are an account director setting the first 90 days for a new client.\n<p>CLIENT FUNDAMENTALS:\n{{FUNDAMENTALS}}</p>\n<p>INTAKE FORM ANSWERS:\n{{INTAKE}}</p>\n<p>Write a 30/60/90-day Action Brief as a table with columns: Window | Objective | Owner | Deliverable | Success Metric.</p>\n<p>Constraints:\n<ul><li>2 to 3 rows per window, 6 to 9 total.</li><li>Every objective ties to a problem listed in the Client Fundamentals.</li><li>Metrics must be countable (posts shipped, DMs sent, calls booked), never vague.</li><li>End with one line: \"Biggest risk to this plan and the early signal to watch for.\"</li></ul></code></pre></p>\n<h3>3. LinkedIn Branding (Headline + About)</h3>\n<pre><code>You are a LinkedIn ghostwriter for a B2B founder.\n<p>CLIENT FUNDAMENTALS:\n{{FUNDAMENTALS}}</p>\n<p>Produce:\nA) Three headline options (under 220 characters each). Each leads with the audience and the outcome, no buzzwords.\nB) One About section (1,800 to 2,200 characters) in first person, structured as:\n   - Hook line (a specific result or a sharp observation)\n   - Who they help and the problem\n   - How they do it (method, in plain words)\n   - Proof (only numbers/credentials from the fundamentals)\n   - One-line call to action</p>\n<p>Match the voice notes in the fundamentals. No emoji walls. No \"passionate about\". No \"results-driven\".\n</code></pre></p>\n<h3>4. Micro-Offer DM Scripts</h3>\n<pre><code>You are writing cold outbound DMs for a service business.\n<p>CLIENT FUNDAMENTALS:\n{{FUNDAMENTALS}}\nTARGET AUDIENCE: {{AUDIENCE}}\nTHE OFFER: {{MICRO_OFFER}}</p>\n<p>Write a 4-message LinkedIn DM sequence:\n<ul><li>Message 1: connection-request note, under 280 characters, references something specific about the prospect type, no pitch.</li><li>Message 2 (day 2): one-line observation about a problem this audience has, ends with a soft question.</li><li>Message 3 (day 5): the micro-offer framed as a low-friction next step.</li><li>Message 4 (day 9): one-line breakup, leaves the door open.</li></ul>\nEach message under 60 words. Conversational, no corporate tone, no \"I hope this finds you well\". Give two variants of Message 1.\n</code></pre></p>\n<h3>5. SOP Writer</h3>\n<pre><code>You are documenting a repeatable process so any team member can run it without you.\n<p>RAW PROCESS (transcript, voice note, or rough steps):\n{{PROCESS_NOTES}}</p>\n<p>Produce an SOP in Markdown:\n<ol><li>Title (verb-first, e.g. \"Onboard a New Content Client\")</li><li>When to run this / trigger</li><li>Who owns it</li><li>Tools and access needed</li><li>Numbered steps (each step starts with an action verb, names the tool, and states the done-state)</li><li>Quality check (3 things that must be true before this is \"done\")</li><li>Common failure points and the fix</li></ol>\nRules:\n<ul><li>If a step is ambiguous in the raw notes, write \"DECISION NEEDED: [the question]\".</li><li>No step should assume knowledge the raw notes do not contain.</li></ul></code></pre></p>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_4_bonus-the-capacity-prompt",
+      "title": "Bonus: the capacity prompt",
+      "html": "<p>The question every agency owner gets wrong under pressure is \"can we take this next client without dropping a ball.\" Run this before you say yes.</p>\n<pre><code>You are an ops lead checking whether the agency can absorb a new client.\n<p>CURRENT LOAD:\n<ul><li>Active clients: {{N}}</li><li>Hours/week each active client consumes (list): {{HOURS_LIST}}</li><li>Team members and their weekly available hours: {{TEAM}}</li><li>New client estimated weekly hours: {{NEW_CLIENT_HOURS}}</li></ul>\nReturn:\n<ol><li>Current utilization % per team member.</li><li>Total spare capacity in hours/week.</li><li>Verdict: TAKE IT / TAKE IT WITH ONE CHANGE / DO NOT TAKE IT YET.</li><li>If \"with one change\", name the single highest-impact move (delegate X, automate Y, push start date Z).</li></ol>Show the math in one short table.\n</code></pre></p>\n<p><strong>Why it earns its place:</strong> the binding constraint on a growing agency is delivery capacity, and it is the number owners track least. One prompt turns a gut call into a defensible one.</p>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_5_wiring-it-past-copy-paste",
+      "title": "Wiring it past copy-paste",
+      "html": "<p>You can run this stack by hand inside one Claude project today and capture most of the win. When the manual run gets old, the upgrade path is short:</p>\n<ul><li><strong>Trigger:</strong> Google Form submission fires a webhook.</li><li><strong>Orchestration:</strong> an automation layer (n8n or similar) maps form fields into the <code>{{INTAKE}}</code> block and calls Claude once per prompt.</li><li><strong>Delivery:</strong> outputs land as Google Docs in the client's existing folder, and a task drops into your ClickUp board for review.</li></ul>\n<blockquote>Start manual, prove the prompts produce a first cut you trust, then automate the plumbing. Automating a prompt you have not tuned just generates wrong documents faster.</blockquote>\n<p>That sequencing matters. The prompts are the asset. The wiring is the convenience.</p>\n<hr>\n<p>Run the five prompts against your last client's intake form, then send me the two documents that still needed the most editing and I will tune those prompts for your voice: <a href=\"https://ivanmanfredi.com/contact\" target=\"_blank\" rel=\"noopener noreferrer\">Get in Touch</a>.</p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ]
 }
