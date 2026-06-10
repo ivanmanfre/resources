@@ -660,10 +660,10 @@
       var optin = make("div", { class: "lmc-optin" });
       optin.innerHTML =
         '<h4>Save this for later?</h4>' +
-        '<p>If you want a PDF version of this report emailed to you, drop your address. Otherwise feel free to close the tab or bookmark the page.</p>' +
+        '<p>If you want this report emailed to you, with what I\'d fix first, drop your address. Otherwise feel free to close the tab or bookmark the page.</p>' +
         '<form class="lmc-form" id="lmc-optin-form">' +
         '<input class="lmc-form-input" id="lmc-optin-email" type="email" autocomplete="email" placeholder="Optional, your email" />' +
-        '<button class="lmc-btn lmc-btn-secondary" type="submit">Send me a copy</button>' +
+        '<button class="lmc-btn lmc-btn-secondary" type="submit">Email me the report</button>' +
         '</form>';
       unl.appendChild(optin);
       var of = optin.querySelector("form");
@@ -690,6 +690,16 @@
         cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
         unl.appendChild(cta);
         cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
+      } else {
+        // No per-LM CTA configured — default fit-call CTA so every assessment
+        // ends with a clear next step (2026-06-09).
+        var fallbackCta = make("div", { class: "lmc-cta-box" });
+        var fallbackUrl = window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min";
+        fallbackCta.innerHTML = '<h3>Want help closing these gaps?</h3>' +
+          '<p>Book a free 30-minute fit call. I\'ll walk your weakest category live and tell you exactly how I\'d fix it. If you can run it yourself, I\'ll tell you that too.</p>' +
+          '<a class="lmc-btn" href="' + esc(fallbackUrl) + '" target="_blank" rel="noopener">Book the free fit call</a>';
+        unl.appendChild(fallbackCta);
+        fallbackCta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, default_cta: true } }); });
       }
       card.appendChild(unl);
 

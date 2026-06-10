@@ -22,11 +22,25 @@
 .lmg-section:first-child h2, .lmg-section > h2:first-child { margin-top: 0; }
 .lmg-section h2 em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
 .lmg-section h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.4rem; font-weight: 400; margin: 1.75rem 0 .5rem; color: var(--ink); letter-spacing: -0.005em; line-height: 1.2; }
-.lmg-section p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.08rem; line-height: 1.75; color: var(--ink); margin: 0 0 1rem; }
-.lmg-section ul, .lmg-section ol { font-family: 'Source Serif 4', Georgia, serif; margin: 0 0 1.25rem 1.25rem; }
-.lmg-section li { font-family: 'Source Serif 4', Georgia, serif; margin: .35rem 0; line-height: 1.6; color: var(--ink); }
-.lmg-section blockquote { font-family: 'Source Serif 4', Georgia, serif; padding: .25rem 0 .25rem 1.5rem; margin: 1.5rem 0; border-left: 2px solid #2A8F65; color: var(--ink); font-weight: 500; font-size: 1.15rem; line-height: 1.55; font-style: italic; }
-.lmg-section pre { background: var(--paper-sunk); border: 1px solid var(--hairline); padding: 1.25rem; border-radius: var(--radius-md); overflow-x: auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .85rem; line-height: 1.55; margin: 1rem 0; }
+/* Readability pass 2026-06-09: prose measure capped at 68ch (was running the
+   full 860px container ≈ 90 chars/line), body raised to 1.125rem. Tables and
+   code blocks keep the full container width. */
+.lmg-section p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.125rem; line-height: 1.7; color: var(--ink); margin: 0 0 1rem; max-width: 68ch; }
+.lmg-section h2, .lmg-section h3 { max-width: 30ch; }
+.lmg-section ul, .lmg-section ol { font-family: 'Source Serif 4', Georgia, serif; margin: 0 0 1.25rem 1.25rem; max-width: 64ch; }
+.lmg-section li { font-family: 'Source Serif 4', Georgia, serif; margin: .35rem 0; line-height: 1.65; color: var(--ink); font-size: 1.0625rem; }
+.lmg-section blockquote { font-family: 'Source Serif 4', Georgia, serif; padding: .25rem 0 .25rem 1.5rem; margin: 1.5rem 0; border-left: 2px solid #2A8F65; color: var(--ink); font-weight: 500; font-size: 1.15rem; line-height: 1.55; font-style: italic; max-width: 62ch; }
+.lmg-section pre { background: var(--paper-sunk); border: 1px solid var(--hairline); padding: 1.25rem; padding-top: 2.4rem; border-radius: var(--radius-md); overflow-x: auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .85rem; line-height: 1.55; margin: 1rem 0; position: relative; }
+.lmg-copy {
+  position: absolute; top: .55rem; right: .6rem;
+  padding: .3rem .75rem;
+  background: var(--paper); color: var(--ink-soft);
+  border: 1px solid var(--hairline-bold); border-radius: 3px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  cursor: pointer; transition: background 100ms, color 100ms;
+}
+.lmg-copy:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .lmg-section code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: .9em; background: var(--paper-sunk); padding: .15rem .35rem; border-radius: 2px; }
 
 /* Editorial tables — hairline + Source Serif, no brutal grid. Per brand audit 2026-05-17. */
@@ -164,7 +178,9 @@
 .lmg-toc-dot-partial { background: #C28A2E; }
 .lmg-toc-dot-done { background: #2A8F65; }
 .lmg-toc-text { line-height: 1.35; flex: 1; }
-@media (max-width: 1140px) { .lmg-toc { display: none; } }
+/* 1480px (was 1140) — between 1140 and ~1400 the fixed TOC overlapped the
+   860px-centered content column on common laptop widths (1280/1366). */
+@media (max-width: 1480px) { .lmg-toc { display: none; } }
 
 /* D4.2: section state colors — only when self-placement enabled (gated by data-state attribute being set in render()) */
 .lmg-section[data-state="unrated"] { border-left: 3px solid transparent; padding-left: 1rem; margin-left: -1rem; transition: border-color 240ms ease; }

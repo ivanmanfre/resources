@@ -784,15 +784,15 @@
       // Bottom CTA — always renders. Falls back to Ivan's Calendly when
       // data.cta is missing so every assessment ships with a clear next step.
       var ctaConf = data.cta || {};
-      var ctaUrl = ctaConf.url || "https://calendly.com/ivan-intelligents/30min";
+      var ctaUrl = ctaConf.url || (window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min");
       var ctaHeadlineHtml = ctaConf.headline_html || ctaConf.headline;
       if (!ctaHeadlineHtml) {
         ctaHeadlineHtml = res.tier && res.tier.class === "low"
           ? "Want help <em>closing these gaps</em>?"
           : "Want a second pair of eyes on <em>what to fix first</em>?";
       }
-      var ctaDescription = ctaConf.description || "Book a 20-min working session — I'll walk through your weakest category live and sketch the highest-leverage fix. Free, no pitch.";
-      var ctaButton = ctaConf.button || "Book a strategy call";
+      var ctaDescription = ctaConf.description || "Book a free 30-minute fit call. I'll walk your weakest category live and tell you exactly how I'd fix it. If you can run it yourself, I'll tell you that too.";
+      var ctaButton = ctaConf.button || "Book the free fit call";
       var ctaBox = make("div", { class: "lmc-unlocked-cta" });
       ctaBox.appendChild(make("p", { class: "lmc-unlocked-cta-eyebrow" }, "Next move"));
       var ctaH3 = make("h3", null, ctaHeadlineHtml);

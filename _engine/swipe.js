@@ -97,6 +97,9 @@
       '<p class="lmc-note">No spam. One send a month, one click to unsubscribe.</p>';
     main.appendChild(gate);
 
+    // Closing CTA — call-first finale (2026-06-09)
+    main.appendChild(L.buildClosingCta("swipe", data, { toolType: "swipe" }));
+
     // Sticky export bar
     var exportBar = L.make("div", { class: "lms-export-bar", id: "lms-export-bar" });
     exportBar.innerHTML = '<span class="lms-export-text"><strong id="lms-export-count">0</strong> examples taken</span>' +

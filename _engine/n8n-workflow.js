@@ -112,15 +112,18 @@
     });
     main.appendChild(sectionsContainer);
 
-    // CTA
-    if (Array.isArray(data.ctas) && data.ctas.length) {
-      var cta = data.ctas[0];  // simple — first CTA wins. Future: ctas[] gating per Phase A pattern.
+    // Closing CTA — call-first finale (2026-06-09). Replaces the old bare
+    // ctas[0] box; a per-LM data.ctas[0] with a custom URL still wins.
+    if (Array.isArray(data.ctas) && data.ctas.length && data.ctas[0].url) {
+      var cta = data.ctas[0];
       var ctaSec = L.make("section", { class: "lmw-cta" });
       ctaSec.innerHTML = '<h2>' + L.esc(cta.headline || "Want this customized?") + '</h2>' +
-        '<a class="lmc-btn" href="' + L.esc(cta.url || "#") + '" target="_blank" rel="noopener">' +
+        '<a class="lmc-btn" href="' + L.esc(cta.url) + '" target="_blank" rel="noopener">' +
           L.esc(cta.button || "Talk to me") +
         '</a>';
       main.appendChild(ctaSec);
+    } else {
+      main.appendChild(L.buildClosingCta("n8n_workflow", data, { toolType: "n8n-workflow" }));
     }
 
     // Share row

@@ -436,40 +436,20 @@
     }
     card.appendChild(shareRow);
 
-    // Capture form (email gate)
-    var savedEmail = readKV(slug, "email", "");
-    var capture = make("section", { class: "lmc-sp-capture" });
-    capture.innerHTML =
-      '<h3>Email me this stack as a PDF</h3>' +
-      '<p>I\'ll send the full reasoning + the 3 templates I use for the stack you picked.</p>' +
-      '<form class="lmc-form" id="lmc-sp-form">' +
-        '<label class="sr-only" for="lmc-sp-email">Email</label>' +
-        '<input class="lmc-input" id="lmc-sp-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" value="' + esc(savedEmail) + '" />' +
-        '<button class="lmc-btn" type="submit">Send it</button>' +
-      '</form>' +
-      '<p class="lmc-note">No spam. One email with the stack + templates, then you decide.</p>';
-    card.appendChild(capture);
-
-    var form = $("#lmc-sp-form");
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var email = ($("#lmc-sp-email") || {}).value || "";
-        if (!emailIsValid(email)) { toast("Enter a valid email"); return; }
-        writeKV(slug, "email", email);
-        beacon("capture", {
-          email: email,
-          result_id: nodeId,
-          path: ctaCtx.path,
-          leaf_template_key: leafTemplateKey(nodeId),
-          answers: {
+    // Closing CTA — call-first finale (replaces the PDF email gate 2026-06-09)
+    if (window.LM && window.LM.buildClosingCta) {
+      card.appendChild(window.LM.buildClosingCta("stack_picker", data, {
+        toolType: "stack-picker",
+        captureExtra: function () {
+          return {
             result_id: nodeId,
             path: ctaCtx.path,
-            leaf_template_key: leafTemplateKey(nodeId)
-          }
-        });
-        form.innerHTML = '<p class="lmc-sp-capture-ok">Sent to ' + esc(email) + '. Check inbox in a couple minutes (Promotions if Gmail).</p>';
-      });
+            leaf_template_key: leafTemplateKey(nodeId),
+            answers: { result_id: nodeId, path: ctaCtx.path, leaf_template_key: leafTemplateKey(nodeId) },
+          };
+        },
+        onCaptured: function (email) { writeKV(slug, "email", email); },
+      }));
     }
 
     // Result beacon — guard against duplicate fires on hash replay

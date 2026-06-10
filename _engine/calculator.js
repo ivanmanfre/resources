@@ -195,7 +195,7 @@
 
     var introSection = buildIntro(data, ".lmc-grid", {
       defaultValueBullet: "Plug in your numbers; live math shows payback window + top 3 priorities",
-      defaultNextBullet: "Email only to get a PDF with your numbers plus the n8n workflows I'd build",
+      defaultNextBullet: "If you want the leak fixed for you, there's a free fit call at the end",
       startLabel: "Run the calculator",
       defaultNote: "Nothing is stored until you submit. Tweak freely."
     });
@@ -302,19 +302,15 @@
 
     container.appendChild(grid);
 
-    // Capture
-    var cta = data.capture_cta || {};
-    var capture = make("section", { class: "lmc-capture" });
-    capture.innerHTML =
-      '<h2>' + escapeHtml(cta.headline || "Want the full breakdown?") + '</h2>' +
-      '<p>' + escapeHtml(cta.description || "If you want a PDF with your numbers plus the 3 automations I'd prioritize for this setup, drop your address. Otherwise screenshot the result and move on.") + '</p>' +
-      '<form class="lmc-form" id="lmc-capture-form">' +
-      '<label class="sr-only" for="lmc-email">Email</label>' +
-      '<input class="lmc-form-input" id="lmc-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />' +
-      '<button class="lmc-btn" type="submit">Send me the plan</button>' +
-      '</form>' +
-      '<p class="lmc-note">No spam. One email, then you decide.</p>';
-    container.appendChild(capture);
+    // Closing CTA — call-first finale (replaces the PDF email gate 2026-06-09)
+    var closing = window.LM.buildClosingCta("calculator", data, {
+      toolType: "calculator",
+      captureExtra: function () {
+        var snap = compute();
+        return { answers: { inputs: snap.ctx, outputs: snap.results, matched_recs: snap.matched_recs } };
+      },
+    });
+    container.appendChild(closing);
 
     // Footer actions
     var footer = make("div", { class: "lmc-footer-actions" });
@@ -480,20 +476,6 @@
       beacon("cta_click", { answers: { target: "fixes_scenario_toggle", on: !!fixOnEl.checked } });
     });
     compute();
-
-    // Capture
-    var form = $("#lmc-capture-form");
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var email = ($("#lmc-email") || {}).value || "";
-        if (!email || email.indexOf("@") === -1) { toast("Enter a valid email"); return; }
-        var snap = compute();
-        beacon("capture", { email: email, answers: { inputs: snap.ctx, outputs: snap.results, matched_recs: snap.matched_recs } });
-        toast("Got it. Check your inbox.");
-        form.innerHTML = '<p style="font-weight:600;color:#2A8F65">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
-      });
-    }
 
     // Copy result
     var copyBtn = $("#lmc-copy");

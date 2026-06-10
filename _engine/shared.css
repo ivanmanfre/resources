@@ -501,6 +501,87 @@ html body {
 .lmc-capture-alt:hover { color: #2A8F65; border-bottom-color: #2A8F65; }
 .lmc-capture-alt:hover strong { color: #2A8F65; }
 
+/* ── Closing CTA — call-first finale on every engine (2026-06-09) ─────── */
+.lmc-closing {
+  max-width: 42rem;
+  margin: 4rem auto 2.5rem;
+  padding: 3rem 2.5rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--hairline);
+  position: relative;
+  z-index: 1;
+  font-family: 'Source Serif 4', Georgia, serif;
+}
+.lmc-closing-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink); margin-bottom: 1.25rem;
+}
+.lmc-closing-label::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
+.lmc-closing-h {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(1.9rem, 3.4vw, 2.55rem);
+  font-weight: 400; line-height: 1.12; letter-spacing: -0.01em;
+  color: var(--ink); margin: 0 0 1.1rem; max-width: 30ch;
+}
+.lmc-closing-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
+.lmc-closing-p {
+  font-size: 1.0625rem; line-height: 1.65; color: var(--ink-soft);
+  margin: 0 0 1.4rem; max-width: 36rem;
+}
+.lmc-closing-lead { font-size: 1.0625rem; font-weight: 600; color: var(--ink); margin: 0 0 .75rem; }
+.lmc-closing-points { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: .6rem; }
+.lmc-closing-points li {
+  display: flex; gap: .75rem; align-items: baseline;
+  font-size: 1.02rem; line-height: 1.55; color: var(--ink);
+}
+.lmc-closing-points li::before { content: ""; width: 6px; height: 6px; background: #2A8F65; flex-shrink: 0; transform: translateY(-2px); }
+.lmc-closing-call { display: inline-flex !important; align-items: center; gap: .6rem; text-decoration: none; }
+.lmc-closing-divider { margin: 2.25rem 0 1.5rem; border-top: 1px solid var(--hairline-bold); }
+.lmc-closing-email-p { font-size: .98rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 .9rem; max-width: 34rem; }
+.lmc-closing-form { display: flex; gap: .5rem; max-width: 32rem; }
+.lmc-closing-form input {
+  flex: 1 1 auto; min-width: 0;
+  padding: .85rem 1rem;
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: .98rem; line-height: 1.4;
+  border-radius: 0; box-sizing: border-box;
+}
+.lmc-closing-form input::placeholder { color: rgba(26, 26, 26, 0.4); }
+.lmc-closing-form input:focus { outline: none; border-color: #2A8F65; box-shadow: 0 0 0 3px rgba(42, 143, 101, 0.15); background: #fff; }
+.lmc-closing-form button {
+  flex: 0 0 auto;
+  padding: .85rem 1.4rem;
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--ink); cursor: pointer;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: .98rem; font-weight: 600;
+  border-radius: 0;
+  transition: background 80ms, color 80ms;
+}
+.lmc-closing-form button:hover { background: var(--ink); color: var(--paper); }
+.lmc-closing-ok { font-size: .98rem; font-weight: 600; color: #1F6D4D; margin: 0; }
+.lmc-closing-sign { font-size: 1.05rem; line-height: 1.6; color: var(--ink); margin: 2rem 0 0; }
+.lmc-closing-sign em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; font-size: 1.15rem; }
+.lmc-closing-byline { display: flex; align-items: center; gap: .85rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
+.lmc-closing-byline img {
+  width: 44px; height: 56px; object-fit: cover; object-position: top;
+  border: 1px solid var(--hairline-bold); border-radius: var(--radius-sm);
+  filter: saturate(0.45) sepia(0.18) contrast(1.1) brightness(0.95);
+}
+.lmc-closing-byline span { display: flex; flex-direction: column; gap: 1px; font-size: .85rem; color: var(--ink-mute); }
+.lmc-closing-byline strong { font-size: .95rem; font-weight: 600; color: var(--ink); }
+@media (max-width: 640px) {
+  .lmc-closing { padding: 2rem 1.25rem; margin: 3rem auto 2rem; }
+  .lmc-closing-form { flex-direction: column; }
+  .lmc-closing-form button { width: 100%; }
+}
+
 /* ── Shared toast ────────────────────────────────────────────────────── */
 .lmc-toast { position: fixed; bottom: 1.25rem; right: 1.25rem; padding: .85rem 1.35rem; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: .9rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); transform: translateY(12px); }
 .lmc-toast.show { opacity: 1; pointer-events: auto; transform: translateY(0); }

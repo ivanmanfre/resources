@@ -223,6 +223,162 @@
     return sec;
   }
 
+  // ── Fit-call URL (single canonical call destination, 2026-06-09) ──────
+  // Every call CTA on every LM points here, tagged by placement + slug.
+  function callUrl(medium) {
+    try {
+      var u = new URL("https://calendly.com/ivan-intelligents/30min");
+      u.searchParams.set("utm_source", "lm-resource");
+      u.searchParams.set("utm_medium", medium || "cta");
+      u.searchParams.set("utm_campaign", window.__lm_slug || "lm");
+      return u.toString();
+    } catch (_) { return "https://calendly.com/ivan-intelligents/30min"; }
+  }
+
+  // ── Closing CTA (call-first, replaces the PDF email gates 2026-06-09) ──
+  // One component for every engine. Kyle-pattern skeleton in Ivan's voice:
+  // name the playbook/implementation gap, list what help means for THIS
+  // format, one primary action (fit call), honest email secondary.
+  var CLOSING_COPY = {
+    guide: {
+      headline: 'The playbook is above. <em>Making it stick</em> is a different job.',
+      bullets: [
+        "Adapting the prompts to your voice and your stack",
+        "Picking which workflow to wire this into first",
+        "Making it survive past the pilot week",
+      ],
+      emailLead: "Prefer email? I'll send the companion series for this guide: six short emails on putting it to work, spread over two weeks.",
+    },
+    checklist: {
+      headline: 'The checklist is above. <em>Closing the gaps</em> is a different job.',
+      bullets: [
+        "Turning your highest-impact unchecked items into the first build",
+        "Sequencing the fixes so each one pays for the next",
+        "Deciding what stays manual on purpose",
+      ],
+      emailLead: "Prefer email? I'll send the companion series for this checklist: six short emails on closing the gaps, spread over two weeks.",
+    },
+    calculator: {
+      headline: 'Your numbers are above. <em>Recovering them</em> is a different job.',
+      body: "Those numbers came from your own inputs, so treat them as a floor. After 40+ of these builds, I can tell you where the savings usually stall: the three or four decisions that are specific to your stack, your team, and your clients.",
+      bullets: [
+        "Pressure-testing the inputs against how you actually operate",
+        "Turning the leak number into a build plan",
+        "Ordering the builds by payback, fastest first",
+      ],
+      emailLead: "Prefer email? I'll send your numbers back with the build plan I'd start with.",
+    },
+    assessment: {
+      headline: 'Your score is above. <em>Moving it</em> is a different job.',
+      body: "Your score is the map. After 40+ of these builds, I can tell you where teams at your stage usually stall: the three or four decisions that are specific to your stack, your team, and your clients.",
+      bullets: [
+        "Reading your results against the systems I've built at your stage",
+        "Turning your weakest category into the first build",
+        "Making the fix survive past the pilot week",
+      ],
+      emailLead: "Prefer email? I'll send this report to your inbox with what I'd fix first.",
+    },
+    n8n_workflow: {
+      headline: 'The workflow is above. <em>Running it in production</em> is a different job.',
+      bullets: [
+        "Adapting the nodes to your stack and credentials",
+        "Handling the edge cases your clients will find for you",
+        "Hardening it with retries, alerts, and fallbacks",
+      ],
+      emailLead: "Prefer email? I'll send setup notes plus the gotchas most teams hit deploying this.",
+    },
+    template: {
+      headline: 'The template is above. <em>Making it stick</em> is a different job.',
+      bullets: [
+        "Adapting the artifact to your stack",
+        "Wiring it into the tools you already run",
+        "Making it survive past the pilot week",
+      ],
+      emailLead: "Prefer email? I'll send the artifact plus the gotchas most teams hit deploying it.",
+    },
+    stack_picker: {
+      headline: 'Your stack is above. <em>Standing it up</em> is a different job.',
+      bullets: [
+        "Sanity-checking the pick against your team and budget",
+        "Wiring the pieces together in the right order",
+        "Hardening it for daily production use",
+      ],
+      emailLead: "Prefer email? I'll send this stack with the reasoning and the templates I use for it.",
+    },
+    swipe: {
+      headline: 'The examples are above. <em>Making them yours</em> is a different job.',
+      bullets: [
+        "Adapting the picks to your offer and your audience",
+        "Picking which one to ship first",
+        "Making the habit survive past the pilot week",
+      ],
+      emailLead: "Prefer email? I'll send ten more examples tuned to the ones you picked.",
+    },
+  };
+  var CLOSING_DEFAULT_BODY = "Everything on this page works as written. After 40+ of these builds, I can tell you where teams stall: the three or four decisions that are specific to your stack, your team, and your clients.";
+
+  // buildClosingCta(format, data, opts)
+  //   format: key into CLOSING_COPY
+  //   opts.toolType     — beacon tool_type (defaults to format)
+  //   opts.captureExtra — fn returning extra beacon fields for the capture event
+  //   opts.onCaptured   — fn(email) engine hook (persist to engine state)
+  // Per-LM overrides come from data.closing_cta { headline_html, body, bullets, email_lead }.
+  function buildClosingCta(format, data, opts) {
+    opts = opts || {};
+    var copy = CLOSING_COPY[format] || CLOSING_COPY.guide;
+    var over = (data && data.closing_cta) || {};
+    var toolType = opts.toolType || format;
+    var headline = over.headline_html || copy.headline;
+    var body = over.body || copy.body || CLOSING_DEFAULT_BODY;
+    var bullets = (Array.isArray(over.bullets) && over.bullets.length) ? over.bullets : copy.bullets;
+    var emailLead = over.email_lead || copy.emailLead;
+    var href = callUrl("closing-cta");
+
+    var sec = make("section", { class: "lmc-closing", "aria-label": "Work with Ivan" });
+    sec.innerHTML =
+      '<div class="lmc-closing-label">Want help implementing this?</div>' +
+      '<h2 class="lmc-closing-h">' + headline + '</h2>' +
+      '<p class="lmc-closing-p">' + esc(body) + '</p>' +
+      '<p class="lmc-closing-lead">If you want help with:</p>' +
+      '<ul class="lmc-closing-points">' +
+        bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') +
+      '</ul>' +
+      '<p class="lmc-closing-p">Book a free 30-minute fit call. I’ll tell you exactly how I’d build this for you. If you can run it yourself, I’ll tell you that too, and you keep the plan.</p>' +
+      '<a class="lmc-btn lmc-closing-call" href="' + esc(href) + '" target="_blank" rel="noopener">Book the free fit call <span aria-hidden="true">→</span></a>' +
+      '<div class="lmc-closing-divider" role="presentation"></div>' +
+      '<p class="lmc-closing-email-p">' + esc(emailLead) + '</p>' +
+      '<form class="lmc-closing-form">' +
+        '<label class="sr-only">Email</label>' +
+        '<input type="email" autocomplete="email" required placeholder="you@company.com" />' +
+        '<button type="submit">Send it</button>' +
+      '</form>' +
+      '<p class="lmc-note">One series. Unsubscribe any time.</p>' +
+      '<p class="lmc-closing-sign">Either way, the full system is on this page. <em>Go build it.</em></p>' +
+      '<div class="lmc-closing-byline">' +
+        '<img src="https://ivanmanfredi.com/ivan-portrait.jpg" alt="" loading="lazy" />' +
+        '<span><strong>Ivan Manfredi</strong>AI systems for service businesses</span>' +
+      '</div>';
+
+    var callBtn = sec.querySelector(".lmc-closing-call");
+    callBtn.addEventListener("click", function () {
+      beacon(toolType, "cta_click", { answers: { target: "closing_cta_call", format: format } });
+    });
+
+    var form = sec.querySelector(".lmc-closing-form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var em = (form.querySelector("input") || {}).value || "";
+      if (!emailIsValid(em)) { toast("Enter a valid email"); return; }
+      updateReader({ email: em });
+      var extra = {};
+      try { extra = (typeof opts.captureExtra === "function" && opts.captureExtra()) || {}; } catch (_) {}
+      beacon(toolType, "capture", Object.assign({ email: em }, extra));
+      try { if (typeof opts.onCaptured === "function") opts.onCaptured(em); } catch (_) {}
+      form.innerHTML = '<p class="lmc-closing-ok">✓ Sent. First email lands in a few minutes. Promotions tab if Gmail.</p>';
+    });
+    return sec;
+  }
+
   // ── Tier helper ───────────────────────────────────────────────────────
   function tierFor(pct) {
     if (pct < 50) return { key: "critical", label: "Critical", note: "Close the high-impact gaps before you scale anything else." };
@@ -561,8 +717,8 @@
       cta.innerHTML =
         '<span class="im-footer-label">Work with me</span>' +
         '<h2 class="im-footer-h">Ready to scale without <em>scaling payroll</em>?</h2>' +
-        '<p class="im-footer-p">See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free strategy call.</p>' +
-        '<a class="im-footer-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-footer-cta>Book a Call</a>';
+        '<p class="im-footer-p">See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free fit call.</p>' +
+        '<a class="im-footer-btn" href="' + callUrl("footer") + '" target="_blank" rel="noopener" data-footer-cta>Book the free fit call</a>';
       var btn = cta.querySelector("[data-footer-cta]");
       if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });
     }
@@ -588,6 +744,7 @@
     readKV: readKV, writeKV: writeKV, removeKV: removeKV,
     observeReveal: observeReveal,
     buildHero: buildHero, buildIntro: buildIntro,
+    buildClosingCta: buildClosingCta, callUrl: callUrl,
     tierFor: tierFor,
     editMode: {
       enabled: function () { return editModeState.enabled; },
@@ -623,10 +780,10 @@
     captureEl.dataset.lmEnhanced = "1";
     var alt = document.createElement("a");
     alt.className = "lmc-capture-alt";
-    alt.href = "https://calendly.com/ivan-intelligents/30min";
+    alt.href = callUrl("capture-alt");
     alt.target = "_blank";
     alt.rel = "noopener";
-    alt.innerHTML = "Or skip the PDF and <strong>book a 30-minute call</strong> directly →";
+    alt.innerHTML = "Prefer to talk it through? <strong>Book a free 30-minute fit call</strong> →";
     alt.addEventListener("click", function () { beacon("capture", "cta_click", { answers: { target: "capture_calendly_alt" } }); });
     var note = captureEl.querySelector(".lmc-note");
     if (note && note.parentNode === captureEl) {
@@ -639,6 +796,25 @@
     document.querySelectorAll(".lmc-capture").forEach(enhanceCapture);
   }
 
+  // ── Legacy in-content link rewrite (2026-06-09) ───────────────────────
+  // Every LM generated before the call-first funnel ends its last section
+  // with "Get in Touch" → ivanmanfredi.com/contact (mandated by the old
+  // generation prompt). Rewrite those anchors to the fit call at render
+  // time so all live pages get the new funnel without regeneration.
+  function rewriteLegacyContactLinks() {
+    document.querySelectorAll('a[href*="ivanmanfredi.com/contact"]').forEach(function (a) {
+      if (a.dataset.lmCallRewritten === "1") return;
+      a.dataset.lmCallRewritten = "1";
+      a.href = callUrl("in-content");
+      a.target = "_blank";
+      a.rel = "noopener";
+      if (/get in touch/i.test(a.textContent || "")) a.textContent = "book a free 30-minute fit call";
+      a.addEventListener("click", function () {
+        beacon("content", "cta_click", { answers: { target: "in_content_call", rewritten: true } });
+      });
+    });
+  }
+
   // Expose for engines / debugging
   window.LM.rebrandFooter = rebrandFooter;
   window.LM.italicizePivot = italicizePivot;
@@ -647,15 +823,28 @@
   // Auto-trigger edit-mode check + footer rebrand on DOMContentLoaded.
   // Each engine also checks LM.editMode.enabled() before assuming non-edit context.
   function bootstrapShared() {
+    // Some engine stylesheets @import shared.css (guide/template/swipe) and
+    // some wrappers link it directly (calculator) — but checklist, assessment,
+    // n8n-workflow and stack-picker pages load NEITHER, so brand-base rules
+    // (.lmc-closing, .im-nav hide, capture unification) silently never applied
+    // there. Self-heal: inject the link when absent. Double-loading alongside
+    // an @import is harmless (idempotent rules, cached fetch).
+    if (!document.querySelector('link[href*="shared.css"], link[href*="shared.min.css"]')) {
+      var sharedLink = document.createElement("link");
+      sharedLink.rel = "stylesheet";
+      sharedLink.href = "/_engine/shared.css";
+      document.head.appendChild(sharedLink);
+    }
     editModeMaybeEnable();
     bindEditModeShortcut();
     rebrandFooter();
     scanCaptures();
+    rewriteLegacyContactLinks();
     // Engines render asynchronously after data.json fetch — watch the LM
-    // root for late-arriving .lmc-capture nodes.
+    // root for late-arriving .lmc-capture nodes and legacy contact links.
     try {
       var root = document.getElementById("lmc-root") || document.querySelector("[id$='-root']") || document.body;
-      var mo = new MutationObserver(function () { scanCaptures(); });
+      var mo = new MutationObserver(function () { scanCaptures(); rewriteLegacyContactLinks(); });
       mo.observe(root, { childList: true, subtree: true });
       // Stop observing after 30s to avoid leaks on long-lived pages.
       setTimeout(function () { try { mo.disconnect(); } catch (_) {} }, 30000);

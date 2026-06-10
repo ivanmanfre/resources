@@ -97,6 +97,10 @@
       main.appendChild(body);
     }
 
+    // Closing CTA — call-first finale (2026-06-09). The artifact email gate
+    // above stays (it delivers a real attachment); this is the funnel exit.
+    main.appendChild(L.buildClosingCta("template", data, { toolType: "template" }));
+
     root.appendChild(main);
 
     // State + wiring

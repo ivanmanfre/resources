@@ -9,6 +9,70 @@
   var STATE_LABEL = { not_yet: "Not yet", partial: "Partial", done: "Done" };
   var STATE_SCORE = { not_yet: 0, partial: 0.5, done: 1 };
 
+  // Flatten block HTML that the generator sometimes emits INSIDE <pre><code>
+  // (<p>/<ol>/<ul> render as rich text and destroy copy-paste fidelity of
+  // paste-ready prompts). Reconstructs clean plain text with literal "1." /
+  // "-" list markers. Returns the text, or null if the pre is already clean.
+  function flattenPreBlock(pre) {
+    if (!pre.querySelector("p, ol, ul, h1, h2, h3, h4")) return null;
+    var out = [];
+    function walk(node) {
+      Array.prototype.forEach.call(node.childNodes, function (ch) {
+        if (ch.nodeType === 3) { out.push(ch.nodeValue); return; }
+        if (ch.nodeType !== 1) return;
+        var tag = ch.tagName;
+        if (tag === "BR") { out.push("\n"); return; }
+        if (tag === "P") { out.push("\n\n"); walk(ch); return; }
+        if (tag === "OL") {
+          var i = 1;
+          Array.prototype.forEach.call(ch.children, function (li) {
+            if (li.tagName === "LI") out.push("\n" + (i++) + ". " + li.textContent.trim());
+          });
+          out.push("\n");
+          return;
+        }
+        if (tag === "UL") {
+          Array.prototype.forEach.call(ch.children, function (li) {
+            if (li.tagName === "LI") out.push("\n- " + li.textContent.trim());
+          });
+          out.push("\n");
+          return;
+        }
+        walk(ch);
+      });
+    }
+    walk(pre);
+    return out.join("").replace(/\n{3,}/g, "\n\n").trim();
+  }
+
+  // Copy button on every code block — these guides ship paste-ready prompts.
+  function enhancePreBlocks(container, slug) {
+    container.querySelectorAll("pre").forEach(function (pre) {
+      if (pre.dataset.lmgEnhanced === "1") return;
+      pre.dataset.lmgEnhanced = "1";
+      var flat = flattenPreBlock(pre);
+      if (flat !== null) {
+        pre.innerHTML = "";
+        var code = document.createElement("code");
+        code.textContent = flat;
+        pre.appendChild(code);
+      }
+      var cleanText = flat !== null ? flat : (pre.querySelector("code") || pre).textContent;
+      var btn = L.make("button", { class: "lmg-copy", type: "button", "aria-label": "Copy to clipboard" }, "Copy");
+      btn.addEventListener("click", function () {
+        var text = cleanText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            btn.textContent = "Copied";
+            setTimeout(function () { btn.textContent = "Copy"; }, 1800);
+          });
+        }
+        L.beacon("guide", "copy_block", { answers: { chars: text.length } });
+      });
+      pre.appendChild(btn);
+    });
+  }
+
   // D4.4: inline interactive element renderers — hoisted to module scope so sections forEach can use them
   function renderMiniChecklist(slug, sectionId, items) {
     var wrap = L.make("div", { class: "lmg-mini-checklist" });
@@ -119,7 +183,7 @@
         }
       : {
           defaultValueBullet: "Read at your pace",
-          defaultNextBullet: "Optional PDF at the end if you want it for later",
+          defaultNextBullet: "If you want this built for you, there's a free fit call at the end",
           defaultNote: "",
         };
     root.appendChild(L.buildIntro(data, ".lmg-progress-wrap", Object.assign({
@@ -230,6 +294,7 @@
       itemLabel: "section",
       template: { id: "", title: "New section", html: "<p>Write the section body here.</p>", self_prompt: "Is your team already doing this?" },
     });
+    enhancePreBlocks(sectionsContainer, slug);
     main.appendChild(sectionsContainer);
 
     // D4.1: sticky mini-TOC on desktop right rail, collapsible per user request 2026-05-21
@@ -275,39 +340,49 @@
       main.appendChild(summary);
     }
 
-    // Capture (email gate) — copy adapts to self-placement on/off
-    var gate = L.make("section", { class: "lmc-capture", id: "lmg-capture" });
-    var captureHeadline = data.enable_self_placement === true
-      ? 'Send me the <em>chapters I skipped</em>'
-      : 'Get the takeaways as a <em>printable PDF</em>';
-    var captureBody = data.enable_self_placement === true
-      ? 'One email with standalone PDFs of just the sections you rated Not yet.'
-      : 'One email with the full guide as a clean PDF for later reference.';
-    var captureBtn = data.enable_self_placement === true
-      ? 'Email me the chapters'
-      : 'Email me the PDF';
-    gate.innerHTML = '<h2>' + captureHeadline + '</h2>' +
-      '<p>' + captureBody + '</p>' +
-      '<form class="lmc-form" id="lmg-form">' +
-        '<label class="sr-only" for="lmg-email">Email</label>' +
-        '<input class="lmc-input" type="email" id="lmg-email" autocomplete="email" required placeholder="you@company.com" />' +
-        '<button class="lmc-btn" type="submit">' + captureBtn + '</button>' +
-      '</form>' +
-      '<p class="lmc-note">One email. Unsubscribe any time.</p>';
-    var shareRow = L.make("div", { class: "lmc-share lmg-share" });
-    var shareTextGuide = "Reading: " + (data.title || "this guide") + " — by Ivan Manfredi.";
-    shareRow.innerHTML =
-      '<a class="lmc-btn lm-share-whatsapp" target="_blank" rel="noopener" href="' +
-        (window.LM && window.LM.share ? window.LM.share.whatsapp(shareTextGuide) : "#") +
-      '">Share on WhatsApp</a>' +
-      '<a class="lmc-btn lmc-btn-secondary" target="_blank" rel="noopener" href="' +
-        (window.LM && window.LM.share ? window.LM.share.linkedIn(shareTextGuide) : "#") +
-      '">Share on LinkedIn</a>';
-    main.appendChild(gate);
-    // Share row OUTSIDE the dark capture so buttons sit on paper (legible) instead of inside the ink box
-    main.appendChild(shareRow);
+    // Closing CTA — call-first finale (replaces the PDF email gate 2026-06-09)
+    main.appendChild(L.buildClosingCta("guide", data, {
+      toolType: "guide",
+      captureExtra: function () {
+        var r = compute();
+        return {
+          score: r.score, rated: r.rated, total: r.total,
+          answers: { not_yet_sections: r.notYet.map(function (n) { return n.section.id || n.section.title; }) },
+        };
+      },
+      onCaptured: function (em) {
+        L.writeKV("guide", slug, "email", em);
+        captured = true;
+      },
+    }));
 
+    // Reading progress bar — sticky, sits at the top of the prose. Also the
+    // scroll target of the intro "Start reading" button (which was a no-op
+    // for weeks because this element was styled but never rendered).
+    var progressWrap = L.make("div", { class: "lmg-progress-wrap" });
+    progressWrap.innerHTML =
+      '<div class="lmg-progress-inner">' +
+        '<span>Reading</span>' +
+        '<div class="lmg-progress-bar"><div class="lmg-progress-fill"></div></div>' +
+        '<span class="lmg-progress-pct">0%</span>' +
+      '</div>';
+    root.appendChild(progressWrap);
     root.appendChild(main);
+    var progFill = progressWrap.querySelector(".lmg-progress-fill");
+    var progPct = progressWrap.querySelector(".lmg-progress-pct");
+    var progTicking = false;
+    function updateProgress() {
+      progTicking = false;
+      var rect = main.getBoundingClientRect();
+      var total = rect.height - window.innerHeight;
+      var pct = total > 0 ? Math.min(100, Math.max(0, Math.round((-rect.top / total) * 100))) : 0;
+      progFill.style.width = pct + "%";
+      progPct.textContent = pct + "%";
+    }
+    window.addEventListener("scroll", function () {
+      if (!progTicking) { progTicking = true; requestAnimationFrame(updateProgress); }
+    }, { passive: true });
+    updateProgress();
 
     // State wiring
     function compute() {
@@ -428,26 +503,6 @@
 
     // Scroll reveal
     L.observeReveal(root, ".lmg-section");
-
-    // Capture
-    var form = document.getElementById("lmg-form");
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var em = (document.getElementById("lmg-email") || {}).value || "";
-        if (!L.emailIsValid(em)) { L.toast("Enter a valid email"); return; }
-        L.writeKV("guide", slug, "email", em);
-        L.updateReader({ email: em });
-        captured = true;
-        var r = compute();
-        L.beacon("guide", "capture", {
-          email: em,
-          score: r.score, rated: r.rated, total: r.total,
-          answers: { not_yet_sections: r.notYet.map(function (n) { return n.section.id || n.section.title; }) }
-        });
-        form.innerHTML = '<p style="font-weight:700;color:var(--accent-light)">&#10003; Sent. Check your inbox in a few minutes.</p>';
-      });
-    }
 
     L.beacon("guide", "view");
   }

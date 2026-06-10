@@ -269,20 +269,27 @@
       }
     });
 
-    // Capture (collapsed until 50% done)
-    var cta = data.completion_cta || {};
-    var capture = make("section", { class: "lmc-capture", id: "lmc-capture", "aria-hidden": "false" });
-    capture.innerHTML =
-      '<h2>' + escapeHtml(cta.headline || "Want the fix for your top 3 gaps?") + '</h2>' +
-      '<p>' + escapeHtml(cta.description || "If you want a next-step plan for the items you didn't check, drop your address. Otherwise bookmark this and revisit when you're ready.") + '</p>' +
-      '<form class="lmc-form" id="lmc-capture-form">' +
-      '<label class="sr-only" for="lmc-email">Email</label>' +
-      '<input class="lmc-input" id="lmc-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" value="' + escapeHtml(state.email) + '" />' +
-      '<button class="lmc-btn" type="submit">Email me my plan</button>' +
-      '</form>' +
-      '<label class="lmc-checkbox-label" for="lmc-7day-optin"><input type="checkbox" id="lmc-7day-optin" checked /> Remind me about the items I didn\'t check, in 7 days</label>' +
-      '<p class="lmc-note">No spam. One email, then you decide.</p>';
-    content.appendChild(capture);
+    // Closing CTA — call-first finale (replaces the email-plan gate 2026-06-09)
+    var closing = window.LM.buildClosingCta("checklist", data, {
+      toolType: "checklist",
+      captureExtra: function () {
+        var st = readState(data.slug);
+        var unchecked = [];
+        var totalItems = 0;
+        (data.sections || []).forEach(function (s) {
+          (s.items || []).forEach(function (it) {
+            totalItems++;
+            if (!st.checked[it.id]) unchecked.push({ section: s.id, item_id: it.id, impact: it.impact || null, text: (it.text || "").slice(0, 200) });
+          });
+        });
+        var done = Object.keys(st.checked).filter(function (k) { return st.checked[k]; }).length;
+        return { answers: { unchecked: unchecked, completion_pct: Math.round((done / (totalItems || 1)) * 100) } };
+      },
+      onCaptured: function (email) {
+        var st = readState(data.slug); st.email = email; saveState(data.slug, st);
+      },
+    });
+    content.appendChild(closing);
 
     // Footer actions
     var actions = make("div", { class: "lmc-footer-actions" });
@@ -393,23 +400,6 @@
         beacon("cta_click", { answers: { item_id: id, checked: !!st.checked[id] } });
       });
     });
-
-    // Capture form
-    var form = $("#lmc-capture-form");
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var email = ($("#lmc-email") || {}).value || "";
-        if (!email || email.indexOf("@") === -1) { toast("Enter a valid email"); return; }
-        var st = readState(data.slug); st.email = email; saveState(data.slug, st);
-        var unchecked = [];
-        (data.sections || []).forEach(function (s) { (s.items || []).forEach(function (it) { if (!st.checked[it.id]) unchecked.push({ section: s.id, item_id: it.id, impact: it.impact || null, text: (it.text || "").slice(0, 200) }); }); });
-        var sevenDay = !!((document.getElementById("lmc-7day-optin") || {}).checked);
-        beacon("capture", { email: email, answers: { unchecked: unchecked, want_7day_followup: sevenDay, completion_pct: Math.round(((Object.keys(st.checked).filter(function (k) { return st.checked[k]; }).length) / (function(){var n=0;(data.sections||[]).forEach(function(s){n+=(s.items||[]).length;});return n||1;})()) * 100) } });
-        toast("Got it. Check your inbox in the next few minutes.");
-        form.innerHTML = '<p style="font-weight:600;color:#2A8F65">&#10003; Sent to ' + escapeHtml(email) + '. If it doesn\'t arrive, check Promotions.</p>';
-      });
-    }
 
     // Copy-as-markdown
     var copyBtn = $("#lmc-copy-md");
