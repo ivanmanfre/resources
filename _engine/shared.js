@@ -240,6 +240,15 @@
   // name the playbook/implementation gap, list what help means for THIS
   // format, one primary action (fit call), honest email secondary.
   var CLOSING_COPY = {
+    "ai-kit": {
+      headline: 'The kit is yours. <em>Wiring it in</em> is a different job.',
+      bullets: [
+        "Filling the context files so the outputs sound like you",
+        "Connecting it to your call recorder, CRM, or inbox",
+        "Extending it from a kit into an always-on system",
+      ],
+      emailLead: "Prefer email? I'll send the companion series for this kit: six short emails on putting it to work, spread over two weeks.",
+    },
     guide: {
       headline: 'The playbook is above. <em>Making it stick</em> is a different job.',
       bullets: [

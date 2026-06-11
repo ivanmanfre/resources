@@ -1,445 +1,69 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Find out why you don&#39;t close — the Claude system that reads your sales calls | Ivan Manfredi</title><meta name="description" content="Download this Find out why you don&#39;t close — the Claude system that reads your sales calls AI Kit - structured context files for Claude Code." /><meta property="og:title" content="Find out why you don&#39;t close — the Claude system that reads your sales calls | Ivan Manfredi" /><meta property="og:description" content="Download this Find out why you don&#39;t close — the Claude system that reads your sales calls AI Kit - structured context files for Claude Code." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="{{RESOURCE_TITLE}}" /><meta name="twitter:description" content="{{META_DESCRIPTION}}" /><meta name="twitter:image" content="{{OG_IMAGE_URL}}" /><meta property="og:image" content="{{OG_IMAGE_URL}}" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:url" content="https://resources.ivanmanfredi.com/{{SLUG}}/" /><meta property="og:site_name" content="Ivan Manfredi" /><meta property="og:locale" content="en_US" /><meta name="author" content="Iván Manfredi" /><meta name="theme-color" content="#2A8F65" /><link rel="canonical" href="https://resources.ivanmanfredi.com/{{SLUG}}/" /><link rel="icon" type="image/png" sizes="32x32" href="https://resources.ivanmanfredi.com/assets/favicon-32.png" /><link rel="apple-touch-icon" sizes="180x180" href="https://resources.ivanmanfredi.com/assets/apple-touch-icon.png" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{ink:'#1A1A1A',paper:'#F7F4EF',accent:'#2A8F65','zinc-200':'#e4e4e7','zinc-600':'#52525b'},boxShadow:{'soft':'0 2px 8px rgba(0,0,0,0.08)'}}}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find out why you don't close — the Claude system that reads your sales calls | Ivan Manfredi</title>
+<meta name="description" content="A copy-paste Claude skill for $1-10M service firms that reads any sales call transcript and scores five signals to name the exact line your deal slipped.">
+<meta name="author" content="Iván Manfredi">
+<meta name="theme-color" content="#4C6E3D">
+<link rel="canonical" href="https://resources.ivanmanfredi.com/find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls/">
+<meta property="og:title" content="Find out why you don't close — the Claude system that reads your sales calls">
+<meta property="og:description" content="A copy-paste Claude skill for $1-10M service firms that reads any sales call transcript and scores five signals to name the exact line your deal slipped.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://resources.ivanmanfredi.com/find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls/">
+<meta property="og:image" content="https://resources.ivanmanfredi.com/assets/og/find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Ivan Manfredi">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Find out why you don't close — the Claude system that reads your sales calls">
+<meta name="twitter:description" content="A copy-paste Claude skill for $1-10M service firms that reads any sales call transcript and scores five signals to name the exact line your deal slipped.">
+<meta name="twitter:image" content="https://resources.ivanmanfredi.com/assets/og/find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://resources.ivanmanfredi.com/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/_engine/ai-kit.css">
 <style>
-body{background-color:#F7F4EF;color:#1A1A1Aoverflow-x:hidden}
-.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}
-.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem;border-bottom:2px solid #000;padding-bottom:.5rem}
-.resource-content h3{font-size:1.25rem;font-weight:700;margin:1.5rem 0 .75rem}
-.resource-content p{margin:.75rem 0;line-height:1.7}
-.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}
-.resource-content li{margin:.4rem 0;line-height:1.6}
-.resource-content code{background:#f0f0f0;padding:2px 6px;font-family:'JetBrains Mono',monospace;font-size:.85em;border:1px solid #ddd}
-.resource-content pre{background:#1a1a1a;color:#2A8F65;padding:1rem;border:2px solid black;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.5;margin:1rem 0}
-.resource-content blockquote{border-left:3px solid #2A8F65;padding-left:16px;margin:16px 0;font-style:italic;background:#f9f9f9;padding:12px 16px}
-.resource-content hr{border:none;border-top:2px solid #e5e5e5;margin:32px 0}
-.resource-content strong{font-weight:700}
-
-/* File Browser Styles */
-.file-browser{display:flex;border:3px solid #000;background:#1a1a1a;min-height:500px;max-height:700px;box-shadow:4px 4px 0 0 rgba(0,0,0,1)}
-.file-sidebar{width:260px;min-width:260px;border-right:2px solid #333;background:#111;overflow-y:auto;padding:12px 0}
-.file-sidebar-header{padding:12px 16px;border-bottom:1px solid #333;display:flex;align-items:center;gap:8px}
-.file-sidebar-header svg{color:#2A8F65}
-.file-sidebar-header span{color:#fff;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
-.file-content-panel{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.file-content-header{padding:10px 16px;background:#1a1a1a;border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:center}
-.file-content-header .file-path{color:#888;font-family:'JetBrains Mono',monospace;font-size:12px}
-.file-content-header .file-desc{color:#666;font-family:'Space Grotesk',sans-serif;font-size:11px;font-style:italic}
-.file-content-body{flex:1;overflow:auto;padding:20px 24px;background:#0d0d0d}
-.file-content-body pre{margin:0;padding:0;background:transparent;border:none;color:#c9d1d9;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;word-wrap:break-word}
-.file-content-body .line-numbers{user-select:none;color:#484848;text-align:right;padding-right:16px;border-right:1px solid #2a2a2a;margin-right:16px;font-size:12px}
-
-/* Sidebar items */
-.file-item{display:flex;align-items:center;gap:8px;padding:6px 16px 6px 20px;cursor:pointer;transition:background .15s;color:#999;font-family:'JetBrains Mono',monospace;font-size:13px}
-.file-item:hover{background:#1e1e1e;color:#fff}
-.file-item.file-active{background:#1e1e1e;color:#2A8F65;border-left:2px solid #2A8F65;padding-left:18px}
-.file-item .file-icon{flex-shrink:0;width:16px;height:16px}
-.file-item .file-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-.folder-item{display:flex;align-items:center;gap:8px;padding:6px 16px;cursor:pointer;color:#2A8F65;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;margin-top:8px}
-.folder-item:hover{background:#1e1e1e}
-.folder-item .folder-icon{flex-shrink:0;width:16px;height:16px}
-.folder-children{padding-left:12px}
-
-.edit-badge{font-size:9px;background:#2A8F65;color:#000;padding:1px 6px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-left:auto}
-.ip-badge{font-size:9px;background:#1A1A1A;color:#F7F4EF;padding:1px 6px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-left:auto}
-
-/* Syntax highlighting - basic */
-.hljs-comment{color:#6a737d}.hljs-keyword{color:#ff7b72}.hljs-string{color:#a5d6ff}.hljs-title{color:#d2a8ff}.hljs-attr{color:#79c0ff}.hljs-number{color:#79c0ff}
-
-/* Copy notification */
-.copy-notif{position:fixed;top:100px;right:20px;background:#2A8F65;color:black;padding:1rem 2rem;border:2px solid black;box-shadow:4px 4px 0 0 rgba(0,0,0,1);font-weight:bold;text-transform:uppercase;z-index:1000;animation:slideIn .3s ease-out}
-@keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}
-.fade-out{animation:fadeOut .3s ease-out forwards}
-@keyframes fadeOut{to{opacity:0;transform:translateY(-20px)}}
-
-/* Mobile file browser */
-@media(max-width:768px){
-  .file-browser{flex-direction:column;max-height:none}
-  .file-sidebar{width:100%;min-width:100%;border-right:none;border-bottom:2px solid #333;max-height:200px}
-  .file-content-body{min-height:400px}
-}
+body { margin: 0; font-family: 'Space Grotesk', sans-serif; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+#skip-link { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+#skip-link:focus { position: fixed; top: .5rem; left: .5rem; width: auto; height: auto; background: #4C6E3D; color: #F7F4EF; padding: .5rem 1rem; border: 1px solid rgba(26,26,26,0.25); z-index: 200; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: .78rem; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.im-nav { position: sticky; top: 0; z-index: 50; background: rgba(247,244,239,0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(26,26,26,0.15); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.im-nav-logo { display: flex; align-items: center; gap: .85rem; text-decoration: none; color: inherit; }
+.im-nav-mark { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: #1A1A1A; color: #ffffff; font-weight: 900; font-size: 1rem; letter-spacing: -0.02em; border: 1px solid rgba(26,26,26,0.15); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.im-nav-name { font-size: .875rem; font-weight: 700; color: #3f3f46; letter-spacing: 0.1em; }
+.im-nav-cta { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem 1.1rem; background: #4C6E3D; color: #F7F4EF; font-weight: 700; letter-spacing: .02em; text-decoration: none; font-size: .82rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s cubic-bezier(.2,.8,.2,1); }
+.im-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.im-footer { background: #1A1A1A; color: #F7F4EF; padding: 4rem 1.5rem 2rem; margin-top: 4rem; }
+.im-footer-inner { max-width: 860px; margin: 0 auto; }
+.im-footer a { color: #F7F4EF; text-decoration: none; }
+.im-footer a:hover { color: #4C6E3D; }
+.im-footer-meta { color: rgba(247,244,239,0.5); font-size: .85rem; letter-spacing: .05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(247,244,239,0.1); }
 </style>
-<link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css">
 </head>
-<body class="font-sans selection:bg-accent selection:text-ink"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-accent focus:text-ink focus:px-4 focus:py-2 focus:border-2 focus:border-black focus:z-[100]">Skip to content</a>
-
-<!-- Nav -->
-<nav class="sticky top-0 z-50 bg-paper border-b border-zinc-200 py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-ink border border-zinc-200 shadow-soft group-hover:shadow-soft transition-all flex items-center justify-center"><img src="https://ivanmanfredi.com/ivan-portrait.jpg" alt="Ivan Manfredi" class="relative w-full h-full object-cover" /></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase hover:underline decoration-2 decoration-accent">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="inline-block px-3 py-2 md:px-6 text-xs md:text-sm bg-accent border border-accent shadow-soft font-bold uppercase  hover:shadow-soft transition-all">Let's Talk</a></div></div></nav>
-
-<!-- Hero -->
-<section class="bg-grid-pattern py-16 md:py-24 border-b border-zinc-200"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-ink text-white text-sm font-bold uppercase tracking-wider mb-6">AI Kit</div><h1 class="hero-title text-4xl md:text-6xl font-black leading-[0.98] mb-6">Find out why you don't close — the Claude system that reads your sales calls</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-4">A ready-to-use AI Kit you can drop into Claude Code and run immediately.</p><div class="mt-10 relative overflow-hidden bg-ink p-8 md:p-12 border border-zinc-200 shadow-soft">
-<div class="absolute inset-0 opacity-[0.07]" style="background-size:30px 30px;background-image:linear-gradient(to right,#2A8F65 1px,transparent 1px),linear-gradient(to bottom,#2A8F65 1px,transparent 1px)"></div>
-<div class="relative"><div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
-<div class="text-center md:text-left flex flex-col items-center md:items-start gap-3">
-<div class="w-20 h-20 border-2 border-accent/30 flex items-center justify-center">
-<svg width="48" height="48" fill="none" stroke="#2A8F65" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/><path d="M10 13l-2 2 2 2"/><path d="M14 13l2 2-2 2"/></svg>
-</div>
-<div class="text-accent text-5xl md:text-6xl font-black leading-none">7</div>
-<div class="text-white text-sm font-bold uppercase tracking-widest">Files</div>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap gap-2 mb-5"><span class="px-3 py-1 bg-accent text-ink text-xs font-bold uppercase tracking-wide">AI Kit</span><span class="px-3 py-1 border-2 border-accent text-accent text-xs font-bold uppercase tracking-wide">Claude Code Ready</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">7 Files</span><span class="px-3 py-1 border-2 border-white/30 text-white/70 text-xs font-bold uppercase tracking-wide">2 Customizable</span><span class="px-3 py-1 border-2 border-white text-white text-xs font-bold uppercase tracking-wide">Free Resource</span></div>
-<p class="text-white/60 text-sm font-medium leading-relaxed max-w-md">A complete AI system you can drop into Claude Code and run immediately. Fill in your context, run the kit, get results.</p>
-</div>
-</div></div></div></div></div></section>
-
-<!-- File Browser -->
-<section class="py-12 md:py-16 border-b border-zinc-200"><div class="container mx-auto px-6"><div class="max-w-5xl mx-auto">
-<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-<h2 class="text-3xl md:text-4xl font-black uppercase">Kit Files</h2>
-<div class="flex gap-3">
-<button onclick="copyCurrentFile()" class="px-5 py-2.5 bg-accent text-ink border border-zinc-200 shadow-soft font-bold uppercase text-sm  hover:shadow-soft transition-all">Copy File</button>
-<button onclick="downloadZip()" class="px-5 py-2.5 bg-accent text-white border border-zinc-200 shadow-soft font-bold uppercase text-sm  hover:shadow-soft transition-all">Download .zip</button>
-</div>
-</div>
-
-<div class="file-browser">
-<!-- Sidebar -->
-<div class="file-sidebar">
-<div class="file-sidebar-header">
-<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-<span>drop-point-read/</span>
-</div>
-<div class="file-item file-active" data-file="CLAUDE.md" onclick="selectFile('CLAUDE.md')"><svg class="file-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="file-name">CLAUDE.md</span></div><div class="file-item " data-file="README.md" onclick="selectFile('README.md')"><svg class="file-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="file-name">README.md</span></div><div class="folder-item" onclick="toggleFolder(this)"><svg class="folder-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg><span class="folder-name">context/</span><span class="edit-badge">you edit these</span></div><div class="folder-children"><div class="file-item" data-file="context/best-closes.md" onclick="selectFile('context/best-closes.md')"><svg class="file-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="file-name">best-closes.md</span></div><div class="file-item" data-file="context/offer-and-voice.md" onclick="selectFile('context/offer-and-voice.md')"><svg class="file-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="file-name">offer-and-voice.md</span></div></div><div class="folder-item" onclick="toggleFolder(this)"><svg class="folder-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg><span class="folder-name">system/</span><span class="ip-badge">pre-built</span></div><div class="folder-children"><div class="file-item" data-file="system/five-reads-rubric.md" onclick="selectFile('system/five-reads-rubric.md')"><svg class="file-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="file-name">five-reads-rubric.md</span></div><div class="file-item" data-file="system/drop-point-method.md" onclick="selectFile('system/drop-point-method.md')"><svg class="file-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="file-name">drop-point-method.md</span></div><div class="file-item" data-file="system/output-format.md" onclick="selectFile('system/output-format.md')"><svg class="file-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="file-name">output-format.md</span></div></div>
-</div>
-
-<!-- Content Panel -->
-<div class="file-content-panel">
-<div class="file-content-header">
-<span class="file-path" id="currentFilePath">CLAUDE.md</span>
-<span class="file-desc" id="currentFileDesc"></span>
-</div>
-<div class="file-content-body">
-<pre id="fileContent"></pre>
-</div>
-</div>
-</div>
-
-</div></div></section>
-
-<!-- How to Use -->
-<section class="py-12 md:py-16 border-b border-zinc-200"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto">
-<h2 class="text-3xl md:text-4xl font-black uppercase mb-8">How to Use This Kit</h2>
-<div class="space-y-4">
-<div class="p-6 border border-zinc-200 bg-paper shadow-soft">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 bg-accent border border-accent flex items-center justify-center flex-shrink-0"><span class="text-xl font-black">1</span></div>
-<div><h3 class="text-xl font-black uppercase mb-2">Download & Extract</h3><p class="text-base font-medium leading-relaxed">Click "Download .zip" above. Extract the folder anywhere on your machine. Or copy individual files manually.</p></div>
-</div>
-</div>
-<div class="p-6 border border-zinc-200 bg-paper shadow-soft">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 bg-accent border border-accent flex items-center justify-center flex-shrink-0"><span class="text-xl font-black">2</span></div>
-<div><h3 class="text-xl font-black uppercase mb-2">Fill In Your Context</h3><p class="text-base font-medium leading-relaxed">Open the files in the <code class="bg-gray-100 px-2 py-0.5 border border-gray-300 font-mono text-sm">context/</code> folder. Replace the placeholder text with your own brand info, audience details, and specifics. The <code class="bg-gray-100 px-2 py-0.5 border border-gray-300 font-mono text-sm">system/</code> files work out of the box — customize later if needed.</p></div>
-</div>
-</div>
-<div class="p-6 border border-zinc-200 bg-paper shadow-soft">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 bg-accent border border-accent flex items-center justify-center flex-shrink-0"><span class="text-xl font-black">3</span></div>
-<div><h3 class="text-xl font-black uppercase mb-2">Run It</h3><p class="text-base font-medium leading-relaxed">Open Claude Code (or any AI tool) in the kit folder. The <code class="bg-gray-100 px-2 py-0.5 border border-gray-300 font-mono text-sm">CLAUDE.md</code> file automatically configures the AI to run the full workflow. Just type your request and let it work.</p></div>
-</div>
-</div>
-</div>
-</div></div></section>
-
-<!-- Content Section (if any) -->
-<section class="py-12 md:py-16 border-b border-zinc-200"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="resource-content text-base font-medium leading-relaxed"># The Drop-Point Read: The Claude Skill That Reads a Sales Call and Names the Exact Line Your Deal Slipped ($1-10M service firms)
-
-A lost deal has a coordinate. A line number. A minute mark where the buyer quietly checked out and everything after was a formality. Most owners review that call from memory, weeks later, and guess. This kit hands you the working Claude skill that reads the actual transcript and points at the line.
-
-Quick credential check and we move on:
-
-- Operator. 40+ AI systems deployed for service firms.
-- Built n8n + Claude workflows that have automated 6,000+ hours of repeat work.
-- Focus on mid-market (11-100 employees), not enterprise, not solo founders.
-- I ship the systems I sell. You can see them running at ivanmanfredi.com.
-
-Drop the skill into your Claude project, paste a transcript, get the diagnosis back. Everything you need is on this page as copy-paste blocks.
-
----
-
-## Why this matters
-
-Your team ran 20+ calls last month. You reviewed maybe one. The deals that stalled got filed under "bad lead" and forgotten, even though you already paid to generate every one of them.
-
-Here is the trap. You felt a call go sideways. You can name the feeling. You cannot name the line. So coaching becomes vibes, and the same slip happens on the next call, and the one after that.
-
-> A deal you can't review is a deal you can only repeat.
-
-The fix is mechanical. The exact method I use to build compliance documents is the same shape that reads a call: load the real source, load one strong example, load your template, then ask for the diagnosis. I am not a coder. I rarely write code myself. I load the real thing plus an example of what good looks like, and let Claude do the comparison. That pattern is what this skill automates for your calls.
-
----
-
-## The Drop-Point Read: five signals
-
-The skill scores one call across five reads. Each read is scored against your own winning calls, so the bar is your best work, not a generic playbook. Scores run 0-5.
-
-| Read | What it measures | Low (0-1) | High (4-5) |
-|---|---|---|---|
-| Objection trail | Every hesitation the buyer voiced, and whether each got answered and reopened later | A concern got one fast answer and never came back | Each concern answered, then circled back to confirm it landed |
-| Price moment | How price entered the call and whether value got requalified around it | Number dropped, buyer went quiet, call moved on | Price framed against their stated cost of staying stuck |
-| Next-step lock | A concrete, scheduled next action before hangup | "I'll follow up" with no date | Calendar hold set live on the call |
-| Talk balance | Buyer share of the conversation during discovery | Rep talked 70%+ | Buyer talked through their own problem |
-| Momentum | The point engagement dropped and never recovered | One clear drop, no recovery | Energy held or climbed to close |
-
-The headline output is the **drop point**: the single line where momentum fell. The score table is the supporting read.
-
-> The drop point is almost never where the call ended. It is the quiet line eight minutes earlier that made the ending inevitable.
-
----
-
-## Worked example
-
-A real shape of what comes back. The owner pasted a 31-minute discovery transcript and the skill returned this.
-
-- **Drop point:** Minute 14, line 212. Buyer asked "so what does something like this usually run?" Rep answered in 6 seconds with a number, then changed the subject. The price question never got reopened.
-- **Objection trail:** 4.0/5. Three concerns raised, two fully handled. The pricing concern was answered once and abandoned.
-- **Price moment:** 1.0/5. Number landed cold, with no tie back to the buyer's stated $4k/month bottleneck from minute 6.
-- **Next-step lock:** 2.0/5. "I'll send something over" with no date set live.
-- **The follow-up line it handed back:** *"Quick one from our call. You asked what this runs, and I gave you the number before I tied it back to the 4k a month that bottleneck is already costing you. Worth a 10-minute call to put those side by side? I can do Thursday."*
-
-That line reopens the exact moment the call dropped. The owner would not have found minute 14 by scrubbing the recording from memory.
-
----
-
-## Artifact 1: The Claude skill (the working asset)
-
-Save this as `call-closer-read/SKILL.md` inside your Claude project's skills folder. This is the full working skill, not a description of one. It ingests the transcript, finds the drop point, scores the five reads against your own closes, and returns the one follow-up message.
-
-```markdown
----
-name: call-closer-read
-description: >
-  Reads a sales or discovery call transcript, finds the exact line where the
-  deal lost momentum, scores the call across five reads against the owner's own
-  best closes, and returns the single follow-up message to send next. Use when a
-  service-firm owner pastes a call transcript and wants to know why it did or did
-  not close, or wants the next message to send.
----
-
-# Call Closer Read
-
-You read one sales call and report where it slipped. You are precise about
-location: every finding cites a line or timestamp from the transcript. You never
-coach from a generic framework. You compare this call to the owner's own winning
-calls in best-closes.md.
-
-## Inputs you need
-1. The call transcript (pasted, or a file path). Timestamps or line numbers help.
-2. best-closes.md (the owner's 2 to 3 winning calls and why they closed).
-3. One line on the offer and price, if it is not obvious from the transcript.
-
-If best-closes.md is missing, ask for it once. If the owner declines, score
-against a default strong-close standard and say so in the output.
-
-## Step 1: Build the timeline
-Segment the transcript into moments. For each moment capture the line or
-timestamp, who spoke, and one phrase summary. You will cite these coordinates in
-every later step.
-
-## Step 2: Trace the objection trail
-List every hesitation, concern, or question the buyer raised. For each one mark:
-- ANSWERED AND REOPENED: handled, then confirmed later that it landed.
-- ANSWERED ONCE: handled in the moment, never returned to.
-- UNANSWERED: raised and dropped.
-Cite the line where it was raised and, if relevant, where it was handled.
-
-## Step 3: Find the drop point
-Locate the single line where buyer momentum fell and did not recover. Signals:
-- A buyer question answered too fast, then the topic changed.
-- Price stated without tying it to the buyer's own stated cost of staying stuck.
-- Buyer talk share drops sharply after a specific line.
-- A concrete next step that was asked for and then softened to "I'll follow up".
-Name ONE drop point. Give the exact line or timestamp and quote the line.
-
-## Step 4: Score the five reads (0 to 5 each)
-Score against the patterns in best-closes.md, not a generic ideal.
-- Objection trail: were concerns answered and reopened?
-- Price moment: did price enter tied to the buyer's stated cost?
-- Next-step lock: was a dated next action set live on the call?
-- Talk balance: did the buyer talk through their own problem in discovery?
-- Momentum: did engagement hold from discovery to close?
-For each read, name the one line from best-closes.md the owner did better there,
-so the gap is concrete.
-
-## Step 5: Write the one follow-up line
-Produce a single message the owner can send today. Rules:
-- Open by naming the exact moment that dropped, in plain words.
-- Reopen that one thread. Do not re-pitch the whole call.
-- Tie back to the buyer's own stated cost or goal from earlier in the call.
-- End with one low-friction question and a specific day offer.
-- Match the owner's voice from best-closes.md. Keep it under 60 words.
-- No pressure language. No stacked asks. One thread, one question.
-
-## Output format (return exactly this shape)
-**Drop point:** [line/timestamp] then a one-line quote of the line.
-**Why it dropped:** one sentence.
-
-**The five reads**
-| Read | Score | The gap vs your best close |
-|---|---|---|
-| Objection trail | x/5 | ... |
-| Price moment | x/5 | ... |
-| Next-step lock | x/5 | ... |
-| Talk balance | x/5 | ... |
-| Momentum | x/5 | ... |
-
-**Unhandled threads:** bullet list, each with its line cite.
-**The follow-up line to send:** the message, ready to copy.
-
-## Hard rules
-- Every claim cites a line or timestamp. No coaching from memory.
-- Name ONE drop point, not five. The owner needs the coordinate, not a list.
-- If the call actually closed, still run it. Report what carried it so the owner
-  can repeat the win on the next call.
-```
-
----
-
-## Artifact 2: Your best-closes calibration file
-
-This is what makes the score yours. Save it as `call-closer-read/best-closes.md` in the same folder. Paste in 2 or 3 of your own calls that closed, plus a line on what carried each one. The skill reads this to set the bar at your best work.
-
-```markdown
-# Best Closes (calibration for call-closer-read)
-
-The skill scores new calls against these. Paste 2 to 3 of your strongest closed
-calls. For each, fill the three fields. Be specific about the moment that won it.
-
-## Close 1
-**Deal:** [client + what they bought]
-**The transcript:** [paste the call, or the 5 minutes around the close]
-**What carried it (1 to 3 lines):**
-- e.g. Tied price to the $6k/month their bottleneck was costing, stated at min 6.
-- e.g. Set the kickoff date live on the call before hanging up.
-- e.g. Let them talk through the problem for the first 12 minutes.
-
-## Close 2
-**Deal:**
-**The transcript:**
-**What carried it:**
--
-
-## Close 3
-**Deal:**
-**The transcript:**
-**What carried it:**
--
-
-## My voice notes (so the follow-up line sounds like me)
-- Greeting I actually use:
-- Words I never use:
-- How direct I am about price (1 blunt, 5 soft):
-- Sign-off I actually use:
-```
-
----
-
-## Artifact 3: Install and run it in 4 lines
-
-Drop this into the project where you keep your call recordings. Then paste a transcript.
-
-```bash
-# 1. From your Claude project root, create the skill folder
-mkdir -p .claude/skills/call-closer-read
-
-# 2. Save Artifact 1 as SKILL.md and Artifact 2 as best-closes.md inside it
-#    .claude/skills/call-closer-read/SKILL.md
-#    .claude/skills/call-closer-read/best-closes.md
-
-# 3. Fill best-closes.md with 2 to 3 of your own winning calls
-
-# 4. Open Claude in the project and run:
-#    "Run call-closer-read on this transcript:" then paste the call
-```
-
-That is the whole loop. Paste a transcript, get the drop point, the five reads, and the one line to send. Run it on every call your team ran last month and you will find the pattern that is quietly costing you closes.
-
----
-
-Send me one lost-call transcript and the line on what your best close looked like, and I'll run the Drop-Point Read on it and send you back the diagnosis, or <a href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener noreferrer">Get in Touch</a> to wire it into your call recordings so every call gets read automatically.</div></div></div></section>
-
-<!-- CTA -->
-<section class="py-16 md:py-24 border-b border-zinc-200"><div class="container mx-auto px-6 text-center"><div class="bg-paper border border-zinc-200 p-8 md:p-12 shadow-soft max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Want This Running on Autopilot?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">This kit runs manually. I build automated versions using n8n that run on schedule, integrate with your tools, and scale across your team.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="inline-block px-10 py-4 bg-accent text-ink text-lg font-black uppercase border border-zinc-200 shadow-soft  hover:shadow-soft transition-all">Book Strategy Call</a></div></div></section>
-
-<!-- Footer -->
-<footer class="bg-ink text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI ops operator for service firms</p></div><div class="flex gap-4"><a aria-label="LinkedIn (opens in new tab)" href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-paper hover:text-ink transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a aria-label="Email Ivan" href="mailto:ivan@ivanmanfredi.com" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-paper hover:text-ink transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 text-sm text-gray-400 font-medium uppercase tracking-wide text-center"><p>&copy; 2026 All Rights Reserved.</p></div></div></footer>
-
-<script>
-// Kit files data
-const kitFiles = [{"path":"CLAUDE.md","name":"CLAUDE.md","folder":"","description":"Master orchestrator that tells Claude how to run the Drop-Point Read on a call transcript.","user_editable":false,"content":"# Drop-Point Read — System Orchestrator\n\nYou are the Drop-Point Read. You read one sales or discovery call transcript and name the exact line where the deal lost momentum. You score the call across five reads against the owner's own winning calls, then hand back the single follow-up message to send next.\n\nYou are precise about location. Every finding cites a line number or timestamp from the transcript. You never coach from a generic playbook. The bar is the owner's best work, loaded from `context/best-closes.md`.\n\n## What you need before you run\n- A call transcript (pasted, or a file path). Line numbers or timestamps help.\n- `context/best-closes.md` — the owner's 2 to 3 winning calls and what carried each.\n- `context/offer-and-voice.md` — the offer, the price, and how the owner sounds.\n\nIf `context/best-closes.md` is empty, ask for it once. If the owner declines, score against the default strong-close standard in `system/five-reads-rubric.md` and say so at the top of your output.\n\n## Workflow (run in order)\n1. **Load calibration.** Read `context/best-closes.md` and `context/offer-and-voice.md`. These set the bar and the voice.\n2. **Build the timeline.** Follow Step 1 in `system/drop-point-method.md`. Segment the transcript into moments with line/timestamp, speaker, and a one-phrase summary.\n3. **Trace the objection trail.** Follow Step 2. Mark every buyer hesitation ANSWERED AND REOPENED, ANSWERED ONCE, or UNANSWERED, with line cites.\n4. **Find the drop point.** Follow Step 3. Name ONE line where momentum fell and did not recover. Quote it.\n5. **Score the five reads.** Apply `system/five-reads-rubric.md`. Score each read 0 to 5 against the owner's best closes, not a generic ideal. For each read, name the one thing the owner did better in `best-closes.md`.\n6. **Write the follow-up line.** Follow Step 5. One message, under 60 words, in the owner's voice, that reopens the dropped thread.\n7. **Return the output** in the exact shape from `system/output-format.md`.\n\n## Hard rules\n- Every claim cites a line or timestamp. No coaching from memory.\n- Name ONE drop point, not five. The owner needs the coordinate, not a list.\n- If the call closed, still run it. Report what carried it so the owner can repeat the win on the next call.\n- No pressure language in the follow-up line. One thread, one question, one dated offer.\n"},{"path":"README.md","name":"README.md","folder":"","description":"Two-minute setup guide for the Drop-Point Read kit.","user_editable":false,"content":"# Drop-Point Read\n\nA Claude system that reads one sales call transcript and names the exact line where your deal slipped. Built for agency owners and ops leads at $1-10M service firms.\n\nYou ran 20+ calls last month and reviewed maybe one. The deals that stalled got filed under \"bad lead\" and forgotten, even though you already paid to generate every one of them. This reads the actual transcript and points at the line, scored against your own best closes.\n\n## Quick start\n1. **Fill the two context files.** Paste 2 to 3 of your winning calls into `context/best-closes.md`, and your offer plus voice notes into `context/offer-and-voice.md`. Takes about 10 minutes, once.\n2. **Run it.** Open Claude in this folder and say: `Run the Drop-Point Read on this transcript:` then paste a call.\n3. **Get the read back.** You get the drop point, the five-read score table, the unhandled threads, and one follow-up line ready to copy.\n\n## What each file does\n- `CLAUDE.md` — the orchestrator. Tells Claude how to run the system. Leave it unless you know why you're changing it.\n- `context/best-closes.md` — your winning calls. This is what makes the score yours. Fill it in.\n- `context/offer-and-voice.md` — your offer, price, and how you sound, so the follow-up line reads like you. Fill it in.\n- `system/five-reads-rubric.md` — the scoring rubric for the five reads. Works out of the box.\n- `system/drop-point-method.md` — the step-by-step method Claude follows.\n- `system/output-format.md` — the exact shape of the report you get back.\n\n## Customization\n- The score is only as sharp as `best-closes.md`. Two real closed calls beat ten generic ones. Paste the 5 minutes around each close if you don't want the whole call in there.\n- Edit the voice notes in `offer-and-voice.md` until the follow-up line sounds like something you'd actually send.\n- Want a different bar? Adjust the 0-1 and 4-5 anchors in `five-reads-rubric.md` to match how you sell.\n- Run it on every call your team ran last month. The drop points will repeat. That pattern is the thing quietly costing you closes.\n\nBuilt by Ivan Manfredi, AI ops operator for service firms.\n"},{"path":"context/best-closes.md","name":"best-closes.md","folder":"context","description":"User template: paste 2-3 winning calls that set the scoring bar.","user_editable":true,"content":"# Best Closes (calibration)\n\nThe Drop-Point Read scores new calls against these. Paste 2 to 3 of your strongest closed calls. For each, fill the three fields. Be specific about the moment that won it. The more real detail here, the sharper the read.\n\n## Close 1\n**Deal:** [client + what they bought, e.g. \"ParkLine Agency, $6k lead-magnet build\"]\n**The transcript:** [paste the call, or the 5 minutes around the close]\n**What carried it (1 to 3 lines):**\n- [e.g. Tied price to the $6k/month their bottleneck was costing, stated at minute 6.]\n- [e.g. Set the kickoff date live on the call before hanging up.]\n- [e.g. Let them talk through the problem for the first 12 minutes.]\n\n## Close 2\n**Deal:** [ ]\n**The transcript:** [ ]\n**What carried it:**\n- [ ]\n\n## Close 3\n**Deal:** [ ]\n**The transcript:** [ ]\n**What carried it:**\n- [ ]\n"},{"path":"context/offer-and-voice.md","name":"offer-and-voice.md","folder":"context","description":"User template: the offer, price framing, and voice notes so the follow-up line sounds like the owner.","user_editable":true,"content":"# Offer and Voice\n\nTwo jobs. Tell the read what you sell so it can judge the price moment, and tell it how you sound so the follow-up line reads like you.\n\n## The offer\n- **What you sell on these calls:** [e.g. Agent-Ready Blueprint, $2,500 diagnostic]\n- **Price and how you frame it:** [e.g. $6k build, framed against hours saved in 90 days]\n- **The cost of staying stuck you sell against:** [e.g. 15 hours a week of manual intake]\n\n## My voice (so the follow-up line sounds like me)\n- **Greeting I actually use:** [e.g. \"Hey [name], quick one from our call\"]\n- **Words I never use:** [e.g. \"circle back\", \"synergy\", \"just checking in\"]\n- **How direct I am about price (1 blunt, 5 soft):** [e.g. 2]\n- **Sign-off I actually use:** [e.g. \"Talk soon, Ivan\"]\n- **One real message I've sent that landed:** [paste a follow-up that got a reply]\n"},{"path":"system/five-reads-rubric.md","name":"five-reads-rubric.md","folder":"system","description":"The scoring IP: five reads with 0-5 anchors, scored against the owner's own closes.","user_editable":false,"content":"# The Five Reads — Scoring Rubric\n\nThe Drop-Point Read scores one call across five reads. Each read runs 0 to 5 and is scored against the owner's own winning calls in `context/best-closes.md`, not a generic playbook. If best-closes is empty, score against the default anchors below and say so.\n\nThe headline output is the drop point: the single line where momentum fell. The five reads are the supporting read.\n\n## How to score\nFor each read: pick the score, then name the one line from `best-closes.md` where the owner did this better. The gap has to be concrete, tied to a real line in their own winning call.\n\n---\n\n## 1. Objection trail\n**Measures:** every hesitation the buyer voiced, and whether each got answered and then reopened to confirm it landed.\n- **0-1:** A concern got one fast answer and never came back.\n- **2-3:** Concerns answered in the moment, none circled back to.\n- **4-5:** Each concern answered, then circled back to confirm it landed.\n\n## 2. Price moment\n**Measures:** how price entered the call and whether value got requalified around it.\n- **0-1:** Number dropped, buyer went quiet, call moved on.\n- **2-3:** Price stated with a weak tie to value.\n- **4-5:** Price framed against the buyer's own stated cost of staying stuck.\n\n## 3. Next-step lock\n**Measures:** a concrete, scheduled next action before hangup.\n- **0-1:** \"I'll follow up\" with no date.\n- **2-3:** A next step named, no date set live.\n- **4-5:** Calendar hold set live on the call.\n\n## 4. Talk balance\n**Measures:** buyer share of the conversation during discovery.\n- **0-1:** Rep talked 70% or more.\n- **2-3:** Roughly even, rep led most threads.\n- **4-5:** Buyer talked through their own problem.\n\n## 5. Momentum\n**Measures:** the point engagement dropped and whether it recovered.\n- **0-1:** One clear drop, no recovery.\n- **2-3:** A dip that partly recovered.\n- **4-5:** Energy held or climbed to close.\n\n---\n\n## The drop-point rule\nThe drop point is almost never where the call ended. It is the quiet line minutes earlier that made the ending inevitable. Name one. Give the line or timestamp. Quote it. Everything after it was a formality, so find the moment, not the symptom.\n"},{"path":"system/drop-point-method.md","name":"drop-point-method.md","folder":"system","description":"The step-by-step method Claude follows to read the call.","user_editable":false,"content":"# Drop-Point Method\n\nThe steps Claude follows. Same shape I use to read any source: load the real thing, load one example of good, compare, report the gap. No code required.\n\n## Step 1: Build the timeline\nSegment the transcript into moments. For each, capture the line or timestamp, who spoke, and a one-phrase summary. These coordinates get cited in every later step.\n\n## Step 2: Trace the objection trail\nList every hesitation, concern, or question the buyer raised. Mark each:\n- **ANSWERED AND REOPENED:** handled, then confirmed later it landed.\n- **ANSWERED ONCE:** handled in the moment, never returned to.\n- **UNANSWERED:** raised and dropped.\nCite the line where it was raised, and where it was handled if it was.\n\n## Step 3: Find the drop point\nLocate the single line where buyer momentum fell and did not recover. Signals:\n- A buyer question answered too fast, then the topic changed.\n- Price stated without tying it to the buyer's own cost of staying stuck.\n- Buyer talk share drops sharply after a specific line.\n- A concrete next step that got asked for, then softened to \"I'll follow up\".\nName ONE drop point. Give the exact line or timestamp and quote the line.\n\n## Step 4: Score the five reads\nApply `system/five-reads-rubric.md`. Score each read 0 to 5 against `context/best-closes.md`. For each read, name the one line the owner did better, so the gap is concrete.\n\n## Step 5: Write the one follow-up line\nOne message the owner can send today. Rules:\n- Open by naming the exact moment that dropped, in plain words.\n- Reopen that one thread. Don't re-pitch the whole call.\n- Tie back to the buyer's own stated cost or goal from earlier in the call.\n- End with one low-friction question and a specific day offer.\n- Match the owner's voice from `context/offer-and-voice.md`. Keep it under 60 words.\n- No pressure language. One thread, one question.\n"},{"path":"system/output-format.md","name":"output-format.md","folder":"system","description":"The exact report shape Claude returns.","user_editable":false,"content":"# Output Format\n\nReturn exactly this shape. Nothing before it, nothing after.\n\n---\n\n**Drop point:** [line/timestamp] then a one-line quote of the line.\n**Why it dropped:** one sentence.\n\n**The five reads**\n\n| Read | Score | The gap vs your best close |\n|---|---|---|\n| Objection trail | x/5 | ... |\n| Price moment | x/5 | ... |\n| Next-step lock | x/5 | ... |\n| Talk balance | x/5 | ... |\n| Momentum | x/5 | ... |\n\n**Unhandled threads:** bullet list, each with its line cite.\n\n**The follow-up line to send:**\n> the message, ready to copy.\n\n---\n\nRules for the report:\n- Every score row names a concrete gap against a real line in `context/best-closes.md`.\n- If the call closed, replace \"Why it dropped\" with \"What carried it\" and report the win so the owner can repeat it.\n- If `best-closes.md` was empty, add one line at the top: \"Scored against the default standard. Fill best-closes.md to score against your own calls.\"\n"}];
-
-// File viewer state
-let currentFile = kitFiles.length > 0 ? kitFiles[0].path : '';
-
-function selectFile(path) {
-  currentFile = path;
-
-  // Update active state in sidebar
-  document.querySelectorAll('.file-item').forEach(el => {
-    el.classList.toggle('file-active', el.dataset.file === path);
-  });
-
-  // Find file
-  const file = kitFiles.find(f => f.path === path);
-  if (!file) return;
-
-  // Update header
-  document.getElementById('currentFilePath').textContent = file.path;
-  document.getElementById('currentFileDesc').textContent = file.description || '';
-
-  // Update content with line numbers
-  document.getElementById('fileContent').textContent = file.content;
-}
-
-function toggleFolder(el) {
-  const children = el.nextElementSibling;
-  if (children && children.classList.contains('folder-children')) {
-    children.style.display = children.style.display === 'none' ? 'block' : 'none';
-  }
-}
-
-function copyCurrentFile() {
-  const file = kitFiles.find(f => f.path === currentFile);
-  if (!file) return;
-  navigator.clipboard.writeText(file.content).then(() => notify('Copied ' + file.name)).catch(() => notify('Copy failed'));
-}
-
-async function downloadZip() {
-  if (typeof JSZip === 'undefined') { notify('Download unavailable'); return; }
-  const zip = new JSZip();
-  const folder = zip.folder('drop-point-read');
-
-  for (const file of kitFiles) {
-    if (file.folder) {
-      folder.folder(file.folder).file(file.name, file.content);
-    } else {
-      folder.file(file.name, file.content);
-    }
-  }
-
-  const blob = await zip.generateAsync({type: 'blob'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'drop-point-read.zip';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  notify('Downloaded drop-point-read.zip');
-}
-
-function notify(m) {
-  const d = document.createElement('div');
-  d.className = 'copy-notif';
-  d.textContent = m;
-  document.body.appendChild(d);
-  setTimeout(() => { d.classList.add('fade-out'); setTimeout(() => document.body.removeChild(d), 300); }, 2000);
-}
-
-// Initialize with first file
-if (kitFiles.length > 0) selectFile(kitFiles[0].path);
-</script>
-<script>(function(){try{var q=new URLSearchParams(location.search);var p={event_type:"view",lm_slug:"{{SLUG}}",src:q.get("src")||"direct",utm:{source:q.get("utm_source"),medium:q.get("utm_medium"),campaign:q.get("utm_campaign"),content:q.get("utm_content")},prospect_id:q.get("pid")||null,referrer:document.referrer||""};fetch("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p),keepalive:true}).catch(function(){});document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(/calendly.com|ivanmanfredi.com/contact/.test(href)){try{navigator.sendBeacon("https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon",new Blob([JSON.stringify({event_type:"cta_click",lm_slug:"{{SLUG}}",src:q.get("src")||"direct",utm:{source:q.get("utm_source")},answers:{cta_href:href}})],{type:"application/json"}))}catch(_){}}},{passive:true});window.__lm_beacon_url="https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";window.__lm_slug="{{SLUG}}"}catch(_){}})();</script></body></html>
+<body>
+<a id="skip-link" href="#lmc-root">Skip to content</a>
+<nav class="im-nav" aria-label="Site">
+  <a class="im-nav-logo" href="https://ivanmanfredi.com">
+    <span class="im-nav-mark">IM</span>
+    <span class="im-nav-name">IVAN MANFREDI</span>
+  </a>
+  <a class="im-nav-cta" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener">Let's Talk</a>
+</nav>
+<main id="lmc-root" class="lmc-root" data-lm-ai-kit-src="./data.json"></main>
+<footer class="im-footer">
+  <div class="im-footer-inner">
+    <div class="im-footer-meta">
+      <span>&copy; 2026 Ivan Manfredi</span>
+      <span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>
+    </div>
+  </div>
+</footer>
+<script>window.__lm_slug="find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls";window.__lm_beacon_url="https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";</script>
+<script src="/_engine/shared.js"></script>
+<script src="/_engine/ai-kit.js"></script>
+</body>
+</html>
