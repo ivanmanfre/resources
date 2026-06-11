@@ -9,7 +9,7 @@
   var L = window.LM;
 
   var GROUP_ORDER = ["", "context", "system"];
-  var GROUP_LABEL = { "": "Kit root", context: "context/ — you fill these in", system: "system/ — the methodology" };
+  var GROUP_LABEL = { "": "Kit root", context: "context/ · you fill these in", system: "system/ · the methodology" };
 
   function groupFiles(files) {
     var groups = {};
@@ -29,7 +29,7 @@
   function buildQuickStart(data) {
     var sec = L.make("section", { class: "lmk-quickstart lmk-reveal", "aria-label": "Quick start" });
     var steps = [
-      { n: "1", h: "Download the kit", p: "Grab the ZIP below. Unzip it into a folder — that folder is the system." },
+      { n: "1", h: "Download the kit", p: "Grab the ZIP below. Unzip it into a folder. That folder is the system." },
       { n: "2", h: "Fill in your context", p: "Open the files in context/ and replace the [BRACKETS] with your business. Ten minutes, once." },
       { n: "3", h: "Run it with Claude", p: "Open the folder in Claude Code (or paste CLAUDE.md into a Claude Project) and follow the orchestrator." },
     ];
@@ -77,7 +77,7 @@
         '<div class="lmk-dl-copy">' +
           '<div class="lmk-dl-label">' + L.esc(data.format_label || "AI Kit") + '</div>' +
           '<h2 class="lmk-dl-h">The whole system, <em>one folder</em></h2>' +
-          '<p class="lmk-dl-p">' + files.length + " files. " + editable + " you customize, the rest works out of the box. Browse every file below before you download — nothing is hidden behind the ZIP.</p>" +
+          '<p class="lmk-dl-p">' + files.length + " files. " + editable + " you customize, the rest works out of the box. Browse every file below before you download. Nothing is hidden behind the ZIP.</p>" +
         '</div>' +
         '<div class="lmk-dl-action">' +
           '<button class="lmc-btn lmk-dl-btn" type="button">Download the kit <span aria-hidden="true">↓</span></button>' +
@@ -173,6 +173,7 @@
 
   function render(data, root) {
     root.innerHTML = "";
+    root.classList.add("lmk-page");
     var files = data.files || [];
     var editable = files.filter(function (f) { return f.user_editable; }).length;
 
