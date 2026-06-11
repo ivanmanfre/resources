@@ -62,5 +62,5 @@
 
 /* --- Kit pages read wide: file browser + hero get a 1080px measure (shared default is 860) --- */
 .lmk-page .lmc-hero-inner, .lmk-page .lmc-intro-inner, .lmk-page .lmc-container { max-width: 1080px; }
-.lmk-page .lmc-h1 { max-width: 19ch; }
+.lmk-page .lmc-h1 { max-width: none; }
 .lmk-page .lmc-sub { max-width: 56ch; }
