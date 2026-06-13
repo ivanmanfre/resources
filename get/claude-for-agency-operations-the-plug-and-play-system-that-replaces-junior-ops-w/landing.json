@@ -14,7 +14,7 @@
     "An SOP builder that writes the doc from a transcript",
     "The plain instruction files behind all of it, so you own it"
   ],
-  "proof": "<b>Built from real agency work.</b> I build automation systems for $1–10M service firms — this is the exact setup I run, not a theory deck.",
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
   "resource_url": "https://resources.ivanmanfredi.com/claude-for-agency-operations-the-plug-and-play-system-that-replaces-junior-ops-w",
   "gate_keyword": "OPSKIT",
   "cta_label": "Email me the Ops Kit"
