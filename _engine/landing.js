@@ -1,0 +1,131 @@
+/* Landing engine — gated opt-in front door. Reads landing.json, renders the
+ * shared template, captures first name + email, POSTs lm-beacon
+ * (event_type:'landing_capture' → lm_events + Resend delivery email), then
+ * redirects to the static /thanks/ page. Data shape (landing.json):
+ * { slug, format_label, category, headline, headline_emphasis, subhead,
+ *   subhead_secondary, cover_url, inside:[..], proof, proof_avatar,
+ *   resource_url, gate_keyword, cta_label } */
+(function () {
+  "use strict";
+  var L = window.LM || {};
+  var BEACON = window.__lm_beacon_url || "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
+  var root = document.getElementById("lmc-root");
+  if (!root) return;
+  var src = root.getAttribute("data-lm-landing-src") || "./landing.json";
+
+  function esc(s) {
+    return (L.esc ? L.esc(s) : String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    }));
+  }
+  function emailIsValid(e) { return L.emailIsValid ? L.emailIsValid(e) : /[^@\s]+@[^@\s]+\.[^@\s]+/.test(e || ""); }
+
+  // Italicize the emphasis phrase inside the headline (data-driven).
+  function headlineHTML(d) {
+    var h = String(d.headline || "");
+    if (/<em\b|<i\b/i.test(h)) return h; // pre-marked
+    var emph = d.headline_emphasis;
+    if (emph && h.indexOf(emph) !== -1) {
+      return esc(h.slice(0, h.indexOf(emph))) + "<em>" + esc(emph) + "</em>" + esc(h.slice(h.indexOf(emph) + emph.length));
+    }
+    return esc(h);
+  }
+
+  fetch(src, { cache: "no-cache" })
+    .then(function (r) { if (!r.ok) throw new Error("load"); return r.json(); })
+    .then(render)
+    .catch(function () {
+      root.innerHTML = '<div class="lp" style="padding:4rem 0;text-align:center"><p>This page didn\'t load. <a href="https://ivanmanfredi.com" style="color:#4C6E3D">ivanmanfredi.com</a></p></div>';
+    });
+
+  function render(d) {
+    window.__lm_data = d;
+    if (d.slug) window.__lm_slug = d.slug;
+
+    var inside = (d.inside || []).map(function (b, i) {
+      return '<li class="lp-b"><span class="n">' + (i + 1) + '</span><span>' + esc(b) + "</span></li>";
+    }).join("");
+
+    var cover = d.cover_url
+      ? '<img class="lp-cover" src="' + esc(d.cover_url) + '" alt="' + esc(d.headline || "") + '" loading="lazy">'
+      : '<div class="lp-cover-fallback">' + esc(d.headline || d.category || "Free resource") + "</div>";
+
+    var avatar = d.proof_avatar
+      ? '<img class="lp-ava" src="' + esc(d.proof_avatar) + '" alt="Ivan Manfredi">'
+      : '<span class="lp-ava"></span>';
+
+    var ctaLabel = esc(d.cta_label || ("Email me the " + (d.format_label ? d.format_label.toLowerCase() : "resource")));
+    var eyebrow = [d.format_label, d.category].filter(Boolean).map(esc).join(" · ");
+
+    root.innerHTML =
+      '<div class="lp">' +
+        '<section class="lp-hero">' +
+          "<div>" +
+            (eyebrow ? '<p class="lp-eyebrow">' + eyebrow + "</p>" : "") +
+            '<h1 class="lp-h1">' + headlineHTML(d) + "</h1>" +
+            (d.subhead ? '<p class="lp-sub">' + esc(d.subhead) + "</p>" : "") +
+            (d.subhead_secondary ? '<p class="lp-sub-2">' + esc(d.subhead_secondary) + "</p>" : "") +
+          "</div>" +
+          '<div class="lp-form-card">' +
+            cover +
+            '<form id="lp-form" novalidate>' +
+              '<label class="lp-label" for="lp-first">First name</label>' +
+              '<input class="lp-input" id="lp-first" name="first_name" type="text" autocomplete="given-name" placeholder="First name" required>' +
+              '<label class="lp-label" for="lp-email">Work email</label>' +
+              '<input class="lp-input" id="lp-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>' +
+              '<button class="lp-cta" id="lp-submit" type="submit">' + ctaLabel + " &rarr;</button>" +
+              '<p class="lp-err" id="lp-err"></p>' +
+              '<p class="lp-micro">One email. The link lands in your inbox in under a minute.</p>' +
+            "</form>" +
+          "</div>" +
+        "</section>" +
+        (inside ? '<section class="lp-inside"><h2>What\'s inside</h2><ul class="lp-bullets">' + inside + "</ul></section>" : "") +
+        (d.proof ? '<section class="lp-proof">' + avatar + "<p>" + d.proof + "</p></section>" : "") +
+      "</div>";
+
+    try { if (L.beacon) L.beacon("landing", "view"); } catch (_) {}
+    wireForm(d);
+  }
+
+  function wireForm(d) {
+    var form = document.getElementById("lp-form");
+    var errEl = document.getElementById("lp-err");
+    var btn = document.getElementById("lp-submit");
+    if (!form) return;
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      errEl.textContent = "";
+      var first = (document.getElementById("lp-first").value || "").trim();
+      var email = (document.getElementById("lp-email").value || "").trim().toLowerCase();
+      if (!emailIsValid(email)) { errEl.textContent = "Please enter a valid email."; return; }
+
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = "Sending…";
+
+      var q = new URLSearchParams(location.search);
+      var body = {
+        event_type: "landing_capture",
+        tool_type: "landing",
+        lm_slug: d.slug,
+        first_name: first,
+        email: email,
+        src: q.get("src") || "landing",
+        utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign") },
+        prospect_id: q.get("pid") || null,
+        referrer: document.referrer || ""
+      };
+
+      fetch(BEACON, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error((res.j && res.j.error) || "send_failed");
+          window.location.href = "/thanks/?lm=" + encodeURIComponent(d.slug || "");
+        })
+        .catch(function () {
+          btn.disabled = false; btn.textContent = label;
+          errEl.textContent = "Something went wrong — try again, or DM me on LinkedIn and I'll send it.";
+        });
+    });
+  }
+})();
