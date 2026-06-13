@@ -2,10 +2,10 @@
   "slug": "multi-step-document-automation-workflow-intake-data-enrichment-human-review-conditional-document-generation",
   "format_label": "N8N Workflow",
   "category": "Document Automation",
-  "headline": "Document Automation That Survives the Review Stage",
-  "headline_emphasis": "Survives the Review Stage",
-  "subhead": "A full n8n workflow that runs intake, enrichment, human approval, and conditional document generation, so your outputs stop needing manual fixes.",
-  "subhead_secondary": "Every node, connection, and decision point is visible and editable.",
+  "headline": "Document automation that survives the review stage",
+  "headline_emphasis": "survives the review stage",
+  "subhead": "A full n8n workflow that handles intake, enrichment, human approval, and conditional document generation so outputs don't need manual fixes every time.",
+  "subhead_secondary": "Every node, every connection, every decision point is visible.",
   "cover_url": "https://resources.ivanmanfredi.com/assets/og/multi-step-document-automation-workflow-intake-data-enrichment-human-review-conditional-document-generation.png",
   "inside": [
     "Structured intake that captures what you actually need",
@@ -14,8 +14,8 @@
     "Conditional paths based on review outcome and data state",
     "Final document generation that reflects real decisions, not assumptions"
   ],
-  "proof": "<b>Built from real agency work.</b> I build automation systems for $1–10M service firms — this is the exact setup I run, not a theory deck.",
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
   "resource_url": "https://resources.ivanmanfredi.com/multi-step-document-automation-workflow-intake-data-enrichment-human-review-conditional-document-generation/",
-  "gate_keyword": "INTAKE",
+  "gate_keyword": null,
   "cta_label": "Email me the workflow"
 }
