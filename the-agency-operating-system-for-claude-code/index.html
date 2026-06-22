@@ -44,6 +44,8 @@ body { margin: 0; font-family: 'Space Grotesk', sans-serif; }
 .im-footer-meta { color: rgba(247,244,239,0.5); font-size: .85rem; letter-spacing: .05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(247,244,239,0.1); }
 </style>
 <style>
+/* show all content immediately; the engine's scroll-fade misreads in captures + can flicker on fast scroll */
+.lmk-reveal{opacity:1 !important;transform:none !important}
 /* AIOS value section (per-slug enhancement) */
 .aios-value{background:#1A1A1A;color:#F7F4EF;padding:4.5rem 1.5rem}
 .aios-value-inner{max-width:1020px;margin:0 auto}
