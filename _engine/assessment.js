@@ -168,15 +168,32 @@
     if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
     root.innerHTML = "";
 
+    // Results-forward mode: ?mode=result&seed=<base64 JSON of {questionId: answerIndex}>.
+    // Lands the visitor straight on a pre-computed result instead of the questionnaire.
+    // Used to embed a personalized assessment inside the prospect scan page.
+    var __params = new URLSearchParams(location.search);
+    var resultMode = __params.get("mode") === "result";
+    var seedAnswers = null;
+    if (resultMode) {
+      try {
+        var __raw = __params.get("seed");
+        if (__raw) seedAnswers = JSON.parse(atob(__raw));
+      } catch (_) { seedAnswers = null; }
+      if (!seedAnswers || typeof seedAnswers !== "object") resultMode = false;
+    }
+
     var questions = flattenQuestions(data);
-    var answers = loadAnswers(data.slug);
+    // In result mode, seed answers drive the view and we never touch localStorage
+    // (the same niche LM is reused across prospects, so per-browser persistence collides).
+    var answers = resultMode ? seedAnswers : loadAnswers(data.slug);
     var idx = 0;
     // Resume from last unanswered question
     for (var i = 0; i < questions.length; i++) {
       if (answers[questions[i].id || "__persona"] == null) { idx = i; break; }
       idx = i + 1;
     }
-    var captured = !!loadEmail(data.slug);
+    // Result mode always shows the gate fresh, even if this browser captured before.
+    var captured = resultMode ? false : !!loadEmail(data.slug);
 
     // Hero
     var hero = make("section", { class: "lmc-hero" });
@@ -191,31 +208,36 @@
       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
       hi.appendChild(sub);
     }
-    var meta = make("div", { class: "lmc-meta" });
-    meta.appendChild(make("div", { class: "lmc-meta-chip" }, questions.length + " questions"));
-    if (data.estimated_minutes) meta.appendChild(make("div", { class: "lmc-meta-chip" }, data.estimated_minutes + " min"));
-    meta.appendChild(make("div", { class: "lmc-meta-chip" }, "Auto-saves"));
-    hi.appendChild(meta);
+    if (!resultMode) {
+      var meta = make("div", { class: "lmc-meta" });
+      meta.appendChild(make("div", { class: "lmc-meta-chip" }, questions.length + " questions"));
+      if (data.estimated_minutes) meta.appendChild(make("div", { class: "lmc-meta-chip" }, data.estimated_minutes + " min"));
+      meta.appendChild(make("div", { class: "lmc-meta-chip" }, "Auto-saves"));
+      hi.appendChild(meta);
+    }
     hero.appendChild(hi);
     root.appendChild(hero);
 
-    // Dynamic start label: resume if any answers were saved, start otherwise.
-    var introHasProgress = Object.keys(answers).some(function (k) { return answers[k] != null; });
-    var introSection = buildIntro(data, ".lmc-widget", {
-      defaultValueBullet: "15-20 questions, 5 categories. Honest answers = honest result",
-      defaultNextBullet: "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes",
-      startLabel: introHasProgress ? "Resume the assessment" : "Start the assessment",
-      defaultNote: "No signup to take it. Results stay private until you unlock the full report.",
-      hasProgress: introHasProgress,
-      onReset: function () {
-        try {
-          localStorage.removeItem(storageKey(data.slug, "answers"));
-          localStorage.removeItem(storageKey(data.slug, "email"));
-        } catch (_) {}
-        location.reload();
-      }
-    });
-    root.appendChild(introSection);
+    // The welcome/intro block only makes sense for the live questionnaire.
+    if (!resultMode) {
+      // Dynamic start label: resume if any answers were saved, start otherwise.
+      var introHasProgress = Object.keys(answers).some(function (k) { return answers[k] != null; });
+      var introSection = buildIntro(data, ".lmc-widget", {
+        defaultValueBullet: "15-20 questions, 5 categories. Honest answers = honest result",
+        defaultNextBullet: "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes",
+        startLabel: introHasProgress ? "Resume the assessment" : "Start the assessment",
+        defaultNote: "No signup to take it. Results stay private until you unlock the full report.",
+        hasProgress: introHasProgress,
+        onReset: function () {
+          try {
+            localStorage.removeItem(storageKey(data.slug, "answers"));
+            localStorage.removeItem(storageKey(data.slug, "email"));
+          } catch (_) {}
+          location.reload();
+        }
+      });
+      root.appendChild(introSection);
+    }
 
     // Widget area
     var widget = make("div", { class: "lmc-widget" });
@@ -832,8 +854,10 @@
       host.appendChild(retakeWrap);
     }
 
-    // Initial render: start screen (fresh) or first unanswered question (resume).
-    if (phase === "start") {
+    // Initial render: results-forward (seeded) → straight to result; else start/resume.
+    if (resultMode) {
+      renderResult();
+    } else if (phase === "start") {
       card.appendChild(buildStartSlide());
     } else {
       renderQuestion();
