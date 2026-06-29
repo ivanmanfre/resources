@@ -650,7 +650,7 @@
           e.preventDefault();
           var em = (emailInput || {}).value || "";
           if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
-          saveEmail(data.slug, em);
+          if (!resultMode) saveEmail(data.slug, em);
           captured = true;
           beacon("complete", {
             email: em,
@@ -843,15 +843,19 @@
       });
 
       // Retake — quiet text link, not a hard button.
-      var retakeWrap = make("div", { class: "lmc-retake-wrap" });
-      var retake = make("button", { class: "lmc-retake", type: "button" }, "Retake the assessment");
-      retake.addEventListener("click", function () {
-        if (!confirm("Clear your answers and retake?")) return;
-        try { localStorage.removeItem(storageKey(data.slug, "answers")); localStorage.removeItem(storageKey(data.slug, "email")); } catch (_) {}
-        location.reload();
-      });
-      retakeWrap.appendChild(retake);
-      host.appendChild(retakeWrap);
+      // Suppressed in result mode: retaking a seeded result is meaningless (reload re-enters
+      // result mode) and the removeItem calls would write the shared resources-domain localStorage.
+      if (!resultMode) {
+        var retakeWrap = make("div", { class: "lmc-retake-wrap" });
+        var retake = make("button", { class: "lmc-retake", type: "button" }, "Retake the assessment");
+        retake.addEventListener("click", function () {
+          if (!confirm("Clear your answers and retake?")) return;
+          try { localStorage.removeItem(storageKey(data.slug, "answers")); localStorage.removeItem(storageKey(data.slug, "email")); } catch (_) {}
+          location.reload();
+        });
+        retakeWrap.appendChild(retake);
+        host.appendChild(retakeWrap);
+      }
     }
 
     // Initial render: results-forward (seeded) → straight to result; else start/resume.
