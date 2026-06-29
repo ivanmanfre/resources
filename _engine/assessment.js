@@ -536,6 +536,25 @@
       hero.appendChild(heroBody);
       wrap.appendChild(hero);
 
+      // Results-forward only: invite the visitor to correct the estimated answers.
+      if (resultMode) {
+        var adjustWrap = make("div", { class: "lmc-result-section lmc-adjust" });
+        adjustWrap.style.setProperty("--lmc-delay", "120ms");
+        adjustWrap.appendChild(make("p", { class: "lmc-adjust-note" },
+          "These answers are estimated from your public footprint. Adjust any of them to see your real number."));
+        var adjustBtn = make("button", { class: "lmc-btn lmc-btn-secondary lmc-adjust-btn", type: "button" },
+          "Adjust my answers →");
+        adjustBtn.addEventListener("click", function () {
+          resultMode = false;            // hand control to the live questionnaire
+          idx = 0;
+          card.classList.remove("lmc-result-card");
+          beacon("cta_click", { answers: { target: "adjust_answers" } });
+          renderQuestion("fwd");
+        });
+        adjustWrap.appendChild(adjustBtn);
+        wrap.appendChild(adjustWrap);
+      }
+
       // ── Top-3 gap questions ────────────────────────────────────────
       var gaps = [];
       (data.categories || []).forEach(function (cat) {

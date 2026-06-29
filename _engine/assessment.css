@@ -478,3 +478,8 @@
   letter-spacing: -0.02em !important;
   text-transform: none !important;
 }
+
+/* Results-forward: adjust-answers affordance */
+.lmc-adjust { text-align: center; }
+.lmc-adjust-note { font-size: 14px; color: rgba(26,26,26,.6); margin: 0 0 .75rem; }
+.lmc-adjust-btn { display: inline-flex; }
