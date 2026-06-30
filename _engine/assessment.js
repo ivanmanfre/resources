@@ -183,12 +183,33 @@
         var __nav = document.querySelector(".im-nav"); if (__nav) __nav.remove();
         var __ft = document.querySelector(".im-footer"); if (__ft) __ft.remove();
         var __skip = document.getElementById("skip-link"); if (__skip) __skip.remove();
-        // Recolor the accent off Ivan's brand green to a neutral slate so the embedded
-        // scorecard reads as the prospect's own asset. A scoped rule (.lmc-embed .lmc-root)
-        // outranks the base var definition by specificity, so it wins regardless of timing.
-        var __acc = document.createElement("style");
-        __acc.textContent = ".lmc-embed .lmc-root{--accent:#5B82A6;--accent-light:#7BA0C0;--accent-ink:#3E5C76;--accent-soft:#5B82A614;--accent-glow:rgba(91,130,166,.18)}";
-        document.head.appendChild(__acc);
+        // Recolor the accent to the PROSPECT's brand so the scorecard reads as built for
+        // THEM, not Ivan. ?accent=RRGGBB carries the lead's brand color (the same one the
+        // cover + post image are rendered in); we derive the light/ink/soft/glow ramp from
+        // it. With no brand to read (e.g. a prospect with no website) it falls back to a
+        // neutral slate. A scoped rule (.lmc-embed .lmc-root) outranks the base var
+        // definition by specificity, so it wins regardless of load timing.
+        (function () {
+          function clamp(x) { return Math.max(0, Math.min(255, Math.round(x))); }
+          function parse(h) {
+            h = (h || "").replace(/[^0-9a-fA-F]/g, "");
+            if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+            if (h.length !== 6) return null;
+            return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+          }
+          function hex(c) { return "#" + c.map(function (x) { return clamp(x).toString(16).padStart(2, "0"); }).join(""); }
+          function mix(c, t, a) { return [c[0] + (t[0] - c[0]) * a, c[1] + (t[1] - c[1]) * a, c[2] + (t[2] - c[2]) * a]; }
+          var rgb = parse(__params.get("accent")) || [91, 130, 166]; // slate fallback
+          var css = ".lmc-embed .lmc-root{" +
+            "--accent:" + hex(rgb) + ";" +
+            "--accent-light:" + hex(mix(rgb, [255, 255, 255], 0.32)) + ";" +
+            "--accent-ink:" + hex(mix(rgb, [0, 0, 0], 0.26)) + ";" +
+            "--accent-soft:" + hex(rgb) + "14;" +
+            "--accent-glow:rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",.18)}";
+          var __acc = document.createElement("style");
+          __acc.textContent = css;
+          document.head.appendChild(__acc);
+        })();
       } catch (_) {}
     }
     var seedAnswers = null;
