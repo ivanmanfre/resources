@@ -96,7 +96,7 @@ html body {
   font-family: 'DM Serif Display', Georgia, serif !important;
   font-style: italic !important;
   font-weight: 400 !important;
-  color: #2A8F65 !important;
+  color: var(--accent) !important;
 }
 .im-footer-cta p,
 .im-footer-p {
@@ -217,7 +217,7 @@ html body {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(ellipse 70% 50% at 85% 30%, rgba(42,143,101,0.10), transparent 65%);
+  background: radial-gradient(ellipse 70% 50% at 85% 30%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 65%);
 }
 .lmc-hero > * { position: relative; z-index: 1; }
 .lmc-hero-inner { max-width: 860px; margin: 0 auto; }
@@ -236,7 +236,7 @@ html body {
   margin-bottom: 1.5rem;
   border: none;
 }
-.lmc-badge::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
+.lmc-badge::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
 .lmc-h1 {
   font-family: 'DM Serif Display', Georgia, serif;
   font-size: clamp(2.25rem, 6vw, 3.75rem);
@@ -247,7 +247,7 @@ html body {
   max-width: 42rem;
   color: var(--ink);
 }
-.lmc-h1 em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; letter-spacing: 0; }
+.lmc-h1 em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0; }
 .lmc-sub {
   font-family: 'Source Serif 4', Georgia, serif;
   font-size: 1.15rem;
@@ -261,7 +261,7 @@ html body {
 }
 .lmc-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 13px; color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; }
 .lmc-meta-chip { display: inline-flex; align-items: center; gap: 6px; letter-spacing: .08em; text-transform: uppercase; }
-.lmc-meta-chip::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
+.lmc-meta-chip::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
 
 /* ── Shared intro / welcome block ─────────────────────────────────────── */
 .lmc-intro {
@@ -300,9 +300,9 @@ html body {
   margin-bottom: 1rem;
   border: none;
 }
-.lmc-intro-badge::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
+.lmc-intro-badge::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
 .lmc-intro-h { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.6rem, 3.2vw, 2.15rem); font-weight: 400; line-height: 1.1; margin: 0 0 .85rem; color: var(--ink); letter-spacing: -0.01em; }
-.lmc-intro-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; letter-spacing: 0; }
+.lmc-intro-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0; }
 .lmc-intro-p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 1.5rem; max-width: 38rem; }
 .lmc-intro-points { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-direction: column; gap: .65rem; font-size: .96rem; color: var(--ink); }
 .lmc-intro-points li { display: flex; gap: .8rem; align-items: center; }
@@ -349,7 +349,7 @@ html body {
 }
 .lmc-btn:hover { background: #000; color: #F7F4EF; }
 .lmc-btn-secondary { background: transparent; color: #344B29; border: 1px solid #344B29; box-shadow: none; }
-.lmc-btn-secondary:hover { background: rgba(42,143,101,0.08); color: #1a2914; }
+.lmc-btn-secondary:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); color: #1a2914; }
 
 /* ── Shared results panel tokens (tier / gaps / next move) ───────────── */
 .lmc-tier {
@@ -357,23 +357,23 @@ html body {
   padding: 2.5rem 2rem;
   background: transparent;
   border: none;
-  border-left: 4px solid #2A8F65;
+  border-left: 4px solid var(--accent);
   border-radius: 0;
   box-shadow: none;
   margin-bottom: 2.5rem;
 }
 .lmc-tier-critical { border-left-color: var(--ink); }
-.lmc-tier-growth { border-left-color: #2A8F65; }
-.lmc-tier-optimized { border-left-color: #2A8F65; }
+.lmc-tier-growth { border-left-color: var(--accent); }
+.lmc-tier-optimized { border-left-color: var(--accent); }
 .lmc-tier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .lmc-tier-label { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
 .lmc-tier-score { display: inline-flex; align-items: baseline; gap: .15rem; color: var(--ink); }
-.lmc-tier-score em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 3.25rem; line-height: 1; color: #2A8F65; letter-spacing: 0; }
+.lmc-tier-score em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 3.25rem; line-height: 1; color: var(--accent); letter-spacing: 0; }
 .lmc-tier-score span { font-family: 'Source Serif 4', Georgia, serif; font-size: .85rem; color: var(--ink-mute); font-weight: 600; }
 .lmc-tier-note { font-family: 'Source Serif 4', Georgia, serif; margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
 
 .lmc-results-h { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.65rem; font-weight: 400; margin: 0 0 1.25rem; letter-spacing: -0.01em; color: var(--ink); }
-.lmc-results-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
+.lmc-results-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); }
 .lmc-gap-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .85rem; }
 .lmc-gap {
   display: grid; grid-template-columns: auto 1fr; gap: 1.25rem;
@@ -387,15 +387,15 @@ html body {
 }
 .lmc-gap:first-child { border-top: none; }
 .lmc-gap:hover { background: rgba(26,26,26,0.02); }
-.lmc-gap-rank { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 2.25rem; line-height: 1; color: #2A8F65; letter-spacing: 0; min-width: 1.5ch; }
+.lmc-gap-rank { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 2.25rem; line-height: 1; color: var(--accent); letter-spacing: 0; min-width: 1.5ch; }
 .lmc-gap-body { min-width: 0; }
 .lmc-gap-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .lmc-gap-text { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; color: var(--ink); font-size: 1.02rem; line-height: 1.45; }
-.lmc-gap-fix { font-family: 'Source Serif 4', Georgia, serif; margin-top: .6rem; font-size: .92rem; line-height: 1.55; color: var(--ink-soft); padding-left: .9rem; border-left: 2px solid rgba(42, 143, 101, 0.35); }
-.lmc-gap-fix-label { display: inline-block; font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #2A8F65; margin-right: .5rem; }
+.lmc-gap-fix { font-family: 'Source Serif 4', Georgia, serif; margin-top: .6rem; font-size: .92rem; line-height: 1.55; color: var(--ink-soft); padding-left: .9rem; border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.lmc-gap-fix-label { display: inline-block; font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-right: .5rem; }
 
 .lmc-next-move { font-family: 'Source Serif 4', Georgia, serif; display: block; padding: 1.5rem 1.5rem; background: var(--ink); color: var(--paper); border-radius: 0; font-size: 1rem; line-height: 1.55; margin: 0 0 1.5rem; box-shadow: none; }
-.lmc-next-label { font-family: 'Source Serif 4', Georgia, serif; display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #2A8F65; margin-bottom: .35rem; }
+.lmc-next-label { font-family: 'Source Serif 4', Georgia, serif; display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: .35rem; }
 
 /* ── Shared impact pills ─────────────────────────────────────────────── */
 .lmc-impact { display: inline-block; padding: .22rem .6rem; font-size: 12px; font-weight: 600; font-family: 'Source Serif 4', Georgia, serif; text-transform: uppercase; letter-spacing: .08em; margin-top: .6rem; margin-right: .4rem; border-radius: 2px; }
@@ -436,7 +436,7 @@ html body {
   font-family: 'DM Serif Display', Georgia, serif !important;
   font-style: italic !important;
   font-weight: 400 !important;
-  color: #2A8F65 !important;
+  color: var(--accent) !important;
 }
 .lmc-capture p {
   font-family: 'Source Serif 4', Georgia, serif !important;
@@ -471,8 +471,8 @@ html body {
 .lmc-input:focus,
 .lmc-form-input:focus {
   outline: none !important;
-  border-color: #2A8F65 !important;
-  box-shadow: 0 0 0 3px rgba(42, 143, 101, 0.15) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent) !important;
   background: #fff !important;
 }
 .lmc-form .lmc-btn { width: 100% !important; }
@@ -498,8 +498,8 @@ html body {
   transition: color 120ms, border-color 120ms;
 }
 .lmc-capture-alt strong { color: var(--ink); font-weight: 600; }
-.lmc-capture-alt:hover { color: #2A8F65; border-bottom-color: #2A8F65; }
-.lmc-capture-alt:hover strong { color: #2A8F65; }
+.lmc-capture-alt:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.lmc-capture-alt:hover strong { color: var(--accent); }
 
 /* ── Closing CTA — call-first finale on every engine (2026-06-09) ─────── */
 .lmc-closing {
@@ -519,14 +519,14 @@ html body {
   text-transform: uppercase; letter-spacing: .08em;
   color: var(--ink); margin-bottom: 1.25rem;
 }
-.lmc-closing-label::before { content: ""; width: 6px; height: 6px; background: #2A8F65; display: inline-block; }
+.lmc-closing-label::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
 .lmc-closing-h {
   font-family: 'DM Serif Display', Georgia, serif;
   font-size: clamp(1.9rem, 3.4vw, 2.55rem);
   font-weight: 400; line-height: 1.12; letter-spacing: -0.01em;
   color: var(--ink); margin: 0 0 1.1rem; max-width: 30ch;
 }
-.lmc-closing-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; }
+.lmc-closing-h em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); }
 .lmc-closing-p {
   font-size: 1.0625rem; line-height: 1.65; color: var(--ink-soft);
   margin: 0 0 1.4rem; max-width: 36rem;
@@ -537,7 +537,7 @@ html body {
   display: flex; gap: .75rem; align-items: baseline;
   font-size: 1.02rem; line-height: 1.55; color: var(--ink);
 }
-.lmc-closing-points li::before { content: ""; width: 6px; height: 6px; background: #2A8F65; flex-shrink: 0; transform: translateY(-2px); }
+.lmc-closing-points li::before { content: ""; width: 6px; height: 6px; background: var(--accent); flex-shrink: 0; transform: translateY(-2px); }
 .lmc-closing-call { display: inline-flex !important; align-items: center; gap: .6rem; text-decoration: none; }
 .lmc-closing-divider { margin: 2.25rem 0 1.5rem; border-top: 1px solid var(--hairline-bold); }
 .lmc-closing-email-p { font-size: .98rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 .9rem; max-width: 34rem; }
@@ -553,7 +553,7 @@ html body {
   border-radius: 0; box-sizing: border-box;
 }
 .lmc-closing-form input::placeholder { color: rgba(26, 26, 26, 0.4); }
-.lmc-closing-form input:focus { outline: none; border-color: #2A8F65; box-shadow: 0 0 0 3px rgba(42, 143, 101, 0.15); background: #fff; }
+.lmc-closing-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); background: #fff; }
 .lmc-closing-form button {
   flex: 0 0 auto;
   padding: .85rem 1.4rem;
@@ -565,9 +565,9 @@ html body {
   transition: background 80ms, color 80ms;
 }
 .lmc-closing-form button:hover { background: var(--ink); color: var(--paper); }
-.lmc-closing-ok { font-size: .98rem; font-weight: 600; color: #1F6D4D; margin: 0; }
+.lmc-closing-ok { font-size: .98rem; font-weight: 600; color: var(--accent-ink); margin: 0; }
 .lmc-closing-sign { font-size: 1.05rem; line-height: 1.6; color: var(--ink); margin: 2rem 0 0; }
-.lmc-closing-sign em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: #2A8F65; font-size: 1.15rem; }
+.lmc-closing-sign em { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); font-size: 1.15rem; }
 .lmc-closing-byline { display: flex; align-items: center; gap: .85rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
 .lmc-closing-byline img {
   width: 44px; height: 56px; object-fit: cover; object-position: top;
@@ -604,7 +604,7 @@ html body {
   letter-spacing: 0;
   padding: 18px 12px;
   border: none;
-  border-bottom: 1px solid #2A8F65;
+  border-bottom: 1px solid var(--accent);
   background: transparent;
 }
 .lmc-root tbody td, .lmg-root tbody td {

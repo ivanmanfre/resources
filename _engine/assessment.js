@@ -183,6 +183,12 @@
         var __nav = document.querySelector(".im-nav"); if (__nav) __nav.remove();
         var __ft = document.querySelector(".im-footer"); if (__ft) __ft.remove();
         var __skip = document.getElementById("skip-link"); if (__skip) __skip.remove();
+        // Recolor the accent off Ivan's brand green to a neutral slate so the embedded
+        // scorecard reads as the prospect's own asset. A scoped rule (.lmc-embed .lmc-root)
+        // outranks the base var definition by specificity, so it wins regardless of timing.
+        var __acc = document.createElement("style");
+        __acc.textContent = ".lmc-embed .lmc-root{--accent:#5B82A6;--accent-light:#7BA0C0;--accent-ink:#3E5C76;--accent-soft:#5B82A614;--accent-glow:rgba(91,130,166,.18)}";
+        document.head.appendChild(__acc);
       } catch (_) {}
     }
     var seedAnswers = null;
