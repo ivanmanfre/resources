@@ -173,6 +173,18 @@
     // Used to embed a personalized assessment inside the prospect scan page.
     var __params = new URLSearchParams(location.search);
     var resultMode = __params.get("mode") === "result";
+    // Embed mode: this assessment is shown INSIDE a prospect's scan page as a sample of the
+    // lead magnet WE would build for THEM. Strip every "this is Ivan's site" signal — the site
+    // chrome (logo, name, Let's Talk) and the closing fit-call CTA — so it reads as their asset.
+    var embedMode = __params.get("src") === "scan_embed" || __params.get("embed") === "1";
+    if (embedMode) {
+      try {
+        document.documentElement.classList.add("lmc-embed");
+        var __nav = document.querySelector(".im-nav"); if (__nav) __nav.remove();
+        var __ft = document.querySelector(".im-footer"); if (__ft) __ft.remove();
+        var __skip = document.getElementById("skip-link"); if (__skip) __skip.remove();
+      } catch (_) {}
+    }
     var seedAnswers = null;
     if (resultMode) {
       try {
@@ -822,9 +834,13 @@
         setTimeout(function () { if (entry.el) entry.el.classList.add("lmc-cat-fill-armed"); }, entry.delayMs);
       });
 
-      // Bottom CTA — always renders. Falls back to Ivan's Calendly when
-      // data.cta is missing so every assessment ships with a clear next step.
+      // Bottom CTA — Ivan's fit-call close. Suppressed in embed mode: inside a prospect's
+      // scan this is THEIR sample asset, and the page itself drives to Ivan; pushing his
+      // Calendly inside the embed would break the "this is your lead magnet" frame.
       var ctaConf = data.cta || {};
+      if (embedMode) { ctaConf = null; }
+      if (ctaConf) {
+      // (Ivan-CTA block runs only when NOT embedded)
       var ctaUrl = ctaConf.url || (window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min");
       var ctaHeadlineHtml = ctaConf.headline_html || ctaConf.headline;
       if (!ctaHeadlineHtml) {
@@ -860,6 +876,7 @@
         }
         beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, default_cta: !data.cta } });
       });
+      } // end if (ctaConf) — Ivan CTA suppressed in embed mode
 
       // Retake — quiet text link, not a hard button.
       // Suppressed in result mode: retaking a seeded result is meaningless (reload re-enters

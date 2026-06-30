@@ -786,6 +786,12 @@
   // data.json fetch completes (post-DOMContentLoaded).
   function enhanceCapture(captureEl) {
     if (!captureEl || captureEl.dataset.lmEnhanced === "1") return;
+    // Embed mode (assessment shown inside a prospect's scan): no Ivan fit-call CTA — this
+    // is framed as the prospect's own lead magnet; the scan page drives to Ivan separately.
+    try {
+      var __q = new URLSearchParams(location.search);
+      if (__q.get("src") === "scan_embed" || __q.get("embed") === "1") return;
+    } catch (_) {}
     captureEl.dataset.lmEnhanced = "1";
     var alt = document.createElement("a");
     alt.className = "lmc-capture-alt";
