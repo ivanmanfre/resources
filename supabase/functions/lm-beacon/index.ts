@@ -130,7 +130,11 @@ Deno.serve(async (req: Request) => {
   const utm = (payload.utm && typeof payload.utm === "object") ? payload.utm : null;
   const answers = (payload.answers && typeof payload.answers === "object") ? payload.answers : null;
   const src = payload.src ? String(payload.src).slice(0, 32) : null;
-  const prospect_id = payload.prospect_id ? String(payload.prospect_id) : null;
+  // prospect_id is a uuid column. Embed callers pass a company slug (e.g. "paul-atkinson-45"),
+  // not a uuid — inserting that crashed the event with a 22P02 invalid-uuid 500 and silently
+  // dropped every embed view/complete event. Coerce non-uuid values to null so the event records.
+  const _rawPid = payload.prospect_id ? String(payload.prospect_id) : null;
+  const prospect_id = (_rawPid && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(_rawPid)) ? _rawPid : null;
   const linkedin_url = normalizeLinkedInUrl(payload.linkedin_url ? String(payload.linkedin_url) : null);
   const data_version = (typeof payload.data_version === "number" && Number.isFinite(payload.data_version) && payload.data_version >= 1)
     ? Math.floor(payload.data_version)
