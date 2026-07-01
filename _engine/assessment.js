@@ -106,10 +106,12 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
+    // In a prospect scan sample, the assessment must read as THEIR tool. Drop Ivan's portrait
+    // and personal greeting; a neutral "How this works." keeps the orientation without the author.
+    var img = opts.embed ? null : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
-    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
+    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, opts.embed ? "How this works." : "Hey, I&rsquo;m Ivan."));
     var introPara = make("p", { class: "lmc-intro-p" }, escapeHtml(welcomeLine));
     if (window.LM && window.LM.editMode) {
       window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
@@ -155,7 +157,7 @@
       }
       body.appendChild(noteEl);
     }
-    inner.appendChild(img);
+    if (img) inner.appendChild(img);
     inner.appendChild(body);
     sec.appendChild(inner);
     return sec;
@@ -272,6 +274,7 @@
       // Dynamic start label: resume if any answers were saved, start otherwise.
       var introHasProgress = Object.keys(answers).some(function (k) { return answers[k] != null; });
       var introSection = buildIntro(data, ".lmc-widget", {
+        embed: embedMode,
         defaultValueBullet: "15-20 questions, 5 categories. Honest answers = honest result",
         defaultNextBullet: "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes",
         startLabel: introHasProgress ? "Resume the assessment" : "Start the assessment",
