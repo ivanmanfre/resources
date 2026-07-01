@@ -215,6 +215,11 @@
             "--font-sans:" + NEUTRAL + ";--font-drama:" + NEUTRAL + ";--font-mono:" + NEUTRAL + "}" +
             // Beat the hardcoded `!important` serif rules in shared.css/assessment.css.
             "html.lmc-embed .lmc-root,html.lmc-embed .lmc-root *{font-family:" + NEUTRAL + " !important;letter-spacing:normal !important}";
+          // The italic-pivot highlight sweep behind the H1/intro headline is a hardcoded green
+          // SVG (fill=#2A8F65) — the accent CSS var can't reach a data-uri, so it stayed Ivan-green
+          // even in a slate/orange embed. Rebuild the same wavy sweep in the LEAD's accent.
+          var sweep = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%23" + hex(rgb).slice(1) + "' opacity='0.78'/></svg>\")";
+          css += "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after,html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{background-image:" + sweep + " !important}";
           var __acc = document.createElement("style");
           __acc.textContent = css;
           document.head.appendChild(__acc);
