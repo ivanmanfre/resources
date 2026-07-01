@@ -237,6 +237,14 @@
           var sweep = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%23" + hex(rgb).slice(1) + "' opacity='0.78'/></svg>\")";
           css += "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after,html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{background-image:" + sweep + " !important}";
           css += ".lmc-embed-logo{display:block;height:34px;width:auto;max-width:190px;margin:0 0 1.5rem;object-fit:contain}";
+          // Contrast guard: a light brand accent (amber, mint, yellow) with white glyphs on it reads
+          // washed out. When the accent is light, deepen the filled icon/pill chips so the white text
+          // stays legible on the light paper.
+          var lum = (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+          if (lum > 0.62) {
+            var deep = hex(mix(rgb, [0, 0, 0], 0.45));
+            css += "html.lmc-embed .lmc-intro-icon,html.lmc-embed .lmc-intro-icon.a,html.lmc-embed .lmc-intro-icon.b,html.lmc-embed .lmc-intro-icon.c{background:" + deep + " !important}";
+          }
           var __acc = document.createElement("style");
           __acc.textContent = css;
           document.head.appendChild(__acc);
