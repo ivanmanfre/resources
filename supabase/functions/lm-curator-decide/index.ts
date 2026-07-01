@@ -60,20 +60,29 @@ export default async function handler(req: Request): Promise<Response> {
     let promotedTaskId: string | null = null;
 
     if (body.decision === "approve") {
-      // Fire promoter webhook
+      // content_type: candidates store 'lead_magnet' | 'post' (legacy null => treat as lead magnet,
+      // matching the dashboard's matchesContentType: anything not 'post' is a lead magnet).
+      const contentType = cand.content_type === "post" ? "post" : "lead_magnet";
+      // Fire promoter webhook. Forward the candidate's real field names so the Promoter's
+      // Validate Body (needs content_type; format for lead_magnet, post_angle for post) and
+      // Create node (reads format_recommendation, normalized_topic, post_angle) both resolve.
       const wh = await fetch(PROMOTER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           candidate_id: cand.id,
+          content_type: contentType,
           raw_topic: rawTopic,
+          normalized_topic: cand.normalized_topic || null,
           why_score: cand.why_score || "",
           format: cand.format_recommendation || "guide",
+          format_recommendation: cand.format_recommendation || "guide",
+          post_angle: cand.post_angle || "",
           evidence: cand.evidence,
         }),
       });
       const whJson = await wh.json().catch(() => ({}));
-      if (!wh.ok || !whJson.ok) throw new Error("promoter_failed:" + wh.status);
+      if (!wh.ok || !whJson.ok) throw new Error("promoter_failed:" + wh.status + (whJson && whJson.error ? ":" + whJson.error : ""));
       promotedTaskId = whJson.clickup_task_id || null;
       nextStatus = "promoted";
     } else if (body.decision === "reject") {

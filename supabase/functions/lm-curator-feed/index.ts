@@ -30,7 +30,9 @@ export default async function handler(req: Request): Promise<Response> {
     const fourteenDaysAgo = new Date(Date.now() - 14 * 24 * 3600 * 1000).toISOString();
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
     const [pending, promoted, archived, weekScored] = await Promise.all([
-      fetchTable("status=in.(reviewing,scored)&order=composite_score.desc&limit=50&select=*"),
+      // limit raised 50->200 + stable order: unscored (new/manual) ideas surface first,
+      // then by recency, then scored. Prevents silent truncation as the pool grows past 50.
+      fetchTable("status=in.(reviewing,scored)&order=composite_score.desc.nullsfirst,ingested_at.desc&limit=200&select=*"),
       fetchTable(`status=eq.promoted&promoted_clickup_task_id=not.is.null&ingested_at=gte.${fourteenDaysAgo}&order=ingested_at.desc&limit=20&select=id,raw_topic,promoted_clickup_task_id,composite_score,format_recommendation,ingested_at`),
       fetchTable(`status=eq.archived&ingested_at=gte.${fourteenDaysAgo}&order=ingested_at.desc&limit=50&select=id,raw_topic,archived_reason,composite_score,source,ingested_at`),
       fetchTable(`scored_at=gte.${sevenDaysAgo}&select=source,composite_score`),

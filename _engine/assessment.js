@@ -200,12 +200,19 @@
           function hex(c) { return "#" + c.map(function (x) { return clamp(x).toString(16).padStart(2, "0"); }).join(""); }
           function mix(c, t, a) { return [c[0] + (t[0] - c[0]) * a, c[1] + (t[1] - c[1]) * a, c[2] + (t[2] - c[2]) * a]; }
           var rgb = parse(__params.get("accent")) || [91, 130, 166]; // slate fallback
+          // Ivan's editorial serif (DM Serif Display + Source Serif 4) is the loudest "this is
+          // Ivan's site" signal after the green. In the prospect sample we drop it for a neutral
+          // system sans so the assessment reads as THEIR tool, not a page off ivanmanfredi.com.
+          var NEUTRAL = '-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,Helvetica,Arial,sans-serif';
           var css = ".lmc-embed .lmc-root{" +
             "--accent:" + hex(rgb) + ";" +
             "--accent-light:" + hex(mix(rgb, [255, 255, 255], 0.32)) + ";" +
             "--accent-ink:" + hex(mix(rgb, [0, 0, 0], 0.26)) + ";" +
             "--accent-soft:" + hex(rgb) + "14;" +
-            "--accent-glow:rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",.18)}";
+            "--accent-glow:rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",.18);" +
+            "--font-sans:" + NEUTRAL + ";--font-drama:" + NEUTRAL + ";--font-mono:" + NEUTRAL + "}" +
+            // Beat the hardcoded `!important` serif rules in shared.css/assessment.css.
+            "html.lmc-embed .lmc-root,html.lmc-embed .lmc-root *{font-family:" + NEUTRAL + " !important;letter-spacing:normal !important}";
           var __acc = document.createElement("style");
           __acc.textContent = css;
           document.head.appendChild(__acc);
@@ -224,7 +231,10 @@
     var questions = flattenQuestions(data);
     // In result mode, seed answers drive the view and we never touch localStorage
     // (the same niche LM is reused across prospects, so per-browser persistence collides).
-    var answers = resultMode ? seedAnswers : loadAnswers(data.slug);
+    // Embed samples always start fresh: the same LM slug is reused across prospects on the
+    // resources domain, so a prior visitor's saved progress would otherwise render as "already
+    // completed" the moment the modal opens. Ignore (and never write) localStorage in embed mode.
+    var answers = resultMode ? seedAnswers : (embedMode ? {} : loadAnswers(data.slug));
     var idx = 0;
     // Resume from last unanswered question
     for (var i = 0; i < questions.length; i++) {
@@ -232,7 +242,7 @@
       idx = i + 1;
     }
     // Result mode always shows the gate fresh, even if this browser captured before.
-    var captured = resultMode ? false : !!loadEmail(data.slug);
+    var captured = (resultMode || embedMode) ? false : !!loadEmail(data.slug);
 
     // Hero
     var hero = make("section", { class: "lmc-hero" });
@@ -445,7 +455,7 @@
           }
           answers[q.id || "__persona"] = ix;
           if (opt.tag) answers[(q.id || "__persona") + "__tag"] = opt.tag;
-          saveAnswers(data.slug, answers);
+          if (!embedMode) saveAnswers(data.slug, answers);
           setTimeout(function () { goNext(); }, 220);
         });
       });
@@ -708,7 +718,7 @@
           e.preventDefault();
           var em = (emailInput || {}).value || "";
           if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
-          if (!resultMode) saveEmail(data.slug, em);
+          if (!resultMode && !embedMode) saveEmail(data.slug, em);
           captured = true;
           beacon("complete", {
             email: em,
