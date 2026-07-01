@@ -202,30 +202,49 @@
           function hex(c) { return "#" + c.map(function (x) { return clamp(x).toString(16).padStart(2, "0"); }).join(""); }
           function mix(c, t, a) { return [c[0] + (t[0] - c[0]) * a, c[1] + (t[1] - c[1]) * a, c[2] + (t[2] - c[2]) * a]; }
           var rgb = parse(__params.get("accent")) || [91, 130, 166]; // slate fallback
-          // Ivan's editorial serif (DM Serif Display + Source Serif 4) is the loudest "this is
-          // Ivan's site" signal after the green. In the prospect sample we drop it for a neutral
-          // system sans so the assessment reads as THEIR tool, not a page off ivanmanfredi.com.
+          // Prospect fonts: the pipeline reads the lead's REAL typefaces off their site and (guardrail)
+          // only forwards them when they resolve to loadable Google families. ?font= heading, ?fontb=
+          // body. Absent (custom/unloadable font, or no brand) → a neutral system sans, never Ivan's serif.
           var NEUTRAL = '-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,Helvetica,Arial,sans-serif';
+          function safeFam(n) { n = (n || "").replace(/[^\w \-]/g, "").trim(); return n; }
+          var qHead = safeFam(__params.get("font"));
+          var qBody = safeFam(__params.get("fontb")) || qHead;
+          var HEAD = qHead ? '"' + qHead + '",' + NEUTRAL : NEUTRAL;
+          var BODY = qBody ? '"' + qBody + '",' + NEUTRAL : NEUTRAL;
+          if (qHead || qBody) {
+            var fams = [];
+            if (qHead) fams.push("family=" + encodeURIComponent(qHead).replace(/%20/g, "+") + ":ital,wght@0,400;0,500;0,700;1,400");
+            if (qBody && qBody !== qHead) fams.push("family=" + encodeURIComponent(qBody).replace(/%20/g, "+") + ":wght@400;500;600;700");
+            var gfl = document.createElement("link");
+            gfl.rel = "stylesheet";
+            gfl.href = "https://fonts.googleapis.com/css2?" + fams.join("&") + "&display=swap";
+            document.head.appendChild(gfl);
+          }
           var css = ".lmc-embed .lmc-root{" +
             "--accent:" + hex(rgb) + ";" +
             "--accent-light:" + hex(mix(rgb, [255, 255, 255], 0.32)) + ";" +
             "--accent-ink:" + hex(mix(rgb, [0, 0, 0], 0.26)) + ";" +
             "--accent-soft:" + hex(rgb) + "14;" +
             "--accent-glow:rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",.18);" +
-            "--font-sans:" + NEUTRAL + ";--font-drama:" + NEUTRAL + ";--font-mono:" + NEUTRAL + "}" +
-            // Beat the hardcoded `!important` serif rules in shared.css/assessment.css.
-            "html.lmc-embed .lmc-root,html.lmc-embed .lmc-root *{font-family:" + NEUTRAL + " !important;letter-spacing:normal !important}";
+            "--font-sans:" + BODY + ";--font-drama:" + HEAD + ";--font-mono:" + BODY + "}" +
+            // Beat the hardcoded `!important` serif rules in shared.css/assessment.css. Body font
+            // everywhere, the lead's display font on the headline surfaces.
+            "html.lmc-embed .lmc-root,html.lmc-embed .lmc-root *{font-family:" + BODY + " !important;letter-spacing:normal !important}" +
+            "html.lmc-embed .lmc-h1,html.lmc-embed .lmc-h1 *,html.lmc-embed .lmc-question,html.lmc-embed .lmc-question *,html.lmc-embed .lmc-intro-h,html.lmc-embed .lmc-intro-h *,html.lmc-embed .lmc-start-h,html.lmc-embed .lmc-start-h *,html.lmc-embed .lmc-capture h3,html.lmc-embed .lmc-score-ring .num,html.lmc-embed .lmc-score-hero .lmc-score-num{font-family:" + HEAD + " !important}";
           // The italic-pivot highlight sweep behind the H1/intro headline is a hardcoded green
           // SVG (fill=#2A8F65) — the accent CSS var can't reach a data-uri, so it stayed Ivan-green
           // even in a slate/orange embed. Rebuild the same wavy sweep in the LEAD's accent.
           var sweep = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%23" + hex(rgb).slice(1) + "' opacity='0.78'/></svg>\")";
           css += "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after,html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{background-image:" + sweep + " !important}";
+          css += ".lmc-embed-logo{display:block;height:34px;width:auto;max-width:190px;margin:0 0 1.5rem;object-fit:contain}";
           var __acc = document.createElement("style");
           __acc.textContent = css;
           document.head.appendChild(__acc);
         })();
       } catch (_) {}
     }
+    // The prospect's own logo, shown at the top of the sample so it reads as their asset.
+    var embedLogoUrl = embedMode ? (__params.get("logo") || "").trim() : "";
     var seedAnswers = null;
     if (resultMode) {
       try {
@@ -254,6 +273,11 @@
     // Hero
     var hero = make("section", { class: "lmc-hero" });
     var hi = make("div", { class: "lmc-container" });
+    if (embedLogoUrl) {
+      var __logo = make("img", { class: "lmc-embed-logo", src: embedLogoUrl, alt: (data.brand && data.brand.wordmark) || "" });
+      __logo.addEventListener("error", function () { __logo.remove(); });
+      hi.appendChild(__logo);
+    }
     hi.appendChild(make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment")));
     var h1 = make("h1", { class: "lmc-h1" });
     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
