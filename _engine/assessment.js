@@ -252,6 +252,30 @@
             var sunk = hex(mix(bgRgb, [15, 23, 42], 0.05));
             css += "html.lmc-embed body,html.lmc-embed .lmc-root{--paper:" + hex(bgRgb) + ";--paper-sunk:" + sunk + ";background:" + hex(bgRgb) + " !important}";
           }
+          // Deep brand pass. The engine's editorial ink-black buttons, DM Serif capture
+          // heading, sage score-glow and critical-tier ink are IVAN tells inside a client
+          // brand embed — accent-drive them. ?r= (radius px) + ?ink=RRGGBB complete the kit;
+          // several targets hardcode colors/radius literals, so vars alone can't reach them.
+          css += ".lmc-embed .lmc-btn,.lmc-embed .lmc-intro-start{background:" + hex(rgb) + " !important;color:#fff !important}" +
+            ".lmc-embed .lmc-btn:hover,.lmc-embed .lmc-intro-start:hover{background:" + hex(mix(rgb, [0, 0, 0], 0.26)) + " !important}" +
+            "html.lmc-embed .lmc-capture h2{font-family:" + HEAD + " !important}" +
+            ".lmc-embed .lmc-score-hero{background:radial-gradient(ellipse at 50% 0%,rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",0.10) 0%,transparent 70%) !important}" +
+            ".lmc-embed [data-tier=critical] .ring-fill{stroke:" + hex(rgb) + " !important}" +
+            ".lmc-embed [data-tier=critical] .lmc-score-number{color:" + hex(rgb) + " !important}" +
+            ".lmc-embed [data-tier=critical] .lmc-score-eyebrow::before{background:" + hex(rgb) + " !important}" +
+            ".lmc-embed [data-tier=critical] .lmc-score-headline em{color:" + hex(rgb) + " !important}" +
+            ".lmc-embed .lmc-result .lmc-rec{border-left-color:rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",0.35) !important}";
+          var rPx = parseInt(__params.get("r") || "", 10);
+          if (!isNaN(rPx) && rPx >= 0 && rPx <= 24) {
+            css += ".lmc-embed .lmc-btn,.lmc-embed .lmc-intro-start,.lmc-embed .lmc-btn-secondary,.lmc-embed .lmc-opt,.lmc-embed .lmc-card,.lmc-embed .lmc-form-input,.lmc-embed .lmc-capture{border-radius:" + rPx + "px !important}";
+          }
+          var inkRgb = parse(__params.get("ink"));
+          if (inkRgb) {
+            var inkHex = hex(inkRgb);
+            css += ".lmc-embed .lmc-root{--ink:" + inkHex + ";--ink-soft:" + hex(mix(inkRgb, [255, 255, 255], 0.22)) + ";--ink-mute:" + hex(mix(inkRgb, [255, 255, 255], 0.34)) + "}" +
+              ".lmc-embed .lmc-score-eyebrow,.lmc-embed .lmc-score-headline,.lmc-embed .lmc-score-note strong,.lmc-embed .lmc-category-block h4,.lmc-embed .lmc-result-unlock-h,.lmc-embed .lmc-start-h,.lmc-embed .lmc-start-meta{color:" + inkHex + " !important}" +
+              ".lmc-embed .lmc-score-note,.lmc-embed .lmc-start-p{color:" + hex(mix(inkRgb, [255, 255, 255], 0.22)) + " !important}";
+          }
           var __acc = document.createElement("style");
           __acc.textContent = css;
           document.head.appendChild(__acc);
