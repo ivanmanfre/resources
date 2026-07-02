@@ -3,7 +3,7 @@
   "title": "The True-Profit Health Score",
   "subtitle": "See what your ROAS actually leaves after product, shipping and fees, and the break-even ROAS you need before scaling makes money",
   "brand": {
-    "accent": "#2ea3f2",
+    "accent": "#014D4E",
     "hero_badge": "Interactive Assessment"
   },
   "estimated_minutes": 8,
@@ -11,10 +11,22 @@
     "id": "store_size",
     "text": "What is your store doing in monthly revenue right now?",
     "answers": [
-      { "label": "Under $50k/mo, still dialing in the product", "tag": "micro" },
-      { "label": "$50k to $150k/mo, pushing ad spend to grow", "tag": "small" },
-      { "label": "$150k to $500k/mo, structured but margin is fuzzy", "tag": "mid" },
-      { "label": "$500k+/mo, scaling hard on paid", "tag": "large" }
+      {
+        "label": "Under $50k/mo, still dialing in the product",
+        "tag": "micro"
+      },
+      {
+        "label": "$50k to $150k/mo, pushing ad spend to grow",
+        "tag": "small"
+      },
+      {
+        "label": "$150k to $500k/mo, structured but margin is fuzzy",
+        "tag": "mid"
+      },
+      {
+        "label": "$500k+/mo, scaling hard on paid",
+        "tag": "large"
+      }
     ]
   },
   "categories": [
@@ -27,11 +39,26 @@
           "text": "Do you know your true contribution margin on an average order, after product cost, shipping and payment fees?",
           "max_score": 5,
           "answers": [
-            { "label": "No idea, we look at revenue and ROAS", "score": 1 },
-            { "label": "A rough gut number, never actually calculated", "score": 2 },
-            { "label": "We worked it out once, months ago", "score": 3 },
-            { "label": "We know it and update it a few times a year", "score": 4 },
-            { "label": "We know it per order and it updates automatically", "score": 5 }
+            {
+              "label": "No idea, we look at revenue and ROAS",
+              "score": 1
+            },
+            {
+              "label": "A rough gut number, never actually calculated",
+              "score": 2
+            },
+            {
+              "label": "We worked it out once, months ago",
+              "score": 3
+            },
+            {
+              "label": "We know it and update it a few times a year",
+              "score": 4
+            },
+            {
+              "label": "We know it per order and it updates automatically",
+              "score": 5
+            }
           ]
         },
         {
@@ -39,11 +66,26 @@
           "text": "How complete are the costs loaded into the profit number you actually look at?",
           "max_score": 5,
           "answers": [
-            { "label": "Just product cost, everything else is ignored", "score": 1 },
-            { "label": "Product plus shipping, roughly", "score": 2 },
-            { "label": "Product, shipping and fees, updated manually", "score": 3 },
-            { "label": "Most costs, including returns and some overhead", "score": 4 },
-            { "label": "Every cost, allocated per order automatically", "score": 5 }
+            {
+              "label": "Just product cost, everything else is ignored",
+              "score": 1
+            },
+            {
+              "label": "Product plus shipping, roughly",
+              "score": 2
+            },
+            {
+              "label": "Product, shipping and fees, updated manually",
+              "score": 3
+            },
+            {
+              "label": "Most costs, including returns and some overhead",
+              "score": 4
+            },
+            {
+              "label": "Every cost, allocated per order automatically",
+              "score": 5
+            }
           ]
         },
         {
@@ -51,11 +93,26 @@
           "text": "Can you see which products actually make money versus which ones quietly drain it?",
           "max_score": 5,
           "answers": [
-            { "label": "No, the store is one blended number to us", "score": 1 },
-            { "label": "We have a hunch about our winners and losers", "score": 2 },
-            { "label": "We can work it out in a spreadsheet if we sit down", "score": 3 },
-            { "label": "We track margin by product line", "score": 4 },
-            { "label": "Live margin by SKU, sorted worst to best", "score": 5 }
+            {
+              "label": "No, the store is one blended number to us",
+              "score": 1
+            },
+            {
+              "label": "We have a hunch about our winners and losers",
+              "score": 2
+            },
+            {
+              "label": "We can work it out in a spreadsheet if we sit down",
+              "score": 3
+            },
+            {
+              "label": "We track margin by product line",
+              "score": 4
+            },
+            {
+              "label": "Live margin by SKU, sorted worst to best",
+              "score": 5
+            }
           ]
         },
         {
@@ -63,11 +120,26 @@
           "text": "Are refunds, returns and chargebacks in your margin math?",
           "max_score": 5,
           "answers": [
-            { "label": "No, a sale is a sale to us", "score": 1 },
-            { "label": "We know the rate but never deduct it", "score": 2 },
-            { "label": "We subtract a flat guess for returns", "score": 3 },
-            { "label": "We track real return cost by product", "score": 4 },
-            { "label": "Returns, restocking and chargebacks all flow into per-order margin", "score": 5 }
+            {
+              "label": "No, a sale is a sale to us",
+              "score": 1
+            },
+            {
+              "label": "We know the rate but never deduct it",
+              "score": 2
+            },
+            {
+              "label": "We subtract a flat guess for returns",
+              "score": 3
+            },
+            {
+              "label": "We track real return cost by product",
+              "score": 4
+            },
+            {
+              "label": "Returns, restocking and chargebacks all flow into per-order margin",
+              "score": 5
+            }
           ]
         }
       ],
@@ -110,11 +182,26 @@
           "text": "When you judge a campaign, are you looking at profit per order or just ROAS?",
           "max_score": 5,
           "answers": [
-            { "label": "Just ROAS, that is the number we optimize", "score": 1 },
-            { "label": "ROAS, with a vague sense of whether it is profitable", "score": 2 },
-            { "label": "We check profit occasionally, ROAS day to day", "score": 3 },
-            { "label": "We track both side by side", "score": 4 },
-            { "label": "Profit per order is primary, ROAS is secondary", "score": 5 }
+            {
+              "label": "Just ROAS, that is the number we optimize",
+              "score": 1
+            },
+            {
+              "label": "ROAS, with a vague sense of whether it is profitable",
+              "score": 2
+            },
+            {
+              "label": "We check profit occasionally, ROAS day to day",
+              "score": 3
+            },
+            {
+              "label": "We track both side by side",
+              "score": 4
+            },
+            {
+              "label": "Profit per order is primary, ROAS is secondary",
+              "score": 5
+            }
           ]
         },
         {
@@ -122,11 +209,26 @@
           "text": "Do you know the exact break-even ROAS you need before a campaign makes money?",
           "max_score": 5,
           "answers": [
-            { "label": "No, we aim for a round number like 3x or 4x", "score": 1 },
-            { "label": "A rough target somebody set a while ago", "score": 2 },
-            { "label": "We calculated it once for the store overall", "score": 3 },
-            { "label": "We know it and revisit it when costs change", "score": 4 },
-            { "label": "We know it per product and it updates with costs", "score": 5 }
+            {
+              "label": "No, we aim for a round number like 3x or 4x",
+              "score": 1
+            },
+            {
+              "label": "A rough target somebody set a while ago",
+              "score": 2
+            },
+            {
+              "label": "We calculated it once for the store overall",
+              "score": 3
+            },
+            {
+              "label": "We know it and revisit it when costs change",
+              "score": 4
+            },
+            {
+              "label": "We know it per product and it updates with costs",
+              "score": 5
+            }
           ]
         },
         {
@@ -134,11 +236,26 @@
           "text": "How do you read performance across your channels?",
           "max_score": 5,
           "answers": [
-            { "label": "One blended ROAS number for everything", "score": 1 },
-            { "label": "Platform-reported ROAS, taken at face value", "score": 2 },
-            { "label": "Channel-level ROAS, pulled by hand", "score": 3 },
-            { "label": "Channel-level profit, reconciled weekly", "score": 4 },
-            { "label": "Channel and campaign profit, live and de-duplicated", "score": 5 }
+            {
+              "label": "One blended ROAS number for everything",
+              "score": 1
+            },
+            {
+              "label": "Platform-reported ROAS, taken at face value",
+              "score": 2
+            },
+            {
+              "label": "Channel-level ROAS, pulled by hand",
+              "score": 3
+            },
+            {
+              "label": "Channel-level profit, reconciled weekly",
+              "score": 4
+            },
+            {
+              "label": "Channel and campaign profit, live and de-duplicated",
+              "score": 5
+            }
           ]
         },
         {
@@ -146,11 +263,26 @@
           "text": "How much do you trust the ROAS your ad platforms report?",
           "max_score": 5,
           "answers": [
-            { "label": "Completely, that is the number we act on", "score": 1 },
-            { "label": "Mostly, though the totals never match the bank", "score": 2 },
-            { "label": "We know it overstates, so we mentally discount it", "score": 3 },
-            { "label": "We compare it against real orders regularly", "score": 4 },
-            { "label": "We track real contribution against blended spend, platform numbers are just a signal", "score": 5 }
+            {
+              "label": "Completely, that is the number we act on",
+              "score": 1
+            },
+            {
+              "label": "Mostly, though the totals never match the bank",
+              "score": 2
+            },
+            {
+              "label": "We know it overstates, so we mentally discount it",
+              "score": 3
+            },
+            {
+              "label": "We compare it against real orders regularly",
+              "score": 4
+            },
+            {
+              "label": "We track real contribution against blended spend, platform numbers are just a signal",
+              "score": 5
+            }
           ]
         }
       ],
@@ -193,11 +325,26 @@
           "text": "How current is your COGS data?",
           "max_score": 5,
           "answers": [
-            { "label": "We are not sure what our landed cost is right now", "score": 1 },
-            { "label": "Set once, has not moved despite supplier changes", "score": 2 },
-            { "label": "Updated when we remember, maybe quarterly", "score": 3 },
-            { "label": "Updated whenever supplier prices change", "score": 4 },
-            { "label": "Landed cost tracked per batch, always current", "score": 5 }
+            {
+              "label": "We are not sure what our landed cost is right now",
+              "score": 1
+            },
+            {
+              "label": "Set once, has not moved despite supplier changes",
+              "score": 2
+            },
+            {
+              "label": "Updated when we remember, maybe quarterly",
+              "score": 3
+            },
+            {
+              "label": "Updated whenever supplier prices change",
+              "score": 4
+            },
+            {
+              "label": "Landed cost tracked per batch, always current",
+              "score": 5
+            }
           ]
         },
         {
@@ -205,11 +352,26 @@
           "text": "Is your real per-order fulfillment and shipping cost tracked?",
           "max_score": 5,
           "answers": [
-            { "label": "No, shipping is just a line we lose money on", "score": 1 },
-            { "label": "We know the average, not per order", "score": 2 },
-            { "label": "We track it per order by hand", "score": 3 },
-            { "label": "It flows in from our 3PL or carrier", "score": 4 },
-            { "label": "Real fulfillment cost per order, pick-pack included, in every margin number", "score": 5 }
+            {
+              "label": "No, shipping is just a line we lose money on",
+              "score": 1
+            },
+            {
+              "label": "We know the average, not per order",
+              "score": 2
+            },
+            {
+              "label": "We track it per order by hand",
+              "score": 3
+            },
+            {
+              "label": "It flows in from our 3PL or carrier",
+              "score": 4
+            },
+            {
+              "label": "Real fulfillment cost per order, pick-pack included, in every margin number",
+              "score": 5
+            }
           ]
         },
         {
@@ -217,11 +379,26 @@
           "text": "Are payment processing and platform fees in your per-order cost?",
           "max_score": 5,
           "answers": [
-            { "label": "No, we forget those exist", "score": 1 },
-            { "label": "We know the percentage but never deduct it", "score": 2 },
-            { "label": "Deducted as a flat percentage", "score": 3 },
-            { "label": "Actual fees pulled per transaction", "score": 4 },
-            { "label": "Every processor and platform fee reconciled per order", "score": 5 }
+            {
+              "label": "No, we forget those exist",
+              "score": 1
+            },
+            {
+              "label": "We know the percentage but never deduct it",
+              "score": 2
+            },
+            {
+              "label": "Deducted as a flat percentage",
+              "score": 3
+            },
+            {
+              "label": "Actual fees pulled per transaction",
+              "score": 4
+            },
+            {
+              "label": "Every processor and platform fee reconciled per order",
+              "score": 5
+            }
           ]
         },
         {
@@ -229,11 +406,26 @@
           "text": "Are overhead costs like software, apps and team allocated to your profit number?",
           "max_score": 5,
           "answers": [
-            { "label": "No, profit means revenue minus product cost", "score": 1 },
-            { "label": "We look at them separately, once a month", "score": 2 },
-            { "label": "We subtract a rough monthly lump", "score": 3 },
-            { "label": "Allocated per order as a loaded rate", "score": 4 },
-            { "label": "Fully allocated and updated as the stack changes", "score": 5 }
+            {
+              "label": "No, profit means revenue minus product cost",
+              "score": 1
+            },
+            {
+              "label": "We look at them separately, once a month",
+              "score": 2
+            },
+            {
+              "label": "We subtract a rough monthly lump",
+              "score": 3
+            },
+            {
+              "label": "Allocated per order as a loaded rate",
+              "score": 4
+            },
+            {
+              "label": "Fully allocated and updated as the stack changes",
+              "score": 5
+            }
           ]
         }
       ],
@@ -276,11 +468,26 @@
           "text": "What do you scale ad spend on?",
           "max_score": 5,
           "answers": [
-            { "label": "Whatever ROAS looks good that week", "score": 1 },
-            { "label": "ROAS plus a gut feel for cash", "score": 2 },
-            { "label": "ROAS with a periodic profit sanity check", "score": 3 },
-            { "label": "Profit per order and contribution targets", "score": 4 },
-            { "label": "Live marginal profit at each spend level", "score": 5 }
+            {
+              "label": "Whatever ROAS looks good that week",
+              "score": 1
+            },
+            {
+              "label": "ROAS plus a gut feel for cash",
+              "score": 2
+            },
+            {
+              "label": "ROAS with a periodic profit sanity check",
+              "score": 3
+            },
+            {
+              "label": "Profit per order and contribution targets",
+              "score": 4
+            },
+            {
+              "label": "Live marginal profit at each spend level",
+              "score": 5
+            }
           ]
         },
         {
@@ -288,11 +495,26 @@
           "text": "How fast do you cut a campaign that is unprofitable after true costs?",
           "max_score": 5,
           "answers": [
-            { "label": "We usually find out weeks later", "score": 1 },
-            { "label": "Once account ROAS drops, days later", "score": 2 },
-            { "label": "Within a few days, on a manual review", "score": 3 },
-            { "label": "Within a day, we watch contribution", "score": 4 },
-            { "label": "Same day, alerts fire when margin goes negative", "score": 5 }
+            {
+              "label": "We usually find out weeks later",
+              "score": 1
+            },
+            {
+              "label": "Once account ROAS drops, days later",
+              "score": 2
+            },
+            {
+              "label": "Within a few days, on a manual review",
+              "score": 3
+            },
+            {
+              "label": "Within a day, we watch contribution",
+              "score": 4
+            },
+            {
+              "label": "Same day, alerts fire when margin goes negative",
+              "score": 5
+            }
           ]
         },
         {
@@ -300,11 +522,26 @@
           "text": "Do you test price and AOV levers to protect margin as you scale?",
           "max_score": 5,
           "answers": [
-            { "label": "No, price has been the same forever", "score": 1 },
-            { "label": "We raised price once and got nervous", "score": 2 },
-            { "label": "Occasional tests, no clear read on margin impact", "score": 3 },
-            { "label": "Regular price and bundle tests tied to margin", "score": 4 },
-            { "label": "Continuous AOV and margin testing on the calendar", "score": 5 }
+            {
+              "label": "No, price has been the same forever",
+              "score": 1
+            },
+            {
+              "label": "We raised price once and got nervous",
+              "score": 2
+            },
+            {
+              "label": "Occasional tests, no clear read on margin impact",
+              "score": 3
+            },
+            {
+              "label": "Regular price and bundle tests tied to margin",
+              "score": 4
+            },
+            {
+              "label": "Continuous AOV and margin testing on the calendar",
+              "score": 5
+            }
           ]
         },
         {
@@ -312,11 +549,26 @@
           "text": "Do you know how much cash is tied up in inventory and ad float as you scale?",
           "max_score": 5,
           "answers": [
-            { "label": "No, we scale until the bank balance gets scary", "score": 1 },
-            { "label": "A rough sense, we check the balance often", "score": 2 },
-            { "label": "We track inventory value monthly", "score": 3 },
-            { "label": "We model cash conversion before scaling spend", "score": 4 },
-            { "label": "Live cash conversion and inventory position guide every spend increase", "score": 5 }
+            {
+              "label": "No, we scale until the bank balance gets scary",
+              "score": 1
+            },
+            {
+              "label": "A rough sense, we check the balance often",
+              "score": 2
+            },
+            {
+              "label": "We track inventory value monthly",
+              "score": 3
+            },
+            {
+              "label": "We model cash conversion before scaling spend",
+              "score": 4
+            },
+            {
+              "label": "Live cash conversion and inventory position guide every spend increase",
+              "score": 5
+            }
           ]
         }
       ],
@@ -359,11 +611,26 @@
           "text": "Do you have a live view of profit, beyond revenue and ROAS?",
           "max_score": 5,
           "answers": [
-            { "label": "No, profit is a quarterly surprise", "score": 1 },
-            { "label": "We build it in a spreadsheet when we need it", "score": 2 },
-            { "label": "A dashboard someone updates weekly by hand", "score": 3 },
-            { "label": "A standing dashboard, mostly automated", "score": 4 },
-            { "label": "Live profit dashboard, updates on every order", "score": 5 }
+            {
+              "label": "No, profit is a quarterly surprise",
+              "score": 1
+            },
+            {
+              "label": "We build it in a spreadsheet when we need it",
+              "score": 2
+            },
+            {
+              "label": "A dashboard someone updates weekly by hand",
+              "score": 3
+            },
+            {
+              "label": "A standing dashboard, mostly automated",
+              "score": 4
+            },
+            {
+              "label": "Live profit dashboard, updates on every order",
+              "score": 5
+            }
           ]
         },
         {
@@ -371,11 +638,26 @@
           "text": "How fast can you answer, did we actually make money last week?",
           "max_score": 5,
           "answers": [
-            { "label": "Days of pulling numbers, and we still argue about it", "score": 1 },
-            { "label": "A few hours in spreadsheets", "score": 2 },
-            { "label": "An hour once someone exports the data", "score": 3 },
-            { "label": "A few minutes in a dashboard", "score": 4 },
-            { "label": "Instantly, it is on a screen we already watch", "score": 5 }
+            {
+              "label": "Days of pulling numbers, and we still argue about it",
+              "score": 1
+            },
+            {
+              "label": "A few hours in spreadsheets",
+              "score": 2
+            },
+            {
+              "label": "An hour once someone exports the data",
+              "score": 3
+            },
+            {
+              "label": "A few minutes in a dashboard",
+              "score": 4
+            },
+            {
+              "label": "Instantly, it is on a screen we already watch",
+              "score": 5
+            }
           ]
         },
         {
@@ -383,11 +665,26 @@
           "text": "Where does your profit number actually live?",
           "max_score": 5,
           "answers": [
-            { "label": "In someone's head", "score": 1 },
-            { "label": "A spreadsheet one person owns", "score": 2 },
-            { "label": "A few disconnected reports we stitch together", "score": 3 },
-            { "label": "One tool that pulls most of it together", "score": 4 },
-            { "label": "One source of truth every decision runs off", "score": 5 }
+            {
+              "label": "In someone's head",
+              "score": 1
+            },
+            {
+              "label": "A spreadsheet one person owns",
+              "score": 2
+            },
+            {
+              "label": "A few disconnected reports we stitch together",
+              "score": 3
+            },
+            {
+              "label": "One tool that pulls most of it together",
+              "score": 4
+            },
+            {
+              "label": "One source of truth every decision runs off",
+              "score": 5
+            }
           ]
         },
         {
@@ -395,11 +692,26 @@
           "text": "Can you forecast profit at a given ad spend level before you commit it?",
           "max_score": 5,
           "answers": [
-            { "label": "No, we spend and hope", "score": 1 },
-            { "label": "A rough guess based on last month", "score": 2 },
-            { "label": "A manual model we update sometimes", "score": 3 },
-            { "label": "A spend-to-profit model we trust", "score": 4 },
-            { "label": "Live marginal-profit forecasting at each spend tier", "score": 5 }
+            {
+              "label": "No, we spend and hope",
+              "score": 1
+            },
+            {
+              "label": "A rough guess based on last month",
+              "score": 2
+            },
+            {
+              "label": "A manual model we update sometimes",
+              "score": 3
+            },
+            {
+              "label": "A spend-to-profit model we trust",
+              "score": 4
+            },
+            {
+              "label": "Live marginal-profit forecasting at each spend tier",
+              "score": 5
+            }
           ]
         }
       ],

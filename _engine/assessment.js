@@ -245,6 +245,13 @@
             var deep = hex(mix(rgb, [0, 0, 0], 0.45));
             css += "html.lmc-embed .lmc-intro-icon,html.lmc-embed .lmc-intro-icon.a,html.lmc-embed .lmc-intro-icon.b,html.lmc-embed .lmc-intro-icon.c{background:" + deep + " !important}";
           }
+          // ?bg=RRGGBB — surface override. Ivan's warm cream paper reads off-brand inside a
+          // clean-white or dark prospect site mockup; this swaps the paper family for theirs.
+          var bgRgb = parse(__params.get("bg"));
+          if (bgRgb) {
+            var sunk = hex(mix(bgRgb, [15, 23, 42], 0.05));
+            css += "html.lmc-embed body,html.lmc-embed .lmc-root{--paper:" + hex(bgRgb) + ";--paper-sunk:" + sunk + ";background:" + hex(bgRgb) + " !important}";
+          }
           var __acc = document.createElement("style");
           __acc.textContent = css;
           document.head.appendChild(__acc);
