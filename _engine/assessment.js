@@ -211,9 +211,16 @@
           var qBody = safeFam(__params.get("fontb")) || qHead;
           var HEAD = qHead ? '"' + qHead + '",' + NEUTRAL : NEUTRAL;
           var BODY = qBody ? '"' + qBody + '",' + NEUTRAL : NEUTRAL;
+          // ?hero=dark — opt-in dark hero theme (see block further down). Parsed early
+          // because the dark hero sets the headline at display weight 800 + italic cuts,
+          // so the heading family needs those axes requested up front.
+          var heroDark = (__params.get("hero") || "").trim() === "dark";
+          var headAxes = heroDark
+            ? ":ital,wght@0,400;0,500;0,700;0,800;1,400;1,600;1,700;1,800"
+            : ":ital,wght@0,400;0,500;0,700;1,400";
           if (qHead || qBody) {
             var fams = [];
-            if (qHead) fams.push("family=" + encodeURIComponent(qHead).replace(/%20/g, "+") + ":ital,wght@0,400;0,500;0,700;1,400");
+            if (qHead) fams.push("family=" + encodeURIComponent(qHead).replace(/%20/g, "+") + headAxes);
             if (qBody && qBody !== qHead) fams.push("family=" + encodeURIComponent(qBody).replace(/%20/g, "+") + ":wght@400;500;600;700");
             var gfl = document.createElement("link");
             gfl.rel = "stylesheet";
@@ -237,6 +244,11 @@
           var sweep = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%23" + hex(rgb).slice(1) + "' opacity='0.78'/></svg>\")";
           css += "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after,html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{background-image:" + sweep + " !important}";
           css += ".lmc-embed-logo{display:block;height:34px;width:auto;max-width:190px;margin:0 0 1.5rem;object-fit:contain}";
+          // Uniform intro icons: the editorial a/b/c treatment (accent / ink / outline)
+          // reads as three accidental styles inside a client brand — one accent chip.
+          // Emitted BEFORE the light-accent contrast guard so the deepened version
+          // still wins when the accent is too light for white glyphs.
+          css += "html.lmc-embed .lmc-intro-icon,html.lmc-embed .lmc-intro-icon.a,html.lmc-embed .lmc-intro-icon.b,html.lmc-embed .lmc-intro-icon.c{background:" + hex(rgb) + " !important;color:#fff !important;border:none !important}";
           // Contrast guard: a light brand accent (amber, mint, yellow) with white glyphs on it reads
           // washed out. When the accent is light, deepen the filled icon/pill chips so the white text
           // stays legible on the light paper.
@@ -275,6 +287,43 @@
             css += ".lmc-embed .lmc-root{--ink:" + inkHex + ";--ink-soft:" + hex(mix(inkRgb, [255, 255, 255], 0.22)) + ";--ink-mute:" + hex(mix(inkRgb, [255, 255, 255], 0.34)) + "}" +
               ".lmc-embed .lmc-score-eyebrow,.lmc-embed .lmc-score-headline,.lmc-embed .lmc-score-note strong,.lmc-embed .lmc-category-block h4,.lmc-embed .lmc-result-unlock-h,.lmc-embed .lmc-start-h,.lmc-embed .lmc-start-meta{color:" + inkHex + " !important}" +
               ".lmc-embed .lmc-score-note,.lmc-embed .lmc-start-p{color:" + hex(mix(inkRgb, [255, 255, 255], 0.22)) + " !important}";
+          }
+          // Template-tell pass (all embeds): the graph-paper hero grid and the hard
+          // 6px square eyebrow/meta markers are Ivan-editorial signatures — inside a
+          // client-brand embed they read as a reused template. Grid off, markers
+          // become small round dots. Public (non-embed) LM pages are untouched.
+          css += ".lmc-embed .lmc-hero{background-image:none !important}" +
+            ".lmc-embed .lmc-badge::before,.lmc-embed .lmc-meta-chip::before,.lmc-embed .lmc-intro-badge::before,.lmc-embed .lmc-category::before,.lmc-embed .lmc-tier-pill::before,.lmc-embed .lmc-start-meta-dot{width:5px !important;height:5px !important;border-radius:50% !important}";
+          // ?hero=dark&hero_bg=RRGGBB&accent2=RRGGBB — dark hero theme. Mirrors a
+          // dark-hero brand site (e.g. deep forest green with a mint secondary):
+          // hero surface = hero_bg, headline white at display weight, the em/i pivot
+          // words render INLINE ITALIC in accent2 (their "Paid Ads & SEO" move) with
+          // the wavy sweep killed, meta chips as white/50 text with small accent2
+          // dots. Everything below the hero keeps the ?bg surface. Opt-in only.
+          if (heroDark) {
+            var hb = parse(__params.get("hero_bg")) || inkRgb || [11, 35, 31];
+            var a2 = parse(__params.get("accent2")) || rgb;
+            var hbHex = hex(hb), a2Hex = hex(a2);
+            css += "html.lmc-embed .lmc-hero{background:" + hbHex + " !important;border-bottom:none !important;padding:4.5rem 1.5rem 4rem}" +
+              "html.lmc-embed .lmc-hero::after{background:radial-gradient(ellipse 75% 60% at 82% 18%,rgba(" + clamp(a2[0]) + "," + clamp(a2[1]) + "," + clamp(a2[2]) + ",0.10),transparent 65%) !important}" +
+              "html.lmc-embed .lmc-h1{color:#fff !important;font-weight:800 !important;font-size:clamp(2.35rem,5.5vw,3.7rem) !important;line-height:1.1 !important;letter-spacing:-0.015em !important;max-width:46rem}" +
+              "html.lmc-embed .lmc-h1 em,html.lmc-embed .lmc-h1 i{color:" + a2Hex + " !important;font-style:italic !important;font-weight:800 !important;display:inline !important;padding:0 !important;isolation:auto !important}" +
+              "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after{content:none !important;background-image:none !important}" +
+              "html.lmc-embed .lmc-sub{color:rgba(255,255,255,0.75) !important;font-style:italic}" +
+              "html.lmc-embed .lmc-badge{color:rgba(255,255,255,0.55) !important}" +
+              "html.lmc-embed .lmc-badge::before{background:" + a2Hex + " !important}" +
+              "html.lmc-embed .lmc-meta,html.lmc-embed .lmc-meta-chip{color:rgba(255,255,255,0.5) !important}" +
+              "html.lmc-embed .lmc-meta-chip::before{background:" + a2Hex + " !important}" +
+              "html.lmc-embed .lmc-embed-logo{margin-bottom:2rem}" +
+              // Below the hero the sweep highlighter is the loudest Ivan tell — off.
+              // Italic pivots there render inline in the primary accent (dark enough
+              // on the ?bg white surface), matching the brand's light sections.
+              "html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{content:none !important;background-image:none !important}" +
+              "html.lmc-embed .lmc-start-h em,html.lmc-embed .lmc-start-h i,html.lmc-embed .lmc-intro-h em,html.lmc-embed .lmc-intro-h i{color:" + hex(rgb) + " !important;display:inline !important;padding:0 !important;isolation:auto !important}" +
+              // Dark-hero brands set section headings bold — the 400-weight display
+              // serif metrics read as someone else's site once the serif is swapped out.
+              "html.lmc-embed .lmc-intro-h,html.lmc-embed .lmc-start-h,html.lmc-embed .lmc-question{font-weight:700 !important;letter-spacing:-0.01em !important}" +
+              "html.lmc-embed .lmc-start-h{max-width:34rem !important}";
           }
           var __acc = document.createElement("style");
           __acc.textContent = css;

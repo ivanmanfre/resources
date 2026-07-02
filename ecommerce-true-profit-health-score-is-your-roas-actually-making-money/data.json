@@ -1,10 +1,10 @@
 {
   "slug": "ecommerce-true-profit-health-score-is-your-roas-actually-making-money",
-  "title": "The True-Profit Health Score",
-  "subtitle": "See what your ROAS actually leaves after product, shipping and fees, and the break-even ROAS you need before scaling makes money",
+  "title": "Find The <em>True Profit</em> Behind Your ROAS.",
+  "subtitle": "A 4x ROAS can still lose money once product, shipping and fees come out. 21 questions score your profit engine and give you the break-even ROAS you need before scaling pays. Takes 8 minutes.",
   "brand": {
     "accent": "#014D4E",
-    "hero_badge": "Interactive Assessment"
+    "hero_badge": "Free Ecommerce Assessment"
   },
   "estimated_minutes": 8,
   "persona_selector": {
@@ -760,5 +760,24 @@
     "description": "You just saw where the leak is. Now let's build the system that puts true profit per order in front of you automatically, so you scale on money made instead of ROAS reported. Book a 30-minute call and I'll show you exactly what to wire up first.",
     "button": "Book Strategy Call",
     "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "intro": {
+    "paragraph": "Answer each question with how your store actually runs today. Your score shows where money leaks between the ROAS in your ad account and the profit in your bank account, and what to fix first.",
+    "point_time": "21 questions, done in about 8 minutes",
+    "point_value": "Grades the 5 systems that decide whether scaling makes you money",
+    "point_next": "Your score and tier show straight away. Email unlocks the full category breakdown with fixes.",
+    "note": "Free to take. Your progress saves in this browser."
+  },
+  "start_screen": {
+    "eyebrow": "Start Your Score",
+    "headline_html": "See how much of your ROAS is <em>real profit</em>.",
+    "description": "Pick the answer that matches how your store runs right now. In 8 minutes you get a score out of 100, your tier, and the exact places profit is leaking on the way from ad spend to bank account.",
+    "button": "Get My Score",
+    "chips": [
+      "21 questions",
+      "8 min",
+      "Instant score",
+      "Free"
+    ]
   }
 }
