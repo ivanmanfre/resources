@@ -329,6 +329,27 @@
           __acc.textContent = css;
           document.head.appendChild(__acc);
         })();
+        // Identity pass — the static head is Ivan-branded (<title> "… | Ivan Manfredi",
+        // og:site_name "Ivan Manfredi", resources.ivanmanfredi.com favicon), which leaks
+        // the seller the moment a prospect inspects the tab or the page source of their
+        // sample. ?bname= carries the PROSPECT's brand name for the tab title +
+        // og:site_name; ?blogo= (optional, absolute URL) swaps the favicon to their
+        // logo. Absent params → the head stays exactly as shipped.
+        (function () {
+          var bname = (__params.get("bname") || "").trim();
+          if (bname) {
+            var baseTitle = (document.title || "").split(" | ")[0].trim() ||
+              String(data.title || "Assessment").replace(/<[^>]*>/g, "").trim();
+            document.title = baseTitle + " | " + bname;
+            var ogSite = document.querySelector('meta[property="og:site_name"]');
+            if (ogSite) ogSite.setAttribute("content", bname);
+          }
+          var blogo = (__params.get("blogo") || "").trim();
+          if (blogo && /^https?:\/\//i.test(blogo)) {
+            var icons = document.querySelectorAll('link[rel~="icon"],link[rel="apple-touch-icon"]');
+            for (var ii = 0; ii < icons.length; ii++) icons[ii].setAttribute("href", blogo);
+          }
+        })();
       } catch (_) {}
     }
     // The prospect's own logo, shown at the top of the sample so it reads as their asset.
@@ -996,6 +1017,19 @@
       // Calendly inside the embed would break the "this is your lead magnet" frame.
       var ctaConf = data.cta || {};
       if (embedMode) { ctaConf = null; }
+      // …unless the scan passes the PROSPECT's own close: ?cta= (button label) +
+      // ?ctaurl= (booking href). Then the end screen drives to THEIR funnel with
+      // neutral copy — never Ivan's Calendly. Both params required; absent → the
+      // embed stays CTA-free exactly as before.
+      var embedCtaLabel = embedMode ? (__params.get("cta") || "").trim() : "";
+      var embedCtaUrl = embedMode ? (__params.get("ctaurl") || "").trim() : "";
+      if (embedMode && embedCtaLabel && /^https?:\/\//i.test(embedCtaUrl)) {
+        ctaConf = {
+          url: embedCtaUrl,
+          button: embedCtaLabel,
+          description: "Book a call to walk through your results and get a concrete plan for the weakest categories above."
+        };
+      }
       if (ctaConf) {
       // (Ivan-CTA block runs only when NOT embedded)
       var ctaUrl = ctaConf.url || (window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min");
