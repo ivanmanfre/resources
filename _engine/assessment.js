@@ -391,7 +391,9 @@
       __logo.addEventListener("error", function () { __logo.remove(); });
       hi.appendChild(__logo);
     }
-    hi.appendChild(make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment")));
+    var heroBadgeEl = make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment"));
+    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadgeEl, "brand.hero_badge");
+    hi.appendChild(heroBadgeEl);
     var h1 = make("h1", { class: "lmc-h1" });
     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
@@ -806,6 +808,12 @@
           '</li>';
         }).join("");
         gapsSec.appendChild(list);
+        if (window.LM && window.LM.editMode) {
+          var fixLabelEls = list.querySelectorAll(".lmc-gap-fix-label");
+          for (var __fli = 0; __fli < fixLabelEls.length; __fli++) {
+            window.LM.editMode.registerField(fixLabelEls[__fli], "results_copy.gap_fix_label");
+          }
+        }
 
         var mondayTxt = (topGaps[0] && topGaps[0].fix) || (res.weakest ? "Start with your weakest category: " + res.weakest.name + "." : "Pick the gap that hurts most this week and ship one fix.");
         var nm = make("p", { class: "lmc-next-move" });

@@ -230,7 +230,7 @@
     var computed = {};
     (data.computed_outputs || []).forEach(function (co) {
       var v = safeEval(co.formula, Object.assign({}, ctx, { overall_score: overall, weakest_category: weakest && weakest.id }));
-      computed[co.id] = { label: co.label, value: v, format: co.format, show: co.show_in_result !== false };
+      computed[co.id] = { id: co.id, label: co.label, value: v, format: co.format, show: co.show_in_result !== false };
     });
 
     return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: ctx.persona, ctx: ctx, computed: computed };
@@ -248,12 +248,21 @@
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
-    body.appendChild(make("p", { class: "lmc-intro-p" }, esc(welcomeLine)));
+    var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
+    if (window.LM && window.LM.editMode) {
+      window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
+    }
+    body.appendChild(introPara);
     var ul = make("ul", { class: "lmc-intro-points" });
-    [["a", "⏱", pointA], ["b", "→", pointB], ["c", "✓", pointC]].forEach(function (p) {
+    var introPointPaths = ["intro.point_time", "intro.point_value", "intro.point_next"];
+    [["a", "⏱", pointA], ["b", "→", pointB], ["c", "✓", pointC]].forEach(function (p, ix) {
       var li = make("li");
       li.appendChild(make("span", { class: "lmc-intro-icon " + p[0] }, p[1]));
-      li.appendChild(make("span", null, esc(p[2])));
+      var pointSpan = make("span", null, esc(p[2]));
+      if (window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(pointSpan, introPointPaths[ix], { multiline: true });
+      }
+      li.appendChild(pointSpan);
       ul.appendChild(li);
     });
     body.appendChild(ul);
@@ -289,7 +298,9 @@
     // Hero
     var hero = make("section", { class: "lmc-hero" });
     var hi = make("div", { class: "lmc-container" });
-    hi.appendChild(make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment")));
+    var heroBadgeEl = make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment"));
+    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadgeEl, "brand.hero_badge");
+    hi.appendChild(heroBadgeEl);
     var h1 = make("h1", { class: "lmc-h1" });
     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
@@ -319,30 +330,43 @@
     function renderQuestion() {
       card.innerHTML = "";
       var q = questions[idx];
-      if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
-      var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
-      var catIdx = -1, qIdx = -1;
-      if (q.category_id && q.id) {
+      // Resolve the data.json path for this question so edit-mode hooks can be
+      // wired for its text/hint + type-specific renderer. Persona classifier
+      // lives at "persona_selector" (not inside categories[]).
+      var isPersona = !!q.__persona;
+      var catIdx = -1, qIdx = -1, basePath = null;
+      if (isPersona) {
+        basePath = "persona_selector";
+      } else if (q.category_id && q.id) {
         catIdx = (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
         qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
-        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
-          window.LM.editMode.registerField(qH, "categories[" + catIdx + "].questions[" + qIdx + "].text", { multiline: true });
+        if (catIdx >= 0 && qIdx >= 0) basePath = "categories[" + catIdx + "].questions[" + qIdx + "]";
+      }
+      if (q.category_name) {
+        var catEl = make("div", { class: "lmc-category" }, esc(q.category_name));
+        if (!isPersona && catIdx >= 0 && window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(catEl, "categories[" + catIdx + "].name");
         }
+        card.appendChild(catEl);
+      }
+      var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
+      if (basePath && window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(qH, basePath + ".text", { multiline: true });
       }
       card.appendChild(qH);
       if (q.hint) {
         var hintEl = make("p", { class: "lmc-hint" }, esc(q.hint));
-        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
-          window.LM.editMode.registerField(hintEl, "categories[" + catIdx + "].questions[" + qIdx + "].hint");
+        if (basePath && window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(hintEl, basePath + ".hint");
         }
         card.appendChild(hintEl);
       }
 
       // Type-dispatched input
-      if (q.type === "number") renderNumberInput(q);
-      else if (q.type === "multi_select") renderMultiSelect(q);
+      if (q.type === "number") renderNumberInput(q, basePath);
+      else if (q.type === "multi_select") renderMultiSelect(q, basePath);
       else if (q.type === "short_text") renderShortText(q);
-      else renderLikert(q); // likert, likert_picker, or anything else defaults to radio list
+      else renderLikert(q, basePath); // likert, likert_picker, or anything else defaults to radio list
 
       // Nav
       var nav = make("div", { class: "lmc-nav" });
@@ -366,7 +390,7 @@
       return a != null;
     }
 
-    function renderLikert(q) {
+    function renderLikert(q, basePath) {
       var options = q.answers || [
         { label: "1 — Strongly disagree", score: 1 },
         { label: "2 — Disagree", score: 2 },
@@ -382,9 +406,21 @@
         var input = make("input", { type: "radio", name: "q" + idx, id: "lmc-q" + idx + "-o" + ix, value: String(ix) });
         if (checked) input.setAttribute("checked", "checked");
         label.appendChild(input);
-        label.appendChild(make("span", null, esc(opt.label || opt.text || String(opt))));
+        var labelSpan = make("span", null, esc(opt.label || opt.text || String(opt)));
+        if (basePath && window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(labelSpan, basePath + ".answers[" + ix + "].label", { multiline: true });
+        }
+        label.appendChild(labelSpan);
         li.appendChild(label); ul.appendChild(li);
-        label.addEventListener("click", function () {
+        label.addEventListener("click", function (e) {
+          // In edit mode, clicks on the option should go to the inline editor on
+          // the label span, not record an answer. The span's edit-mode handler
+          // stops propagation, so this only fires for clicks outside the text
+          // (e.g. the radio hit-area) — guard those too.
+          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
+            if (e) e.preventDefault();
+            return;
+          }
           answers[q.id || "__persona"] = ix;
           save();
           setTimeout(function () { goNext(); }, 200);
@@ -393,9 +429,13 @@
       card.appendChild(ul);
     }
 
-    function renderNumberInput(q) {
+    function renderNumberInput(q, basePath) {
       var wrap = make("div", { class: "lmc-input-row" });
-      if (q.prefix) wrap.appendChild(make("span", { class: "lmc-prefix" }, esc(q.prefix)));
+      if (q.prefix) {
+        var prefixEl = make("span", { class: "lmc-prefix" }, esc(q.prefix));
+        if (basePath && window.LM && window.LM.editMode) window.LM.editMode.registerField(prefixEl, basePath + ".prefix");
+        wrap.appendChild(prefixEl);
+      }
       var input = make("input", { type: "number", class: "lmc-number", id: "lmc-q" + idx + "-n", inputmode: "decimal" });
       if (q.min != null) input.setAttribute("min", q.min);
       if (q.max != null) input.setAttribute("max", q.max);
@@ -409,12 +449,16 @@
         var nb = $("#lmc-next"); if (nb) { if (hasValidAnswer(q)) nb.removeAttribute("disabled"); else nb.setAttribute("disabled", "disabled"); }
       });
       wrap.appendChild(input);
-      if (q.suffix) wrap.appendChild(make("span", { class: "lmc-suffix" }, esc(q.suffix)));
+      if (q.suffix) {
+        var suffixEl = make("span", { class: "lmc-suffix" }, esc(q.suffix));
+        if (basePath && window.LM && window.LM.editMode) window.LM.editMode.registerField(suffixEl, basePath + ".suffix");
+        wrap.appendChild(suffixEl);
+      }
       card.appendChild(wrap);
       setTimeout(function () { input.focus(); }, 50);
     }
 
-    function renderMultiSelect(q) {
+    function renderMultiSelect(q, basePath) {
       var ul = make("ul", { class: "lmc-options lmc-multi" });
       var current = Array.isArray(answers[q.id]) ? answers[q.id].slice() : [];
       (q.answers || []).forEach(function (opt, ix) {
@@ -425,10 +469,18 @@
         if (selected) input.setAttribute("checked", "checked");
         label.appendChild(input);
         label.appendChild(make("span", { class: "lmc-check-box" }, "&#10003;"));
-        label.appendChild(make("span", { class: "lmc-check-text" }, esc(opt.label || opt.text)));
+        var checkTextSpan = make("span", { class: "lmc-check-text" }, esc(opt.label || opt.text));
+        if (basePath && window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(checkTextSpan, basePath + ".answers[" + ix + "].label", { multiline: true });
+        }
+        label.appendChild(checkTextSpan);
         li.appendChild(label); ul.appendChild(li);
         label.addEventListener("click", function (e) {
           e.preventDefault();
+          // In edit mode, clicks go to the inline editor on the label span
+          // (which stops propagation); guard clicks elsewhere on the label
+          // (checkbox hit-area) so they don't toggle a selection while editing.
+          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) return;
           var arr = Array.isArray(answers[q.id]) ? answers[q.id].slice() : [];
           var pos = arr.indexOf(opt.tag);
           if (pos === -1) arr.push(opt.tag); else arr.splice(pos, 1);
@@ -440,8 +492,11 @@
         });
       });
       card.appendChild(ul);
-      if (q.multi_hint) card.appendChild(make("p", { class: "lmc-multi-hint" }, esc(q.multi_hint)));
-      else card.appendChild(make("p", { class: "lmc-multi-hint" }, "Check all that apply."));
+      var multiHintEl = make("p", { class: "lmc-multi-hint" }, esc(q.multi_hint || "Check all that apply."));
+      if (basePath && window.LM && window.LM.editMode) {
+        window.LM.editMode.registerField(multiHintEl, basePath + ".multi_hint");
+      }
+      card.appendChild(multiHintEl);
     }
 
     function renderShortText(q) {
@@ -517,7 +572,14 @@
       var finalOffset = circ - (res.overall / 100) * circ;
       // D3.1: render arc fully empty initially, then transition to final offset for draw animation
       wrap.innerHTML = '<div class="lmc-score-ring entering"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="track" cx="90" cy="90" r="70"/><circle class="arc" cx="90" cy="90" r="70" stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + circ.toFixed(2) + '" data-final-offset="' + finalOffset.toFixed(2) + '"/></svg><div class="score-num"><div class="num">0</div><div class="suffix">out of 100</div></div></div>';
-      wrap.appendChild(make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name)));
+      var tierPillEl = make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name));
+      if (window.LM && window.LM.editMode) {
+        // The pill shows whichever tier_thresholds.*_label the score selected —
+        // a tier name chosen by score logic, not free text. Locked: edit via Raw JSON.
+        var tierLabelKey = res.tier.class === "low" ? "low_label" : (res.tier.class === "medium" ? "mid_label" : "high_label");
+        window.LM.editMode.registerField(tierPillEl, "tier_thresholds." + tierLabelKey, { locked: true });
+      }
+      wrap.appendChild(tierPillEl);
 
       // Computed outputs rendered prominently (this is the $ leak / hrs lost).
       // D3.4: currency_per_period + hours_per_period get replaced with leaky-bucket SVG
@@ -525,14 +587,26 @@
       if (visibleComputed.length > 0) {
         var cb = make("div", { class: "lmc-computed-block" });
         visibleComputed.forEach(function (co) {
+          // Labels are raw copy (data.computed_outputs[i].label); values are
+          // fully computed from a formula with no backing text path — never
+          // registered.
+          var coIdx = (data.computed_outputs || []).findIndex(function (o) { return o.id === co.id; });
           if (co.format === "currency_per_period" || co.format === "hours_per_period") {
             var lb = make("div", { class: "lmc-leaky-wrap", "data-computed-id": co.id });
             lb.innerHTML = leakyBucketSvg(co);
             cb.appendChild(lb);
+            if (coIdx >= 0 && window.LM && window.LM.editMode) {
+              var leakyLabelEl = lb.querySelector(".lmc-leaky-label");
+              if (leakyLabelEl) window.LM.editMode.registerField(leakyLabelEl, "computed_outputs[" + coIdx + "].label");
+            }
           } else {
             var row = make("div", { class: "lmc-computed-row" });
             row.innerHTML = '<div class="lmc-computed-label">' + esc(co.label) + '</div><div class="lmc-computed-value">' + fmt(co.format, co.value) + '</div>';
             cb.appendChild(row);
+            if (coIdx >= 0 && window.LM && window.LM.editMode) {
+              var computedLabelEl = row.querySelector(".lmc-computed-label");
+              if (computedLabelEl) window.LM.editMode.registerField(computedLabelEl, "computed_outputs[" + coIdx + "].label");
+            }
           }
         });
         wrap.appendChild(cb);
@@ -617,18 +691,51 @@
       var g = $("#lmc-capture"); if (g) g.parentNode.removeChild(g);
       var unl = make("div", { class: "lmc-unlocked" });
       unl.appendChild(make("h3", { style: "font-size:1.5rem;font-weight:900;text-transform:uppercase;margin:1.5rem 0 1rem;" }, "Your full report"));
-      (data.categories || []).forEach(function (cat) {
+      (data.categories || []).forEach(function (cat, catIdx) {
         var key2 = cat.id || cat.name;
         var catRes = res.per_category[key2];
         if (!catRes) return;
         var block = make("div", { class: "lmc-category-block" });
-        block.appendChild(make("h4", null, esc(cat.name || cat.id)));
+        var h4 = make("h4", null, esc(cat.name || cat.id));
+        if (window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(h4, "categories[" + catIdx + "].name");
+        }
+        block.appendChild(h4);
         block.innerHTML += '<div class="lmc-cat-bar"><div class="lmc-cat-track"><div class="lmc-cat-fill" style="width:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '/100</span></div>';
         var rec = pickRec(cat, catRes.score, res.ctx);
         if (rec) {
           var rc = make("div", { class: "lmc-rec" });
           var tag = catRes.score <= 40 ? "Fix first" : catRes.score <= 70 ? "Next unlock" : "Keep sharpening";
-          rc.innerHTML = '<strong>' + esc(tag) + '</strong>' + esc(rec.text || rec.headline || "") + (rec.steps ? '<ul>' + rec.steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul>' : "");
+          rc.appendChild(make("strong", null, esc(tag)));
+          var recTextSpan = make("span", { class: "lmc-rec-text" }, esc(rec.text || rec.headline || ""));
+          rc.appendChild(recTextSpan);
+          // Only the legacy {low,mid,high} recommendations object resolves to a
+          // stable path (the matched key). The newer `when`-expression array
+          // format doesn't expose which entry matched, so it's left unregistered
+          // rather than risk writing to the wrong index.
+          var recIsLegacy = !Array.isArray(cat.recommendations);
+          var recPath = null;
+          if (recIsLegacy) {
+            var recTierKey = catRes.score <= 40 ? "low" : (catRes.score <= 70 ? "mid" : "high");
+            var recAltKey = ({ low: "critical", mid: "growth", high: "optimized" })[recTierKey];
+            var recsObj = cat.recommendations || {};
+            var recBranchKey = recsObj[recTierKey] != null ? recTierKey : (recsObj[recAltKey] != null ? recAltKey : recTierKey);
+            recPath = "categories[" + catIdx + "].recommendations." + recBranchKey;
+            if (window.LM && window.LM.editMode) {
+              window.LM.editMode.registerField(recTextSpan, recPath + ".text", { multiline: true });
+            }
+          }
+          if (rec.steps) {
+            var ulSteps = make("ul");
+            rec.steps.forEach(function (s, si) {
+              var li = make("li", null, esc(s));
+              if (recIsLegacy && recPath && window.LM && window.LM.editMode) {
+                window.LM.editMode.registerField(li, recPath + ".steps[" + si + "]", { multiline: true });
+              }
+              ulSteps.appendChild(li);
+            });
+            rc.appendChild(ulSteps);
+          }
           block.appendChild(rc);
         }
         unl.appendChild(block);
@@ -687,9 +794,23 @@
 
       if (data.cta && data.cta.url) {
         var cta = make("div", { class: "lmc-cta-box" });
-        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
+        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener"><span class="lmc-cta-btn-text">' + esc(data.cta.button || "Book Strategy Call") + '</span></a>';
         unl.appendChild(cta);
-        cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
+        if (window.LM && window.LM.editMode) {
+          var ctaH3 = cta.querySelector("h3");
+          var ctaDescEl = cta.querySelector("p");
+          var ctaBtnTextEl = cta.querySelector(".lmc-cta-btn-text");
+          if (ctaH3) window.LM.editMode.registerField(ctaH3, "cta.headline", { multiline: true });
+          if (ctaDescEl) window.LM.editMode.registerField(ctaDescEl, "cta.description", { multiline: true });
+          if (ctaBtnTextEl) window.LM.editMode.registerField(ctaBtnTextEl, "cta.button");
+        }
+        cta.querySelector("a").addEventListener("click", function (e) {
+          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
+            e.preventDefault();
+            return;
+          }
+          beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } });
+        });
       } else {
         // No per-LM CTA configured — default fit-call CTA so every assessment
         // ends with a clear next step (2026-06-09).
