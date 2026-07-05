@@ -167,7 +167,9 @@
     // Hero
     var hero = make("section", { class: "lmc-hero" });
     var heroInner = make("div", { class: "lmc-container" });
-    heroInner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist")));
+    var badgeEl = make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist"));
+    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
+    heroInner.appendChild(badgeEl);
     var h1 = make("h1", { class: "lmc-h1" });
     h1.innerHTML = buildItalicizedTitle(data.title || "Checklist");
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
@@ -240,6 +242,7 @@
         }
         if (it.impact) {
           var imp = make("span", { class: "lmc-impact lmc-impact-" + it.impact }, (it.impact || "").toUpperCase() + " IMPACT");
+          if (window.LM && window.LM.editMode) window.LM.editMode.registerField(imp, "sections[" + sIdx + "].items[" + iIdx + "].impact", { locked: true });
           txt.appendChild(imp);
         }
         row.appendChild(box); row.appendChild(txt);

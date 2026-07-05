@@ -175,7 +175,9 @@
     // Hero
     var hero = make("section", { class: "lmc-hero" });
     var inner = make("div", { class: "lmc-container" });
-    inner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Interactive Calculator")));
+    var badgeEl = make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Interactive Calculator"));
+    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
+    inner.appendChild(badgeEl);
     var h1 = make("h1", { class: "lmc-h1" });
     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Calculator") : escapeHtml(data.title || "Calculator");
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
@@ -223,7 +225,11 @@
       }
       field.appendChild(labelRow);
       var wrap = make("div", { class: "lmc-input-wrap" });
-      if (inp.prefix) wrap.appendChild(make("span", { class: "lmc-prefix" }, escapeHtml(inp.prefix)));
+      if (inp.prefix) {
+        var prefixEl = make("span", { class: "lmc-prefix" }, escapeHtml(inp.prefix));
+        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(prefixEl, "inputs[" + idx + "].prefix");
+        wrap.appendChild(prefixEl);
+      }
       var attrs = { id: labelId, class: "lmc-input", name: inp.id, type: inp.type === "range" ? "number" : (inp.type || "number"), inputmode: inp.type === "text" ? "text" : "decimal" };
       if (inp.min != null) attrs.min = inp.min;
       if (inp.max != null) attrs.max = inp.max;
@@ -232,7 +238,11 @@
       var el = make("input", attrs);
       el.value = inp.default != null ? inp.default : "";
       wrap.appendChild(el);
-      if (inp.suffix) wrap.appendChild(make("span", { class: "lmc-suffix" }, escapeHtml(inp.suffix)));
+      if (inp.suffix) {
+        var suffixEl = make("span", { class: "lmc-suffix" }, escapeHtml(inp.suffix));
+        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(suffixEl, "inputs[" + idx + "].suffix");
+        wrap.appendChild(suffixEl);
+      }
       field.appendChild(wrap);
       if (inp.type === "range" || inp.slider) {
         var r = make("input", { type: "range", class: "lmc-range", min: inp.min != null ? inp.min : 0, max: inp.max != null ? inp.max : 100, step: inp.step != null ? inp.step : 1, value: inp.default != null ? inp.default : 0 });
@@ -242,6 +252,7 @@
       }
       if (inp.hint) {
         var hintEl = make("span", { class: "hint" }, escapeHtml(inp.hint));
+        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(hintEl, "inputs[" + idx + "].hint");
         field.appendChild(hintEl);
         if (hintBtn) {
           hintBtn.addEventListener("click", function () {
@@ -259,10 +270,13 @@
     var outputsCard = make("div", { class: "lmc-card", id: "lmc-outputs" });
     outputsCard.appendChild(make("h2", null, "Your result"));
     var primary = (data.outputs || []).find(function (o) { return o.primary; }) || (data.outputs || [])[0];
+    var primaryIdx = (data.outputs || []).indexOf(primary);
     if (primary) {
       var ring = make("div", { class: "lmc-output-ring" });
       ring.appendChild(make("div", { class: "lmc-big-num", id: "lmc-big-num" }, "—"));
-      ring.appendChild(make("div", { class: "lmc-big-unit" }, escapeHtml(primary.label || "")));
+      var bigUnitEl = make("div", { class: "lmc-big-unit" }, escapeHtml(primary.label || ""));
+      if (window.LM && window.LM.editMode && primaryIdx >= 0) window.LM.editMode.registerField(bigUnitEl, "outputs[" + primaryIdx + "].label");
+      ring.appendChild(bigUnitEl);
       ring.appendChild(make("span", { class: "lmc-tier-pill", id: "lmc-tier" }, "Fill in the numbers"));
       outputsCard.appendChild(ring);
     }
@@ -293,6 +307,8 @@
       var fixToggle = make("label", { class: "lmc-fix-toggle", for: "lmc-fix-on" });
       var fixLabel = (data.fixes_scenario.label || "See what happens with the top 3 fixes");
       fixToggle.innerHTML = '<input type="checkbox" id="lmc-fix-on" /> <span>' + escapeHtml(fixLabel) + '</span>';
+      var fixLabelEl = fixToggle.querySelector("span");
+      if (window.LM && window.LM.editMode && fixLabelEl) window.LM.editMode.registerField(fixLabelEl, "fixes_scenario.label");
       outputsCard.appendChild(fixToggle);
     }
     // Recommendations
@@ -394,10 +410,14 @@
           rcEl.appendChild(make("h3", null, "What to do next"));
           matched.forEach(function (m) {
             var recDiv = make("div", { class: "lmc-rec" });
-            recDiv.appendChild(make("strong", null, escapeHtml(m.tag || "Recommended")));
+            var origIdx = recs.indexOf(m);
+            var tagEl = make("strong", null, escapeHtml(m.tag || "Recommended"));
+            if (window.LM && window.LM.editMode && origIdx >= 0) {
+              window.LM.editMode.registerField(tagEl, "recommendations[" + origIdx + "].tag");
+            }
+            recDiv.appendChild(tagEl);
             var textNode = document.createTextNode(m.text || "");
             recDiv.appendChild(textNode);
-            var origIdx = recs.indexOf(m);
             if (window.LM && window.LM.editMode && origIdx >= 0) {
               window.LM.editMode.registerField(recDiv, "recommendations[" + origIdx + "].text");
             }
