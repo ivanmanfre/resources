@@ -487,6 +487,7 @@
       return r.json();
     }).then(function (data) {
       render(data, root);
+      window.__lm_rerender = function(){ render(window.__lm_data, root); };
       // Listen for hash changes (back/forward button)
       window.addEventListener("hashchange", function () { render(data, root); });
     }).catch(function (e) {

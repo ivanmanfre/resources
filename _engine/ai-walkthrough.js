@@ -457,7 +457,7 @@
     var src = root.getAttribute("data-lm-walkthrough-src") || "./data.json";
     fetch(src, { credentials: "same-origin" })
       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
-      .then(function (data) { render(data, root); })
+      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
       .catch(function (e) {
         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading walkthrough:</strong> ' + esc(e.message) + '</div>';
       });

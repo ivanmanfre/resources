@@ -746,6 +746,24 @@
   // Kept as no-op so existing engine calls to LM.tracker.touch() don't throw.
   function trackerTouch() {}
 
+  // ── Click-to-edit field/array helpers (Task A1) ───────────────────────
+  // Thin wrappers around make() + editModeRegisterField/Array so engines can
+  // build an editable element in one call instead of make() + registerField().
+  function makeField(tag, attrs, text, path, opts) {
+    var e = make(tag, attrs, (opts && opts.html) ? text : undefined);
+    if (!(opts && opts.html) && text !== undefined) e.textContent = text;
+    editModeRegisterField(e, path, opts || {});
+    return e;
+  }
+  function makeFieldArray(containerEl, arrayPath, opts) {
+    editModeRegisterArray(containerEl, arrayPath, opts || {});
+    return containerEl;
+  }
+  function editModeResetBuffers() {
+    editModeState.fields.length = 0;
+    editModeState.arrays.length = 0;
+  }
+
   window.LM = {
     make: make, esc: esc, toast: toast, emailIsValid: emailIsValid,
     beacon: beacon, canonicalBeaconEvent: canonicalBeaconEvent,
@@ -755,6 +773,7 @@
     buildHero: buildHero, buildIntro: buildIntro,
     buildClosingCta: buildClosingCta, callUrl: callUrl,
     tierFor: tierFor,
+    makeField: makeField, makeFieldArray: makeFieldArray,
     editMode: {
       enabled: function () { return editModeState.enabled; },
       registerField: editModeRegisterField,
@@ -763,6 +782,8 @@
       activateFromCache: activateEditModeFromCache,
       showTokenModal: showEditTokenModal,
       clearCache: clearCachedEditToken,
+      makeField: makeField, makeFieldArray: makeFieldArray,
+      resetBuffers: editModeResetBuffers,
     },
     tracker: { touch: trackerTouch },  // no-op stub, see comment above
     progress: {

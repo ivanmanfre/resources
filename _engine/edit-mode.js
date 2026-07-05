@@ -539,11 +539,25 @@
     if (state.format === "guide") loadPurify();
   }
 
+  // ── Re-render (Task A1) ─────────────────────────────────────────────
+  // Re-runs the active engine's render() without a full page reload after a
+  // structural edit (array add/remove, AI rewrite). Must clear the field/array
+  // buffers first, or re-running render() re-pushes onto them and stale
+  // entries (pointing at removed DOM nodes) accumulate. Because edit mode is
+  // enabled during a live session, each re-pushed registerField/registerArray
+  // auto-attaches on push, so no separate flush pass is needed here.
+  function rerender() {
+    if (window.LM && window.LM.editMode && window.LM.editMode.resetBuffers)
+      window.LM.editMode.resetBuffers();
+    if (typeof window.__lm_rerender === "function") window.__lm_rerender();
+  }
+
   // ── Expose API ────────────────────────────────────────────────────────
   window.__LM_EDIT_MODE_LOADED = true;
   window.__LM_EDIT_MODE_API = {
     attachField: attachField,
     attachArray: attachArray,
     mount: mount,
+    rerender: rerender,
   };
 })();
