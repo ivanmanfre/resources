@@ -172,8 +172,10 @@
     // Editor hooks: wrap hero title + subtitle for inline edit
     var heroH1 = root.querySelector(".lmc-h1");
     var heroSub = root.querySelector(".lmc-sub");
+    var heroBadge = root.querySelector(".lmc-badge");
     if (heroH1 && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroH1, "title");
     if (heroSub && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroSub, "subtitle");
+    if (heroBadge && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadge, "brand.hero_badge");
     // Intro bullets also adapt to feature state
     var introBullets = data.enable_self_placement === true
       ? {
@@ -320,6 +322,19 @@
           '</ol>' +
         '</div>';
       root.appendChild(toc);
+      // TOC entry text is a second view of sections[i].title (same field as
+      // the section h2) — only register when data-derived (s.title truthy),
+      // guarding against the "Section N" fallback literal. Precedent: dual
+      // registration of one field across two DOM surfaces (architecture.js
+      // mobile-list twin, task A4).
+      if (window.LM && window.LM.editMode) {
+        var tocTextEls = toc.querySelectorAll(".lmg-toc-text");
+        (data.sections || []).forEach(function (s, i) {
+          if (s.title && tocTextEls[i]) {
+            window.LM.editMode.registerField(tocTextEls[i], "sections[" + i + "].title");
+          }
+        });
+      }
       var tocToggle = toc.querySelector(".lmg-toc-toggle");
       var tocIcon = toc.querySelector(".lmg-toc-toggle-icon");
       tocToggle.addEventListener("click", function () {

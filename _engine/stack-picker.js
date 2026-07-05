@@ -201,6 +201,8 @@
         if (h1El) window.LM.editMode.registerField(h1El, "title");
         var subEl = hero.querySelector(".lmc-sub");
         if (subEl) window.LM.editMode.registerField(subEl, "subtitle");
+        var badgeEl = hero.querySelector(".lmc-badge");
+        if (badgeEl) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
       }
       root.appendChild(hero);
 
@@ -330,8 +332,12 @@
     // Stack chips
     if (node.stack && node.stack.length) {
       var chipWrap = make("div", { class: "lmc-sp-stack" });
-      node.stack.forEach(function (s) {
-        chipWrap.appendChild(make("span", { class: "lmc-sp-chip" }, esc(s)));
+      node.stack.forEach(function (s, i) {
+        var chipEl = make("span", { class: "lmc-sp-chip" }, esc(s));
+        if (window.LM && window.LM.editMode) {
+          window.LM.editMode.registerField(chipEl, "tree.nodes." + nodeId + ".stack[" + i + "]");
+        }
+        chipWrap.appendChild(chipEl);
       });
       if (window.LM && window.LM.editMode) {
         window.LM.editMode.registerArray(chipWrap, "tree.nodes." + nodeId + ".stack", {
