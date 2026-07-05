@@ -57,6 +57,15 @@
     var ctaLabel = esc(d.cta_label || ("Email me the " + (d.format_label ? d.format_label.toLowerCase() : "resource")));
     var eyebrow = [d.format_label, d.category].filter(Boolean).map(esc).join(" · ");
 
+    // NOTE on registration exclusions (see report for full detail):
+    // - eyebrow is a computed join of format_label + category, no single path
+    // - the CTA button text below has a literal " →" arrow appended in the
+    //   same text node as the label, so its textContent never equals the raw
+    //   cta_label value — registering it would let an edit-mode save clobber
+    //   the arrow into stored copy. Skipped.
+    // - the cover fallback div text is an OR-chain (headline||category||literal),
+    //   ambiguous single path. Skipped.
+
     root.innerHTML =
       '<div class="lp">' +
         '<section class="lp-hero">' +
@@ -82,6 +91,35 @@
         (inside ? '<section class="lp-inside"><h2>What\'s inside</h2><ul class="lp-bullets">' + inside + "</ul></section>" : "") +
         (d.proof ? '<section class="lp-proof">' + avatar + "<p>" + d.proof + "</p></section>" : "") +
       "</div>";
+
+    // Registration — capture nodes AFTER the innerHTML build above, don't
+    // rewrite the render.
+    if (L.editMode) {
+      var h1El = root.querySelector(".lp-h1");
+      if (h1El) L.editMode.registerField(h1El, "headline", { multiline: true });
+      var subEl = root.querySelector(".lp-sub");
+      if (subEl && d.subhead) L.editMode.registerField(subEl, "subhead", { multiline: true });
+      var sub2El = root.querySelector(".lp-sub-2");
+      if (sub2El && d.subhead_secondary) L.editMode.registerField(sub2El, "subhead_secondary", { multiline: true });
+
+      // "inside" bullets — each <li> holds a computed index <span class="n">
+      // (locked/skipped, not stored) plus a second <span> with the stored
+      // bullet text.
+      var bulletsList = root.querySelector(".lp-bullets");
+      if (bulletsList) {
+        Array.prototype.forEach.call(bulletsList.querySelectorAll("li.lp-b"), function (li, i) {
+          var spans = li.querySelectorAll("span");
+          var textEl = spans[1];
+          if (textEl) L.editMode.registerField(textEl, "inside[" + i + "]");
+        });
+        L.editMode.registerArray(bulletsList, "inside", { itemLabel: "bullet", template: "New bullet" });
+      }
+
+      // Proof/testimonial — inserted as RAW (unescaped) HTML in the render
+      // above, so treat it as rich text like other *_html fields.
+      var proofEl = root.querySelector(".lp-proof p");
+      if (proofEl && d.proof) L.editMode.registerField(proofEl, "proof", { contenteditable: true });
+    }
 
     try { if (L.beacon) L.beacon("landing", "view"); } catch (_) {}
     wireForm(d);

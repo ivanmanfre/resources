@@ -28,6 +28,17 @@
         "Take what you need"
       ]
     }));
+    var heroH1 = root.querySelector(".lmc-h1");
+    var heroSub = root.querySelector(".lmc-sub");
+    var heroBadge = root.querySelector(".lmc-badge");
+    if (L.editMode) {
+      if (heroH1) L.editMode.registerField(heroH1, "title");
+      if (heroSub) L.editMode.registerField(heroSub, "subtitle");
+      // Badge only registers when data actually supplied it — otherwise the
+      // rendered text is the literal fallback "Swipe File", which has no
+      // corresponding json path to write back to.
+      if (heroBadge && data.brand && data.brand.hero_badge) L.editMode.registerField(heroBadge, "brand.hero_badge");
+    }
     root.appendChild(L.buildIntro(data, ".lms-filters", {
       tool_type: "swipe",
       defaultValueBullet: "Filter by use case, take only the examples that fit you",
@@ -64,7 +75,7 @@
     // Example list
     var main = L.make("main", { class: "lmc-container" });
     var list = L.make("div", { class: "lms-list" });
-    (data.examples || []).forEach(function (ex) {
+    (data.examples || []).forEach(function (ex, exIdx) {
       var art = L.make("article", {
         class: "lms-example" + (takenSet.has(ex.id) ? " taken" : ""),
         "data-ex-id": ex.id,
@@ -81,7 +92,25 @@
         '<div class="lms-ex-actions">' +
           '<button type="button" class="lms-take-btn">' + (takenSet.has(ex.id) ? "Taken" : "Take this example") + '</button>' +
         '</div>';
+      // Registration — capture nodes AFTER the innerHTML build above, don't
+      // rewrite the render. "Take this example"/"Taken" button text and the
+      // "taken" class are runtime UI state, not stored copy — not registered.
+      if (L.editMode) {
+        var exTitleEl = art.querySelector(".lms-ex-title");
+        if (exTitleEl) L.editMode.registerField(exTitleEl, "examples[" + exIdx + "].title");
+        var exBodyEl = art.querySelector(".lms-ex-body");
+        if (exBodyEl) L.editMode.registerField(exBodyEl, "examples[" + exIdx + "].body", { multiline: true });
+        var exWhyEl = art.querySelector(".lms-ex-why");
+        if (exWhyEl) L.editMode.registerField(exWhyEl, "examples[" + exIdx + "].why", { multiline: true });
+        Array.prototype.forEach.call(art.querySelectorAll(".lms-ex-tag"), function (tagEl, tIdx) {
+          L.editMode.registerField(tagEl, "examples[" + exIdx + "].tags[" + tIdx + "]");
+        });
+      }
       list.appendChild(art);
+    });
+    if (L.editMode) L.editMode.registerArray(list, "examples", {
+      itemLabel: "example",
+      template: { id: "example-" + Date.now(), title: "New example", body: "", why: "", tags: [] }
     });
     main.appendChild(list);
 

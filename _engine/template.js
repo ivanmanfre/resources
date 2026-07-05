@@ -25,6 +25,16 @@
         "Personalized export"
       ]
     }));
+    var heroH1 = root.querySelector(".lmc-h1");
+    var heroSub = root.querySelector(".lmc-sub");
+    var heroBadge = root.querySelector(".lmc-badge");
+    if (L.editMode) {
+      if (heroH1) L.editMode.registerField(heroH1, "title");
+      if (heroSub) L.editMode.registerField(heroSub, "subtitle");
+      // Badge only registers when data actually supplied it — otherwise the
+      // rendered text is the literal fallback "Template", no matching path.
+      if (heroBadge && data.brand && data.brand.hero_badge) L.editMode.registerField(heroBadge, "brand.hero_badge");
+    }
     root.appendChild(L.buildIntro(data, ".lmt-stack", {
       tool_type: "template",
       defaultValueBullet: "Walk through 4 stack questions → get a personalized artifact export",
@@ -40,11 +50,25 @@
     var stackHeadline = data.stack_headline || "Match the template to your stack";
     stackSection.innerHTML = '<h2>' + L.esc(stackHeadline) + '</h2>' +
       '<p>' + L.esc(data.stack_subtitle || "Answer these so we tailor the downloadable artifact to your tools.") + '</p>';
-    (data.stack_questions || []).forEach(function (q) {
+    if (L.editMode) {
+      // Both fall back to a literal default when absent from data — only
+      // register when the data field actually drove the visible text.
+      if (data.stack_headline) L.editMode.registerField(stackSection.querySelector("h2"), "stack_headline");
+      if (data.stack_subtitle) L.editMode.registerField(stackSection.querySelector("p"), "stack_subtitle", { multiline: true });
+    }
+    (data.stack_questions || []).forEach(function (q, qIdx) {
       var block = L.make("div", { class: "lmt-question", "data-qid": q.id });
-      block.appendChild(L.make("span", { class: "lmt-q-label" }, L.esc(q.label || q.text || q.id)));
+      var labelEl = L.make("span", { class: "lmt-q-label" }, L.esc(q.label || q.text || q.id));
+      block.appendChild(labelEl);
+      if (L.editMode) {
+        // Register against whichever field actually supplied the visible
+        // text. When it fell all the way back to q.id, skip — id is a
+        // discriminator, not display copy.
+        if (q.label) L.editMode.registerField(labelEl, "stack_questions[" + qIdx + "].label");
+        else if (q.text) L.editMode.registerField(labelEl, "stack_questions[" + qIdx + "].text");
+      }
       var opts = L.make("div", { class: "lmt-q-options", role: "radiogroup", "aria-label": q.label || q.id });
-      (q.options || []).forEach(function (opt) {
+      (q.options || []).forEach(function (opt, oIdx) {
         var btn = L.make("button", {
           type: "button",
           class: "lmt-q-opt" + (selected[q.id] === opt.value ? " selected" : ""),
@@ -52,11 +76,25 @@
           "aria-checked": selected[q.id] === opt.value ? "true" : "false",
           "data-value": opt.value
         }, L.esc(opt.label || opt.value));
+        // Only register when opt.label actually drove the text — when it
+        // fell back to opt.value, that's the answer-discriminator, not copy.
+        if (L.editMode && opt.label) L.editMode.registerField(btn, "stack_questions[" + qIdx + "].options[" + oIdx + "].label");
         opts.appendChild(btn);
+      });
+      if (L.editMode) L.editMode.registerArray(opts, "stack_questions[" + qIdx + "].options", {
+        itemLabel: "option",
+        template: { value: "new-option", label: "New option" }
       });
       block.appendChild(opts);
       stackSection.appendChild(block);
     });
+    // NOTE: no registerArray for stack_questions itself — the question <div>s
+    // are appended as siblings of the <h2>/<p> already inside stackSection
+    // (no dedicated wrapper). Wrapping them would add a new container element
+    // to every render (not gated by edit mode), which breaks the "rendered
+    // DOM stays byte-identical outside edit mode" rule. Per-item fields above
+    // still give full text coverage; only add/remove/reorder is unavailable
+    // for this array without a markup change (flagged in the report).
     main.appendChild(stackSection);
 
     // Result (download) panel
@@ -84,16 +122,28 @@
     // Static content (sections)
     if ((data.sections || []).length) {
       var body = L.make("section", { class: "lmt-content" });
-      (data.sections || []).forEach(function (s) {
-        if (s.title) body.appendChild(L.make("h2", null, L.esc(s.title)));
+      (data.sections || []).forEach(function (s, sIdx) {
+        if (s.title) {
+          var sh2 = L.make("h2", null, L.esc(s.title));
+          body.appendChild(sh2);
+          if (L.editMode) L.editMode.registerField(sh2, "sections[" + sIdx + "].title");
+        }
         if (s.html) {
           var h = L.make("div");
           h.innerHTML = s.html;
           body.appendChild(h);
+          if (L.editMode) L.editMode.registerField(h, "sections[" + sIdx + "].html", { contenteditable: true });
         } else if (s.text) {
-          body.appendChild(L.make("p", null, L.esc(s.text)));
+          var sp = L.make("p", null, L.esc(s.text));
+          body.appendChild(sp);
+          if (L.editMode) L.editMode.registerField(sp, "sections[" + sIdx + "].text", { multiline: true });
         }
       });
+      // NOTE: no registerArray for sections — a single item can emit up to
+      // two sibling nodes (h2 + div/p) with no shared per-item wrapper, so
+      // there's no 1:1 element-to-array-item mapping to hang add/remove/
+      // reorder off without introducing new wrapper markup (see stack_questions
+      // note above for why that's out of scope here).
       main.appendChild(body);
     }
 
