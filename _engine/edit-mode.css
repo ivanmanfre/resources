@@ -468,3 +468,9 @@
   border-color: rgba(76, 110, 61, 0.25);
 }
 .lme-ai-block-proposed .lme-ai-block-label { color: #4C6E3D; }
+
+/* Optimistic-save syncing indicator (D1) */
+.lme-toolbar-dirty.lme-syncing {
+  color: #C77D3A;
+  opacity: 0.9;
+}

@@ -595,7 +595,21 @@
           ? "✓ Published · commit " + (res.body.sha || "").slice(0, 7) + " · live in ~30s"
           : "✓ Draft saved · commit " + (res.body.sha || "").slice(0, 7);
         showToast(msg);
-        setTimeout(function () { location.reload(); }, 3000);
+        // Optimistic save: the edits are already applied in the DOM, so we do
+        // NOT reload. A reload here would re-fetch the pre-commit data.json
+        // (GitHub Pages takes ~30s to redeploy) and briefly revert the visible
+        // edits. Instead show a transient "syncing" note that clears itself.
+        if (mode === "publish") {
+          var di = $("#lme-dirty-indicator");
+          if (di) {
+            var syncMsg = "● syncing · live in ~30s";
+            di.textContent = syncMsg;
+            di.classList.add("lme-syncing");
+            setTimeout(function () {
+              if (di.textContent === syncMsg) { di.textContent = ""; di.classList.remove("lme-syncing"); }
+            }, 30000);
+          }
+        }
       })
       .catch(function (err) { showToast("Save error: " + err.message, true); });
   }
