@@ -29,8 +29,10 @@
 
     var heroH1 = root.querySelector(".lmc-h1");
     var heroSub = root.querySelector(".lmc-sub");
+    var heroBadge = root.querySelector(".lmc-badge");
     if (heroH1 && L.editMode) L.editMode.registerField(heroH1, "title");
     if (heroSub && L.editMode) L.editMode.registerField(heroSub, "subtitle");
+    if (heroBadge && L.editMode) L.editMode.registerField(heroBadge, "brand.hero_badge");
 
     root.appendChild(L.buildIntro(data, ".lmw-download", {
       tool_type: "n8n-workflow",
@@ -83,6 +85,25 @@
       setup.innerHTML = '<h2>Before you import</h2>' +
         (creds.length ? '<h3>Credentials</h3><ul>' + credsList + '</ul>' : '') +
         (envs.length ? '<h3>Env vars</h3><ul>' + envsList + '</ul>' : '');
+      // Register each requirement li against its array index — position-based
+      // lookup (h3 textContent -> next sibling ul) so no attrs/classes are added
+      // to keep rendered DOM byte-identical outside edit mode.
+      if (L.editMode) {
+        Array.prototype.forEach.call(setup.querySelectorAll("h3"), function (h3) {
+          var ul = h3.nextElementSibling;
+          if (!ul || ul.tagName !== "UL") return;
+          if (h3.textContent === "Credentials") {
+            Array.prototype.forEach.call(ul.querySelectorAll("li"), function (li, i) {
+              L.editMode.registerField(li, "credentials_required[" + i + "]");
+            });
+          } else if (h3.textContent === "Env vars") {
+            Array.prototype.forEach.call(ul.querySelectorAll("li"), function (li, i) {
+              var code = li.querySelector("code") || li;
+              L.editMode.registerField(code, "env_vars[" + i + "]");
+            });
+          }
+        });
+      }
       main.appendChild(setup);
     }
 
@@ -121,6 +142,13 @@
         '<a class="lmc-btn" href="' + L.esc(cta.url) + '" target="_blank" rel="noopener">' +
           L.esc(cta.button || "Talk to me") +
         '</a>';
+      // Only register when the fallback literal wasn't used — textContent must
+      // equal the raw stored value (ctas[0].url is a fixed, non-dynamic pick,
+      // unlike architecture/ai-walkthrough's runtime pickCta selection).
+      if (L.editMode) {
+        if (cta.headline) L.editMode.registerField(ctaSec.querySelector("h2"), "ctas[0].headline");
+        if (cta.button) L.editMode.registerField(ctaSec.querySelector("a"), "ctas[0].button");
+      }
       main.appendChild(ctaSec);
     } else {
       main.appendChild(L.buildClosingCta("n8n_workflow", data, { toolType: "n8n-workflow" }));

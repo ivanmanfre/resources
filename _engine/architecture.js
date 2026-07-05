@@ -548,7 +548,7 @@
     var nodes = (data.diagram && data.diagram.nodes) || [];
     var wrap = make("section", { class: "lma-mobile-list", "aria-label": "Node list (mobile)" });
     var ol = make("ol");
-    nodes.forEach(function (n) {
+    nodes.forEach(function (n, nIdx) {
       var card = make("button", {
         class: "lma-mobile-card" + (state.viewedNodes[n.id] ? " is-visited" : ""),
         type: "button",
@@ -558,6 +558,18 @@
         '<span class="m-type">' + esc((n.type || "transform").toUpperCase()) + '</span>' +
         '<span class="m-label">' + esc(n.label || n.id) + '</span>' +
         (n.panel && n.panel.headline ? '<span class="m-hint">' + esc(n.panel.headline) + '</span>' : '');
+      // HTML twin of the SVG node label/headline (architecture.js:411/622) — the SVG
+      // versions can't host an inline-edit <input>, so register these instead.
+      if (window.LM && window.LM.editMode) {
+        if (n.label) {
+          window.LM.editMode.registerField(card.querySelector(".m-label"), "diagram.nodes[" + nIdx + "].label");
+        }
+        if (n.panel && n.panel.headline) {
+          // Same path as the drawer's headline field (openDrawerForNode) — intentional
+          // dual registration, two DOM twins of one field.
+          window.LM.editMode.registerField(card.querySelector(".m-hint"), "diagram.nodes[" + nIdx + "].panel.headline");
+        }
+      }
       var li = make("li");
       li.appendChild(card);
       ol.appendChild(li);
