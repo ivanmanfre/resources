@@ -368,6 +368,18 @@
         '<span><strong>Ivan Manfredi</strong>AI systems for service businesses</span>' +
       '</div>';
 
+    editModeRegisterField(sec.querySelector(".lmc-closing-h"), "closing_cta.headline_html", { contenteditable: true });
+    editModeRegisterField(sec.querySelector(".lmc-closing-p"), "closing_cta.body", { multiline: true });
+    var closingList = sec.querySelector(".lmc-closing-points");
+    if (closingList) {
+      editModeRegisterArray(closingList, "closing_cta.bullets", { itemLabel: "point" });
+      var closingItems = closingList.querySelectorAll("li");
+      for (var ci = 0; ci < closingItems.length; ci++) {
+        editModeRegisterField(closingItems[ci], "closing_cta.bullets[" + ci + "]");
+      }
+    }
+    editModeRegisterField(sec.querySelector(".lmc-closing-email-p"), "closing_cta.email_lead", { multiline: true });
+
     var callBtn = sec.querySelector(".lmc-closing-call");
     callBtn.addEventListener("click", function () {
       beacon(toolType, "cta_click", { answers: { target: "closing_cta_call", format: format } });
@@ -717,6 +729,15 @@
         '</div>';
       document.body.appendChild(footer);
     }
+    // Per-LM override: window.__lm_data.footer. Each field falls back to the
+    // exact literal below when absent, so the assembled innerHTML is
+    // byte-identical to the pre-refactor markup for a no-override page.
+    var f = (window.__lm_data && window.__lm_data.footer) || {};
+    var fLabel   = f.label        || "Work with me";
+    var fHeading = f.heading_html || 'Ready to scale without <em>scaling payroll</em>?';
+    var fBody    = f.body         || 'See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free fit call.';
+    var fBtn     = f.cta_label    || 'Book the free fit call';
+
     var cta = footer.querySelector(".im-footer-cta");
     if (cta) {
       // Footer pattern lifted from Lemonade-style demand-gen agency CTAs:
@@ -724,14 +745,21 @@
       // Voice anchors: "scale without scaling payroll" + "Agent-Ready Ops"
       // are Ivan's signature pivots per Voice §0. Italicize "scaling payroll".
       cta.innerHTML =
-        '<span class="im-footer-label">Work with me</span>' +
-        '<h2 class="im-footer-h">Ready to scale without <em>scaling payroll</em>?</h2>' +
-        '<p class="im-footer-p">See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free fit call.</p>' +
-        '<a class="im-footer-btn" href="' + callUrl("footer") + '" target="_blank" rel="noopener" data-footer-cta>Book the free fit call</a>';
+        '<span class="im-footer-label">' + esc(fLabel) + '</span>' +
+        '<h2 class="im-footer-h">' + fHeading + '</h2>' +
+        '<p class="im-footer-p">' + esc(fBody) + '</p>' +
+        '<a class="im-footer-btn" href="' + callUrl("footer") + '" target="_blank" rel="noopener" data-footer-cta>' + esc(fBtn) + '</a>';
       var btn = cta.querySelector("[data-footer-cta]");
       if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });
+      editModeRegisterField(cta.querySelector(".im-footer-label"), "footer.label");
+      editModeRegisterField(cta.querySelector(".im-footer-h"), "footer.heading_html", { contenteditable: true });
+      editModeRegisterField(cta.querySelector(".im-footer-p"), "footer.body", { multiline: true });
+      editModeRegisterField(cta.querySelector(".im-footer-btn"), "footer.cta_label");
     }
-    // Replace footer meta line with cleaner brand-correct version
+    // Replace footer meta line with cleaner brand-correct version. Left as
+    // hardcoded literals (not sourced from data.footer) — the year is always
+    // computed live and the ivanmanfredi.com link is a fixed brand fact, so
+    // there's no per-LM customization value here. Not registered.
     var meta = footer.querySelector(".im-footer-meta");
     if (meta) {
       var year = new Date().getFullYear();
