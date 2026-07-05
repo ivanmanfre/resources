@@ -4,6 +4,11 @@
  "subtitle": "Score whether your Meta creative can actually hold a bigger budget, before you raise the cap.",
  "brand": {
   "accent": "#4d65ff",
+  "accent_secondary": "#7a72b6",
+  "is_dark": true,
+  "surface": "#0b0920",
+  "font_heading": "Inter",
+  "font_body": "Inter",
   "hero_badge": "Interactive Assessment"
  },
  "estimated_minutes": 5,
