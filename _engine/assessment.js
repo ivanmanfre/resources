@@ -301,6 +301,10 @@
           // the wavy sweep killed, meta chips as white/50 text with small accent2
           // dots. Everything below the hero keeps the ?bg surface. Opt-in only.
           if (heroDark) {
+            // Signal the dark-embed theme to the stylesheet. assessment.css keys
+            // the question-flow + results dark rules off html.lmc-embed-dark so
+            // they fire ONLY for dark scan embeds (never light standalones).
+            try { document.documentElement.classList.add("lmc-embed-dark"); } catch (_) {}
             var hb = parse(__params.get("hero_bg")) || inkRgb || [11, 35, 31];
             var a2 = parse(__params.get("accent2")) || rgb;
             var hbHex = hex(hb), a2Hex = hex(a2);

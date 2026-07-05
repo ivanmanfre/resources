@@ -483,3 +483,110 @@
 .lmc-adjust { text-align: center; }
 .lmc-adjust-note { font-size: 14px; color: rgba(26,26,26,.6); margin: 0 0 .75rem; }
 .lmc-adjust-btn { display: inline-flex; }
+
+/* ─── 2026-07-05 — Dark-embed question + results flow ───────────────────────
+   The intro/hero dark theme (?hero=dark) was extended to the full questionnaire
+   and results screen. Before this, question cards, option buttons, the
+   category/progress labels and the "what to do Monday" panel used the light
+   engine tokens (--paper-raise #fff, hardcoded #1A1A1A / rgba(26,26,26,…)) that
+   the embed var-overrides never reach — so on a dark navy embed the options were
+   white-on-white and the "Question N of M" number was near-black on navy.
+
+   Gated on html.lmc-embed-dark, a class set ONLY when ?src=scan_embed AND
+   ?hero=dark (see assessment.js). Light standalone assessments (step-digital,
+   any non-dark embed) never get this class, so they are untouched. Colors read
+   the embed-injected vars (--paper / --ink / --accent), so each prospect's brand
+   still drives them; the white overlays are neutral lifts on any dark surface. */
+html.lmc-embed-dark .lmc-root { --panel: rgba(255,255,255,0.05); --panel-line: rgba(255,255,255,0.14); }
+
+/* Question card shell */
+html.lmc-embed-dark .lmc-card { background: var(--paper); border-color: var(--panel-line); }
+
+/* Category eyebrow + question headline */
+html.lmc-embed-dark .lmc-category { color: rgba(255,255,255,0.62); }
+html.lmc-embed-dark .lmc-question { color: #fff; }
+html.lmc-embed-dark .lmc-question em,
+html.lmc-embed-dark .lmc-question i { color: var(--accent) !important; }
+html.lmc-embed-dark .lmc-question em::after,
+html.lmc-embed-dark .lmc-question i::after { content: none !important; background-image: none !important; }
+
+/* Progress row — the "Question N of M" number was near-black on navy */
+html.lmc-embed-dark .lmc-progress-row { color: rgba(255,255,255,0.55); }
+html.lmc-embed-dark .lmc-progress-label { color: rgba(255,255,255,0.82); }
+html.lmc-embed-dark .lmc-progress-track { background: rgba(255,255,255,0.12); }
+
+/* Option buttons — dark panel, white text, indigo selected state */
+html.lmc-embed-dark .lmc-opt {
+  background: var(--panel);
+  border-color: var(--panel-line);
+  color: #fff;
+}
+html.lmc-embed-dark .lmc-opt:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.28);
+}
+html.lmc-embed-dark .lmc-opt.selected {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  border-color: var(--accent);
+  border-left-color: var(--accent);
+  color: #fff;
+}
+
+/* Nav divider + Back / disabled Next */
+html.lmc-embed-dark .lmc-nav,
+html.lmc-embed-dark .lmc-start-nav { border-top-color: rgba(255,255,255,0.12); }
+html.lmc-embed-dark .lmc-btn-secondary {
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.30);
+}
+html.lmc-embed-dark .lmc-btn-secondary:hover:not([disabled]) {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+html.lmc-embed-dark .lmc-btn[disabled] {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* ── Results screen ── */
+html.lmc-embed-dark .lmc-score-hero {
+  border-top-color: rgba(255,255,255,0.10);
+  border-bottom-color: rgba(255,255,255,0.10);
+}
+html.lmc-embed-dark .lmc-score-hero .ring-track { stroke: rgba(255,255,255,0.12); }
+html.lmc-embed-dark .lmc-score-eyebrow,
+html.lmc-embed-dark .lmc-score-headline { color: #fff; }
+html.lmc-embed-dark .lmc-score-eyebrow::before { background: var(--accent); }
+html.lmc-embed-dark .lmc-score-note { color: rgba(255,255,255,0.75); }
+html.lmc-embed-dark .lmc-score-note strong { color: #fff; }
+html.lmc-embed-dark .lmc-score-denom { color: rgba(255,255,255,0.5); }
+
+/* Gap list */
+html.lmc-embed-dark .lmc-results-h { color: #fff; }
+html.lmc-embed-dark .lmc-gap { border-top-color: rgba(255,255,255,0.10); }
+html.lmc-embed-dark .lmc-gap:hover { background: rgba(255,255,255,0.04); }
+html.lmc-embed-dark .lmc-gap-text { color: #fff; }
+html.lmc-embed-dark .lmc-gap-fix { color: rgba(255,255,255,0.72); }
+
+/* "What to do Monday" — base uses background:var(--ink) which becomes #fff in a
+   dark embed → a white box. Flip to a lifted dark panel. */
+html.lmc-embed-dark .lmc-next-move {
+  background: var(--panel);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid var(--panel-line);
+}
+
+/* Unlocked per-category blocks + capture input */
+html.lmc-embed-dark .lmc-result .lmc-category-block { border-top-color: rgba(255,255,255,0.10); }
+html.lmc-embed-dark .lmc-result .lmc-category-block h4 { color: #fff; }
+html.lmc-embed-dark .lmc-result .lmc-cat-track { background: rgba(255,255,255,0.10); }
+html.lmc-embed-dark .lmc-result-unlock-h { color: #fff; }
+html.lmc-embed-dark .lmc-result .lmc-rec { color: rgba(255,255,255,0.75); }
+html.lmc-embed-dark .lmc-form-input {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.22) !important;
+  color: #fff !important;
+}
+html.lmc-embed-dark .lmc-form-input::placeholder { color: rgba(255,255,255,0.45) !important; }
