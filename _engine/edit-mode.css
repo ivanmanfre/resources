@@ -291,3 +291,180 @@
   transition: opacity .15s ease, transform .15s ease;
 }
 .lme-add-between:hover { opacity: 1; transform: scale(1.05); }
+
+/* ── AI rewrite (✨) ──────────────────────────────────────────────────── */
+
+/* Single floating chip, repositioned to whichever field is hovered/focused.
+   Never a child of the field element — must not pollute its textContent
+   or innerHTML, which are read back into state.data on commit. */
+.lme-ai-chip {
+  position: fixed;
+  z-index: 99997;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid rgba(76, 110, 61, 0.35);
+  background: rgba(247, 244, 239, 0.95);
+  color: #4C6E3D;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-2px);
+  transition: opacity 120ms ease, transform 120ms ease, background 120ms ease;
+}
+.lme-ai-chip-visible {
+  opacity: 0.85;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.lme-ai-chip:hover {
+  opacity: 1;
+  background: rgba(76, 110, 61, 0.12);
+}
+
+/* Prompt / loading / proposal panel */
+.lme-ai-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 30, 20, 0.35);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lme-ai-panel {
+  background: #FBF8F2;
+  border: 1px solid rgba(76, 110, 61, 0.25);
+  border-radius: 8px;
+  width: min(480px, 92vw);
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.lme-ai-panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(76, 110, 61, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lme-ai-panel-title { font-weight: 700; font-size: 13px; color: #33402A; }
+.lme-ai-panel-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+}
+.lme-ai-panel-close:hover { color: #4C6E3D; }
+.lme-ai-panel-body { padding: 16px; overflow: auto; }
+
+.lme-ai-input {
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid rgba(76, 110, 61, 0.35);
+  border-radius: 4px;
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+}
+.lme-ai-input:focus { border-color: #4C6E3D; }
+.lme-ai-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.lme-ai-preset {
+  border: 1px solid rgba(76, 110, 61, 0.35);
+  background: rgba(76, 110, 61, 0.06);
+  color: #4C6E3D;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms;
+}
+.lme-ai-preset:hover { background: rgba(76, 110, 61, 0.14); }
+
+.lme-ai-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+.lme-ai-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #33402A;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lme-ai-btn:hover { background: rgba(0, 0, 0, 0.04); }
+.lme-ai-btn-primary { background: #4C6E3D; border-color: #4C6E3D; color: #fff; }
+.lme-ai-btn-primary:hover { background: #3d5931; }
+
+.lme-ai-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  font-size: 13px;
+  color: #33402A;
+}
+.lme-ai-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(76, 110, 61, 0.25);
+  border-top-color: #4C6E3D;
+  border-radius: 50%;
+  animation: lme-ai-spin 700ms linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lme-ai-spinner { animation: none; }
+}
+@keyframes lme-ai-spin {
+  to { transform: rotate(360deg); }
+}
+
+.lme-ai-block { margin-bottom: 14px; }
+.lme-ai-block-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.lme-ai-block-content {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #222;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  max-height: 180px;
+  overflow: auto;
+}
+.lme-ai-block-proposed .lme-ai-block-content {
+  background: rgba(76, 110, 61, 0.06);
+  border-color: rgba(76, 110, 61, 0.25);
+}
+.lme-ai-block-proposed .lme-ai-block-label { color: #4C6E3D; }

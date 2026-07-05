@@ -12,6 +12,7 @@
   var EDIT_WEBHOOK = "https://n8n.ivanmanfredi.com/webhook/edit-lm";
   var GITHUB_REPO = "ivanmanfredi/resources";
   var GITHUB_API = "https://api.github.com";
+  var REWRITE_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-copy-rewrite";
 
   // ── State ─────────────────────────────────────────────────────────────
   var state = {
@@ -174,6 +175,225 @@
       .replace(/\son\w+=("[^"]*"|'[^']*')/gi, "");
   }
 
+  // ── AI rewrite (✨) ───────────────────────────────────────────────────
+  // Client-facing proposal loop: hover any unlocked field, click ✨, type or
+  // pick an instruction, get a Now/Proposed panel. Nothing touches el or
+  // state.data until the user clicks Keep. A single floating chip is reused
+  // across all fields (cheaper than wrapping every field's DOM, and safe —
+  // it never becomes a child of el, so it can't pollute el.textContent /
+  // el.innerHTML, which are the values read back into state.data on commit).
+  var AI_PRESETS = ["Punchier", "Shorter", "More specific", "In my voice"];
+  var aiChip = null;
+  var aiChipTarget = null;
+  var aiChipHideTimer = null;
+
+  function ensureAiChip() {
+    if (aiChip) return aiChip;
+    aiChip = make("button", {
+      class: "lme-ai-chip",
+      type: "button",
+      title: "Rewrite with AI",
+      "aria-label": "Rewrite with AI",
+    }, "✨");
+    document.body.appendChild(aiChip);
+    aiChip.addEventListener("mouseenter", function () {
+      if (aiChipHideTimer) { clearTimeout(aiChipHideTimer); aiChipHideTimer = null; }
+    });
+    aiChip.addEventListener("mouseleave", scheduleHideAiChip);
+    aiChip.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!aiChipTarget) return;
+      var t = aiChipTarget;
+      hideAiChipNow();
+      openAiPanel(t.el, t.path, t.opts);
+    });
+    window.addEventListener("scroll", function () {
+      if (aiChipTarget && aiChip.classList.contains("lme-ai-chip-visible")) positionAiChip(aiChipTarget.el);
+    }, true);
+    return aiChip;
+  }
+  function positionAiChip(el) {
+    var chip = ensureAiChip();
+    var r = el.getBoundingClientRect();
+    chip.style.top = Math.max(4, r.top + 4) + "px";
+    chip.style.left = Math.max(4, r.right - chip.offsetWidth - 4) + "px";
+  }
+  function showAiChip(el, path, opts) {
+    var chip = ensureAiChip();
+    aiChipTarget = { el: el, path: path, opts: opts || {} };
+    positionAiChip(el);
+    chip.classList.add("lme-ai-chip-visible");
+    if (aiChipHideTimer) { clearTimeout(aiChipHideTimer); aiChipHideTimer = null; }
+  }
+  function scheduleHideAiChip() {
+    if (aiChipHideTimer) clearTimeout(aiChipHideTimer);
+    aiChipHideTimer = setTimeout(hideAiChipNow, 180);
+  }
+  function hideAiChipNow() {
+    if (aiChip) aiChip.classList.remove("lme-ai-chip-visible");
+    aiChipTarget = null;
+  }
+  // Wires hover/focus listeners that surface the shared ✨ chip for one field.
+  // Guarded by data-lme-ai so re-running attachField for the same DOM node
+  // (engines re-attach across partial re-renders) never double-wires it.
+  function wireAiAffordance(el, path, opts) {
+    if (!el || (opts && opts.locked)) return;
+    if (el.getAttribute("data-lme-ai") === "1") return;
+    el.setAttribute("data-lme-ai", "1");
+    function maybeShow() {
+      if (el.hasAttribute("data-lme-field-editing")) return;
+      showAiChip(el, path, opts);
+    }
+    el.addEventListener("mouseenter", maybeShow);
+    el.addEventListener("mouseleave", scheduleHideAiChip);
+    el.addEventListener("focus", maybeShow);
+    el.addEventListener("blur", scheduleHideAiChip);
+  }
+  // Opens the prompt → loading → proposal panel for one field. `original` is
+  // captured once here and never reassigned, so Try again / Cancel can never
+  // drift from the true pre-rewrite value. state.data / el are only ever
+  // written inside the Keep handler.
+  function openAiPanel(el, path, opts) {
+    var isHtml = !!(opts && opts.contenteditable);
+    var original = isHtml ? el.innerHTML : el.textContent;
+    var lastInstruction = "";
+    var closed = false;
+
+    var backdrop = make("div", { class: "lme-ai-backdrop" });
+    var panel = make("div", { class: "lme-ai-panel" });
+    var header = make("div", { class: "lme-ai-panel-header" });
+    header.appendChild(make("span", { class: "lme-ai-panel-title" }, "✨ Rewrite"));
+    var closeBtn = make("button", { class: "lme-ai-panel-close", type: "button", "aria-label": "Close" }, "×");
+    header.appendChild(closeBtn);
+    var body = make("div", { class: "lme-ai-panel-body" });
+    panel.appendChild(header);
+    panel.appendChild(body);
+    backdrop.appendChild(panel);
+
+    function close() {
+      if (closed) return;
+      closed = true;
+      document.removeEventListener("keydown", onKeydown);
+      if (backdrop.parentNode) backdrop.parentNode.removeChild(backdrop);
+    }
+    function onKeydown(e) {
+      if (e.key === "Escape") close();
+    }
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", function (e) { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", onKeydown);
+
+    function showPrompt() {
+      body.innerHTML = "";
+      var input = make("input", { type: "text", class: "lme-ai-input", placeholder: "e.g. punchier, shorter, more specific, in my voice" });
+      input.value = lastInstruction;
+      var chips = make("div", { class: "lme-ai-chips" });
+      AI_PRESETS.forEach(function (label) {
+        var chip = make("button", { class: "lme-ai-preset", type: "button" }, label);
+        chip.addEventListener("click", function () { submit(label.toLowerCase()); });
+        chips.appendChild(chip);
+      });
+      var actions = make("div", { class: "lme-ai-actions" });
+      var cancelBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Cancel");
+      var submitBtn = make("button", { class: "lme-ai-btn lme-ai-btn-primary", type: "button" }, "Rewrite");
+      cancelBtn.addEventListener("click", close);
+      submitBtn.addEventListener("click", function () { submit(input.value.trim()); });
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") { e.preventDefault(); submit(input.value.trim()); }
+      });
+      actions.appendChild(cancelBtn);
+      actions.appendChild(submitBtn);
+      body.appendChild(input);
+      body.appendChild(chips);
+      body.appendChild(actions);
+      input.focus();
+    }
+
+    function showLoading() {
+      body.innerHTML = "";
+      var loading = make("div", { class: "lme-ai-loading" });
+      loading.appendChild(make("span", { class: "lme-ai-spinner" }));
+      loading.appendChild(make("span", {}, "Rewriting…"));
+      body.appendChild(loading);
+    }
+
+    function showProposal(rewritten) {
+      body.innerHTML = "";
+      var nowBlock = make("div", { class: "lme-ai-block" });
+      nowBlock.appendChild(make("div", { class: "lme-ai-block-label" }, "Now"));
+      var nowPreview = make("div", { class: "lme-ai-block-content" });
+      if (isHtml) nowPreview.innerHTML = sanitizeHtml(original); else nowPreview.textContent = original;
+      nowBlock.appendChild(nowPreview);
+
+      var proposedBlock = make("div", { class: "lme-ai-block lme-ai-block-proposed" });
+      proposedBlock.appendChild(make("div", { class: "lme-ai-block-label" }, "Proposed"));
+      var proposedPreview = make("div", { class: "lme-ai-block-content" });
+      if (isHtml) proposedPreview.innerHTML = sanitizeHtml(rewritten); else proposedPreview.textContent = rewritten;
+      proposedBlock.appendChild(proposedPreview);
+
+      var actions = make("div", { class: "lme-ai-actions" });
+      var cancelBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Cancel");
+      var retryBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Try again");
+      var keepBtn = make("button", { class: "lme-ai-btn lme-ai-btn-primary", type: "button" }, "Keep");
+      cancelBtn.addEventListener("click", close);
+      retryBtn.addEventListener("click", showPrompt);
+      keepBtn.addEventListener("click", function () {
+        // The ONLY place this panel writes to el / state.data.
+        if (isHtml) {
+          var clean = sanitizeHtml(rewritten);
+          el.innerHTML = clean;
+          setByPath(state.data, path, clean);
+        } else {
+          el.textContent = rewritten;
+          setByPath(state.data, path, rewritten);
+        }
+        markDirty();
+        close();
+        showToast("Rewrite applied · Publish to go live");
+      });
+      actions.appendChild(cancelBtn);
+      actions.appendChild(retryBtn);
+      actions.appendChild(keepBtn);
+
+      body.appendChild(nowBlock);
+      body.appendChild(proposedBlock);
+      body.appendChild(actions);
+    }
+
+    function submit(instruction) {
+      if (!instruction) return;
+      lastInstruction = instruction;
+      showLoading();
+      var context = (state.data && state.data.title) || "";
+      fetch(REWRITE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: original, instruction: instruction, context: context }),
+      })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; });
+        })
+        .then(function (res) {
+          if (closed) return;
+          if (res.status !== 200 || !res.body || !res.body.rewritten) {
+            showToast("Rewrite failed. Original kept.", true);
+            showPrompt();
+            return;
+          }
+          showProposal(res.body.rewritten);
+        })
+        .catch(function () {
+          if (closed) return;
+          showToast("Rewrite failed. Original kept.", true);
+          showPrompt();
+        });
+    }
+
+    document.body.appendChild(backdrop);
+    showPrompt();
+  }
+
   // ── Field attach ──────────────────────────────────────────────────────
   function attachField(el, path, opts) {
     if (!el) return;
@@ -187,7 +407,7 @@
       el.contentEditable = "true";
       el.spellcheck = true;
       el.classList.add("lme-field-contenteditable");
-      el.addEventListener("focus", function () { el.setAttribute("data-lme-field-editing", "true"); });
+      el.addEventListener("focus", function () { el.setAttribute("data-lme-field-editing", "true"); hideAiChipNow(); });
       el.addEventListener("blur", function () {
         el.removeAttribute("data-lme-field-editing");
         var raw = el.innerHTML;
@@ -202,6 +422,7 @@
         var text = (e.clipboardData || window.clipboardData).getData("text/plain");
         document.execCommand("insertText", false, text);
       });
+      wireAiAffordance(el, path, opts);
       return;
     }
 
@@ -213,6 +434,7 @@
       e.preventDefault(); e.stopPropagation();
       enterEditField(el, path, opts || {});
     });
+    wireAiAffordance(el, path, opts);
   }
   function enterEditField(el, path, opts) {
     var original = el.textContent;
@@ -223,6 +445,7 @@
     });
     input.value = original;
     el.setAttribute("data-lme-field-editing", "true");
+    hideAiChipNow();
     el.innerHTML = "";
     el.appendChild(input);
     input.focus();
