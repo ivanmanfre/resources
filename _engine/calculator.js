@@ -416,10 +416,11 @@
               window.LM.editMode.registerField(tagEl, "recommendations[" + origIdx + "].tag");
             }
             recDiv.appendChild(tagEl);
-            var textNode = document.createTextNode(m.text || "");
-            recDiv.appendChild(textNode);
+            var textSpan = make("span", { class: "lmc-rec-text" });
+            textSpan.textContent = m.text || "";
+            recDiv.appendChild(textSpan);
             if (window.LM && window.LM.editMode && origIdx >= 0) {
-              window.LM.editMode.registerField(recDiv, "recommendations[" + origIdx + "].text");
+              window.LM.editMode.registerField(textSpan, "recommendations[" + origIdx + "].text");
             }
             rcEl.appendChild(recDiv);
           });

@@ -95,7 +95,7 @@ export default async function handler(req: Request): Promise<Response> {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors() });
   if (req.method !== "POST") return jsonResponse({ error: "method_not_allowed" }, 405);
 
-  let body: { text?: string; instruction?: string; context?: string } = {};
+  let body: { text?: string; instruction?: string; context?: string; token?: string; slug?: string } = {};
   try {
     body = await req.json();
   } catch (_e) {
@@ -117,6 +117,22 @@ export default async function handler(req: Request): Promise<Response> {
   }
   if (context.length > CONTEXT_CAP) {
     return jsonResponse({ error: `context exceeds ${CONTEXT_CAP} char limit` }, 400);
+  }
+
+  // Gate: require a valid edit token (same validator the client uses to enter edit mode).
+  // Fails CLOSED — unlike the IP limit below, which fails open when the RPC errors.
+  const token = typeof body.token === "string" ? body.token : "";
+  if (!token) return jsonResponse({ error: "unauthorized" }, 401);
+  try {
+    const chk = await fetch(SUPABASE_URL.replace(/\/$/, "") + "/functions/v1/lm-edit-token-check", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    });
+    const cj = await chk.json().catch(() => ({}));
+    if (!cj || cj.ok !== true) return jsonResponse({ error: "unauthorized" }, 401);
+  } catch (_e) {
+    return jsonResponse({ error: "auth_unavailable" }, 503);
   }
 
   const sb = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });

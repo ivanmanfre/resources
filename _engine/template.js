@@ -31,9 +31,10 @@
     if (L.editMode) {
       if (heroH1) L.editMode.registerField(heroH1, "title");
       if (heroSub) L.editMode.registerField(heroSub, "subtitle");
-      // Badge only registers when data actually supplied it — otherwise the
-      // rendered text is the literal fallback "Template", no matching path.
-      if (heroBadge && data.brand && data.brand.hero_badge) L.editMode.registerField(heroBadge, "brand.hero_badge");
+      // brand.hero_badge is a writable path even when data didn't supply it
+      // (the rendered text is just the fallback "Template" in that case) —
+      // register unconditionally, matching the other engines.
+      if (heroBadge) L.editMode.registerField(heroBadge, "brand.hero_badge");
     }
     root.appendChild(L.buildIntro(data, ".lmt-stack", {
       tool_type: "template",

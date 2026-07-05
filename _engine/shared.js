@@ -902,6 +902,16 @@
     editModeMaybeEnable();
     bindEditModeShortcut();
     rebrandFooter();
+    // Engines set window.__lm_data asynchronously (inside their data.json fetch),
+    // which happens AFTER this synchronous call — so any data.footer override
+    // isn't visible yet. Poll briefly and re-run once the data lands so the
+    // override renders for real visitors and edit-mode shows the true text.
+    var _fTries = 0;
+    var _fPoll = setInterval(function () {
+      _fTries++;
+      if (window.__lm_data) { rebrandFooter(); clearInterval(_fPoll); }
+      else if (_fTries > 60) clearInterval(_fPoll); // ~3s cap
+    }, 50);
     scanCaptures();
     rewriteLegacyContactLinks();
     // Engines render asynchronously after data.json fetch — watch the LM

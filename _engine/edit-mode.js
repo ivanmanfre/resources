@@ -369,7 +369,7 @@
       fetch(REWRITE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: original, instruction: instruction, context: context }),
+        body: JSON.stringify({ text: original, instruction: instruction, context: context, token: state.token, slug: state.slug }),
       })
         .then(function (r) {
           return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; });
