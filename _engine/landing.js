@@ -40,6 +40,7 @@
 
   function render(d) {
     window.__lm_data = d;
+    window.__lm_format = "landing";  // required so edit mode can mount (shared.js waits for __lm_format + __lm_data)
     if (d.slug) window.__lm_slug = d.slug;
 
     var inside = (d.inside || []).map(function (b, i) {

@@ -10,6 +10,7 @@
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
+    window.__lm_format = "template";  // required so edit mode can mount (shared.js waits for __lm_format + __lm_data)
     var slug = data.slug;
     var persisted = L.readKV("template", slug, "answers", {}) || {};
     var selected = Object.assign({}, persisted);

@@ -12,6 +12,7 @@
   function render(data, root) {
     window.__lm_slug = data.slug;
     window.__lm_data = data;
+    window.__lm_format = "swipe";  // required so edit mode can mount (shared.js waits for __lm_format + __lm_data)
     var slug = data.slug;
     var taken = L.readKV("swipe", slug, "taken", []) || [];
     var takenSet = new Set(taken);
