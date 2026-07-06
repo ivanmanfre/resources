@@ -734,16 +734,16 @@
     // byte-identical to the pre-refactor markup for a no-override page.
     var f = (window.__lm_data && window.__lm_data.footer) || {};
     var fLabel   = f.label        || "Work with me";
-    var fHeading = f.heading_html || 'Ready to scale without <em>scaling payroll</em>?';
-    var fBody    = f.body         || 'See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free fit call.';
+    var fHeading = f.heading_html || 'Ready to turn your feed into pipeline you <em>own</em>?';
+    var fBody    = f.body         || 'I build and run LinkedIn inbound engines for agency owners: content, lead magnets, and nurture. Book a free fit call.';
     var fBtn     = f.cta_label    || 'Book the free fit call';
 
     var cta = footer.querySelector(".im-footer-cta");
     if (cta) {
       // Footer pattern lifted from Lemonade-style demand-gen agency CTAs:
-      // mono label / outcome question h2 / receipts + invitation body / button.
-      // Voice anchors: "scale without scaling payroll" + "Agent-Ready Ops"
-      // are Ivan's signature pivots per Voice §0. Italicize "scaling payroll".
+      // mono label / outcome question h2 / invitation body / button.
+      // Voice anchors: inbound-engine positioning — "pipeline you own" +
+      // "the feed is the demo" are Ivan's signature pivots. Italicize "own".
       cta.innerHTML =
         '<span class="im-footer-label">' + esc(fLabel) + '</span>' +
         '<h2 class="im-footer-h">' + fHeading + '</h2>' +
