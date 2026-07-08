@@ -1,6 +1,6 @@
 # resources.ivanmanfredi.com
 
-Source repo for Ivan Manfredi's lead-magnet library — interactive assessments, action checklists, automation ROI calculators, and playbooks for service-business operators at 11–100 employees.
+Source repo for Ivan Manfredi's lead-magnet library — interactive assessments, action checklists, automation ROI calculators, and playbooks for agency owners.
 
 ## What's here
 
