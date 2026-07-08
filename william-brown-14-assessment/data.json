@@ -1,0 +1,568 @@
+{
+ "slug": "william-brown-14-assessment",
+ "title": "The $100K Month Readiness Score",
+ "subtitle": "Find out if your offer, content, business model, and mindset are built to compound toward $100K months or what's quietly holding the ceiling in place.",
+ "brand": {
+  "accent": "#0051c3",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "the_offer",
+   "name": "The Offer",
+   "questions": [
+    {
+     "id": "the_offer_q1",
+     "text": "How did you arrive at your current price?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I picked a number that felt safe and wouldn't scare people off",
+       "score": 1
+      },
+      {
+       "label": "I matched what competitors charge and added a little on top",
+       "score": 2
+      },
+      {
+       "label": "I estimated the value and stacked bonuses to help justify it",
+       "score": 3
+      },
+      {
+       "label": "I built the price from the results my clients actually get, working backward",
+       "score": 4
+      },
+      {
+       "label": "My price reflects the full transformation I deliver and I rarely get pushback on it",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "the_offer_q2",
+     "text": "When a prospect hesitates on your price, what usually happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I drop the price or add extras to get them over the line",
+       "score": 1
+      },
+      {
+       "label": "I re-explain the features and hope they come around",
+       "score": 2
+      },
+      {
+       "label": "I offer a payment plan and sometimes that helps",
+       "score": 3
+      },
+      {
+       "label": "I redirect to the outcome and most end up converting anyway",
+       "score": 4
+      },
+      {
+       "label": "Price hesitation is rare. People self-select before we even get on a call.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "the_offer_q3",
+     "text": "How specific is your offer right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I help a range of people with a range of different things",
+       "score": 1
+      },
+      {
+       "label": "I have a niche but the offer covers several different outcomes",
+       "score": 2
+      },
+      {
+       "label": "It's fairly focused but I still customize heavily per client",
+       "score": 3
+      },
+      {
+       "label": "One problem, one type of person, one clear result",
+       "score": 4
+      },
+      {
+       "label": "The offer is so specific that ideal clients recognize themselves in it immediately",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "the_offer_q4",
+     "text": "Describe how you actually built your current offer:",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I included what I thought people would want and picked a price",
+       "score": 1
+      },
+      {
+       "label": "I based it on a structure that worked for someone else in my space",
+       "score": 2
+      },
+      {
+       "label": "I tested different things until something started to convert",
+       "score": 3
+      },
+      {
+       "label": "I reverse-engineered from the specific outcome my best clients needed",
+       "score": 4
+      },
+      {
+       "label": "I've built and refined it over time based on documented client results",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're building backwards",
+     "text": "Most coaches pick a price they feel safe charging, then stack bonuses to justify it. That's not an offer. It's a justification. The one thing I see separating the coach doing $14K/month from the one doing $271K/month isn't talent, audience size, or content quality. It's the offer. Every time. Fix this before you touch a funnel, an ad, or another piece of content.",
+     "steps": [
+      "Write down the specific result your best client got, with a number and a timeframe attached to it",
+      "Build your price from that result, not from what feels comfortable to ask for",
+      "Remove every bonus that exists to justify the price rather than to deliver the outcome",
+      "Get clear on exactly who the offer is for. Specificity is what makes the right people self-select in."
+     ]
+    },
+    "mid": {
+     "headline": "You have the bones. The clarity is still missing.",
+     "text": "You've moved past pricing from fear. But there's still something fuzzy — the positioning, who exactly it's for, what result they can count on. The gap between $40K months and $100K months usually lives right here. Most people try to fix this with more content or more ads. All that does is speed up the breakdown.",
+     "steps": [
+      "Write your offer in one sentence: who it's for, what result they get, and by when",
+      "Ask your last five clients why they bought. Their exact words are your best positioning.",
+      "Define clearly what your offer says no to. An offer isn't just what's included."
+     ]
+    },
+    "high": {
+     "headline": "The foundation is solid",
+     "text": "You've done what most people skip entirely. The offer is built around outcome, not ego, and the price reflects the transformation. The job now is compounding it. Tighter proof, stronger positioning, a machine that delivers the same result at scale.",
+     "steps": [
+      "Document client results obsessively. Two-state numbers with time windows close better than vague claims.",
+      "Test one lever at a time: your hook, your CTA, your close sequence",
+      "Build a repeatable path from content to call to close that doesn't depend on you being perfect every time"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_that_converts",
+   "name": "Content That Converts",
+   "questions": [
+    {
+     "id": "content_that_converts_q1",
+     "text": "How do you produce most of your content?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "AI writes most of it. I edit lightly or post it as-is.",
+       "score": 1
+      },
+      {
+       "label": "AI drafts it. I rewrite the parts that sound obviously off.",
+       "score": 2
+      },
+      {
+       "label": "I use templates and frameworks. AI handles the fill-in.",
+       "score": 3
+      },
+      {
+       "label": "AI helps with research and structure. The voice and opinions are mine.",
+       "score": 4
+      },
+      {
+       "label": "Everything comes from my own experience. I might use AI for light editing only.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "content_that_converts_q2",
+     "text": "What typically happens when a prospect has seen your content before getting on a call?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They ask the same qualifying questions as people who've seen nothing",
+       "score": 1
+      },
+      {
+       "label": "They mention a post or video but don't seem especially warmer",
+       "score": 2
+      },
+      {
+       "label": "They come in a bit warmer and skip a few early questions",
+       "score": 3
+      },
+      {
+       "label": "Most arrive having already made up their mind. The call just confirms fit.",
+       "score": 4
+      },
+      {
+       "label": "Content closes them before the call. The call is mostly a formality.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "content_that_converts_q3",
+     "text": "What does your content mostly do right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Gets views and followers but rarely generates booked calls",
+       "score": 1
+      },
+      {
+       "label": "Gets engagement but conversion to calls is inconsistent",
+       "score": 2
+      },
+      {
+       "label": "Generates leads, though I'm not sure which content type is doing the work",
+       "score": 3
+      },
+      {
+       "label": "Specific formats consistently fill my calendar",
+       "score": 4
+      },
+      {
+       "label": "Content brings in pre-qualified buyers predictably. I know exactly what drives it.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Views and calls are different metrics",
+     "text": "Two coaches. Nearly identical content. One at $14K/month, one at $271K/month. The one at $14K uses AI for her content. About 7 booked calls a month. The one at $271K is genuine. Human. About 48 booked calls a month. AI writes things that sound right. It doesn't write things that feel real. That gap is exactly where the calls go.",
+     "steps": [
+      "Pick one real experience from the past 30 days and write about what actually happened, without cleaning it up",
+      "Stop posting content designed to perform and start posting content designed to qualify your buyer",
+      "Ask yourself: if a perfect client read this, would they immediately think 'this is exactly for me'?"
+     ]
+    },
+    "mid": {
+     "headline": "Something is working. You can't repeat it yet.",
+     "text": "You're getting traction but you don't fully control it. The content that converts and the content that just gets likes look about the same to you right now. That makes it hard to double down on what's actually working and stop spending time on what isn't.",
+     "steps": [
+      "Track where every booked call came from for the next 60 days: source, content piece, platform",
+      "Find the two or three posts that generated your best conversations and write them down",
+      "Build the next 30 days of content as tighter variations of those. Not new formats. More focus."
+     ]
+    },
+    "high": {
+     "headline": "Content is doing its job",
+     "text": "You've figured out what most people spend years trying to crack. Content that attracts the right person before they ever get on a call. The job now is volume, consistency, and making sure the quality holds as output increases.",
+     "steps": [
+      "Document the formats and hooks that drive your best calls so you can build a repeatable process around them",
+      "Protect the human voice that makes your content work as you scale production. That's the thing that's actually converting.",
+      "Track call quality, not just call volume. The goal is shorter calls with higher close rates."
+     ]
+    }
+   }
+  },
+  {
+   "id": "business_simplicity",
+   "name": "Business Simplicity",
+   "questions": [
+    {
+     "id": "business_simplicity_q1",
+     "text": "How would you describe your current business model?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Multiple offers, income streams, and approaches running at once",
+       "score": 1
+      },
+      {
+       "label": "A main offer plus side products, templates, and add-ons",
+       "score": 2
+      },
+      {
+       "label": "Mostly one model, but I still take custom work outside it",
+       "score": 3
+      },
+      {
+       "label": "One clean model. I occasionally say yes to things outside it.",
+       "score": 4
+      },
+      {
+       "label": "One offer. One model. I say no to everything that doesn't fit.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "business_simplicity_q2",
+     "text": "How much does your revenue vary month to month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Wildly. Some months 3x others. Some months I wonder if it'll cover costs.",
+       "score": 1
+      },
+      {
+       "label": "A lot. I can't reliably predict what next month looks like.",
+       "score": 2
+      },
+      {
+       "label": "I have a rough sense but it swings 30 to 50 percent depending on how active I am",
+       "score": 3
+      },
+      {
+       "label": "Mostly stable. I can forecast within about 20 percent.",
+       "score": 4
+      },
+      {
+       "label": "Predictable enough that I plan hiring and investment from it confidently",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "business_simplicity_q3",
+     "text": "If you stopped actively pushing for 30 days, what would happen to your revenue?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It would stop almost immediately",
+       "score": 1
+      },
+      {
+       "label": "It would drop by more than half. Most things depend on my direct involvement.",
+       "score": 2
+      },
+      {
+       "label": "Some things would keep running but new sales would stall",
+       "score": 3
+      },
+      {
+       "label": "Most of the machine would keep working. I'd need to monitor it.",
+       "score": 4
+      },
+      {
+       "label": "Revenue would continue. Systems run whether I'm there or not.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Complexity is quietly killing your margins",
+     "text": "I built a company to $16.4 million and quietly hated most of it. Big team. Huge ad spend. Funnels I could barely explain to my own staff. Then I sold it and did the opposite. Small team. Barely any ads. $580K last month with margins I'm actually proud of. Complexity feels like momentum. It's usually just noise.",
+     "steps": [
+      "List every offer and income stream you're running right now, then cut anything that isn't your main thing",
+      "Calculate your real profit margin, not just your revenue number",
+      "Decide on the one model you're going all-in on and start saying no to everything outside it"
+     ]
+    },
+    "mid": {
+     "headline": "Closer than you think. Not quite predictable yet.",
+     "text": "You've simplified somewhat but revenue still depends too much on how hard you push that month. Once that closes, once the machine runs without your constant input, the whole business changes. Not because you build something new. Because what you already have finally gets treated properly.",
+     "steps": [
+      "Find the three to five activities that directly generate revenue and protect them above everything else",
+      "Automate or hand off one thing per week that doesn't require you specifically to be the one doing it",
+      "Build a 90-day revenue forecast and compare it to actuals. The gap shows you where the unpredictability lives."
+     ]
+    },
+    "high": {
+     "headline": "Simple and profitable. This is the model.",
+     "text": "You've figured out what most people spend years overcomplicating. One model, predictable revenue, systems that hold without your constant input. This is what a real business looks like. Not the bloated version most people build chasing the look of scale.",
+     "steps": [
+      "Document your model clearly enough that someone could run it without you",
+      "Review your profit margin every quarter. Simplicity should be paying off in numbers, not just in how it feels.",
+      "Protect the simplicity as you grow. Every new offer or product has a cost beyond the obvious one."
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_owner_mindset",
+   "name": "The Owner Mindset",
+   "questions": [
+    {
+     "id": "the_owner_mindset_q1",
+     "text": "Who handles most of the daily decisions in your business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Me. I'm involved in almost every decision and client interaction.",
+       "score": 1
+      },
+      {
+       "label": "Mostly me. I have some help but I'm still the one moving most things forward.",
+       "score": 2
+      },
+      {
+       "label": "I delegate some tasks but I'm still the bottleneck on things that actually matter",
+       "score": 3
+      },
+      {
+       "label": "Team members and systems handle most day-to-day decisions",
+       "score": 4
+      },
+      {
+       "label": "The business runs on clear systems. I make strategic decisions only.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "the_owner_mindset_q2",
+     "text": "Where do most of your working hours go right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Client delivery, sales calls, and content production, all at once, all the time",
+       "score": 1
+      },
+      {
+       "label": "Mostly delivery and sales, with occasional time on growth",
+       "score": 2
+      },
+      {
+       "label": "Split between client delivery and working on the business itself",
+       "score": 3
+      },
+      {
+       "label": "Mostly on growth activities and improving how the business runs",
+       "score": 4
+      },
+      {
+       "label": "Strategic decisions, partnerships, and the moves that actually compound",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "the_owner_mindset_q3",
+     "text": "If someone offered to buy your business tomorrow, what's the honest answer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There's nothing to buy. The revenue leaves when I do.",
+       "score": 1
+      },
+      {
+       "label": "There might be something there but it's undocumented and unclear",
+       "score": 2
+      },
+      {
+       "label": "The model is solid but I haven't built it with a buyer in mind",
+       "score": 3
+      },
+      {
+       "label": "I have systems and client data that would transfer. It's buyable.",
+       "score": 4
+      },
+      {
+       "label": "I've built it to be sellable from day one. Documentation, systems, recurring revenue. All in place.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "the_owner_mindset_q4",
+     "text": "What drives your business growth each month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "My effort. When I push, it grows. When I slow down, it dips.",
+       "score": 1
+      },
+      {
+       "label": "Mostly my personal outreach and how much content I produce that month",
+       "score": 2
+      },
+      {
+       "label": "A mix of my activity and some systems, but my effort is still the main driver",
+       "score": 3
+      },
+      {
+       "label": "Systems generate leads and sales. I work on improving them rather than running them.",
+       "score": 4
+      },
+      {
+       "label": "What I built last quarter keeps paying off this quarter without me starting over",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're an expert. Not yet an owner.",
+     "text": "At the beginning, your expertise is enough. You can get clients, make sales, generate revenue. But eventually the business starts asking different questions: how do you create predictable lead flow? How do you scale without becoming the bottleneck? How do you build something someone would actually want to buy one day? Those questions have driven the biggest breakthroughs in my own businesses. They've also been behind some of my most expensive mistakes.",
+     "steps": [
+      "Write down every decision that currently requires you specifically, then ask which ones actually do",
+      "Find the biggest bottleneck in your business right now: is it leads, conversion, delivery, or you?",
+      "Spend two hours this week working on the business. Document one process that currently lives only in your head."
+     ]
+    },
+    "mid": {
+     "headline": "You're thinking like an owner. Now build like one.",
+     "text": "You've made the mental move. You know the business needs to be bigger than you. But the systems, the documentation, and the team aren't fully there yet. The gap between knowing and building is where most coaches stay stuck for years.",
+     "steps": [
+      "Pick the one process that, if systemized, would remove the most from your plate. Build that one first.",
+      "Define what 'runs without me' actually means for your specific model, then work backward from there",
+      "Set a revenue target for what the business needs to do without your direct involvement and give yourself a deadline"
+     ]
+    },
+    "high": {
+     "headline": "You're building an asset, not just an income stream",
+     "text": "Going from expert to owner to exit-ready builder is the decision most founders never actually make. You're asking the questions that drive the biggest breakthroughs: predictable lead flow, systems that hold, a business someone would want to buy. Keep protecting that way of thinking as the revenue grows. It's easy to slip back into operator mode when things get busy.",
+     "steps": [
+      "Document your valuation drivers: recurring revenue, documented systems, client retention. Review them every quarter.",
+      "Build a 12-month roadmap with the sole goal of making the business more sellable, whether you sell or not",
+      "Find someone who has done the exit you want and learn what they built in the 18 months before they sold"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/ivan-intelligents/30min"
+ },
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these best describes where you are right now?",
+  "answers": [
+   {
+    "label": "I'm turning what I know into a coaching or course business and haven't hit consistent income yet",
+    "tag": "starter"
+   },
+   {
+    "label": "I'm coaching or selling courses and doing under $30K/month",
+    "tag": "early"
+   },
+   {
+    "label": "I'm between $30K and $80K/month and growth has stalled",
+    "tag": "mid"
+   },
+   {
+    "label": "I'm past $80K/month and building toward an exit or significant scale",
+    "tag": "scaling"
+   }
+  ]
+ }
+}
