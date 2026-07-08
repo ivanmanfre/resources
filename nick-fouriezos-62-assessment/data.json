@@ -1,7 +1,7 @@
 {
  "slug": "nick-fouriezos-62-assessment",
  "title": "The Investor-Ready Story Audit",
- "subtitle": "Score whether your narrative is clear, credible, and specific enough to raise capital and win clients before you spend a dollar amplifying it.",
+ "subtitle": "Score whether your founder narrative is clear, credible, and specific enough to raise capital and win clients before you spend a dollar amplifying it.",
  "brand": {
   "accent": "#0E99AB",
   "hero_badge": "Interactive Assessment"
@@ -9,78 +9,113 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "the_proof_layer",
-   "name": "The Proof Layer",
+   "id": "proof_architecture",
+   "name": "Proof Architecture",
    "questions": [
     {
-     "id": "the_proof_layer_q1",
-     "text": "Open your homepage or pitch deck right now. Count the adjectives in the first paragraph: 'leading,' 'innovative,' 'best-in-class.' How many are there?",
-     "max_score": 4,
-     "answers": [
-      {
-       "label": "Five or more. My opening is mostly description and positioning language.",
-       "score": 1
-      },
-      {
-       "label": "Three or four. I know they're there but haven't replaced them with numbers yet.",
-       "score": 2
-      },
-      {
-       "label": "One or two. I've tried to keep the language tight.",
-       "score": 3
-      },
-      {
-       "label": "Zero. Every claim in that paragraph points to a specific number I own.",
-       "score": 4
-      }
-     ]
-    },
-    {
-     "id": "the_proof_layer_q2",
-     "text": "What does your single most credibility-building sentence look like right now?",
+     "id": "proof_architecture_q1",
+     "text": "Read the first sentence on your homepage right now. What does it say?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Something like 'we're disrupting the X market' or 'the leading platform for Y.'",
+       "label": "Something like 'the leading platform for X' or 'the most innovative solution in Y'",
        "score": 1
       },
       {
-       "label": "A general traction claim: 'strong growth' or 'thousands of customers.'",
+       "label": "A market size or category claim with no number that is uniquely mine",
        "score": 2
       },
       {
-       "label": "A real number, but one I probably share with other companies in the space.",
+       "label": "A growth number, but no context for why it matters in my category right now",
        "score": 3
       },
       {
-       "label": "A specific stat that no one else in my category can claim verbatim.",
+       "label": "A specific outcome number my company owns, like a user count or revenue milestone",
        "score": 4
       },
       {
-       "label": "A specific stat with a time window: before, after, and how long it took.",
+       "label": "A sentence nobody else can claim, backed by a checkable number and tied to a clear result",
        "score": 5
       }
      ]
     },
     {
-     "id": "the_proof_layer_q3",
-     "text": "If an investor asked you to pull the source for your most important claim in thirty seconds, could you?",
+     "id": "proof_architecture_q2",
+     "text": "When an investor or potential client asks for proof that your product works, what do you reach for first?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Probably not. The claim is more directional than documented.",
+       "label": "A press mention, award, or customer testimonial with no numbers attached",
        "score": 1
       },
       {
-       "label": "Eventually, but I'd need to dig for it.",
+       "label": "ARR or user count without showing what drove the change",
        "score": 2
       },
       {
-       "label": "Yes, but it's an estimate rather than a hard number.",
+       "label": "A growth rate, but only one data point with no before/after framing",
        "score": 3
       },
       {
-       "label": "Yes. I know exactly where the data lives and can pull it in under a minute.",
+       "label": "A specific before/after customer outcome tied directly to my product",
+       "score": 4
+      },
+      {
+       "label": "A pattern of before/after outcomes across customers, tied to exactly how my product works",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "proof_architecture_q3",
+     "text": "How many adjectives appear in the first paragraph of your pitch deck or homepage?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Four or more: innovative, leading, best-in-class, comprehensive",
+       "score": 1
+      },
+      {
+       "label": "Two or three adjectives, mostly describing the product or market",
+       "score": 2
+      },
+      {
+       "label": "One adjective alongside one real number I own",
+       "score": 3
+      },
+      {
+       "label": "No adjectives. I lead with a specific number or outcome.",
+       "score": 4
+      },
+      {
+       "label": "Zero adjectives. Every claim is a fact someone can check or a number only I can claim.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "proof_architecture_q4",
+     "text": "When you describe your traction, how specific is the story you tell?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I describe what the product does and say customers love it",
+       "score": 1
+      },
+      {
+       "label": "I share a single metric, like revenue or user count, with no surrounding context",
+       "score": 2
+      },
+      {
+       "label": "I share a growth number with a time window but no comparison to where I started",
+       "score": 3
+      },
+      {
+       "label": "I can show before/after numbers for at least one customer with a specific result",
+       "score": 4
+      },
+      {
+       "label": "I have three or more before/after customer numbers, a clear cause, and a repeatable pattern I can name",
        "score": 5
       }
      ]
@@ -88,103 +123,142 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Your proof layer is leaking on first read.",
-     "text": "Words like 'leading,' 'innovative,' and 'best-in-class' cost nothing to write, so they prove nothing. Your first paragraph is where the reader decides whether you've earned two more minutes. Right now, you probably haven't.",
+     "headline": "Your proof points are costing you the room",
+     "text": "Adjectives are free, so investors treat them as noise. Words like 'leading,' 'innovative,' and 'best-in-class' process as filler before the next sentence starts. Every room you walk into has heard those words a hundred times. What they have not heard is your specific number. That is the one thing nobody else can claim. 'Seven thousand to seven hundred thousand users in a week' is a sentence nobody else can write. You need its equivalent.",
      "steps": [
-      "Pull up your homepage and your one-pager. Highlight every adjective in the first three sentences.",
-      "For each one, ask: is there a specific number I own that makes this point better? If yes, swap it. If no, cut the adjective and restructure the sentence.",
-      "Find the three numbers in your business that nobody else in your category can claim. Those are the sentences that should open your pitch."
+      "Pull up your homepage right now and count the adjectives in the first paragraph. Replace three of them with a number you actually own.",
+      "Write down the best outcome a customer got from your product. Find the before state and the after state. Put that in the first sentence.",
+      "Build a list of five facts about your company that are checkable and uniquely yours. Those are your proof points. Everything else is noise."
      ]
     },
     "mid": {
-     "headline": "You have real proof. You're not leading with it.",
-     "text": "The numbers are there. They're just buried. Investors and clients make the call in the first thirty seconds, and if your best proof is in slide nine or paragraph four, most people never see it. The fix isn't inventing better numbers. It's putting the ones you have in front.",
+     "headline": "You have real numbers but you are not using them at the right moment",
+     "text": "The numbers exist, which puts you ahead of most. The issue is sequencing. A growth rate without a starting point is harder to evaluate than you think. An investor who sees '3x growth' and cannot tell if that is $100k to $300k or $3M to $9M will fill in the blank conservatively. Give them the full picture before they guess.",
      "steps": [
-      "Audit your opening: what's the first specific, checkable claim a reader sees? If it's not in the first two sentences, move it.",
-      "Test whether your claims are uniquely yours. Could a competitor write the same sentence about their company? If yes, that claim isn't doing the job. The words need to belong to you specifically.",
-      "Add a time window to your best number. '$X in revenue' is weaker than '$X in revenue in the first 90 days.' Specificity is credibility."
+      "Rewrite your top three proof points in before/after/time format: from X to Y in Z months.",
+      "Check whether your first sentence leads with a number or an adjective. Swap if needed.",
+      "Find the one number in your story that nobody else in your category can claim. Move it earlier."
      ]
     },
     "high": {
-     "headline": "Your proof layer is solid. Protect it as you scale.",
-     "text": "You've done the hard part. You've replaced adjectives with claims that are uniquely yours and checkable. The risk at this stage is drift. As the team grows and copy gets edited by more hands, the vague language creeps back in. Keep the standard.",
+     "headline": "Your proof architecture is strong. The work now is precision.",
+     "text": "You are leading with specifics, which means investors can actually evaluate what you are saying. At this level, the question is whether your strongest number is positioned where it lands hardest, or buried in slide 7 behind context that should come after the claim.",
      "steps": [
-      "Document your three core proof points in a single internal reference so everyone writing about the company uses the same specific numbers.",
-      "Before any major pitch or publishing push, run a quick audit: count the adjectives in the first paragraph. If the number goes up, fix it before it goes out.",
-      "Find one more number you own that isn't in the story yet. There's usually one sitting in your data that's more striking than what you're currently leading with."
+      "Audit the order of your proof points. The strongest number should come first, not after the explanation.",
+      "Test whether a founder peer can repeat your top three facts after a single hearing. If they cannot, the framing needs work.",
+      "Add a fourth dimension to your strongest proof point: who it happened to, how fast, and what you did that made it possible."
      ]
     }
    }
   },
   {
-   "id": "the_revenue_signal",
-   "name": "The Revenue Signal",
+   "id": "narrative_clarity",
+   "name": "Narrative Clarity",
    "questions": [
     {
-     "id": "the_revenue_signal_q1",
-     "text": "Think about the last ten pieces of content you published. Which metric is actually running your content decisions?",
+     "id": "narrative_clarity_q1",
+     "text": "If a founder peer had to explain your business to an investor in two sentences after hearing your pitch, what would they say?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Views, impressions, or follower growth. Those are the numbers I check first.",
+       "label": "They would probably get the category wrong or describe something adjacent to what I actually do",
        "score": 1
       },
       {
-       "label": "Engagement: likes, comments, shares. I treat those as signals that content is working.",
+       "label": "They would get the category right but describe a generic version of the problem, not my specific angle",
        "score": 2
       },
       {
-       "label": "A mix. I look at both reach and business outcomes, but reach is faster to see.",
+       "label": "They would get the business mostly right but leave out the 'why now' piece entirely",
        "score": 3
       },
       {
-       "label": "Calls booked, replies from target accounts, or deal movement. Engagement is nice but it's not what I optimize for.",
-       "score": 5
-      }
-     ]
-    },
-    {
-     "id": "the_revenue_signal_q2",
-     "text": "Can you name a specific piece of content from the last three months that directly contributed to a client conversation or a warm investor intro?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "No. I can't connect any specific content to a specific business outcome.",
-       "score": 1
-      },
-      {
-       "label": "Maybe one, but I'm not sure if the content caused it or if the timing was coincidence.",
-       "score": 2
-      },
-      {
-       "label": "Yes, one or two. I know which posts are doing real work.",
+       "label": "They would get the business and the momentum but not the inevitability of the category",
        "score": 4
       },
       {
-       "label": "Yes. I track this and I know which formats and topics drive calls.",
+       "label": "They would say something close to what I would say myself, including the timing argument",
        "score": 5
       }
      ]
     },
     {
-     "id": "the_revenue_signal_q3",
-     "text": "What does your highest-performing content look like when you measure by business outcome rather than by reach?",
+     "id": "narrative_clarity_q2",
+     "text": "How would you describe your 'why this category is inevitable right now' argument?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I've never run that comparison. I measure by reach.",
+       "label": "I have not built one. I lead with the product and the growth number.",
        "score": 1
       },
       {
-       "label": "I've thought about it but I don't have clean enough data to answer it.",
+       "label": "I reference macro trends but have not tied them to why my specific timing is right",
        "score": 2
       },
       {
-       "label": "I have a rough sense. It tends to be the more personal or specific posts, not the broad ones.",
+       "label": "I have a 'why now' slide but it is built from market reports, not forces I have watched firsthand",
        "score": 3
       },
       {
-       "label": "I know exactly which format and topic drove the most real business, and it wasn't my most-viewed post.",
+       "label": "I can name two or three specific forces making my category inevitable in the next few years, tied to things I have observed directly",
+       "score": 4
+      },
+      {
+       "label": "I can explain why the category timing is irreversible and why I am positioned to win it, in under 90 seconds, without a slide",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "narrative_clarity_q3",
+     "text": "What happens when an investor asks an unexpected question mid-pitch?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I lose the thread. The pitch feels disjointed for the rest of the meeting.",
+       "score": 1
+      },
+      {
+       "label": "I answer but it takes a few minutes to find my way back to where I was",
+       "score": 2
+      },
+      {
+       "label": "I answer clearly and land back on my main message without much trouble",
+       "score": 3
+      },
+      {
+       "label": "I use the question to add depth and pull it back into the story arc",
+       "score": 4
+      },
+      {
+       "label": "The question ends up reinforcing the narrative. The story is built to absorb pressure from any angle.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "narrative_clarity_q4",
+     "text": "After a pitch ends with silence or a vague pass, how do you figure out what broke?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I assume it was not a fit or the timing was off and move on",
+       "score": 1
+      },
+      {
+       "label": "I send a follow-up with updated metrics and hope something has changed",
+       "score": 2
+      },
+      {
+       "label": "I ask for feedback, get something vague, update the deck, and try again",
+       "score": 3
+      },
+      {
+       "label": "I try to identify whether the story or the business was the issue before I pitch again",
+       "score": 4
+      },
+      {
+       "label": "I debrief every pitch against a specific rubric: did the story hold, did the numbers land, did the why-now argument close",
        "score": 5
       }
      ]
@@ -192,107 +266,115 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You're running the wrong scoreboard.",
-     "text": "Two hundred thousand impressions can book zero calls. Eleven hundred impressions can book three discovery calls and close a client. Those aren't hypothetical numbers. Attention feels like progress because it's visible and immediate. Revenue attribution is slower and harder to see, so it loses the argument every time someone looks at a dashboard. The metric that makes you feel like you're winning and the metric that actually grows the business rarely come from the same posts.",
+     "headline": "Your story does not survive a relay",
+     "text": "If a founder peer cannot repeat your pitch after hearing it once, an investor will not retain it either. A story that cannot be retold does not get referred. The room you want to be in runs on warm intros, and warm intros require your story to be clear enough for someone else to carry it. Most of the time when this breaks, the 'why now' argument is missing entirely or buried in the back half of the deck.",
      "steps": [
-      "Pull your last ten posts. Next to each one, write the actual business outcome, not the impressions. Calls booked, replies from target accounts, investor intros, anything concrete.",
-      "Find the post with the fewest impressions that drove the most real business. That post tells you more about your story than everything else combined.",
-      "For the next month, before publishing anything, ask one question: if this gets exactly the reach my average post gets, does it still book a call?"
+      "Write a two-sentence version of your business: what it does, who it is for, and why the category is inevitable right now. Read it to three founders and ask them to repeat it back.",
+      "If they cannot, the problem is usually that the 'why now' is absent. Add it to sentence two.",
+      "Practice delivering the two-sentence version without a slide. If you cannot do it without the deck, the story depends on the deck, and that is a problem."
      ]
     },
     "mid": {
-     "headline": "You're starting to track the right things. Keep going.",
-     "text": "You know the revenue signal exists. You've seen it work a couple of times. The gap right now is consistency. You haven't yet built the feedback loop tight enough to know which specific variables drive business outcomes versus reach. That's the next thing to solve.",
+     "headline": "The story holds but the 'why now' argument is still a slide, not a conviction",
+     "text": "The narrative structure is there. What is missing is a timing argument that sounds like something you have watched happen, not something you pulled from a market report. Investors writing checks right now have seen enough 'market is exploding' slides. What they are looking for is a founder who can explain the specific forces at work from direct observation.",
      "steps": [
-      "Set up a simple log. A spreadsheet is fine. Track every piece of content you publish with the business outcome in the same row, not two tabs over.",
-      "After thirty posts, look for the pattern. Is it the topic? The format? The opening line? The answer is usually more specific than 'personal posts do better.'",
-      "Test the posts you almost didn't publish. Those are often the ones that land, because the hesitation usually means it's specific enough to feel exposed. Specific is what books calls."
+      "List the three most specific things you have personally watched happen in your category in the last 12 months that told you the timing was right.",
+      "Build your 'why now' argument from those three things, not from a market size slide. Add a data point for each.",
+      "Test it: deliver the timing argument to a skeptical investor who pushes back. If you can hold the room without the slide, it is real."
      ]
     },
     "high": {
-     "headline": "You've found the revenue signal. Now scale from it.",
-     "text": "You know which content moves the business and which just moves numbers. That's a real advantage. The next question is whether you can reverse-engineer the pattern and apply it consistently, or whether it still feels like luck when it works.",
+     "headline": "The narrative is solid. The question is whether it holds in a cold room.",
+     "text": "A story that survives a friendly pitch coach is different from one that survives an investor who has seen 200 decks this quarter. The work at this level is edge-case stress testing. Find the most skeptical person who will give you real time and ask them to try to break the 'why now' argument. Note exactly where they push.",
      "steps": [
-      "Document the three variables your highest-revenue-signal content shares. Is it the opening line format? A specific topic cluster? The level of personal specificity? Name the pattern explicitly.",
-      "Build a simple brief template from those variables and use it before writing anything new.",
-      "The posts you're holding back because they feel too specific or too honest: publish them. That discomfort is usually the signal that it's worth running."
+      "Identify the most skeptical investor you have access to and ask them to try to break your category inevitability argument. Note exactly where they push back.",
+      "If the story depends on a specific slide to land, rewrite it until it works without the slide.",
+      "Run one pitch where you deliver the two-sentence version first, before any context, and see whether the investor asks a better first question."
      ]
     }
    }
   },
   {
-   "id": "the_distribution_reality",
-   "name": "The Distribution Reality",
+   "id": "distribution_and_the_war",
+   "name": "Distribution and the Warm Room",
    "questions": [
     {
-     "id": "the_distribution_reality_q1",
-     "text": "Where does the majority of your content effort go each week?",
+     "id": "distribution_and_the_war_q1",
+     "text": "Before you send a cold email to an investor or potential client, how many of them already know who you are?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Company page. That's where we keep things consistent and on-brand.",
+       "label": "Most are cold. I am introducing myself from scratch in the email.",
        "score": 1
       },
       {
-       "label": "Roughly split. I try to post to both the brand page and my personal profile.",
+       "label": "Some have seen my company on Crunchbase or in a press mention",
        "score": 2
       },
       {
-       "label": "Mostly personal profile, but I repurpose to the brand page too.",
+       "label": "A handful have engaged with something I have written or said publicly",
+       "score": 3
+      },
+      {
+       "label": "Most of the people I am targeting have come across my thinking before the email lands",
        "score": 4
       },
       {
-       "label": "Personal profile. The company page is secondary and I'm at peace with that.",
+       "label": "Several people on my list reached out to me first. Inbound is a real part of how I fill the funnel.",
        "score": 5
       }
      ]
     },
     {
-     "id": "the_distribution_reality_q2",
-     "text": "When you post in your own name, how often do you include a real point of view: a specific opinion, a number from your own experience, or something you got wrong?",
+     "id": "distribution_and_the_war_q2",
+     "text": "When you post content as a founder, where does most of your effort go?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Rarely. My posts share information or updates rather than a take.",
+       "label": "Mostly the company page or a brand content calendar",
        "score": 1
       },
       {
-       "label": "Sometimes, but I usually soften the opinion by the time I publish.",
+       "label": "Split roughly equally between the brand page and my personal profile",
        "score": 2
       },
       {
-       "label": "Often. I have a take in most posts, even if I hedge it slightly.",
+       "label": "Mostly my personal profile, but without a clear point of view from post to post",
        "score": 3
       },
       {
-       "label": "Almost always. My posts start from a specific belief or a number from my own work.",
+       "label": "My personal profile, with a specific number or real lesson in most posts",
        "score": 4
       },
       {
-       "label": "Always. Every post I publish has a claim I can defend with a number or a story I was in.",
+       "label": "My personal profile, with posts I track by calls booked and revenue attributed, not impressions",
        "score": 5
       }
      ]
     },
     {
-     "id": "the_distribution_reality_q3",
-     "text": "When you send a cold pitch or investor email, what percentage of recipients already know your name or your work before they open it?",
+     "id": "distribution_and_the_war_q3",
+     "text": "Think about the last piece of content you were proud of. How many real client or investor conversations did it generate?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Under 5%. Almost everyone I reach out to has never heard of me.",
+       "label": "I do not track conversations from content. I track views and engagement.",
        "score": 1
       },
       {
-       "label": "10 to 20%. A few recognize the name but most don't.",
+       "label": "It got strong engagement but I cannot point to a specific conversation it started",
        "score": 2
       },
       {
-       "label": "30 to 50%. A real chunk of the list already knows who I am.",
+       "label": "It got one or two replies from interested people who did not move forward",
        "score": 3
       },
       {
-       "label": "Over half. The cold email isn't really cold anymore for most of my targets.",
+       "label": "It booked at least one real conversation with someone in my target audience",
+       "score": 4
+      },
+      {
+       "label": "I can trace at least one closed client or investor relationship back to a specific post in the last 90 days",
        "score": 5
       }
      ]
@@ -300,126 +382,142 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You're building trust for a logo when you should be building it for yourself.",
-     "text": "Personal profiles consistently outperform brand pages for founders. Worse design, no ad budget, just a real person with a real point of view. LinkedIn's own 2026 data puts company page reach at around 5% of the feed, and that number is still falling. Every hour you put into the brand page instead of your own profile is a compounding mistake. You are the distribution. The brand page is what you send people to after they already trust you.",
+     "headline": "You are still building from cold. That is a hard way to raise.",
+     "text": "The founders I watch get funded in this environment almost always share one thing: an audience that already knows them before the cold email. Cold outreach can work, but the odds drop sharply when the investor has never encountered your thinking before. The warm room is harder to build than a pitch deck, which is exactly why most founders skip it. That is also why it is the most useful thing you can build right now.",
      "steps": [
-      "For the next thirty days, publish nothing to the company page that you haven't already published from your personal profile.",
-      "Write your next three posts in first person with a specific number or lesson from your own experience. Your face, your name, your take.",
-      "Map everyone in your next investor outreach or sales push who already follows you personally. That number is your baseline warm room. It's probably smaller than you want. The goal is to grow it before the ask, not after."
+      "Pick one platform, almost certainly LinkedIn, and commit to posting from your personal profile twice a week for 60 days. Not the company page.",
+      "Every post should have a specific number, a real lesson from something that happened, or an opinion you would defend if someone pushed back.",
+      "Track which posts generate replies or profile views from people on your investor or client target list. Those are your signal posts. Write more of them."
      ]
     },
     "mid": {
-     "headline": "You're in the right place. The gap is consistency and specificity.",
-     "text": "You know your personal profile should be the priority, and you're mostly there. The thing that separates this tier from the next one isn't effort. It's the willingness to put a real opinion on the line instead of sharing information. Information posts build traffic. Opinion posts build the warm room.",
+     "headline": "You are visible but you are running the wrong scoreboard",
+     "text": "Attention feels like progress because it is visible and immediate. Revenue attribution and investor relationships are slower and harder to see, so they lose the argument every time someone looks at a dashboard. A post that gets 200,000 impressions and zero calls is not a success. A post that gets 1,100 impressions and books three discovery calls is the one your content strategy should be built on. Most founders never look at this comparison. Pull up your last ten posts and run it.",
      "steps": [
-      "Run a quick audit of your last ten personal posts. How many include a specific claim you'd defend in a room? How many are updates or information you're passing along? The ratio tells you exactly where you're hedging.",
-      "Pick one belief you hold about your category that most people in your space would push back on. Write that post next. If you've been drafting it for two weeks and not publishing, publish it.",
-      "Set a target: 50% warm opens on your next outreach round. Work backward to figure how many people need to follow your personal profile before you send the ask."
+      "Pull up your last 10 posts. For each one, write down how many real conversations it started, not likes or comments.",
+      "Find the posts that drove conversations. Look for what they had in common: a specific number, a hard lesson, a direct opinion.",
+      "Drop the format that gets impressions but no conversations. Build on the pattern that generated calls."
      ]
     },
     "high": {
-     "headline": "Your distribution is working. Now protect the room.",
-     "text": "The warm room you've built is an asset that's hard to manufacture quickly. An investor who already knows your work reads your cold email differently than one who's never heard of you. You've put in the work. The question now is whether you're converting that attention into the right asks at the right moment.",
+     "headline": "You are building the warm room. The work now is targeting.",
+     "text": "You understand that distribution is the founder's job and you are doing it from the right place. The next question is whether the people engaging with your content are the ones you actually need to reach. Volume of warm relationships matters less than whether the right investors and buyers are in the room when you post.",
      "steps": [
-      "Audit your publishing cadence. What's the gap between your last post and your last pitch or outreach push? If you went quiet before asking, you're withdrawing from an account you didn't restock first.",
-      "Map the overlap between your existing audience and your active pipeline. How warm is the room actually? Adjust your outreach sequence based on who already knows you.",
-      "The founders who built this audience before they needed it got here by publishing before the ask. Keep that standard even when the round is going well."
+      "Cross-reference your last 30 days of content engagement against your investor and client target list. What percentage of the people engaging are actually on that list?",
+      "If the overlap is low, adjust the framing of your posts to speak more directly to the specific problems your ideal investor or buyer is thinking about right now.",
+      "Consider whether a shift in topic or format pulls more of your target audience into the conversation rather than a general business audience."
      ]
     }
    }
   },
   {
-   "id": "the_category_story",
-   "name": "The Category Story",
+   "id": "capital_story",
+   "name": "Capital Story",
    "questions": [
     {
-     "id": "the_category_story_q1",
-     "text": "An investor asks: 'Why is your category inevitable right now? Not why your company is good. Why does this problem get solved in the next three years regardless of whether you exist?' How ready are you?",
+     "id": "capital_story_q1",
+     "text": "If AI does not touch your core product, how do you handle the current funding environment in a pitch?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I'd mostly talk about our product and team. I haven't built the 'why now' argument separately.",
+       "label": "I try to add an AI angle even if the connection is thin, because I think I need one right now",
        "score": 1
       },
       {
-       "label": "I have a rough version, but I'm not sure it's different from what everyone else in my space says.",
+       "label": "I avoid the topic and hope the conversation does not go there",
        "score": 2
       },
       {
-       "label": "I have a specific 'why now' I can say in three sentences with a market data point.",
-       "score": 4
-      },
-      {
-       "label": "It's the foundation of my pitch. I explain the category timing before I explain the company.",
-       "score": 5
-      }
-     ]
-    },
-    {
-     "id": "the_category_story_q2",
-     "text": "How does your story handle the AI moment: directly and specifically, or by avoidance?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "I don't address it. It feels tangential to what we're building.",
-       "score": 1
-      },
-      {
-       "label": "I mention AI in the deck because I think I need to, but the connection to our product is thin.",
-       "score": 2
-      },
-      {
-       "label": "AI genuinely touches our product and I lead with that, but I could be more specific about how.",
+       "label": "I acknowledge the environment and lead with my growth numbers as the main argument",
        "score": 3
       },
       {
-       "label": "I address it directly: AI is core to how we work, or I explain in one sentence why our category doesn't need the pivot.",
-       "score": 5
-      }
-     ]
-    },
-    {
-     "id": "the_category_story_q3",
-     "text": "Can you say in one sentence what makes your growth number different from every other growth number an investor heard this week?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Not really. I lead with the growth number but I don't have a sentence that contextualizes it.",
-       "score": 1
-      },
-      {
-       "label": "I have context: market size, competitive positioning. But it takes several sentences.",
-       "score": 2
-      },
-      {
-       "label": "I have a specific comparison point that makes the number land harder than the raw figure.",
+       "label": "I lead with the specific forces that make my category inevitable right now, independent of the AI wave",
        "score": 4
       },
       {
-       "label": "One sentence, no jargon, that makes the number feel inevitable rather than just impressive.",
+       "label": "I have a data-backed argument for why capital should flow to my category, and I open with it before the product slide",
        "score": 5
       }
      ]
     },
     {
-     "id": "the_category_story_q4",
-     "text": "Have you stress-tested the weakest part of your story with someone whose job in that conversation was to find the holes?",
+     "id": "capital_story_q2",
+     "text": "You are in a meeting with an investor who has seen 10 AI decks that same day. How does your pitch change?",
      "max_score": 5,
      "answers": [
       {
-       "label": "No. I haven't put it in front of anyone who was actively trying to break it.",
+       "label": "It does not. I use the same pitch. The product speaks for itself.",
        "score": 1
       },
       {
-       "label": "I know where it's weak but I've been avoiding that question in pitch conversations.",
+       "label": "I try to downplay the AI comparisons and focus on the business model",
        "score": 2
       },
       {
-       "label": "I've gotten the hard question and I have an answer, but I'm not confident in it.",
+       "label": "I lead with what makes my business defensible and hard to replicate",
        "score": 3
       },
       {
-       "label": "Yes. I know the weak point, I've addressed it directly in the deck, and I can handle the pushback.",
+       "label": "I open with the category inevitability argument before I touch product or metrics",
+       "score": 4
+      },
+      {
+       "label": "I have a version of the narrative built for exactly that room, and I know which three sentences to cut if I only have five minutes",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "capital_story_q3",
+     "text": "How would you describe your current competitive position for raising capital right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are growing 3x and the market is large. That is the main story.",
+       "score": 1
+      },
+      {
+       "label": "I have a growth number and a market size but I have not built a 'why now' argument specific to this cycle",
+       "score": 2
+      },
+      {
+       "label": "I can explain what is different about our category right now but I rely on macro data to make the case",
+       "score": 3
+      },
+      {
+       "label": "I can articulate why this category is inevitable in the next three to five years using data and patterns I have watched firsthand",
+       "score": 4
+      },
+      {
+       "label": "I can tell an investor why the category is inevitable AND why the window to invest is closing, with specific evidence for both claims",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "capital_story_q4",
+     "text": "When you get radio silence after a pitch, what do you actually do next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I move on. Either it was not a fit or the timing was off.",
+       "score": 1
+      },
+      {
+       "label": "I send a follow-up with updated metrics and hope something has changed",
+       "score": 2
+      },
+      {
+       "label": "I ask for feedback, get something vague, update the deck, and try again",
+       "score": 3
+      },
+      {
+       "label": "I try to figure out whether the story or the business was the issue before I pitch again",
+       "score": 4
+      },
+      {
+       "label": "I audit which part of the narrative lost the room, fix that section specifically, and test the fix before the next pitch",
        "score": 5
       }
      ]
@@ -427,30 +525,30 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Your story stops at the company. It needs to start with the category.",
-     "text": "Growing 3x doesn't close rounds on its own anymore. Every founder in a live deal has a growth number. The ones getting checks can explain why their category is inevitable right now, separate from the fact that their business is working. If you can't say in under sixty seconds why this problem gets solved in the next three years regardless of whether you exist, an investor who's seen thirty pitches this week already knows how the meeting ends.",
+     "headline": "Growing 3x does not close rounds on its own anymore",
+     "text": "Every founder in a live deal right now has a growth number. The ones getting checks can articulate why their category is inevitable at this specific moment, in addition to showing the business is working. Pull out the AI deals from recent funding data and look at what is left. Non-AI venture funding, adjusted for inflation, sits below where it was in 2020. That is the environment you are raising in. If AI genuinely touches your product, leading with it is probably not optional this cycle. If it does not, adding a thin connection is one of the fastest ways to lose credibility in the first two minutes.",
      "steps": [
-      "Write one paragraph, just for yourself and not for the deck, that explains why this category is happening now. What changed in the past eighteen months that makes this problem urgent? What would have to be true in 2028 for your category to have failed?",
-      "Find one specific data point that a skeptical investor couldn't argue with. Pull it from market research, not from your own numbers. That data point proves the timing.",
-      "If AI genuinely connects to your product, lead with the connection specifically. If it doesn't, explain why your category doesn't need the pivot in one sentence and move on. Answer that question before it gets asked."
+      "Build a 'why now' argument that does not depend on the AI wave. What specific forces in your market make this the right window, and what happens to that window if you wait two years?",
+      "If AI does touch your product, test whether investors who have seen ten AI decks that day believe your connection is real. Their reaction in the first two minutes tells you whether to lead with it or move it deeper in the pitch.",
+      "Find one funded founder in a non-AI category who raised in the last six months and ask how they framed the timing argument."
      ]
     },
     "mid": {
-     "headline": "You have a category story. It needs to be faster and more specific.",
-     "text": "The 'why now' is in there. It just takes too many sentences to land. Investors make the category call in the first two minutes, and if you're spending those minutes on product features or team background, you're letting them fill in the category logic themselves. They'll fill it in wrong half the time, and you won't know it happened.",
+     "headline": "The business case is there. The timing argument still sounds borrowed.",
+     "text": "A market size slide and a growth number are table stakes right now. What separates the founders getting checks is a timing argument that sounds like something they have watched happen firsthand, not something from a Crunchbase report. If your 'why now' could appear unchanged in someone else's deck, it is not doing the work it needs to do.",
      "steps": [
-      "Cut your current 'why now' down to three sentences: the shift that happened, the window that opened, and why that window closes. Time yourself. If it takes more than forty-five seconds, cut again.",
-      "Test the AI question directly. Ask a founder in a different category to push back on your AI story as hard as they can. If you're defensive, the investors will be too.",
-      "Find the one weakness in your story that a skeptical investor would find fastest. Write a direct answer to it and put it in the deck before they ask. Addressing the hard thing proactively reads as confidence."
+      "Write down the three most specific things you have personally observed in your category in the last 12 months that told you the timing was right.",
+      "Replace the market data in your 'why now' section with those three observations. Add a data point for each, but build from what you have seen, not from the market reports.",
+      "Test it with an investor who has not funded your category before. If they are still skeptical, the observations need to be more specific."
      ]
     },
     "high": {
-     "headline": "Your category story is solid. Make sure it travels without you.",
-     "text": "You can tell the story in the room. The question is whether it holds when you're not there: when an investor is describing your company to a partner, or when a client is explaining why they picked you to their board. If the story only works when you're telling it, it's not done yet.",
+     "headline": "Your capital story is strong. The question is whether it compresses to 15 minutes.",
+     "text": "You can make the category case and you know how to adjust for the room. At this level the work is compression. A pitch that takes 40 minutes to land needs to land in 15. The founders I watch close in the current environment can deliver the why-now argument in the first three minutes and still have room left to handle whatever the investor throws at them.",
      "steps": [
-      "Ask the last investor or client who said yes to your pitch to describe your company back to you in their own words. Listen for what they kept and what they dropped. What they kept is what's actually landing.",
-      "Write a two-sentence version of the category story, tight enough that someone else could repeat it after one conversation. If you can't get it to two sentences without losing the core, it's not specific enough yet.",
-      "Give your deck to someone who's never heard your pitch and ask them to find the weakest point. If they find something you already knew about and haven't addressed, that's the next thing to fix."
+      "Time yourself delivering the category inevitability argument without slides. If it takes more than 90 seconds to reach the core claim, compress it.",
+      "Identify the three sentences in your pitch doing the most work and make sure they come in the first five minutes.",
+      "Run one pitch where you lead with the why-now argument before you introduce the product. Note whether the investor asks better questions."
      ]
     }
    }
@@ -473,23 +571,23 @@
  },
  "persona_selector": {
   "id": "role",
-  "text": "Where does a weak story cost you the most right now?",
+  "text": "Where are you right now?",
   "answers": [
    {
-    "label": "In the fundraising process: getting meetings but not checks",
-    "tag": "fundraising"
+    "label": "Actively raising a round right now",
+    "tag": "active_raise"
    },
    {
-    "label": "In sales: prospects don't convert the way my numbers say they should",
-    "tag": "sales"
+    "label": "Post-raise, focused on winning clients",
+    "tag": "post_raise_clients"
    },
    {
-    "label": "In content: posting consistently but not booking calls",
-    "tag": "content"
+    "label": "Preparing to raise in the next 6 months",
+    "tag": "prep_raise"
    },
    {
-    "label": "All three. I think the same gap is showing up everywhere",
-    "tag": "all"
+    "label": "Building my profile as a funded founder",
+    "tag": "thought_leader"
    }
   ]
  }
