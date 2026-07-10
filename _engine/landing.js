@@ -35,7 +35,7 @@
     .then(function (r) { if (!r.ok) throw new Error("load"); return r.json(); })
     .then(function (d) { render(d); window.__lm_rerender = function(){ render(window.__lm_data); }; })
     .catch(function () {
-      root.innerHTML = '<div class="lp" style="padding:4rem 0;text-align:center"><p>This page didn\'t load. <a href="https://ivanmanfredi.com" style="color:#4C6E3D">ivanmanfredi.com</a></p></div>';
+      root.innerHTML = '<div class="lp" style="padding:4rem 0;text-align:center"><p>This page didn\'t load. <a href="https://ivanmanfredi.com" style="color:#131210">ivanmanfredi.com</a></p></div>';
     });
 
   function render(d) {

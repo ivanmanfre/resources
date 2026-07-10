@@ -223,7 +223,7 @@
         el.textContent = mermaidSyntax;
         el.removeAttribute("data-processed");
         if (window.mermaid && typeof window.mermaid.run === "function") {
-          window.mermaid.initialize({ startOnLoad: false, theme: "neutral", themeVariables: { primaryColor: "#F7F4EF", primaryTextColor: "#1A1A1A", lineColor: "#2A8F65" } });
+          window.mermaid.initialize({ startOnLoad: false, theme: "neutral", themeVariables: { primaryColor: "#FFFFFF", primaryTextColor: "#131210", lineColor: "#131210" } });
           window.mermaid.run({ nodes: [el] }).then(function () {
             L.beacon("n8n-workflow", "mermaid_view");
           }).catch(function () {

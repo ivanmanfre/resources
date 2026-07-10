@@ -55,7 +55,7 @@
   // D3.4: leaky bucket SVG — droplets fall out of trapezoid bucket; sage for currency, blue-ish ink for hours
   function leakyBucketSvg(co) {
     var isCurrency = co.format === "currency_per_period";
-    var fill = isCurrency ? "#2A8F65" : "#4C6E3D";
+    var fill = isCurrency ? "#131210" : "#131210";
     var fillRgb = isCurrency ? "42,143,101" : "76,110,61";
     var drops = [];
     for (var i = 0; i < 6; i++) {
@@ -74,11 +74,11 @@
           '<stop offset="100%" stop-color="rgba(' + fillRgb + ',0.12)" />' +
         '</linearGradient></defs>' +
         // Bucket trapezoid outline
-        '<path d="M 50 38 L 130 38 L 122 118 L 58 118 Z" fill="url(#lb-' + (co.id || "x") + ')" stroke="rgba(26,26,26,0.55)" stroke-width="1.5" />' +
+        '<path d="M 50 38 L 130 38 L 122 118 L 58 118 Z" fill="url(#lb-' + (co.id || "x") + ')" stroke="rgba(19, 18, 16,0.55)" stroke-width="1.5" />' +
         // Surface line
         '<line x1="58" y1="54" x2="122" y2="54" stroke="rgba(' + fillRgb + ',0.6)" stroke-width="1.5" stroke-dasharray="3,3" />' +
         // Crack at the bottom
-        '<line x1="84" y1="118" x2="96" y2="118" stroke="rgba(26,26,26,0.8)" stroke-width="1.5" />' +
+        '<line x1="84" y1="118" x2="96" y2="118" stroke="rgba(19, 18, 16,0.8)" stroke-width="1.5" />' +
         drops.join("") +
       '</svg>' +
       '<div class="lmc-leaky-meta">' +
@@ -844,11 +844,11 @@
             var dotsHtml = rows.map(function (r, i) {
               var x = rows.length > 1 ? (i / (rows.length - 1)) * 240 : 120;
               var y = 40 - ((r.overall_score - minS) / range) * 36;
-              return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3" fill="#2A8F65" />';
+              return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3" fill="#131210" />';
             }).join("");
             ts.innerHTML = '<h4>Your scores over time</h4>' +
               '<svg viewBox="0 0 240 40" width="240" height="40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">' +
-                '<polyline points="' + points + '" fill="none" stroke="#2A8F65" stroke-width="2" />' +
+                '<polyline points="' + points + '" fill="none" stroke="#131210" stroke-width="2" />' +
                 dotsHtml +
               '</svg>' +
               '<p>From ' + scores[0] + ' to ' + scores[scores.length - 1] + ' across ' + rows.length + ' takes.</p>';

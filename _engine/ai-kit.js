@@ -214,7 +214,7 @@
       L.frontier.load().then(function () {
         var line = L.frontier.testedLine();
         if (!line) return;
-        var el = L.make("div", { class: "lmk-currency-line", style: "max-width:860px;margin:0 auto;padding:0 1.5rem 2rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.05em;color:rgba(26,26,26,.55)" }, line);
+        var el = L.make("div", { class: "lmk-currency-line", style: "max-width:860px;margin:0 auto;padding:0 1.5rem 2rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.05em;color:rgba(19, 18, 16,.55)" }, line);
         container.appendChild(el);
       });
     }

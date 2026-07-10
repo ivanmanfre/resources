@@ -304,7 +304,7 @@
       window.LM.frontier.load().then(function () {
         var s = window.LM.frontier.stamp();
         if (!s) return;
-        outputsCard.appendChild(make("div", { class: "lmc-currency-stamp", style: "margin-top:.9rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.06em;color:rgba(26,26,26,.5)" }, s));
+        outputsCard.appendChild(make("div", { class: "lmc-currency-stamp", style: "margin-top:.9rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.06em;color:rgba(19, 18, 16,.5)" }, s));
       });
     }
     // D2.2: Sensitivity slot (populated after each compute())

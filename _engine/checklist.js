@@ -54,8 +54,8 @@
     var circ = 2 * Math.PI * 9;
     var offset = circ - (Math.max(0, Math.min(100, pct)) / 100) * circ;
     return '<svg class="lmc-section-ring-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">' +
-      '<circle cx="12" cy="12" r="9" fill="none" stroke="rgba(26,26,26,0.15)" stroke-width="2.5" />' +
-      '<circle cx="12" cy="12" r="9" fill="none" stroke="#2A8F65" stroke-width="2.5" stroke-linecap="round" ' +
+      '<circle cx="12" cy="12" r="9" fill="none" stroke="rgba(19, 18, 16,0.15)" stroke-width="2.5" />' +
+      '<circle cx="12" cy="12" r="9" fill="none" stroke="#131210" stroke-width="2.5" stroke-linecap="round" ' +
         'stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + offset.toFixed(2) + '" ' +
         'transform="rotate(-90 12 12)" />' +
       '</svg>';
@@ -272,6 +272,23 @@
       }
     });
 
+    // Black Box dispensed-record artifact (brand; Courier Prime inside THE BOX).
+    // Presentational only — computed from the same counts shown in the hero meta.
+    var secCount = (data.sections || []).length;
+    var disp = make("section", { class: "lmc-dispense", "aria-hidden": "true" });
+    disp.innerHTML =
+      '<div class="lmc-disp-box"><pre class="lmc-disp lm-disp">' +
+      '<span class="dtitle">INBOUNDONSTEROIDS · DISPENSING RECORD</span>\n' +
+      '<span class="dhr">-----------------------------------------</span>\n' +
+      'DISPENSED TO ...... <b>your browser + inbox</b>\n' +
+      'CONTENTS .......... <b>' + total + ' ITEMS / ' + secCount + ' SECTIONS</b>\n' +
+      'DOSE .............. work through once\n' +
+      'FORM .............. browser-saved checklist\n' +
+      'REFILLS ........... <b>weekly via the follow-up</b>\n' +
+      '<span class="dhr">-----------------------------------------</span>\n' +
+      'Rx  I. MANFREDI</pre></div>';
+    content.appendChild(disp);
+
     // Closing CTA — call-first finale (replaces the email-plan gate 2026-06-09)
     var closing = window.LM.buildClosingCta("checklist", data, {
       toolType: "checklist",
@@ -340,13 +357,13 @@
               particleCount: 120,
               spread: 80,
               origin: { y: 0.4 },
-              colors: ["#2A8F65", "#4C6E3D", "#709A5D", "#F7F4EF"],
+              colors: ["#131210", "#131210", "#131210", "#FFFFFF"],
             });
             // Second burst from sides
             setTimeout(function () {
               try {
-                confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0, y: 0.6 }, colors: ["#2A8F65", "#4C6E3D"] });
-                confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1, y: 0.6 }, colors: ["#2A8F65", "#4C6E3D"] });
+                confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0, y: 0.6 }, colors: ["#131210", "#131210"] });
+                confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1, y: 0.6 }, colors: ["#131210", "#131210"] });
               } catch (_) {}
             }, 180);
           } catch (_) {}

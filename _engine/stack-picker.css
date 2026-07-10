@@ -1,6 +1,6 @@
 /* Stack Picker engine — decision-tree LM.
-   Brand: paper #F7F4EF, ink #1A1A1A, sage #2A8F65 as accent only.
-   Editorial typography (DM Serif Display + Source Serif 4), ink-filled primary CTAs.
+   Brand: paper #FFFFFF, ink #131210, sage #131210 as accent only.
+   Editorial typography (Schibsted Grotesk + Source Serif 4), ink-filled primary CTAs.
    Shares tokens from shared.css. */
 
 .lmc-sp-stage {
@@ -37,7 +37,7 @@
   transition: color 120ms, border-color 120ms;
   font-weight: 500;
 }
-.lmc-sp-crumb:hover { color: var(--ink); border-bottom-color: #2A8F65; }
+.lmc-sp-crumb:hover { color: var(--ink); border-bottom-color: #131210; }
 .lmc-sp-crumb-start { font-weight: 600; }
 .lmc-sp-crumb-sep { color: var(--hairline-bold); padding: 0 .15rem; }
 
@@ -64,7 +64,7 @@
 
 /* Question */
 .lmc-sp-q {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: 'Schibsted Grotesk', Georgia, serif;
   font-size: clamp(1.6rem, 4vw, 2.15rem);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -96,13 +96,13 @@
   position: relative;
 }
 .lmc-sp-branch:hover {
-  border-color: #2A8F65;
-  background: rgba(42,143,101,0.04);
+  border-color: #131210;
+  background: rgba(19, 18, 16,0.04);
   transform: translateY(-1px);
   box-shadow: var(--shadow-subtle);
 }
 .lmc-sp-branch:focus-visible {
-  outline: 2px solid #2A8F65;
+  outline: 2px solid #131210;
   outline-offset: 2px;
 }
 .lmc-sp-branch::after {
@@ -116,7 +116,7 @@
   transition: color 140ms, transform 140ms var(--ease);
 }
 .lmc-sp-branch:hover::after {
-  color: #2A8F65;
+  color: #131210;
   transform: translateY(-50%) translateX(3px);
 }
 
@@ -145,7 +145,7 @@
 }
 
 .lmc-sp-result-h {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: 'Schibsted Grotesk', Georgia, serif;
   font-size: clamp(2rem, 5vw, 2.85rem);
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -154,9 +154,9 @@
   color: var(--ink);
 }
 .lmc-sp-result-h em {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: 'Schibsted Grotesk', Georgia, serif;
   font-style: italic;
-  color: #2A8F65;
+  color: #131210;
 }
 
 .lmc-sp-stack {
@@ -182,7 +182,7 @@
   content: "";
   width: 5px;
   height: 5px;
-  background: #2A8F65;
+  background: #131210;
   border-radius: 50%;
   display: inline-block;
   margin-right: .5rem;
@@ -198,7 +198,7 @@
 .lmc-sp-body p { margin: 0 0 1rem; }
 .lmc-sp-body p:last-child { margin-bottom: 0; }
 .lmc-sp-body strong { color: var(--ink); font-weight: 600; }
-.lmc-sp-body em { color: #2A8F65; font-style: italic; }
+.lmc-sp-body em { color: #131210; font-style: italic; }
 
 /* Alternatives */
 .lmc-sp-alt {
@@ -212,7 +212,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .08em;
-  color: #2A8F65;
+  color: #131210;
   margin-bottom: .9rem;
 }
 .lmc-sp-alt-item {
@@ -243,7 +243,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: #2A8F65;
+  color: #131210;
   font-size: 1.2rem;
   font-weight: 400;
 }
@@ -265,7 +265,7 @@
   border-radius: var(--radius-md);
 }
 .lmc-sp-cta-h {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: 'Schibsted Grotesk', Georgia, serif;
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: -0.005em;
@@ -277,16 +277,16 @@
   font-family: 'Source Serif 4', Georgia, serif;
   font-size: 1rem;
   line-height: 1.55;
-  color: rgba(247,244,239,0.82);
+  color: rgba(255, 255, 255,0.82);
   margin: 0 0 1.5rem;
 }
 .lmc-sp-cta-btn {
-  background: #2A8F65;
+  background: #131210;
   color: var(--paper);
   display: inline-block;
   text-decoration: none;
 }
-.lmc-sp-cta-btn:hover { background: #246d50; color: var(--paper); }
+.lmc-sp-cta-btn:hover { background: #131210; color: var(--paper); }
 
 /* Share row */
 .lmc-sp-share-row {
@@ -302,7 +302,7 @@
   border-top: 1px solid var(--hairline);
 }
 .lmc-sp-capture h3 {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: 'Schibsted Grotesk', Georgia, serif;
   font-size: 1.4rem;
   font-weight: 400;
   margin: 0 0 .45rem;
@@ -328,7 +328,7 @@
 }
 .lmc-sp-capture .lmc-input:focus {
   outline: none;
-  border-color: #2A8F65;
+  border-color: #131210;
   background: var(--paper-raise);
 }
 .lmc-sp-capture .lmc-note {

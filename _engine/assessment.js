@@ -261,7 +261,7 @@
             "html.lmc-embed .lmc-root,html.lmc-embed .lmc-root *{font-family:" + BODY + " !important;letter-spacing:normal !important}" +
             "html.lmc-embed .lmc-h1,html.lmc-embed .lmc-h1 *,html.lmc-embed .lmc-question,html.lmc-embed .lmc-question *,html.lmc-embed .lmc-intro-h,html.lmc-embed .lmc-intro-h *,html.lmc-embed .lmc-start-h,html.lmc-embed .lmc-start-h *,html.lmc-embed .lmc-capture h3,html.lmc-embed .lmc-score-ring .num,html.lmc-embed .lmc-score-hero .lmc-score-num{font-family:" + HEAD + " !important}";
           // The italic-pivot highlight sweep behind the H1/intro headline is a hardcoded green
-          // SVG (fill=#2A8F65) — the accent CSS var can't reach a data-uri, so it stayed Ivan-green
+          // SVG (fill=#131210) — the accent CSS var can't reach a data-uri, so it stayed Ivan-green
           // even in a slate/orange embed. Rebuild the same wavy sweep in the LEAD's accent.
           var sweep = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%23" + hex(rgb).slice(1) + "' opacity='0.78'/></svg>\")";
           css += "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after,html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{background-image:" + sweep + " !important}";
@@ -997,7 +997,7 @@
         }
         block.appendChild(h4);
         var bar = make("div", { class: "lmc-cat-bar" });
-        bar.innerHTML = '<div class="lmc-cat-track"><div class="lmc-cat-fill" style="--lmc-cat-target:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '<span style="font-size:.75em;color:rgba(26,26,26,.5)">/100</span></span>';
+        bar.innerHTML = '<div class="lmc-cat-track"><div class="lmc-cat-fill" style="--lmc-cat-target:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '<span style="font-size:.75em;color:rgba(19, 18, 16,.5)">/100</span></span>';
         block.appendChild(bar);
         var rec = pickRec(cat, catRes.score);
         // Resolve which tier-key was picked so we can build the edit path.

@@ -747,7 +747,7 @@
         });
       })
       .catch(function (err) {
-        panel.innerHTML += '<div style="padding:14px;color:#c62828;">Failed to load: ' + escapeText(err.message) + '</div>';
+        panel.innerHTML += '<div style="padding:14px;color:#C8361B;">Failed to load: ' + escapeText(err.message) + '</div>';
       });
   }
   function escapeText(s) {

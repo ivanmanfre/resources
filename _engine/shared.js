@@ -276,16 +276,16 @@
       installStripCss = true;
       var st = document.createElement("style");
       st.textContent =
-        ".lm-install{background:#1A1A1A;color:#F7F4EF;padding:2.2rem 1.6rem;margin:2.5rem 0;border-radius:2px}" +
+        ".lm-install{background:#131210;color:#FFFFFF;padding:2.2rem 1.6rem;margin:2.5rem 0;border-radius:2px}" +
         ".lm-install-inner{max-width:860px;margin:0 auto}" +
-        ".lm-install-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,244,239,.55);display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}" +
-        ".lm-install-badge{display:none;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;padding:.1rem .5rem;border:1px solid rgba(247,244,239,.3);border-radius:99px;color:#F7F4EF}" +
+        ".lm-install-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255, 255, 255,.55);display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}" +
+        ".lm-install-badge{display:none;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;padding:.1rem .5rem;border:1px solid rgba(255, 255, 255,.3);border-radius:99px;color:#FFFFFF}" +
         ".lm-install h2{font-size:1.35rem;margin:.7rem 0 .4rem;font-weight:700}" +
-        ".lm-install p{color:rgba(247,244,239,.75);margin:0 0 1rem;font-size:.95rem}" +
-        ".lm-install pre{background:#0d0d0d;border:1px solid rgba(247,244,239,.15);padding:1rem 1.1rem;overflow-x:auto;margin:0;position:relative;border-radius:2px}" +
-        ".lm-install code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.86rem;color:#F7F4EF;line-height:1.7}" +
-        ".lm-install-copy{position:absolute;top:.55rem;right:.55rem;background:#4C6E3D;color:#F7F4EF;border:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .7rem;cursor:pointer;border-radius:2px}" +
-        ".lm-install-note{margin-top:.7rem;font-size:.82rem;color:rgba(247,244,239,.5)}";
+        ".lm-install p{color:rgba(255, 255, 255,.75);margin:0 0 1rem;font-size:.95rem}" +
+        ".lm-install pre{background:#131210;border:1px solid rgba(255, 255, 255,.15);padding:1rem 1.1rem;overflow-x:auto;margin:0;position:relative;border-radius:2px}" +
+        ".lm-install code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.86rem;color:#FFFFFF;line-height:1.7}" +
+        ".lm-install-copy{position:absolute;top:.55rem;right:.55rem;background:#131210;color:#FFFFFF;border:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .7rem;cursor:pointer;border-radius:2px}" +
+        ".lm-install-note{margin-top:.7rem;font-size:.82rem;color:rgba(255, 255, 255,.5)}";
       document.head.appendChild(st);
     }
     var cmd = "/plugin marketplace add ivanmanfre/manfredi\n/plugin install " + plugin + "@manfredi";
@@ -705,13 +705,13 @@
       "position:fixed;bottom:18px;right:18px;z-index:99998;" +
       "display:inline-flex;align-items:center;gap:8px;" +
       "padding:9px 14px;border-radius:999px;" +
-      "background:#1A1A1A;color:#F7F4EF;" +
+      "background:#131210;color:#FFFFFF;" +
       "font-family:'Source Serif 4',Georgia,serif;font-size:13px;font-weight:600;" +
       "letter-spacing:.04em;border:none;cursor:pointer;" +
-      "box-shadow:0 6px 18px rgba(26,26,26,.18),0 2px 6px rgba(26,26,26,.10);" +
+      "box-shadow:0 6px 18px rgba(19, 18, 16,.18),0 2px 6px rgba(19, 18, 16,.10);" +
       "transition:transform 120ms,background 120ms;";
-    btn.addEventListener("mouseenter", function () { btn.style.transform = "translateY(-2px)"; btn.style.background = "#2A8F65"; });
-    btn.addEventListener("mouseleave", function () { btn.style.transform = ""; btn.style.background = "#1A1A1A"; });
+    btn.addEventListener("mouseenter", function () { btn.style.transform = "translateY(-2px)"; btn.style.background = "#131210"; });
+    btn.addEventListener("mouseleave", function () { btn.style.transform = ""; btn.style.background = "#131210"; });
     btn.addEventListener("click", function () {
       if (!activateEditModeFromCache()) showEditTokenModal();
     });
@@ -725,23 +725,23 @@
     var backdrop = document.createElement("div");
     backdrop.id = "lm-edit-modal";
     backdrop.style.cssText =
-      "position:fixed;inset:0;z-index:99999;background:rgba(26,26,26,0.45);" +
+      "position:fixed;inset:0;z-index:99999;background:rgba(19, 18, 16,0.45);" +
       "display:flex;align-items:center;justify-content:center;padding:1rem;" +
       "font-family:'Source Serif 4',Georgia,serif;";
     var card = document.createElement("div");
     card.style.cssText =
-      "background:#F7F4EF;color:#1A1A1A;max-width:440px;width:100%;" +
+      "background:#FFFFFF;color:#131210;max-width:440px;width:100%;" +
       "padding:1.75rem;border-radius:6px;box-shadow:0 24px 48px rgba(0,0,0,.25);" +
-      "border-left:4px solid #2A8F65;";
+      "border-left:4px solid #131210;";
     card.innerHTML =
-      '<p style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2A8F65;margin:0 0 .35rem;">Inline editor</p>' +
-      '<h3 style="font-family:\'DM Serif Display\',Georgia,serif;font-size:1.6rem;font-weight:400;letter-spacing:-.01em;margin:0 0 .65rem;">Enter the <em style="font-style:italic;color:#2A8F65;">admin password</em>.</h3>' +
-      '<p style="font-size:.95rem;line-height:1.5;color:#3D3D3B;margin:0 0 1.25rem;">Unlocks inline editing on every LM page. Cached locally for 24h after entry — re-enter when it expires.</p>' +
-      '<input type="password" id="lm-edit-modal-input" autocomplete="current-password" spellcheck="false" placeholder="Password" style="width:100%;box-sizing:border-box;padding:.85rem 1rem;border:1px solid rgba(26,26,26,.22);background:#fff;font-family:inherit;font-size:.95rem;color:#1A1A1A;border-radius:0;letter-spacing:.05em;" />' +
+      '<p style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#131210;margin:0 0 .35rem;">Inline editor</p>' +
+      '<h3 style="font-family:\'Schibsted Grotesk\',Georgia,serif;font-size:1.6rem;font-weight:400;letter-spacing:-.01em;margin:0 0 .65rem;">Enter the <em style="font-style:italic;color:#131210;">admin password</em>.</h3>' +
+      '<p style="font-size:.95rem;line-height:1.5;color:#4A463E;margin:0 0 1.25rem;">Unlocks inline editing on every LM page. Cached locally for 24h after entry — re-enter when it expires.</p>' +
+      '<input type="password" id="lm-edit-modal-input" autocomplete="current-password" spellcheck="false" placeholder="Password" style="width:100%;box-sizing:border-box;padding:.85rem 1rem;border:1px solid rgba(19, 18, 16,.22);background:#fff;font-family:inherit;font-size:.95rem;color:#131210;border-radius:0;letter-spacing:.05em;" />' +
       '<p id="lm-edit-modal-err" style="font-size:.8rem;color:#A33;margin:.5rem 0 0;min-height:1em;"></p>' +
       '<div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1rem;">' +
-        '<button type="button" id="lm-edit-modal-cancel" style="padding:10px 18px;background:transparent;border:1px solid rgba(26,26,26,.22);color:#1A1A1A;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Cancel</button>' +
-        '<button type="button" id="lm-edit-modal-ok" style="padding:10px 18px;background:#1A1A1A;border:none;color:#F7F4EF;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Unlock</button>' +
+        '<button type="button" id="lm-edit-modal-cancel" style="padding:10px 18px;background:transparent;border:1px solid rgba(19, 18, 16,.22);color:#131210;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Cancel</button>' +
+        '<button type="button" id="lm-edit-modal-ok" style="padding:10px 18px;background:#131210;border:none;color:#FFFFFF;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;">Unlock</button>' +
       '</div>';
     backdrop.appendChild(card);
     document.body.appendChild(backdrop);

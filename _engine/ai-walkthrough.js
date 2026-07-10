@@ -176,7 +176,7 @@
         '<input type="email" id="lmw-gate-email" placeholder="you@company.com" autocomplete="email" />';
       var btn = make("button", { class: "lmw-cta-btn", type: "button" }, "Run analysis");
       btn.style.cursor = "pointer";
-      btn.style.border = "1px solid #1A1A1A";
+      btn.style.border = "1px solid #131210";
       card.appendChild(btn);
       modal.appendChild(card);
       document.body.appendChild(modal);
@@ -184,7 +184,7 @@
       setTimeout(function () { if (input) input.focus(); }, 30);
       btn.addEventListener("click", function () {
         var v = (input && input.value) || "";
-        if (!emailIsValid(v)) { if (input) input.style.borderColor = "#B45A2B"; return; }
+        if (!emailIsValid(v)) { if (input) input.style.borderColor = "#6B675E"; return; }
         writeKV("email", v.trim().toLowerCase());
         beacon("capture", { email: v.trim().toLowerCase() });
         document.body.removeChild(modal);
