@@ -395,7 +395,7 @@
       if (cta.description) ctaCard.appendChild(make("p", { class: "lmc-sp-cta-d" }, esc(cta.description)));
       var ctaLink = make("a", {
         class: "lmc-btn lmc-sp-cta-btn",
-        href: cta.url,
+        href: (window.LM && window.LM.normalizeCtaUrl) ? window.LM.normalizeCtaUrl(cta.url, "closing-cta") : cta.url,
         target: "_blank",
         rel: "noopener"
       }, esc(cta.button || "Continue"));

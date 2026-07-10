@@ -139,7 +139,7 @@
       var cta = data.ctas[0];
       var ctaSec = L.make("section", { class: "lmw-cta" });
       ctaSec.innerHTML = '<h2>' + L.esc(cta.headline || "Want this customized?") + '</h2>' +
-        '<a class="lmc-btn" href="' + L.esc(cta.url) + '" target="_blank" rel="noopener">' +
+        '<a class="lmc-btn" href="' + L.esc(L.normalizeCtaUrl ? L.normalizeCtaUrl(cta.url, "closing-cta") : cta.url) + '" target="_blank" rel="noopener">' +
           L.esc(cta.button || "Talk to me") +
         '</a>';
       // Only register when the fallback literal wasn't used — textContent must

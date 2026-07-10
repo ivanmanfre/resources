@@ -225,14 +225,26 @@
 
   // ── Fit-call URL (single canonical call destination, 2026-06-09) ──────
   // Every call CTA on every LM points here, tagged by placement + slug.
+  // utm_content carries the reader session_id (same key lm-beacon stamps on
+  // cta_click) — lm_attribution joins bookings back to sessions on it.
+  var CALL_BASE = "https://calendly.com/im-ivanmanfredi/30min";
   function callUrl(medium) {
     try {
-      var u = new URL("https://calendly.com/ivan-intelligents/30min");
+      var u = new URL(CALL_BASE);
       u.searchParams.set("utm_source", "lm-resource");
       u.searchParams.set("utm_medium", medium || "cta");
       u.searchParams.set("utm_campaign", window.__lm_slug || "lm");
+      u.searchParams.set("utm_content", readerIdentity().session_id);
       return u.toString();
-    } catch (_) { return "https://calendly.com/ivan-intelligents/30min"; }
+    } catch (_) { return CALL_BASE; }
+  }
+
+  // Rewrite data-supplied CTA URLs that point at the retired ivan-intelligents
+  // Calendly account (30 published data.json files carry it) to the canonical
+  // callUrl(). Never touches other URLs — prospect-owned embed CTAs pass through.
+  function normalizeCtaUrl(url, medium) {
+    if (url && /calendly\.com\/ivan-intelligents/i.test(url)) return callUrl(medium || "closing-cta");
+    return url;
   }
 
   // ── Closing CTA (call-first, replaces the PDF email gates 2026-06-09) ──
@@ -799,7 +811,7 @@
     readKV: readKV, writeKV: writeKV, removeKV: removeKV,
     observeReveal: observeReveal,
     buildHero: buildHero, buildIntro: buildIntro,
-    buildClosingCta: buildClosingCta, callUrl: callUrl,
+    buildClosingCta: buildClosingCta, callUrl: callUrl, normalizeCtaUrl: normalizeCtaUrl,
     tierFor: tierFor,
     makeField: makeField, makeFieldArray: makeFieldArray,
     editMode: {

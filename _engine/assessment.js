@@ -44,7 +44,11 @@
   function computeResult(data, answers) {
     // Overall score: average of per-category averages, scaled to 0-100
     var perCategory = {};
-    var personaAnswer = answers.__persona || null;
+    // Persona answers store under the selector's own id when it has one
+    // (slides key on q.id || "__persona"); index 0 is a valid answer.
+    var personaKey = (data.persona_selector && data.persona_selector.id) || "__persona";
+    var personaAnswer = answers[personaKey] != null ? answers[personaKey]
+                      : (answers.__persona != null ? answers.__persona : null);
     (data.categories || []).forEach(function (cat) {
       var scores = [];
       (cat.questions || []).forEach(function (q) {
@@ -56,7 +60,19 @@
           else if (typeof a === "number") val = a;
           else if (!isNaN(Number(a))) val = Number(a);
           if (val != null && !isNaN(val)) {
-            var maxScore = q.max_score || 5;
+            // D6 guard: when max_score is absent, derive it from the real
+            // option maximum instead of assuming 5 — a 0-3 scored question
+            // under the 5 default could never reach 100.
+            var maxScore = q.max_score;
+            if (maxScore == null && q.answers && q.answers.length) {
+              var optMax = 0;
+              for (var oi = 0; oi < q.answers.length; oi++) {
+                var osc = q.answers[oi] && q.answers[oi].score;
+                if (typeof osc === "number" && osc > optMax) optMax = osc;
+              }
+              if (optMax > 0) maxScore = optMax;
+            }
+            maxScore = maxScore || 5;
             scores.push((val / maxScore) * 100);
           }
         }
@@ -75,6 +91,12 @@
 
     // Tier
     var th = data.tier_thresholds || { low: 40, mid: 70 };
+    // D6 guard: thresholds are percentages of the normalized 0-100 scale.
+    // A payload emitting absolute-scale or inverted values falls back safely.
+    if (!(typeof th.low === "number" && typeof th.mid === "number" && th.low >= 0 && th.mid <= 100 && th.low < th.mid)) {
+      try { console.warn("[lm-assessment] invalid tier_thresholds", th, "— using {low:40, mid:70}"); } catch (_) {}
+      th = { low: 40, mid: 70 };
+    }
     var tier = overall <= th.low ? { name: "Critical", class: "low" } :
                overall <= th.mid ? { name: "Growth Stage", class: "medium" } :
                { name: "Optimized", class: "" };
@@ -1024,6 +1046,25 @@
         setTimeout(function () { if (entry.el) entry.el.classList.add("lmc-cat-fill-armed"); }, entry.delayMs);
       });
 
+      // Persona-branched closing (persona_copy, 2026-07-10 — D5): authored
+      // per-audience closing + proof line. Renders only when data.persona_copy
+      // carries the reader's persona tag; otherwise the neutral close is unchanged.
+      var personaTag = typeof res.persona === "number" && data.persona_selector && data.persona_selector.answers
+        ? ((data.persona_selector.answers[res.persona] || {}).tag || null) : null;
+      var pCopy = (personaTag && data.persona_copy && data.persona_copy[personaTag]) || null;
+      if (pCopy && (pCopy.closing || pCopy.proof) && !embedMode) {
+        var pBlock = make("div", { class: "lmc-persona-close" });
+        if (pCopy.closing) pBlock.appendChild(make("p", { class: "lmc-persona-close-p" }, esc(pCopy.closing)));
+        if (pCopy.proof) pBlock.appendChild(make("p", { class: "lmc-persona-proof" }, esc(pCopy.proof)));
+        if (window.LM && window.LM.editMode) {
+          var pcp = pBlock.querySelector(".lmc-persona-close-p");
+          var ppf = pBlock.querySelector(".lmc-persona-proof");
+          if (pcp) window.LM.editMode.registerField(pcp, "persona_copy." + personaTag + ".closing", { multiline: true });
+          if (ppf) window.LM.editMode.registerField(ppf, "persona_copy." + personaTag + ".proof", { multiline: true });
+        }
+        host.appendChild(pBlock);
+      }
+
       // Bottom CTA — Ivan's fit-call close. Suppressed in embed mode: inside a prospect's
       // scan this is THEIR sample asset, and the page itself drives to Ivan; pushing his
       // Calendly inside the embed would break the "this is your lead magnet" frame.
@@ -1044,14 +1085,21 @@
       }
       if (ctaConf) {
       // (Ivan-CTA block runs only when NOT embedded)
-      var ctaUrl = ctaConf.url || (window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min");
+      var ctaUrl = (window.LM && window.LM.normalizeCtaUrl ? window.LM.normalizeCtaUrl(ctaConf.url, "closing-cta") : ctaConf.url) || (window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/im-ivanmanfredi/30min");
       var ctaHeadlineHtml = ctaConf.headline_html || ctaConf.headline;
       if (!ctaHeadlineHtml) {
         ctaHeadlineHtml = res.tier && res.tier.class === "low"
           ? "Want help <em>closing these gaps</em>?"
           : "Want a second pair of eyes on <em>what to fix first</em>?";
       }
-      var ctaDescription = ctaConf.description || "Book a free 30-minute fit call. I'll walk your weakest category live and tell you exactly how I'd fix it. If you can run it yourself, I'll tell you that too.";
+      // Tier-conditional default CTA strength: critical → direct fix-first ask,
+      // optimized → soft sanity-check. persona_copy may supply its own line.
+      var tierCtaDefaults = {
+        low:    "Book a free 30-minute fit call. I'll walk your weakest category live and tell you exactly how I'd fix it first. If you can run it yourself, I'll tell you that too.",
+        medium: "Book a free 30-minute fit call. I'll walk your weakest category live and tell you exactly how I'd fix it. If you can run it yourself, I'll tell you that too.",
+        "":     "Book a free 30-minute fit call if you want a second read on the few gaps left. If there's nothing worth building, I'll say so and you keep the plan."
+      };
+      var ctaDescription = ctaConf.description || (pCopy && pCopy.cta_description) || tierCtaDefaults[res.tier.class] || tierCtaDefaults.medium;
       var ctaButton = ctaConf.button || "Book the free fit call";
       var ctaBox = make("div", { class: "lmc-unlocked-cta" });
       ctaBox.appendChild(make("p", { class: "lmc-unlocked-cta-eyebrow" }, "Next move"));

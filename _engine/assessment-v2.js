@@ -815,7 +815,7 @@
         // No per-LM CTA configured — default fit-call CTA so every assessment
         // ends with a clear next step (2026-06-09).
         var fallbackCta = make("div", { class: "lmc-cta-box" });
-        var fallbackUrl = window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min";
+        var fallbackUrl = window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/im-ivanmanfredi/30min";
         fallbackCta.innerHTML = '<h3>Want help closing these gaps?</h3>' +
           '<p>Book a free 30-minute fit call. I\'ll walk your weakest category live and tell you exactly how I\'d fix it. If you can run it yourself, I\'ll tell you that too.</p>' +
           '<a class="lmc-btn" href="' + esc(fallbackUrl) + '" target="_blank" rel="noopener">Book the free fit call</a>';

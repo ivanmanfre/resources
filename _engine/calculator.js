@@ -318,6 +318,28 @@
 
     container.appendChild(grid);
 
+    // Tiered CTA (cta_rules, 2026-07-10) — first matching rule personalizes the
+    // closing move per score band. Rules carry copy only; the engine owns the
+    // URL (callUrl), so a payload can never route the call CTA off-funnel.
+    // Legacy data.ctas (pre-wire shape, carries retired-offer copy) stays unrendered.
+    var tierCta = make("div", { class: "lmc-tier-cta", id: "lmc-tier-cta", hidden: "hidden" });
+    tierCta.innerHTML =
+      '<p class="lmc-tier-cta-eyebrow">Based on your numbers</p>' +
+      '<h3 class="lmc-tier-cta-h"></h3>' +
+      '<p class="lmc-tier-cta-d"></p>' +
+      '<a class="lmc-btn lmc-tier-cta-btn" target="_blank" rel="noopener"></a>';
+    tierCta.querySelector("a").addEventListener("click", function () {
+      beacon("cta_click", { answers: { target: "tiered_cta", rule_id: tierCta.getAttribute("data-rule-id") || null } });
+    });
+    container.appendChild(tierCta);
+
+    // capture_cta (authored on every calculator payload, previously dead — D5)
+    // feeds the closing email lead when no explicit override exists.
+    if (data.capture_cta && data.capture_cta.description) {
+      data.closing_cta = Object.assign({}, data.closing_cta);
+      if (!data.closing_cta.email_lead) data.closing_cta.email_lead = data.capture_cta.description;
+    }
+
     // Closing CTA — call-first finale (replaces the PDF email gate 2026-06-09)
     var closing = window.LM.buildClosingCta("calculator", data, {
       toolType: "calculator",
@@ -400,6 +422,28 @@
           el.textContent = fmt(out.format, results[out.id]);
         }
       });
+      // Tiered CTA — evaluate cta_rules against current inputs+outputs (safeEval
+      // whitelist; `when` is an expression string, e.g. "annual_savings > 50000").
+      var tierCtaEl = $("#lmc-tier-cta");
+      if (tierCtaEl) {
+        var ctaRules = Array.isArray(data.cta_rules) ? data.cta_rules : [];
+        var hitRule = null;
+        for (var cri = 0; cri < ctaRules.length && !hitRule; cri++) {
+          var crr = ctaRules[cri];
+          if (crr && crr.when && safeEval(crr.when, Object.assign({}, ctx, results)) === true) hitRule = crr;
+        }
+        if (hitRule) {
+          tierCtaEl.hidden = false;
+          tierCtaEl.querySelector(".lmc-tier-cta-h").textContent = hitRule.headline || "Want a second pair of eyes on this?";
+          tierCtaEl.querySelector(".lmc-tier-cta-d").textContent = hitRule.description || "";
+          var tierBtn = tierCtaEl.querySelector(".lmc-tier-cta-btn");
+          tierBtn.textContent = hitRule.button || "Book the free fit call";
+          tierBtn.setAttribute("href", (window.LM && window.LM.callUrl) ? window.LM.callUrl("tiered-cta") : "https://calendly.com/im-ivanmanfredi/30min");
+          tierCtaEl.setAttribute("data-rule-id", hitRule.id || "");
+        } else {
+          tierCtaEl.hidden = true;
+        }
+      }
       // Recs
       var recs = data.recommendations || [];
       var matched = recs.filter(function (r) { return r.when ? !!safeEval(r.when, Object.assign({}, ctx, results)) : false; }).slice(0, 3);

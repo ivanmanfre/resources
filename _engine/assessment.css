@@ -590,3 +590,8 @@ html.lmc-embed-dark .lmc-form-input {
   color: #fff !important;
 }
 html.lmc-embed-dark .lmc-form-input::placeholder { color: rgba(255,255,255,0.45) !important; }
+
+/* Persona-branched closing (persona_copy, 2026-07-10) */
+.lmc-persona-close{margin:2rem 0 0;padding:1.5rem 1.75rem;background:var(--paper-sunk,#F1EDE6);border:1px solid var(--hairline,rgba(26,26,26,.12));border-left:3px solid #4C6E3D;border-radius:4px;}
+.lmc-persona-close-p{font-size:1.02rem;line-height:1.65;color:var(--ink,#1A1A1A);margin:0 0 .85rem;}
+.lmc-persona-proof{font-family:'Source Serif 4',Georgia,serif;font-size:.95rem;line-height:1.6;color:var(--ink-soft,rgba(26,26,26,.72));font-style:italic;margin:0;}

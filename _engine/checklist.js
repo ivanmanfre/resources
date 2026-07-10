@@ -264,7 +264,7 @@
         var midCta = make("aside", { class: "lmc-mid-cta", role: "complementary" });
         midCta.innerHTML =
           '<p class="lmc-mid-cta-text">' + midCtaCopy + '</p>' +
-          '<a class="lmc-btn lmc-mid-cta-btn" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener" data-mid-cta>Book a strategy call</a>';
+          '<a class="lmc-btn lmc-mid-cta-btn" href="' + (window.LM && window.LM.callUrl ? window.LM.callUrl("mid-cta") : "https://calendly.com/im-ivanmanfredi/30min") + '" target="_blank" rel="noopener" data-mid-cta>Book a strategy call</a>';
         midCta.querySelector("[data-mid-cta]").addEventListener("click", function () {
           beacon("cta_click", { answers: { target: "mid_scroll_cta" } });
         });
