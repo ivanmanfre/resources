@@ -331,7 +331,7 @@
       '<section class="lmw-cta-card" data-cta-id="' + esc(picked.id || "fallback") + '">' +
         '<h3>' + esc(picked.headline || "") + '</h3>' +
         (picked.description ? '<p>' + esc(picked.description) + '</p>' : '') +
-        '<a class="lmw-cta-btn" href="' + esc(picked.url) + '" target="_blank" rel="noopener">' + esc(picked.button || "Learn more") + '</a>' +
+        '<a class="lmw-cta-btn" href="' + esc((window.LM && window.LM.normalizeCtaUrl) ? window.LM.normalizeCtaUrl(picked.url, "closing-cta") : picked.url) + '" target="_blank" rel="noopener">' + esc(picked.button || "Learn more") + '</a>' +
       '</section>';
     var a = host.querySelector("a.lmw-cta-btn");
     if (a && !a.__bound) {

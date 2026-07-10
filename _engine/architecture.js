@@ -673,7 +673,7 @@
       if (ctaDef && ctaDef.url) {
         var cta = make("a", {
           class: "lma-drawer-cta",
-          href: ctaDef.url, target: "_blank", rel: "noopener"
+          href: (window.LM && window.LM.normalizeCtaUrl) ? window.LM.normalizeCtaUrl(ctaDef.url, "closing-cta") : ctaDef.url, target: "_blank", rel: "noopener"
         });
         cta.textContent = ctaDef.button || ctaDef.headline || "Talk it through";
         cta.addEventListener("click", function () {
@@ -742,7 +742,7 @@
     cw.innerHTML =
       '<section class="lma-cta-card" data-cta-id="' + esc(picked.id || "fallback") + '">' +
         '<h3>' + esc(picked.headline || "Want help with this?") + '</h3>' +
-        '<a class="lma-btn" href="' + esc(picked.url) + '" target="_blank" rel="noopener">' +
+        '<a class="lma-btn" href="' + esc((window.LM && window.LM.normalizeCtaUrl) ? window.LM.normalizeCtaUrl(picked.url, "closing-cta") : picked.url) + '" target="_blank" rel="noopener">' +
           esc(picked.button || "Learn more") +
         '</a>' +
       '</section>';
