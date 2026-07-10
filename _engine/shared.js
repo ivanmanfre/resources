@@ -317,6 +317,42 @@
     return sec;
   }
 
+  // ── Frontier currency layer (Spec 3, 2026-07-10) ──────────────────────
+  // Single source of model/pricing truth: /frontier.json, built from the
+  // curated + human-confirmed frontier_models table. Fail-safe by design:
+  // fetch failure, stale flag, or unknown schema_version => null cache =>
+  // const() returns the baked fallback and stamp() returns "" (no stamp is
+  // always better than a wrong one). as_of/stamp reflect the human confirm
+  // date, never machine regen time.
+  var frontierCache = null, frontierTried = false, frontierPromise = null;
+  function frontierLoad() {
+    if (frontierTried) return frontierPromise || Promise.resolve(frontierCache);
+    frontierTried = true;
+    frontierPromise = fetch("/frontier.json", { credentials: "same-origin" })
+      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (j) {
+        if (j && j.schema_version === 1 && !j.stale) frontierCache = j;
+        return frontierCache;
+      })
+      .catch(function () { frontierCache = null; return null; });
+    return frontierPromise;
+  }
+  var frontier = {
+    load: frontierLoad,
+    const: function (key, fallback) {
+      return (frontierCache && frontierCache.constants && frontierCache.constants[key] != null)
+        ? frontierCache.constants[key] : fallback;
+    },
+    stamp: function () {
+      return (frontierCache && frontierCache.model_currency && frontierCache.model_currency.stamp) || "";
+    },
+    testedLine: function () {
+      var mc = frontierCache && frontierCache.model_currency;
+      if (!mc || !mc.current_models_line || !mc.as_of) return "";
+      return "Tested against " + mc.current_models_line + " (as of " + mc.as_of + ").";
+    },
+  };
+
   // ── Closing CTA (call-first, replaces the PDF email gates 2026-06-09) ──
   // One component for every engine. Kyle-pattern skeleton in Ivan's voice:
   // name the playbook/implementation gap, list what help means for THIS
@@ -883,6 +919,7 @@
     buildHero: buildHero, buildIntro: buildIntro,
     buildClosingCta: buildClosingCta, callUrl: callUrl, normalizeCtaUrl: normalizeCtaUrl,
     buildInstallStrip: buildInstallStrip,
+    frontier: frontier,
     tierFor: tierFor,
     makeField: makeField, makeFieldArray: makeFieldArray,
     editMode: {

@@ -296,6 +296,17 @@
     });
     if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(secondaryWrap, "outputs", { itemLabel: "output", template: { id: "", label: "New output", format: "decimal", formula: "0" } });
     outputsCard.appendChild(secondaryWrap);
+
+    // Model-currency stamp (Spec 3): renders ONLY when confirmed frontier data
+    // loaded — fetch failure / stale / bad schema means no stamp, never a
+    // wrong one. Date shown is the human-confirm date, not regen time.
+    if (window.LM && window.LM.frontier) {
+      window.LM.frontier.load().then(function () {
+        var s = window.LM.frontier.stamp();
+        if (!s) return;
+        outputsCard.appendChild(make("div", { class: "lmc-currency-stamp", style: "margin-top:.9rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.06em;color:rgba(26,26,26,.5)" }, s));
+      });
+    }
     // D2.2: Sensitivity slot (populated after each compute())
     var sensSlot = make("div", { id: "lmc-sensitivity", class: "lmc-sensitivity", hidden: "hidden" });
     outputsCard.appendChild(sensSlot);

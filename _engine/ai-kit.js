@@ -207,6 +207,18 @@
     container.appendChild(buildBrowser(data));
     root.appendChild(container);
 
+    // Model-currency line (Spec 3): "Tested against <current models> (as of
+    // <confirmed date>)." Rendered at view time from /frontier.json so it can
+    // never go stale with the page; absent entirely when no confirmed data.
+    if (L.frontier) {
+      L.frontier.load().then(function () {
+        var line = L.frontier.testedLine();
+        if (!line) return;
+        var el = L.make("div", { class: "lmk-currency-line", style: "max-width:860px;margin:0 auto;padding:0 1.5rem 2rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.05em;color:rgba(26,26,26,.55)" }, line);
+        container.appendChild(el);
+      });
+    }
+
     root.appendChild(L.buildClosingCta("ai-kit", data, { toolType: "ai-kit" }));
 
     L.observeReveal(root, ".lmk-reveal");
