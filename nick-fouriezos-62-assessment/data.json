@@ -1,94 +1,94 @@
 {
  "slug": "nick-fouriezos-62-assessment",
- "title": "The Investor-Ready Story Audit",
- "subtitle": "Score whether your founder narrative is clear, credible, and specific enough to raise capital and win clients before you spend a dollar amplifying it.",
+ "title": "The Founder Story Score",
+ "subtitle": "Measures whether your narrative, visibility, and pitch are doing real work for you — or costing you deals you don't know you're losing.",
  "brand": {
-  "accent": "#2F6D78",
+  "accent": "#0E99AB",
   "hero_badge": "Interactive Assessment"
  },
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "specificity_and_proof",
-   "name": "Specificity and Proof",
+   "id": "narrative_clarity",
+   "name": "Narrative Clarity",
    "questions": [
     {
-     "id": "specificity_and_proof_q1",
-     "text": "Read your homepage headline out loud. What does it actually say?",
+     "id": "narrative_clarity_q1",
+     "text": "When someone asks what you do, what happens?",
      "max_score": 5,
      "answers": [
       {
-       "label": "It uses words like 'leading,' 'innovative,' or 'best-in-class' with no numbers attached",
+       "label": "I describe the product or technology in detail — it takes a while to get through it",
        "score": 1
       },
       {
-       "label": "It describes what we do but has no proof point or metric",
+       "label": "I give a category answer ('we're a fintech') and fill in from there",
        "score": 2
       },
       {
-       "label": "It includes a number but it is a market size stat, not something we own",
+       "label": "I have a practiced sentence, but it doesn't always land the way I want it to",
        "score": 3
       },
       {
-       "label": "It includes a specific metric that is uniquely ours: users, revenue, or outcomes we drove",
+       "label": "I have one clear sentence and it usually resonates immediately",
        "score": 4
       },
       {
-       "label": "The first sentence contains a number no other company can claim, and a reader could verify it in under a minute",
+       "label": "People repeat my framing back to me when they describe my work to others",
        "score": 5
       }
      ]
     },
     {
-     "id": "specificity_and_proof_q2",
-     "text": "Your three strongest proof points. How would a skeptical investor react to them?",
+     "id": "narrative_clarity_q2",
+     "text": "Look at your homepage or LinkedIn headline. How does the first sentence describe you?",
      "max_score": 5,
      "answers": [
       {
-       "label": "They are qualitative: 'clients love us,' 'amazing traction,' 'market-leading'",
+       "label": "It uses words like 'leading,' 'innovative,' or 'best-in-class'",
        "score": 1
       },
       {
-       "label": "They are real numbers but common ones: revenue, users, growth percentage alone",
+       "label": "It names the category but doesn't say why I'm different from anyone else in it",
        "score": 2
       },
       {
-       "label": "They have numbers but I would need a follow-up sentence to explain the context",
+       "label": "It describes what I do but not the specific outcome or who it's actually for",
        "score": 3
       },
       {
-       "label": "Each one is specific, contextualized, and tells a before-and-after story",
+       "label": "It leads with a concrete claim or outcome that's specific and checkable",
        "score": 4
       },
       {
-       "label": "Each one is checkable, uniquely ours, and lands a category claim the moment you read it",
+       "label": "It leads with a number or proof point that only I can put my name on",
        "score": 5
       }
      ]
     },
     {
-     "id": "specificity_and_proof_q3",
-     "text": "Go count the adjectives in the first paragraph of your pitch or homepage. What do you find?",
+     "id": "narrative_clarity_q3",
+     "text": "Have you searched your own category in ChatGPT or Perplexity to see how you show up?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Five or more adjectives describing quality, with no numbers to back any of them",
+       "label": "No — I haven't thought about this yet",
        "score": 1
       },
       {
-       "label": "Three or four adjectives, one metric buried later in the page",
+       "label": "I tried it once but didn't do anything with what I found",
        "score": 2
       },
       {
-       "label": "Two adjectives and one number, but the number is a market size, not a company outcome",
+       "label": "I've looked and have some presence, but no clear point of view comes through",
        "score": 3
       },
       {
-       "label": "One adjective and at least one specific number we own in the first two sentences",
+       "label": "I show up with a defined narrative that reflects how I actually position myself",
        "score": 4
       },
       {
-       "label": "No adjectives doing the work. A specific number does the job every adjective would have attempted",
+       "label": "I own a specific idea in my category and it surfaces consistently across AI tools",
        "score": 5
       }
      ]
@@ -96,115 +96,116 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Your proof points are invisible right now.",
-     "text": "Words like 'leading' and 'innovative' cost nothing to say, so they prove nothing. A reader's brain files them as noise before the next sentence starts. You have real numbers. The work is getting them into the first paragraph.",
+     "headline": "Your positioning is doing work against you.",
+     "text": "If the first sentence people read puts you in the wrong category, no funnel fixes that. When everyone raising has a number, you need a narrative that reframes why your category matters now. The assignment before anything else: find the sentence that leads with a specific claim — not an adjective, not a feature, something only you can say. If you can't fit it in 15 words, keep cutting.",
      "steps": [
-      "Pull up your homepage. Count every adjective in the first paragraph. Ask which three can be replaced by a specific number you actually own.",
-      "List your five best outcomes for customers, in numbers, with a time window: '$40k to $130k/mo in 90 days' is a sentence nobody else can say.",
-      "Write one sentence that only you can say. No other company can claim it. Test it by searching for it online."
+      "Write down every adjective on your homepage or deck cover. Delete all of them.",
+      "Replace each one with the specific number or proof point that sits behind it.",
+      "Search your category in ChatGPT. Ask yourself: would a buyer recognize you in that description?",
+      "Test the new sentence on three people outside your company. Watch their face, not just their words."
      ]
     },
     "mid": {
-     "headline": "You have numbers, but they are not doing enough work yet.",
-     "text": "Having metrics is the floor, not the ceiling. The founders closing rounds right now do not just show growth. They show numbers that land a category claim the moment you read them. Context and uniqueness are what separate your number from every other founder's deck.",
+     "headline": "You have a story, but it is not sharp enough to travel without you.",
+     "text": "The real test: can someone who heard your pitch once describe you accurately to someone else without you in the room? If they reach for vague words, the positioning is still leaking. Find the one number that only you can claim and put it at the front of everything.",
      "steps": [
-      "For each metric you use, ask: could a competitor say this exact sentence? If yes, it is not a differentiator yet.",
-      "Add a before-and-after frame to your strongest proof point. A two-state number with a time window is significantly stronger than a single-state one.",
-      "Move your best number into the first sentence of your pitch, your bio, and your homepage. If it is buried on slide eight, it is not working."
+      "Ask three recent contacts to describe what you do in one sentence. Compare their words to yours.",
+      "Find the single metric that makes you specific and checkable. Make it your lead.",
+      "Audit your last five pieces of content. Does the same clear idea run through all of them?"
      ]
     },
     "high": {
-     "headline": "Your specificity is a real asset. Now sharpen the frame.",
-     "text": "You are ahead of most founders on this. The numbers are there and they are yours. The next step is making sure each one lands a category claim, not just a progress update. A number that says 'we are growing' is different from a number that says 'we are inevitable.'",
+     "headline": "You have done the hard work. Now protect it.",
+     "text": "You have a specific, clear narrative and the market is starting to reflect it back. The only thing that erodes it is inconsistency — or adding too many angles when the market is finally associating one idea with you. Stay the course.",
      "steps": [
-      "Review your proof points and ask which ones tell an investor why your category is winning right now, not just that your company is working.",
-      "Add one sentence after your strongest metric that names the category shift it reflects.",
-      "Test your homepage with three people who do not know your company. What category do they put you in after 30 seconds?"
+      "Resist the urge to expand the narrative before the current one has compounded fully.",
+      "Keep the one number or proof point front and center across every new channel or format.",
+      "Every quarter, search your category again. Check whether the market reflects your positioning."
      ]
     }
    }
   },
   {
-   "id": "category_narrative_and_t",
-   "name": "Category Narrative and Timing",
+   "id": "founder_visibility",
+   "name": "Founder Visibility",
    "questions": [
     {
-     "id": "category_narrative_and_t_q1",
-     "text": "A partner who has seen 200 decks this year asks why your category is inevitable right now. What do you say?",
+     "id": "founder_visibility_q1",
+     "text": "How does your personal content compare to your company page output right now?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I lead with our growth numbers. I have not built a category timing argument beyond that",
+       "label": "We only post on the company page — I am not active personally at all",
        "score": 1
       },
       {
-       "label": "I can explain the trend but I rely on macro stats investors have already seen",
+       "label": "I share company posts occasionally but rarely publish my own perspective",
        "score": 2
       },
       {
-       "label": "I have a timing argument but it takes me a few minutes to get to it in a conversation",
+       "label": "I post personally sometimes but it is inconsistent and I have not committed to a cadence",
        "score": 3
       },
       {
-       "label": "I can state in one sentence why this category is opening up right now, and it is specific to this moment",
+       "label": "I post regularly in my own voice and treat it as seriously as the company channel",
        "score": 4
       },
       {
-       "label": "My timing narrative connects a specific shift to a specific opening, and investors have told me it is the clearest version they have heard",
+       "label": "My personal content drives the majority of our inbound attention and referrals",
        "score": 5
       }
      ]
     },
     {
-     "id": "category_narrative_and_t_q2",
-     "text": "How does your pitch handle the AI question, whether AI touches your product or not?",
+     "id": "founder_visibility_q2",
+     "text": "How often does a customer or investor tell you they felt like they already knew you before the first conversation?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I avoid the AI framing entirely. It feels like a stretch for what we build",
+       "label": "Never — this has not happened",
        "score": 1
       },
       {
-       "label": "I mention AI because investors expect it, but I have not stress-tested whether the connection is thin",
+       "label": "Once or twice, but I wrote it off as coincidence",
        "score": 2
       },
       {
-       "label": "I have a real AI angle but I lead with product first and bring it in later",
+       "label": "A few times a year — it has happened but it is not common",
        "score": 3
       },
       {
-       "label": "If AI genuinely touches our product, I lead with it. I know investors spot a thin connection in the first two minutes",
+       "label": "Fairly regularly — I hear some version of this pretty often",
        "score": 4
       },
       {
-       "label": "My AI framing, or my deliberate non-AI positioning, is a specific narrative choice I can defend with concrete examples",
+       "label": "Almost every first call — it has become a consistent pattern",
        "score": 5
       }
      ]
     },
     {
-     "id": "category_narrative_and_t_q3",
-     "text": "Non-AI venture funding adjusted for inflation sits below 2020 levels. Does your pitch account for the market your investors are actually operating in?",
+     "id": "founder_visibility_q3",
+     "text": "When it comes to putting your face and actual opinions in front of your audience, where are you?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I reference total VC market size as context for the opportunity, not the actual raise environment",
+       "label": "I would genuinely rather rebuild the product than post a video of myself talking about it",
        "score": 1
       },
       {
-       "label": "I know conditions are tighter but I have not adjusted my pitch language to reflect it",
+       "label": "I will do it under pressure but I avoid it whenever I can",
        "score": 2
       },
       {
-       "label": "I acknowledge the environment when asked but I do not lead with it",
+       "label": "It has gotten easier but I am still selective about what I say publicly",
        "score": 3
       },
       {
-       "label": "I can articulate the funding picture in my specific category and how my timing fits inside it",
+       "label": "I show up consistently and it feels like a real channel now, not a chore",
        "score": 4
       },
       {
-       "label": "My pitch explicitly names the gap between the macro VC headlines and my category's actual raise conditions, and positions us inside that gap",
+       "label": "Being visible is a deliberate part of my strategy and I would miss it if I stopped",
        "score": 5
       }
      ]
@@ -212,115 +213,116 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Growing 3x does not close rounds on its own anymore.",
-     "text": "Every founder in a live deal right now has a growth number. The ones getting checks can also tell you why their category is inevitable at this specific moment. That is the argument your pitch is missing.",
+     "headline": "The logo does not convert. The face does.",
+     "text": "LinkedIn company pages now get roughly 5% of the feed. Personal profiles get the rest. Investors do not wire money to a landing page. Customers do not trust a logo. They back a person they believe in, and they can not believe in someone they have never seen think, talk, or take a stance. You are the distribution. Start using it.",
      "steps": [
-      "Write one sentence that answers: why is this category winning right now, not in three years? Put a specific date, stat, or event in it.",
-      "Research the actual funding picture in your category. Not total VC, but deals in your vertical over the last four quarters. That is the room you are pitching into.",
-      "If AI genuinely touches your product, move that framing into the first two minutes. If it does not, decide now how you will address the question when it comes."
+      "Commit to one post a week in your own words — not a repost, not a company announcement.",
+      "Write about something you saw, thought, or argued about this week. Keep it under 200 words.",
+      "Do not pitch anything in the first two weeks. Your only job is to be useful.",
+      "Track whether people start engaging differently in calls after they have seen your content."
      ]
     },
     "mid": {
-     "headline": "You have a timing story. It needs to land faster.",
-     "text": "The argument is there, but if it takes several minutes to reach, it is not working. Investors writing checks in this environment are pattern-matching on category inevitability before they are halfway through your deck. The timing narrative has to be front-loaded.",
+     "headline": "You are showing up, but not consistently enough for trust to compound.",
+     "text": "Trust has a warm-up period, and you can not shortcut it with a louder CTA. You already know the answer to whether to be visible — you are doing it. The question is frequency. The market needs to see you enough times that it feels like it knows you before you make the ask.",
      "steps": [
-      "Write a two-sentence version of your category timing argument. If you cannot compress it, the logic is not tight enough yet.",
-      "Pull out the macro stats you are using and ask: have the investors you are meeting already seen these? Replace any stat that has been in the news cycle with one specific to your category or deal data.",
-      "Move the timing argument to slide two or your opening monologue. It should land before the product demo."
+      "Lock in a consistent posting cadence — even two posts a week beats five followed by a two-week silence.",
+      "Make sure at least one post per week has a clear, specific point of view — not just information.",
+      "Review your last 10 posts: how many include a real opinion you would defend in a room?"
      ]
     },
     "high": {
-     "headline": "Your category narrative is a real edge. Use it as one.",
-     "text": "Most founders can tell you why their company is working. You can also tell them why this specific moment is the right one for the category. That combination is what gets you into the second meeting. Make sure it is the first thing you say.",
+     "headline": "You have built the distribution most founders outsource or ignore.",
+     "text": "Being the face of the work is a moat most companies can not replicate with a brand page or a PR firm. The next level: connect your visibility to one specific idea you want to own in your market. Presence alone is not enough — it has to stand for something.",
      "steps": [
-      "Ask the last three investors you met: what did you hear that you had not heard before? Their answer tells you which part of your timing narrative is actually landing.",
-      "Write a one-paragraph version of your category timing argument that a non-technical client could read and understand. If you cannot, you are still using insider framing.",
-      "Test whether your timing argument works in two completely different contexts: a VC meeting and a client sales call. The core logic should hold in both."
+      "Make sure your most visible content maps to the single idea you want to own in your market.",
+      "Find the posts that drove the most real conversations, not just the most reach. Do more of those.",
+      "Consider what format you have not used yet — video, a recurring series — to deepen the relationship."
      ]
     }
    }
   },
   {
-   "id": "founder_voice_and_conten",
-   "name": "Founder Voice and Content Distribution",
+   "id": "thesis_vs_volume",
+   "name": "Thesis vs. Volume",
    "questions": [
     {
-     "id": "founder_voice_and_conten_q1",
-     "text": "When you publish on LinkedIn, where does most of your time and attention go?",
+     "id": "thesis_vs_volume_q1",
+     "text": "If someone asked you to name the single idea you want to own in your market, what would happen?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Almost entirely on the company page. That is the brand we are building",
+       "label": "I would give a long list — there are so many angles I could go after",
        "score": 1
       },
       {
-       "label": "Split roughly evenly between my personal profile and the company page",
+       "label": "I could name one but it is pretty broad and anyone in my space could say it too",
        "score": 2
       },
       {
-       "label": "Mostly my personal profile, but I repurpose most posts to the company page as well",
+       "label": "I have one, but I have not been publishing against it consistently",
        "score": 3
       },
       {
-       "label": "My personal profile first, with a real point of view. The company page gets what is left",
+       "label": "I have one clear idea and I have been building content around it for months",
        "score": 4
       },
       {
-       "label": "My personal profile is the primary channel. I have watched it consistently outperform the company page and I plan around that",
+       "label": "I have one — and the market is starting to associate it with me specifically",
        "score": 5
       }
      ]
     },
     {
-     "id": "founder_voice_and_conten_q2",
-     "text": "Look at the last post you published. What does it actually say about how you think?",
+     "id": "thesis_vs_volume_q2",
+     "text": "What drives your decision on what to post or publish next?",
      "max_score": 5,
      "answers": [
       {
-       "label": "It is a product announcement or company update with nothing about my perspective",
+       "label": "Whatever feels timely, topical, or easy to write that week",
        "score": 1
       },
       {
-       "label": "It is industry news with some added context but no clear opinion from me",
+       "label": "What got the most likes or engagement on my last few posts",
        "score": 2
       },
       {
-       "label": "It has a point of view but I softened it to stay safe",
+       "label": "A rough content calendar with themes, but nothing sharp enough to own",
        "score": 3
       },
       {
-       "label": "It makes a specific claim in my voice that a reader who follows me would recognize as mine",
+       "label": "The one idea I am building toward, even if the individual posts vary in format",
        "score": 4
       },
       {
-       "label": "It states a position I would defend in a room full of people who disagree, backed by a specific number or story",
+       "label": "A deliberate thesis I am sharpening post by post, with each piece compounding the last",
        "score": 5
       }
      ]
     },
     {
-     "id": "founder_voice_and_conten_q3",
-     "text": "How do you know whether your content is actually working?",
+     "id": "thesis_vs_volume_q3",
+     "text": "What does your posting frequency look like compared to your content clarity?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I track impressions and likes. That is what the dashboard shows me",
+       "label": "High volume, low thesis — I post often but it does not stand for anything specific",
        "score": 1
       },
       {
-       "label": "I watch for comments and shares. That feels like real engagement",
+       "label": "Low volume, low thesis — I post when I have time and there is no clear through-line",
        "score": 2
       },
       {
-       "label": "I pay attention to DMs and whether people mention the post in live conversations",
+       "label": "Low volume, some clarity — I post less but I am trying to say something specific",
        "score": 3
       },
       {
-       "label": "I track which posts lead to discovery calls or inbound from the right people",
+       "label": "Medium volume, clear thesis — every post connects back to one idea",
        "score": 4
       },
       {
-       "label": "I can tell you which of my last ten posts booked a call and which did not, and I have changed my content mix based on that",
+       "label": "Consistent volume, sharp thesis — people can predict what I stand for because I have earned it",
        "score": 5
       }
      ]
@@ -328,115 +330,116 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You are the distribution. The brand page is what you send people to after they already trust you.",
-     "text": "Company page reach on LinkedIn sits at roughly 5% of the feed, and it has dropped about 60% since 2024. The time you are putting into that channel is mostly invisible. The post that books the call comes from a person, not a logo.",
+     "headline": "Volume without a thesis just adds to the noise.",
+     "text": "You become background. People scroll past your name because it never stands for anything specific. The founders who break through do the opposite — they pick one point of view and hammer it across months, not days, until the market starts repeating it back. Before you schedule another week of posts, answer this first: what is the single idea you want to own in your market? If you can not answer it, you do not have a posting problem. You have a positioning problem.",
      "steps": [
-      "For the next four weeks, put every piece of content on your personal profile first. Track which one books a conversation.",
-      "Write one post this week with a specific number and one sentence that tells the reader exactly what you think. Not what the data suggests. What you think.",
-      "Pull up your last ten posts and count how many include a real opinion versus an industry observation. That ratio tells you what you are actually optimizing for."
+      "Pause the calendar. Before the next post goes out, write one sentence: the idea you want to own.",
+      "Audit your last 20 posts. Count how many of them advance that idea. Be honest.",
+      "Pick the post that came closest to landing that idea. Write three more like it.",
+      "Commit to that one idea for 90 days straight before you add a second angle."
      ]
     },
     "mid": {
-     "headline": "You are posting in the right place. Now make the posts do real work.",
-     "text": "Personal profile is the right call. The gap is between content that gets attention and content that books calls. Those are not the same posts. A 200,000-impression post that books zero calls and a 1,100-impression post that books three are telling you something. The one that books calls is the one worth studying.",
+     "headline": "You have a direction but not a thesis sharp enough to compound.",
+     "text": "Go back through your last 20 posts and find the one topic where your actual, specific point of view shows up most clearly. That is probably the idea you want to own. Name it explicitly — give it a phrase or a frame you can come back to — and publish against it consistently for the next 90 days. Narrative compounds. Noise does not.",
      "steps": [
-      "Go back through your last ten posts and note which ones generated direct outreach: DMs, email mentions, call bookings. That is your signal.",
-      "Take the post that did worst on impressions but best on real engagement. Write another one like it.",
-      "Stop publishing anything that could have been written by someone who is not you. Every post should have at least one sentence a reader could only get from following you specifically."
+      "Name your thesis out loud in one sentence. If you need more than one sentence, it is not sharp yet.",
+      "Find your strongest existing post on that idea. Use it as the template for the next three.",
+      "Say no to anything on your content calendar that does not advance the thesis — at least for 60 days."
      ]
     },
     "high": {
-     "headline": "You are running the right scoreboard. Most founders are not.",
-     "text": "Tracking which content books calls instead of which content gets impressions is the thing almost nobody does. You are already doing it. The question now is whether the content that works for you is also building the warm room you will need before your next raise.",
+     "headline": "You have figured out that this is a marathon, not a sprint.",
+     "text": "Your consistency is the moat. The only refinement at this stage: make sure the idea you are hammering is specific enough to own exclusively — not a broad category anyone could claim, but a clear, named point of view people associate with you and no one else.",
      "steps": [
-      "Map your last 90 days of content against your pipeline. Which posts show up in conversations where a client or investor already knows who you are before you reach out?",
-      "Ask yourself: if someone has been reading your posts for six months, what do they believe about you that they would not believe about a competitor? That is the brand you are actually building.",
-      "Take one post that booked a call and write a sharper version of the same argument. What would you say differently now that you know it works?"
+      "Could a competitor copy your thesis and publish it tomorrow? If yes, make it more specific.",
+      "Find the post in your archive where you said the idea most sharply. Pin it, reference it, build from it.",
+      "Consider formalizing the thesis into a named framework — something readers can share and repeat."
      ]
     }
    }
   },
   {
-   "id": "the_warm_room_before_the",
-   "name": "The Warm Room Before the Ask",
+   "id": "attention_vs_outcomes",
+   "name": "Attention vs. Outcomes",
    "questions": [
     {
-     "id": "the_warm_room_before_the_q1",
-     "text": "Think about the last time you sent a cold email to an investor or enterprise buyer. How warm was the room before it landed?",
+     "id": "attention_vs_outcomes_q1",
+     "text": "What metric do you check first after you publish a post or piece of content?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Cold. They had no exposure to me or my thinking before that email arrived",
+       "label": "Impressions and reach — I want to see how far it traveled",
        "score": 1
       },
       {
-       "label": "We had one mutual connection but no direct engagement or context",
+       "label": "Likes and reactions — they tell me if the content landed",
        "score": 2
       },
       {
-       "label": "They had seen something about us, a press mention or a conference, but no personal connection to my work",
+       "label": "Comments and follower growth — I track both equally",
        "score": 3
       },
       {
-       "label": "They had read something I wrote or heard me speak. They had a prior reason to respond",
+       "label": "Replies and DMs from people who seem genuinely interested",
        "score": 4
       },
       {
-       "label": "They reached out to me first, or the cold email went to someone who already knew my thinking from following my content",
+       "label": "Calls booked, deals influenced, or client conversations started",
        "score": 5
       }
      ]
     },
     {
-     "id": "the_warm_room_before_the_q2",
-     "text": "The founders who move fastest through a round almost always share one thing: the investor already knows them before the cold email. How are you building that?",
+     "id": "attention_vs_outcomes_q2",
+     "text": "Think about your highest-performing content in the past 90 days. What did it actually produce?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I am not. I send decks and wait. The content strategy is separate from the raise",
+       "label": "Big numbers — impressions, likes, shares — but I honestly do not know if it drove anything",
        "score": 1
       },
       {
-       "label": "I post occasionally but I have not connected my content to who I want in my cap table",
+       "label": "Good engagement, but no direct business outcome I can trace back to it",
        "score": 2
       },
       {
-       "label": "I know which investors I am targeting and I engage with their content, but I do not know if they have seen mine",
+       "label": "Some conversations, but I have never connected content directly to a closed deal",
        "score": 3
       },
       {
-       "label": "I publish a consistent point of view that investors in my target list could find if they searched for founders in my space",
+       "label": "Real conversations and at least one business outcome I can trace to it",
        "score": 4
       },
       {
-       "label": "I can name three investors or clients who know my thinking before I have ever sent them a deck, because they have engaged with something I said publicly",
+       "label": "I can name specific clients or deals that started with a specific piece of content",
        "score": 5
       }
      ]
     },
     {
-     "id": "the_warm_room_before_the_q3",
-     "text": "If you are raising or pushing hard on enterprise sales in the next six months, how many people on your target list already know who you are?",
+     "id": "attention_vs_outcomes_q3",
+     "text": "When a post gets low reach but generates real business conversations, what do you do?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Fewer than five. Most of my outreach will be cold",
+       "label": "Assume it underperformed and move on — low reach means low value to me",
        "score": 1
       },
       {
-       "label": "Maybe ten to fifteen, through networking events and conferences",
+       "label": "Feel a bit frustrated — I wanted more people to see it",
        "score": 2
       },
       {
-       "label": "Twenty or more, but most of the connection is a handshake, not real familiarity with my thinking",
+       "label": "Note it, but I still optimize the next post for visibility first",
        "score": 3
       },
       {
-       "label": "A clear subset of my target list has followed my work, seen me speak, or engaged with something I have written",
+       "label": "Treat it as a real data point — low reach plus real conversations means I wrote for the right people",
        "score": 4
       },
       {
-       "label": "The majority of my first-round outreach will go to people who have already had a reason to trust me before I ask for anything",
+       "label": "Double down on that format — outcomes are the game, attention is just the entry fee",
        "score": 5
       }
      ]
@@ -444,30 +447,148 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You are building the pitch before you have built the room.",
-     "text": "The warm room is harder to manufacture than any stat in the deck, and it cannot be built the week before you go out to raise. The founders who move fastest through a round almost always have investors who already know them. That familiarity does not come from one great cold email.",
+     "headline": "You are optimizing for the wrong scoreboard.",
+     "text": "A post that does 200,000 impressions and books zero calls is a vanity win. A post that does 1,100 impressions and books three discovery calls pays your rent. Go look at your last 10 posts and ask which column you have been playing for. Attention is the cost of entry. Outcomes are the game.",
      "steps": [
-      "List the ten investors or clients you most want in your next round or deal. Find out what they read, where they speak, and what they have said publicly in the last 90 days.",
-      "Start publishing one specific point of view per week that the people on that list would have a reason to read. Not about your company. About the category and the problem.",
-      "Engage with their public work before you ever send a deck. Comment with something specific. Share with a real sentence about why. Make yourself recognizable before you make the ask."
+      "Pull your last 10 posts. Next to each one, write what business outcome — if any — it drove.",
+      "Find the post with the worst reach that produced the best conversation. Study it. Why did it work?",
+      "Stop tracking impressions as a primary metric for at least one month. Track calls, DMs, and deals instead.",
+      "Before publishing anything next, ask: who specifically is this for, and what do I want them to do?"
      ]
     },
     "mid": {
-     "headline": "You are networking, but not necessarily building familiarity with how you think.",
-     "text": "A handshake at a conference is not the same as an investor who knows your view on the market. The latter is what converts a cold email into a fast reply. The difference is whether they have read something from you, not just met you.",
+     "headline": "You are starting to see the difference between the two scoreboards.",
+     "text": "The posts that make you feel successful and the posts that make you successful are rarely the same. You know this intellectually — now build a system around it. For every post, ask before you publish: is this earning trust, or is it just earning impressions? They are not the same job.",
      "steps": [
-      "Audit your existing network against your target raise list. Which of those relationships are based on your thinking versus your title or a mutual introduction?",
-      "Send one piece of content to five people on your target list with a specific note about why you wrote it. Not a pitch. Just the thinking.",
-      "Publish one post this month that takes a specific position on something happening in your category. The investors you want to know you should recognize your view on it."
+      "Create two columns: feel-good metrics and business metrics. Track both for 30 days.",
+      "For every piece of content that drives a real conversation, note what made it work.",
+      "Gradually shift more content toward the patterns that produce the right-column outcomes."
      ]
     },
     "high": {
-     "headline": "You are building the warm room while everyone else is writing cold outreach templates.",
-     "text": "This is the edge almost nobody is playing. Keep building it. The goal is to reach a place where the cold email you send is really just a formal first step to someone who already thinks of you as worth a conversation.",
+     "headline": "You have made the shift most founders never make.",
+     "text": "Trust is the compounding asset. Attention is a byproduct. You have already figured out what most content strategies never get to. The edge from here: audit your pipeline backward. Find the exact content touch-points that are actually closing the gap between stranger and client.",
      "steps": [
-      "Map which content has generated the most inbound from your target investor or client profile. Double down on that format and topic, not the content that got the most impressions overall.",
-      "Ask three people in your target list directly: what do they associate with your name when they hear it? Their answer tells you whether the narrative you think you are building is actually landing.",
-      "Set a concrete goal: before you go out to raise or push on enterprise clients, you want a specific number of people from your target list to have engaged with something you published. Pick the number and work backward from it."
+      "Map your last five closed deals back to the first piece of content each person engaged with.",
+      "Look for the pattern. What format, what topic, what framing keeps showing up before a deal closes?",
+      "Put more resources against that pattern — it is your actual content moat."
+     ]
+    }
+   }
+  },
+  {
+   "id": "pitch_conviction",
+   "name": "Pitch Conviction",
+   "questions": [
+    {
+     "id": "pitch_conviction_q1",
+     "text": "In an investor or client meeting, what do you typically lead with in the first two minutes?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The technology or product — I want them to understand what we built before anything else",
+       "score": 1
+      },
+      {
+       "label": "The problem and our solution — the classic setup-answer structure",
+       "score": 2
+      },
+      {
+       "label": "Our traction numbers — I let the growth do the talking",
+       "score": 3
+      },
+      {
+       "label": "Why this category matters right now and why we are the ones to do it",
+       "score": 4
+      },
+      {
+       "label": "A specific hook or story that puts them inside the problem before I explain the company",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "pitch_conviction_q2",
+     "text": "After a first pitch or first sales meeting, what usually happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Crickets — I follow up and rarely hear back without prompting",
+       "score": 1
+      },
+      {
+       "label": "Some polite replies but it rarely converts to a real second conversation",
+       "score": 2
+      },
+      {
+       "label": "Second meetings happen, but I often lose people somewhere in the middle of the process",
+       "score": 3
+      },
+      {
+       "label": "Strong second meetings — the story lands and they come ready to go deeper",
+       "score": 4
+      },
+      {
+       "label": "They ask to continue before I have finished — the room is leaning in, not waiting to leave",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "pitch_conviction_q3",
+     "text": "How would you describe your delivery in your most important conversations?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I hedge a lot — I know I am doing it but I am watching for signals I am on the right track",
+       "score": 1
+      },
+      {
+       "label": "I am fairly confident but I qualify things when I am not totally sure of the answer",
+       "score": 2
+      },
+      {
+       "label": "I feel solid most of the time but the conviction wavers when the questions get hard",
+       "score": 3
+      },
+      {
+       "label": "I speak with clarity because I know the story cold — the certainty takes care of itself",
+       "score": 4
+      },
+      {
+       "label": "Investors or clients have told me specifically that they felt certain before the meeting ended",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Investors pattern-match on conviction whether they admit it or not.",
+     "text": "They are buying two things at once: the company, and whether you believe what you are saying. Most founders only pitch the first one. If you are opening with the technology, or hedging in every other sentence, the room cools before you get to the part that matters. The fix is in the first two minutes: lead with why this category matters right now, why now, and why you are inevitable. Then the product.",
+     "steps": [
+      "Write out your opening two minutes word for word. Read it back and count the hedges — 'kind of,' 'sort of,' 'I think,' 'maybe.'",
+      "Replace every hedge with the direct claim underneath it. Say what you actually mean.",
+      "Practice the opening until you can deliver it without notes — not memorized, internalized.",
+      "Record yourself on video. Watch it back once with the sound off. Does the body language match the certainty of the words?"
+     ]
+    },
+    "mid": {
+     "headline": "Your story lands in some rooms and not others.",
+     "text": "That usually means the conviction is there but the structure is not consistent. Conviction is a function of clarity. When you know your story cold, the certainty takes care of itself — you can not fake it, but you can build it. The work is in rehearsing the narrative until it becomes automatic.",
+     "steps": [
+      "Run your opening two-minute pitch to someone outside the company. Ask them to repeat back what they heard.",
+      "Find the moment in your pitch where you lose confidence. That is where the story is still unclear.",
+      "Tighten that section specifically — not with more information, with a sharper sentence."
+     ]
+    },
+    "high": {
+     "headline": "You have figured out that conviction is a function of clarity, not personality.",
+     "text": "You know your story cold and the room feels it. Most founders never get here — they keep mistaking preparation for rehearsing slides instead of internalizing narrative. The only question: are you carrying this same certainty into your written content and early-stage audience building, or does it only come out live?",
+     "steps": [
+      "Take the two-minute narrative that works in the room and turn it into your clearest piece of written content.",
+      "Find three people who heard your pitch and ask what phrase or line stuck with them. That is your sharpest asset.",
+      "Apply that same structure to your LinkedIn bio, your homepage, and your next cold outreach."
      ]
     }
    }
@@ -484,29 +605,29 @@
  },
  "cta": {
   "headline": "Want a partner who turns this score into an actual plan?",
-  "description": "In 30 minutes I'll show you which two gaps to fix first, based on your score and your stage. No pitch deck, just the sequencing.",
-  "button": "Book a call",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
   "url": "https://calendly.com/im-ivanmanfredi/30min"
  },
  "persona_selector": {
   "id": "role",
-  "text": "Where are you right now?",
+  "text": "Which best describes where you are right now?",
   "answers": [
    {
-    "label": "Actively raising a round in the next 90 days",
-    "tag": "active-raise"
+    "label": "Actively raising capital from investors",
+    "tag": "raising"
    },
    {
-    "label": "Funded and pushing to win more enterprise clients",
-    "tag": "post-raise"
+    "label": "Building pipeline and closing clients",
+    "tag": "selling"
    },
    {
-    "label": "Building narrative before going to market",
-    "tag": "pre-raise"
+    "label": "Growing a personal brand to drive both",
+    "tag": "building"
    },
    {
-    "label": "Scaling GTM as a funded founder",
-    "tag": "gtm-scale"
+    "label": "Leading marketing for a funded company",
+    "tag": "cmo"
    }
   ]
  }
