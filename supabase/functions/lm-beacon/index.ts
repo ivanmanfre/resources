@@ -120,6 +120,20 @@ Deno.serve(async (req: Request) => {
   let lm_format: string | null = null;
   const { data: lm } = await supabase.from("lead_magnets").select("id, title, format").eq("slug", lm_slug).limit(1).maybeSingle();
   if (lm) { lm_id = lm.id; lm_title = lm.title ?? null; lm_format = lm.format ?? null; }
+  // Auto-register (W-B.1, 2026-07-10): a live page that beacons but has no
+  // lead_magnets row registers itself, so telemetry can never go blind again.
+  // Guard: only when the slug maps to a real lm_drafts_v2 row (blocks junk slugs).
+  if (!lm) {
+    try {
+      const { data: draft } = await supabase.from("lm_drafts_v2").select("topic, format").eq("slug", lm_slug).limit(1).maybeSingle();
+      if (draft) {
+        const { data: created } = await supabase.from("lead_magnets")
+          .insert({ slug: lm_slug, title: draft.topic ?? lm_slug, topic: draft.topic ?? null, format: draft.format ?? null, status: "published", resource_page_url: "https://resources.ivanmanfredi.com/" + lm_slug + "/" })
+          .select("id, title, format").single();
+        if (created) { lm_id = created.id; lm_title = created.title ?? null; lm_format = created.format ?? null; }
+      }
+    } catch (_) { /* fail-soft: the event still records slug-keyed */ }
+  }
 
   const ip = req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for") || "";
   const ua = req.headers.get("user-agent") || "";
