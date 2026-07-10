@@ -355,6 +355,14 @@
       main.appendChild(summary);
     }
 
+    // Plugin install strip — guides that ship as manfredi-marketplace plugins
+    // (e.g. strip-ai-tells, client-onboarding) offer the install path before
+    // the closing CTA. No-op for unmapped guides.
+    if (L.buildInstallStrip) {
+      var installStrip = L.buildInstallStrip("guide", data);
+      if (installStrip) main.appendChild(installStrip);
+    }
+
     // Closing CTA — call-first finale (replaces the PDF email gate 2026-06-09)
     main.appendChild(L.buildClosingCta("guide", data, {
       toolType: "guide",

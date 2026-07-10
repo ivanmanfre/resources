@@ -196,6 +196,13 @@
 
     var container = L.make("div", { class: "lmc-container lmk-root" });
     container.appendChild(buildQuickStart(data));
+    // Plugin install strip (primary path); the ZIP band below stays as the
+    // no-install secondary affordance. Renders only for kits mapped to a
+    // manfredi-marketplace plugin.
+    if (L.buildInstallStrip) {
+      var installStrip = L.buildInstallStrip("ai-kit", data);
+      if (installStrip) container.appendChild(installStrip);
+    }
     container.appendChild(buildDownloadBand(data));
     container.appendChild(buildBrowser(data));
     root.appendChild(container);

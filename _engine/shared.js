@@ -247,6 +247,76 @@
     return url;
   }
 
+  // ── Claude Code plugin install strip (Spec 2 "Living Kit", 2026-07-10) ──
+  // Kits/guides that ship as plugins in the manfredi marketplace render an
+  // install one-liner + live version badge. Mapping: data.plugin (new payloads,
+  // set by the generator) falls back to this slug map (published pages, so no
+  // page edits needed). Version badge reads VERSION_MAP.json from the repo raw
+  // URL and hides itself on any failure (e.g. repo momentarily private).
+  var PLUGIN_MAP = {
+    "the-agency-operating-system-for-claude-code": "agency-starter",
+    "find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls": "drop-point-read",
+    "content-engine-starter-kit": "content-engine-starter",
+    "anti-ai-patterns-guide-the-tells-that-make-ai-written-content-obvious-and-how-to": "strip-ai-tells",
+    "the-claude-client-onboarding-pack-skills-agents-prompts-to-run-intake-without-th": "client-onboarding",
+  };
+  var VERSION_MAP_URL = "https://raw.githubusercontent.com/ivanmanfre/manfredi/main/VERSION_MAP.json";
+  var installStripCss = false;
+  function pluginFor(data) {
+    if (data && data.plugin) return data.plugin;
+    var slug = (data && data.slug) || window.__lm_slug || "";
+    if (PLUGIN_MAP[slug]) return PLUGIN_MAP[slug];
+    var seg = (location.pathname.split("/").filter(Boolean)[0] || "");
+    return PLUGIN_MAP[seg] || null;
+  }
+  function buildInstallStrip(toolType, data) {
+    var plugin = pluginFor(data);
+    if (!plugin) return null;
+    if (!installStripCss) {
+      installStripCss = true;
+      var st = document.createElement("style");
+      st.textContent =
+        ".lm-install{background:#1A1A1A;color:#F7F4EF;padding:2.2rem 1.6rem;margin:2.5rem 0;border-radius:2px}" +
+        ".lm-install-inner{max-width:860px;margin:0 auto}" +
+        ".lm-install-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,244,239,.55);display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}" +
+        ".lm-install-badge{display:none;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;padding:.1rem .5rem;border:1px solid rgba(247,244,239,.3);border-radius:99px;color:#F7F4EF}" +
+        ".lm-install h2{font-size:1.35rem;margin:.7rem 0 .4rem;font-weight:700}" +
+        ".lm-install p{color:rgba(247,244,239,.75);margin:0 0 1rem;font-size:.95rem}" +
+        ".lm-install pre{background:#0d0d0d;border:1px solid rgba(247,244,239,.15);padding:1rem 1.1rem;overflow-x:auto;margin:0;position:relative;border-radius:2px}" +
+        ".lm-install code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.86rem;color:#F7F4EF;line-height:1.7}" +
+        ".lm-install-copy{position:absolute;top:.55rem;right:.55rem;background:#4C6E3D;color:#F7F4EF;border:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .7rem;cursor:pointer;border-radius:2px}" +
+        ".lm-install-note{margin-top:.7rem;font-size:.82rem;color:rgba(247,244,239,.5)}";
+      document.head.appendChild(st);
+    }
+    var cmd = "/plugin marketplace add ivanmanfre/manfredi\n/plugin install " + plugin + "@manfredi";
+    var sec = make("section", { class: "lm-install", "aria-label": "Install as a Claude Code plugin" });
+    sec.innerHTML =
+      '<div class="lm-install-inner">' +
+        '<div class="lm-install-label"><span>Claude Code plugin</span><span class="lm-install-badge" data-badge></span></div>' +
+        '<h2>Install it straight into Claude Code</h2>' +
+        '<p>Two commands and the whole kit is live in your session, versioned. When the model era shifts, the kit gets updated and your install picks it up on the next refresh.</p>' +
+        '<pre><code>' + esc(cmd) + '</code><button class="lm-install-copy" type="button">Copy</button></pre>' +
+        (toolType === "ai-kit" ? '<div class="lm-install-note">Prefer the raw files? The ZIP download below has every file, no install needed.</div>' : '') +
+      '</div>';
+    sec.querySelector(".lm-install-copy").addEventListener("click", function () {
+      var btn = this;
+      navigator.clipboard.writeText(cmd).then(function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1600);
+        beacon(toolType, "install_copy", { plugin: plugin });
+      });
+    });
+    try {
+      fetch(VERSION_MAP_URL).then(function (r) { return r.ok ? r.json() : null; }).then(function (vm) {
+        if (!vm || !vm[plugin] || !vm[plugin].version) return;
+        var b = sec.querySelector("[data-badge]");
+        b.textContent = "v" + vm[plugin].version + (vm[plugin].last_bump ? " · " + vm[plugin].last_bump : "");
+        b.style.display = "inline-block";
+      }).catch(function () {});
+    } catch (_) {}
+    return sec;
+  }
+
   // ── Closing CTA (call-first, replaces the PDF email gates 2026-06-09) ──
   // One component for every engine. Kyle-pattern skeleton in Ivan's voice:
   // name the playbook/implementation gap, list what help means for THIS
@@ -812,6 +882,7 @@
     observeReveal: observeReveal,
     buildHero: buildHero, buildIntro: buildIntro,
     buildClosingCta: buildClosingCta, callUrl: callUrl, normalizeCtaUrl: normalizeCtaUrl,
+    buildInstallStrip: buildInstallStrip,
     tierFor: tierFor,
     makeField: makeField, makeFieldArray: makeFieldArray,
     editMode: {
