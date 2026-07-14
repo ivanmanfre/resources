@@ -1,0 +1,589 @@
+{
+ "slug": "coach-proof-v2b4-ff-assessment",
+ "title": "The Coach Proof Score",
+ "subtitle": "Measures how systemized your check-in process is and how close you are to scaling past 40 clients without burning out.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "your_check_in_load",
+   "name": "Your Check-In Load",
+   "questions": [
+    {
+     "id": "num_clients",
+     "type": "number",
+     "text": "How many active 1:1 clients are you coaching right now?",
+     "hint": "Count only clients who submit check-ins at least once a week.",
+     "suffix": "clients",
+     "min": 1,
+     "max": 200,
+     "step": 1,
+     "default": 20,
+     "normalize_formula": "x >= 30 ? 80 : x >= 15 ? 60 : x >= 5 ? 40 : 20"
+    },
+    {
+     "id": "min_per_checkin",
+     "type": "number",
+     "text": "How many minutes does one check-in response take you — from opening the form to hitting send?",
+     "hint": "Be honest. Include reading, thinking, and writing.",
+     "suffix": "minutes",
+     "min": 1,
+     "max": 60,
+     "step": 1,
+     "default": 12,
+     "normalize_formula": "x <= 3 ? 100 : x <= 7 ? 80 : x <= 12 ? 50 : x <= 20 ? 25 : 10"
+    },
+    {
+     "id": "checkins_per_week_per_client",
+     "type": "number",
+     "text": "How many times per week does each client check in?",
+     "hint": "Use your standard cadence, not exceptions.",
+     "suffix": "times / week",
+     "min": 1,
+     "max": 7,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "x <= 1 ? 100 : x <= 2 ? 60 : 30"
+    },
+    {
+     "id": "checkin_dread",
+     "text": "How do you feel on Sunday evening knowing check-ins start Monday?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Check-ins already ruined my last two weekends",
+       "score": 1
+      },
+      {
+       "label": "I batch them Tuesday and cancel other plans to fit them in",
+       "score": 2
+      },
+      {
+       "label": "Mild dread, but I get through it by midday",
+       "score": 3
+      },
+      {
+       "label": "Fine — it takes under an hour and I have a clear routine",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The math is already working against you.",
+     "text": "The hours you just calculated is your real ceiling — not your program quality, not your pricing. You cannot outwork this. Coaches burn out at 40 clients because they keep solving a systems problem with discipline.",
+     "steps": [
+      "Time your next 5 check-in responses exactly. Write the number down.",
+      "Identify the three sentences you type the same way every single week.",
+      "That repetition is your first template. Start there."
+     ]
+    },
+    "mid": {
+     "headline": "You're managing, but one busy month breaks this.",
+     "text": "You're in the danger zone — enough clients that the hours add up, not yet enough pain to force the fix. Build the system while it still feels optional.",
+     "steps": [
+      "Map what a normal week looks like for 80% of your clients.",
+      "Write one reply for that scenario and use it for two weeks.",
+      "Track whether retention or satisfaction changes. It won't drop. It will probably go up."
+     ]
+    },
+    "high": {
+     "headline": "Your load is under control — protect that.",
+     "text": "You've either got a system or a low enough client count that the hours haven't compounded yet. The window to build the structure is now, while adding 10 clients still feels manageable.",
+     "steps": [
+      "Document what you already do that keeps responses fast.",
+      "Decide now what client count is the hard ceiling before you add the next system layer.",
+      "If you don't have a formal flag for hard-week clients, build one before you need it."
+     ]
+    }
+   }
+  },
+  {
+   "id": "intake_design",
+   "name": "Intake Design",
+   "questions": [
+    {
+     "id": "intake_scoring",
+     "text": "When a client submits a check-in, how do you know what kind of week they had before you write a single word?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I mostly go from memory of last week's call",
+       "score": 1
+      },
+      {
+       "label": "I read the whole form start to finish each time",
+       "score": 2
+      },
+      {
+       "label": "I skim a summary field the client fills in",
+       "score": 3
+      },
+      {
+       "label": "My form auto-scores their week — I see a number before I read anything",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "intake_sort_speed",
+     "text": "From check-in submission to knowing exactly what a client needs — how long does that take?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I'm usually still deciding when I'm already halfway through the reply",
+       "score": 1
+      },
+      {
+       "label": "5–10 minutes to read, re-read, and figure it out",
+       "score": 2
+      },
+      {
+       "label": "2–3 minutes to read and decide",
+       "score": 3
+      },
+      {
+       "label": "Under 60 seconds — the intake does the categorizing",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "intake_actionability",
+     "text": "How much of your check-in form actually changes what you do next?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "It's basically a free-text box — I work with whatever they wrote",
+       "score": 1
+      },
+      {
+       "label": "I built it years ago and it doesn't match how I coach now",
+       "score": 2
+      },
+      {
+       "label": "Some sections matter; I glance at others and move on",
+       "score": 3
+      },
+      {
+       "label": "Every section maps to a specific reply template or flag trigger",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your intake form is slowing you down, not speeding you up.",
+     "text": "If your form doesn't tell you what kind of week a client had before you start reading, it's adding minutes instead of removing them. A check-in form that doesn't score itself is just a journal with extra steps.",
+     "steps": [
+      "Add one question that asks clients to rate their week 1–5. That score alone changes how you read everything else.",
+      "Remove any question you can't point to a specific reply decision for.",
+      "Test the revised form on your next 5 check-ins and compare your time."
+     ]
+    },
+    "mid": {
+     "headline": "Your intake works but it could do more of the thinking for you.",
+     "text": "You're reading well, but reading isn't the same as having the decision made for you. The goal is a form that routes the client before you write a word.",
+     "steps": [
+      "Audit your last 20 check-ins. What percentage fell into the same 2–3 buckets?",
+      "Add a scoring field if you don't have one. Even a simple 1–10 subjective rating from the client changes how fast you triage.",
+      "Map each score range to a response type: template, template-plus-flag, or full custom."
+     ]
+    },
+    "high": {
+     "headline": "Your intake is doing real work. Keep it sharp.",
+     "text": "You've built something that routes before you read. That's the foundation everything else sits on.",
+     "steps": [
+      "Audit your form questions every quarter — client situations change and old questions go stale.",
+      "Make sure your scoring logic is written down somewhere other than your head.",
+      "If a new coach joined you tomorrow, could they use your intake to triage 20 clients on day one? If not, document it."
+     ]
+    }
+   }
+  },
+  {
+   "id": "reply_system",
+   "name": "Reply System",
+   "questions": [
+    {
+     "id": "template_speed",
+     "text": "For a client who hit all their workouts and had a clean week — how long does your reply take?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I treat every reply like a custom letter no matter what week they had",
+       "score": 1
+      },
+      {
+       "label": "10+ minutes — I feel bad sending anything that looks like copy-paste",
+       "score": 2
+      },
+      {
+       "label": "5–7 minutes — I write fresh but it usually looks the same",
+       "score": 3
+      },
+      {
+       "label": "Under 3 minutes — I pull a template and make one or two edits",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reply_repeat_pct",
+     "text": "What percentage of your check-in replies cover roughly the same points week to week on a normal week for a given client?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I've never measured it",
+       "score": 1
+      },
+      {
+       "label": "Less than a quarter — each client surprises me most weeks",
+       "score": 2
+      },
+      {
+       "label": "About half",
+       "score": 3
+      },
+      {
+       "label": "80% or more — good weeks are predictable",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "low_energy_quality",
+     "text": "If you had 20 check-ins to get through tomorrow and your energy was at 60%, what happens to reply quality?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I'd push replies or cancel other things to keep quality up",
+       "score": 1
+      },
+      {
+       "label": "Quality drops noticeably and some clients can probably tell",
+       "score": 2
+      },
+      {
+       "label": "Minor dip but still solid",
+       "score": 3
+      },
+      {
+       "label": "It stays consistent — the templates carry the load",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're writing the same reply from scratch, over and over.",
+     "text": "Treating every clean week like a custom coaching moment costs you hours with zero client benefit. The reply they get after a clean week doesn't need to be unique — it needs to be fast, warm, and accurate. Templates do that.",
+     "steps": [
+      "Pull your last 10 replies for a client who had a solid week. Highlight everything that repeated.",
+      "Turn that into a base template with three blank-fill spots: a training note, one adjustment, one line of encouragement.",
+      "Use it for the next two weeks and time yourself. You'll cut at least half the time."
+     ]
+    },
+    "mid": {
+     "headline": "You're part of the way there — now codify what you already know.",
+     "text": "You intuitively know that normal weeks repeat, but you're still writing a lot of it fresh. The system isn't captured yet.",
+     "steps": [
+      "Build templates for your three most common scenarios: good week, missed workouts, fatigue or stress.",
+      "Keep a doc with your reply templates and update it when you write something better than the template version.",
+      "Aim for a 3-minute reply on any clean week. That is the benchmark."
+     ]
+    },
+    "high": {
+     "headline": "Your reply system is protecting your time. Protect the templates.",
+     "text": "You've got the structure. The risk now is template drift — slowly reverting to custom replies because it feels more caring. It isn't.",
+     "steps": [
+      "Review your templates every 2 months. Keep them current with how your coaching language actually evolves.",
+      "Make sure a new team member could use them without asking you how.",
+      "Track your average reply time. If it creeps back above 5 minutes on clean weeks, a template went stale."
+     ]
+    }
+   }
+  },
+  {
+   "id": "80_20_triage",
+   "name": "80/20 Triage",
+   "questions": [
+    {
+     "id": "flag_speed",
+     "text": "When a client has a hard week — injury, low motivation, life stress — how fast do you know it needs a fully custom reply?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I sometimes miss it and they bring it up on the next call",
+       "score": 1
+      },
+      {
+       "label": "I read through the whole check-in and catch it somewhere in the middle",
+       "score": 2
+      },
+      {
+       "label": "I spot it in the first few lines and shift gears",
+       "score": 3
+      },
+      {
+       "label": "A flag triggers automatically before I open the reply draft",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "custom_reply_pct",
+     "text": "Of the check-ins you responded to last week, roughly what fraction actually needed a fully custom reply?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Every single one — I don't trust templates for coaching",
+       "score": 1
+      },
+      {
+       "label": "More than half",
+       "score": 2
+      },
+      {
+       "label": "About 1 in 3",
+       "score": 3
+      },
+      {
+       "label": "1 in 5 or fewer — the rest were templated",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "triage_criteria",
+     "text": "How do you decide which clients get a longer personal reply vs. a short one?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Reply length depends on how much time I have left in the session",
+       "score": 1
+      },
+      {
+       "label": "I try to be thorough with everyone because I'm not sure who needs more",
+       "score": 2
+      },
+      {
+       "label": "Gut feel, and it's usually right",
+       "score": 3
+      },
+      {
+       "label": "Clear criteria built into my system — specific flags trigger longer responses automatically",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're spending custom time on clients who don't need it.",
+     "text": "Not every check-in deserves the same depth. The 20% who are struggling need your full attention. The 80% who had a clean week need a fast, warm confirmation — not a mini coaching essay. Treating them the same costs you the time you need for the hard cases.",
+     "steps": [
+      "Define your flag criteria in writing: what three conditions trigger a fully custom reply?",
+      "For everything else, default to template. See how many clients actually notice.",
+      "Track your custom reply rate for four weeks. If it's above 30%, your flag criteria are too loose."
+     ]
+    },
+    "mid": {
+     "headline": "Your instincts are right but they're not scalable.",
+     "text": "You're doing the 80/20 split in your head, and it's working for now. The problem is gut feel doesn't survive a 10-client growth spike or a rough week for you personally.",
+     "steps": [
+      "Write down what you're already noticing intuitively. What does a flag check-in actually look like?",
+      "Add one question to your intake that surfaces the flag signal automatically — a mood score, a missed-session count, a stress indicator.",
+      "Once it's in the form, the system does the triage. Your gut confirms, not initiates."
+     ]
+    },
+    "high": {
+     "headline": "You've got the 80/20 working. Keep it honest.",
+     "text": "Your triage is systematic and you're reserving real effort for real needs. That's how you keep your best coaching for the people who actually need it.",
+     "steps": [
+      "Check your custom-reply rate every month. If it climbs above 25% consistently, a flag threshold shifted.",
+      "Make sure your flag criteria are visible to any future coach you add — the logic lives in the system, not your head.",
+      "Add a simple feedback loop: do flagged clients report feeling more supported? If yes, the flag is working."
+     ]
+    }
+   }
+  },
+  {
+   "id": "retention_and_personal_t",
+   "name": "Retention and Personal Touch",
+   "questions": [
+    {
+     "id": "speed_vs_retention",
+     "text": "When you sped up your check-in replies, what happened to how clients felt about you?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I don't track retention or client satisfaction closely enough to know",
+       "score": 1
+      },
+      {
+       "label": "I haven't tested reply speed as a variable yet",
+       "score": 2
+      },
+      {
+       "label": "I slowed down once and noticed clients got unhappier before I connected the dots",
+       "score": 3
+      },
+      {
+       "label": "Retention went up — faster replies felt more attentive, not less personal",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "perceived_attentiveness",
+     "text": "How often do clients comment on how responsive or present you feel — even on ordinary weeks?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Never — I worry some replies feel generic even when they're not",
+       "score": 1
+      },
+      {
+       "label": "Rarely — I assume they expect it and don't mention it",
+       "score": 2
+      },
+      {
+       "label": "Occasionally, usually after a hard week when I went deeper",
+       "score": 3
+      },
+      {
+       "label": "Regularly — they bring it up in testimonials and on calls without being asked",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "scale_without_dilution",
+     "text": "If you doubled your client count tomorrow, what would happen to the quality of care your current clients receive?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "I'd have to drop clients or quality would crater",
+       "score": 1
+      },
+      {
+       "label": "Noticeable drop — I already feel stretched at this load",
+       "score": 2
+      },
+      {
+       "label": "Minor dip for a week or two while I adjust, then back to normal",
+       "score": 3
+      },
+      {
+       "label": "Nothing changes — the system scales, my personal attention doesn't dilute",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're confusing effort with care.",
+     "text": "Clients don't feel your care through how long you took to write the reply. They feel it through how fast it arrived and how accurately it named what they were going through. Speed plus accuracy is attentiveness. Slow plus generic is just slow.",
+     "steps": [
+      "Pick one client you've had for 6+ months. Ask them directly: what makes you feel supported between calls?",
+      "Reply speed or consistency will show up before reply length.",
+      "Use that answer to give yourself permission to use templates on clean weeks."
+     ]
+    },
+    "mid": {
+     "headline": "You're building trust — now make it systematic.",
+     "text": "Clients notice your attentiveness when it counts. The gap is making that consistent at scale, not just when you have the energy for it.",
+     "steps": [
+      "Start tracking your reply time alongside client retention. Run it for 90 days.",
+      "If clients who get faster replies stay longer, you have your answer.",
+      "Build the consistency into the system so it happens even on your flat weeks."
+     ]
+    },
+    "high": {
+     "headline": "You've cracked the hardest part — care at scale.",
+     "text": "Faster replies with accurate content beat slower custom letters. You know this, and your retention shows it. The question now is whether your system is documented well enough to survive you having a rough month.",
+     "steps": [
+      "Make sure your templates capture your actual voice — not a generic coaching voice.",
+      "If you onboard a coach under you, your system should train them, not your time.",
+      "Document one case where your flag caught something a template would have missed. That story is your proof of concept."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "weekly_checkin_hours",
+   "label": "Hours per week on check-ins",
+   "format": "hours_per_period",
+   "formula": "(num_clients * min_per_checkin * checkins_per_week_per_client) / 60",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_checkin_hours",
+   "label": "Check-in hours burned per year",
+   "format": "hours",
+   "formula": "((num_clients * min_per_checkin * checkins_per_week_per_client) / 60) * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Where are you right now?",
+  "answers": [
+   {
+    "label": "Solo coach, under 15 clients, doing everything by hand",
+    "tag": "early"
+   },
+   {
+    "label": "Solo coach, 16–35 clients, starting to feel the ceiling",
+    "tag": "growing"
+   },
+   {
+    "label": "At or past 40 clients, trading sleep for capacity",
+    "tag": "ceiling"
+   },
+   {
+    "label": "Building a team or group program to get out of 1:1",
+    "tag": "scaling"
+   }
+  ]
+ }
+}
