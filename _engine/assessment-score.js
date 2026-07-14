@@ -32,7 +32,6 @@
     } catch (_) { return null; }
   }
   function normalizeAnswer(q, raw) {
-    // NOTE: legacy-schema fallback is added in Task 2. This step copies the v2 body verbatim.
     if (raw == null || raw === "") return null;
     if (q.type === "likert") {
       var max = q.max_score || 5;
@@ -71,6 +70,22 @@
       else if (kw.semi && kw.semi.some(function (k) { return text.indexOf(k.toLowerCase()) !== -1; })) best = Math.max(best, 60);
       else if (kw.manual && kw.manual.some(function (k) { return text.indexOf(k.toLowerCase()) !== -1; })) best = Math.max(best, 20);
       return best || 50;
+    }
+    // Legacy fallback: untyped scored-choice question. `raw` is the option index
+    // (v2's default renderLikert stores the index). Map option score to 0-100.
+    var idx = typeof raw === "number" ? raw : Number(raw);
+    if (!isNaN(idx) && q.answers && q.answers[idx] && typeof q.answers[idx].score === "number") {
+      var maxScore = q.max_score;
+      if (maxScore == null) {
+        var optMax = 0;
+        for (var oi = 0; oi < q.answers.length; oi++) {
+          var osc = q.answers[oi] && q.answers[oi].score;
+          if (typeof osc === "number" && osc > optMax) optMax = osc;
+        }
+        if (optMax > 0) maxScore = optMax;
+      }
+      maxScore = maxScore || 5;
+      return Math.max(0, Math.min(100, (q.answers[idx].score / maxScore) * 100));
     }
     return null;
   }
