@@ -36,10 +36,25 @@
   function normalizeAnswer(q, raw) {
     if (raw == null || raw === "") return null;
     if (q.type === "likert") {
-      var max = q.max_score || 5;
-      var v = typeof raw === "number" ? raw : Number(raw);
-      if (isNaN(v)) return null;
-      return Math.max(0, Math.min(100, (v / max) * 100));
+      // renderLikert stores the option INDEX (0-based), not a value. Map index -> score.
+      var lidx = typeof raw === "number" ? raw : Number(raw);
+      if (isNaN(lidx) || lidx < 0) return null;
+      if (q.answers && q.answers[lidx] && typeof q.answers[lidx].score === "number") {
+        var lmax = q.max_score;
+        if (lmax == null) {
+          var lopt = 0;
+          for (var li = 0; li < q.answers.length; li++) {
+            var lsc = q.answers[li] && q.answers[li].score;
+            if (typeof lsc === "number" && lsc > lopt) lopt = lsc;
+          }
+          if (lopt > 0) lmax = lopt;
+        }
+        lmax = lmax || 5;
+        return Math.max(0, Math.min(100, (q.answers[lidx].score / lmax) * 100));
+      }
+      // Default likert (no answers[]): options are 1..N at indices 0..N-1 -> value = index + 1
+      var ldef = q.max_score || 5;
+      return Math.max(0, Math.min(100, ((lidx + 1) / ldef) * 100));
     }
     if (q.type === "number") {
       if (q.normalize_formula) return safeEval(q.normalize_formula, { x: Number(raw) });

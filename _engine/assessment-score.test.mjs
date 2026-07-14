@@ -30,8 +30,20 @@ test("safeEval preserves real scoring formulas", () => {
   assert.equal(score.safeEval("countSel(stack)", { stack: ["a", "b"] }), 2);
 });
 
-test("normalizeAnswer: likert maps value/max to 0-100", () => {
-  assert.equal(score.normalizeAnswer({ type: "likert", max_score: 5 }, 4), 80);
+test("normalizeAnswer: likert scores by option INDEX (default 1..N options)", () => {
+  // default likert, no answers[] -> option index i represents value i+1
+  assert.equal(score.normalizeAnswer({ type: "likert", max_score: 5 }, 0), 20);  // first option = value 1 -> 1/5
+  assert.equal(score.normalizeAnswer({ type: "likert", max_score: 5 }, 4), 100); // last option = value 5 -> 5/5
+  assert.equal(score.normalizeAnswer({ type: "likert", max_score: 4 }, 0), 25);  // 1/4
+});
+test("normalizeAnswer: likert with explicit answers[].score maps index->score", () => {
+  var q = { type: "likert", max_score: 5, answers: [{score:1},{score:2},{score:3},{score:4},{score:5}] };
+  assert.equal(score.normalizeAnswer(q, 0), 20);   // answers[0].score=1 -> 1/5
+  assert.equal(score.normalizeAnswer(q, 4), 100);  // answers[4].score=5 -> 5/5
+});
+test("normalizeAnswer: likert guards bad index", () => {
+  assert.equal(score.normalizeAnswer({ type: "likert" }, "abc"), null);
+  assert.equal(score.normalizeAnswer({ type: "likert" }, -1), null);
 });
 
 test("normalizeAnswer: number uses normalize_formula", () => {
@@ -47,10 +59,10 @@ test("computeResult: demo-shaped data yields non-zero overall + computed outputs
     computed_outputs: [{ id: "leak", label: "Leak", format: "currency", formula: "q1_score * 10" }],
     tier_thresholds: { low: 40, mid: 70 }
   };
-  const res = score.computeResult(data, { q1: 4 }); // likert 4/5 => 80
-  assert.equal(res.overall, 80);
-  assert.equal(res.per_category.c1.score, 80);
-  assert.equal(res.computed.leak.value, 800);
+  const res = score.computeResult(data, { q1: 4 }); // likert index 4 (last option) => value 5/5 => 100
+  assert.equal(res.overall, 100);
+  assert.equal(res.per_category.c1.score, 100);
+  assert.equal(res.computed.leak.value, 1000);
 });
 
 test("normalizeAnswer: legacy untyped question scores by option index", () => {
