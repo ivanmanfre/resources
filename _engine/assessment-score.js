@@ -17,10 +17,12 @@
     if (spec === "decimal") return n.toFixed(2);
     return n.toLocaleString("en-US");
   }
+  var UNSAFE_EXPR_RE = /\b(constructor|prototype|__proto__|__defineGetter__|__defineSetter__|__lookupGetter__|__lookupSetter__|eval|Function|function|import|require|process|globalThis|global|window|document|self|module|exports|arguments|this)\b/;
   function safeEval(expr, ctx) {
     try {
       if (!expr) return null;
-      if (!/^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\[\]\'"\$]+$/.test(expr)) return null;
+      if (!/^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\'"\$]+$/.test(expr)) return null;
+      if (UNSAFE_EXPR_RE.test(expr)) return null;
       var fn = new Function("ctx", "Math", "has", "countSel", "with (ctx) { return (" + expr + "); }");
       var v = fn(ctx, Math,
         function has(arr, tag) { return Array.isArray(arr) && arr.indexOf(tag) !== -1; },
