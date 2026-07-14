@@ -137,20 +137,54 @@
     window.__lm_data = data;
     window.__lm_format = "assessment";
     if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
+
+    // Embed mode: this assessment is shown INSIDE a prospect's scan page as a sample of the
+    // lead magnet WE would build for THEM. Strip every "this is Ivan's site" signal — the site
+    // chrome (logo, name, Let's Talk) and the closing fit-call CTA — so it reads as their asset.
+    // Ported from assessment.js:198-382 via the pure embed-brand.js module (task-4-brief.md).
+    var __params = new URLSearchParams(location.search);
+    var embedMode = __params.get("src") === "scan_embed" || __params.get("embed") === "1";
+    var embedLogoUrl = "";
+    if (embedMode && window.LMEmbed) {
+      try {
+        document.documentElement.classList.add("lmc-embed");
+        var __nav = document.querySelector(".im-nav"); if (__nav) __nav.remove();
+        var __ft = document.querySelector(".im-footer"); if (__ft) __ft.remove();
+        var built = window.LMEmbed.buildEmbedVars(__params);
+        if (built.fontLink) { var gfl = document.createElement("link"); gfl.rel = "stylesheet"; gfl.href = built.fontLink; document.head.appendChild(gfl); }
+        var st = document.createElement("style"); st.textContent = built.css; document.head.appendChild(st);
+        // Identity pass (bname/blogo) — ported verbatim from assessment.js:364-378
+        var bname = (__params.get("bname") || "").trim();
+        if (bname) { var baseTitle = (document.title || "").split(" | ")[0].trim() || String(data.title || "Assessment").replace(/<[^>]*>/g, "").trim(); document.title = baseTitle + " | " + bname; var ogSite = document.querySelector('meta[property="og:site_name"]'); if (ogSite) ogSite.setAttribute("content", bname); }
+        var blogo = (__params.get("blogo") || "").trim();
+        if (blogo && /^https?:\/\//i.test(blogo)) { var icons = document.querySelectorAll('link[rel~="icon"],link[rel="apple-touch-icon"]'); for (var ii = 0; ii < icons.length; ii++) icons[ii].setAttribute("href", blogo); }
+        // The prospect's own logo, shown at the top of the sample so it reads as their asset.
+        embedLogoUrl = (__params.get("logo") || "").trim();
+      } catch (_) {}
+    }
+
     var key = "ivan.assessment." + data.slug;
     var questions = flattenQuestions(data);
-    var answers = (function () { try { return JSON.parse(localStorage.getItem(key + ".answers") || "{}"); } catch (_) { return {}; } })();
+    // Embed samples always start fresh: the same LM slug is reused across prospects on the
+    // resources domain, so a prior visitor's saved progress would otherwise render as "already
+    // completed" the moment the modal opens. Ignore (and never write) localStorage in embed mode.
+    var answers = embedMode ? {} : (function () { try { return JSON.parse(localStorage.getItem(key + ".answers") || "{}"); } catch (_) { return {}; } })();
     var idx = 0;
     for (var i = 0; i < questions.length; i++) {
       if (answers[questions[i].id || "__persona"] == null) { idx = i; break; }
       idx = i + 1;
     }
-    var captured = !!localStorage.getItem(key + ".email");
+    var captured = embedMode ? false : !!localStorage.getItem(key + ".email");
     root.innerHTML = "";
 
     // Hero
     var hero = make("section", { class: "lmc-hero" });
     var hi = make("div", { class: "lmc-container" });
+    if (embedLogoUrl) {
+      var __logo = make("img", { class: "lmc-embed-logo", src: embedLogoUrl, alt: (data.brand && data.brand.wordmark) || "" });
+      __logo.addEventListener("error", function () { __logo.remove(); });
+      hi.appendChild(__logo);
+    }
     var heroBadgeEl = make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment"));
     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadgeEl, "brand.hero_badge");
     hi.appendChild(heroBadgeEl);
@@ -178,7 +212,7 @@
     widget.appendChild(card);
     root.appendChild(widget);
 
-    function save() { try { localStorage.setItem(key + ".answers", JSON.stringify(answers)); } catch (_) {} }
+    function save() { if (embedMode) return; try { localStorage.setItem(key + ".answers", JSON.stringify(answers)); } catch (_) {} }
 
     function renderQuestion() {
       card.innerHTML = "";
@@ -611,7 +645,7 @@
       var retake = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Retake");
       retake.addEventListener("click", function () {
         if (!confirm("Clear answers and retake?")) return;
-        try { localStorage.removeItem(key + ".answers"); localStorage.removeItem(key + ".email"); } catch (_) {}
+        if (!embedMode) { try { localStorage.removeItem(key + ".answers"); localStorage.removeItem(key + ".email"); } catch (_) {} }
         location.reload();
       });
       share.appendChild(retake);
@@ -631,7 +665,7 @@
         e.preventDefault();
         var em = (optin.querySelector("#lmc-optin-email") || {}).value || "";
         if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
-        try { localStorage.setItem(key + ".email", em); } catch (_) {}
+        if (!embedMode) { try { localStorage.setItem(key + ".email", em); } catch (_) {} }
         beacon("capture", {
           email: em,
           overall_score: res.overall,
@@ -680,7 +714,7 @@
       // D3.5: time-series sparkline for repeat takers (requires localStorage email + ≥ 2 prior captures)
       try {
         var prevEmail = "";
-        try { prevEmail = localStorage.getItem(key + ".email") || ""; } catch (_) {}
+        if (!embedMode) { try { prevEmail = localStorage.getItem(key + ".email") || ""; } catch (_) {} }
         if (prevEmail) {
           rpc("lm_assessment_score_history", { p_slug: data.slug, p_email: prevEmail }).then(function (rows) {
             if (!Array.isArray(rows) || rows.length < 2) return;
