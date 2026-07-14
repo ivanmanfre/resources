@@ -101,3 +101,24 @@
 
 ## Self-review
 - Fable sequence honored (gate → n8n flip → Railway, staggered). Fail-closed everywhere. Formulas-not-values enforced in prompt AND validator. Rollback prepped per surface (saved prompt bodies + additive nodes). Existing legacy LMs untouched. Live-system internals I haven't read (node code, Railway service) are marked as execution-time recon steps, not fabricated.
+
+---
+
+## 2b.4 RECON (2026-07-14) — Railway scan-builder (claude-code-railway `main.py`) — FLIP HELD for canary
+
+**Trigger chain:** n8n `Outreach - Scan At Accept` `uIFsFNPd3N1sE7a3` → `Pick + Fire Scan Build` code node → `POST https://claude-code-railway-production.up.railway.app/build-hypertarget` body `{prospect_id, transcript, inline, name, company_domain}`. Generation is INSIDE the service, not n8n.
+
+**Surface = `~/Desktop/claude-code-railway/main.py` (Python/FastAPI, live on Railway). Route `@app.post("/build-hypertarget")` @4315.** Bespoke-assessment path (prospects with no mapped niche slug):
+- `_ht_assessment_system(forbidden, founder, angle)` @2879 — system prompt. Emits LEGACY schema (untyped scored-choice: 12-16 Qs, `answers:[{label,score 1..5}]`, 4-5 categories, per-category recommendations). NO computed_outputs, NO schema_version. Fetches `content_prompts?slug=forbidden-language` only (NOT the n8n `build-assessment` prompt).
+- `_ht_gen_assessment_spec(founder, transcript, angle)` @2981 — calls `_ht_llm_json(system, user, max_tokens=6000)`; returns `_ht_normalize_assessment_spec(...)` or None on failure (caller keeps static LM card = the existing fail path).
+- `_ht_normalize_assessment_spec(spec, founder, slug)` @2909 — coerces to legacy data.json; raises ValueError if <12 valid Qs (this raise = the fail-closed hook to reuse). Sets slug/title/brand{accent}/tier_thresholds/tier_names/cta/persona_selector. Q shape out: `{id,text,max_score,answers}` (untyped).
+- WRAPPER f-string @3562-3620: hardcodes `<link .../assessment.css>` @3586 + `<script .../shared.js defer><script .../assessment.js defer>` @3618. Neobrutalist embed aesthetic, accent = prospect's (brand-mirror). Root `<main id="lmc-root" data-lm-assessment-src="./data.json">` @3612 — IDENTICAL to v2 engine expectation.
+- `_ht_seed_lm(...)` @3516 seeds an lm from the spec with "neutral-middle answers" for the live embed render.
+
+**2b.4 build (DEFERRED, ~24h after n8n clean, own focused pass):**
+1. Port validator to PYTHON: `computeResult` + `safeEval` (JS `new Function`+whitelist → Python restricted `eval` with `{'__builtins__':{}}` + the SAME UNSAFE_EXPR_RE blocklist + char-whitelist + Math shim + `has`/`countSel`). SECURITY-SENSITIVE — must match assessment-score.js @2bc0fdd semantics AND be safe under Python eval. Unit-test against demo v2 + a legacy spec before wiring.
+2. Add render-QA in/after `_ht_normalize_assessment_spec`: run computeResult on synthetic answers, assert overall>0 + all cats covered + computed finite + formulas-not-values; fail → raise ValueError (caller already keeps static card = fail-closed). Embeds never gate (shouldGate short-circuits on embedMode) — confirm.
+3. v2 emission in `_ht_assessment_system`: mirror the n8n doctrine (schema_version v2, type likert, optional number Qs + computed_outputs, COEFFICIENT DISCIPLINE = coeff traces to input or stated constant else omit). Reuse the same prose block from Supabase `build-assessment` v2 section if practical, adapted to the founder-voice framing. SAVE current prompt fn text for rollback.
+4. `_ht_normalize_assessment_spec`: preserve v2 fields through normalization (type, normalize_formula, computed_outputs, schema_version, number Q min/max/step/default).
+5. Wrapper conditional (@3586 + @3618): when schema_version==v2 → assessment-v2.css + shared.js + assessment-score.js + embed-brand.js + assessment-v2.js.
+6. Deploy Railway service (its own deploy path); verify a test scan build renders v2 embed in prospect brand, computed outputs legible, no gate in embed, no console errors.
