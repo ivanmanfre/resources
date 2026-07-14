@@ -4,6 +4,9 @@
    Recommendations fire on `when` expressions referencing question ids + computed values */
 (function () {
   "use strict";
+  var LMScore = (typeof window !== "undefined" && window.LMScore) || {};
+  var fmt = LMScore.fmt, safeEval = LMScore.safeEval, normalizeAnswer = LMScore.normalizeAnswer;
+  function computeResult(data, answers) { return LMScore.computeResult(data, answers); }
   var BEACON = window.__lm_beacon_url || "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
   function $(s, c) { return (c || document).querySelector(s); }
   function make(tag, attrs, html) { var e = document.createElement(tag); if (attrs) for (var k in attrs) { if (k === "class") e.className = attrs[k]; else e.setAttribute(k, attrs[k]); } if (html !== undefined) e.innerHTML = html; return e; }
@@ -24,19 +27,6 @@
       else fetch(BEACON, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), keepalive: true }).catch(function () {});
     } catch (_) {}
   }
-  function fmt(spec, val) {
-    if (val == null || isNaN(val)) return "—";
-    var n = Number(val);
-    if (spec === "currency") return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
-    if (spec === "currency_per_period") return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 }) + "/mo";
-    if (spec === "hours_per_period") return n.toFixed(n < 10 ? 1 : 0) + " hrs/wk";
-    if (spec === "percent") return n.toFixed(0) + "%";
-    if (spec === "hours") return n.toFixed(n < 10 ? 1 : 0) + " hrs";
-    if (spec === "integer") return Math.round(n).toLocaleString("en-US");
-    if (spec === "decimal") return n.toFixed(2);
-    return n.toLocaleString("en-US");
-  }
-
   // D3.2: Supabase REST helpers for new RPCs (publishable anon key — safe for browser)
   var SUPABASE_ANON_KEY = window.__supabase_anon_key || "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
   var SUPABASE_REST_BASE = "https://bjbvqvzbzczjbatgmccb.supabase.co/rest/v1";
@@ -87,71 +77,6 @@
       '</div>' +
     '</div>';
   }
-  function safeEval(expr, ctx) {
-    try {
-      if (!expr) return null;
-      if (!/^[\s0-9a-zA-Z_\.\+\-\*\/\%\(\)\?\:\,\<\>\=\!\&\|\[\]\'"\$]+$/.test(expr)) return null;
-      var fn = new Function("ctx", "Math", "has", "countSel", "with (ctx) { return (" + expr + "); }");
-      var v = fn(ctx, Math,
-        function has(arr, tag) { return Array.isArray(arr) && arr.indexOf(tag) !== -1; },
-        function countSel(arr) { return Array.isArray(arr) ? arr.length : 0; }
-      );
-      if (typeof v === "number" && isFinite(v)) return v;
-      if (typeof v === "boolean") return v;
-      return null;
-    } catch (_) { return null; }
-  }
-
-  // --- Scoring normalizers per question type ---
-  // Each question gets a normalized 0-100 score that drives category scoring.
-  function normalizeAnswer(q, raw) {
-    if (raw == null || raw === "") return null;
-    if (q.type === "likert") {
-      var max = q.max_score || 5;
-      var v = typeof raw === "number" ? raw : Number(raw);
-      if (isNaN(v)) return null;
-      return Math.max(0, Math.min(100, (v / max) * 100));
-    }
-    if (q.type === "number") {
-      // Use normalize_formula if provided; else default linear map from min..max to 0..100 (or reverse if invert)
-      if (q.normalize_formula) return safeEval(q.normalize_formula, { x: Number(raw) });
-      var mn = q.min || 0, mx = q.max || 100;
-      var pct = ((Number(raw) - mn) / (mx - mn)) * 100;
-      if (q.invert) pct = 100 - pct;
-      return Math.max(0, Math.min(100, pct));
-    }
-    if (q.type === "multi_select") {
-      // Score by sum of tag scores, normalized to max possible
-      var selected = Array.isArray(raw) ? raw : [];
-      var totalPossible = 0, got = 0;
-      (q.answers || []).forEach(function (a) {
-        var s = typeof a.score === "number" ? a.score : 0;
-        if (s > 0) totalPossible += s;
-        if (selected.indexOf(a.tag) !== -1) got += s;
-      });
-      if (totalPossible === 0) {
-        // Fallback: score by presence-count against "good_tags" list
-        var goodTags = q.good_tags || [];
-        if (goodTags.length === 0) return selected.length > 0 ? 50 : 0;
-        var hits = selected.filter(function (t) { return goodTags.indexOf(t) !== -1; }).length;
-        return Math.min(100, (hits / goodTags.length) * 100);
-      }
-      return Math.max(0, Math.min(100, (got / totalPossible) * 100));
-    }
-    if (q.type === "short_text") {
-      // Keyword match scoring: 3 tiers (manual/semi/automated) → 20/60/95
-      var text = String(raw || "").toLowerCase();
-      var kw = q.score_keywords || {};
-      var best = 0;
-      if (kw.automated && kw.automated.some(function (k) { return text.indexOf(k.toLowerCase()) !== -1; })) best = Math.max(best, 95);
-      else if (kw.semi && kw.semi.some(function (k) { return text.indexOf(k.toLowerCase()) !== -1; })) best = Math.max(best, 60);
-      else if (kw.manual && kw.manual.some(function (k) { return text.indexOf(k.toLowerCase()) !== -1; })) best = Math.max(best, 20);
-      // No match = neutral 50
-      return best || 50;
-    }
-    return null;
-  }
-
   // --- Flatten questions with persona classifier prepended ---
   function flattenQuestions(data) {
     var qs = [];
@@ -162,78 +87,6 @@
       });
     });
     return qs;
-  }
-
-  function computeResult(data, answers) {
-    // Build a context: each q_id → raw answer, each q_id_score → normalized 0-100
-    var ctx = {};
-    (data.categories || []).forEach(function (cat) {
-      (cat.questions || []).forEach(function (q) {
-        ctx[q.id] = answers[q.id];
-        var norm = normalizeAnswer(q, answers[q.id]);
-        ctx[q.id + "_score"] = norm;
-      });
-    });
-    // persona
-    if (data.persona_selector) {
-      var pAns = answers["__persona"];
-      if (typeof pAns === "number" && data.persona_selector.answers && data.persona_selector.answers[pAns]) {
-        ctx.persona = data.persona_selector.answers[pAns].tag || null;
-      }
-    }
-
-    // Per-category scoring
-    var perCategory = {};
-    (data.categories || []).forEach(function (cat) {
-      var key = cat.id || cat.name;
-      if (cat.scoring_formula) {
-        var v = safeEval(cat.scoring_formula, ctx);
-        if (v != null) {
-          perCategory[key] = { name: cat.name || cat.id, score: Math.round(v), answered: (cat.questions || []).length, total: (cat.questions || []).length };
-        }
-      } else {
-        // Default: weighted avg of question _score values
-        var total = 0, weight = 0;
-        (cat.questions || []).forEach(function (q) {
-          var s = ctx[q.id + "_score"];
-          if (s == null) return;
-          var w = q.weight || 1;
-          total += s * w;
-          weight += w;
-        });
-        if (weight > 0) {
-          perCategory[key] = { name: cat.name || cat.id, score: Math.round(total / weight), answered: (cat.questions || []).length, total: (cat.questions || []).length };
-        }
-      }
-    });
-
-    // Overall
-    var overall;
-    if (data.overall_scoring_formula) {
-      overall = Math.round(safeEval(data.overall_scoring_formula, Object.assign({}, ctx, Object.fromEntries(Object.entries(perCategory).map(function (e) { return [e[0] + "_score", e[1].score]; })))) || 0);
-    } else {
-      var scores = Object.values(perCategory).map(function (c) { return c.score; });
-      overall = scores.length ? Math.round(scores.reduce(function (a, b) { return a + b; }, 0) / scores.length) : 0;
-    }
-
-    // Tier
-    var th = data.tier_thresholds || { low: 40, mid: 70 };
-    var tier = overall <= th.low ? { name: th.low_label || "Critical", class: "low" }
-             : overall <= th.mid ? { name: th.mid_label || "Growth Stage", class: "medium" }
-             : { name: th.high_label || "Optimized", class: "" };
-
-    // Weakest
-    var sorted = Object.entries(perCategory).sort(function (a, b) { return a[1].score - b[1].score; });
-    var weakest = sorted.length ? { id: sorted[0][0], name: sorted[0][1].name, score: sorted[0][1].score } : null;
-
-    // Computed outputs (the $ leak, hrs lost, etc)
-    var computed = {};
-    (data.computed_outputs || []).forEach(function (co) {
-      var v = safeEval(co.formula, Object.assign({}, ctx, { overall_score: overall, weakest_category: weakest && weakest.id }));
-      computed[co.id] = { id: co.id, label: co.label, value: v, format: co.format, show: co.show_in_result !== false };
-    });
-
-    return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: ctx.persona, ctx: ctx, computed: computed };
   }
 
   // --- Intro block (unchanged from v1) ---
