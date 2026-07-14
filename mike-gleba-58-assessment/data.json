@@ -1,0 +1,656 @@
+{
+ "slug": "mike-gleba-58-assessment",
+ "title": "DTC Growth Readiness Score",
+ "subtitle": "Measures how well your acquisition, retention, and revenue infrastructure is built to break through your next plateau.",
+ "brand": {
+  "accent": "#ff9800",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "attribution_and_data",
+   "name": "Attribution and Data",
+   "questions": [
+    {
+     "id": "attribution_and_data_q1",
+     "text": "When you look at last month's revenue, how clearly can you trace where each dollar came from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly, no idea. We look at total revenue and move on.",
+       "score": 1
+      },
+      {
+       "label": "I have platform numbers but they don't add up and I'm not sure which to trust.",
+       "score": 2
+      },
+      {
+       "label": "I track by channel but there is overlap and I know the numbers are probably inflated.",
+       "score": 3
+      },
+      {
+       "label": "I have a clean attribution model and I know what each channel is actually contributing.",
+       "score": 4
+      },
+      {
+       "label": "Attribution is locked down, benchmarked against prior periods, and it drives every spend decision.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "attribution_and_data_q2",
+     "text": "When a paid channel goes off KPI, how do you find out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Usually when I look at monthly numbers and something seems off.",
+       "score": 1
+      },
+      {
+       "label": "Someone on the team eventually notices and flags it.",
+       "score": 2
+      },
+      {
+       "label": "We check dashboards a few times a week.",
+       "score": 3
+      },
+      {
+       "label": "We have daily reporting and catch problems within 48 hours.",
+       "score": 4
+      },
+      {
+       "label": "We have real-time alerts. If something is off KPI for more than 24 hours, someone is already on it.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "attribution_and_data_q3",
+     "text": "Before launching a new paid campaign or lifecycle sequence, how do you validate the strategy?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We try it and see what happens.",
+       "score": 1
+      },
+      {
+       "label": "We look at what competitors are doing and adapt.",
+       "score": 2
+      },
+      {
+       "label": "We review past performance and make a judgment call.",
+       "score": 3
+      },
+      {
+       "label": "We have a defined process for evaluating new initiatives before we launch.",
+       "score": 4
+      },
+      {
+       "label": "We set attribution expectations and benchmark KPIs first, then launch with a structured review cadence.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are running paid spend without knowing what is working.",
+     "text": "Attribution is not a reporting nicety. It is the foundation every strategy decision sits on. The foundational flows are not there. The numbers do not add up. I have sat across from $8M brands that could not tell me where their revenue was coming from. That is not a tool problem. That is an attribution problem. Fix this before you touch anything else.",
+     "steps": [
+      "Pick one attribution model and commit to it. UTM tracking plus a third-party tool like Triple Whale or Northbeam is a solid place to start.",
+      "Build a weekly revenue-by-channel view you actually look at. Total revenue is not a metric.",
+      "Stop trusting platform-reported ROAS at face value. Compare it to your blended numbers and find the gap."
+     ]
+    },
+    "mid": {
+     "headline": "You have data. You are not fully trusting it yet.",
+     "text": "You are tracking numbers, but when they do not add up, you either ignore the gap or get stuck in it. The goal is not perfect attribution. It does not exist. The goal is a consistent model that tells you directionally what is working. Lock that in and your decisions get a lot cleaner.",
+     "steps": [
+      "Pick a North Star metric for each channel and stop cross-referencing conflicting platform numbers.",
+      "Set up a 24-48 hour alert system so you catch problems early, not at month-end.",
+      "Set attribution expectations before launching anything new, not after."
+     ]
+    },
+    "high": {
+     "headline": "Your attribution is a real asset. Make sure it is actually driving decisions.",
+     "text": "You are in the minority. Most brands at your stage are still guessing. The next step is making sure your attribution model is shaping strategy, not just reporting on it. If it is not changing what you spend and where, it is just a dashboard.",
+     "steps": [
+      "Connect your attribution data directly to media planning so it drives the next budget decision.",
+      "Build benchmarks by channel so you can spot anomalies faster and with more confidence.",
+      "Make attribution the first conversation with any new channel or agency partner, not an afterthought."
+     ]
+    }
+   }
+  },
+  {
+   "id": "lifecycle_marketing_infr",
+   "name": "Lifecycle Marketing Infrastructure",
+   "questions": [
+    {
+     "id": "lifecycle_marketing_infr_q1",
+     "text": "What percentage of your total revenue comes from email and SMS right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Under 5%, or we barely use it.",
+       "score": 1
+      },
+      {
+       "label": "Around 5-10%. We have a few flows running but they are not doing much.",
+       "score": 2
+      },
+      {
+       "label": "10-20%. We are doing okay but I know there is more there.",
+       "score": 3
+      },
+      {
+       "label": "20-30%. Email and SMS are real revenue drivers for us.",
+       "score": 4
+      },
+      {
+       "label": "30% or more. Lifecycle is a major, measurable channel.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "lifecycle_marketing_infr_q2",
+     "text": "How would you describe your current automated flow setup?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have a welcome email. That is about it.",
+       "score": 1
+      },
+      {
+       "label": "We have welcome and abandoned cart, but they are short and have not been touched in a while.",
+       "score": 2
+      },
+      {
+       "label": "We have several flows running but segmentation is minimal and we have not audited them recently.",
+       "score": 3
+      },
+      {
+       "label": "We have a full foundational architecture: welcome, abandonment, post-purchase, and win-back, with real segmentation.",
+       "score": 4
+      },
+      {
+       "label": "Flows are fully built, regularly tested, segmented by behavior and purchase history, and we review performance monthly.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "lifecycle_marketing_infr_q3",
+     "text": "What is your opt-in form or pop-up actually doing for you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not have one, or it is a generic join-our-newsletter with no offer.",
+       "score": 1
+      },
+      {
+       "label": "We have a pop-up but it is converting under 1% and we have not changed it in months.",
+       "score": 2
+      },
+      {
+       "label": "We offer a discount but have not tested other formats or incentive types.",
+       "score": 3
+      },
+      {
+       "label": "We have tested a few versions and we are converting at 2-4%.",
+       "score": 4
+      },
+      {
+       "label": "Our opt-in is actively tested, converts above 4%, and we know what works best by traffic source.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "lifecycle_marketing_infr_q4",
+     "text": "How consistently do you send campaigns to your email list?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not sent a campaign in months. Or ever.",
+       "score": 1
+      },
+      {
+       "label": "We send when we have a sale or launch but there is no regular cadence.",
+       "score": 2
+      },
+      {
+       "label": "We send 1-2 times per month but it is usually rushed and not very strategic.",
+       "score": 3
+      },
+      {
+       "label": "We send on a consistent schedule with a mix of promotional and value content.",
+       "score": 4
+      },
+      {
+       "label": "We run a structured campaign calendar with tested segments, clear KPIs, and performance review after every send.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are leaving 20-30% of your revenue on the table every month.",
+     "text": "The foundational flows are not there. The pop-up is not converting. Campaigns are not going out. I audit brands doing $5M, $8M, and more, and their email is generating under 10% of revenue. That is not a list-size problem. That is a setup problem. Fix the infrastructure before you spend another dollar bringing in customers you cannot retain.",
+     "steps": [
+      "Audit your current email setup and list the foundational flows you are missing: welcome series, abandoned cart, browse abandonment, post-purchase, and win-back.",
+      "Fix your pop-up first. A 0.1% opt-in rate with no incentive is actively costing you list growth every single day.",
+      "Commit to a minimum campaign cadence: two sends per month to your engaged segment, every month, no exceptions."
+     ]
+    },
+    "mid": {
+     "headline": "The bones are there. The architecture is not.",
+     "text": "You have flows running and campaigns going out, but your lifecycle program is not working as hard as it should be. Usually this comes down to segmentation and flow depth. Broad sends to unengaged audiences. Flows that stop after two or three emails. A pop-up converting on price alone. There is real revenue sitting here.",
+     "steps": [
+      "Segment your list into engaged vs. unengaged and stop sending broad campaigns. Your deliverability is paying for it.",
+      "Extend your key flows. Post-purchase and win-back sequences can go a lot further than what most accounts have built.",
+      "Track lifecycle revenue as its own number every month, separate from total revenue."
+     ]
+    },
+    "high": {
+     "headline": "Your lifecycle program is a real asset. Most brands are not here.",
+     "text": "You are generating meaningful owned revenue from email and SMS and your infrastructure is solid. At this stage, the gains come from optimization: deeper segmentation, better creative, smarter timing, and building the flows you do not have yet. Keep moving the benchmark.",
+     "steps": [
+      "Introduce behavioral segmentation beyond purchase history: browse behavior, category affinity, engagement tiers.",
+      "Build a testing log for subject lines and send timing so you are compounding learnings, not repeating guesses.",
+      "Set a lifecycle revenue target for the next 12 months and reverse-engineer the list growth and conversion rate you need to hit it."
+     ]
+    }
+   }
+  },
+  {
+   "id": "paid_media_systems",
+   "name": "Paid Media Systems",
+   "questions": [
+    {
+     "id": "paid_media_systems_q1",
+     "text": "How would you describe your paid media setup right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are not running paid ads, or we tried and stopped because it was not working.",
+       "score": 1
+      },
+      {
+       "label": "We are running ads but there is no real system. We boost posts and try things.",
+       "score": 2
+      },
+      {
+       "label": "We have campaigns running on one or two platforms but scaling has felt inconsistent.",
+       "score": 3
+      },
+      {
+       "label": "We have a structured acquisition program with defined KPIs and we scale within those.",
+       "score": 4
+      },
+      {
+       "label": "We run a multi-channel paid program with clear account structure, ongoing creative testing, and predictable performance at scale.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "paid_media_systems_q2",
+     "text": "Where does your creative come from, and how systematically do you test it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We use whatever assets we have, usually product photos from the website.",
+       "score": 1
+      },
+      {
+       "label": "We make ads when we need them but there is no process behind it.",
+       "score": 2
+      },
+      {
+       "label": "We produce creative on a loose schedule but we do not test it systematically.",
+       "score": 3
+      },
+      {
+       "label": "We have a consistent creative production process and rotate new concepts regularly.",
+       "score": 4
+      },
+      {
+       "label": "We have a performance creative system: hooks tested, formats tracked, winners scaled, losers retired fast.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "paid_media_systems_q3",
+     "text": "How clearly do you understand profitability on your paid channels?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at ROAS and if it is high, we assume we are profitable.",
+       "score": 1
+      },
+      {
+       "label": "We have a rough idea but we do not track it tightly against true cost of goods and overhead.",
+       "score": 2
+      },
+      {
+       "label": "We know our target ROAS and try to stay above it, but we do not do deep profitability analysis.",
+       "score": 3
+      },
+      {
+       "label": "We know our blended MER target and manage to it, not just platform ROAS.",
+       "score": 4
+      },
+      {
+       "label": "We have a clear profitability framework: CAC, LTV, payback window, and we manage every channel against it.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Paid media is a system, not a button you press.",
+     "text": "If paid ads are not working, there are usually a few places it breaks: the creative is not tested, the account structure is messy, or you are optimizing for the wrong number. Spending more into a broken setup just loses money faster. Before you scale, get the foundation right.",
+     "steps": [
+      "Audit your account structure. Are your campaigns organized around objectives, or are they a stack of tests from different months?",
+      "Define your target KPI before you launch anything. Performance is meaningless without a benchmark to measure against.",
+      "Build a creative process, even a basic one. You need new angles coming in regularly or performance will plateau."
+     ]
+    },
+    "mid": {
+     "headline": "You are getting results. You are not getting scale.",
+     "text": "You have something working but scaling feels inconsistent. That is usually a creative fatigue or attribution problem. The creative that worked six months ago is dying. You are optimizing for platform ROAS instead of blended profitability. Fix those two things and you will have a clearer path up.",
+     "steps": [
+      "Switch from ROAS as your primary KPI to a blended MER or true profitability metric that accounts for all spend.",
+      "Build a creative testing rhythm. New hooks every two weeks minimum, tracked in a log, winners scaled fast.",
+      "Add a second channel. Brands that depend on one platform are one algorithm change away from a bad quarter."
+     ]
+    },
+    "high": {
+     "headline": "Your paid media is a real growth engine. Now protect it.",
+     "text": "You have structure, a creative system, and you are managing to profitability. The risk at this stage is over-reliance on what is working. Platforms change. Creative fatigues. The brands that compound results are the ones building the next channel before they need it.",
+     "steps": [
+      "Build a channel roadmap. Where does incremental paid spend go next?",
+      "Set creative performance benchmarks so you can spot fatigue earlier and respond faster.",
+      "Connect your paid acquisition closely with your lifecycle program. CAC goes down when retention goes up."
+     ]
+    }
+   }
+  },
+  {
+   "id": "revenue_ownership",
+   "name": "Revenue Ownership",
+   "questions": [
+    {
+     "id": "revenue_ownership_q1",
+     "text": "If your top marketplace or platform went dark tomorrow, how would your business hold up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It would be catastrophic. Most of our revenue runs through one platform we do not control.",
+       "score": 1
+      },
+      {
+       "label": "It would hurt badly. We have talked about diversifying but have not made real progress.",
+       "score": 2
+      },
+      {
+       "label": "We would take a hit but we have some direct revenue. It is just not big enough to cover the gap yet.",
+       "score": 3
+      },
+      {
+       "label": "We would be okay. Our DTC channel is strong enough to weather a platform disruption.",
+       "score": 4
+      },
+      {
+       "label": "We have built a diversified revenue base. No single platform controls our business.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "revenue_ownership_q2",
+     "text": "How would you honestly describe the growth you have had so far?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Mostly hustle. Me or the team pushing hard, no real system behind it.",
+       "score": 1
+      },
+      {
+       "label": "Mostly organic: word of mouth and repeat customers, but I cannot predictably replicate it.",
+       "score": 2
+      },
+      {
+       "label": "A mix of hustle and some infrastructure, but scaling has felt inconsistent.",
+       "score": 3
+      },
+      {
+       "label": "We have real acquisition and retention systems and growth has started to feel more predictable.",
+       "score": 4
+      },
+      {
+       "label": "Our growth is system-driven. We know what levers to pull and what results to expect.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "revenue_ownership_q3",
+     "text": "What percentage of your revenue comes from channels you own (email, SMS, direct) versus platforms you rent?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Under 10% owned. Nearly everything runs through paid or marketplace channels.",
+       "score": 1
+      },
+      {
+       "label": "Around 10-20% owned. We have email but it is not a meaningful revenue driver yet.",
+       "score": 2
+      },
+      {
+       "label": "Around 20-30% owned. Email and SMS are working but not at the level they should be.",
+       "score": 3
+      },
+      {
+       "label": "Around 30-40% owned. Lifecycle is a real revenue line for us.",
+       "score": 4
+      },
+      {
+       "label": "40% or more owned. We have deliberately built toward revenue independence.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You do not own your revenue. A platform does.",
+     "text": "You cannot control what Amazon does with your listing or what Meta does with its algorithm. I have watched brands build to $3M on Amazon and then have one bad quarter wipe out everything they built. What you can control is your email list, your SMS list, and your direct relationship with your customers. Start there.",
+     "steps": [
+      "Calculate what percentage of your revenue you would keep if your top platform went away. Write the number down.",
+      "Set a 12-month target for owned revenue as a percentage of total and put someone accountable for hitting it.",
+      "Start treating email list growth as seriously as you treat ad spend. It is an asset that compounds."
+     ]
+    },
+    "mid": {
+     "headline": "You have some owned revenue. You do not have enough.",
+     "text": "You have built a foundation but you are still more exposed to platform risk than you should be. The fix is not complicated, it is just not exciting. Build the flows. Grow the list. Send the campaigns. Revenue you own does not disappear when an algorithm changes.",
+     "steps": [
+      "Map your revenue by channel and set a goal to shift 10 points from platform to owned over the next 12 months.",
+      "Invest in lifecycle marketing like you invest in paid acquisition: with budget, with KPIs, with someone accountable for results.",
+      "Stop treating email as an afterthought and start treating it as a second acquisition engine."
+     ]
+    },
+    "high": {
+     "headline": "You have built revenue you actually own. That is rare.",
+     "text": "You are in a strong position. You have diversified, built owned channels, and you are not one platform decision away from a crisis. The work now is compounding: making your owned channels better, growing the list faster, and making sure your retention program is working as hard as your acquisition.",
+     "steps": [
+      "Set a retention goal. What is your repeat purchase rate and where do you want it in 12 months?",
+      "Build a cohort analysis so you understand which acquisition channels bring customers who actually stay.",
+      "Keep adding owned touchpoints: SMS, loyalty, community, so your revenue base keeps widening."
+     ]
+    }
+   }
+  },
+  {
+   "id": "strategic_clarity_and_pa",
+   "name": "Strategic Clarity and Partnership",
+   "questions": [
+    {
+     "id": "strategic_clarity_and_pa_q1",
+     "text": "How clearly defined is your marketing strategy for the next 12 months?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There is no written strategy. We react to opportunities as they come.",
+       "score": 1
+      },
+      {
+       "label": "I have a general sense of direction but nothing documented or shared with the team.",
+       "score": 2
+      },
+      {
+       "label": "We have a strategy but it shifts a lot and is not tied to specific numbers.",
+       "score": 3
+      },
+      {
+       "label": "We have a documented strategy with goals, channels, and quarterly check-ins.",
+       "score": 4
+      },
+      {
+       "label": "We have a clear annual strategy mapped to revenue targets by channel, reviewed and adjusted every quarter.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "strategic_clarity_and_pa_q2",
+     "text": "If you work with an agency or outside partners, how would you describe that relationship?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have been burned before. I handle most things internally now.",
+       "score": 1
+      },
+      {
+       "label": "We work with someone but they do not really understand our business.",
+       "score": 2
+      },
+      {
+       "label": "The relationship is okay but more transactional than strategic.",
+       "score": 3
+      },
+      {
+       "label": "We have a real partnership. They know our goals and we review performance together regularly.",
+       "score": 4
+      },
+      {
+       "label": "Our partners are held to our profitability targets, not just their own deliverables.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "strategic_clarity_and_pa_q3",
+     "text": "How honest are you with yourself about where you are the bottleneck in your own growth?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have not really thought about it. I trust my own judgment on most things.",
+       "score": 1
+      },
+      {
+       "label": "I know I hold things tightly but I am not sure what to let go of.",
+       "score": 2
+      },
+      {
+       "label": "I have identified a few areas where I get in the way but have not made changes yet.",
+       "score": 3
+      },
+      {
+       "label": "I have actively delegated and brought in outside expertise where I knew I had blind spots.",
+       "score": 4
+      },
+      {
+       "label": "Getting out of my own way is something I actively work on. I know exactly where I add value and where to step back.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are working in the business. You need to work on it.",
+     "text": "I met a founder recently: $8M a year, handles everything himself because he can just do this stuff himself. Tbh, he is not wrong that he is capable. But you have to wonder where he would be if he just got out of his own way. Strategy is not optional at this scale. It is what separates a good business from a great one.",
+     "steps": [
+      "Write down your top three growth priorities for the next 12 months. If you cannot do it in 20 minutes, that is the first problem to solve.",
+      "Identify one area where you have been the decision bottleneck and make a plan to hand it off.",
+      "If you have been burned by agencies before, figure out why: bad fit, no accountability, no KPIs. Then fix the selection process before you write it off entirely."
+     ]
+    },
+    "mid": {
+     "headline": "You have a direction. You need to sharpen it.",
+     "text": "You know what you are trying to do, but the strategy is not sharp enough to drive real decisions day to day. Vague goals produce vague results. The brands that break through are the ones who can say exactly what they are building, by when, and how they will know if it is working.",
+     "steps": [
+      "Translate your goals into channel-level targets with a timeline attached to each one.",
+      "Set a quarterly strategy review: a real conversation about what is working and what is not, separate from monthly reporting.",
+      "Be honest about your current agency relationships. Transactional partnerships produce transactional results."
+     ]
+    },
+    "high": {
+     "headline": "You know what you are building. Keep building it.",
+     "text": "You have clarity, real partnerships, and you are honest enough with yourself to know where you need help. That is a rare combination. The risk now is complacency. Good culture and good strategy still have to be tended to. Culture compounds when you work at it. It decays when you assume it.",
+     "steps": [
+      "Document what makes your best agency relationships work so you can replicate the dynamic as you grow.",
+      "Keep a 12-month rolling view of your strategy so you are always looking ahead, not just managing the current quarter.",
+      "Find your version of a trusted advisor community. The right group shortens every learning curve."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "DTC founder under $1M, building the foundation",
+    "tag": "early"
+   },
+   {
+    "label": "7-figure brand that has hit a plateau",
+    "tag": "plateau"
+   },
+   {
+    "label": "8-figure brand ready to add real infrastructure",
+    "tag": "scaling"
+   },
+   {
+    "label": "Operator or marketing lead at a DTC brand",
+    "tag": "operator"
+   }
+  ]
+ }
+}
