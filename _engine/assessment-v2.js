@@ -150,9 +150,14 @@
         document.documentElement.classList.add("lmc-embed");
         var __nav = document.querySelector(".im-nav"); if (__nav) __nav.remove();
         var __ft = document.querySelector(".im-footer"); if (__ft) __ft.remove();
+        var __skip = document.getElementById("skip-link"); if (__skip) __skip.remove();
         var built = window.LMEmbed.buildEmbedVars(__params);
         if (built.fontLink) { var gfl = document.createElement("link"); gfl.rel = "stylesheet"; gfl.href = built.fontLink; document.head.appendChild(gfl); }
         var st = document.createElement("style"); st.textContent = built.css; document.head.appendChild(st);
+        // Signal the dark-embed theme to the stylesheet (assessment.css keys the
+        // question-flow + results dark rules off html.lmc-embed-dark). Ported
+        // verbatim from assessment.js:329.
+        try { if ((__params.get("hero") || "").trim() === "dark") document.documentElement.classList.add("lmc-embed-dark"); } catch (_) {}
         // Identity pass (bname/blogo) — ported verbatim from assessment.js:364-378
         var bname = (__params.get("bname") || "").trim();
         if (bname) { var baseTitle = (document.title || "").split(" | ")[0].trim() || String(data.title || "Assessment").replace(/<[^>]*>/g, "").trim(); document.title = baseTitle + " | " + bname; var ogSite = document.querySelector('meta[property="og:site_name"]'); if (ogSite) ogSite.setAttribute("content", bname); }
@@ -679,35 +684,40 @@
         optin.innerHTML = '<h4>Sent.</h4><p>Look for "your ' + esc(data.title || "report") + '" in your inbox. If it doesn\'t show in 2 min, check Promotions or Spam.</p>';
       });
 
-      if (data.cta && data.cta.url) {
-        var cta = make("div", { class: "lmc-cta-box" });
-        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener"><span class="lmc-cta-btn-text">' + esc(data.cta.button || "Book Strategy Call") + '</span></a>';
-        unl.appendChild(cta);
-        if (window.LM && window.LM.editMode) {
-          var ctaH3 = cta.querySelector("h3");
-          var ctaDescEl = cta.querySelector("p");
-          var ctaBtnTextEl = cta.querySelector(".lmc-cta-btn-text");
-          if (ctaH3) window.LM.editMode.registerField(ctaH3, "cta.headline", { multiline: true });
-          if (ctaDescEl) window.LM.editMode.registerField(ctaDescEl, "cta.description", { multiline: true });
-          if (ctaBtnTextEl) window.LM.editMode.registerField(ctaBtnTextEl, "cta.button");
-        }
-        cta.querySelector("a").addEventListener("click", function (e) {
-          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
-            e.preventDefault();
-            return;
+      // Embed mode: this sample lives inside a PROSPECT's scan page — never surface
+      // Ivan's own booking CTA (per-LM cta.url or the hardcoded fit-call fallback)
+      // inside someone else's asset. Mirrors assessment.js:1072 (`if (embedMode) { ctaConf = null; }`).
+      if (!embedMode) {
+        if (data.cta && data.cta.url) {
+          var cta = make("div", { class: "lmc-cta-box" });
+          cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener"><span class="lmc-cta-btn-text">' + esc(data.cta.button || "Book Strategy Call") + '</span></a>';
+          unl.appendChild(cta);
+          if (window.LM && window.LM.editMode) {
+            var ctaH3 = cta.querySelector("h3");
+            var ctaDescEl = cta.querySelector("p");
+            var ctaBtnTextEl = cta.querySelector(".lmc-cta-btn-text");
+            if (ctaH3) window.LM.editMode.registerField(ctaH3, "cta.headline", { multiline: true });
+            if (ctaDescEl) window.LM.editMode.registerField(ctaDescEl, "cta.description", { multiline: true });
+            if (ctaBtnTextEl) window.LM.editMode.registerField(ctaBtnTextEl, "cta.button");
           }
-          beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } });
-        });
-      } else {
-        // No per-LM CTA configured — default fit-call CTA so every assessment
-        // ends with a clear next step (2026-06-09).
-        var fallbackCta = make("div", { class: "lmc-cta-box" });
-        var fallbackUrl = window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/im-ivanmanfredi/30min";
-        fallbackCta.innerHTML = '<h3>Want help closing these gaps?</h3>' +
-          '<p>Book a free 30-minute fit call. I\'ll walk your weakest category live and tell you exactly how I\'d fix it. If you can run it yourself, I\'ll tell you that too.</p>' +
-          '<a class="lmc-btn" href="' + esc(fallbackUrl) + '" target="_blank" rel="noopener">Book the free fit call</a>';
-        unl.appendChild(fallbackCta);
-        fallbackCta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, default_cta: true } }); });
+          cta.querySelector("a").addEventListener("click", function (e) {
+            if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
+              e.preventDefault();
+              return;
+            }
+            beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } });
+          });
+        } else {
+          // No per-LM CTA configured — default fit-call CTA so every assessment
+          // ends with a clear next step (2026-06-09).
+          var fallbackCta = make("div", { class: "lmc-cta-box" });
+          var fallbackUrl = window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/im-ivanmanfredi/30min";
+          fallbackCta.innerHTML = '<h3>Want help closing these gaps?</h3>' +
+            '<p>Book a free 30-minute fit call. I\'ll walk your weakest category live and tell you exactly how I\'d fix it. If you can run it yourself, I\'ll tell you that too.</p>' +
+            '<a class="lmc-btn" href="' + esc(fallbackUrl) + '" target="_blank" rel="noopener">Book the free fit call</a>';
+          unl.appendChild(fallbackCta);
+          fallbackCta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name, default_cta: true } }); });
+        }
       }
       card.appendChild(unl);
 

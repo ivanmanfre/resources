@@ -66,3 +66,30 @@ test("buildEmbedVars always includes the template-tell pass", () => {
   const { css } = embed.buildEmbedVars(p);
   assert.ok(css.includes(".lmc-embed .lmc-hero{background-image:none !important}"));
 });
+
+// Color-math coverage: mix()-derived var, the lum > 0.62 contrast-guard branch,
+// and the no-?accent slate fallback. Expected hex literals computed via
+// `embed.hex(embed.mix(...))` for the exact inputs below and pinned here so the
+// tests assert the port's math, not just direct hex passthrough.
+test("buildEmbedVars derives --accent-light via mix(), not passthrough", () => {
+  const p = new URLSearchParams("accent=2a8f65");
+  const { css } = embed.buildEmbedVars(p);
+  // mix([42,143,101],[255,255,255],0.32) -> hex -> #6eb396
+  assert.ok(css.includes("--accent-light:#6eb396"));
+});
+
+test("buildEmbedVars deepens intro-icon fill when accent is light (lum > 0.62 contrast guard)", () => {
+  const p = new URLSearchParams("accent=ffe08a");
+  const rgb = embed.parse("ffe08a");
+  const lum = (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+  assert.ok(lum > 0.62, "fixture accent must exceed the contrast-guard threshold");
+  const { css } = embed.buildEmbedVars(p);
+  // mix([255,224,138],[0,0,0],0.45) -> hex -> #8c7b4c
+  assert.ok(css.includes(".lmc-intro-icon.c{background:#8c7b4c !important}"));
+});
+
+test("buildEmbedVars falls back to slate #5b82a6 when ?accent is absent", () => {
+  const p = new URLSearchParams("");
+  const { css } = embed.buildEmbedVars(p);
+  assert.ok(css.includes("--accent:#5b82a6"));
+});
