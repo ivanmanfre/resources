@@ -55,3 +55,11 @@ test("computeResult: a legacy-shaped LM yields non-zero overall (regression guar
   assert.equal(res.overall, 100);
   assert.ok(res.per_category.c1, "category must be populated, not empty");
 });
+
+test("shouldGate defaults ON, respects opt-out flag, captured, and embed", () => {
+  assert.equal(score.shouldGate({}, false, false), true);
+  assert.equal(score.shouldGate({ capture_gate: false }, false, false), false);
+  assert.equal(score.shouldGate({ gate: false }, false, false), false);
+  assert.equal(score.shouldGate({}, true, false), false);   // already captured
+  assert.equal(score.shouldGate({}, false, true), false);   // embed sample: never gate
+});

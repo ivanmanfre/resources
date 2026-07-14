@@ -565,7 +565,9 @@
         }).catch(function () {});
       } catch (_) {}
 
-      // No gate — show the full report unconditionally
+      var alreadyCaptured = embedMode ? false : !!localStorage.getItem(key + ".email");
+      var gated = LMScore.shouldGate(data, alreadyCaptured, embedMode);
+
       beacon("complete", {
         email: null,
         overall_score: res.overall,
@@ -576,7 +578,66 @@
         computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
         answers: res.ctx
       });
-      renderUnlocked(res);
+
+      if (gated) renderGate(res, wrap);
+      else renderUnlocked(res);
+    }
+
+    // Pre-reveal capture barrier — ported from assessment.js:855-913 (data.capture_gate config).
+    // Renders into `wrap` (appended after the score hero / computed block / headline, before
+    // any category breakdown), and reveals the full report via renderUnlocked() only once a
+    // valid email is submitted. Distinct from the optional opt-in form inside renderUnlocked,
+    // which is additive and never blocks anything.
+    function renderGate(res, wrap) {
+      var gateConf = (data.capture_gate && typeof data.capture_gate === "object") ? data.capture_gate : {};
+      var gateHeadlineHtml = gateConf.headline_html || "Unlock your <em>full report</em>";
+      var gateDescription = gateConf.description || "Enter your email and we'll reveal your per-category breakdown, personalised recommendations, and the 3 fixes I'd prioritise based on your weakest category.";
+      var gateButton = gateConf.button || "Unlock report";
+      var gateNote = gateConf.note || "No spam. One email with your report, then you decide.";
+      var gatePlaceholder = gateConf.placeholder || "you@company.com";
+
+      var gate = make("div", { class: "lmc-capture", id: "lmc-capture" });
+      gate.innerHTML =
+        '<h2>' + gateHeadlineHtml + '</h2>' +
+        '<p>' + esc(gateDescription) + '</p>' +
+        '<form class="lmc-form" id="lmc-capture-form">' +
+        '<label class="sr-only" for="lmc-email">Email</label>' +
+        '<input class="lmc-form-input" id="lmc-email" type="email" autocomplete="email" required placeholder="' + esc(gatePlaceholder) + '" />' +
+        '<button class="lmc-btn" type="submit"><span class="lmc-capture-btn-text">' + esc(gateButton) + '</span></button>' +
+        '</form>' +
+        '<p class="lmc-note">' + esc(gateNote) + '</p>';
+      wrap.appendChild(gate);
+      var form = gate.querySelector("#lmc-capture-form");
+      var emailInput = gate.querySelector("#lmc-email");
+
+      if (window.LM && window.LM.editMode) {
+        var gateH2 = gate.querySelector("h2");
+        var gateDescEl = gate.querySelector("p");
+        var gateNoteEl = gate.querySelector(".lmc-note");
+        var gateBtnTextEl = gate.querySelector(".lmc-capture-btn-text");
+        if (gateH2) window.LM.editMode.registerField(gateH2, "capture_gate.headline_html", { multiline: true });
+        if (gateDescEl) window.LM.editMode.registerField(gateDescEl, "capture_gate.description", { multiline: true });
+        if (gateBtnTextEl) window.LM.editMode.registerField(gateBtnTextEl, "capture_gate.button");
+        if (gateNoteEl) window.LM.editMode.registerField(gateNoteEl, "capture_gate.note", { multiline: true });
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var em = (emailInput || {}).value || "";
+        if (!em || em.indexOf("@") === -1) { toast("Enter a valid email"); return; }
+        if (!embedMode) { try { localStorage.setItem(key + ".email", em); } catch (_) {} }
+        beacon("capture", {
+          email: em,
+          overall_score: res.overall,
+          tier: res.tier.name,
+          per_category: res.per_category,
+          weakest_category: res.weakest && res.weakest.id,
+          persona: res.persona,
+          computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
+          answers: res.ctx
+        });
+        renderUnlocked(res); // removes #lmc-capture itself (see top of renderUnlocked)
+      });
     }
 
     function renderUnlocked(res) {

@@ -140,5 +140,10 @@
     });
     return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: ctx.persona, ctx: ctx, computed: computed };
   }
-  return { fmt: fmt, safeEval: safeEval, normalizeAnswer: normalizeAnswer, computeResult: computeResult };
+  function shouldGate(data, captured, embedMode) {
+    if (embedMode || captured) return false;
+    if (data && (data.capture_gate === false || data.gate === false)) return false;
+    return true;
+  }
+  return { fmt: fmt, safeEval: safeEval, normalizeAnswer: normalizeAnswer, computeResult: computeResult, shouldGate: shouldGate };
 });
