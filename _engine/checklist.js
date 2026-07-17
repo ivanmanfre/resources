@@ -27,7 +27,7 @@
         event_type: event_type,
         lm_slug: window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || "",
         src: q.get("src") || "direct",
-        utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign") },
+        utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign"), term: q.get("utm_term"), content: q.get("utm_content") },
         prospect_id: q.get("pid") || null,
         referrer: document.referrer || ""
       }, payload || {});

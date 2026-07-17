@@ -150,7 +150,7 @@
         first_name: first,
         email: email,
         src: q.get("src") || "landing",
-        utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign") },
+        utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign"), term: q.get("utm_term"), content: q.get("utm_content") },
         prospect_id: q.get("pid") || null,
         referrer: document.referrer || ""
       };

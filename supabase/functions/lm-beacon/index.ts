@@ -142,6 +142,24 @@ Deno.serve(async (req: Request) => {
 
   const email = payload.email ? String(payload.email).toLowerCase().trim() : null;
   const utm = (payload.utm && typeof payload.utm === "object") ? payload.utm : null;
+  // Scalar UTM persistence (P0.2 attribution, 2026-07-17): the dedicated utm_source/medium/
+  // campaign/term/content columns existed but were never written — every emitter's tags died
+  // in the jsonb, so lm_events had NULL utm_source on all rows. Accept the nested utm object
+  // (what the _engine templates send) and flat payload keys (utm_source, ...) as fallback.
+  const utmScalar = (k: string): string | null => {
+    const nested = utm ? (utm as Record<string, unknown>)[k] : null;
+    const flat = (payload as Record<string, unknown>)["utm_" + k];
+    const v = nested ?? flat;
+    return v ? String(v).slice(0, 120) : null;
+  };
+  const utm_source = utmScalar("source");
+  const utm_medium = utmScalar("medium");
+  const utm_campaign = utmScalar("campaign");
+  const utm_term = utmScalar("term");
+  const utm_content = utmScalar("content");
+  // session_id: canonicalBeaconEvent() has always SENT it; persistence is new. calendly-webhook
+  // (W-B.2) joins lm_attribution.cta_click_event_id on lm_events.session_id + event_type.
+  const session_id = payload.session_id ? String(payload.session_id).slice(0, 80) : null;
   const answers = (payload.answers && typeof payload.answers === "object") ? payload.answers : null;
   const src = payload.src ? String(payload.src).slice(0, 32) : null;
   // prospect_id is a uuid column. Embed callers pass a company slug (e.g. "paul-atkinson-45"),
@@ -160,6 +178,7 @@ Deno.serve(async (req: Request) => {
 
   const { data: ev, error: ev_err } = await supabase.from("lm_events").insert({
     lm_id, lm_slug, event_type, email, prospect_id, src, utm, answers,
+    utm_source, utm_medium, utm_campaign, utm_term, utm_content, session_id,
     referrer: ref || (payload.referrer as string | null) || null,
     user_agent: ua, ip_hash, linkedin_url, data_version,
   }).select("id").single();
