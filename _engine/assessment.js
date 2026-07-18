@@ -481,7 +481,9 @@
       var chips = Array.isArray(startConf.chips) && startConf.chips.length ? startConf.chips : defaultChips;
       var defaultDescription = totalQs + " quick questions across " + (data.categories || []).length + " categories. About " + minutes + " minutes. Your progress auto-saves to this browser — close the tab and come back anytime.";
       var eyebrowText = startConf.eyebrow || "Ready when you are";
-      var headlineHtml = startConf.headline_html || "Find <em>where the rot lives</em> in your stack.";
+      // Fallback ladder: page-configured headline, then the LM's own promise line, then
+      // the generic audit line (legacy pages with neither).
+      var headlineHtml = startConf.headline_html || (data.subtitle ? ((window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(String(data.subtitle)) : esc(String(data.subtitle))) : "Find <em>where the rot lives</em> in your stack.");
       var descriptionText = startConf.description || defaultDescription;
       var buttonLabel = startConf.button || "Start the audit";
 

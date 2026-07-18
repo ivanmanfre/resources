@@ -595,3 +595,6 @@ html.lmc-embed-dark .lmc-form-input::placeholder { color: rgba(255,255,255,0.45)
 .lmc-persona-close{margin:2rem 0 0;padding:1.5rem 1.75rem;background:var(--paper-sunk,#FFFFFF);border:1px solid var(--hairline,rgba(19, 18, 16,.12));border-left:3px solid #131210;border-radius:4px;}
 .lmc-persona-close-p{font-size:1.02rem;line-height:1.65;color:var(--ink,#131210);margin:0 0 .85rem;}
 .lmc-persona-proof{font-family:'Source Serif 4',Georgia,serif;font-size:.95rem;line-height:1.6;color:var(--ink-soft,rgba(19, 18, 16,.72));font-style:italic;margin:0;}
+
+/* scan embeds: the page reads as the PROSPECT'S asset; Ivan's nav + work-with-me footer never render inside the frame (JS-rendered after the embed cleanup pass, so CSS is the order-proof gate). */
+.lmc-embed .im-footer,.lmc-embed .im-nav{display:none!important}
