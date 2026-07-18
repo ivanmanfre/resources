@@ -130,10 +130,12 @@
     var inner = make("div", { class: "lmc-intro-inner" });
     // In a prospect scan sample, the assessment must read as THEIR tool. Drop Ivan's portrait
     // and personal greeting; a neutral "How this works." keeps the orientation without the author.
-    var img = opts.embed ? null : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
+    // Per-LM persona override (e.g. a client-branded assessment): intro.no_avatar drops the
+    // portrait, intro.avatar / intro.avatar_alt swap it. Defaults unchanged for every other LM.
+    var img = (opts.embed || intro.no_avatar) ? null : make("img", { class: "lmc-intro-avatar", src: intro.avatar || "https://ivanmanfredi.com/ivan-portrait.jpg", alt: intro.avatar_alt || "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
-    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, opts.embed ? "How this works." : "Hey, I&rsquo;m Ivan."));
+    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, opts.embed ? "How this works." : (intro.greeting || "Hey, I&rsquo;m Ivan.")));
     var introPara = make("p", { class: "lmc-intro-p" }, escapeHtml(welcomeLine));
     if (window.LM && window.LM.editMode) {
       window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });

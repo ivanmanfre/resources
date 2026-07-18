@@ -1,12 +1,26 @@
 {
  "slug": "rise-dtc-growth-readiness-score-where-your-next-ad-dollar-actually-leaks",
  "title": "The DTC Growth Readiness Score",
- "subtitle": "A 15-question diagnostic for DTC founders. Find where growth leaks before you spend more on ads: offer economics, creative, media, retention, and site conversion.",
+ "subtitle": "A 16-question diagnostic for DTC founders. Find where growth leaks before you spend more on ads: offer economics, creative, media, retention, and site conversion.",
  "brand": {
   "accent": "#ffc71d",
   "hero_badge": "Interactive Assessment"
  },
  "estimated_minutes": 7,
+ "intro": {
+  "greeting": "Hey, I&rsquo;m Mattan.",
+  "no_avatar": true,
+  "paragraph": "I run Rise DTC. I built this to answer the one question every founder feels but few can name: where is your next ad dollar leaking? Sixteen questions across five parts of the business, plain answers, and you get your score for free.",
+  "point_value": "16 questions across 5 categories. Honest answers, honest result.",
+  "point_next": "Score and tier are free. Your email unlocks the per-category breakdown and the two leaks we would fix first.",
+  "note": "No signup to take it. Your answers stay private until you unlock the full report."
+ },
+ "capture_gate": {
+  "headline_html": "Unlock your <em>full breakdown</em>",
+  "description": "Drop your email and we will open the per-category breakdown, plus the two leaks we would fix first based on your weakest area.",
+  "button": "Unlock my breakdown",
+  "note": "No spam. One email with your results, then it is your call."
+ },
  "start_screen": {
   "eyebrow": "DTC Growth Diagnostic",
   "headline_html": "Find <em>where your growth leaks</em> before you scale spend.",
@@ -626,9 +640,9 @@
   "high": "Built to Scale"
  },
  "cta": {
-  "headline": "Want a partner who turns this score into a growth plan?",
-  "description": "In 30 minutes I will show you which two leaks to fix first, based on your score and your stage. No pitch deck, just the sequencing.",
+  "headline": "Want the team that turns this score into a growth plan?",
+  "description": "In 30 minutes we will show you the two leaks to fix first, based on your score and your stage. No pitch deck, just the sequencing.",
   "button": "Book a call",
-  "url": "https://calendly.com/im-ivanmanfredi/30min"
+  "url": "https://risedtc.com"
  }
 }
