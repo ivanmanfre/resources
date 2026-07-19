@@ -117,9 +117,17 @@
 
     <div class="step"><span class="n">2</span><div class="body">
       <span class="t">DNS, one copy-paste block</span> <span class="who">Async · 5 min</span>
-      <p>One visit to the risedtc.com DNS panel, for whoever manages it. Two things in the block:</p>
-      <p>Lead magnets on your domain, ready now: <span class="mono">resources.risedtc.com &nbsp;CNAME&nbsp; ivanmanfre.github.io</span></p>
-      <p>Newsletter sending on <span class="mono">mattanupdates@risedtc.com</span>: the SPF, DKIM and DMARC values come in the same block Ivan hands you. Happy to hop on a five-minute screenshare and do it together.</p>
+      <p>One visit to the risedtc.com DNS panel, for whoever manages it. <strong>Add these four records, leave everything else alone</strong> (your existing email and website records stay exactly as they are). Then tell us and we confirm it went through.</p>
+      <table style="table-layout:fixed;width:100%">
+        <thead><tr><th style="width:70px">Type</th><th style="width:150px">Host / Name</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">CNAME</td><td class="mono">resources</td><td class="mono">ivanmanfre.github.io</td></tr>
+          <tr><td class="mono">TXT</td><td class="mono">resend._domainkey</td><td class="mono">p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ6/8Sh69edd8FHlpDJ8hp92OL7l5xu+mj0hlq+592eTZKTZBtTdq3c9OKCLGi6sTvZ/AKs9eAlxmzJ09EgZpPnvPibi+kBQD0tGeS2EM7A0a8StdLbUi/xBAZaL73323FIewpbCObq/WNZymtoAn0uaD2xLqaH1EN71sTN8f6NQIDAQAB</td></tr>
+          <tr><td class="mono">MX</td><td class="mono">send</td><td class="mono">feedback-smtp.us-east-1.amazonses.com&nbsp;&nbsp;(priority 10)</td></tr>
+          <tr><td class="mono">TXT</td><td class="mono">send</td><td class="mono">v=spf1 include:amazonses.com ~all</td></tr>
+        </tbody>
+      </table>
+      <p class="aside">The first record puts your lead magnets on <span class="mono">resources.risedtc.com</span>. The other three let the newsletter send as <span class="mono">mattanupdates@risedtc.com</span>. On GoDaddy the Host is just the short part shown (it adds <span class="mono">.risedtc.com</span> for you). Happy to hop on a five-minute screenshare and paste them together.</p>
     </div></div>
 
     <div class="step"><span class="n">3</span><div class="body">
