@@ -514,8 +514,8 @@
 
   function buildUserInput(c, inputs) {
     var payload = {
-      category: inputs.category,
-      top_return_reason: inputs.topReturnReason,
+      category: categoryLabel(inputs.category),
+      top_return_reason: reasonLabel(inputs.topReturnReason),
       monthly_orders: c.N,
       aov: c.A,
       return_rate_pct: inputs.returnRate,
@@ -559,13 +559,20 @@
     var c = state.lastCompute, inputs = state.lastInputs;
     setPlanText("Claude is reading your numbers.", "Written live by Claude");
 
-    var firstToken = false, done = false;
-    var hardTimer = setTimeout(function () {
-      if (done) return;
-      done = true;
+    var firstToken = false, done = false, acc = "";
+    // Two-stage timeout: the full 700-token stream runs ~30s end to end, so a
+    // single short timer kills healthy streams. 30s to first token, 75s overall;
+    // at the overall cap a substantial partial stream still ships as live.
+    var firstTokenTimer = setTimeout(function () {
+      if (done || firstToken) return;
       try { controller.abort(); } catch (_) {}
       finishFallback();
-    }, 25000);
+    }, 30000);
+    var hardTimer = setTimeout(function () {
+      if (done) return;
+      try { controller.abort(); } catch (_) {}
+      if (acc && filterStream(acc).trim().length > 200) { finishLive(acc); } else { finishFallback(); }
+    }, 75000);
 
     function finishFallback() {
       if (done) { clearTimeout(hardTimer); return; }
@@ -608,7 +615,7 @@
 
       var reader = res.body.getReader();
       var decoder = new TextDecoder();
-      var buffer = "", acc = "";
+      var buffer = "";
 
       function pump() {
         return reader.read().then(function (r) {
