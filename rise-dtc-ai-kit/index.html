@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Rise DTC AI Kit | Rise DTC</title>
+<meta name="description" content="Five Claude skills that run the money side of your DTC store: returns, product pages, ad angles, retention, and a Monday triage. Paste them into Claude and use them today.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffc71d">
+<meta name="author" content="Rise DTC">
+<meta property="og:title" content="The Rise DTC AI Kit">
+<meta property="og:description" content="Five Claude skills that run the money side of your DTC store. Paste them into Claude and use them today.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rise DTC">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<a class="skip-link" href="#kit">Skip to the kit</a>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="hero-logo" href="https://risedtc.com" target="_blank" rel="noopener" aria-label="Rise DTC">
+      <img src="./assets/rise-logo-black.png" alt="Rise DTC">
+    </a>
+    <p class="eyebrow">The Rise DTC AI Kit</p>
+    <h1>Five Claude skills that run the money side of your store.</h1>
+    <p class="sub">Each one takes numbers or copy you already have and hands back work you can use the same day. Returns, product pages, ad angles, retention, and a Monday triage that tells you which to run first.</p>
+    <p class="claude-line">Built on Claude. Every skill does real work on your own numbers, with the math shown. No made-up benchmarks.</p>
+  </div>
+</header>
+
+<section id="kit">
+  <div class="wrap">
+    <h2 class="sec-h">What's in the kit</h2>
+    <p class="sec-sub">Five skills, one per lever that moves a DTC P&amp;L. Start with the Monday triage if you don't know where to begin, it points you to the right one.</p>
+    <div class="cards" id="cards"><!-- generated --></div>
+  </div>
+</section>
+
+<section class="sec-grey" id="gate">
+  <div class="wrap wrap-narrow">
+    <div class="gate-card">
+      <h3>Get the kit</h3>
+      <p class="gate-sub">Where should we send it, and what store is it for?</p>
+      <form id="gate-form" novalidate>
+        <label for="g-email">Email</label>
+        <input type="email" id="g-email" autocomplete="email" placeholder="founder@yourstore.com" required>
+        <span class="field-err" id="g-email-err"></span>
+        <label for="g-store">Store URL</label>
+        <input type="url" id="g-store" autocomplete="url" placeholder="yourstore.com" required>
+        <span class="field-err" id="g-store-err"></span>
+        <button class="btn-gold" type="submit">Get the kit</button>
+        <p class="gate-note">Goes to sending the kit and prepping your store if you book a call. Nothing else.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="reveal-sec" id="reveal" hidden>
+  <div class="wrap">
+    <h2 class="sec-h">Your kit is ready.</h2>
+    <p class="sec-sub">Download the whole pack, or copy any single skill straight into Claude and run it now.</p>
+    <div class="kit-actions">
+      <a class="btn-dl" id="dl-kit" href="./assets/rise-dtc-ai-kit.zip" download>Download the kit (.zip)</a>
+      <a class="btn-ghost" href="./kit/README.md" target="_blank" rel="noopener">Read the quickstart</a>
+    </div>
+    <div class="quick">
+      <h4>Two ways to run it</h4>
+      <ol>
+        <li><b>Paste into Claude (2 minutes, no setup):</b> hit "Copy for Claude" on any skill below, open <code>claude.ai</code>, paste it into a new chat, then paste your own numbers underneath and send.</li>
+        <li><b>Install into Claude Code:</b> unzip the pack and <code>cp -r rise-*/ ~/.claude/skills/</code>. Claude Code picks them up and you run them by name.</li>
+      </ol>
+    </div>
+    <div id="skill-rows"><!-- generated --></div>
+  </div>
+</section>
+
+<footer class="rise-footer">
+  <div class="wrap foot-inner">
+    <img src="./assets/rise-logo-black.png" alt="Rise DTC">
+    <div class="foot-text">
+      <p class="foot-pillar">Part of the RISE Method.</p>
+      <p class="foot-credit">Built for Rise DTC</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.__lm_slug = "rise-dtc-ai-kit";
+  window.__lm_beacon_url = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
+</script>
+<script src="./app.js" defer></script>
+</body>
+</html>
