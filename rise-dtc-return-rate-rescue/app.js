@@ -560,23 +560,23 @@
     setPlanText("Claude is reading your numbers.", "Written live by Claude");
 
     var firstToken = false, done = false, acc = "";
-    // The rail buffers: measured TTFB on this proxy is 30-45s with the whole
+    // The rail buffers: measured TTFB on this proxy is 34-78s with the whole
     // completion arriving in one burst. First-token window must sit well above
     // that or every healthy read dies into the fallback.
     var waitTimer = setTimeout(function () {
       if (done || firstToken) return;
-      setPlanText("Still writing. The plan usually lands in under a minute.", "Written live by Claude");
+      setPlanText("Still writing. This can take a minute or two.", "Written live by Claude");
     }, 15000);
     var firstTokenTimer = setTimeout(function () {
       if (done || firstToken) return;
       try { controller.abort(); } catch (_) {}
       finishFallback();
-    }, 90000);
+    }, 120000);
     var hardTimer = setTimeout(function () {
       if (done) return;
       try { controller.abort(); } catch (_) {}
       if (acc && filterStream(acc).trim().length > 200) { finishLive(acc); } else { finishFallback(); }
-    }, 130000);
+    }, 150000);
 
     function finishFallback() {
       if (done) { clearTimeout(hardTimer); return; }
