@@ -166,7 +166,7 @@
 
   // Expose the pure math function for node-based golden-vector testing (no DOM required).
   if (typeof window !== "undefined") { window.__rescue_compute = compute; }
-  if (typeof module !== "undefined" && module.exports) { module.exports = { compute: compute, money: money, round2: round2, pct2: pct2 }; }
+  if (typeof module !== "undefined" && module.exports) { module.exports = { compute: compute, money: money, round2: round2, pct2: pct2, groundPlanNumbers: groundPlanNumbers }; }
 
   // Stop here in non-browser (node require) contexts; everything below touches document/window.
   if (typeof document === "undefined") { return; }
@@ -403,7 +403,7 @@
 
   function buildReceiptHtml(c, inputs) {
     var lines = [
-      "p*A + f = " + c.procPerOrder.toFixed(3) + "  (payment processing per order, 2.9% + 30 cents)",
+      "p*A + f = " + c.procPerOrder.toFixed(3) + "  (payment processing per order: 2.9% + 30 cents, the published Shopify Payments / Stripe standard card rate)",
       "R = N * r = " + c.N + " * " + c.r.toFixed(2) + " = " + round2(c.R) + " returns a month",
       "R_ref = R * (1 - x) = " + round2(c.R).toFixed(2) + " * " + (1 - c.x).toFixed(2) + " = " + round2(c.R_ref) + " refunds a month",
       "R_exc = R * x = " + round2(c.R).toFixed(2) + " * " + c.x.toFixed(2) + " = " + round2(c.R_exc) + " exchanges a month",
@@ -425,7 +425,7 @@
       "",
       "Check: annual leak = recoverable + residual = " + money(c.recoverableAnnual) + " + " + money(c.residualLeakAnnual) + " = " + money(c.recoverableAnnual + c.residualLeakAnnual)
     ];
-    var html = '<p>Deterministic arithmetic, no averages or industry studies except the one cited benchmark.</p>';
+    var html = '<p>Every line below is your own numbers run through the stated formulas. The single outside figure is the cited 16.9% benchmark.</p>';
     html += '<code>' + esc(lines.join("\n")) + '</code>';
     html += '<p><strong>How costs are assigned:</strong></p><ul>';
     html += '<li>Refunded revenue is lost on refunds only. An exchange keeps the sale, so it keeps the revenue.</li>';
@@ -508,6 +508,7 @@
       "- No \"not just X\". No \"isn't X, it's Y\" or any corrective-contrast form.\n" +
       "- Never use: leverage, seamless, robust, elevate, unlock, delve, streamline, empower, game-changer, transformative.\n" +
       "- No preamble, no sign-off, no headers. Start at the diagnosis line.\n" +
+      "- No sentence that ends with a comma followed by an ing word restating the result, like reducing X or cutting Y. End the sentence at the action.\n" +
       "- Active voice, concrete nouns, plain operator tone.\n" +
       "- Under 220 words total.";
   }
@@ -547,7 +548,51 @@
       if (/\bisn'?t\b[\s\S]*\bit'?s\b/i.test(s)) return false;
       return true;
     });
+    // Trim result-gloss participle tags ("..., reducing X." / "..., cutting Y.")
+    // without touching content-bearing -ing clauses like "starting with".
+    var GLOSS = /,\s+(?:reducing|cutting|lowering|creating|highlighting|boosting|improving|increasing|driving|saving|freeing|keeping|preventing|stopping|shrinking|closing|recovering|eliminating|minimizing|maximizing)\b[^.!?]*([.!?])\s*$/i;
+    parts = parts.map(function (s) { return s.replace(GLOSS, "$1"); });
     return parts.join(" ");
+  }
+
+
+  // Deterministic figure gate for the live plan: every dollar and percent Claude
+  // renders must match a payload value. Cent-level drift snaps to the exact
+  // payload figure; an unknown figure rejects the whole live plan to the
+  // computed fallback, so an invented number can never reach the founder.
+  function groundPlanNumbers(text, c, inputs) {
+    var dollars = [
+      c.revRefAnnual, c.handleAnnual, c.shipSunkAnnual, c.procSunkAnnual,
+      c.annualLeak, c.annualRevenue, c.exchangeOffsetAnnual,
+      c.recoverableAnnual, c.residualLeakAnnual,
+      inputs.aov, inputs.outboundShipping, inputs.returnHandling,
+      c.procPerOrder, F_FIXED
+    ].map(round2);
+    var percents = [
+      inputs.returnRate, inputs.exchangeShare,
+      Math.round(c.leakPct * 10000) / 100, 16.9, 2.9
+    ];
+    var violations = 0;
+    var out = text.replace(/\$\s?([\d,]+(?:\.\d{1,2})?)/g, function (m, num) {
+      var v = parseFloat(num.replace(/,/g, ""));
+      if (isNaN(v)) { violations++; return m; }
+      for (var i = 0; i < dollars.length; i++) {
+        if (Math.abs(v - dollars[i]) <= 0.02) return money(dollars[i]);
+      }
+      violations++;
+      return m;
+    });
+    out.replace(/([\d.]+)\s?%/g, function (m, num) {
+      var v = parseFloat(num);
+      if (isNaN(v)) { violations++; return m; }
+      var okPct = false;
+      for (var i = 0; i < percents.length; i++) {
+        if (Math.abs(v - percents[i]) <= 0.02) { okPct = true; break; }
+      }
+      if (!okPct) violations++;
+      return m;
+    });
+    return { text: out, violations: violations };
   }
 
   function setPlanText(txt, tag) {
@@ -589,11 +634,13 @@
     }
     function finishLive(text) {
       if (done) return;
-      done = true;
-      clearTimeout(hardTimer);
       var clean = filterStream(text).trim();
       if (!clean) { finishFallback(); return; }
-      setPlanText(clean, "Live plan from Claude");
+      var grounded = groundPlanNumbers(clean, c, inputs);
+      if (grounded.violations > 0) { finishFallback(); return; }
+      done = true;
+      clearTimeout(hardTimer);
+      setPlanText(grounded.text, "Live plan from Claude");
       revealCta();
       beacon("complete", { tier: c.tierName, answers: { plan_source: "claude" } });
     }
