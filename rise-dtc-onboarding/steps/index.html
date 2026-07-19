@@ -70,12 +70,12 @@
       <span class="rule"></span>
       <span class="wordmark">RUN BY INBOUND<span class="on">ON</span>STEROIDS</span>
     </div>
-    <div class="label">Onboarding / every step, both sides</div>
-    <h1 class="title">The whole onboarding on one page.</h1>
-    <p class="serif" style="color:var(--muted);max-width:44em">Your steps, our steps, and every link that matters. When this page is all checked off, the engine is running.</p>
+    <div class="label">Call sheet / operator, run top to bottom</div>
+    <h1 class="title">Rise DTC onboarding call sheet.</h1>
+    <p class="serif" style="color:var(--muted);max-width:44em">For running the call, not for sending to him. Five items live with Mattan, two to hand off after, then the after-call actions. Every link you need is right here.</p>
     <div class="links">
-      <a href="https://resources.ivanmanfredi.com/rise-dtc-onboarding/?k=rdtc-2026-onb"><span>&#9632;</span> The manual</a>
-      <a href="https://ivanmanfredi.com/client/risedtc-com?k=de8228a883649fb54304a323"><span>&#9632;</span> Your board</a>
+      <a href="https://ivanmanfredi.com/client/risedtc-com?k=de8228a883649fb54304a323"><span>&#9632;</span> His board</a>
+      <a href="https://resources.ivanmanfredi.com/rise-dtc-onboarding/dns/?k=rdtc-2026-onb"><span>&#9632;</span> DNS block to forward</a>
       <a href="https://resources.ivanmanfredi.com/rise-dtc-true-profit-x-ray/"><span>&#9632;</span> True Profit X-Ray</a>
       <a href="https://resources.ivanmanfredi.com/rise-dtc-growth-readiness-score-where-your-next-ad-dollar-actually-leaks/"><span>&#9632;</span> Growth Readiness Score</a>
     </div>
@@ -85,8 +85,10 @@
   <div id="aftercall" style="display:none;border:4px solid #C8361B;outline:1px solid #C8361B;outline-offset:3px;padding:20px 22px;margin:28px 0;background:#FFFFFF">
     <div style="display:flex;align-items:center;gap:11px;margin:0 0 10px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#C8361B"><span style="width:13px;height:13px;background:#C8361B;flex:none"></span>After the call (Ivan only)</div>
     <p style="margin:8px 0">1. Slack invite to <span class="mono">mattan@risedtc.com</span> &nbsp;&nbsp;2. Seat-risk line in Slack, his written yes is the ack</p>
-    <p style="margin:8px 0">3. One click sends Mattan the recap email with the onboarding doc:</p>
-    <button id="sendrecap" style="border:2px solid #131210;background:#ffc71d;padding:10px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">Send recap + doc to Mattan</button>
+    <p style="margin:8px 0">3. Drop one short recap in Slack, no doc. Paste this:</p>
+    <div style="border:1px solid #C9C2B2;background:#F6F4EF;padding:12px 14px;margin:4px 0 10px;font-size:13.5px;line-height:1.5">Great call. Two things on your side when you get a sec:<br>1. DNS: forward this to whoever runs risedtc.com &rarr; <span class="mono">resources.ivanmanfredi.com/rise-dtc-onboarding/dns/?k=rdtc-2026-onb</span> . Four records, add-only, nothing existing changes.<br>2. Photos: drop 20 to 30 candid shots on your board this week, Photos tab.<br>First posts land in a few days and show up on your board as they are ready. I am in here if anything comes up.</div>
+    <p style="margin:8px 0;font-size:13px;color:#6B675E">Optional email version (sends the older recap mail):</p>
+    <button id="sendrecap" style="border:2px solid #131210;background:#ffc71d;padding:10px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">Send recap email to Mattan</button>
     <span id="recapresult" style="margin-left:12px;font-size:14px;color:#6B675E"></span>
   </div>
   <script>
@@ -107,53 +109,53 @@
   </script>
 
   <section>
-    <span class="snum">01 / Your side</span>
-    <h2 class="sh">Six items, about one hour, zero passwords</h2>
+    <span class="snum">01 / On the call</span>
+    <h2 class="sh">Run these with him, top to bottom</h2>
 
     <div class="step"><span class="n">1</span><div class="body">
-      <span class="t">Connect LinkedIn</span> <span class="who">On the call · 2 min</span>
-      <p>You log into LinkedIn on a secure hosted page, it handles two-factor, your password never leaves your screen. Have <span class="hot">Sales Navigator Core</span> active on your seat, the outbound lane runs on it.</p>
+      <span class="t">Connect LinkedIn</span> <span class="who">2 min</span>
+      <p>Send the hosted-auth link, he logs in on it, two-factor stays on his side, no password touches you. Confirm <span class="hot">Sales Navigator Core</span> is live on his seat before moving on, the outbound lane runs on it.</p>
     </div></div>
 
     <div class="step"><span class="n">2</span><div class="body">
-      <span class="t">DNS, one copy-paste block</span> <span class="who">Async · 5 min</span>
-      <p>One visit to the risedtc.com DNS panel, for whoever manages it. <strong>Add these four records, leave everything else alone</strong> (your existing email and website records stay exactly as they are). Then tell us and we confirm it went through.</p>
-      <table style="table-layout:fixed;width:100%">
-        <thead><tr><th style="width:70px">Type</th><th style="width:150px">Host / Name</th><th>Value</th></tr></thead>
-        <tbody>
-          <tr><td class="mono">CNAME</td><td class="mono">resources</td><td class="mono">ivanmanfre.github.io</td></tr>
-          <tr><td class="mono">TXT</td><td class="mono">resend._domainkey</td><td class="mono">p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ6/8Sh69edd8FHlpDJ8hp92OL7l5xu+mj0hlq+592eTZKTZBtTdq3c9OKCLGi6sTvZ/AKs9eAlxmzJ09EgZpPnvPibi+kBQD0tGeS2EM7A0a8StdLbUi/xBAZaL73323FIewpbCObq/WNZymtoAn0uaD2xLqaH1EN71sTN8f6NQIDAQAB</td></tr>
-          <tr><td class="mono">MX</td><td class="mono">send</td><td class="mono">feedback-smtp.us-east-1.amazonses.com&nbsp;&nbsp;(priority 10)</td></tr>
-          <tr><td class="mono">TXT</td><td class="mono">send</td><td class="mono">v=spf1 include:amazonses.com ~all</td></tr>
-        </tbody>
-      </table>
-      <p class="aside">The first record puts your lead magnets on <span class="mono">resources.risedtc.com</span>. The other three let the newsletter send as <span class="mono">mattanupdates@risedtc.com</span>. On GoDaddy the Host is just the short part shown (it adds <span class="mono">.risedtc.com</span> for you). Happy to hop on a five-minute screenshare and paste them together.</p>
+      <span class="t">Lock ICP + dream 25</span> <span class="who">5 min</span>
+      <p>One primary bucket of DTC and Shopify brands (apparel lean noted), plus 5 to 10 named accounts he wishes were clients. Write them down live, this aims the whole outbound engine.</p>
     </div></div>
 
     <div class="step"><span class="n">3</span><div class="body">
-      <span class="t">20 to 30 real photos</span> <span class="who">By the next day · 10 min</span>
-      <p>Candid shots of you doing real things, plus a few founder, family and friends photos. Real faces pull harder than stock, these feed your post images. Upload them straight on <a href="https://ivanmanfredi.com/client/risedtc-com?k=de8228a883649fb54304a323">your board</a>, Photos tab.</p>
+      <span class="t">X-Ray on his real numbers</span> <span class="who">The value moment</span>
+      <p>Walk the <a href="https://resources.ivanmanfredi.com/rise-dtc-true-profit-x-ray/">True Profit X-Ray</a> live on his actuals. This is where he feels the engine think, do not rush it.</p>
     </div></div>
 
     <div class="step"><span class="n">4</span><div class="body">
-      <span class="t">Lock your ICP + dream 25</span> <span class="who">On the call</span>
-      <p>One primary bucket of DTC and Shopify brands (your apparel lean noted), plus 5 to 10 named accounts you wish were clients. This aims the whole outbound engine.</p>
+      <span class="t">Grab the Fathom key</span> <span class="who">2 min</span>
+      <p>Have him open Fathom Settings, then API access, copy the key, paste it to you. It lets the engine read his sales calls so his written voice matches how he talks. A key, never a password.</p>
     </div></div>
 
     <div class="step"><span class="n">5</span><div class="body">
-      <span class="t">Fathom API key</span> <span class="who">On the call · 2 min</span>
-      <p>Settings, then API access, copy the key. Fathom is your call recorder: the key lets the engine read your sales calls, so your written voice comes off how you actually talk. A key, never a password.</p>
-    </div></div>
-
-    <div class="step"><span class="n">6</span><div class="body">
-      <span class="t">Your booking link</span> <span class="who">Done</span>
-      <p>Already in: every call the engine generates goes onto meetings.hubspot.com/mattan5. We confirm it together on the call.</p>
+      <span class="t">Confirm the booking link</span> <span class="who">30 sec</span>
+      <p>Already wired: every call the engine generates lands on meetings.hubspot.com/mattan5. Confirm it together so he knows where bookings show up.</p>
     </div></div>
   </section>
 
   <section>
-    <span class="snum">02 / Our side</span>
-    <h2 class="sh">What we run, and when it lands</h2>
+    <span class="snum">02 / Hand off after</span>
+    <h2 class="sh">Two async items, flag them on the call</h2>
+
+    <div class="step"><span class="n">6</span><div class="body">
+      <span class="t">DNS, forward the block</span> <span class="who">Async · his side</span>
+      <p>Send the <a href="https://resources.ivanmanfredi.com/rise-dtc-onboarding/dns/?k=rdtc-2026-onb">standalone DNS block</a> to whoever runs risedtc.com (four records: the resources CNAME plus the newsletter DKIM, MX and SPF). Add-only, nothing existing changes. When it lands, risedtc.com verifies in Resend and his lead magnets and newsletter go live. Offer the five-minute screenshare.</p>
+    </div></div>
+
+    <div class="step"><span class="n">7</span><div class="body">
+      <span class="t">Photos, 20 to 30</span> <span class="who">Async · this week</span>
+      <p>Candid shots of him doing real things, plus a few founder, family and friends. Real faces beat stock, they feed his post images. He uploads them straight on <a href="https://ivanmanfredi.com/client/risedtc-com?k=de8228a883649fb54304a323">his board</a>, Photos tab. Remind him in the recap.</p>
+    </div></div>
+  </section>
+
+  <section>
+    <span class="snum">03 / What lands, and when</span>
+    <h2 class="sh">The timeline to narrate on the call</h2>
     <table>
       <tr><th>When</th><th>What lands</th></tr>
       <tr><td class="d">Day 0 · Mon</td><td>The call above: account connected, ICP locked, X-Ray walkthrough on your real numbers, block and folder handed over, seat risk signed.</td></tr>
