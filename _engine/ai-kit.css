@@ -126,6 +126,9 @@
 .lmk-ty-cta { display: inline-flex; align-items: center; gap: 9px; font-family: var(--lmk-heading); font-weight: 600; font-size: 16px; color: var(--lmk-ink); background: var(--lmk-accent); border-radius: 6px; padding: 15px 26px; text-decoration: none; transition: filter .15s ease, transform .15s ease; }
 .lmk-ty-cta:hover { filter: brightness(.97); transform: translateY(-1px); }
 .lmk-ty-note { font-size: 13px; color: var(--lmk-muted); margin: 14px 0 0; }
+.lmk-ty-actions { margin: 0 0 28px; }
+.lmk-ty-open { display: inline-flex; align-items: center; gap: 9px; font-family: var(--lmk-heading); font-weight: 600; font-size: 16px; color: var(--lmk-ink); background: #fff; border: 1.5px solid var(--lmk-ink); border-radius: 6px; padding: 14px 26px; text-decoration: none; transition: background .15s ease, color .15s ease, transform .15s ease; }
+.lmk-ty-open:hover { background: var(--lmk-ink); color: #fff; transform: translateY(-1px); }
 
 @media (max-width: 640px) {
   .lmk-c-ring { display: none; }

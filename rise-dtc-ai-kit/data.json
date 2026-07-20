@@ -15,11 +15,12 @@
  "gate": {
   "mode": "hard",
   "headline": "Get the kit",
-  "sub": "Where to send it, and what store it's for. It unlocks on this page the moment you submit.",
-  "button": "Unlock the kit",
-  "email_placeholder": "founder@yourstore.com",
-  "store_placeholder": "yourstore.com",
-  "note": "Goes to sending the kit and prepping your store if you book a call. Nothing else."
+  "sub": "Tell us who you are and where to send it. The kit lands in your inbox in a minute.",
+  "button": "Send me the kit",
+  "name_placeholder": "First name",
+  "email_placeholder": "you@yourstore.com",
+  "store_placeholder": "yourstore.com (optional)",
+  "note": "Goes to sending you the kit, and prepping your store if you book a call. Nothing else."
  },
  "quick_start": [
   {
@@ -38,8 +39,9 @@
  "resource_headline": "Here's everything inside.",
  "thank_you": {
   "eyebrow": "You're in",
-  "headline": "The kit is yours. When you want it run for you, Rise is one call away.",
-  "body": "Rise DTC builds and runs the growth side of DTC brands: the content, the retention, the ad angles, the returns work. The kit is the founder-run version. Book a call and we map which of it we'd run for you first.",
+  "headline": "Your kit is ready{name}.",
+  "kit_label": "Open the kit",
+  "body": "Open it right here and you're set. When you want it run for you instead of by you, Rise is one call away.",
   "bullets": [
    "Returns, retention, and conversion handled by an operator, not another dashboard",
    "Ad angles and content pulled from your real reviews and numbers",

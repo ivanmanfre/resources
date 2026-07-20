@@ -163,17 +163,20 @@
     var skillCount = files.filter(function (f) { return !/readme/i.test(f.name || ""); }).length || files.length;
     var sec = L.make("section", { class: "lmk-gate", "aria-label": "Get the kit" });
     var metaBits = [skillCount + " skills", "Runs in Claude", "Free"];
+    var askStore = g.ask_store !== false; // store is optional; on by default
     sec.innerHTML =
       '<div class="lmk-gate-card">' +
         '<h2 class="lmk-gate-h">' + L.esc(g.headline || "Get the kit") + '</h2>' +
         (g.sub ? '<p class="lmk-gate-sub">' + L.esc(g.sub) + '</p>' : "") +
         '<form class="lmk-gate-form" novalidate>' +
+          '<label class="sr-only" for="lmk-g-name">Your name</label>' +
+          '<input id="lmk-g-name" type="text" autocomplete="given-name" placeholder="' + L.esc(g.name_placeholder || "First name") + '" required>' +
           '<label class="sr-only" for="lmk-g-email">Email</label>' +
-          '<input id="lmk-g-email" type="email" autocomplete="email" placeholder="' + L.esc(g.email_placeholder || "founder@yourstore.com") + '" required>' +
-          (g.ask_store === false ? "" :
-            '<label class="sr-only" for="lmk-g-store">Store URL</label>' +
-            '<input id="lmk-g-store" type="url" autocomplete="url" placeholder="' + L.esc(g.store_placeholder || "yourstore.com") + '">') +
-          '<button class="lmk-gate-btn" type="submit">' + L.esc(g.button || "Unlock the kit") + '</button>' +
+          '<input id="lmk-g-email" type="email" autocomplete="email" placeholder="' + L.esc(g.email_placeholder || "you@yourstore.com") + '" required>' +
+          (askStore ?
+            '<label class="sr-only" for="lmk-g-store">Store URL (optional)</label>' +
+            '<input id="lmk-g-store" type="url" autocomplete="url" placeholder="' + L.esc(g.store_placeholder || "yourstore.com (optional)") + '">' : "") +
+          '<button class="lmk-gate-btn" type="submit">' + L.esc(g.button || "Send me the kit") + '</button>' +
           '<p class="lmk-gate-err" id="lmk-gate-err" role="alert"></p>' +
         '</form>' +
         '<div class="lmk-gate-meta">' + metaBits.map(function (m) { return '<span>' + L.esc(m) + '</span>'; }).join('<i aria-hidden="true">·</i>') + '</div>' +
@@ -182,41 +185,80 @@
     var form = sec.querySelector(".lmk-gate-form");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      var name = (sec.querySelector("#lmk-g-name").value || "").trim();
       var email = (sec.querySelector("#lmk-g-email").value || "").trim();
       var storeEl = sec.querySelector("#lmk-g-store");
       var store = storeEl ? (storeEl.value || "").trim() : "";
       var err = sec.querySelector("#lmk-gate-err");
-      if (!L.emailIsValid(email)) { err.textContent = "Enter a valid email so we can send the kit."; sec.querySelector("#lmk-g-email").focus(); return; }
+      if (!name) { err.textContent = "Add your name so we know who to send it to."; sec.querySelector("#lmk-g-name").focus(); return; }
+      if (!L.emailIsValid(email)) { err.textContent = "Enter a valid email so we can send you the kit."; sec.querySelector("#lmk-g-email").focus(); return; }
       err.textContent = "";
-      L.updateReader({ email: email });
-      L.beacon("ai-kit", "capture", { email: email, answers: { store_url: store, kit: data.kit_name || data.slug, skills: files.length } });
-      onPass(email, store);
+      L.updateReader({ email: email, name: name });
+      L.beacon("ai-kit", "capture", { email: email, answers: { name: name, store_url: store, kit: data.kit_name || data.slug, skills: files.length } });
+      onPass({ email: email, name: name, store: store });
     });
     return sec;
   }
 
-  function buildThankYou(data) {
+  function buildThankYou(data, name) {
     var t = data.thank_you || {};
     var c = data.client || {};
-    var sec = L.make("section", { class: "lmk-ty", "aria-label": "Thank you", hidden: "" });
+    var first = (name || "").trim().split(/\s+/)[0] || "";
+    var namePart = first ? (", " + first) : "";
+    var fill = function (s) { return String(s || "").split("{name}").join(namePart); };
+    var sec = L.make("section", { class: "lmk-ty lmk-reveal", "aria-label": "Thank you" });
     var videoBlock = t.video_url
       ? '<div class="lmk-ty-video"><video controls preload="none"' + (t.video_poster ? ' poster="' + L.esc(t.video_poster) + '"' : "") + ' src="' + L.esc(t.video_url) + '"></video></div>'
       : '<div class="lmk-ty-video lmk-ty-video-soon" aria-hidden="true"><span class="lmk-ty-play">▶</span><span class="lmk-ty-soon">A short walkthrough from ' + L.esc(clientName(data)) + ' lands here soon.</span></div>';
     var bullets = Array.isArray(t.bullets) ? t.bullets : [];
+    var kitBtn = t.kit_open === false ? "" :
+      '<div class="lmk-ty-actions"><a class="lmk-ty-open" href="?unlocked=1">' + L.esc(t.kit_label || "Open the kit") + ' <span aria-hidden="true">→</span></a></div>';
     sec.innerHTML =
       '<div class="lmk-ty-inner">' +
         (c.logo ? '<img class="lmk-ty-logo" src="' + L.esc(c.logo) + '" alt="' + L.esc(clientName(data)) + '">' : "") +
-        '<p class="lmk-ty-eyebrow">' + L.esc(t.eyebrow || "You're in") + '</p>' +
-        '<h2 class="lmk-ty-h">' + L.esc(t.headline || "The kit is yours. Here's the fastest way to get value from it.") + '</h2>' +
-        (t.body ? '<p class="lmk-ty-body">' + L.esc(t.body) + '</p>' : "") +
+        '<p class="lmk-ty-eyebrow">' + L.esc(fill(t.eyebrow || "You're in")) + '</p>' +
+        '<h2 class="lmk-ty-h">' + L.esc(fill(t.headline || "Your kit is ready{name}.")) + '</h2>' +
+        '<p class="lmk-ty-body">' + L.esc(fill(t.body || "Open it right here. A copy is also on its way to your inbox.")) + '</p>' +
+        kitBtn +
         videoBlock +
         (bullets.length ? '<ul class="lmk-ty-points">' + bullets.map(function (b) { return '<li>' + L.esc(b) + '</li>'; }).join("") + '</ul>' : "") +
         (t.cta_url ? '<a class="lmk-ty-cta" href="' + L.esc(t.cta_url) + '" target="_blank" rel="noopener">' + L.esc(t.cta_label || "Book a call") + ' <span aria-hidden="true">→</span></a>' : "") +
         (t.cta_note ? '<p class="lmk-ty-note">' + L.esc(t.cta_note) + '</p>' : "") +
       '</div>';
+    var open = sec.querySelector(".lmk-ty-open");
+    if (open) open.addEventListener("click", function () { L.beacon("ai-kit", "cta_click", { answers: { target: "thankyou_open_kit", kit: data.kit_name || data.slug } }); });
     var cta = sec.querySelector(".lmk-ty-cta");
     if (cta) cta.addEventListener("click", function () { L.beacon("ai-kit", "cta_click", { answers: { target: "thankyou_book", kit: data.kit_name || data.slug } }); });
     return sec;
+  }
+
+  // The kit is delivered by email; the email links here with an unlock param.
+  // Opening the page with ?unlocked=1 (or ?kit / #kit) renders the resource
+  // directly, bypassing the gate. Soft by design — a free LM, capture is the point.
+  function isUnlocked() {
+    try {
+      var p = new URLSearchParams(location.search || "");
+      if (p.get("unlocked") === "1" || p.has("kit")) return true;
+    } catch (_) {}
+    return /(^|[#&])kit\b/.test(location.hash || "");
+  }
+
+  // STATE — resource: the branded kit itself (email destination).
+  function buildResourceView(data) {
+    var wrap = L.make("div", { class: "lmk-resource" });
+    wrap.appendChild(buildClientHero(data)); // branded hero so the kit page carries the client's brand
+    var head = L.make("section", { class: "lmk-res-head lmk-reveal" });
+    head.innerHTML =
+      '<p class="lmk-res-eyebrow">Your kit</p>' +
+      '<h2 class="lmk-res-h">' + L.esc(data.resource_headline || "Here's everything inside.") + '</h2>' +
+      '<p class="lmk-res-sub">Download the pack, or copy any single skill straight into Claude and run it now.</p>';
+    wrap.appendChild(head);
+    var container = L.make("div", { class: "lmc-container lmk-root" });
+    container.appendChild(buildQuickStart(data));
+    container.appendChild(buildDownloadBand(data));
+    container.appendChild(buildBrowser(data));
+    wrap.appendChild(container);
+    return wrap;
   }
 
   function renderGatedClientKit(data, root) {
@@ -225,50 +267,33 @@
     root.style.setProperty("--lmk-accent", clientAccent(data));
     if (data.client && data.client.ink) root.style.setProperty("--lmk-ink", data.client.ink);
 
-    // STATE 1 — landing (hard gate): hero, then split of "what's inside" + gate
+    // Arrived via the email link → show the kit directly, no gate.
+    if (isUnlocked()) {
+      root.appendChild(buildResourceView(data));
+      L.observeReveal(root, ".lmk-reveal");
+      L.beacon("ai-kit", "view", { answers: { via: "unlock" } });
+      L.beacon("ai-kit", "unlock", { kit: data.kit_name || data.slug });
+      return;
+    }
+
+    // Landing (hard gate): hero, then split of "what's inside" + gate.
     var landing = L.make("div", { class: "lmk-landing" });
     landing.appendChild(buildClientHero(data));
     var grid = L.make("div", { class: "lmk-landing-grid" });
     grid.appendChild(buildWhatsInside(data));
-    grid.appendChild(buildGate(data, function () { enterResource(); }));
+    grid.appendChild(buildGate(data, function (sub) {
+      // Submit → thank-you view only. The kit goes out by email.
+      var ty = buildThankYou(data, sub && sub.name);
+      landing.remove();
+      root.appendChild(ty);
+      window.scrollTo(0, 0);
+      L.observeReveal(root, ".lmk-reveal");
+      L.beacon("ai-kit", "complete", { kit: data.kit_name || data.slug });
+    }));
     landing.appendChild(grid);
     root.appendChild(landing);
 
-    // STATE 2 — resource (hidden until gate passes)
-    var resource = L.make("div", { class: "lmk-resource", hidden: "" });
-    var head = L.make("section", { class: "lmk-res-head lmk-reveal" });
-    head.innerHTML =
-      '<p class="lmk-res-eyebrow">Your kit</p>' +
-      '<h2 class="lmk-res-h">' + L.esc((data.resource_headline) || "Here's everything inside.") + '</h2>' +
-      '<p class="lmk-res-sub">Download the pack, or copy any single skill straight into Claude and run it now.</p>';
-    resource.appendChild(head);
-    var container = L.make("div", { class: "lmc-container lmk-root" });
-    container.appendChild(buildQuickStart(data));
-    container.appendChild(buildDownloadBand(data, function () { revealThankYou(); }));
-    container.appendChild(buildBrowser(data));
-    var jump = L.make("button", { class: "lmk-res-jump", type: "button" }, "Already grabbed it? See your next step →");
-    jump.addEventListener("click", function () { revealThankYou(); });
-    container.appendChild(jump);
-    resource.appendChild(container);
-    root.appendChild(resource);
-
-    // STATE 3 — thank-you (hidden until download or jump)
-    var ty = buildThankYou(data);
-    root.appendChild(ty);
-
-    var tyShown = false;
-    function enterResource() {
-      landing.hidden = true;
-      resource.hidden = false;
-      window.scrollTo(0, 0);
-      L.observeReveal(root, ".lmk-reveal");
-    }
-    function revealThankYou() {
-      if (!tyShown) { tyShown = true; L.beacon("ai-kit", "complete", { kit: data.kit_name || data.slug }); }
-      ty.hidden = false;
-      ty.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
+    L.observeReveal(root, ".lmk-reveal");
     L.beacon("ai-kit", "view");
   }
 
