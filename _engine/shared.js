@@ -834,6 +834,10 @@
   // wrapper that doesn't include .im-footer at all. For those we INJECT the
   // full footer at the end of <body>.
   function rebrandFooter() {
+    // White-label client LMs (window.__lm_client) carry their own footer/CTA
+    // and must never show Ivan's Calendly footer. Opt-out only; no existing
+    // page sets the flag, so this is inert for the whole Ivan catalog.
+    if (window.__lm_client) return;
     var footer = document.querySelector(".im-footer");
     if (!footer) {
       // Inject a fresh editorial footer. Reuses .im-footer styles defined in
