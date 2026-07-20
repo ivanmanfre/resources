@@ -1,12 +1,21 @@
-/* True Profit Per Order X-Ray - Rise DTC white-label demo
+/* True Profit Per Order X-Ray - Rise DTC white-label client funnel.
    Vanilla JS, no framework, no build step. All math is deterministic and
    runs client-side; the only network calls are the analytics beacon and the
-   optional "Read my shape" live-Claude proxy. */
+   optional "Read my shape" live-Claude proxy.
+
+   State machine (mirrors the AI Kit client-funnel contract on its own engine):
+     landing  -> hard gate (name, email, store optional). No calculator shown.
+     thankyou -> first-name headline, "Open the X-Ray" (?unlocked=1), booking CTA.
+     resource -> the full calculator, results ungated (email already captured).
+   isUnlocked() mirrors ai-kit.js: ?unlocked=1 / ?kit / #kit, plus a returning
+   reader who already captured (localStorage flag). */
 (function () {
   "use strict";
 
   /* ─────────────────────────── Config ─────────────────────────── */
   var SLUG = window.__lm_slug || "rise-dtc-true-profit-x-ray";
+  var LEAF_KEY = SLUG;                  // nurture routing key (inert until a sequence exists)
+  var BOOKING_URL = "https://meetings.hubspot.com/mattan5";
   var BEACON_URL = window.__lm_beacon_url || "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
   var PROXY_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-walkthrough-proxy";
   var PROXY_MODEL = "claude-sonnet-4-6"; // proxy passes model straight to Railway; sonnet-class is the sibling ai-walkthrough engine's proven default and the verdict is the showpiece
@@ -197,6 +206,7 @@
 
   function buildFields() {
     var host = $("fields");
+    if (!host) return;
     FIELDS.forEach(function (f) {
       var wide = f.optional;
       var wrap = document.createElement("div");
@@ -313,6 +323,7 @@
   var lastCompute = null;
   function renderWaterfall(c) {
     var host = $("waterfall");
+    if (!host) return;
     var aov = state.aov || 1;
     host.innerHTML = "";
     // running total to drive a descending staircase
@@ -359,17 +370,17 @@
     var c = compute(state);
     lastCompute = c;
 
-    // Hero
+    // Compact result bar (mobile) + headline
     setNum($("hero-num"), c.profit);
     setBadge($("hero-badge"), c);
-    $("hero-verdict").textContent = heroVerdict(c);
+    var hv = $("hero-verdict"); if (hv) hv.textContent = heroVerdict(c);
 
-    // Result card (Beat 3)
+    // Result card
     setNum($("result-num"), c.profit);
     setBadge($("result-badge"), c);
-    $("result-verdict").textContent = heroVerdict(c);
+    var rv = $("result-verdict"); if (rv) rv.textContent = heroVerdict(c);
 
-    // Gated content (rendered always; visually blurred until unlock)
+    // Waterfall + verdict block
     renderWaterfall(c);
     if (unlocked) animateWaterfall();
     paintVerdictBlock(c);
@@ -386,22 +397,28 @@
     }
   }
   function setNum(node, v) {
+    if (!node) return;
     node.innerHTML = esc(money(v)) + '<span class="per"> / order</span>';
     node.style.color = v >= 0 ? "var(--gold)" : "#ff8a8a";
   }
   function setBadge(node, c) {
+    if (!node) return;
     node.className = badgeClass(c.tierKey);
     node.textContent = c.tier;
   }
   function paintVerdictBlock(c) {
     var b = $("binding-line");
+    if (!b) return;
     b.innerHTML = "The binding constraint is <b>" + esc(c.binding.label) + "</b>, the biggest single line at " +
       money(c.binding.share) + " per order, about " + c.binding.pctOfAov + "% of order value.";
-    $("fix-line").innerHTML = "<b>" + (c.tierKey === "notyet" ? "Best single lever:" : "Fix model:") + "</b> " + esc(c.fixLine);
-    $("breakeven-line").textContent = c.breakEven != null
+    var fl = $("fix-line");
+    if (fl) fl.innerHTML = "<b>" + (c.tierKey === "notyet" ? "Best single lever:" : "Fix model:") + "</b> " + esc(c.fixLine);
+    var be = $("breakeven-line");
+    if (be) be.textContent = c.breakEven != null
       ? "Break-even: " + c.breakEven + " orders at this contribution before acquisition pays back."
       : "Break-even: no break-even at these numbers, contribution before CAC is not positive.";
     var rl = $("repeat-line");
+    if (!rl) return;
     if (c.customerProfit != null) {
       rl.style.display = "";
       rl.textContent = "Repeat view: at " + pct(state.repeat) + " repeat rate, an average customer places about " +
@@ -415,6 +432,7 @@
   /* ─────────────────────────── CTA routing ─────────────────────────── */
   function routeCta(c) {
     var host = $("cta-block");
+    if (!host) return;
     host.innerHTML = "";
     if (c.tierKey === "safe") {
       var lead = mk("p", "cta-lead", "The unit economics hold. The next question is what more volume does to them.");
@@ -495,7 +513,6 @@
       ["Profit / order", money(c.profit)],
       ["Break-even", c.breakEven != null ? c.breakEven + " orders" : "none"],
       ["Binding constraint", c.binding.label],
-      ["Revenue band", bandLabel(capture.revenue_band)],
       ["Store", capture.store_url || "not given"]
     ];
     var html = '<div class="brief-head"><img src="./assets/rise-logo-white.png" alt=""> What Rise receives when you book</div>';
@@ -505,32 +522,34 @@
     });
     return html;
   }
-  function bandLabel(v) {
-    return ({ under_10k: "Under $10k", "10_30k": "$10k - $30k", "30_100k": "$30k - $100k", "100k_plus": "$100k+" })[v] || "not given";
-  }
 
-  /* ─────────────────────────── Gate ─────────────────────────── */
+  /* ─────────────────────────── Gate (landing) ─────────────────────────── */
   var capture = { email: "", store_url: "", revenue_band: "" };
   function emailValid(e) { return /[^@\s]+@[^@\s]+\.[^@\s]+/.test(e || ""); }
 
   function wireGate() {
     var form = $("gate-form");
+    if (!form) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      var name = $("g-name").value.trim();
       var email = $("g-email").value.trim();
       var store = $("g-store").value.trim();
-      var band = $("g-band").value;
       var err = $("gate-err");
-      if (!emailValid(email)) { err.textContent = "Enter a valid email so we can send the breakdown."; $("g-email").focus(); return; }
-      if (!store) { err.textContent = "Add your store URL."; $("g-store").focus(); return; }
+      if (!name) { err.textContent = "Add your name so we know who to send it to."; $("g-name").focus(); return; }
+      if (!emailValid(email)) { err.textContent = "Enter a valid email so we can send the X-Ray."; $("g-email").focus(); return; }
       err.textContent = "";
-      capture.email = email; capture.store_url = store; capture.revenue_band = band;
-      updateReader({ email: email });
+      capture.email = email; capture.store_url = store; capture.revenue_band = "";
+      updateReader({ email: email, name: name, xray_unlocked: true });
 
+      // Capture keeps the calculator payload contract (default apparel example
+      // at gate time, since the calculator opens after this) and adds the
+      // leaf_template_key so lm-beacon can route a client nurture sequence.
       var c = lastCompute || compute(state);
       beacon("capture", {
         email: email,
         answers: {
+          name: name,
           inputs: {
             aov: state.aov, cogs_pct: state.cogs, shipping: state.shipping,
             return_rate_pct: state.returnRate, cac: state.cac, processing_pct: state.procPct,
@@ -542,31 +561,46 @@
           },
           tier: c.tier,
           binding_constraint: c.binding.label,
-          revenue_band: band || null,
-          store_url: store
+          revenue_band: null,
+          store_url: store,
+          leaf_template_key: LEAF_KEY
         }
       });
-      unlockGate();
+      showThankYou(name);
     });
   }
-  function unlockGate() {
-    unlocked = true;
-    var layer = $("gated-layer");
-    layer.classList.remove("locked");
-    layer.setAttribute("aria-hidden", "false");
-    var card = $("gate-card");
-    card.style.transition = "opacity .35s, transform .35s";
-    card.style.opacity = "0";
-    card.style.transform = "translateX(-50%) translateY(-8px)";
-    setTimeout(function () { card.style.display = "none"; }, 360);
-    animateWaterfall();
-    beacon("complete", { tier: (lastCompute || {}).tier });
+
+  /* ─────────────────────── Thank-you ─────────────────────── */
+  function showThankYou(name) {
+    var first = String(name || "").trim().split(/\s+/)[0] || "";
+    var namePart = first ? (", " + esc(first)) : "";
+    var v = $("thankyou-view");
+    v.innerHTML =
+      '<div class="wrap ty-inner reveal">' +
+        '<img class="ty-logo" src="./assets/rise-logo-white.png" alt="Rise DTC">' +
+        '<p class="ty-eyebrow">You are in</p>' +
+        '<h2 class="ty-h">Your X-Ray is ready' + namePart + '.</h2>' +
+        '<p class="ty-body">Open it right here and swap in your numbers. A copy is on its way to your inbox too, so you can come back to it any time.</p>' +
+        '<div class="ty-actions"><a class="ty-open" href="?unlocked=1">Open the X-Ray <span aria-hidden="true">&rarr;</span></a></div>' +
+        '<a class="ty-cta" href="' + BOOKING_URL + '" target="_blank" rel="noopener">Book your Rise call <span aria-hidden="true">&rarr;</span></a>' +
+        '<p class="ty-note">30 minutes with Rise. We tell you which cost line to fix first, and if you can do it yourself we say so.</p>' +
+      '</div>';
+    showView("thankyou-view");
+    window.scrollTo(0, 0);
+    var open = v.querySelector(".ty-open");
+    if (open) open.addEventListener("click", function () { beacon("cta_click", { answers: { target: "thankyou_open_xray" } }); });
+    var cta = v.querySelector(".ty-cta");
+    if (cta) cta.addEventListener("click", function () { beacon("cta_click", { answers: { target: "thankyou_book" } }); });
+    observeReveal(v); revealSafety(v);
+    beacon("complete", { answers: { leaf_template_key: LEAF_KEY } });
   }
 
   /* ─────────────────────── Read my shape (live Claude) ─────────────────── */
   var shapeRan = false;
   function wireShape() {
-    $("btn-shape").addEventListener("click", function () {
+    var btn = $("btn-shape");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
       if (shapeRan) return;
       shapeRan = true;
       this.setAttribute("disabled", "true");
@@ -606,7 +640,7 @@
 
   // Client-side post-filter per copy rules.
   function filterStream(text) {
-    var t = text.replace(/\u2014|\u2013|--/g, ", ");           // strip em dashes
+    var t = text.replace(/—|–|--/g, ", ");           // strip em dashes
     // Drop sentences with "not just/only" or "isn't X. it's" constructions.
     var parts = t.split(/(?<=[.!?])\s+/);
     parts = parts.filter(function (s) {
@@ -735,17 +769,76 @@
     }).catch(function () { fallback(); });
   }
 
+  /* ─────────────────────────── Reveal motion ─────────────────────────── */
+  function observeReveal(root) {
+    var els = (root || document).querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (e) { e.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (e) { io.observe(e); });
+  }
+  // Safety net: force-reveal any near/above-fold .reveal ~1.4s after load so a
+  // missed observer tick can never strand a section invisible.
+  function revealSafety(root) {
+    setTimeout(function () {
+      var vh = window.innerHeight || 800;
+      (root || document).querySelectorAll(".reveal:not(.in)").forEach(function (el) {
+        if (el.getBoundingClientRect().top < vh * 0.95) el.classList.add("in");
+      });
+    }, 1400);
+  }
+
+  /* ─────────────────────────── State router ─────────────────────────── */
+  function showView(id) {
+    ["landing-view", "thankyou-view", "resource-view"].forEach(function (v) {
+      var n = $(v); if (n) n.hidden = (v !== id);
+    });
+  }
+  // Mirrors ai-kit.js isUnlocked(): emailed-link params ?unlocked=1 / ?kit / #kit,
+  // plus a returning reader who already captured on this device.
+  function isUnlocked() {
+    try {
+      var p = new URLSearchParams(location.search || "");
+      if (p.get("unlocked") === "1" || p.has("kit")) return true;
+    } catch (_) {}
+    if (/(^|[#&])kit\b/.test(location.hash || "")) return true;
+    try { if (readerIdentity().xray_unlocked) return true; } catch (_) {}
+    return false;
+  }
+
   /* ─────────────────────────── Init ─────────────────────────── */
-  function init() {
-    el = {};
+  function initResource() {
+    showView("resource-view");
+    // Hydrate the captured email from the shared reader identity so the
+    // "read my shape" proxy quota is already satisfied on a returning visit.
+    try { var id = readerIdentity(); if (id && id.email) capture.email = id.email; } catch (_) {}
+    unlocked = true;
     buildFields();
-    wireGate();
     wireShape();
     $("so-close").addEventListener("click", closeSlideOver);
     $("so-back").addEventListener("click", closeSlideOver);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeSlideOver(); });
-    recompute();          // Beat 1: hero result computed on load, no typing
-    beacon("view");
+    recompute();          // hero + result + waterfall computed on load, no typing
+    animateWaterfall();
+    observeReveal($("resource-view")); revealSafety($("resource-view"));
+    beacon("view", { answers: { state: "resource", via: "unlock" } });
+  }
+  function initLanding() {
+    showView("landing-view");
+    wireGate();
+    observeReveal($("landing-view")); revealSafety($("landing-view"));
+    beacon("view", { answers: { state: "landing" } });
+  }
+  function init() {
+    el = {};
+    if (isUnlocked()) initResource();
+    else initLanding();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
