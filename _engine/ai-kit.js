@@ -28,7 +28,9 @@
   // --- Quick start (3 steps, editorial numerals) ---
   function buildQuickStart(data) {
     var sec = L.make("section", { class: "lmk-quickstart lmk-reveal", "aria-label": "Quick start" });
-    var steps = [
+    var steps = (data.quick_start && data.quick_start.length) ? data.quick_start.map(function (s, i) {
+      return { n: String(i + 1), h: s.h, p: s.p };
+    }) : [
       { n: "1", h: "Download the kit", p: "Grab the ZIP below. Unzip it into a folder. That folder is the system." },
       { n: "2", h: "Fill in your context", p: "Open the files in context/ and replace the [BRACKETS] with your business. Ten minutes, once." },
       { n: "3", h: "Run it with Claude", p: "Open the folder in Claude Code (or paste CLAUDE.md into a Claude Project) and follow the orchestrator." },
@@ -68,9 +70,10 @@
     setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
   }
 
-  function buildDownloadBand(data) {
+  function buildDownloadBand(data, onDone) {
     var files = data.files || [];
     var editable = files.filter(function (f) { return f.user_editable; }).length;
+    var gated = !!(data.gate && data.gate.mode);
     var sec = L.make("section", { class: "lmk-download lmk-reveal", "aria-label": "Download the kit" });
     sec.innerHTML =
       '<div class="lmk-dl-inner">' +
@@ -81,7 +84,7 @@
         '</div>' +
         '<div class="lmk-dl-action">' +
           '<button class="lmc-btn lmk-dl-btn" type="button">Download the kit <span aria-hidden="true">↓</span></button>' +
-          '<span class="lmk-dl-note">.zip · markdown files · no email required</span>' +
+          '<span class="lmk-dl-note">.zip · markdown files' + (gated ? '' : ' · no email required') + '</span>' +
         '</div>' +
       '</div>';
     sec.querySelector(".lmk-dl-btn").addEventListener("click", function () {
@@ -97,12 +100,149 @@
         downloadBlob(blob, (data.kit_name || data.slug || "ai-kit") + ".zip");
         btn.disabled = false; btn.innerHTML = 'Download the kit <span aria-hidden="true">↓</span>';
         L.toast("Kit downloaded. Unzip and open in Claude Code.");
+        if (typeof onDone === "function") { try { onDone(); } catch (_) {} }
       }).catch(function () {
         btn.disabled = false; btn.innerHTML = 'Download the kit <span aria-hidden="true">↓</span>';
         L.toast("ZIP failed to build — use the per-file download buttons below.");
       });
     });
     return sec;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+   * Gated client funnel (opt-in). Activates only when data.gate.mode is set,
+   * so every existing Ivan kit (no gate key) renders through the untouched
+   * path below. White-labels to data.client: no Ivan portrait, greeting,
+   * Calendly, or footer. Reuses the brand-neutral machinery (quickstart,
+   * download band, file browser, ZIP). Three states: landing (hard gate) ->
+   * resource -> thank-you. Reusable for any future client kit via data.json.
+   * ══════════════════════════════════════════════════════════════════════ */
+  function clientAccent(data) { return (data.client && data.client.accent) || "#ffc71d"; }
+  function clientName(data) { return (data.client && data.client.name) || "the team"; }
+
+  function buildClientHero(data) {
+    var c = data.client || {};
+    var hero = L.make("header", { class: "lmk-c-hero" });
+    hero.innerHTML =
+      '<div class="lmk-c-shapes" aria-hidden="true"><span class="lmk-c-blob a"></span><span class="lmk-c-blob b"></span><span class="lmk-c-ring"></span></div>' +
+      '<div class="lmk-c-hero-inner">' +
+        (c.logo ? '<a class="lmk-c-logo" href="' + L.esc(c.site || "#") + '"' + (c.site ? ' target="_blank" rel="noopener"' : "") + '><img src="' + L.esc(c.logo) + '" alt="' + L.esc(clientName(data)) + '"></a>' : "") +
+        (data.format_label ? '<p class="lmk-c-eyebrow">' + L.esc(data.format_label) + '</p>' : "") +
+        '<h1 class="lmk-c-h1">' + L.esc(data.title || "The Kit") + '</h1>' +
+        (data.subtitle ? '<p class="lmk-c-sub">' + L.esc(data.subtitle) + '</p>' : "") +
+      '</div>';
+    return hero;
+  }
+
+  function buildGate(data, onPass) {
+    var g = data.gate || {};
+    var files = data.files || [];
+    var sec = L.make("section", { class: "lmk-gate", "aria-label": "Get the kit" });
+    var metaBits = [files.length + " skills", "Runs in Claude", "Free"];
+    sec.innerHTML =
+      '<div class="lmk-gate-card">' +
+        '<h2 class="lmk-gate-h">' + L.esc(g.headline || "Get the kit") + '</h2>' +
+        (g.sub ? '<p class="lmk-gate-sub">' + L.esc(g.sub) + '</p>' : "") +
+        '<form class="lmk-gate-form" novalidate>' +
+          '<label class="sr-only" for="lmk-g-email">Email</label>' +
+          '<input id="lmk-g-email" type="email" autocomplete="email" placeholder="' + L.esc(g.email_placeholder || "founder@yourstore.com") + '" required>' +
+          (g.ask_store === false ? "" :
+            '<label class="sr-only" for="lmk-g-store">Store URL</label>' +
+            '<input id="lmk-g-store" type="url" autocomplete="url" placeholder="' + L.esc(g.store_placeholder || "yourstore.com") + '">') +
+          '<button class="lmk-gate-btn" type="submit">' + L.esc(g.button || "Unlock the kit") + '</button>' +
+          '<p class="lmk-gate-err" id="lmk-gate-err" role="alert"></p>' +
+        '</form>' +
+        '<div class="lmk-gate-meta">' + metaBits.map(function (m) { return '<span>' + L.esc(m) + '</span>'; }).join('<i aria-hidden="true">·</i>') + '</div>' +
+        (g.note ? '<p class="lmk-gate-note">' + L.esc(g.note) + '</p>' : "") +
+      '</div>';
+    var form = sec.querySelector(".lmk-gate-form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = (sec.querySelector("#lmk-g-email").value || "").trim();
+      var storeEl = sec.querySelector("#lmk-g-store");
+      var store = storeEl ? (storeEl.value || "").trim() : "";
+      var err = sec.querySelector("#lmk-gate-err");
+      if (!L.emailIsValid(email)) { err.textContent = "Enter a valid email so we can send the kit."; sec.querySelector("#lmk-g-email").focus(); return; }
+      err.textContent = "";
+      L.updateReader({ email: email });
+      L.beacon("ai-kit", "capture", { email: email, answers: { store_url: store, kit: data.kit_name || data.slug, skills: files.length } });
+      onPass(email, store);
+    });
+    return sec;
+  }
+
+  function buildThankYou(data) {
+    var t = data.thank_you || {};
+    var c = data.client || {};
+    var sec = L.make("section", { class: "lmk-ty", "aria-label": "Thank you", hidden: "" });
+    var videoBlock = t.video_url
+      ? '<div class="lmk-ty-video"><video controls preload="none"' + (t.video_poster ? ' poster="' + L.esc(t.video_poster) + '"' : "") + ' src="' + L.esc(t.video_url) + '"></video></div>'
+      : '<div class="lmk-ty-video lmk-ty-video-soon" aria-hidden="true"><span class="lmk-ty-play">▶</span><span class="lmk-ty-soon">A short walkthrough from ' + L.esc(clientName(data)) + ' lands here soon.</span></div>';
+    var bullets = Array.isArray(t.bullets) ? t.bullets : [];
+    sec.innerHTML =
+      '<div class="lmk-ty-inner">' +
+        (c.logo ? '<img class="lmk-ty-logo" src="' + L.esc(c.logo) + '" alt="' + L.esc(clientName(data)) + '">' : "") +
+        '<p class="lmk-ty-eyebrow">' + L.esc(t.eyebrow || "You're in") + '</p>' +
+        '<h2 class="lmk-ty-h">' + L.esc(t.headline || "The kit is yours. Here's the fastest way to get value from it.") + '</h2>' +
+        (t.body ? '<p class="lmk-ty-body">' + L.esc(t.body) + '</p>' : "") +
+        videoBlock +
+        (bullets.length ? '<ul class="lmk-ty-points">' + bullets.map(function (b) { return '<li>' + L.esc(b) + '</li>'; }).join("") + '</ul>' : "") +
+        (t.cta_url ? '<a class="lmk-ty-cta" href="' + L.esc(t.cta_url) + '" target="_blank" rel="noopener">' + L.esc(t.cta_label || "Book a call") + ' <span aria-hidden="true">→</span></a>' : "") +
+        (t.cta_note ? '<p class="lmk-ty-note">' + L.esc(t.cta_note) + '</p>' : "") +
+      '</div>';
+    var cta = sec.querySelector(".lmk-ty-cta");
+    if (cta) cta.addEventListener("click", function () { L.beacon("ai-kit", "cta_click", { answers: { target: "thankyou_book", kit: data.kit_name || data.slug } }); });
+    return sec;
+  }
+
+  function renderGatedClientKit(data, root) {
+    root.innerHTML = "";
+    root.classList.add("lmk-page", "lmk-client");
+    root.style.setProperty("--lmk-accent", clientAccent(data));
+    if (data.client && data.client.ink) root.style.setProperty("--lmk-ink", data.client.ink);
+
+    // STATE 1 — landing (hard gate)
+    var landing = L.make("div", { class: "lmk-landing" });
+    landing.appendChild(buildClientHero(data));
+    landing.appendChild(buildGate(data, function () { enterResource(); }));
+    root.appendChild(landing);
+
+    // STATE 2 — resource (hidden until gate passes)
+    var resource = L.make("div", { class: "lmk-resource", hidden: "" });
+    var head = L.make("section", { class: "lmk-res-head lmk-reveal" });
+    head.innerHTML =
+      '<p class="lmk-res-eyebrow">Your kit</p>' +
+      '<h2 class="lmk-res-h">' + L.esc((data.resource_headline) || "Here's everything inside.") + '</h2>' +
+      '<p class="lmk-res-sub">Download the pack, or copy any single skill straight into Claude and run it now.</p>';
+    resource.appendChild(head);
+    var container = L.make("div", { class: "lmc-container lmk-root" });
+    container.appendChild(buildQuickStart(data));
+    container.appendChild(buildDownloadBand(data, function () { revealThankYou(); }));
+    container.appendChild(buildBrowser(data));
+    var jump = L.make("button", { class: "lmk-res-jump", type: "button" }, "Already grabbed it? See your next step →");
+    jump.addEventListener("click", function () { revealThankYou(); });
+    container.appendChild(jump);
+    resource.appendChild(container);
+    root.appendChild(resource);
+
+    // STATE 3 — thank-you (hidden until download or jump)
+    var ty = buildThankYou(data);
+    root.appendChild(ty);
+
+    var tyShown = false;
+    function enterResource() {
+      landing.hidden = true;
+      resource.hidden = false;
+      window.scrollTo(0, 0);
+      L.observeReveal(root, ".lmk-reveal");
+    }
+    function revealThankYou() {
+      if (!tyShown) { tyShown = true; L.beacon("ai-kit", "complete", { kit: data.kit_name || data.slug }); }
+      ty.hidden = false;
+      ty.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    L.beacon("ai-kit", "view");
   }
 
   // --- File browser ---
@@ -172,6 +312,7 @@
   }
 
   function render(data, root) {
+    if (data.gate && data.gate.mode) { return renderGatedClientKit(data, root); }
     root.innerHTML = "";
     root.classList.add("lmk-page");
     var files = data.files || [];

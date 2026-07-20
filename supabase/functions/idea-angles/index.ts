@@ -55,7 +55,7 @@ export default async function handler(req: Request): Promise<Response> {
     // Branch 2: generate 3 angles via Claude
     // a. Fetch candidate
     const cRes = await pg(
-      "lm_idea_candidates?id=eq." + body.candidate_id + "&select=raw_topic,normalized_topic,evidence",
+      "lm_idea_candidates?id=eq." + body.candidate_id + "&select=raw_topic,normalized_topic,evidence,content_type",
       { method: "GET" }
     );
     if (!cRes.ok) throw new Error("fetch_candidate:" + cRes.status);
@@ -64,6 +64,13 @@ export default async function handler(req: Request): Promise<Response> {
       return new Response(JSON.stringify({ error: "not_found" }), { status: 404, headers: cors() });
     }
     const cand = arr[0];
+
+    // Lead-magnet candidates never get post angles: approving one routes to the
+    // LM build pipeline, and post-angle generation on competitor-mined LM ideas
+    // has re-attributed third-party wins to Ivan. Custom (branch 1) stays open.
+    if (cand.content_type === "lead_magnet") {
+      return new Response(JSON.stringify({ ok: false, error: "lead_magnet_candidate" }), { status: 409, headers: cors() });
+    }
 
     // b. Fetch prompt
     const pRes = await pg("content_prompts?slug=eq.idea-angle-options&select=body", { method: "GET" });
