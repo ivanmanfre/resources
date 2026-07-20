@@ -261,6 +261,18 @@
     return wrap;
   }
 
+  // Safety: force-reveal any .lmk-reveal that is at/above the fold shortly after
+  // load, so a missed IntersectionObserver tick can never strand a section
+  // invisible. Below-fold sections still animate in on scroll as normal.
+  function revealSafety(root) {
+    setTimeout(function () {
+      var vh = window.innerHeight || 800;
+      root.querySelectorAll(".lmk-reveal:not(.in-view)").forEach(function (el) {
+        if (el.getBoundingClientRect().top < vh * 0.92) el.classList.add("in-view");
+      });
+    }, 1400);
+  }
+
   function renderGatedClientKit(data, root) {
     root.innerHTML = "";
     root.classList.add("lmk-page", "lmk-client");
@@ -271,6 +283,7 @@
     if (isUnlocked()) {
       root.appendChild(buildResourceView(data));
       L.observeReveal(root, ".lmk-reveal");
+      revealSafety(root);
       L.beacon("ai-kit", "view", { answers: { via: "unlock" } });
       L.beacon("ai-kit", "unlock", { kit: data.kit_name || data.slug });
       return;
