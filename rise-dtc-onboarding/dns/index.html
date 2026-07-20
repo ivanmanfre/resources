@@ -57,8 +57,8 @@
       <span class="wordmark">RUN BY INBOUND<span class="on">ON</span>STEROIDS</span>
     </div>
     <div class="label">DNS / four records, one visit</div>
-    <h1 class="title">Four records to add on risedtc.com.</h1>
-    <p style="color:var(--muted);max-width:44em">For whoever manages the risedtc.com DNS. Add these four, leave everything else exactly as it is. Your existing email and website records do not change. It takes about five minutes and nothing on the live site is affected.</p>
+    <h1 class="title">Five records to add on risedtc.com.</h1>
+    <p style="color:var(--muted);max-width:44em">For whoever manages the risedtc.com DNS. Add these five, leave everything else exactly as it is. Your existing email and website records do not change. It takes about five minutes and nothing on the live site is affected.</p>
   </header>
 
   <section>
@@ -69,13 +69,15 @@
         <tr><td class="mono">TXT</td><td class="mono">resend._domainkey</td><td class="mono">p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ6/8Sh69edd8FHlpDJ8hp92OL7l5xu+mj0hlq+592eTZKTZBtTdq3c9OKCLGi6sTvZ/AKs9eAlxmzJ09EgZpPnvPibi+kBQD0tGeS2EM7A0a8StdLbUi/xBAZaL73323FIewpbCObq/WNZymtoAn0uaD2xLqaH1EN71sTN8f6NQIDAQAB</td></tr>
         <tr><td class="mono">MX</td><td class="mono">send</td><td class="mono">feedback-smtp.us-east-1.amazonses.com&nbsp;&nbsp;(priority 10)</td></tr>
         <tr><td class="mono">TXT</td><td class="mono">send</td><td class="mono">v=spf1 include:amazonses.com ~all</td></tr>
+        <tr><td class="mono">TXT</td><td class="mono">_dmarc</td><td class="mono">v=DMARC1; p=none;</td></tr>
       </tbody>
     </table>
-    <p class="aside">The first record puts the lead magnets on <span class="mono">resources.risedtc.com</span>. The other three let the newsletter send as <span class="mono">mattanupdates@risedtc.com</span>. On GoDaddy the Host is just the short part shown, it adds <span class="mono">.risedtc.com</span> for you. Some panels want the full name (for example <span class="mono">send.risedtc.com</span>), either form is fine.</p>
+    <p class="aside">The first record puts the lead magnets on <span class="mono">resources.risedtc.com</span>. The next three let the newsletter send as <span class="mono">mattanupdates@risedtc.com</span>, and the last one tells inboxes the domain signs its mail, which helps it land in the inbox. On GoDaddy the Host is just the short part shown, it adds <span class="mono">.risedtc.com</span> for you. Some panels want the full name (for example <span class="mono">send.risedtc.com</span>), either form is fine.</p>
 
     <div class="box">
-      <div class="bh"><span class="sq"></span>Two things to know</div>
-      <p><strong>Add, do not replace.</strong> Leave the existing MX and any current records in place. These four are additions.</p>
+      <div class="bh"><span class="sq"></span>Three things to know</div>
+      <p><strong>Add, do not replace.</strong> Leave the existing MX and any current records in place. These five are additions.</p>
+      <p><strong>One step outside DNS:</strong> in Google Workspace, add <span class="mono">mattanupdates@risedtc.com</span> as an alias on Mattan's account (Admin console → Users → Mattan → Alternate email). Replies from readers go to your regular Google inbox, and without the alias they bounce.</p>
       <p><strong>Tell us when it is in</strong> and we confirm it went through, usually within the hour. Happy to hop on a five-minute screenshare and paste them together.</p>
     </div>
   </section>
