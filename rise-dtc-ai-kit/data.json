@@ -14,6 +14,7 @@
  },
  "gate": {
   "mode": "hard",
+  "sequence_key": "rise-dtc-ai-kit",
   "headline": "Get the kit",
   "sub": "Tell us who you are and where to send it. The kit lands in your inbox in a minute.",
   "button": "Send me the kit",

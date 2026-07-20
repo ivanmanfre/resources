@@ -197,7 +197,12 @@
       if (!L.emailIsValid(email)) { err.textContent = "Enter a valid email so we can send you the kit."; sec.querySelector("#lmk-g-email").focus(); return; }
       err.textContent = "";
       L.updateReader({ email: email, name: name });
-      L.beacon("ai-kit", "capture", { email: email, answers: { name: name, store_url: store, kit: data.kit_name || data.slug, skills: files.length } });
+      // leaf_template_key routes the capture to a client-specific nurture sequence
+      // in lm-beacon (pickSequenceByLeafTemplate). Only sent when the kit sets one,
+      // so it never touches Ivan's own format-routed sequences. Inert until an
+      // ACTIVE sequence with this key exists.
+      var seqKey = (data.gate && data.gate.sequence_key) || "";
+      L.beacon("ai-kit", "capture", { email: email, answers: { name: name, store_url: store, kit: data.kit_name || data.slug, skills: files.length, leaf_template_key: seqKey || undefined } });
       onPass({ email: email, name: name, store: store });
     });
     return sec;
