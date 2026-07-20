@@ -3,6 +3,7 @@ import { createClient } from "jsr:@supabase/supabase-js@2";
 
 const ALLOWED_ORIGINS = new Set([
   "https://resources.ivanmanfredi.com",
+  "https://resources.risedtc.com", // Rise DTC client resources site (rise-dtc-resources Pages repo)
   "https://ivanmanfredi.com",
   "https://www.ivanmanfredi.com",
   "http://localhost:3000",
