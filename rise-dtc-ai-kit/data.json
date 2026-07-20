@@ -24,18 +24,23 @@
  },
  "quick_start": [
   {
-   "h": "Grab a skill",
-   "p": "Download the whole pack below, or copy any single skill straight from the browser."
+   "h": "Open Claude, it's free",
+   "p": "Go to claude.ai and sign in. The free plan is plenty to start. Claude is the assistant that runs every skill in this kit, no install, no setup."
   },
   {
-   "h": "Open Claude",
-   "p": "Paste the skill into claude.ai, or drop the folders into Claude Code under ~/.claude/skills/."
+   "h": "Copy one skill",
+   "p": "In the file browser below, open a skill like Return Rate Rescue and hit Copy. That drops the whole instruction file onto your clipboard."
   },
   {
-   "h": "Give it your numbers",
-   "p": "Paste your own store numbers or copy under the skill and send. It runs on your data, with the math shown."
+   "h": "Paste it, then your numbers",
+   "p": "Start a new chat in Claude, paste the skill, and under it paste your own store numbers, the ones it asks for like returns and revenue. Hit send."
+  },
+  {
+   "h": "Read what comes back",
+   "p": "Claude runs the skill on your data and shows the math behind every figure. Want the whole pack on your machine? Download the ZIP below and keep it."
   }
  ],
+ "quick_start_title": "How to run it, <em>start to finish</em>",
  "resource_headline": "Here's everything inside.",
  "thank_you": {
   "eyebrow": "You're in",
