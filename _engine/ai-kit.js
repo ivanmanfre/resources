@@ -134,11 +134,35 @@
     return hero;
   }
 
+  function buildWhatsInside(data) {
+    var files = (data.files || []).filter(function (f) { return !/readme/i.test(f.name || ""); });
+    var sec = L.make("aside", { class: "lmk-inside", "aria-label": "What's inside" });
+    sec.innerHTML =
+      '<p class="lmk-inside-eyebrow">What&rsquo;s inside</p>' +
+      '<h2 class="lmk-inside-h">' + files.length + ' Claude skills, one per lever that moves your P&amp;L.</h2>' +
+      '<ul class="lmk-inside-list">' +
+        files.map(function (f) {
+          var desc = f.description || "";
+          var lever = "", rest = desc;
+          var dot = desc.indexOf(". ");
+          if (dot > 0 && dot < 24) { lever = desc.slice(0, dot); rest = desc.slice(dot + 2); }
+          return '<li class="lmk-inside-item">' +
+            '<span class="lmk-inside-name">' + L.esc(f.name || f.path) + '</span>' +
+            (lever ? '<span class="lmk-inside-lever">' + L.esc(lever) + '</span>' : '') +
+            '<span class="lmk-inside-desc">' + L.esc(rest) + '</span>' +
+          '</li>';
+        }).join("") +
+      '</ul>' +
+      '<p class="lmk-inside-note">Every skill runs on your own numbers, with the math shown. Nothing invented.</p>';
+    return sec;
+  }
+
   function buildGate(data, onPass) {
     var g = data.gate || {};
     var files = data.files || [];
+    var skillCount = files.filter(function (f) { return !/readme/i.test(f.name || ""); }).length || files.length;
     var sec = L.make("section", { class: "lmk-gate", "aria-label": "Get the kit" });
-    var metaBits = [files.length + " skills", "Runs in Claude", "Free"];
+    var metaBits = [skillCount + " skills", "Runs in Claude", "Free"];
     sec.innerHTML =
       '<div class="lmk-gate-card">' +
         '<h2 class="lmk-gate-h">' + L.esc(g.headline || "Get the kit") + '</h2>' +
@@ -201,10 +225,13 @@
     root.style.setProperty("--lmk-accent", clientAccent(data));
     if (data.client && data.client.ink) root.style.setProperty("--lmk-ink", data.client.ink);
 
-    // STATE 1 — landing (hard gate)
+    // STATE 1 — landing (hard gate): hero, then split of "what's inside" + gate
     var landing = L.make("div", { class: "lmk-landing" });
     landing.appendChild(buildClientHero(data));
-    landing.appendChild(buildGate(data, function () { enterResource(); }));
+    var grid = L.make("div", { class: "lmk-landing-grid" });
+    grid.appendChild(buildWhatsInside(data));
+    grid.appendChild(buildGate(data, function () { enterResource(); }));
+    landing.appendChild(grid);
     root.appendChild(landing);
 
     // STATE 2 — resource (hidden until gate passes)

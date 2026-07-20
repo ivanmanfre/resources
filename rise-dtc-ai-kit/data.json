@@ -1,8 +1,8 @@
 {
  "slug": "rise-dtc-ai-kit",
- "title": "The Rise DTC AI Kit",
- "subtitle": "Five Claude skills that run the money side of your store. Returns, product pages, ad angles, retention, and a Monday triage that tells you which to run first.",
- "format_label": "AI Skill Kit",
+ "title": "The growth team you don't have to hire",
+ "subtitle": "Five Claude skills that run the money side of your store: returns, product pages, ad angles, retention, and a Monday plan. You give them your numbers, they do the work.",
+ "format_label": "Rise DTC · AI Skill Kit",
  "kit_name": "rise-dtc-ai-kit",
  "estimated_minutes": 5,
  "client": {
@@ -15,7 +15,7 @@
  "gate": {
   "mode": "hard",
   "headline": "Get the kit",
-  "sub": "Where should we send it, and what store is it for? The kit unlocks on this page the second you submit.",
+  "sub": "Where to send it, and what store it's for. It unlocks on this page the moment you submit.",
   "button": "Unlock the kit",
   "email_placeholder": "founder@yourstore.com",
   "store_placeholder": "yourstore.com",
