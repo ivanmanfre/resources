@@ -59,6 +59,12 @@
     try { localStorage.setItem("ivan.reader", JSON.stringify(id)); } catch (_) {}
     return id;
   }
+  // Publishable anon key, safe for browser use. lm-beacon requires it on the
+  // gateway (JWT verification) — sendBeacon cannot set custom headers, so it
+  // silently 401s. Firing an authenticated fetch alongside it is what actually
+  // lands the event; sendBeacon stays as a best-effort unload-safe backup.
+  var SUPABASE_ANON_KEY = (typeof window !== "undefined" && window.__supabase_anon_key) || "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
+
   function beacon(event, extra) {
     try {
       var q = new URLSearchParams(location.search);
@@ -74,9 +80,13 @@
       }, extra || {});
       if (navigator.sendBeacon) {
         navigator.sendBeacon(BEACON_URL, new Blob([JSON.stringify(body)], { type: "application/json" }));
-      } else {
-        fetch(BEACON_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), keepalive: true }).catch(function () {});
       }
+      fetch(BEACON_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY, "Authorization": "Bearer " + SUPABASE_ANON_KEY },
+        body: JSON.stringify(body),
+        keepalive: true
+      }).catch(function () {});
     } catch (_) {}
   }
 
