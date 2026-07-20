@@ -497,7 +497,7 @@
   }
 
   function buildSystemPrompt() {
-    return "You write a returns rescue plan for a Rise DTC founder. You receive one JSON payload with their store's computed return economics. Write the plan and nothing else.\n\n" +
+    return "You write a returns rescue plan for a RISE DTC founder. You receive one JSON payload with their store's computed return economics. Write the plan and nothing else.\n\n" +
       "Structure, exactly:\n" +
       "- One opening line that diagnoses the dominant leak driver by name, using the value dominant_driver and its annual dollar figure from the payload.\n" +
       "- Exactly 3 numbered moves. Order them by expected recovery, largest first, matching the ranked components in the payload. Each move: name the annual dollars it targets (copied from the payload, never computed by you), then one concrete action the founder can start this week, tied to their category and top_return_reason.\n" +

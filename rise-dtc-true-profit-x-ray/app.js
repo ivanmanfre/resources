@@ -15,7 +15,7 @@
   /* ─────────────────────────── Config ─────────────────────────── */
   var SLUG = window.__lm_slug || "rise-dtc-true-profit-x-ray";
   var LEAF_KEY = SLUG;                  // nurture routing key (inert until a sequence exists)
-  var BOOKING_URL = "https://meetings.hubspot.com/mattan5";
+  var BOOKING_URL = "https://meetings.hubspot.com/mattan5/rise-intro-call--li";
   var BEACON_URL = window.__lm_beacon_url || "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
   var PROXY_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-walkthrough-proxy";
   var PROXY_MODEL = "claude-sonnet-4-6"; // proxy passes model straight to Railway; sonnet-class is the sibling ai-walkthrough engine's proven default and the verdict is the showpiece
@@ -577,7 +577,7 @@
     var v = $("thankyou-view");
     v.innerHTML =
       '<div class="wrap ty-inner reveal">' +
-        '<img class="ty-logo" src="./assets/rise-logo-white.png" alt="Rise DTC">' +
+        '<img class="ty-logo" src="./assets/rise-logo-white.png" alt="RISE DTC">' +
         '<p class="ty-eyebrow">You are in</p>' +
         '<h2 class="ty-h">Your X-Ray is ready' + namePart + '.</h2>' +
         '<p class="ty-body">Open it right here and swap in your numbers. A copy is on its way to your inbox too, so you can come back to it any time.</p>' +
@@ -610,7 +610,7 @@
 
   function buildSystemPrompt() {
     return [
-      "You are a DTC profit analyst for Rise DTC. You are handed the computed per-order economics for one apparel store as JSON.",
+      "You are a DTC profit analyst for RISE DTC. You are handed the computed per-order economics for one apparel store as JSON.",
       "In under 120 words, blunt and numbers-first: name the binding constraint, explain why it binds on THESE specific numbers, then give one actionable sentence for the fix.",
       "Hard rules: never invent a number that is not in the payload. Do not use em dashes. Do not use 'it's not X, it's Y' or 'not just X' constructions.",
       "Never use the words leverage, seamless, robust, elevate, unlock, delve, streamline, empower, game-changer, or transformative.",
