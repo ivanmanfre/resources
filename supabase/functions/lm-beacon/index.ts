@@ -69,7 +69,7 @@ async function pickSequenceByLeafTemplate(supabase: any, leaf_template_key: stri
 
 async function enqueueSequence(supabase: any, args: {
   sequence_id: string; email: string; lm_slug: string; lm_title: string | null;
-  custom_fields: Record<string, unknown>;
+  custom_fields: Record<string, unknown>; first_name?: string | null;
 }) {
   const { data: existing } = await supabase
     .from("nurture_subscribers").select("id, unsubscribed_at")
@@ -79,7 +79,7 @@ async function enqueueSequence(supabase: any, args: {
   if (!subscriber_id) {
     const { data: sub, error } = await supabase.from("nurture_subscribers").insert({
       email: args.email, sequence_id: args.sequence_id, lm_slug: args.lm_slug, lm_title: args.lm_title,
-      custom_fields: args.custom_fields,
+      custom_fields: args.custom_fields, first_name: args.first_name || null,
     }).select("id").single();
     if (error) return { error: error.message };
     subscriber_id = sub.id;
@@ -239,9 +239,13 @@ Deno.serve(async (req: Request) => {
         seq_id = await pickSequence(supabase, lm_format || "", "capture");
       }
       if (seq_id) {
+        // Captured name (gate forms send answers.name) → first word for the greeting merge tag.
+        const rawName = (answers && typeof (answers as any).name === "string") ? (answers as any).name as string : "";
+        const first_name = rawName.trim().split(/\s+/)[0] || null;
         nurture_result = await enqueueSequence(supabase, {
           sequence_id: seq_id, email, lm_slug, lm_title,
           custom_fields: { lm_slug, lm_title, linkedin_url, leaf_template_key },
+          first_name,
         });
       }
     }
