@@ -42,11 +42,12 @@
 <script>
 /* Capture-beacon fix, scoped to this page only.
    The shared beacon() in _engine/shared.js sends via navigator.sendBeacon or a
-   header-less fetch. Both hit the Supabase gateway with no auth header and 401,
-   so captures never land. This override adds the publishable anon key
-   (apikey + Bearer) on an authenticated fetch, mirroring the fixed pattern in
-   rise-dtc-return-rate-rescue/app.js. It replaces only window.LM.beacon on this
-   page and does not touch shared.js (which ~79 other LM pages share). */
+   header-less fetch, which hit the Supabase gateway with no auth header. This
+   override adds the publishable anon key (apikey + Bearer) on a single
+   authenticated fetch with keepalive:true (unload-safe on its own, so no
+   separate sendBeacon is needed and captures record exactly once). It replaces
+   only window.LM.beacon on this page and does not touch shared.js, which ~79
+   other LM pages share. */
 (function () {
   if (!window.LM || typeof window.LM.canonicalBeaconEvent !== "function") return;
   var BEACON = window.__lm_beacon_url || "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
@@ -54,14 +55,10 @@
   window.LM.beacon = function (tool_type, event, extra) {
     try {
       var body = window.LM.canonicalBeaconEvent(tool_type, event, extra);
-      var payload = JSON.stringify(body);
-      if (navigator.sendBeacon) {
-        try { navigator.sendBeacon(BEACON, new Blob([payload], { type: "application/json" })); } catch (_) {}
-      }
       fetch(BEACON, {
         method: "POST",
         headers: { "Content-Type": "application/json", "apikey": KEY, "Authorization": "Bearer " + KEY },
-        body: payload,
+        body: JSON.stringify(body),
         keepalive: true
       }).catch(function () {});
     } catch (_) {}
