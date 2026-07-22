@@ -215,7 +215,9 @@
     var namePart = first ? (", " + first) : "";
     var fill = function (s) { return String(s || "").split("{name}").join(namePart); };
     var sec = L.make("section", { class: "lmk-ty lmk-reveal", "aria-label": "Thank you" });
-    var videoBlock = t.video_url
+    var videoBlock = t.video_embed
+      ? '<div class="lmk-ty-video"><iframe src="' + L.esc(t.video_embed) + '" title="Walkthrough" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
+      : t.video_url
       ? '<div class="lmk-ty-video"><video controls preload="none"' + (t.video_poster ? ' poster="' + L.esc(t.video_poster) + '"' : "") + ' src="' + L.esc(t.video_url) + '"></video></div>'
       : '<div class="lmk-ty-video lmk-ty-video-soon" aria-hidden="true"><span class="lmk-ty-play">▶</span><span class="lmk-ty-soon">A short walkthrough from ' + L.esc(clientName(data)) + ' lands here soon.</span></div>';
     var bullets = Array.isArray(t.bullets) ? t.bullets : [];
@@ -227,8 +229,8 @@
         '<p class="lmk-ty-eyebrow">' + L.esc(fill(t.eyebrow || "You're in")) + '</p>' +
         '<h2 class="lmk-ty-h">' + L.esc(fill(t.headline || "Your kit is ready{name}.")) + '</h2>' +
         '<p class="lmk-ty-body">' + L.esc(fill(t.body || "Open it right here. A copy is also on its way to your inbox.")) + '</p>' +
-        kitBtn +
         videoBlock +
+        kitBtn +
         (bullets.length ? '<ul class="lmk-ty-points">' + bullets.map(function (b) { return '<li>' + L.esc(b) + '</li>'; }).join("") + '</ul>' : "") +
         (t.cta_url ? '<a class="lmk-ty-cta" href="' + L.esc(t.cta_url) + '" target="_blank" rel="noopener">' + L.esc(t.cta_label || "Book a call") + ' <span aria-hidden="true">→</span></a>' : "") +
         (t.cta_note ? '<p class="lmk-ty-note">' + L.esc(t.cta_note) + '</p>' : "") +

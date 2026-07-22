@@ -117,6 +117,7 @@
 .lmk-ty-body { font-size: 16px; line-height: 1.6; color: #3a423e; max-width: 48ch; margin: 0 auto 26px; }
 .lmk-ty-video { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; margin: 0 0 26px; border: 1px solid var(--lmk-line); background: #0e1512; }
 .lmk-ty-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lmk-ty-video iframe { width: 100%; height: 100%; border: 0; display: block; }
 .lmk-ty-video-soon { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--lmk-accent) 22%, #12191600), #0e1512 72%); color: #fff; }
 .lmk-ty-play { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; background: var(--lmk-accent); color: var(--lmk-ink); font-size: 18px; padding-left: 3px; }
 .lmk-ty-soon { font-size: 13.5px; color: rgba(255,255,255,.72); max-width: 30ch; }
