@@ -112,6 +112,13 @@
     // become small round dots. Public (non-embed) LM pages are untouched.
     css += ".lmc-embed .lmc-hero{background-image:none !important}" +
       ".lmc-embed .lmc-badge::before,.lmc-embed .lmc-meta-chip::before,.lmc-embed .lmc-intro-badge::before,.lmc-embed .lmc-category::before,.lmc-embed .lmc-tier-pill::before,.lmc-embed .lmc-start-meta-dot{width:5px !important;height:5px !important;border-radius:50% !important}";
+    // Ivan-identity strip (all embeds, 2026-07-22): the embed is framed as the PROSPECT's own
+    // deployed asset, so every Ivan-voiced element must go: the intro card (portrait +
+    // "Hey, I'm Ivan."), the site nav/footer (shared.js re-injects .im-footer with Ivan's
+    // Calendly AFTER assessment-v2 strips the shell one — CSS outlives that race), and the
+    // results share row (its share text attributes the assessment to Ivan Manfredi).
+    // Public (non-embed) LM pages are untouched — this css only ships in embed mode.
+    css += "html.lmc-embed .lmc-intro,html.lmc-embed .im-nav,html.lmc-embed .im-footer,html.lmc-embed .lmc-share{display:none !important}";
     // ?hero=dark&hero_bg=RRGGBB&accent2=RRGGBB — dark hero theme. Mirrors a
     // dark-hero brand site (e.g. deep forest green with a mint secondary):
     // hero surface = hero_bg, headline white at display weight, the em/i pivot
