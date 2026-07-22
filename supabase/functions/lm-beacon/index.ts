@@ -46,7 +46,10 @@ function normalizeLinkedInUrl(raw: string | null): string | null {
 }
 
 async function pickSequence(supabase: any, format: string, event_type: string): Promise<string | null> {
-  const f = (format || "").toLowerCase();
+  // lead_magnets.format values are Title Case with spaces ("AI Kit") while
+  // trigger_filter words are snake_case ("ai_kit") — spaces map to underscores.
+  // Hyphens stay: waitlist-lead / qualified-lead formats match verbatim.
+  const f = (format || "").toLowerCase().replace(/ /g, "_");
   const { data: seqs } = await supabase.from("nurture_sequences").select("id, trigger_type, trigger_filter").eq("is_active", true);
   for (const s of seqs || []) {
     if (s.trigger_type !== event_type) continue;
