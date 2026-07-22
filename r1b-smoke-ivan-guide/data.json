@@ -1,0 +1,71 @@
+{
+  "slug": "r1b-smoke-ivan-guide",
+  "title": "A 20-minute weekly ops review that catches client-work slippage before the client does",
+  "subtitle": "",
+  "estimated_minutes": 10,
+  "brand": {
+    "accent": "#4C6E3D",
+    "hero_badge": "Guide"
+  },
+  "sections": [
+    {
+      "id": "s_0_30-seconds-on-who-built-this",
+      "title": "30 seconds on who built this",
+      "html": "<ul><li>I build and run the content, lead magnet, and nurture layer for agency owners.</li><li>I've audited delivery in dozens of $1-10M service businesses.</li><li>Focus on mid-market (11-100 employees), not enterprise, not solo founders.</li><li>Systems run on self-hosted n8n + Supabase, not Zapier glue.</li></ul>\nRun this every Monday morning before your inbox opens. Block 20 minutes, close Slack, open the sheet at the bottom.\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_1_why-this-matters",
+      "title": "Why this matters",
+      "html": "<p>Status lives in three people's heads and a Slack thread. You check a project when something feels off, or when a client pings you first. Both of those are lagging signals. By the time something *feels* off, the client already feels it too.</p>\n<p>The math on getting this wrong is simple. One surprise churn at a mid account is $20k-$30k a year gone. Say you catch two of those a year with a Monday habit. That is $40k-$60k saved for the cost of 20 minutes a week, about 17 hours across the whole year.</p>\n<blockquote>A weekly review doesn't make you faster at delivery. It makes slippage visible on day 2 instead of day 9, while you can still fix it quietly.</blockquote>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_2_the-order-you-check-things-in",
+      "title": "The order you check things in",
+      "html": "<p>Speed comes from a fixed order. You are not re-deciding what to look at each week, you are running the same pass every time. Same order, every account, top to bottom.</p>\n<ol><li><strong>Open the client engagement dashboard first</strong>, not the project itself. One row per active account, sorted by last activity. The oldest-activity accounts float to the top, and those are your suspects.</li><li><strong>Scan for the 6 flags</strong> on the top third of that list, the accounts that look quiet. A quiet account is either done or slipping, and you need to know which.</li><li><strong>Open the actual project</strong> only for accounts that tripped a flag. Everything green stays closed. This is the step that keeps 15-20 clients inside 20 minutes.</li><li><strong>Write one line per flagged account</strong> on the sheet as you go. Not later, as you go. The sheet is the output, the review is the input.</li><li><strong>Assign one next action</strong> per flagged account before you close it, with an owner and a day. A flag with no action is just anxiety.</li></ol>\n<blockquote>If you open every project every week, you will run out of Monday before you run out of clients. The dashboard-first pass is what makes this scale past 8 accounts.</blockquote>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_3_the-6-slippage-flags",
+      "title": "The 6 slippage flags",
+      "html": "<p>These are the six things that mean an account is quietly slipping. If a row trips one, it goes on the sheet. Two or more flags on the same account means you call the owner today, not Monday.</p>\n<table><thead><tr><th>#</th><th>Flag</th><th>What to look for</th><th>Why it means slippage</th></tr></thead><tbody><tr><td>1</td><td><strong>Silent client</strong></td><td>Last client-facing message is older than the cadence you promised them</td><td>The client is forming an opinion in the gap, and it is not a good one</td></tr><tr><td>2</td><td><strong>Passed due date, no status change</strong></td><td>A deliverable's due date is behind us and the status still reads the same as last week</td><td>Nobody moved it, which means nobody is on it</td></tr><tr><td>3</td><td><strong>Stuck in progress</strong></td><td>The same task shows \"in progress\" across two reviews in a row</td><td>Real work moves states. A frozen state is a stall wearing a busy label</td></tr><tr><td>4</td><td><strong>Unanswered client question</strong></td><td>A thread where the client asked something and the last message is theirs</td><td>Every hour here compounds. This is the flag that turns into the churn email</td></tr><tr><td>5</td><td><strong>Scope grew, timeline didn't</strong></td><td>New asks landed but the delivery date never moved</td><td>You are now behind by the size of the new ask, you just haven't admitted it yet</td></tr><tr><td>6</td><td><strong>Owner can't name the next milestone</strong></td><td>The account owner needs to open three tools to tell you what ships next</td><td>If they can't say it fast, they are not steering it. They are reacting to it</td></tr></tbody></table>\nFlags 1 and 4 are the expensive ones. Silence and an unanswered question are what the client actually feels. Flags 2, 3, 5, and 6 are the internal tells that predict flags 1 and 4 before the client sees them.\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_4_the-one-page-review-sheet",
+      "title": "The one-page review sheet",
+      "html": "<p>This is the sheet you fill in as you go. One block per flagged account, and only flagged accounts make it onto the page. Copy it into a Google Doc or a ClickUp doc view and reuse the same page every week so you build a slippage history per client.</p>\n<pre><code>WEEKLY DELIVERY REVIEW. WEEK OF: ____________\nReviewer: ____________     Active accounts scanned: ____ / ____\nTime started: ______   Time finished: ______\n\n────────────────────────────────────────────────\nACCOUNT: ____________________   MRR: $______/mo\nOwner: ____________\nFlags tripped (circle):  1  2  3  4  5  6\nLast client-facing contact: ______ days ago\nWhat's actually stuck (one line):\n  ____________________________________________\nNext action:\n  ____________________________________________\nOwner of that action: __________  By: __________\nClient needs a proactive heads-up?   Y / N\n────────────────────────────────────────────────\n\nACCOUNT: ____________________   MRR: $______/mo\nOwner: ____________\nFlags tripped (circle):  1  2  3  4  5  6\nLast client-facing contact: ______ days ago\nWhat's actually stuck (one line):\n  ____________________________________________\nNext action:\n  ____________________________________________\nOwner of that action: __________  By: __________\nClient needs a proactive heads-up?   Y / N\n────────────────────────────────────────────────\n\nEND-OF-REVIEW TALLY\nAccounts flagged this week: ______\nAccounts with 2+ flags (call today): ______\nProactive heads-ups to send: ______\nAnything that slipped 2 weeks running: ____________</code></pre>\n<p>The <code>slipped 2 weeks running</code> line at the bottom is the one that earns its keep. Any account that shows up flagged two Mondays in a row is a process problem, not a task problem, and it needs you, not a nudge.</p>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_5_running-it-in-20-minutes-for-15-20-clien",
+      "title": "Running it in 20 minutes for 15-20 clients",
+      "html": "<p>The 20-minute number holds because most of your accounts are fine and you never open them. Here is where the time goes on a normal week with 3-4 flagged accounts.</p>\n<table><thead><tr><th>Step</th><th>What you do</th><th>Time</th></tr></thead><tbody><tr><td>Dashboard scan</td><td>Sort by last activity, eyeball the quiet third</td><td>3 min</td></tr><tr><td>Flag pass</td><td>Run the 6 flags on the quiet accounts only</td><td>5 min</td></tr><tr><td>Open flagged projects</td><td>One at a time, confirm what's stuck</td><td>8 min</td></tr><tr><td>Write the sheet</td><td>One block per flagged account, assign the action</td><td>4 min</td></tr></tbody></table>\n<ul><li><strong>Time cost before:</strong> slippage surfaces when the client emails, usually 7-10 days late.</li><li><strong>Time cost after:</strong> 20 minutes every Monday, slippage surfaces on day 2.</li><li><strong>Break-even:</strong> one caught churn a year covers roughly 60 years of Mondays at $20k-$30k saved against 17 hours spent.</li></ul>\nIf your review is regularly running past 25 minutes, you are opening too many green accounts. Trust the dashboard sort. Closed-and-fine is the default, opening is the exception.\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_6_what-to-do-when-a-flag-fires",
+      "title": "What to do when a flag fires",
+      "html": "<p>A flag is not a to-do, it is a decision. For each flagged account, pick one of three moves before you close the block.</p>\n<ul><li><strong>Fix it silently.</strong> The internal stall is real but the client hasn't felt it yet (flags 2, 3, 6). Reassign, unblock, done. No client message needed.</li><li><strong>Get ahead of it.</strong> The client is about to feel it or already has (flags 1, 4). Send the proactive note today, before they send theirs. A heads-up you initiate reads as control. A reply to their chase reads as caught out.</li><li><strong>Escalate it.</strong> Two or more flags, or a second week running. This is yours now. Call the owner, look at whether the account is scoped right, decide if the timeline needs a real reset with the client.</li></ul>\nThe whole point is that the client never gets to be the one who tells you. You want to be the person in the thread who moved first.\n<hr>\n<p>If you run delivery through a small ops team and want a second set of eyes on where accounts actually leak, send me your active client count and how you track status today, and I'll tell you which of the 6 flags you're most exposed on. <a href=\"https://ivanmanfredi.com/contact\" target=\"_blank\" rel=\"noopener noreferrer\">Get in Touch</a></p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ],
+  "client": {
+    "id": null,
+    "name": "Ivan Manfredi",
+    "short_name": "Ivan",
+    "accent": "#4C6E3D",
+    "ink": null,
+    "logo": null,
+    "logo_black": null,
+    "logo_white": null,
+    "site": "https://ivanmanfredi.com",
+    "site_label": "ivanmanfredi.com",
+    "portrait": "https://ivanmanfredi.com/ivan-portrait.jpg",
+    "booking_url": "https://calendly.com/ivan-intelligents/30min",
+    "qualified_url": "https://ivanmanfredi.com/start",
+    "cta_label": "Let's Talk",
+    "mark": "IM"
+  }
+}
