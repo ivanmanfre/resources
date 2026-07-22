@@ -239,7 +239,13 @@ Deno.serve(async (req: Request) => {
       if (leaf_template_key) {
         seq_id = await pickSequenceByLeafTemplate(supabase, leaf_template_key);
       }
-      if (!seq_id) {
+      // R1B (2026-07-22): captures from client-tenant pages (payload.client_id, stamped by
+      // shared.js when data.client.id is set) route ONLY via leaf-keyed client sequences.
+      // No leaf match (e.g. per-LM sequence not yet armed) = enqueue nothing — a client's
+      // lead must never fall back into Ivan's format-routed nurture. Ivan/legacy traffic
+      // sends no client_id and keeps the format fallback unchanged.
+      const cap_client = (typeof payload.client_id === "string" && payload.client_id) ? payload.client_id as string : null;
+      if (!seq_id && !cap_client) {
         seq_id = await pickSequence(supabase, lm_format || "", "capture");
       }
       if (seq_id) {

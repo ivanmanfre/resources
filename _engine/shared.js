@@ -34,7 +34,7 @@
 
   function canonicalBeaconEvent(tool_type, event, extra) {
     var q = new URLSearchParams(location.search);
-    return Object.assign({
+    var out = Object.assign({
       event_type: event,
       tool_type: tool_type,
       lm_slug: window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || "",
@@ -44,6 +44,17 @@
       referrer: document.referrer || "",
       session_id: readerIdentity().session_id
     }, extra || {});
+    // R1B: client-tenant pages stamp client_id on every event, and captures carry the
+    // page slug as leaf_template_key so lm-beacon routes to the per-LM client sequence
+    // (and, with the beacon-side guard, never falls back into Ivan's format sequences).
+    try {
+      var _bc2 = (window.__lm_data && window.__lm_data.client && window.__lm_data.client.id) ? window.__lm_data.client : null;
+      if (_bc2) {
+        out.client_id = _bc2.id;
+        if (event === "capture" && !out.leaf_template_key) out.leaf_template_key = out.lm_slug;
+      }
+    } catch (_) {}
+    return out;
   }
 
   function beacon(tool_type, event, extra) {
@@ -150,6 +161,32 @@
     return esc(t.slice(0, pivotStart)) + "<em>" + esc(t.slice(pivotStart, pivotEnd)) + "</em>" + esc(t.slice(pivotEnd));
   }
 
+  // ── R1B client tenant (2026-07-22) ────────────────────────────────────
+  // data.json may carry a client{} brand object (the generator writes one for
+  // every tenant). A page renders CLIENT-branded ONLY when client.id is set —
+  // the ivan lane writes id:null, so every Ivan page (and every legacy page
+  // with no client object) keeps the exact literal path below, byte-for-byte.
+  function clientOf(data) {
+    var c = data && data.client;
+    if (!c && window.__lm_data) c = window.__lm_data.client;
+    return (c && c.id) ? c : null;
+  }
+
+  function applyClientTheme() {
+    var wc = clientOf(null);
+    if (!wc) return;
+    try {
+      var rs = document.documentElement.style;
+      if (wc.accent) {
+        rs.setProperty("--accent", wc.accent);
+        rs.setProperty("--accent-light", wc.accent);
+        rs.setProperty("--accent-ink", wc.ink || wc.accent);
+      }
+      var tm = document.querySelector('meta[name="theme-color"]');
+      if (tm && wc.accent) tm.setAttribute("content", wc.accent);
+    } catch (_) {}
+  }
+
   // ── Hero section ──────────────────────────────────────────────────────
   function buildHero(data, opts) {
     opts = opts || {};
@@ -186,10 +223,14 @@
 
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    var img = make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
+    var _wc = clientOf(data);
+    var img = _wc
+      ? (_wc.portrait ? make("img", { class: "lmc-intro-avatar", src: _wc.portrait, alt: _wc.name || "" }) : null)
+      : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
-    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
+    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" },
+      _wc ? esc("Hey, I'm " + (_wc.short_name || _wc.name) + ".") : "Hey, I&rsquo;m Ivan."));
     var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
     editModeRegisterField(introPara, "intro.paragraph", { multiline: true });
     body.appendChild(introPara);
@@ -217,7 +258,7 @@
       editModeRegisterField(noteEl, "intro.note", { multiline: true });
       body.appendChild(noteEl);
     }
-    inner.appendChild(img);
+    if (img) inner.appendChild(img);
     inner.appendChild(body);
     sec.appendChild(inner);
     return sec;
@@ -230,13 +271,18 @@
   var CALL_BASE = "https://calendly.com/im-ivanmanfredi/30min";
   function callUrl(medium) {
     try {
-      var u = new URL(CALL_BASE);
+      var _bc = clientOf(null);
+      var u = new URL((_bc && _bc.booking_url) || CALL_BASE);
       u.searchParams.set("utm_source", "lm-resource");
       u.searchParams.set("utm_medium", medium || "cta");
       u.searchParams.set("utm_campaign", window.__lm_slug || "lm");
       u.searchParams.set("utm_content", readerIdentity().session_id);
       return u.toString();
-    } catch (_) { return CALL_BASE; }
+    } catch (_) {
+      // never fall back to Ivan's booking link on a client page
+      var _bf = clientOf(null);
+      return (_bf && _bf.booking_url) || CALL_BASE;
+    }
   }
 
   // Rewrite data-supplied CTA URLs that point at the retired ivan-intelligents
@@ -455,23 +501,29 @@
     var copy = CLOSING_COPY[format] || CLOSING_COPY.guide;
     var over = (data && data.closing_cta) || {};
     var toolType = opts.toolType || format;
-    var headline = over.headline_html || copy.headline;
-    var body = over.body || copy.body || CLOSING_DEFAULT_BODY;
-    var bullets = (Array.isArray(over.bullets) && over.bullets.length) ? over.bullets : copy.bullets;
-    var emailLead = over.email_lead || copy.emailLead;
+    var _wc = clientOf(data);
+    // Client pages: per-LM overrides (generator, client voice) win; the embedded
+    // Ivan-voiced defaults never render under a client identity.
+    var headline = over.headline_html || (_wc ? "Want help putting this in place?" : copy.headline);
+    var body = over.body || (_wc ? "Everything on this page works as written. If you want a hand applying it to your own setup, that is what we do all day." : (copy.body || CLOSING_DEFAULT_BODY));
+    var bullets = (Array.isArray(over.bullets) && over.bullets.length) ? over.bullets : (_wc ? [] : copy.bullets);
+    var emailLead = over.email_lead || (_wc ? "Prefer email? Drop yours and the resource lands in your inbox." : copy.emailLead);
     var href = callUrl("closing-cta");
 
-    var sec = make("section", { class: "lmc-closing", "aria-label": "Work with Ivan" });
+    var sec = make("section", { class: "lmc-closing", "aria-label": "Work with " + (_wc ? (_wc.name || "the team") : "Ivan") });
     sec.innerHTML =
       '<div class="lmc-closing-label">Want help implementing this?</div>' +
       '<h2 class="lmc-closing-h">' + headline + '</h2>' +
       '<p class="lmc-closing-p">' + esc(body) + '</p>' +
-      '<p class="lmc-closing-lead">If you want help with:</p>' +
+      (bullets.length ? '<p class="lmc-closing-lead">If you want help with:</p>' +
       '<ul class="lmc-closing-points">' +
         bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') +
-      '</ul>' +
-      '<p class="lmc-closing-p">Book a free 30-minute fit call. I’ll tell you exactly how I’d build this for you. If you can run it yourself, I’ll tell you that too, and you keep the plan.</p>' +
-      '<a class="lmc-btn lmc-closing-call" href="' + esc(href) + '" target="_blank" rel="noopener">Book the free fit call <span aria-hidden="true">→</span></a>' +
+      '</ul>' : '') +
+      (_wc
+        ? '<p class="lmc-closing-p">' + esc("Book a call with " + (_wc.name || "the team") + " and walk through how this applies to your own numbers.") + '</p>' +
+          '<a class="lmc-btn lmc-closing-call" href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(_wc.cta_label || "Book a call") + ' <span aria-hidden="true">→</span></a>'
+        : '<p class="lmc-closing-p">Book a free 30-minute fit call. I’ll tell you exactly how I’d build this for you. If you can run it yourself, I’ll tell you that too, and you keep the plan.</p>' +
+          '<a class="lmc-btn lmc-closing-call" href="' + esc(href) + '" target="_blank" rel="noopener">Book the free fit call <span aria-hidden="true">→</span></a>') +
       '<div class="lmc-closing-divider" role="presentation"></div>' +
       '<p class="lmc-closing-email-p">' + esc(emailLead) + '</p>' +
       '<form class="lmc-closing-form">' +
@@ -480,10 +532,13 @@
         '<button type="submit">Send it</button>' +
       '</form>' +
       '<p class="lmc-note">One series. Unsubscribe any time.</p>' +
-      '<p class="lmc-closing-sign">Either way, the full system is on this page. <em>Go build it.</em></p>' +
+      (_wc ? '' : '<p class="lmc-closing-sign">Either way, the full system is on this page. <em>Go build it.</em></p>') +
       '<div class="lmc-closing-byline">' +
-        '<img src="https://ivanmanfredi.com/ivan-portrait.jpg" alt="" loading="lazy" />' +
-        '<span><strong>Ivan Manfredi</strong>AI systems for service businesses</span>' +
+        (_wc
+          ? (_wc.portrait ? '<img src="' + esc(_wc.portrait) + '" alt="" loading="lazy" />' : '') +
+            '<span><strong>' + esc(_wc.name || "") + '</strong>' + esc(_wc.site_label || "") + '</span>'
+          : '<img src="https://ivanmanfredi.com/ivan-portrait.jpg" alt="" loading="lazy" />' +
+            '<span><strong>Ivan Manfredi</strong>AI systems for service businesses</span>') +
       '</div>';
 
     editModeRegisterField(sec.querySelector(".lmc-closing-h"), "closing_cta.headline_html", { contenteditable: true });
@@ -855,10 +910,13 @@
     // exact literal below when absent, so the assembled innerHTML is
     // byte-identical to the pre-refactor markup for a no-override page.
     var f = (window.__lm_data && window.__lm_data.footer) || {};
-    var fLabel   = f.label        || "Work with me";
-    var fHeading = f.heading_html || 'Ready to turn your feed into pipeline you <em>own</em>?';
-    var fBody    = f.body         || 'I build and run LinkedIn inbound engines for agency owners: content, lead magnets, and nurture. Book a free fit call.';
-    var fBtn     = f.cta_label    || 'Book the free fit call';
+    // R1B: on a client-tenant page (client.id set) the FALLBACKS are client-neutral —
+    // Ivan's footer copy never renders under a client identity. data.footer still wins.
+    var _fc = clientOf(null);
+    var fLabel   = f.label        || (_fc ? ("Work with " + (_fc.short_name || _fc.name)) : "Work with me");
+    var fHeading = f.heading_html || (_fc ? "Want help putting this to work?" : 'Ready to turn your feed into pipeline you <em>own</em>?');
+    var fBody    = f.body         || (_fc ? ("Book a call with " + (_fc.name || "the team") + ".") : 'I build and run LinkedIn inbound engines for agency owners: content, lead magnets, and nurture. Book a free fit call.');
+    var fBtn     = f.cta_label    || (_fc ? (_fc.cta_label || "Book a call") : 'Book the free fit call');
 
     var cta = footer.querySelector(".im-footer-cta");
     if (cta) {
@@ -885,9 +943,11 @@
     var meta = footer.querySelector(".im-footer-meta");
     if (meta) {
       var year = new Date().getFullYear();
-      meta.innerHTML =
-        '<span>© ' + year + ' Iván Manfredi</span>' +
-        '<span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>';
+      meta.innerHTML = _fc
+        ? '<span>© ' + year + ' ' + esc(_fc.name || "") + '</span>' +
+          '<span><a href="' + esc(_fc.site || "#") + '">' + esc(_fc.site_label || _fc.site || "") + '</a></span>'
+        : '<span>© ' + year + ' Iván Manfredi</span>' +
+          '<span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>';
     }
   }
 
@@ -1025,6 +1085,7 @@
     }
     editModeMaybeEnable();
     bindEditModeShortcut();
+    applyClientTheme();
     rebrandFooter();
     // Engines set window.__lm_data asynchronously (inside their data.json fetch),
     // which happens AFTER this synchronous call — so any data.footer override
@@ -1033,7 +1094,7 @@
     var _fTries = 0;
     var _fPoll = setInterval(function () {
       _fTries++;
-      if (window.__lm_data) { rebrandFooter(); clearInterval(_fPoll); }
+      if (window.__lm_data) { applyClientTheme(); rebrandFooter(); clearInterval(_fPoll); }
       else if (_fTries > 60) clearInterval(_fPoll); // ~3s cap
     }, 50);
     scanCaptures();
