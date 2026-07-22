@@ -1,0 +1,24 @@
+{
+  "slug": "r1a-smoke-guide-test",
+  "title": "R1A Smoke: Client Onboarding Guide",
+  "subtitle": "",
+  "estimated_minutes": 10,
+  "brand": {
+    "accent": "#4C6E3D",
+    "hero_badge": "Guide"
+  },
+  "sections": [
+    {
+      "id": "s_0_the-three-document-minimum",
+      "title": "The three-document minimum",
+      "html": "<p>You need exactly three artifacts before kickoff: a scope one-pager, a access checklist, and a decision log. Everything else is theater.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_1_where-automation-actually-helps",
+      "title": "Where automation actually helps",
+      "html": "<p>Automate the chase, not the conversation. Reminders, access requests, and status pings are robot work. Discovery questions are not.</p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ]
+}
