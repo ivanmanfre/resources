@@ -278,6 +278,7 @@
         '<p class="lmk-ty-eyebrow">' + L.esc(fill(t.eyebrow || "You're in")) + '</p>' +
         '<h2 class="lmk-ty-h">' + L.esc(fill(t.headline || "Your kit is ready{name}.")) + '</h2>' +
         '<p class="lmk-ty-body">' + L.esc(fill(t.body || "Open it right here. A copy is also on its way to your inbox.")) + '</p>' +
+        (t.video_lead ? '<p class="lmk-ty-vlead" style="font-size:1.45rem;font-weight:800;line-height:1.2;margin:26px 0 12px">' + L.esc(fill(t.video_lead)) + '</p>' : "") +
         videoBlock +
         kitBtn +
         (bullets.length ? '<ul class="lmk-ty-points">' + bullets.map(function (b) { return '<li>' + L.esc(b) + '</li>'; }).join("") + '</ul>' : "") +
