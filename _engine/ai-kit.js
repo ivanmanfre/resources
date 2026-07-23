@@ -83,7 +83,7 @@
         '<div class="lmk-dl-copy">' +
           '<div class="lmk-dl-label">' + L.esc(data.format_label || "AI Kit") + '</div>' +
           '<h2 class="lmk-dl-h">The whole system, <em>one folder</em></h2>' +
-          '<p class="lmk-dl-p">' + files.length + " files. " + editable + " you customize, the rest works out of the box. Browse every file below before you download. Nothing is hidden behind the ZIP.</p>" +
+          '<p class="lmk-dl-p">' + files.length + " files" + ((data.client && editable === 0) ? ", every one of them working" : ". " + editable + " you customize, the rest works") + " out of the box. Browse every file below before you download. Nothing is hidden behind the ZIP.</p>" +
         '</div>' +
         '<div class="lmk-dl-action">' +
           '<button class="lmc-btn lmk-dl-btn" type="button">Download the kit <span aria-hidden="true">↓</span></button>' +
@@ -133,8 +133,57 @@
         (data.format_label ? '<p class="lmk-c-eyebrow">' + L.esc(data.format_label) + '</p>' : "") +
         '<h1 class="lmk-c-h1">' + L.esc(data.title || "The Kit") + '</h1>' +
         (data.subtitle ? '<p class="lmk-c-sub">' + L.esc(data.subtitle) + '</p>' : "") +
+        (data.proof && data.proof.stats && data.proof.stats.length ?
+          '<ul class="lmk-c-proof" aria-label="Track record">' +
+            data.proof.stats.map(function (s) { return '<li>' + L.esc(s) + '</li>'; }).join("") +
+          '</ul>' : "") +
       '</div>';
     return hero;
+  }
+
+  // Closing band: the client's founder fronts the book-a-call CTA. Rendered on
+  // both the gated landing and the unlocked kit so neither path dead-ends.
+  function buildClientClosing(data, view) {
+    var cl = data.closing || {};
+    if (!cl.cta_url) return null;
+    var sec = L.make("section", { class: "lmk-close lmk-reveal", "aria-label": "Work with " + clientName(data) });
+    sec.innerHTML =
+      '<div class="lmk-close-card">' +
+        (cl.photo ?
+          '<figure class="lmk-close-media">' +
+            '<img src="' + L.esc(cl.photo) + '" alt="' + L.esc(cl.person || clientName(data)) + '" loading="lazy">' +
+            (cl.person ? '<figcaption><strong>' + L.esc(cl.person) + '</strong><span>' + L.esc(cl.person_title || "") + '</span></figcaption>' : '') +
+          '</figure>' : "") +
+        '<div class="lmk-close-body">' +
+          (cl.eyebrow ? '<p class="lmk-close-eyebrow">' + L.esc(cl.eyebrow) + '</p>' : "") +
+          '<h2 class="lmk-close-h">' + (cl.headline_html || L.esc(cl.headline || "Want this run for you?")) + '</h2>' +
+          (cl.body ? '<p class="lmk-close-p">' + L.esc(cl.body) + '</p>' : "") +
+          '<a class="lmk-pill-btn lmk-close-cta" href="' + L.esc(cl.cta_url) + '" target="_blank" rel="noopener">' + L.esc(cl.cta_label || "Book a call") + ' <span class="lmk-pill-chip" aria-hidden="true">→</span></a>' +
+          (cl.note ? '<p class="lmk-close-note">' + L.esc(cl.note) + '</p>' : "") +
+        '</div>' +
+      '</div>';
+    var cta = sec.querySelector(".lmk-close-cta");
+    if (cta) cta.addEventListener("click", function () {
+      L.beacon("ai-kit", "cta_click", { answers: { target: "closing_book_" + (view || "page"), kit: data.kit_name || data.slug } });
+    });
+    return sec;
+  }
+
+  function buildClientFooter(data) {
+    // Client surfaces only: ivan/legacy pages (no data.client, no data.footer) render no footer.
+    if (!data.footer && !data.client) return null;
+    var f = data.footer || {};
+    var c = data.client || {};
+    var site = f.site || c.site;
+    var host = site ? String(site).replace(/^https?:\/\//, "").replace(/\/$/, "") : "";
+    var foot = L.make("footer", { class: "lmk-c-footer" });
+    foot.innerHTML =
+      '<div class="lmk-c-footer-inner">' +
+        (f.logo_white ? '<img src="' + L.esc(f.logo_white) + '" alt="' + L.esc(clientName(data)) + '">' : '<strong>' + L.esc(clientName(data)) + '</strong>') +
+        (f.line ? '<p>' + L.esc(f.line) + '</p>' : "") +
+        (site ? '<a href="' + L.esc(site) + '" target="_blank" rel="noopener">' + L.esc(host) + ' <span aria-hidden="true">→</span></a>' : "") +
+      '</div>';
+    return foot;
   }
 
   function buildWhatsInside(data) {
@@ -292,6 +341,10 @@
     // Arrived via the email link → show the kit directly, no gate.
     if (isUnlocked()) {
       root.appendChild(buildResourceView(data));
+      var closeU = buildClientClosing(data, "unlocked");
+      if (closeU) root.appendChild(closeU);
+      var footU = buildClientFooter(data);
+      if (footU) root.appendChild(footU);
       L.observeReveal(root, ".lmk-reveal");
       revealSafety(root);
       L.beacon("ai-kit", "view", { answers: { via: "unlock" } });
@@ -299,16 +352,17 @@
       return;
     }
 
-    // Landing (hard gate): hero, then split of "what's inside" + gate.
+    // Landing (hard gate): hero, then split of "what's inside" + gate, then
+    // the founder-fronted closing band and footer (both persist on thank-you).
     var landing = L.make("div", { class: "lmk-landing" });
     landing.appendChild(buildClientHero(data));
     var grid = L.make("div", { class: "lmk-landing-grid" });
     grid.appendChild(buildWhatsInside(data));
     grid.appendChild(buildGate(data, function (sub) {
-      // Submit → thank-you view only. The kit goes out by email.
+      // Submit → thank-you view (kit goes out by email); closing + footer stay.
       var ty = buildThankYou(data, sub && sub.name);
+      root.insertBefore(ty, landing.nextSibling);
       landing.remove();
-      root.appendChild(ty);
       window.scrollTo(0, 0);
       L.observeReveal(root, ".lmk-reveal");
       revealSafety(root);
@@ -316,6 +370,10 @@
     }));
     landing.appendChild(grid);
     root.appendChild(landing);
+    var closeL = buildClientClosing(data, "landing");
+    if (closeL) root.appendChild(closeL);
+    var footL = buildClientFooter(data);
+    if (footL) root.appendChild(footL);
 
     L.observeReveal(root, ".lmk-reveal");
     revealSafety(root);
