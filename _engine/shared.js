@@ -893,6 +893,14 @@
     // and must never show Ivan's Calendly footer. Opt-out only; no existing
     // page sets the flag, so this is inert for the whole Ivan catalog.
     if (window.__lm_client) return;
+    // Embed mode (assessment shown inside a prospect's scan): the sample is framed as the
+    // PROSPECT's own asset — never inject Ivan's "Work with me" footer into it. assessment-v2
+    // strips the shell .im-footer on embed load; without this guard the injection below
+    // re-creates it and Ivan's Calendly CTA leaks into the simulated client artifact.
+    try {
+      var __fq = new URLSearchParams(location.search);
+      if (__fq.get("src") === "scan_embed" || __fq.get("embed") === "1") return;
+    } catch (_) {}
     var footer = document.querySelector(".im-footer");
     if (!footer) {
       // Inject a fresh editorial footer. Reuses .im-footer styles defined in
