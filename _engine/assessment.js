@@ -985,6 +985,17 @@
       if (!host) host = card;
       host.innerHTML = "";
 
+      // R2 (2026-07-23): thank-you video, rendered ONLY when data.thank_you.video_embed
+      // is set (client directive: every LM thank-you carries the founder video).
+      // Pages without the key (all Ivan assessments today) are untouched.
+      var __tyv = data.thank_you && data.thank_you.video_embed;
+      if (__tyv) {
+        var __vwrap = make("div", { class: "lmc-ty-video" });
+        __vwrap.style.cssText = "position:relative;padding-bottom:56.25%;height:0;margin:0 0 28px;border-radius:12px;overflow:hidden;background:#000";
+        __vwrap.innerHTML = '<iframe src="' + esc(String(__tyv)) + '" title="Walkthrough" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+        host.appendChild(__vwrap);
+      }
+
       host.appendChild(make("h3", { class: "lmc-result-unlock-h" }, "Per-category <em>breakdown</em>"));
 
       var catFills = []; // collect to arm bar widths after paint
