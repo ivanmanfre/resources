@@ -162,6 +162,10 @@
     var rPx = parseInt(params.get("r") || "", 10);
     if (!isNaN(rPx) && rPx >= 0 && rPx <= 24) {
       css += ".lmc-embed .lmc-btn,.lmc-embed .lmc-intro-start,.lmc-embed .lmc-btn-secondary,.lmc-embed .lmc-opt,.lmc-embed .lmc-card,.lmc-embed .lmc-form-input,.lmc-embed .lmc-capture{border-radius:" + rPx + "px !important}";
+      // A rounded brand doesn't use a hard editorial left-rule on the question card — that's an
+      // Ivan template tell. Turn the card into a soft rounded panel (white on the tinted field,
+      // hairline border, even padding), matching how modern brands (NoShoot) box content.
+      css += "html.lmc-embed .lmc-card{border-left:none !important;border:1px solid var(--line) !important;background:var(--paper-raise,#fff) !important;padding:1.9rem 2rem 2.2rem !important;box-shadow:0 1px 2px rgba(20,18,24,0.04) !important}";
     }
     var inkRgb = parse(params.get("ink"));
     if (inkRgb) {
