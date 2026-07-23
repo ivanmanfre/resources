@@ -447,6 +447,11 @@
   }
 
   function render(data, root) {
+    // R2: expose page data to shared.js canonicalBeaconEvent (client_id stamping on
+    // client pages - guide.js/assessment-v2.js already do this; ai-kit never did,
+    // which let kit-page captures fall into Ivan's format nurture. Ivan pages:
+    // client.id is null, so stamping stays off and payloads are unchanged.
+    window.__lm_data = data;
     if (data.gate && data.gate.mode) { return renderGatedClientKit(data, root); }
     root.innerHTML = "";
     root.classList.add("lmk-page");
