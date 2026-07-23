@@ -97,27 +97,65 @@ test("buildEmbedVars falls back to slate #5b82a6 when ?accent is absent", () => 
 // --- Sparse-brand derivation: accent is the ONLY brand signal (the common scan case).
 // Synthesizes a tinted page field, a deep accent-dark hero band, and re-points the
 // editorial ink family (--sage/--ink/--line) into the accent hue.
+// Pull the first hex color out of the synthesized hero `background:` declaration
+// (a linear-gradient of two deep-accent stops). Returns [r,g,b] or null.
+function heroBandColor(css) {
+  const m = css.match(/html\.lmc-embed \.lmc-hero\{background:[^;]*?(#[0-9a-fA-F]{6})/);
+  return m ? embed.parse(m[1]) : null;
+}
+
 test("sparse derivation fires when only ?accent is present (accent=5b82a6)", () => {
   const p = new URLSearchParams("accent=5b82a6");
   const { css } = embed.buildEmbedVars(p);
   const rgb = embed.parse("5b82a6");
   // Tinted page field: mix(accent,white,0.955)
   assert.ok(css.includes("--paper:" + embed.hex(embed.mix(rgb, [255, 255, 255], 0.955))));
-  // Deep accent-dark hero band: mix(accent,[17,17,17],0.80)
-  assert.ok(css.includes("html.lmc-embed .lmc-hero{background:" + embed.hex(embed.mix(rgb, [17, 17, 17], 0.80)) + " !important"));
+  // Synthesized deep-accent hero band (a gradient, not the old near-black mix)
+  assert.ok(css.includes("html.lmc-embed .lmc-hero{background:linear-gradient("), "hero is a synthesized gradient band");
   // White headline on the dark band
   assert.ok(css.includes("html.lmc-embed .lmc-h1{color:#fff !important}"));
   // Editorial ink accents re-pointed into the accent hue via --sage = mix(accent,black,0.35)
   assert.ok(css.includes("--sage:" + embed.hex(embed.mix(rgb, [0, 0, 0], 0.35))));
 });
 
-test("sparse derivation generalizes across hues (red + green produce their own dark band)", () => {
-  for (const h of ["e02020", "2a8f65"]) {
-    const rgb = embed.parse(h);
+// The core fix: for a muted mid-tone accent the hero must read as THAT hue, not black.
+// Assert the synthesized band (a) keeps the accent's hue, (b) is clearly chromatic, and
+// (c) clears AA vs white text.
+test("sparse hero stays IN-HUE and never collapses to near-black (muted 5b82a6)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=5b82a6"));
+  const band = heroBandColor(css);
+  assert.ok(band, "hero band color parsed");
+  const accentHsl = embed.rgb2hsl(embed.parse("5b82a6"));
+  const bandHsl = embed.rgb2hsl(band);
+  const hueDelta = Math.abs(bandHsl[0] - accentHsl[0]);
+  assert.ok(Math.min(hueDelta, 360 - hueDelta) < 12, `hue preserved (Δ=${hueDelta.toFixed(1)}°)`);
+  assert.ok(bandHsl[1] > 0.30, `band is saturated, not grey (s=${bandHsl[1].toFixed(2)})`);
+  assert.ok(embed.relLum(band) <= 0.18, `AA vs white headline (lum=${embed.relLum(band).toFixed(3)})`);
+});
+
+test("sparse hero stays in-hue across red / green / light-amber and holds AA", () => {
+  for (const h of ["e02020", "2a8f65", "f4b400"]) {
     const { css } = embed.buildEmbedVars(new URLSearchParams("accent=" + h));
-    assert.ok(css.includes("html.lmc-embed .lmc-hero{background:" + embed.hex(embed.mix(rgb, [17, 17, 17], 0.80)) + " !important"), h + " hero band");
-    assert.ok(css.includes("--paper:" + embed.hex(embed.mix(rgb, [255, 255, 255], 0.955))), h + " field");
+    const band = heroBandColor(css);
+    assert.ok(band, h + " band parsed");
+    const aH = embed.rgb2hsl(embed.parse(h))[0], bH = embed.rgb2hsl(band)[0];
+    const dHue = Math.min(Math.abs(bH - aH), 360 - Math.abs(bH - aH));
+    assert.ok(dHue < 12, h + ` hue preserved (Δ=${dHue.toFixed(1)}°)`);
+    assert.ok(embed.rgb2hsl(band)[1] > 0.30, h + " band saturated");
+    assert.ok(embed.relLum(band) <= 0.18, h + ` AA vs white (lum=${embed.relLum(band).toFixed(3)})`);
+    assert.ok(css.includes("--paper:" + embed.hex(embed.mix(embed.parse(h), [255, 255, 255], 0.955))), h + " field");
   }
+});
+
+// The generic light-italic pivot is an Ivan tell — killed in embed mode unless a font was passed.
+test("italic pivot is neutralized in embed mode when no font is passed", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=5b82a6"));
+  assert.ok(css.includes("html.lmc-embed .lmc-h1 em,html.lmc-embed .lmc-h1 i,html.lmc-embed .lmc-start-h em,html.lmc-embed .lmc-start-h i,html.lmc-embed .lmc-intro-h em,html.lmc-embed .lmc-intro-h i{font-style:normal !important;font-weight:inherit !important}"), "em/i forced upright + same weight");
+});
+
+test("italic pivot is PRESERVED when the lead passed a real font (legit brand styling)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=5b82a6&font=Poppins"));
+  assert.ok(!css.includes("{font-style:normal !important;font-weight:inherit !important}"), "font present → pivot kept in the lead's typeface");
 });
 
 test("sparse derivation is SUPPRESSED when ?bg is explicit (existing behavior preserved)", () => {

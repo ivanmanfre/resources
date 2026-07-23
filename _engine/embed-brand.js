@@ -20,6 +20,47 @@
   function hex(c) { return "#" + c.map(function (x) { return clamp(x).toString(16).padStart(2, "0"); }).join(""); }
   function mix(c, t, a) { return [c[0] + (t[0] - c[0]) * a, c[1] + (t[1] - c[1]) * a, c[2] + (t[2] - c[2]) * a]; }
   function safeFam(n) { n = (n || "").replace(/[^\w \-]/g, "").trim(); return n; }
+  // --- HSL + WCAG luminance (hero-hue math, 2026-07-23) -----------------------
+  // The old hero mixed the accent 80% toward near-black, which drains the hue: a
+  // muted mid-tone (5B82A6) collapsed to charcoal. To keep the hue we work in HSL
+  // (hue is preserved exactly) and pick the BRIGHTEST lightness that still clears
+  // AA contrast (relative luminance <= target) against the white headline — so the
+  // band reads as a confident, saturated version of the accent, never black.
+  function rgb2hsl(rgb) {
+    var r = rgb[0] / 255, g = rgb[1] / 255, b = rgb[2] / 255;
+    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+    var h = 0, s = 0, l = (mx + mn) / 2;
+    if (d) {
+      s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
+      if (mx === r) h = ((g - b) / d) % 6;
+      else if (mx === g) h = (b - r) / d + 2;
+      else h = (r - g) / d + 4;
+      h *= 60; if (h < 0) h += 360;
+    }
+    return [h, s, l];
+  }
+  function hsl2rgb(h, s, l) {
+    var c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2, r = 0, g = 0, b = 0;
+    if (h < 60) { r = c; g = x; } else if (h < 120) { r = x; g = c; } else if (h < 180) { g = c; b = x; }
+    else if (h < 240) { g = x; b = c; } else if (h < 300) { r = x; b = c; } else { r = c; b = x; }
+    return [(r + m) * 255, (g + m) * 255, (b + m) * 255];
+  }
+  function relLum(rgb) {
+    function lin(v) { v = v / 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }
+    return 0.2126 * lin(rgb[0]) + 0.7152 * lin(rgb[1]) + 0.0722 * lin(rgb[2]);
+  }
+  // Accent recolored to a given max relative-luminance, hue preserved, saturation
+  // floored at minSat (so a muted accent still reads vivid). Binary-searches the
+  // largest lightness whose luminance <= targetLum → maximally hued yet AA-legible.
+  function accentAtLum(rgb, targetLum, minSat) {
+    var hsl = rgb2hsl(rgb), h = hsl[0], s = Math.max(hsl[1], minSat);
+    var lo = 0.03, hi = 0.6;
+    for (var i = 0; i < 24; i++) {
+      var mid = (lo + hi) / 2;
+      if (relLum(hsl2rgb(h, s, mid)) <= targetLum) lo = mid; else hi = mid;
+    }
+    return hsl2rgb(h, s, lo);
+  }
 
   function buildEmbedVars(params) {
     var accentParsed = parse(params.get("accent"));
@@ -120,6 +161,17 @@
     // results share row (its share text attributes the assessment to Ivan Manfredi).
     // Public (non-embed) LM pages are untouched — this css only ships in embed mode.
     css += "html.lmc-embed .lmc-intro,html.lmc-embed .im-nav,html.lmc-embed .im-footer,html.lmc-embed .lmc-share{display:none !important}";
+    // Italic-pivot kill (embed mode, 2026-07-23): the light-italic second phrase on the
+    // H1/intro/start headlines ("Campaign *Maturity Score*") is an Ivan editorial signature —
+    // inside a client embed it reads as a reused template. When the lead did NOT pass a real
+    // font (qHead), neutralize it: the em/i words render at the headline's own weight and style
+    // (one coherent phrase), and the wavy accent sweep behind them is killed. When a font WAS
+    // passed, the pivot renders in the lead's actual typeface, so it's a legit brand move — kept.
+    // The ?hero=dark branch owns its own inline-italic accent2 pivot, so it opts out here.
+    if (!qHead && !heroDark) {
+      css += "html.lmc-embed .lmc-h1 em,html.lmc-embed .lmc-h1 i,html.lmc-embed .lmc-start-h em,html.lmc-embed .lmc-start-h i,html.lmc-embed .lmc-intro-h em,html.lmc-embed .lmc-intro-h i{font-style:normal !important;font-weight:inherit !important}" +
+        "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after,html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{content:none !important;background-image:none !important}";
+    }
     // ?hero=dark&hero_bg=RRGGBB&accent2=RRGGBB — dark hero theme. Mirrors a
     // dark-hero brand site (e.g. deep forest green with a mint secondary):
     // hero surface = hero_bg, headline white at display weight, the em/i pivot
@@ -167,9 +219,14 @@
       var R = clamp(rgb[0]), G = clamp(rgb[1]), B = clamp(rgb[2]);
       var field = hex(mix(rgb, [255, 255, 255], 0.955)); // ~4.5% accent — barely-there page field
       var fieldSunk = hex(mix(rgb, [255, 255, 255], 0.91)); // deeper tint for sunk panels/hover
-      var aDark = hex(mix(rgb, [17, 17, 17], 0.80)); // deep accent-dark hero band
+      // Hero band: a confident, saturated deep version of THE accent (hue preserved via HSL),
+      // as a soft top-to-bottom gradient for depth. Both stops clear AA against white text
+      // (luminance <= 0.16 → contrast >= 5.0); a stranger reads "this page is blue/red/green",
+      // never "black". heroTop is the brightest AA-legal shade (most hue); heroBot is deeper.
+      var heroTop = hex(accentAtLum(rgb, 0.150, 0.46));
+      var heroBot = hex(accentAtLum(rgb, 0.075, 0.52));
       var aInk = hex(mix(rgb, [0, 0, 0], 0.35)); // accent-dark for ink moments (rings, rails, dots, pivots)
-      var aLight = hex(mix(rgb, [255, 255, 255], 0.55)); // light accent for pivots/dots on the dark hero
+      var aLight = hex(mix(rgb, [255, 255, 255], 0.55)); // light accent for dots on the dark hero
       var bodyInk = hex(mix([19, 18, 16], rgb, 0.08)); // near-ink body text carrying a hint of the hue
       var lineA = "rgba(" + R + "," + G + "," + B + ",0.20)"; // hairlines in-hue
       // Page field + paper family: tints the hero/intro/widget surfaces the engine paints with
@@ -179,13 +236,13 @@
         // family: progress fill, score-ring arc, selected-option rail, tier/category/badge dots,
         // question & heading italics, form-focus ring — one var swap carries the whole hue.
         "html.lmc-embed .lmc-root{--sage:" + aInk + ";--sage-ink:" + aInk + ";--sage-soft:rgba(" + R + "," + G + "," + B + ",0.10);--sage-faint:rgba(" + R + "," + G + "," + B + ",0.05);--line:" + lineA + ";--line-soft:rgba(" + R + "," + G + "," + B + ",0.10);--ink:" + bodyInk + "}" +
-        // Confident deep accent-dark hero band with a white headline — the lead's brand moment,
-        // replacing the flat near-white hero. The italic pivot renders inline in a light accent
-        // (the wavy sweep is killed on the dark band; it stays on the light sections below).
-        "html.lmc-embed .lmc-hero{background:" + aDark + " !important;border-bottom:none !important}" +
+        // Confident deep accent hero band with a white headline — the lead's brand moment,
+        // replacing the flat near-black hero. The whole headline (incl. the former italic pivot)
+        // reads as one solid white phrase; the italic/weight neutralization + sweep-kill are
+        // handled by the embed-wide italic-pivot block above (fires when no font was passed).
+        "html.lmc-embed .lmc-hero{background:linear-gradient(157deg," + heroTop + " 0%," + heroBot + " 100%) !important;border-bottom:none !important}" +
         "html.lmc-embed .lmc-h1{color:#fff !important}" +
-        "html.lmc-embed .lmc-h1 em,html.lmc-embed .lmc-h1 i{color:" + aLight + " !important}" +
-        "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after{content:none !important;background-image:none !important}" +
+        "html.lmc-embed .lmc-h1 em,html.lmc-embed .lmc-h1 i{color:#fff !important}" +
         "html.lmc-embed .lmc-sub{color:rgba(255,255,255,0.78) !important}" +
         "html.lmc-embed .lmc-badge{color:rgba(255,255,255,0.62) !important}" +
         "html.lmc-embed .lmc-badge::before{background:" + aLight + " !important}" +
@@ -200,5 +257,5 @@
     return { css: css, fontLink: fontLink };
   }
 
-  return { clamp: clamp, parse: parse, hex: hex, mix: mix, safeFam: safeFam, buildEmbedVars: buildEmbedVars };
+  return { clamp: clamp, parse: parse, hex: hex, mix: mix, safeFam: safeFam, rgb2hsl: rgb2hsl, hsl2rgb: hsl2rgb, relLum: relLum, accentAtLum: accentAtLum, buildEmbedVars: buildEmbedVars };
 });
