@@ -71,7 +71,21 @@
     var NEUTRAL = '-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,Helvetica,Arial,sans-serif';
     var qHead = safeFam(params.get("font"));
     var qBody = safeFam(params.get("fontb")) || qHead;
-    var HEAD = qHead ? '"' + qHead + '",' + NEUTRAL : NEUTRAL;
+    // ?headstyle=serif — the lead's headline is an UPRIGHT serif (editorial brands like NoShoot:
+    // a ui-serif/Georgia display headline over a sans body). The heading family renders upright
+    // with the light-italic pivot killed (see the pivot block below), and its fallback becomes a
+    // serif stack (not the sans NEUTRAL) so a serif still shows before the webfont loads. Body
+    // stays sans regardless — the editorial pattern is serif display + sans UI.
+    // Serif headline is triggered either explicitly (?headstyle=serif, set by the capture pipeline
+    // via font_heading_style) OR by auto-detecting that the passed heading family (?font=, already
+    // forwarded today) is a serif — so an editorial lead renders upright-serif even before the
+    // frontend forwards the explicit flag. A sans ?font= never triggers it. Kept narrow to real
+    // serif families so a sans brand is never mis-routed.
+    var qHeadIsSerif = qHead && /(georgia|times|garamond|playfair|merriweather|lora|source serif|pt serif|noto serif|newsreader|fraunces|dm serif|freight|tiempos|canela|cormorant|book antiqua|palatino|spectral|baskerville|caslon|minion|didot|bodoni|recoleta)/i.test(qHead);
+    var headSerif = ((params.get("headstyle") || "").trim() === "serif") || qHeadIsSerif;
+    var SERIF_FALL = 'Georgia,"Times New Roman",Times,serif';
+    var HEADFALL = headSerif ? SERIF_FALL : NEUTRAL;
+    var HEAD = qHead ? '"' + qHead + '",' + HEADFALL : HEADFALL;
     var BODY = qBody ? '"' + qBody + '",' + NEUTRAL : NEUTRAL;
     // ?hero=dark — opt-in dark hero theme (see block further down). Parsed early
     // because the dark hero sets the headline at display weight 800 + italic cuts,
@@ -98,6 +112,14 @@
       // everywhere, the lead's display font on the headline surfaces.
       "html.lmc-embed .lmc-root,html.lmc-embed .lmc-root *{font-family:" + BODY + " !important;letter-spacing:normal !important}" +
       "html.lmc-embed .lmc-h1,html.lmc-embed .lmc-h1 *,html.lmc-embed .lmc-question,html.lmc-embed .lmc-question *,html.lmc-embed .lmc-intro-h,html.lmc-embed .lmc-intro-h *,html.lmc-embed .lmc-start-h,html.lmc-embed .lmc-start-h *,html.lmc-embed .lmc-capture h3,html.lmc-embed .lmc-score-ring .num,html.lmc-embed .lmc-score-hero .lmc-score-num{font-family:" + HEAD + " !important}";
+    // Serif brands set the DISPLAY headlines in their serif but the section prompts in their sans
+    // UI face — an upright-serif question reads heavy/wrong, so put questions back on the body sans.
+    // shared.css forces headlines to a sans 800 weight + -0.035em tracking; a display serif reads
+    // elegant at a book weight with near-normal tracking, so relax both on the serif surfaces.
+    if (headSerif) {
+      css += "html.lmc-embed .lmc-question,html.lmc-embed .lmc-question *{font-family:" + BODY + " !important}" +
+        "html.lmc-embed .lmc-h1,html.lmc-embed .lmc-intro-h,html.lmc-embed .lmc-start-h,html.lmc-embed .lmc-capture h2,html.lmc-embed .lmc-capture h3,html.lmc-embed .lmc-score-headline,html.lmc-embed .lmc-unlocked>h3{font-weight:500 !important;letter-spacing:-0.005em !important}";
+    }
     // The italic-pivot highlight sweep behind the H1/intro headline is a hardcoded green
     // SVG (fill=#131210) — the accent CSS var can't reach a data-uri, so it stayed Ivan-green
     // even in a slate/orange embed. Rebuild the same wavy sweep in the LEAD's accent.
@@ -148,27 +170,49 @@
         ".lmc-embed .lmc-score-eyebrow,.lmc-embed .lmc-score-headline,.lmc-embed .lmc-score-note strong,.lmc-embed .lmc-category-block h4,.lmc-embed .lmc-result-unlock-h,.lmc-embed .lmc-start-h,.lmc-embed .lmc-start-meta{color:" + inkHex + " !important}" +
         ".lmc-embed .lmc-score-note,.lmc-embed .lmc-start-p{color:" + hex(mix(inkRgb, [255, 255, 255], 0.22)) + " !important}";
     }
+    // De-template the editorial furniture for EXPLICITLY-branded embeds too (2026-07-23). The
+    // sparse block below re-points --sage (the near-black #131210 that paints the question-card
+    // rule, selected-option rails, score ring, progress fill, and category/tier dots) into the
+    // accent hue — but it only fires when the accent is the SOLE brand signal. A lead WITH a
+    // captured surface/ink fell to the less-branded path and kept the BLACK editorial furniture
+    // (the hard left-rule on the question card that reads as a reused Ivan template). Re-point it
+    // here whenever a brand accent is present alongside an explicit surface/ink. Mutually exclusive
+    // with the sparse block (which requires no bg AND no ink); ?hero=dark owns its own treatment.
+    if (accentParsed && !heroDark && (bgRgb || inkRgb)) {
+      var aSage = hex(mix(rgb, [0, 0, 0], 0.30));
+      css += "html.lmc-embed .lmc-root{--sage:" + aSage + ";--sage-ink:" + aSage + ";--sage-soft:rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",0.10);--sage-faint:rgba(" + clamp(rgb[0]) + "," + clamp(rgb[1]) + "," + clamp(rgb[2]) + ",0.05)}";
+    }
     // Template-tell pass (all embeds): the graph-paper hero grid and the hard
     // 6px square eyebrow/meta markers are Ivan-editorial signatures — inside a
     // client-brand embed they read as a reused template. Grid off, markers
     // become small round dots. Public (non-embed) LM pages are untouched.
     css += ".lmc-embed .lmc-hero{background-image:none !important}" +
       ".lmc-embed .lmc-badge::before,.lmc-embed .lmc-meta-chip::before,.lmc-embed .lmc-intro-badge::before,.lmc-embed .lmc-category::before,.lmc-embed .lmc-tier-pill::before,.lmc-embed .lmc-start-meta-dot{width:5px !important;height:5px !important;border-radius:50% !important}";
-    // Ivan-identity strip (all embeds, 2026-07-22): the embed is framed as the PROSPECT's own
-    // deployed asset, so every Ivan-voiced element must go: the intro card (portrait +
-    // "Hey, I'm Ivan."), the site nav/footer (shared.js re-injects .im-footer with Ivan's
-    // Calendly AFTER assessment-v2 strips the shell one — CSS outlives that race), and the
-    // results share row (its share text attributes the assessment to Ivan Manfredi).
+    // Ivan-identity strip (all embeds): the embed is framed as the PROSPECT's own deployed asset,
+    // so every Ivan-voiced element must go: the site nav/footer (shared.js re-injects .im-footer
+    // with Ivan's Calendly AFTER assessment-v2 strips the shell one — CSS outlives that race) and
+    // the results share row (its share text attributes the assessment to Ivan Manfredi).
+    // NOTE (2026-07-23): the intro is NO LONGER hidden — the embed now builds its own de-Ivanized
+    // lead-in (buildIntroEmbed: no portrait, no "Hey I'm Ivan") so the sample opens with the same
+    // orient-before-you-start card a resource page has. Only nav/footer/share stay stripped.
     // Public (non-embed) LM pages are untouched — this css only ships in embed mode.
-    css += "html.lmc-embed .lmc-intro,html.lmc-embed .im-nav,html.lmc-embed .im-footer,html.lmc-embed .lmc-share{display:none !important}";
+    css += "html.lmc-embed .im-nav,html.lmc-embed .im-footer,html.lmc-embed .lmc-share{display:none !important}";
+    // The embed intro carries no avatar, so collapse the avatar grid column and keep it airy.
+    css += "html.lmc-embed .lmc-intro-inner{grid-template-columns:1fr !important}";
+    // The question heading is programmatically focused for screen-reader flow; the default UA
+    // focus ring on a non-interactive <h2> reads as a stray blue box in a branded sample. Hide it
+    // (focus is still set for a11y; keyboard focus on the actual options keeps its own ring).
+    css += "html.lmc-embed .lmc-question:focus{outline:none !important}";
     // Italic-pivot kill (embed mode, 2026-07-23): the light-italic second phrase on the
     // H1/intro/start headlines ("Campaign *Maturity Score*") is an Ivan editorial signature —
     // inside a client embed it reads as a reused template. When the lead did NOT pass a real
     // font (qHead), neutralize it: the em/i words render at the headline's own weight and style
     // (one coherent phrase), and the wavy accent sweep behind them is killed. When a font WAS
-    // passed, the pivot renders in the lead's actual typeface, so it's a legit brand move — kept.
+    // passed, the pivot renders in the lead's actual typeface, so it's a legit brand move — kept,
+    // UNLESS ?headstyle=serif: an editorial serif brand (NoShoot) has a fully upright headline, so
+    // the italic pivot + sweep are killed and the whole H1 renders as one upright serif phrase.
     // The ?hero=dark branch owns its own inline-italic accent2 pivot, so it opts out here.
-    if (!qHead && !heroDark) {
+    if ((!qHead || headSerif) && !heroDark) {
       css += "html.lmc-embed .lmc-h1 em,html.lmc-embed .lmc-h1 i,html.lmc-embed .lmc-start-h em,html.lmc-embed .lmc-start-h i,html.lmc-embed .lmc-intro-h em,html.lmc-embed .lmc-intro-h i{font-style:normal !important;font-weight:inherit !important}" +
         "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after,html.lmc-embed .lmc-start-h em::after,html.lmc-embed .lmc-start-h i::after,html.lmc-embed .lmc-intro-h em::after,html.lmc-embed .lmc-intro-h i::after{content:none !important;background-image:none !important}";
     }

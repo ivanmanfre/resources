@@ -179,3 +179,55 @@ test("sparse derivation does NOT fire when ?accent is absent (no synthesized ban
   const { css } = embed.buildEmbedVars(new URLSearchParams(""));
   assert.ok(!css.includes("html.lmc-embed .lmc-hero{background:"));
 });
+
+// --- ?headstyle=serif — upright serif headline path (editorial brands like NoShoot) ---
+test("headstyle=serif kills the italic pivot EVEN WITH a font passed (upright serif headline)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=4e347f&font=Newsreader&headstyle=serif"));
+  assert.ok(css.includes("{font-style:normal !important;font-weight:inherit !important}"), "em/i forced upright in serif mode");
+  assert.ok(css.includes('"Newsreader"'), "serif heading family still applied to the headline");
+});
+
+test("headstyle=serif puts questions back on the sans body face", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=4e347f&font=Newsreader&fontb=Geist&headstyle=serif"));
+  const NEUTRAL = '-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,Helvetica,Arial,sans-serif';
+  assert.ok(css.includes('html.lmc-embed .lmc-question,html.lmc-embed .lmc-question *{font-family:"Geist",' + NEUTRAL + ' !important}'), "questions on the sans body face");
+});
+
+test("headstyle=serif uses a serif fallback stack on the heading (not the sans neutral)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=4e347f&font=Newsreader&headstyle=serif"));
+  assert.ok(css.includes('"Newsreader",Georgia,"Times New Roman",Times,serif'), "serif fallback under the webfont");
+});
+
+test("auto-detect: a passed SERIF font triggers the upright-serif path without ?headstyle", () => {
+  // The deployed frontend forwards ?font= but not ?headstyle yet — a serif heading family alone
+  // must route to upright serif so an editorial lead resembles their site today.
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=4e347f&font=Newsreader"));
+  assert.ok(css.includes("{font-style:normal !important;font-weight:inherit !important}"), "serif font auto-triggers upright pivot-kill");
+  assert.ok(css.includes('"Newsreader",Georgia,"Times New Roman",Times,serif'), "serif fallback stack applied");
+});
+
+test("auto-detect: a passed SANS font keeps the italic pivot (not mis-routed to serif)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=4e347f&font=Poppins"));
+  assert.ok(!css.includes("{font-style:normal !important;font-weight:inherit !important}"), "sans font → pivot preserved, no serif path");
+  assert.ok(!css.includes('Georgia,"Times New Roman",Times,serif'), "no serif fallback for a sans brand");
+});
+
+// --- De-template: --sage re-points to accent for explicitly-branded embeds too ---
+test("explicit-brand embed (accent + bg) re-points --sage into the accent hue (no black rails)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=4e347f&bg=f7f5fb&ink=171429"));
+  const aSage = embed.hex(embed.mix(embed.parse("4e347f"), [0, 0, 0], 0.30));
+  assert.ok(css.includes("--sage:" + aSage), "card rule / rails / rings re-pointed to accent");
+  assert.ok(!css.includes("html.lmc-embed .lmc-hero{background:linear-gradient("), "sparse band NOT fired when bg/ink explicit");
+});
+
+test("accent-only embed still routes through the SPARSE path, not the explicit re-point", () => {
+  // The explicit re-point must be mutually exclusive with sparse (which requires no bg AND no ink).
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=5b82a6"));
+  assert.ok(css.includes("html.lmc-embed .lmc-hero{background:linear-gradient("), "accent-only → sparse band");
+});
+
+test("bare fallback (no accent) does NOT emit the explicit --sage re-point", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("bg=ffffff"));
+  const aSage = embed.hex(embed.mix([91, 130, 166], [0, 0, 0], 0.30));
+  assert.ok(!css.includes("--sage:" + aSage), "no accent parsed → no re-point");
+});

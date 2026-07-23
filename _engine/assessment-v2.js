@@ -131,6 +131,48 @@
     return sec;
   }
 
+  // --- Embed intro (de-Ivanized lead-in) ---
+  // The public intro (buildIntro) is Ivan's personal greeting: portrait + "Hey, I'm Ivan." Inside
+  // a prospect's scan the sample must read as THEIR asset, so this variant drops the portrait and
+  // the first-person Ivan copy and keeps only the orient-before-you-start card: a neutral "how this
+  // works" heading, the resource's own welcome line, the three what-to-expect points (time / honest
+  // inputs / free score), and a Start button. Same .lmc-intro classes so it inherits the brand CSS
+  // (serif heading, accent chips, accent Start button); no edit-mode fields (embeds aren't edited).
+  function buildIntroEmbed(data, bname) {
+    var titleText = String(data.title || "this assessment").replace(/<[^>]*>/g, "").trim();
+    var welcomeLine = (data.intro && data.intro.paragraph)
+      || (data.subtitle
+        ? "You just opened " + titleText + ". " + String(data.subtitle).replace(/\.$/, "") + "."
+        : "A quick, honest read on where you stand right now — and the few things worth fixing first.");
+    var pointA = (data.intro && data.intro.point_time) || (data.estimated_minutes ? data.estimated_minutes + " min, at your own pace" : "A few minutes, at your own pace");
+    var pointB = (data.intro && data.intro.point_value) || "Answer honestly — real numbers, not Likert vibes — so the result reflects your actual situation";
+    var pointC = (data.intro && data.intro.point_next) || "Your score and tier are free. Email unlocks the per-category breakdown and the fixes to prioritise.";
+    var sec = make("section", { class: "lmc-intro lmc-intro-embed" });
+    var inner = make("div", { class: "lmc-intro-inner" });
+    var body = make("div", { class: "lmc-intro-body" });
+    body.appendChild(make("div", { class: "lmc-intro-tag" }, "Before you start"));
+    body.appendChild(make("h2", { class: "lmc-intro-h" }, "How this works"));
+    body.appendChild(make("p", { class: "lmc-intro-p" }, esc(welcomeLine)));
+    var ul = make("ul", { class: "lmc-intro-points" });
+    [["a", "⏱", pointA], ["b", "→", pointB], ["c", "✓", pointC]].forEach(function (p) {
+      var li = make("li");
+      li.appendChild(make("span", { class: "lmc-intro-icon " + p[0] }, p[1]));
+      li.appendChild(make("span", null, esc(p[2])));
+      ul.appendChild(li);
+    });
+    body.appendChild(ul);
+    var startBtn = make("button", { class: "lmc-intro-start", type: "button" }, "Start the assessment <span>&darr;</span>");
+    startBtn.addEventListener("click", function () {
+      var t = document.querySelector(".lmc-widget");
+      if (t) t.scrollIntoView({ behavior: "smooth" });
+      beacon("cta_click", { answers: { target: "intro_start" } });
+    });
+    body.appendChild(startBtn);
+    inner.appendChild(body);
+    sec.appendChild(inner);
+    return sec;
+  }
+
   // --- Render ---
   function render(data, root) {
     window.__lm_slug = data.slug;
@@ -212,9 +254,12 @@
     hero.appendChild(hi);
     root.appendChild(hero);
 
-    // Embed mode: the intro is Ivan's personal greeting (portrait + "Hey, I'm Ivan.") —
-    // inside a prospect's scan the sample must read as THEIR asset, so skip it entirely.
-    if (!embedMode) root.appendChild(buildIntro(data, ".lmc-widget"));
+    // Intro / lead-in before the questions. The public page uses Ivan's personal greeting
+    // (portrait + "Hey, I'm Ivan."). Inside a prospect's scan that must read as THEIR asset, so
+    // embed mode builds a de-Ivanized lead-in instead of skipping the intro entirely — the sample
+    // now opens with the same orient-before-you-start card a resource page has (2026-07-23).
+    if (embedMode) root.appendChild(buildIntroEmbed(data, bname));
+    else root.appendChild(buildIntro(data, ".lmc-widget"));
 
     var widget = make("div", { class: "lmc-widget" });
     var card = make("div", { class: "lmc-card", id: "lmc-card" });
