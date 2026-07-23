@@ -129,10 +129,15 @@ Deno.serve(async (req: Request) => {
   // Guard: only when the slug maps to a real lm_drafts_v2 row (blocks junk slugs).
   if (!lm) {
     try {
-      const { data: draft } = await supabase.from("lm_drafts_v2").select("topic, format").eq("slug", lm_slug).limit(1).maybeSingle();
+      const { data: draft } = await supabase.from("lm_drafts_v2").select("topic, format, client_id").eq("slug", lm_slug).limit(1).maybeSingle();
       if (draft) {
+        // R2 (2026-07-23): carry the draft's tenancy into the auto-registered row
+        // (an unstamped row reads as Ivan-owned to the comment gate) and build the
+        // page URL from the beaconing page's own allowed origin, not Ivan's domain.
+        const evOrigin = req.headers.get("origin") ?? "";
+        const pageBase = ALLOWED_ORIGINS.has(evOrigin) && evOrigin.startsWith("https://resources.") ? evOrigin : "https://resources.ivanmanfredi.com";
         const { data: created } = await supabase.from("lead_magnets")
-          .insert({ slug: lm_slug, title: draft.topic ?? lm_slug, topic: draft.topic ?? null, format: draft.format ?? null, status: "published", resource_page_url: "https://resources.ivanmanfredi.com/" + lm_slug + "/" })
+          .insert({ slug: lm_slug, title: draft.topic ?? lm_slug, topic: draft.topic ?? null, format: draft.format ?? null, status: "published", client_id: draft.client_id ?? null, resource_page_url: pageBase + "/" + lm_slug + "/" })
           .select("id, title, format").single();
         if (created) { lm_id = created.id; lm_title = created.title ?? null; lm_format = created.format ?? null; }
       }
