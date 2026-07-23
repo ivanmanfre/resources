@@ -164,7 +164,9 @@
         var blogo = (__params.get("blogo") || "").trim();
         if (blogo && /^https?:\/\//i.test(blogo)) { var icons = document.querySelectorAll('link[rel~="icon"],link[rel="apple-touch-icon"]'); for (var ii = 0; ii < icons.length; ii++) icons[ii].setAttribute("href", blogo); }
         // The prospect's own logo, shown at the top of the sample so it reads as their asset.
-        embedLogoUrl = (__params.get("logo") || "").trim();
+        // The scan-side URL builder (assessmentEmbed.ts) sends the prospect logo as ?blogo=;
+        // accept it alongside the older ?logo= so the prospect's mark actually renders.
+        embedLogoUrl = (__params.get("logo") || __params.get("blogo") || "").trim();
       } catch (_) {}
     }
 
@@ -210,7 +212,9 @@
     hero.appendChild(hi);
     root.appendChild(hero);
 
-    root.appendChild(buildIntro(data, ".lmc-widget"));
+    // Embed mode: the intro is Ivan's personal greeting (portrait + "Hey, I'm Ivan.") —
+    // inside a prospect's scan the sample must read as THEIR asset, so skip it entirely.
+    if (!embedMode) root.appendChild(buildIntro(data, ".lmc-widget"));
 
     var widget = make("div", { class: "lmc-widget" });
     var card = make("div", { class: "lmc-card", id: "lmc-card" });
@@ -696,7 +700,10 @@
       // Share + retake
       var share = make("div", { class: "lmc-share" });
       var currentUrl = location.href.split("?")[0];
-      var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the time:";
+      // Embed mode: the sample is the PROSPECT's asset — never attribute it to Ivan in the
+      // share line. Use their brand name (?bname=) when the scan passed one, else no owner.
+      var shareOwner = embedMode ? ((typeof bname === "string" && bname) ? bname + "’s " : "") : "Ivan Manfredi’s ";
+      var shareText = "I scored " + res.overall + "/100 on " + shareOwner + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the time:";
       var liUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(currentUrl) + "&summary=" + encodeURIComponent(shareText);
       var liBtn = make("a", { class: "lmc-btn", href: liUrl, target: "_blank", rel: "noopener" }, "Share on LinkedIn →");
       liBtn.addEventListener("click", function () { beacon("share", { answers: { target: "linkedin", score: res.overall } }); });

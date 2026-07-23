@@ -22,7 +22,8 @@
   function safeFam(n) { n = (n || "").replace(/[^\w \-]/g, "").trim(); return n; }
 
   function buildEmbedVars(params) {
-    var rgb = parse(params.get("accent")) || [91, 130, 166]; // slate fallback
+    var accentParsed = parse(params.get("accent"));
+    var rgb = accentParsed || [91, 130, 166]; // slate fallback
     // Prospect fonts: the pipeline reads the lead's REAL typefaces off their site and (guardrail)
     // only forwards them when they resolve to loadable Google families. ?font= heading, ?fontb=
     // body. Absent (custom/unloadable font, or no brand) → a neutral system sans, never Ivan's serif.
@@ -149,6 +150,52 @@
         // serif metrics read as someone else's site once the serif is swapped out.
         "html.lmc-embed .lmc-intro-h,html.lmc-embed .lmc-start-h,html.lmc-embed .lmc-question{font-weight:700 !important;letter-spacing:-0.01em !important}" +
         "html.lmc-embed .lmc-start-h{max-width:34rem !important}";
+    }
+    // Sparse-brand derivation (2026-07-22): scans almost always capture ONLY ?accent
+    // (bg/hero/ink/fonts empty — real example anthony-hodges-94 → accent=5B82A6, rest blank).
+    // With accent alone the engine keeps its ink-black editorial furniture (progress bar,
+    // score ring, tier dots, option rails, italic pivots — all hardcoded to --sage=#131210 in
+    // assessment-v2.css) and its near-white paper everywhere but the buttons, so the embed
+    // reads as a cheap palette swap, not the lead's designed asset. When accent is the ONLY
+    // brand signal, SYNTHESIZE a full treatment FROM the accent: a barely-there accent-tinted
+    // page field, a confident deep accent-dark hero band with a white headline, and the whole
+    // ink/score family re-pointed into the accent hue so the page carries one brand color end
+    // to end. Generalizes across hues (blue/red/green all read intentional, never neon/muddy).
+    // Explicit ?bg/?hero/?ink already fully brand the page, so they SUPPRESS this entirely —
+    // it fires only in the sparse case and leaves every explicit-param output byte-identical.
+    if (accentParsed && !bgRgb && !inkRgb && !heroDark) {
+      var R = clamp(rgb[0]), G = clamp(rgb[1]), B = clamp(rgb[2]);
+      var field = hex(mix(rgb, [255, 255, 255], 0.955)); // ~4.5% accent — barely-there page field
+      var fieldSunk = hex(mix(rgb, [255, 255, 255], 0.91)); // deeper tint for sunk panels/hover
+      var aDark = hex(mix(rgb, [17, 17, 17], 0.80)); // deep accent-dark hero band
+      var aInk = hex(mix(rgb, [0, 0, 0], 0.35)); // accent-dark for ink moments (rings, rails, dots, pivots)
+      var aLight = hex(mix(rgb, [255, 255, 255], 0.55)); // light accent for pivots/dots on the dark hero
+      var bodyInk = hex(mix([19, 18, 16], rgb, 0.08)); // near-ink body text carrying a hint of the hue
+      var lineA = "rgba(" + R + "," + G + "," + B + ",0.20)"; // hairlines in-hue
+      // Page field + paper family: tints the hero/intro/widget surfaces the engine paints with
+      // var(--paper); the dark score/capture panels (var(--ink)) pick up bodyInk = deep in-hue ink.
+      css += "html.lmc-embed body,html.lmc-embed .lmc-root{--paper:" + field + ";--paper-sunk:" + fieldSunk + ";--paper-raise:#fff;background:" + field + " !important}" +
+        // Re-point the editorial ink accents (assessment-v2.css --sage=#131210) into the accent
+        // family: progress fill, score-ring arc, selected-option rail, tier/category/badge dots,
+        // question & heading italics, form-focus ring — one var swap carries the whole hue.
+        "html.lmc-embed .lmc-root{--sage:" + aInk + ";--sage-ink:" + aInk + ";--sage-soft:rgba(" + R + "," + G + "," + B + ",0.10);--sage-faint:rgba(" + R + "," + G + "," + B + ",0.05);--line:" + lineA + ";--line-soft:rgba(" + R + "," + G + "," + B + ",0.10);--ink:" + bodyInk + "}" +
+        // Confident deep accent-dark hero band with a white headline — the lead's brand moment,
+        // replacing the flat near-white hero. The italic pivot renders inline in a light accent
+        // (the wavy sweep is killed on the dark band; it stays on the light sections below).
+        "html.lmc-embed .lmc-hero{background:" + aDark + " !important;border-bottom:none !important}" +
+        "html.lmc-embed .lmc-h1{color:#fff !important}" +
+        "html.lmc-embed .lmc-h1 em,html.lmc-embed .lmc-h1 i{color:" + aLight + " !important}" +
+        "html.lmc-embed .lmc-h1 em::after,html.lmc-embed .lmc-h1 i::after{content:none !important;background-image:none !important}" +
+        "html.lmc-embed .lmc-sub{color:rgba(255,255,255,0.78) !important}" +
+        "html.lmc-embed .lmc-badge{color:rgba(255,255,255,0.62) !important}" +
+        "html.lmc-embed .lmc-badge::before{background:" + aLight + " !important}" +
+        "html.lmc-embed .lmc-meta,html.lmc-embed .lmc-meta-chip{color:rgba(255,255,255,0.60) !important}" +
+        "html.lmc-embed .lmc-meta-chip::before{background:" + aLight + " !important}" +
+        // Options read as crisp white cards on the tinted field; selected rail is accent (via --sage).
+        "html.lmc-embed .lmc-opt{background:#fff !important}" +
+        "html.lmc-embed .lmc-opt:hover{background:" + fieldSunk + " !important}" +
+        // Score-ring number joins the family (the arc/track already follow --sage/--line).
+        "html.lmc-embed .lmc-score-ring .score-num .num{color:" + aInk + " !important}";
     }
     return { css: css, fontLink: fontLink };
   }

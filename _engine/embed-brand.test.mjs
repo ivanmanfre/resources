@@ -93,3 +93,51 @@ test("buildEmbedVars falls back to slate #5b82a6 when ?accent is absent", () => 
   const { css } = embed.buildEmbedVars(p);
   assert.ok(css.includes("--accent:#5b82a6"));
 });
+
+// --- Sparse-brand derivation: accent is the ONLY brand signal (the common scan case).
+// Synthesizes a tinted page field, a deep accent-dark hero band, and re-points the
+// editorial ink family (--sage/--ink/--line) into the accent hue.
+test("sparse derivation fires when only ?accent is present (accent=5b82a6)", () => {
+  const p = new URLSearchParams("accent=5b82a6");
+  const { css } = embed.buildEmbedVars(p);
+  const rgb = embed.parse("5b82a6");
+  // Tinted page field: mix(accent,white,0.955)
+  assert.ok(css.includes("--paper:" + embed.hex(embed.mix(rgb, [255, 255, 255], 0.955))));
+  // Deep accent-dark hero band: mix(accent,[17,17,17],0.80)
+  assert.ok(css.includes("html.lmc-embed .lmc-hero{background:" + embed.hex(embed.mix(rgb, [17, 17, 17], 0.80)) + " !important"));
+  // White headline on the dark band
+  assert.ok(css.includes("html.lmc-embed .lmc-h1{color:#fff !important}"));
+  // Editorial ink accents re-pointed into the accent hue via --sage = mix(accent,black,0.35)
+  assert.ok(css.includes("--sage:" + embed.hex(embed.mix(rgb, [0, 0, 0], 0.35))));
+});
+
+test("sparse derivation generalizes across hues (red + green produce their own dark band)", () => {
+  for (const h of ["e02020", "2a8f65"]) {
+    const rgb = embed.parse(h);
+    const { css } = embed.buildEmbedVars(new URLSearchParams("accent=" + h));
+    assert.ok(css.includes("html.lmc-embed .lmc-hero{background:" + embed.hex(embed.mix(rgb, [17, 17, 17], 0.80)) + " !important"), h + " hero band");
+    assert.ok(css.includes("--paper:" + embed.hex(embed.mix(rgb, [255, 255, 255], 0.955))), h + " field");
+  }
+});
+
+test("sparse derivation is SUPPRESSED when ?bg is explicit (existing behavior preserved)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=5b82a6&bg=ffffff"));
+  assert.ok(!css.includes("html.lmc-embed .lmc-hero{background:"), "no synthesized hero band");
+  assert.ok(css.includes("--paper:#ffffff"), "explicit bg still wins");
+});
+
+test("sparse derivation is SUPPRESSED when ?ink is explicit", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=5b82a6&ink=112233"));
+  assert.ok(!css.includes("html.lmc-embed .lmc-hero{background:"));
+});
+
+test("sparse derivation is SUPPRESSED when ?hero=dark is explicit", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams("accent=5b82a6&hero=dark"));
+  // The dark-hero branch owns the hero here; the sparse --sage re-point must NOT appear.
+  assert.ok(!css.includes("--sage:" + embed.hex(embed.mix(embed.parse("5b82a6"), [0, 0, 0], 0.35))));
+});
+
+test("sparse derivation does NOT fire when ?accent is absent (no synthesized band on bare fallback)", () => {
+  const { css } = embed.buildEmbedVars(new URLSearchParams(""));
+  assert.ok(!css.includes("html.lmc-embed .lmc-hero{background:"));
+});
