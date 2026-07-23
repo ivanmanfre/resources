@@ -30,7 +30,7 @@
     setTimeout(function () { t.classList.remove("show"); }, 2500);
   }
 
-  function emailIsValid(e) { return !!e && /[^@\s]+@[^@\s]+\.[^@\s]+/.test(e); }
+  function emailIsValid(e) { e = String(e || "").trim(); return !!e && /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(e); }
 
   function canonicalBeaconEvent(tool_type, event, extra) {
     var q = new URLSearchParams(location.search);

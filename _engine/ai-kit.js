@@ -359,8 +359,31 @@
     landing.appendChild(buildClientHero(data));
     var grid = L.make("div", { class: "lmk-landing-grid" });
     grid.appendChild(buildWhatsInside(data));
+    // Returning visitor on the thank-you URL (?thanks=1) who already captured:
+    // render the thank-you view directly instead of the gate. Unknown visitors
+    // on that URL fall through to the normal landing (param stripped).
+    var params = new URLSearchParams(location.search || "");
+    if (params.get("thanks") === "1") {
+      var known = (L.readerIdentity && L.readerIdentity().email) || null;
+      if (known) {
+        var tyDirect = buildThankYou(data, null);
+        root.appendChild(tyDirect);
+        var closeT = buildClientClosing(data, "thankyou");
+        if (closeT) root.appendChild(closeT);
+        var footT = buildClientFooter(data);
+        if (footT) root.appendChild(footT);
+        L.observeReveal(root, ".lmk-reveal");
+        revealSafety(root);
+        L.beacon("ai-kit", "view", { answers: { via: "thanks_url" } });
+        return;
+      }
+      try { history.replaceState(null, "", location.pathname); } catch (_) {}
+    }
+
     grid.appendChild(buildGate(data, function (sub) {
       // Submit → thank-you view (kit goes out by email); closing + footer stay.
+      // The thank-you gets its own URL so it is trackable and survives reload.
+      try { history.pushState(null, "", "?thanks=1"); } catch (_) {}
       var ty = buildThankYou(data, sub && sub.name);
       root.insertBefore(ty, landing.nextSibling);
       landing.remove();
