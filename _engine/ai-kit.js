@@ -265,7 +265,9 @@
     var fill = function (s) { return String(s || "").split("{name}").join(namePart); };
     var sec = L.make("section", { class: "lmk-ty lmk-reveal", "aria-label": "Thank you" });
     var videoBlock = t.video_embed
-      ? '<div class="lmk-ty-video"><iframe src="' + L.esc(t.video_embed) + '" title="Walkthrough" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
+      ? (/\.mp4(\?|$)/i.test(String(t.video_embed))
+          ? '<div class="lmk-ty-video"><video src="' + L.esc(t.video_embed) + '" title="Walkthrough" controls playsinline preload="metadata"></video></div>'
+          : '<div class="lmk-ty-video"><iframe src="' + L.esc(t.video_embed) + '" title="Walkthrough" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>')
       : t.video_url
       ? '<div class="lmk-ty-video"><video controls preload="none"' + (t.video_poster ? ' poster="' + L.esc(t.video_poster) + '"' : "") + ' src="' + L.esc(t.video_url) + '"></video></div>'
       : '<div class="lmk-ty-video lmk-ty-video-soon" aria-hidden="true"><span class="lmk-ty-play">▶</span><span class="lmk-ty-soon">A short walkthrough from ' + L.esc(clientName(data)) + ' lands here soon.</span></div>';

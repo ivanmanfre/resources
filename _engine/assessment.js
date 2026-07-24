@@ -992,7 +992,11 @@
       if (__tyv) {
         var __vwrap = make("div", { class: "lmc-ty-video" });
         __vwrap.style.cssText = "position:relative;padding-bottom:56.25%;height:0;margin:0 0 28px;border-radius:12px;overflow:hidden;background:#000";
-        __vwrap.innerHTML = '<iframe src="' + esc(String(__tyv)) + '" title="Walkthrough" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+        var __abs = "position:absolute;top:0;left:0;width:100%;height:100%;border:0";
+        // Self-hosted .mp4 (Supabase) renders as a native player; embed URLs (Loom, etc) stay iframes.
+        __vwrap.innerHTML = /\.mp4(\?|$)/i.test(String(__tyv))
+          ? '<video src="' + esc(String(__tyv)) + '" title="Walkthrough" controls playsinline preload="metadata" style="' + __abs + ';background:#000"></video>'
+          : '<iframe src="' + esc(String(__tyv)) + '" title="Walkthrough" style="' + __abs + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
         host.appendChild(__vwrap);
       }
 
