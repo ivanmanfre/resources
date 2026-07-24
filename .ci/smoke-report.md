@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: d9192fdd1968cb96cc8ab7ad7081b59656b3160e at 2026-07-23T04:43:02.880Z
+Deploy: 8d64d6f2e77b428341797aa9620af3e5a75d6881 at 2026-07-24T19:29:32.111Z
 
-- r2-smoke-ivan-ai-kit: data.json HTTP 404
+- opus-5-prove-it-kit: data.json HTTP 503
