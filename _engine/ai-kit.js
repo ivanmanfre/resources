@@ -272,6 +272,9 @@
       ? '<div class="lmk-ty-video"><video controls preload="none"' + (t.video_poster ? ' poster="' + L.esc(t.video_poster) + '"' : "") + ' src="' + L.esc(t.video_url) + '"></video></div>'
       : '<div class="lmk-ty-video lmk-ty-video-soon" aria-hidden="true"><span class="lmk-ty-play">▶</span><span class="lmk-ty-soon">A short walkthrough from ' + L.esc(clientName(data)) + ' lands here soon.</span></div>';
     var bullets = Array.isArray(t.bullets) ? t.bullets : [];
+    // Default video lead-in for client kit/report LMs that ship a walkthrough but no per-LM
+    // video_lead. Only shown when a video is actually present, never on the "coming soon" state.
+    var vlead = t.video_lead || ((t.video_embed || t.video_url) ? "Here's a good way to spend that time 👇" : "");
     var kitBtn = t.kit_open === false ? "" :
       '<div class="lmk-ty-actions"><a class="lmk-ty-open" href="?unlocked=1">' + L.esc(t.kit_label || "Open the kit") + ' <span aria-hidden="true">→</span></a></div>';
     sec.innerHTML =
@@ -279,8 +282,8 @@
         (c.logo ? '<img class="lmk-ty-logo" src="' + L.esc(c.logo) + '" alt="' + L.esc(clientName(data)) + '">' : "") +
         '<p class="lmk-ty-eyebrow">' + L.esc(fill(t.eyebrow || "You're in")) + '</p>' +
         '<h2 class="lmk-ty-h">' + L.esc(fill(t.headline || "Your kit is ready{name}.")) + '</h2>' +
-        '<p class="lmk-ty-body">' + L.esc(fill(t.body || "Open it right here. A copy is also on its way to your inbox.")) + '</p>' +
-        (t.video_lead ? '<p class="lmk-ty-vlead" style="font-size:1.45rem;font-weight:800;line-height:1.2;margin:26px 0 12px">' + L.esc(fill(t.video_lead)) + '</p>' : "") +
+        '<p class="lmk-ty-body">' + L.esc(fill(t.body || "Your resource is on its way. Should be with you in 5–10 minutes.")) + '</p>' +
+        (vlead ? '<p class="lmk-ty-vlead" style="font-size:1.45rem;font-weight:800;line-height:1.2;margin:26px 0 12px">' + L.esc(fill(vlead)) + '</p>' : "") +
         videoBlock +
         kitBtn +
         (bullets.length ? '<ul class="lmk-ty-points">' + bullets.map(function (b) { return '<li>' + L.esc(b) + '</li>'; }).join("") + '</ul>' : "") +
