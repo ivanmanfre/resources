@@ -1,5 +1,16 @@
 {
   "slug": "merci-paid-media-maturity-score",
+  "client": {
+    "id": "merci",
+    "name": "Alex Ayre",
+    "short_name": "Alex",
+    "portrait": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/merci-alex-portrait.jpg",
+    "site_label": "Founder, Merci",
+    "accent": "#65c8c0",
+    "ink": "#000000",
+    "booking_url": "https://bemerci.com/contact",
+    "cta_label": "Let's Connect"
+  },
   "title": "The Paid Media Maturity Score",
   "subtitle": "A five part read on whether your reporting can be trusted with the next dollar of spend.",
   "brand": {
@@ -9,6 +20,7 @@
   "estimated_minutes": 8,
   "intro": {
     "paragraph": "Five categories, covering the places paid media accounts leak. It takes about eight minutes and the result names the two worth fixing first.",
+    "note": "Built from twelve years and $50MM+ in managed spend across Google, Meta, LinkedIn and YouTube.",
     "point_time": "8 minutes, at your pace",
     "point_value": "Answer from how the account actually runs, not how it was designed to run.",
     "point_next": "Your score and tier are free. Email unlocks the per category breakdown and the fixes to prioritise."
@@ -657,6 +669,13 @@
     "high": "Measured"
   },
   "headline_formula": "Your weakest area is <strong>{weakest_category_name}</strong> at {weakest_category_score} out of 100, and that is where the next dollar of spend leaks first.",
+  "capture_gate": {
+    "headline_html": "Unlock your full report",
+    "description": "Enter your email and we will send the per category breakdown, the recommendations for your score, and the three fixes we would prioritise based on your weakest category.",
+    "button": "Unlock report",
+    "note": "One email with your report. Nothing else unless you ask.",
+    "placeholder": "you@company.com"
+  },
   "computed_outputs": [
     {
       "id": "annual_spend",
