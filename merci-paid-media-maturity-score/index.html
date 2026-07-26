@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Paid Media Maturity Score | Merci</title>
+<meta name="description" content="A five part read on whether your reporting can be trusted with the next dollar of spend. Measurement, lead quality, structure, incrementality and planning, scored out of 100.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#65c8c0">
+<meta name="author" content="Merci">
+<meta property="og:title" content="The Paid Media Maturity Score | Merci">
+<meta property="og:description" content="A five part read on whether your reporting can be trusted with the next dollar of spend.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Merci">
+<meta property="og:url" content="https://resources.ivanmanfredi.com/merci-paid-media-maturity-score/">
+<meta property="og:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/merci-paid-media-maturity-score-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/merci-paid-media-maturity-score-cover.png">
+<link rel="icon" href="https://images.squarespace-cdn.com/content/v1/680fd822a163e245690877af/8c3069fe-c33d-4ca5-aea0-1ec26c733414/favicon.ico?format=100w">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/_engine/assessment-v2.css">
+<style>
+  /* Merci brand skin. Tokens read live off bemerci.com: mint #65c8c0, ink #0e1512,
+     Open Sans headings over Inter body, 4px radius.
+     --sage is the engine's accent variable and it carries small uppercase label text
+     (.lmc-rec strong) plus italic display cuts, so it holds a darkened same-hue teal
+     that clears AA on white (5.1:1). The true brand mint is put back on the purely
+     decorative surfaces below, where contrast is not load bearing. */
+  :root {
+    --paper: #FFFFFF;
+    --ink: #0e1512;
+    --ink-soft: rgba(14, 21, 18, 0.72);
+    --ink-faint: rgba(14, 21, 18, 0.42);
+    --line: rgba(14, 21, 18, 0.14);
+    --line-soft: rgba(14, 21, 18, 0.08);
+    --sage: #2a7a72;
+    --sage-ink: #0e1512;
+    --sage-soft: rgba(101, 200, 192, 0.18);
+    --sage-faint: rgba(101, 200, 192, 0.07);
+    --merci-mint: #65c8c0;
+  }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #fff; }
+  .lmc-root, .lmc-root p, .lmc-root li, .lmc-root label, .lmc-root button, .lmc-root input { font-family: 'Inter', system-ui, sans-serif; }
+  .lmc-root h1, .lmc-root h2, .lmc-root h3, .lmc-h1, .lmc-question, .lmc-intro-h, .lmc-start-h { font-family: 'Open Sans', system-ui, sans-serif; }
+  /* Brand mint on the decorative accents: bullets, bars, rings, selected edges. */
+  .lmc-badge::before, .lmc-meta-chip::before, .lmc-intro-tag::before,
+  .lmc-intro-points li::before, .lmc-category::before, .lmc-tier-pill::before,
+  .lmc-tier-pill.medium::before, .lmc-rec ul li::before { background: var(--merci-mint); }
+  .lmc-progress-fill, .lmc-cat-fill { background: var(--merci-mint); }
+  .lmc-score-ring .arc { stroke: var(--merci-mint); }
+  .lmc-card { border-left-color: var(--merci-mint); }
+  .lmc-opt.selected { border-left-color: var(--merci-mint); }
+  .lmc-opt-check.selected .lmc-check-box { background: var(--merci-mint); border-color: var(--merci-mint); color: #0e1512; }
+  .lmc-btn, .lmc-btn-secondary, .lmc-opt, .lmc-input-row, .lmc-textarea { border-radius: 4px; }
+  /* Merci footer. shared.css force-restyles .im-footer chrome with !important, so the
+     brand overrides below match it. Stripped automatically in embed mode. */
+  .im-footer { background: #0e1512; color: #fff; padding: 3rem 1.5rem 2rem; margin-top: 3rem; }
+  .im-footer-inner { max-width: 760px; margin: 0 auto; }
+  .im-footer a { color: #fff; text-decoration: none; }
+  .im-footer-cta { border: 1px solid rgba(255,255,255,.18); border-radius: 4px; padding: 2rem; margin-bottom: 2.5rem; text-align: center; }
+  .im-footer-cta h2 { font-family: 'Open Sans', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 .75rem; }
+  .im-footer-cta p { margin: 0 auto 1.5rem; max-width: 30rem; color: rgba(255,255,255,.74); font-size: .95rem; line-height: 1.6; }
+  .im-footer-cta a.btn { display: inline-block !important; padding: .75rem 1.5rem !important; background: #65c8c0 !important; color: #0e1512 !important; font-family: 'Open Sans', sans-serif !important; font-weight: 700 !important; border-radius: 4px !important; text-transform: none !important; letter-spacing: normal !important; }
+  .im-footer-meta { color: rgba(255,255,255,.5); font-size: .8rem; letter-spacing: .04em; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.14); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  #skip-link { position: absolute; left: -9999px; }
+  #skip-link:focus { position: fixed; top: .5rem; left: .5rem; width: auto; height: auto; background: #0e1512; color: #fff; padding: .5rem 1rem; z-index: 200; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: .82rem; text-decoration: none; border-radius: 4px; }
+</style>
+</head>
+<body>
+<a id="skip-link" href="#lmc-root">Skip to the assessment</a>
+<main id="lmc-root" class="lmc-root" data-lm-assessment-src="./data.json"></main>
+<footer class="im-footer"><div class="im-footer-inner">
+  <div class="im-footer-cta">
+    <h2>Want the plan behind the score?</h2>
+    <p>Bring your result to a 30 minute call and we will walk the two categories that scored lowest, inside your account, with your numbers.</p>
+    <a class="btn" href="https://bemerci.com/contact" target="_blank" rel="noopener">Book a Call</a>
+  </div>
+  <div class="im-footer-meta"><span>&copy; 2026 Merci</span><span><a href="https://bemerci.com" target="_blank" rel="noopener">bemerci.com</a></span></div>
+</div></footer>
+<script>
+  window.__lm_client = true;
+  window.__lm_slug = "merci-paid-media-maturity-score";
+  window.__lm_beacon_url = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
+  window.__supabase_anon_key = "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
+</script>
+<script src="/_engine/shared.js"></script>
+<script>
+/* Capture-beacon fix, scoped to this page only (same override the RISE client pages carry).
+   The shared beacon() in _engine/shared.js sends via navigator.sendBeacon or a header-less
+   fetch, both of which reach the Supabase gateway with no auth header and 401. This override
+   adds the publishable anon key (apikey + Bearer) on a single authenticated fetch with
+   keepalive:true, which is unload-safe on its own, so captures record exactly once. It
+   replaces only window.LM.beacon on this page and does not touch shared.js, which ~79 other
+   LM pages share. */
+(function () {
+  if (!window.LM || typeof window.LM.canonicalBeaconEvent !== "function") return;
+  var BEACON = window.__lm_beacon_url || "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
+  var KEY = window.__supabase_anon_key || "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
+  window.LM.beacon = function (tool_type, event, extra) {
+    try {
+      var body = window.LM.canonicalBeaconEvent(tool_type, event, extra);
+      fetch(BEACON, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": KEY, "Authorization": "Bearer " + KEY },
+        body: JSON.stringify(body),
+        keepalive: true
+      }).catch(function () {});
+    } catch (_) {}
+  };
+})();
+</script>
+<script>
+/* Merci voice patch, scoped to this page. assessment-v2.js hardcodes Ivan's first person
+   in the post-result opt-in block; this rewrites it to Merci's once the block renders.
+   No upstream edit, so the other LM pages are untouched. */
+(function () {
+  var TARGET = "If you want this report emailed to you, with what I'd fix first, drop your address. Otherwise feel free to close the tab or bookmark the page.";
+  var MERCI = "If you want this report emailed to you, with what we would fix first, drop your address. Otherwise feel free to close the tab or bookmark the page.";
+  function fix() {
+    var ps = document.querySelectorAll(".lmc-optin p");
+    for (var i = 0; i < ps.length; i++) {
+      if (ps[i].textContent.trim() === TARGET) { ps[i].textContent = MERCI; return true; }
+    }
+    return false;
+  }
+  var root = document.getElementById("lmc-root");
+  if (!root || typeof MutationObserver !== "function") return;
+  new MutationObserver(function () { fix(); }).observe(root, { childList: true, subtree: true });
+})();
+</script>
+<script src="/_engine/assessment-score.js"></script>
+<script src="/_engine/embed-brand.js"></script>
+<script src="/_engine/assessment-v2.js" defer></script>
+</body>
+</html>
