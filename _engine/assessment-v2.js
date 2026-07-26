@@ -97,10 +97,18 @@
     var pointC = (data.intro && data.intro.point_next) || "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes.";
     var sec = make("section", { class: "lmc-intro" });
     var inner = make("div", { class: "lmc-intro-inner" });
-    inner.appendChild(make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" }));
+    // White-label tenant (data.client.id), mirroring shared.js clientOf(): a client page
+    // must never greet with Ivan's name or portrait. Additive — no existing v2 assessment
+    // carries a `client` block, so this is inert for the whole published catalog.
+    var _wc = (data && data.client && data.client.id) ? data.client : null;
+    var avatarEl = _wc
+      ? (_wc.portrait ? make("img", { class: "lmc-intro-avatar", src: _wc.portrait, alt: _wc.name || "" }) : null)
+      : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
+    if (avatarEl) inner.appendChild(avatarEl);
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
-    body.appendChild(make("h2", { class: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
+    body.appendChild(make("h2", { class: "lmc-intro-h" },
+      _wc ? esc("Hey, I'm " + (_wc.short_name || _wc.name) + ".") : "Hey, I&rsquo;m Ivan."));
     var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
     if (window.LM && window.LM.editMode) {
       window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
