@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 8d64d6f2e77b428341797aa9620af3e5a75d6881 at 2026-07-24T19:29:32.111Z
+Deploy: 33e90d0ce64d356fc8433549e1dc7de2a4ac794c at 2026-07-27T14:02:59.553Z
 
-- opus-5-prove-it-kit: data.json HTTP 503
+- matt-cope-7e-assessment: data.json HTTP 404
