@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: fdc9056d911b1348cd01373820f51501a17a462b at 2026-07-29T20:32:23.399Z
+Deploy: e91f804ab16b6e172f435b0a0e820acc2fc0e558 at 2026-07-30T11:39:41.571Z
 
-- david-card-38-assessment: data.json HTTP 404
+- richard-fowler-af-assessment: data.json HTTP 404
