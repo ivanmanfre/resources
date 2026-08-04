@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 7be95805fe6bd209b28937687cccb1bfda872478 at 2026-08-04T11:56:00.189Z
+Deploy: 0b4871036a8cd788b34ee397d2b27c0fc2adaeff at 2026-08-04T12:37:52.303Z
 
-- stefan-boyle-6a-assessment: data.json HTTP 404
+- jo-kaminska-96-assessment: data.json HTTP 404
