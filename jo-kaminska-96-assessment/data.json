@@ -1,0 +1,563 @@
+{
+ "slug": "jo-kaminska-96-assessment",
+ "title": "AI Search Pipeline Readiness Score",
+ "subtitle": "Find out whether your GTM foundation, content process, and measurement discipline can turn LLM visibility into actual pipeline.",
+ "brand": {
+  "accent": "#3fcff2",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "pipeline_math",
+   "name": "Pipeline Math",
+   "questions": [
+    {
+     "id": "pipeline_math_q1",
+     "text": "When someone asks what your SEO or AEO investment will return, what do you reach for?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Traffic projections or rankings data from our tool",
+       "score": 1
+      },
+      {
+       "label": "Case studies or benchmarks from the agency or vendor we work with",
+       "score": 2
+      },
+      {
+       "label": "A rough sense of our conversion funnel, but we haven't modeled it out",
+       "score": 3
+      },
+      {
+       "label": "We can walk through our funnel rates and estimate the revenue range organic could address",
+       "score": 4
+      },
+      {
+       "label": "We've sized our serviceable addressable market and modeled what percent capture we'd need to justify the spend",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "pipeline_math_q2",
+     "text": "How do you define success for your organic channel right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "More traffic and better keyword rankings",
+       "score": 1
+      },
+      {
+       "label": "More organic leads filling out forms",
+       "score": 2
+      },
+      {
+       "label": "An increase in MQLs we can attribute to organic",
+       "score": 3
+      },
+      {
+       "label": "SQLs and pipeline with organic as a contributing touch",
+       "score": 4
+      },
+      {
+       "label": "Closed-won revenue tied back to organic, counted per quarter",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "pipeline_math_q3",
+     "text": "When you evaluate a new content topic or keyword, what is the first filter you apply?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Search volume",
+       "score": 1
+      },
+      {
+       "label": "Keyword difficulty score",
+       "score": 2
+      },
+      {
+       "label": "Whether it fits the editorial calendar",
+       "score": 3
+      },
+      {
+       "label": "Whether our ICP is likely to search for it",
+       "score": 4
+      },
+      {
+       "label": "Whether traffic from it could convert into pipeline at our actual funnel rates",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your organic decisions are running on gut feel.",
+     "text": "Every tactic decision you make right now (content, backlinks, topics) is disconnected from revenue. Vendor promises about pipeline are not a substitute for your own funnel math. Before you commission another article, map your conversion funnel with real numbers: visitor-to-lead rate, MQL-to-SQL rate, SQL-to-close rate. Then ask what 1,000 net-new ICP visitors per month would mean in dollars. That question should run every planning session.",
+     "steps": [
+      "Pull your actual funnel rates from the last 90 days: visitor-to-lead, MQL-to-SQL, SQL-to-close",
+      "Size your serviceable addressable market — the segment you can realistically reach, not the total market",
+      "Calculate what a realistic organic traffic increase would mean in pipeline at your current funnel rates",
+      "Set one pipeline metric as the primary success measure for organic — demos, SQLs, or closed-won revenue"
+     ]
+    },
+    "mid": {
+     "headline": "You know the funnel exists. You're not using it to make decisions yet.",
+     "text": "The instinct is there. The gap is making the math explicit before a tactic gets greenlit. When an agency or internal team proposes a new content push, the next question should be: what does this do to our pipeline model? If they can't answer, the tactic is not ready to run.",
+     "steps": [
+      "Build a simple pipeline model you update monthly: visitor count, funnel rates, implied pipeline",
+      "Report organic to leadership in SQL and pipeline terms, not traffic terms",
+      "Require any agency or vendor recommendation to come with the numbers behind the tactic"
+     ]
+    },
+    "high": {
+     "headline": "You're running organic like a revenue program.",
+     "text": "You treat pipeline math as the frame for every organic decision. That puts you in a small minority. The one failure mode from here: letting the model go stale. Funnel rates shift, and a model built on old data gives you false confidence.",
+     "steps": [
+      "Review funnel rates quarterly and update your pipeline model when they shift",
+      "Track organic's share of total pipeline, not only its absolute contribution",
+      "Tie every content investment decision directly to the pipeline model, not to editorial preference"
+     ]
+    }
+   }
+  },
+  {
+   "id": "gtm_seo_alignment",
+   "name": "GTM-SEO Alignment",
+   "questions": [
+    {
+     "id": "gtm_seo_alignment_q1",
+     "text": "How locked in is your positioning and ICP definition before you build organic content?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are still working out our positioning",
+       "score": 1
+      },
+      {
+       "label": "Positioning is clear internally but not written down consistently",
+       "score": 2
+      },
+      {
+       "label": "We have positioning docs but they don't consistently shape what we publish",
+       "score": 3
+      },
+      {
+       "label": "Our positioning shapes our content topics and angles",
+       "score": 4
+      },
+      {
+       "label": "Any GTM update immediately triggers a review of which categories we compete in organically",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "gtm_seo_alignment_q2",
+     "text": "Where in your go-to-market planning does organic search or AEO enter the conversation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "After most other channels are already running",
+       "score": 1
+      },
+      {
+       "label": "When we decide we need more top-of-funnel traffic",
+       "score": 2
+      },
+      {
+       "label": "We have an SEO team but they sit separate from GTM planning",
+       "score": 3
+      },
+      {
+       "label": "SEO and AEO are part of the GTM planning conversation",
+       "score": 4
+      },
+      {
+       "label": "Organic is an input at product positioning and launch stages, before content gets written",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "gtm_seo_alignment_q3",
+     "text": "If you launched a new product line or repositioned tomorrow, what would happen to your organic program?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would keep publishing what we're publishing",
+       "score": 1
+      },
+      {
+       "label": "We'd mention the new product in upcoming content",
+       "score": 2
+      },
+      {
+       "label": "We'd build new landing pages for it",
+       "score": 3
+      },
+      {
+       "label": "We'd review which topics and categories to compete in given the new positioning",
+       "score": 4
+      },
+      {
+       "label": "The organic program would restart from the chain: positioning first, categories second, content third",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your organic program is detached from your GTM. That's where the pipeline gap starts.",
+     "text": "Whether LLMs cite you for a category depends entirely on whether you've claimed that category credibly. That claim starts with positioning. If your positioning shifts and your content doesn't, you're building visibility for buyers you no longer target — or missing the ones you do.",
+     "steps": [
+      "Lock ICP and positioning before touching the content strategy",
+      "Map the categories and terms your ICP uses when they search or query AI — check them against your positioning",
+      "Audit your existing content: does it reinforce the categories you want to win?",
+      "Treat any GTM update as a trigger to review your organic program, not a separate event"
+     ]
+    },
+    "mid": {
+     "headline": "You see the connection between GTM and organic. It's not yet systematic.",
+     "text": "The instinct is right — organic follows GTM decisions, it doesn't run in parallel. The gap is that someone still has to make the connection manually each time. Build the trigger: any positioning change, new vertical, or product update should prompt a review of which categories you're competing for organically before the change goes live.",
+     "steps": [
+      "Document which categories and topics you currently target and check them against your current ICP",
+      "Add a standing agenda item: any GTM change gets an organic impact review before it goes live",
+      "Bring your SEO or AEO team into positioning conversations, not just content execution"
+     ]
+    },
+    "high": {
+     "headline": "You've connected the GTM-to-organic chain.",
+     "text": "Product strategy decides what you build. Positioning decides what you claim. That chain determines which categories you can credibly compete for in search and AI answers. You understand this. The risk at scale is one team making a GTM decision without telling the other.",
+     "steps": [
+      "Document the GTM-to-organic chain explicitly so new hires and partners can follow it",
+      "Audit which categories you currently appear in across LLM answers and verify they match your stated positioning",
+      "Run a quarterly check: are the categories where you're winning organic actually the ones driving pipeline?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "aeo_measurement_rigor",
+   "name": "AEO Measurement Rigor",
+   "questions": [
+    {
+     "id": "aeo_measurement_rigor_q1",
+     "text": "When you check whether your brand appears in AI model answers, how do you do it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We check occasionally when someone asks",
+       "score": 1
+      },
+      {
+       "label": "We screenshot results when we notice something positive",
+       "score": 2
+      },
+      {
+       "label": "We query a fixed set of prompts manually each month",
+       "score": 3
+      },
+      {
+       "label": "We run a consistent prompt set across multiple models and aggregate results over time",
+       "score": 4
+      },
+      {
+       "label": "We split our prompt set into test and control groups and track retrieved, cited, and mentioned separately over a consistent time window",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "aeo_measurement_rigor_q2",
+     "text": "How do you know if a change in LLM visibility was caused by your work?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We can't really tell",
+       "score": 1
+      },
+      {
+       "label": "We compare screenshots before and after something we changed",
+       "score": 2
+      },
+      {
+       "label": "We track trends and see if they moved after specific actions we took",
+       "score": 3
+      },
+      {
+       "label": "We change one variable at a time and wait for a long enough window before drawing conclusions",
+       "score": 4
+      },
+      {
+       "label": "We isolate one variable per experiment, use a control prompt set, and read retrieval, citation, and mention rates in that sequence",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "aeo_measurement_rigor_q3",
+     "text": "When leadership or a client asks whether you're winning in AI search, what can you show them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A screenshot of the brand appearing in a ChatGPT answer",
+       "score": 1
+      },
+      {
+       "label": "A few examples of brand mentions we found",
+       "score": 2
+      },
+      {
+       "label": "An aggregate brand mention rate across a prompt set for the month",
+       "score": 3
+      },
+      {
+       "label": "A trend line of retrieval, citation, and mention rates across multiple models",
+       "score": 4
+      },
+      {
+       "label": "A comparison of test vs. control prompt buckets showing whether specific interventions moved the metrics",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "manual_tracking_hours",
+     "type": "number",
+     "text": "How many hours per week does your team currently spend manually querying AI models to check brand mentions and visibility?",
+     "hint": "Count time across all models: ChatGPT, Perplexity, Gemini, Claude, and any others. We'll multiply this by your loaded hourly rate and 52 weeks to show your annual cost.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 4,
+     "normalize_formula": "x === 0 ? 50 : Math.max(0, 100 - (x / 20) * 100)"
+    },
+    {
+     "id": "tracking_hourly_cost",
+     "type": "number",
+     "text": "What is the approximate loaded hourly cost (salary plus overhead) for the person doing this tracking work?",
+     "hint": "Use your best estimate. A marketing manager at $80K salary with 30% overhead is roughly $54/hour.",
+     "suffix": "$/hour",
+     "min": 20,
+     "max": 300,
+     "step": 5,
+     "default": 60,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Build the measurement process before drawing any conclusions.",
+     "text": "LLMs are probabilistic. Ask the same question twice and you get different brands in the answer. One day, one prompt, one model gives you nothing worth reporting to anyone. You need aggregate results over a consistent window across a fixed prompt set before any number is meaningful. And you need to read retrieved, cited, and mentioned in that order, separately. Collapsing them hides what's actually moving.",
+     "steps": [
+      "Build a prompt set of 20 to 40 queries your ICP uses when evaluating tools or solutions in your category",
+      "Split it: half you try to influence, half you leave as a control",
+      "Track three metrics in order — retrieved, cited, mentioned — not a single blended mention count",
+      "Run for at least 60 days before drawing conclusions from any single experiment"
+     ]
+    },
+    "mid": {
+     "headline": "You're tracking something. You can't prove causation yet.",
+     "text": "Aggregate data over time is a real step up. The gap is the control group. If all your prompts are in the test set, you can't separate organic movement from what your interventions actually caused. Half your prompts you touch. Half you leave alone. That gap is where the signal lives.",
+     "steps": [
+      "Add a control prompt bucket to your tracking — leave it untouched while you run experiments on the test set",
+      "Start reading retrieval rate separately from citation rate and mention rate — the sequence matters",
+      "Before any experiment, define the expected movement and the minimum window you'll run it for"
+     ]
+    },
+    "high": {
+     "headline": "You're running AEO like a real experiment.",
+     "text": "You understand that LLM visibility is an aggregate, process-based measure. The control-group discipline separates genuine lift from noise. Keep the experiment windows long enough that the probabilistic variation cancels out, and formalize what you learn so it compounds.",
+     "steps": [
+      "Keep an experiment log: hypothesis, intervention, window, results — one entry per experiment",
+      "Review your prompt set quarterly to confirm it still reflects how your ICP actually queries AI",
+      "Start connecting retrieval-rate improvements to pipeline outcomes — that's the metric leadership will actually care about"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_brief_process",
+   "name": "Content & Brief Process",
+   "questions": [
+    {
+     "id": "content_brief_process_q1",
+     "text": "Where does a piece of content start in your process?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "With a keyword or topic from our SEO tool",
+       "score": 1
+      },
+      {
+       "label": "With a content request from sales or another internal team",
+       "score": 2
+      },
+      {
+       "label": "With a topic chosen by the writer or content manager",
+       "score": 3
+      },
+      {
+       "label": "With a brief that includes the audience, the angle, and the intended outcome",
+       "score": 4
+      },
+      {
+       "label": "With a brief that specifies thesis, persona, SEO and AEO intent, and a reviewed outline before any writing starts",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_brief_process_q2",
+     "text": "If you use AI to draft content, what does the AI receive as input?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The topic and a word count",
+       "score": 1
+      },
+      {
+       "label": "The topic, the target keyword, and a rough structure",
+       "score": 2
+      },
+      {
+       "label": "A list of points to cover",
+       "score": 3
+      },
+      {
+       "label": "A brief with thesis, persona, and search context",
+       "score": 4
+      },
+      {
+       "label": "A brief with central thesis, a reviewed outline, source material, and clear constraints for the AI to follow",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_brief_process_q3",
+     "text": "How often does a piece of content you publish have one clear central thesis running through the whole piece?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — we cover the topic broadly to capture more keywords",
+       "score": 1
+      },
+      {
+       "label": "Sometimes — it depends on the writer",
+       "score": 2
+      },
+      {
+       "label": "Usually — but the thesis isn't always defined before writing starts",
+       "score": 3
+      },
+      {
+       "label": "Almost always — the thesis is part of every brief",
+       "score": 4
+      },
+      {
+       "label": "Always — we catch and fix pieces where the thesis isn't clear at the outline stage, before any writing begins",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Content that starts from a keyword ends up as a ranked list of H2s with no point.",
+     "text": "AI can execute a mess, but it will produce more mess. Without a thesis and a reviewed outline, you get content that covers a topic broadly, ranks for terms, and convinces nobody of anything. LLMs don't cite pieces that don't make a clear argument. The brief is what makes the content work — and it has to come before the outline, which comes before the draft.",
+     "steps": [
+      "Start every piece from a thesis: one clear claim the piece proves or argues",
+      "Write a brief before touching the outline — thesis, persona, search intent, what the reader should do after reading",
+      "Build the outline from the brief, review it, then pass it to the writer or AI",
+      "Add a thesis check at the outline stage: if you can't state the point in one sentence, the brief isn't done"
+     ]
+    },
+    "mid": {
+     "headline": "You know a brief matters. It's not running consistently yet.",
+     "text": "When the brief is optional, content quality varies by writer and by week. The brief is the constraint that makes AI useful and stops human effort from being wasted fixing structure that should have been settled before anyone started writing. Make it mandatory.",
+     "steps": [
+      "Make the brief a hard gate — no draft starts without one",
+      "Define what a completed brief looks like: thesis, persona, SEO and AEO context, reviewed outline — four boxes, all checked",
+      "Review briefs before work starts, not drafts after writing finishes"
+     ]
+    },
+    "high": {
+     "headline": "Your content process is built right. Protect it as volume scales.",
+     "text": "You've figured out that AI executes well when it has something solid to execute against. The thesis-first, brief-first process is what separates content that gets cited from content that gets ignored. The risk as output scales: brief quality degrades under volume pressure and nobody catches it until the results drop.",
+     "steps": [
+      "Audit briefs quarterly — check that thesis specificity and persona clarity are holding as output volume increases",
+      "Add an AEO intent field to your brief template: which prompt categories should this piece get retrieved for?",
+      "Track citation rate by content type to see which brief formats are actually driving retrieval"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_manual_tracking_cost",
+   "label": "Annual cost of manual LLM monitoring",
+   "format": "currency_per_period",
+   "formula": "manual_tracking_hours * tracking_hourly_cost * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role in organic growth decisions?",
+  "answers": [
+   {
+    "label": "Founder or CEO driving GTM",
+    "tag": "founder-gtm"
+   },
+   {
+    "label": "VP or Head of Marketing",
+    "tag": "vp-marketing"
+   },
+   {
+    "label": "SEO or content lead",
+    "tag": "seo-lead"
+   },
+   {
+    "label": "Agency or consultant advising a B2B SaaS client",
+    "tag": "agency"
+   }
+  ]
+ }
+}
