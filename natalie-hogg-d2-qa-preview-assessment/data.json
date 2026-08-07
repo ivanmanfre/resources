@@ -1,7 +1,7 @@
 {
  "slug": "natalie-hogg-d2-qa-preview-assessment",
- "title": "Marketing Science Readiness Score",
- "subtitle": "Measures how much of your marketing activity, brand story, and positioning signals are doing traceable, revenue-linked work.",
+ "title": "The Traceable Brand Score",
+ "subtitle": "Measures how much of your marketing activity, brand story, and positioning signals are doing revenue-linked work.",
  "brand": {
   "accent": "#71b3ea",
   "hero_badge": "Interactive Assessment"
@@ -9,88 +9,116 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "ai_brand_signals",
-   "name": "AI Brand Signals",
+   "id": "brand_story",
+   "name": "Brand Story",
    "questions": [
     {
-     "id": "ai_brand_signals_q1",
-     "text": "How recently have you tested what AI tools say about your company when a buyer asks them to compare options in your space?",
+     "id": "story-origin",
+     "text": "How was your current brand story developed?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I have never done this",
+       "label": "We wrote it in a workshop and haven't revisited it since",
        "score": 1
       },
       {
-       "label": "I did it once, more than a year ago",
+       "label": "It came from internal brainstorming about what we wanted to say",
        "score": 2
       },
       {
-       "label": "I have done it a few times but not systematically",
+       "label": "We pulled it from client feedback and sales conversations",
        "score": 3
       },
       {
-       "label": "I did it in the last six months and documented the results",
+       "label": "It was built from specific patterns across multiple client engagements",
        "score": 4
       },
       {
-       "label": "I run this test regularly and act on the findings",
+       "label": "It came from what clients kept returning to, including the parts they almost skipped because they felt obvious",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "ai_brand_signals_q2",
-     "text": "If you asked three different AI tools to describe your company today, how consistent would those descriptions be?",
+     "id": "story-grounding",
+     "text": "When you describe what you do, where does the explanation start?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I genuinely have no idea",
+       "label": "With our methodology or approach",
        "score": 1
       },
       {
-       "label": "Probably inconsistent; I have not shaped what they pull from",
+       "label": "With the problem we solve in general terms",
        "score": 2
       },
       {
-       "label": "Somewhat consistent on the basics, but the framing likely varies",
+       "label": "With a specific type of client outcome",
        "score": 3
       },
       {
-       "label": "Fairly consistent because we have published clear, structured positioning",
+       "label": "With what the work does in someone's actual day-to-day",
        "score": 4
       },
       {
-       "label": "Consistently accurate; I have tested and validated the outputs",
+       "label": "With a concrete situation a buyer would immediately recognize as their own",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "ai_brand_signals_q3",
-     "text": "Do you have a structured document that defines exactly how your company should be described, written so AI models can find it and pull from it?",
+     "id": "story-consistency",
+     "text": "If three people on your team each described your brand story right now, how similar would the accounts be?",
      "max_score": 5,
      "answers": [
       {
-       "label": "No structured document exists",
+       "label": "Completely different, no shared language",
        "score": 1
       },
       {
-       "label": "There is an About page but nothing built for machine readability",
+       "label": "Similar themes but different words and emphasis",
        "score": 2
       },
       {
-       "label": "We have a brand guide but it was not designed with AI citation in mind",
+       "label": "Roughly aligned on the main point",
        "score": 3
       },
       {
-       "label": "We have structured content specifically designed for this purpose",
+       "label": "Consistent on the core story, with natural variation in delivery",
        "score": 4
       },
       {
-       "label": "Yes, and we update it based on what AI tools are actually pulling",
+       "label": "Aligned on the story and the specific details that make it recognizable",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "story-function",
+     "text": "When you look at your current brand story, how much of it is assigned a specific job?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of it is descriptive. It explains what we do.",
+       "score": 1
+      },
+      {
+       "label": "Parts of it are working. Others feel like context-setting.",
+       "score": 2
+      },
+      {
+       "label": "The story creates interest but I couldn't tell you exactly what it's changing",
+       "score": 3
+      },
+      {
+       "label": "Different parts are doing different jobs. I can name most of them.",
+       "score": 4
+      },
+      {
+       "label": "Every element has a traceable job: positioning, objection handling, proof, or call to action",
        "score": 5
       }
      ],
@@ -99,117 +127,117 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You are invisible where buyers are now doing research.",
-     "text": "AI tools described the same B2B company in contradictory ways 28% of the time in our research. If you have not tested what AI says about yours, you do not know whether buyers are getting accurate information or a garbled version of your positioning when they compare options.",
+     "headline": "Your story describes what you do. The pipeline work comes next.",
+     "text": "Most brand stories start with what the company wants to say. The ones that move pipeline start with what the buyer keeps coming back to, including the part they almost skip because it feels obvious to them. That's where the brief lives. The work is going back and finding it.",
      "steps": [
-      "Run a prompt test this week: ask ChatGPT, Claude, and Gemini to describe your company and the problems you solve. Screenshot all three outputs.",
-      "Compare those descriptions against your own positioning and mark every contradiction.",
-      "Create one structured brand-signal document, a clear machine-readable page that defines who you are, who you serve, and what outcomes you produce."
+      "Pull your last five sales or discovery calls and listen for what the client repeated without being prompted.",
+      "Write down what they almost skipped over because it felt too obvious. That's often the real differentiator.",
+      "Rewrite your opening statement around one of those details rather than around your methodology."
      ]
     },
     "mid": {
-     "headline": "You have a foundation. Now you need to close the consistency gap.",
-     "text": "You are aware this matters and you have taken some steps. But inconsistency at the AI layer still costs you citations when buyers compare vendors. The structural change is not a one-time fix; it is a system that needs to run on a schedule.",
+     "headline": "The material is there. Give each piece a job.",
+     "text": "The Crocs film worked because every choice did a specific job, and that job traced back to what the product actually does in someone's life. Your story has the right material. The next step is assigning each element a role.",
      "steps": [
-      "Schedule a quarterly AI audit: test three to five tools, compare outputs, and identify which brand signals are landing and which are not.",
-      "Publish structured case studies and positioning statements in formats AI crawlers can parse easily.",
-      "Review which claims about your company appear most often and verify they match your current positioning, not where you were two years ago."
+      "List each section of your current brand story and write one sentence on the job it's supposed to do.",
+      "For any section without a clear job, cut it or rebuild it around a specific buyer belief you need to shift.",
+      "Test the revised version in your next three client conversations and track which parts they respond to."
      ]
     },
     "high": {
-     "headline": "You are building the structural advantage most brands have not figured out yet.",
-     "text": "Consistent AI citation is a buying-stage advantage, not a vanity metric. You have done the work to get here. The next move is treating it as a living signal, not a one-time project.",
+     "headline": "Your story is doing real work. Keep tracing it.",
+     "text": "A story built to do work will keep proving it, or stop proving it, in the numbers. The discipline is continuing to listen for what shifts rather than assuming the brief is permanent.",
      "steps": [
-      "Document your audit methodology so the process survives personnel changes.",
-      "Look for the gaps: which sub-topics in your space is AI citing you for least? Those are your next content targets.",
-      "Track whether your citation rate improves after publishing new structured content, and close the feedback loop."
+      "Audit the story against your last 10 wins: what piece of it showed up in why they chose you?",
+      "Identify the element doing the most work and make sure it's the most prominent in your materials.",
+      "Set a 6-month review to check whether the story needs updating based on what your buyers are saying."
      ]
     }
    }
   },
   {
-   "id": "brand_story_function",
-   "name": "Brand Story Function",
+   "id": "ai_visibility",
+   "name": "AI Visibility",
    "questions": [
     {
-     "id": "brand_story_function_q1",
-     "text": "When you trace your brand story back to its source, is it built on something your product or service actually does in your customer's daily work or life?",
+     "id": "ai-consistency",
+     "text": "If you asked ChatGPT, Perplexity, and Gemini to describe your company right now, how consistent do you think the answers would be?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Our story is mostly about what we believe, not what we do for people",
+       "label": "I haven't checked. I wouldn't know where to start.",
        "score": 1
       },
       {
-       "label": "There is a functional truth in there but it is not the center of the story",
+       "label": "I've checked once but don't monitor it",
        "score": 2
       },
       {
-       "label": "The functional truth is present but buried under brand language",
+       "label": "The descriptions are broadly similar but differ on specifics",
        "score": 3
       },
       {
-       "label": "The story is grounded in what we do for clients, with specific examples",
+       "label": "Mostly consistent. I've identified and addressed a few gaps.",
        "score": 4
       },
       {
-       "label": "Our story makes our function literal and specific, not aspirational",
+       "label": "Highly consistent. I know what structural signals drive accurate AI citations of us.",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "brand_story_function_q2",
-     "text": "How often does your best marketing insight come from what a client explains and then immediately dismisses as too obvious to mention?",
+     "id": "ai-buyer-moment",
+     "text": "When a buyer uses AI to compare you to a competitor before a call, how confident are you in what they find?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I do not have a process for finding that; I start with what I want to say",
+       "label": "I have no idea what they find. That's a real gap.",
        "score": 1
       },
       {
-       "label": "Occasionally, but not by design",
+       "label": "I've thought about it but haven't verified it",
        "score": 2
       },
       {
-       "label": "Sometimes; I know to listen for it but the results are inconsistent",
+       "label": "I know roughly what AI surfaces but haven't structured content to influence it",
        "score": 3
       },
       {
-       "label": "Often; client conversations regularly surface the real story",
+       "label": "I've mapped the key comparison moments and built content for them",
        "score": 4
       },
       {
-       "label": "Always; our discovery process is specifically designed to find it",
+       "label": "Our positioning is structured specifically for the moments buyers use AI to compare options",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "brand_story_function_q3",
-     "text": "Would someone who scrolled past your content know specifically what you do for clients, or would they come away with a feeling and no details?",
+     "id": "ai-citation-structure",
+     "text": "How structured is the public-facing content that AI models learn from?",
      "max_score": 5,
      "answers": [
       {
-       "label": "A feeling only; we lead with values and aspiration",
+       "label": "We publish content, but there's no structural intent behind it for AI",
        "score": 1
       },
       {
-       "label": "Mostly a feeling, with occasional specifics",
+       "label": "We have a content strategy, but AI citation isn't part of how we think about it",
        "score": 2
       },
       {
-       "label": "A mix; some content is concrete, some is atmospheric",
+       "label": "We're starting to think about what makes content citable, but haven't made structural changes yet",
        "score": 3
       },
       {
-       "label": "Mostly concrete; a reader could describe what we do and for whom",
+       "label": "We've made specific structural choices to improve how AI picks up our positioning",
        "score": 4
       },
       {
-       "label": "Concrete and specific; our content does a job, not decoration",
+       "label": "Our content is built so AI models consistently pick up the same positioning language",
        "score": 5
       }
      ],
@@ -218,264 +246,304 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Your story is decoration. People scroll past decoration.",
-     "text": "A story that is not built to do real work is not marketing. The Crocs team did not pitch the shoe; they made literal what the shoe already does in a customer's life. That is the difference between a campaign people share and one that runs its budget out quietly.",
+     "headline": "AI is already describing you. The description may be wrong.",
+     "text": "In our research, AI models described the same B2B company in contradictory ways 28% of the time. That gap is structural, and it has a structural fix. The first step is knowing what's actually being said.",
      "steps": [
-      "Pull your last five pieces of content. For each one, write one sentence on the specific job it does for the reader. If you cannot write it, that piece is decoration.",
-      "Schedule a 30-minute client conversation with one goal: find the thing they almost do not mention because it feels obvious. That is your next brief.",
-      "Rewrite your current homepage headline so a stranger could describe your business after reading it, without clicking anything."
+      "Run the same prompt across ChatGPT, Perplexity, and Gemini: 'Describe [your company] and what they do for [your buyer type].'",
+      "Document every contradiction or gap between the three responses.",
+      "Identify the one positioning claim that should appear in all three, then check whether your public content actually supports it."
      ]
     },
     "mid": {
-     "headline": "The functional truth is in there. It needs to move to the center.",
-     "text": "You have real material to work with. The gap is that it is buried under language that sounds like marketing rather than what actually happens for clients. Bring the specific thing forward and let the aspiration follow from it.",
+     "headline": "You know the gap. The next move is structural.",
+     "text": "Awareness of the problem is a start. AI models cite what is clearly, specifically, and consistently stated in the places they index. The content likely exists. It may just need to do the structural work.",
      "steps": [
-      "Identify the one outcome clients describe most specifically when they explain why they hired you. Lead with that.",
-      "Audit your discovery process: are you starting with what you want to say, or are you listening for what they keep coming back to?",
-      "For your next content piece, reverse the order: start with a client detail that felt almost too small to mention, then build out from there."
+      "Identify the two or three claims you most need AI to reproduce accurately when buyers compare you.",
+      "Check whether those claims appear in consistent language across your website, case studies, and indexed thought leadership.",
+      "Make one structural change: rewrite your most-visited page so your core positioning claim appears in a single, unambiguous sentence."
      ]
     },
     "high": {
-     "headline": "Your content is doing work. Now systematize how you find it.",
-     "text": "You have built the habit of grounding your story in functional truth. The next question is whether you can produce it consistently, not just when the right client conversation happens to surface it.",
+     "headline": "You're visible where it counts. Keep tracking it.",
+     "text": "AI models update. What's true today about how they describe you can shift as their training data changes. The discipline is building the audit into a regular process.",
      "steps": [
-      "Document the discovery questions that reliably surface the too-obvious-to-mention insight. Build them into every client intake.",
-      "Audit your content mix quarterly: what percentage is grounded in specific client function versus general belief statements?",
-      "Push further into the specific; the more concrete the detail, the less it looks like content and the more it looks like evidence."
+      "Run your AI positioning audit on a quarterly cycle.",
+      "Track whether the language AI uses about you is moving toward or away from your intended positioning.",
+      "Build a single ground truth page on your site: a structured summary of your positioning that you update when your messaging evolves."
      ]
     }
    }
   },
   {
-   "id": "revenue_attribution",
-   "name": "Revenue Attribution",
+   "id": "strategic_direction",
+   "name": "Strategic Direction",
    "questions": [
     {
-     "id": "revenue_attribution_q1",
-     "text": "If I asked you right now which three marketing activities drove the most revenue last quarter, how quickly could you answer?",
+     "id": "step-back-vs-side",
+     "text": "When a quarter underperforms, how do you typically categorize what happened?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I could not; we do not track it at that level",
+       "label": "As a failure. Something went wrong and needs fixing.",
        "score": 1
       },
       {
-       "label": "I would have a guess but no data to back it up",
+       "label": "I look for what broke, but I don't always know whether it was a real setback or something else",
        "score": 2
       },
       {
-       "label": "I could name the activities but not quantify their contribution",
+       "label": "I can usually tell the difference between a problem and an investment period, but only after the fact",
        "score": 3
       },
       {
-       "label": "I could answer with reasonable confidence based on our tracking",
+       "label": "I can identify in real time whether a slowdown is a step back or a step to the side",
        "score": 4
       },
       {
-       "label": "I could answer in under two minutes with specific numbers",
+       "label": "I have a clear framework for categorizing performance dips, and I make deliberate choices about which to cut short",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "revenue_attribution_q2",
-     "text": "When you decide what to stop funding, how much of that decision is driven by data versus instinct or budget pressure?",
+     "id": "invisible-investment",
+     "text": "How often do you make decisions whose return won't show in this quarter's numbers?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Almost entirely instinct or whatever stopped feeling important",
+       "label": "Rarely. I focus on what moves the needle now.",
        "score": 1
       },
       {
-       "label": "Mostly instinct, occasionally backed by a number",
+       "label": "Occasionally, but I can't always defend them internally",
        "score": 2
       },
       {
-       "label": "A mix; we have some data but the decision is still mostly judgment",
+       "label": "Regularly, though I treat them as a cost rather than an investment",
        "score": 3
       },
       {
-       "label": "Mostly data; we have clear performance criteria before we cut anything",
+       "label": "Regularly, and I track them separately from immediate-return activity",
        "score": 4
       },
       {
-       "label": "Data-first; nothing gets cut without a measurable reason, and nothing continues without one either",
+       "label": "It's built into how I plan, with a clear hypothesis for when each will show up in the numbers",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "pct_revenue_linked",
+     "id": "quiet-periods",
+     "text": "When you look back at a stretch of months that produced no visible results, what's your honest read?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Those periods worry me. Something was wrong.",
+       "score": 1
+      },
+      {
+       "label": "I assume they were wasted and try not to repeat them",
+       "score": 2
+      },
+      {
+       "label": "I can sometimes see in hindsight that they set up a later jump",
+       "score": 3
+      },
+      {
+       "label": "I usually know during those periods whether the work is building toward something",
+       "score": 4
+      },
+      {
+       "label": "Some of our biggest jumps came after exactly those periods. I've learned not to cut them short.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You may be ending investment periods before they pay out.",
+     "text": "A step back and a step to the side look almost identical from the outside. Inside the business, they're completely different. If all underperformance gets the same response, the investments that needed more time get cut.",
+     "steps": [
+      "List the last three periods of flat or declining results and categorize each honestly: was it a problem or an investment?",
+      "For each investment period, identify what it was building toward and whether you cut it short.",
+      "Set one decision rule before reacting to the next underperformance period: determine which category it falls into first."
+     ]
+    },
+    "mid": {
+     "headline": "You can see it in hindsight. Start seeing it in the moment.",
+     "text": "Recognizing a step to the side after it's over is useful. Recognizing it while you're in it is what lets you protect those periods rather than react to them.",
+     "steps": [
+      "Before each quarter begins, identify which activities are investments (returns delayed 3-plus months) and which should produce near-term results.",
+      "Track these separately so underperformance in one category doesn't trigger cuts in the other.",
+      "Review the categorization at 90 days: were your predictions right? Adjust from what you find."
+     ]
+    },
+    "high": {
+     "headline": "You're building with a longer timeline. That's the work.",
+     "text": "Most of the compounding in a business comes from periods that, from the outside, looked like nothing was happening. The discipline is protecting those periods and knowing which ones have earned the protection.",
+     "steps": [
+      "Document the logic behind your current investment-period decisions so they're defensible, not just intuitive.",
+      "Share that framework with anyone who has visibility into the numbers, so they're working from the same read.",
+      "Set a hypothesis for each current investment period: when should results show, and what would they look like?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "marketing_traceability",
+   "name": "Marketing Traceability",
+   "questions": [
+    {
+     "id": "activity-link",
+     "text": "How much of your current marketing activity can you connect to a pipeline or revenue outcome?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost none. We measure outputs, not outcomes.",
+       "score": 1
+      },
+      {
+       "label": "A small portion: a few campaigns where we tracked all the way through",
+       "score": 2
+      },
+      {
+       "label": "About half: paid and direct channels, but brand and content sit outside it",
+       "score": 3
+      },
+      {
+       "label": "Most of it. We have attribution across the majority of our programs.",
+       "score": 4
+      },
+      {
+       "label": "All of it. Every marketing activity has a defined outcome it's responsible for.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "story-measurement",
+     "text": "How do you measure whether your brand story is working?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't. Brand is treated as unmeasurable.",
+       "score": 1
+      },
+      {
+       "label": "Engagement metrics: views, likes, shares",
+       "score": 2
+      },
+      {
+       "label": "Qualitative feedback: whether prospects reference our messaging on calls",
+       "score": 3
+      },
+      {
+       "label": "Both qualitative and pipeline signals: how often the story affects deal progression",
+       "score": 4
+      },
+      {
+       "label": "Revenue-linked: we can trace brand story exposure to pipeline entry and close",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "decoration-test",
+     "text": "If you removed your brand story from your marketing and kept only your direct-response assets, what do you think would happen to your pipeline?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Probably nothing. The brand story isn't doing measurable pipeline work.",
+       "score": 1
+      },
+      {
+       "label": "It would slow down slightly, but in ways I couldn't prove",
+       "score": 2
+      },
+      {
+       "label": "I'd lose some inbound, but I'm not sure how much or why",
+       "score": 3
+      },
+      {
+       "label": "I'd lose specific pipeline I can point to. Brand creates pull that direct response doesn't.",
+       "score": 4
+      },
+      {
+       "label": "A significant and measurable drop. The brand story is doing traceable pipeline work.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "traceable-content-ratio",
      "type": "number",
-     "text": "Out of all the marketing activities you ran last quarter, what percentage can you directly tie to a measurable revenue outcome?",
-     "hint": "Count only activities where you can trace a clear line: this activity produced this response, which led to this deal or pipeline event. Be conservative.",
-     "suffix": "%",
+     "text": "Out of every 10 pieces of content your team publishes, how many can you directly connect to a pipeline outcome?",
+     "hint": "A pipeline outcome means a specific lead, a booked call, or a sale you can trace back to that content. Estimate honestly.",
+     "suffix": "out of 10",
      "min": 0,
-     "max": 100,
-     "step": 5,
-     "default": 30,
-     "normalize_formula": "x"
+     "max": 10,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "x * 10"
     },
     {
-     "id": "hours_week",
+     "id": "weekly-content-hours",
      "type": "number",
-     "text": "How many hours per week does your team spend on marketing execution — content, campaigns, outreach, and reporting combined?",
-     "hint": "Include your own time if you run marketing. Count all hands-on execution hours, not planning or strategy time.",
-     "suffix": "hrs/week",
+     "text": "How many hours per week does your team spend on brand and content work in total?",
+     "hint": "Include writing, design, review, approval, and distribution across all channels. Used to estimate your annual cost of untraced marketing work (hours/week x 52 weeks).",
+     "suffix": "hours/week",
      "min": 1,
-     "max": 200,
+     "max": 100,
      "step": 1,
-     "default": 20,
+     "default": 10,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "hourly-team-cost",
+     "type": "number",
+     "text": "What is your team's average loaded hourly cost for the people doing this work?",
+     "hint": "Loaded cost = salary + benefits + overhead per hour. $75 to $150 is a typical range for marketing roles.",
+     "suffix": "$/hour",
+     "min": 25,
+     "max": 500,
+     "step": 5,
+     "default": 100,
      "normalize_formula": "50"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "You are funding activities you cannot defend.",
-     "text": "If you cannot trace your marketing spend to revenue outcomes, you are not running a marketing function — you are running on assumption. That is a solvable problem, but you have to be willing to name which activities have no accountability and stop protecting them.",
+     "headline": "Most of your marketing is decoration. Decoration has a price tag.",
+     "text": "A story that isn't built to do real work is decoration. People scroll past decoration. The question is what it would take to make each program do a traceable job. For most of your current activity, that answer isn't there yet.",
      "steps": [
-      "List every marketing activity from last quarter. Next to each one, write the revenue signal it is supposed to generate. If you cannot write it, that activity has no accountability.",
-      "Pick your three highest-cost activities and ask: what would change in our pipeline if we stopped this tomorrow? If the honest answer is not much, stop it.",
-      "Set up one tracking mechanism, even a simple spreadsheet, that connects marketing activities to pipeline events before you run another campaign."
+      "Take your last month of marketing spend, budget and hours combined, and categorize each line item as either 'traceable outcome' or 'no clear link to pipeline.'",
+      "For every unlinked activity, name the one job it was supposed to do and whether you can measure it.",
+      "Start with one program: redesign it with a single defined outcome and a way to measure it, then run it for 90 days."
      ]
     },
     "mid": {
-     "headline": "You have partial visibility. Partial visibility still funds the wrong things.",
-     "text": "You know which activities work in the areas you have measured. The gap is what is running outside your measurement window. That is where budget disappears without leaving a trace.",
+     "headline": "You have traceability in patches. Connect them.",
+     "text": "You've figured out how to trace some of what you do. The gap is that brand and content, the parts of marketing that do the most pipeline work over time, still sit outside that system. That's where the cost is.",
      "steps": [
-      "Map the exact boundaries of your current tracking: what gets measured, what does not, and what the gap costs you in hours and spend.",
-      "For every activity outside your tracking window, set a 90-day test with a defined outcome threshold before the test starts.",
-      "Review your marketing spend quarterly with one question: which of these has earned the right to continue?"
+      "Map your buyer journey and identify where brand and content touch it, even if you can't measure it yet.",
+      "Choose one brand or content program and write a simple hypothesis: 'If this is working, I'll see X in the pipeline within Y days.'",
+      "Run that as a 90-day experiment. The goal is a traceable signal, not perfect attribution."
      ]
     },
     "high": {
-     "headline": "You are running marketing the way it should be run. Protect the rigor.",
-     "text": "Revenue-linked decision making is the thing most marketing teams say they have and do not. You have it. The risk at this stage is drift; adding activities without accountability as the team or budget grows.",
+     "headline": "Your marketing is doing traceable work. Hold the standard.",
+     "text": "Most teams stop asking whether their marketing is working once the numbers are moving. The discipline is continuing to trace it, especially for brand and content, where the connection to revenue is the hardest to hold.",
      "steps": [
-      "Codify your attribution model so it survives adding headcount or changing tools.",
-      "Check whether your tracking catches lagging signals; some activities produce revenue 90 days out, and those should not get cut prematurely.",
-      "Use your attribution data to make the business case for the next marketing investment. That is the compounding advantage."
-     ]
-    }
-   }
-  },
-  {
-   "id": "strategic_clarity",
-   "name": "Strategic Clarity",
-   "questions": [
-    {
-     "id": "strategic_clarity_q1",
-     "text": "In the last year, can you name a period where you made decisions that did not show up in the numbers right away but changed what you were capable of six months later?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "No; we only fund things with near-term measurable return",
-       "score": 1
-      },
-      {
-       "label": "Maybe; I can name a period but I am not sure it was intentional",
-       "score": 2
-      },
-      {
-       "label": "Yes; I can name it, but I could not explain the criteria that made it worth holding",
-       "score": 3
-      },
-      {
-       "label": "Yes; I made a deliberate investment and tracked whether it paid off",
-       "score": 4
-      },
-      {
-       "label": "Yes; I have a framework for distinguishing investment periods from problem periods",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "strategic_clarity_q2",
-     "text": "When you have a slow quarter, how do you tell whether it is a problem to solve or an investment period that will pay off later?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "I treat every slow quarter as a problem and try to fix it fast",
-       "score": 1
-      },
-      {
-       "label": "Gut feel; I cannot always explain why I make the call I make",
-       "score": 2
-      },
-      {
-       "label": "I have some indicators but they are informal and inconsistent",
-       "score": 3
-      },
-      {
-       "label": "I have a set of signals I review deliberately before making the call",
-       "score": 4
-      },
-      {
-       "label": "I have written criteria and review whether I was right after the fact",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "strategic_clarity_q3",
-     "text": "How confident are you that your current marketing investment mix balances near-term pipeline work with longer-term brand-signal building?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Not confident; almost everything is near-term and reactive",
-       "score": 1
-      },
-      {
-       "label": "Slightly confident; we have some longer-term work but it is underfunded",
-       "score": 2
-      },
-      {
-       "label": "Somewhat confident; the mix feels about right but it is not based on a model",
-       "score": 3
-      },
-      {
-       "label": "Confident; we have made deliberate allocations with a rationale for each",
-       "score": 4
-      },
-      {
-       "label": "Very confident; we revisit the allocation quarterly and adjust based on what we are seeing",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "You are optimizing for the month you are in and shortchanging the business you could have.",
-     "text": "A step back and a step to the side can look almost identical from the outside. The investment periods you cut short are the ones you never get back. Some of the biggest forward moves in a business come after months that looked, from the outside, like nothing was happening.",
-     "steps": [
-      "Name the last time you made a decision that did not pay off for at least 90 days. What made you hold it? If you cannot name one, that is the gap.",
-      "Separate your marketing activities into two lists: pipeline now versus capability in six months. If the second list is empty, you are underinvesting in your next quarter.",
-      "Before your next planning cycle, write what you are building toward in six months, then work back to the investments that get you there."
-     ]
-    },
-    "mid": {
-     "headline": "You understand the distinction. You need criteria, not instinct.",
-     "text": "Knowing that a step to the side is different from a step back is a start. Acting on it consistently requires a defined set of signals to review before you decide, not a feel that shifts with the news in your pipeline that week.",
-     "steps": [
-      "Write down the signals you would look for to tell you a slow period is an investment and not a problem. Review those signals the next time you are tempted to pull back.",
-      "Pick one activity you have been running on faith and define what a successful outcome looks like in 90 days. If it does not hit, cut it. If it does, fund it more.",
-      "Build a simple review into your quarterly planning: for each longer-term investment, write whether it delivered and what you would do differently."
-     ]
-    },
-    "high": {
-     "headline": "You have the strategic clarity most marketing leaders do not build until it is too late.",
-     "text": "Being able to distinguish investment from problem — and hold the investment periods when external pressure to cut is high — is one of the hardest things in marketing leadership. You are doing it. Now the work is to document how, so it does not live only in your head.",
-     "steps": [
-      "Write down your decision criteria for distinguishing a step back from a step to the side. Make it transferable to your team.",
-      "Review your last three major investment periods: did they pay off on the timeline you expected? What does that tell you about your calibration?",
-      "Use your track record to build conviction when you defend future investment periods to stakeholders who only see the slow month."
+      "Document your current traceability model so it survives team or agency changes.",
+      "Add one new program per quarter with a pre-defined outcome and measurement plan before it launches.",
+      "Review the full stack annually: which programs have stopped producing traceable outcomes and need to be rebuilt or cut?"
      ]
     }
    }
@@ -498,40 +566,40 @@
  },
  "computed_outputs": [
   {
-   "id": "untracked_hours",
-   "label": "Hours per week running marketing you cannot connect to a revenue signal",
-   "format": "hours_per_period",
-   "formula": "hours_week * (1 - pct_revenue_linked / 100)",
+   "id": "annual-untraceable-spend",
+   "label": "Annual cost of content work with no traceable outcome",
+   "format": "currency",
+   "formula": "(1 - traceable_content_ratio / 10) * weekly_content_hours * hourly_team_cost * 52",
    "show_in_result": true
   },
   {
-   "id": "revenue_blind_rate",
-   "label": "Share of your marketing activity running without a traceable revenue outcome",
-   "format": "percent",
-   "formula": "100 - pct_revenue_linked",
+   "id": "monthly-untraceable-spend",
+   "label": "Monthly cost of untraceable content activity",
+   "format": "currency_per_period",
+   "formula": "(1 - traceable_content_ratio / 10) * weekly_content_hours * hourly_team_cost * 4.33",
    "show_in_result": true
   }
  ],
  "schema_version": "v2",
  "persona_selector": {
   "id": "role",
-  "text": "Which best describes how you sit inside your marketing function?",
+  "text": "Which of these best describes where you're sitting right now?",
   "answers": [
    {
-    "label": "Founder or CEO doing my own marketing",
-    "tag": "founder-marketer"
-   },
-   {
-    "label": "Head of Marketing or CMO at a B2B company",
+    "label": "I lead marketing at a B2B company or agency",
     "tag": "marketing-leader"
    },
    {
-    "label": "Marketing team member or specialist",
-    "tag": "marketing-practitioner"
+    "label": "I'm a founder running my own marketing",
+    "tag": "founder-marketer"
    },
    {
-    "label": "Consultant or advisor to brands on their marketing",
+    "label": "I consult or advise on marketing and brand strategy",
     "tag": "marketing-advisor"
+   },
+   {
+    "label": "I'm building or rebuilding a brand with a new audience",
+    "tag": "brand-builder"
    }
   ]
  }
