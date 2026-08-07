@@ -1,6 +1,6 @@
 {
  "slug": "richard-fowler-af-qa-preview-assessment",
- "title": "Beyond Referrals: Your Pipeline Readiness Score",
+ "title": "Pipeline Readiness Score",
  "subtitle": "Measures how ready your financial services firm is to build a predictable, marketing-driven pipeline that does not depend on introductions.",
  "brand": {
   "accent": "#7c05f4",
@@ -14,27 +14,27 @@
    "questions": [
     {
      "id": "referral_dependency_q1",
-     "text": "When you look at new client enquiries over the last 12 months, where did most of them come from?",
+     "text": "If your three strongest referrers stopped sending work tomorrow, how much of your new business would disappear?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Introductions from existing clients or professional connections, with almost nothing else",
+       "label": "More than 80% — it would be a serious crisis",
        "score": 1
       },
       {
-       "label": "Mostly introductions, with occasional direct enquiries we could not trace to a specific source",
+       "label": "60 to 80% — it would be a very difficult year",
        "score": 2
       },
       {
-       "label": "A mix of introductions and direct enquiries from content, search or our digital presence",
+       "label": "40 to 60% — we would notice but we would manage",
        "score": 3
       },
       {
-       "label": "Mostly direct inbound, with introductions as a secondary channel",
+       "label": "20 to 40% — we have other sources coming through",
        "score": 4
       },
       {
-       "label": "A consistent stream of direct inbound from marketing, with referrals as a welcome addition rather than the main source",
+       "label": "Less than 20% — referrals are a bonus, not the engine",
        "score": 5
       }
      ],
@@ -42,27 +42,27 @@
     },
     {
      "id": "referral_dependency_q2",
-     "text": "If your three strongest referral sources went quiet for six months, what would happen to your pipeline?",
+     "text": "How does your pipeline typically look in the absence of a warm introduction?",
      "max_score": 5,
      "answers": [
       {
-       "label": "It would effectively dry up — we have no other channel generating enquiries",
+       "label": "We have no real pipeline without introductions",
        "score": 1
       },
       {
-       "label": "It would fall significantly and we would struggle to replace the volume in the short term",
+       "label": "Occasionally a prospect finds us another way, but it is rare",
        "score": 2
       },
       {
-       "label": "It would hurt, but we have some content and digital presence that generates occasional direct enquiries",
+       "label": "We get some direct enquiries but they are inconsistent",
        "score": 3
       },
       {
-       "label": "We would feel it, but our direct inbound channel would absorb most of the gap",
+       "label": "We have a steady trickle of non-referral enquiries",
        "score": 4
       },
       {
-       "label": "Minimal impact — our marketing-driven pipeline would continue independently",
+       "label": "We have predictable inbound from marketing channels",
        "score": 5
       }
      ],
@@ -70,210 +70,277 @@
     },
     {
      "id": "referral_dependency_q3",
-     "text": "How would you describe your firm's current approach to business development?",
+     "text": "When a prospect contacts you without a referral, where do they usually say they found you?",
      "max_score": 5,
      "answers": [
       {
-       "label": "It rests almost entirely on the network of senior partners and directors",
+       "label": "This almost never happens",
        "score": 1
       },
       {
-       "label": "We attend events and stay visible in the professional community, but there is no marketing channel behind it",
+       "label": "They mention our name through word of mouth but not a direct introduction",
        "score": 2
       },
       {
-       "label": "We have a website and produce some content, but new business still comes mainly from relationships",
+       "label": "Our website — but we do not know how they got there",
        "score": 3
       },
       {
-       "label": "We have a mix of relationship-led and content-driven activity, with a loose strategy behind both",
+       "label": "Our content or social media",
        "score": 4
       },
       {
-       "label": "We have a documented strategy with a production process behind it and track how each channel is performing",
+       "label": "We track this and most non-referral enquiries trace back to our content or digital presence",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your pipeline is built on borrowed trust",
+     "text": "Right now, your firm's future is largely in someone else's hands. That is not a criticism — financial services firms are built this way more often than not — but it is a real risk. The firms that move past it do not abandon referrals. They build a second engine alongside them.",
+     "steps": [
+      "Audit your last 24 months of new business: name every source and calculate what percentage came from introductions",
+      "Identify the two or three questions your ideal clients research before deciding who to call — those are your first content briefs",
+      "Set a 12-month target for non-referral enquiries, even a modest one, and track it monthly"
+     ]
+    },
+    "mid": {
+     "headline": "You have some inbound — now make it predictable",
+     "text": "Non-referral enquiries are coming through, which means the groundwork is there. The gap at this stage is usually production: the point of view exists, the discipline exists, but there is no consistent process making it the default rather than something that happens when there is time.",
+     "steps": [
+      "Map your current non-referral enquiry sources and understand what content or touchpoints preceded them",
+      "Build a production process — assign ownership, set a cadence, and treat content like client work: scheduled, not squeezed in",
+      "Run a six-month test: publish consistently on one channel and measure whether non-referral enquiry volume shifts"
+     ]
+    },
+    "high": {
+     "headline": "You are running a real second engine",
+     "text": "You have moved past the point where introductions are your only source of new business. The focus now is on strengthening the non-referral side — improving the fit quality of inbound, extending your reach into new segments, and protecting the consistency that is producing these results.",
+     "steps": [
+      "Compare the fit quality of referral versus non-referral clients: retention rate, fee level, ease of onboarding",
+      "Invest in the content and channels that are already producing results rather than spreading attention equally",
+      "Document your process so it does not depend on any one person to keep running"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_and_visibility",
+   "name": "Content and Visibility",
+   "questions": [
+    {
+     "id": "content_and_visibility_q1",
+     "text": "How often does your firm publish content that addresses the questions your ideal clients are actually asking?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not publish regularly",
+       "score": 1
+      },
+      {
+       "label": "We publish occasionally — a few times a year when prompted",
+       "score": 2
+      },
+      {
+       "label": "We publish monthly but it is inconsistent",
+       "score": 3
+      },
+      {
+       "label": "We publish on a consistent schedule",
+       "score": 4
+      },
+      {
+       "label": "We publish consistently and it is tied to what our ideal clients are searching for and asking",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "new_clients_annual",
-     "type": "number",
-     "text": "How many new clients did your firm take on in the last 12 months?",
-     "hint": "Count mandates or engagements, not individual contacts.",
-     "suffix": "clients",
-     "min": 0,
-     "max": 500,
-     "step": 1,
-     "default": 10,
-     "normalize_formula": "Math.min(100, x * 5)"
+     "id": "content_and_visibility_q2",
+     "text": "When a prospect is in their research phase — reading before they decide who to call — how visible is your firm?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are probably not visible at all",
+       "score": 1
+      },
+      {
+       "label": "We might appear if they search our name, but not the questions they are asking",
+       "score": 2
+      },
+      {
+       "label": "We have some content out there but it is scattered and not current",
+       "score": 3
+      },
+      {
+       "label": "We appear in searches for some of the questions our clients ask",
+       "score": 4
+      },
+      {
+       "label": "We consistently show up during the research phase for our target audience",
+       "score": 5
+      }
+     ],
+     "type": "likert"
     },
     {
-     "id": "referral_percentage",
-     "type": "number",
-     "text": "Of those new clients, roughly what percentage came through an introduction or referral?",
-     "hint": "Include warm introductions from professional connections as well as direct client referrals.",
-     "suffix": "%",
-     "min": 0,
-     "max": 100,
-     "step": 5,
-     "default": 70,
-     "normalize_formula": "Math.max(0, 100 - x)"
+     "id": "content_and_visibility_q3",
+     "text": "How does content get produced at your firm?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "One person does it when they have time, which is not often",
+       "score": 1
+      },
+      {
+       "label": "We have produced content in bursts but it always stalls",
+       "score": 2
+      },
+      {
+       "label": "We have an informal process but consistency is the hardest part",
+       "score": 3
+      },
+      {
+       "label": "We have a process and someone owns it, but it is still ad hoc in practice",
+       "score": 4
+      },
+      {
+       "label": "We have a production process that makes consistency the default, not something that happens when there is time",
+       "score": 5
+      }
+     ],
+     "type": "likert"
     },
     {
-     "id": "referral_hours_weekly",
+     "id": "weekly_referral_hours",
      "type": "number",
-     "text": "How many hours per week does a senior partner or director spend on referral relationship maintenance: calls, coffees, networking events?",
-     "hint": "Include travel time and follow-up. If more than one person, use the combined total. This figure is used to calculate annual senior time on referral maintenance (weekly hours x 52 weeks).",
-     "suffix": "hours/week",
+     "text": "How many hours per week does your team spend on referral relationship management — lunches, events, introductions, and follow-ups?",
+     "hint": "Include all fee-earning time spent maintaining introducer relationships, not just formal meetings",
+     "suffix": "hrs/week",
      "min": 0,
      "max": 40,
      "step": 1,
      "default": 5,
-     "normalize_formula": "Math.max(0, 100 - (x * 5))"
+     "normalize_formula": "x < 2 ? 80 : x < 5 ? 60 : x < 10 ? 40 : x < 20 ? 20 : 5"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Your pipeline runs on introductions",
-     "text": "Most financial services firms are in exactly this position. The risk is not obvious while the referrals keep coming, but a network that is not continuously replenished will eventually slow. The firms that move past referral dependency build a parallel channel that is already generating enquiries before the introductions thin out — not as a contingency, but as a deliberate second engine.",
+     "headline": "You are invisible during the research phase",
+     "text": "There is a research phase before almost every significant financial services engagement. Someone with a question about their pension, their business sale, or their portfolio will spend real time reading before they decide who to speak to. Right now, your firm is probably not in that conversation.",
      "steps": [
-      "Map where your last 20 new clients came from and note which sources you have any real control over",
-      "Identify the two or three questions your ideal clients are asking during the research phase — before they decide who to call",
-      "Publish one piece of content that answers each of those questions, in language your specific audience would recognise"
+      "List the five questions your best clients asked before they first contacted you — those are your first five content briefs",
+      "Choose one channel to publish on consistently and commit to a cadence you can actually maintain",
+      "Assign a single owner for content production — not a committee, not a shared responsibility"
      ]
     },
     "mid": {
-     "headline": "You have started to diversify, but referrals still do the heavy lifting",
-     "text": "You have a direct channel and it is generating some enquiries. The risk is that the referral network is still the main driver, which means the direct channel has not been tested at scale. The research phase — the period when a prospect is reading and evaluating firms before they make contact — is where the real opportunity sits.",
+     "headline": "The point of view is there — the production process is not",
+     "text": "My read: what is usually missing at this stage is not ideas or expertise, it is a production process that makes consistency the default. The firms that build real visibility do not publish more than others. They stop treating content as something that happens when there is time.",
      "steps": [
-      "Audit your last 12 months of inbound and note what prompted each contact, particularly the direct enquiries",
-      "Identify where in the research phase your content is missing — the questions being asked that you have not answered yet",
-      "Build a production process so publishing happens consistently, not only when there is time"
+      "Audit your existing content: what has performed, what has prompted enquiries, what is now out of date",
+      "Build a quarterly content calendar around the questions your ideal clients research — plan it once, execute consistently",
+      "Track which content is driving website visits and ask every non-referral enquiry where they found you"
      ]
     },
     "high": {
-     "headline": "You are building the right kind of pipeline",
-     "text": "Your firm is less dependent on introductions than most in this space. The enquiries arriving from your content or digital presence tend to come from people who have already done their reading — and that usually means stronger fit and better retention. The work now is to protect the consistency and make sure the content continues to reflect exactly who you want to attract.",
+     "headline": "You are showing up during the research phase — keep building",
+     "text": "The slow build is real, and then it becomes something different. The firms that invest consistently in content see enquiries arrive where the person has already read through several things and has a clear sense of whether the firm is right for them. The fit tends to be stronger. The client retention tends to be better. You are on that path.",
      "steps": [
-      "Review whether your content is speaking to your specific segment or to a broader financial services audience",
-      "Build in a quarterly review of enquiry quality to check whether the fit is improving over time",
-      "Track which content pieces are generating contact and produce more in those areas"
+      "Review whether your content is specific enough to your audience — does it speak to the exact people you want, or to financial services clients broadly",
+      "Look at where your best-fit clients found you and invest more in those channels",
+      "Build depth where you have breadth: full topic areas rather than isolated articles"
      ]
     }
    }
   },
   {
-   "id": "content_and_consistency",
-   "name": "Content and Consistency",
+   "id": "digital_presence",
+   "name": "Digital Presence",
    "questions": [
     {
-     "id": "content_and_consistency_q1",
-     "text": "How often does your firm publish content — articles, market commentary, sector insight — that your target audience would find genuinely useful?",
+     "id": "digital_presence_q1",
+     "text": "If your ideal client landed on your website today with no prior knowledge of your firm, how clearly would they understand who you serve and what changes for them?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Rarely or never",
+       "label": "It describes what we do but a first-time visitor would not know if we are right for them",
        "score": 1
       },
       {
-       "label": "A few times a year, when there is something significant to say or time to say it",
+       "label": "It covers our services clearly but does not speak to a specific audience",
        "score": 2
       },
       {
-       "label": "Monthly, roughly — but it depends on who is available and what is happening in the market",
+       "label": "It is reasonable — they would understand our offer but might not feel it was written for their situation",
        "score": 3
       },
       {
-       "label": "Roughly weekly, with a loose process behind it",
+       "label": "It is clear for the right visitor — someone who fits our ideal client profile would see themselves in it",
        "score": 4
       },
       {
-       "label": "Consistently, driven by a production process that runs regardless of who is available",
+       "label": "It is specific — a visitor who matches our ideal client would immediately recognise that we understand their world",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "content_and_consistency_q2",
-     "text": "When your firm publishes content, what typically triggers it?",
+     "id": "digital_presence_q2",
+     "text": "How sector-specific is your firm's marketing and positioning?",
      "max_score": 5,
      "answers": [
       {
-       "label": "A significant market event or regulatory change that forces a response",
+       "label": "We position ourselves as financial services generalists",
        "score": 1
       },
       {
-       "label": "When a partner has capacity and happens to have something to say",
+       "label": "We name our sectors but do not tailor the message to each",
        "score": 2
       },
       {
-       "label": "A loose plan that gets disrupted by other priorities",
+       "label": "We have different pages or sections for each audience but the messaging is similar",
        "score": 3
       },
       {
-       "label": "An editorial calendar that is mostly followed",
+       "label": "We tailor our approach to each sector we work in",
        "score": 4
       },
       {
-       "label": "A production system with clear ownership that runs independently of individual availability",
+       "label": "Each audience we serve sees messaging, tone, and evidence specific to their world",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "content_and_consistency_q3",
-     "text": "How does your firm's content speak to the research phase — the period when a prospect is reading and evaluating firms before they decide who to call?",
+     "id": "digital_presence_q3",
+     "text": "How does your website perform as a trust-building asset before a prospect picks up the phone?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We have not thought about content in those terms",
+       "label": "Most visitors are probably confirming we exist after a referral — the site is not doing independent work",
        "score": 1
       },
       {
-       "label": "We know the research phase exists but have not structured our content around it",
+       "label": "It looks credible but does not actively build trust",
        "score": 2
       },
       {
-       "label": "Some of our content addresses those questions, but not consistently",
+       "label": "It has some useful content but is not consistently persuasive",
        "score": 3
       },
       {
-       "label": "We have mapped the questions our ideal clients ask during that phase and produce content that answers them",
+       "label": "It does a reasonable job of establishing credibility for visitors who reach it",
        "score": 4
       },
       {
-       "label": "Our entire content strategy is built around showing up during the research phase, and we track how well it is working",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "content_and_consistency_q4",
-     "text": "How would you describe the published point of view your firm puts out on the market, the sector, or the issues your clients face?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We do not publish a point of view — our content is factual and stays neutral",
-       "score": 1
-      },
-      {
-       "label": "We share market updates but avoid taking a clear position",
-       "score": 2
-      },
-      {
-       "label": "We occasionally share our perspective but it is not a deliberate part of our content strategy",
-       "score": 3
-      },
-      {
-       "label": "We have a clear point of view and publish it consistently across the topics that matter to our clients",
-       "score": 4
-      },
-      {
-       "label": "Our published perspective is a central part of how we attract the right clients and filter out the wrong ones",
+       "label": "It builds genuine trust through content, specificity, and evidence — it works before we do",
        "score": 5
       }
      ],
@@ -282,117 +349,117 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Content exists when there is time",
-     "text": "This is the most common pattern in financial services. The point of view is usually there inside the firm — what is missing is a production process that makes publishing the default rather than something that happens occasionally. The firms that move fastest on this build the process before they feel the pipeline pressure, not after.",
+     "headline": "Your website is a brochure, not a pipeline asset",
+     "text": "A website that only works for people who already know you is a missed opportunity. The prospect who finds you during their research phase — with no introduction and no prior contact — needs to see something specific enough to convince them you understand their world. Right now, that is probably not what they are finding.",
      "steps": [
-      "Identify one person responsible for content output — not necessarily the writer, but the owner who ensures it happens",
-      "Set a sustainable cadence: one substantive piece per month is enough to begin building an audience",
-      "Write down the three questions your ideal clients are most likely to be asking during the research phase and treat those as your first content brief"
+      "Read your home page as a first-time visitor who has never heard of your firm and write down what is unclear",
+      "Identify the one audience most important to your next phase and rewrite your core messaging for them specifically",
+      "Add three to five pieces of content that answer the questions that audience is actually researching"
      ]
     },
     "mid": {
-     "headline": "You publish, but not predictably",
-     "text": "You understand the value of content and you have shown you can produce it. What is usually missing at this stage is the production process that removes the dependency on any one person's availability or enthusiasm. Consistency is not about volume — it is about a system that keeps running.",
+     "headline": "Your digital presence is credible but not converting",
+     "text": "There is a difference between a website that looks like a serious firm and one that actively builds trust with the right people. What builds trust with a pension trustee committee works differently from what builds trust with an entrepreneur looking for acquisition finance. The expression has to be specific to your actual audience.",
      "steps": [
-      "Document your content process from brief to compliance to publish, even if it is only half a page",
-      "Build a content calendar six weeks ahead so you are not writing under pressure",
-      "Identify which existing pieces have generated the strongest enquiries and produce more in that area"
+      "Map the trust signals your ideal client needs to see: specific sector experience, relevant evidence, named credentials",
+      "Review how sector-specific your messaging is — a financial planning firm talking to HNW individuals approaching retirement and an asset manager talking to institutional investors need completely different approaches",
+      "Rebuild your highest-traffic pages around the specific reader, not the general market"
      ]
     },
     "high": {
-     "headline": "Content is working as a business development channel",
-     "text": "Consistent content output is one of the harder things to build in this environment, given compliance requirements and the competing demands on senior time. If you are publishing reliably, the next question is whether the content is drawing in the right conversations and whether your point of view is specific enough to differentiate you from the rest of the sector.",
+     "headline": "Your website is earning its place in the pipeline",
+     "text": "A website that builds trust before you do — demonstrating sector understanding, answering the research-phase questions, showing evidence that is specific to the audience — is a real competitive asset in financial services. The firms that get this right see stronger inbound fit and better client retention over time.",
      "steps": [
-      "Track which content pieces are generating enquiries and note what they have in common",
-      "Check whether the tone and depth of your content reflects the level and type of client you want to attract",
-      "Consider whether your published perspective is distinct enough that a reader would know immediately this came from your firm"
+      "Track which pages are driving the highest-quality enquiries and prioritise improving those first",
+      "Review whether your messaging stays current as regulatory guidance shifts — a website needs to move when the environment moves",
+      "Test with a cold reader once a year: someone who does not know your firm reviews the site and tells you what they understood"
      ]
     }
    }
   },
   {
-   "id": "compliance_aware_marketi",
-   "name": "Compliance-Aware Marketing",
+   "id": "compliance_ready_marketi",
+   "name": "Compliance-Ready Marketing",
    "questions": [
     {
-     "id": "compliance_aware_marketi_q1",
-     "text": "How often does content your firm has commissioned or produced get significantly delayed or killed at compliance review?",
+     "id": "compliance_ready_marketi_q1",
+     "text": "How does compliance factor into your content production process?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Frequently — it is a constant source of friction that slows or stops campaigns",
+       "label": "Compliance slows everything down to the point where we have largely stopped trying",
        "score": 1
       },
       {
-       "label": "Often — we lose significant time and sometimes drop campaigns entirely as a result",
+       "label": "We produce content but it often gets flagged and we spend more time fixing it than creating it",
        "score": 2
       },
       {
-       "label": "Occasionally — most content gets through but there are regular revisions that add time",
+       "label": "We are cautious — we avoid topics that might be difficult to get through review",
        "score": 3
       },
       {
-       "label": "Rarely — our marketing partners understand the environment and produce content that survives review",
+       "label": "We have a reasonable process but it still creates bottlenecks",
        "score": 4
       },
       {
-       "label": "Almost never — our process is built around compliance requirements from the start, so surprises are rare",
+       "label": "We produce content that is useful and survives review without significant rework",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "compliance_aware_marketi_q2",
-     "text": "When you brief a marketing partner on a campaign or content piece, how much of the regulatory context do they need explaining from scratch?",
+     "id": "compliance_ready_marketi_q2",
+     "text": "How often does a compliance flag or revision cycle cause a piece of content to be significantly delayed or abandoned?",
      "max_score": 5,
      "answers": [
       {
-       "label": "All of it — every engagement starts with a compliance primer and significant onboarding time",
+       "label": "Often — it is the main reason we do not publish more",
        "score": 1
       },
       {
-       "label": "A lot — most partners understand the basics but need extensive guidance on what is and is not possible here",
+       "label": "Regularly — at least half our content is significantly affected",
        "score": 2
       },
       {
-       "label": "Some — our partners have financial services experience but still need guidance on our specific requirements",
+       "label": "Occasionally — it is frustrating but we get there eventually",
        "score": 3
       },
       {
-       "label": "Very little — our partners have worked in this environment and already know what compliance will flag",
+       "label": "Rarely — we have learned to write for compliance from the start",
        "score": 4
       },
       {
-       "label": "None — our partners anticipate compliance requirements before the work is reviewed and brief accordingly",
+       "label": "Almost never — compliance is built into the brief, not bolted on at the end",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "compliance_aware_marketi_q3",
-     "text": "When regulatory guidance shifts and affects your website or communications, how does your firm respond?",
+     "id": "compliance_ready_marketi_q3",
+     "text": "How much of your marketing time is spent on rework — fixing content that did not survive compliance review or did not land with your audience?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We are often slow to update — compliance and marketing are not well coordinated",
+       "label": "Most of it — we spend more time fixing than creating",
        "score": 1
       },
       {
-       "label": "We update reactively, which sometimes means content stays live longer than it should",
+       "label": "A significant portion — rework is a constant drain",
        "score": 2
       },
       {
-       "label": "We have a process but it takes longer than we would like to get changes made",
+       "label": "Some — it is frustrating but manageable",
        "score": 3
       },
       {
-       "label": "We respond promptly — our marketing function stays close to regulatory changes and acts quickly",
+       "label": "A small amount — we catch most issues before they become problems",
        "score": 4
       },
       {
-       "label": "We anticipate regulatory shifts and plan updates in advance so we are never caught reactive",
+       "label": "Almost none — we get it right on the first pass most of the time",
        "score": 5
       }
      ],
@@ -401,149 +468,117 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Compliance is slowing your marketing output",
-     "text": "This is a predictable result of working with marketing partners who do not understand the environment. Content that does not anticipate what a compliance function will flag gets revised repeatedly or killed entirely — which adds cost, erodes the relationship with the marketing team, and means your publishing calendar runs months behind where it should be. The fix is usually a specialist, not a longer brief.",
+     "headline": "Compliance is blocking your marketing rather than working with it",
+     "text": "In financial services, a single line of copy carries liability. Compliance teams need to approve every external communication. That is the normal operating condition — and it is why working with people who know what a compliance function will flag before they see it makes a material difference to what you can actually produce and how fast.",
      "steps": [
-      "Track how much time each content project loses to compliance revisions and add that to your true cost of marketing",
-      "Brief any new marketing partner on your specific compliance requirements before work begins, not after first draft",
-      "Consider whether the cumulative cost of repeated revisions with a generalist outweighs the cost of a specialist who already knows this environment"
+      "Map the last three pieces of content that went through compliance and identify the most common reasons for flags",
+      "Build those patterns into your brief before content is written, not into the review after",
+      "Consider whether your current content partner or process understands financial services compliance — the knowledge gap is usually where the rework comes from"
      ]
     },
     "mid": {
-     "headline": "Compliance is manageable but it still costs time",
-     "text": "You are not losing major campaigns, but the friction is there and it adds up. The difference between a marketing partner who already knows this environment and one who is learning it on your time tends to show in speed and quality — both of which matter when your publishing calendar depends on compliance sign-off.",
+     "headline": "You are managing compliance — now make it an advantage",
+     "text": "The firms that get compliance-ready marketing right do not just avoid flags. They know what will work before they write it, which means they publish more and faster than firms that treat compliance as a final hurdle. That institutional knowledge is a real competitive edge — it changes the speed and quality of what you can deliver.",
      "steps": [
-      "Track the average revision cycle for content pieces going through compliance review",
-      "Share past compliance feedback with your marketing partner so they build that knowledge in without repeating mistakes",
-      "Identify the types of content that consistently clear review quickly and build your calendar around them"
+      "Document the compliance patterns that consistently delay content and build them into your editorial standards",
+      "Make sure whoever writes your content — internal or external — understands the specific requirements of your regulatory environment",
+      "Measure the average time from brief to publication and track whether it shortens as compliance becomes part of the process rather than the end of it"
      ]
     },
     "high": {
-     "headline": "Compliance is part of the process, not a barrier",
-     "text": "You have built the kind of working environment where compliance and marketing are not in friction. That is not the default in this sector and it is worth protecting — particularly as you increase your content output and the volume of material going through review.",
+     "headline": "Compliance is built in, not bolted on",
+     "text": "This is where most financial services firms do not get to. Producing content that is genuinely useful and survives review — consistently, without significant rework — requires people who understand the environment from the inside. You have built that. The priority now is protecting it.",
      "steps": [
-      "Make sure new hires and new marketing partners are briefed on your compliance process from day one, not after first submission",
-      "Document which types of content clear review smoothly and build your content calendar around those categories",
-      "Stay close to regulatory changes so your marketing function can anticipate updates rather than react to them"
+      "Review your process annually as regulatory guidance shifts — what works today may need updating when the environment moves",
+      "Document your compliance-ready brief template so it does not live only in one person's head",
+      "Use your compliance knowledge as a filter when evaluating external partners — it is a higher bar than most generalists can meet"
      ]
     }
    }
   },
   {
-   "id": "audience_and_sector_spec",
-   "name": "Audience and Sector Specificity",
+   "id": "pipeline_measurement",
+   "name": "Pipeline Measurement",
    "questions": [
     {
-     "id": "audience_and_sector_spec_q1",
-     "text": "How clearly does your firm's current website and content reflect the specific audience you serve — their language, their concerns, their typical situation?",
+     "id": "pipeline_measurement_q1",
+     "text": "How well do you understand where your best clients came from before they contacted you?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Our marketing could describe almost any financial services firm — there is little specific to our audience",
+       "label": "We do not really know — most arrived through introductions and we have not tracked it further",
        "score": 1
       },
       {
-       "label": "It reflects our sector broadly but does not speak clearly to our specific client type",
+       "label": "We have a rough sense but no real data",
        "score": 2
       },
       {
-       "label": "It is reasonably targeted but we know there are generic sections that do not represent us well",
+       "label": "We track referral sources but not what else may have influenced non-referral enquiries",
        "score": 3
       },
       {
-       "label": "It speaks clearly to our audience, with content that addresses their specific situations and concerns",
+       "label": "We track sources and have some data on what touched non-referral enquiries before they called",
        "score": 4
       },
       {
-       "label": "Every element of our digital presence is built around what our specific clients need to see before they hand over their trust",
+       "label": "We know exactly what influenced our best clients before they called and we invest in those channels",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "audience_and_sector_spec_q2",
-     "text": "When a prospective client arrives at your website, how confident are you that they will quickly understand whether your firm is the right fit for them?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Not confident — our site is broadly descriptive and does not differentiate us clearly",
-       "score": 1
-      },
-      {
-       "label": "Slightly confident — they would understand what we do but not who we are specifically right for",
-       "score": 2
-      },
-      {
-       "label": "Reasonably confident — the message is there but it is not as immediate as it should be",
-       "score": 3
-      },
-      {
-       "label": "Fairly confident — most of our target audience would recognise themselves in what we publish",
-       "score": 4
-      },
-      {
-       "label": "Very confident — our site is built specifically to answer that question for the right prospect",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "id": "marketing_driven_pct",
+     "type": "number",
+     "text": "What percentage of your new clients in the last 12 months came through marketing or digital channels — not referrals or introductions?",
+     "hint": "Include any client who found you through your website, content, social media, or search without a prior introduction",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 10,
+     "normalize_formula": "x"
     },
     {
-     "id": "audience_and_sector_spec_q3",
-     "text": "How different is your firm's visual identity, tone, and content strategy from the majority of competitors in your segment?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Very similar — we look and sound broadly like the rest of the sector",
-       "score": 1
-      },
-      {
-       "label": "We have some differentiation but it is not consistent across channels or materials",
-       "score": 2
-      },
-      {
-       "label": "Our identity is reasonably distinct but does not always reflect the specific audience we serve",
-       "score": 3
-      },
-      {
-       "label": "We have a clear and consistent identity that our audience recognises as specific to them",
-       "score": 4
-      },
-      {
-       "label": "Our brand and content strategy are built entirely around what builds trust with our specific segment — not financial services broadly",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "id": "hourly_rate",
+     "type": "number",
+     "text": "What is the average loaded hourly cost of your team's time — salary, employer costs, and overhead divided by working hours? Use your best estimate.",
+     "hint": "A reasonable starting point for most advisory firms is £75 to £150 per hour",
+     "suffix": "£/hr",
+     "min": 20,
+     "max": 500,
+     "step": 5,
+     "default": 100,
+     "normalize_formula": "50"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Your marketing describes the sector, not your firm",
-     "text": "A website or content strategy that could describe almost any financial services firm is not doing the job. What a pension trustee committee needs to see before they hand over their trust is completely different from what an entrepreneur looking for acquisition finance needs to see. Generic positioning is not neutral — it actively reduces the quality of the enquiries you receive and makes it harder for the right prospect to self-select.",
+     "headline": "You are flying blind on pipeline sources",
+     "text": "If you do not know what influenced your best clients before they called, you cannot invest intelligently in building more of them. This gap is common across financial services firms — and it is one of the main reasons referral dependency persists even when firms want to change it.",
      "steps": [
-      "Write one paragraph that describes your ideal client specifically: their situation, their typical concern, and what they are actually trying to solve",
-      "Audit your current website copy against that description and note every place it goes generic",
-      "Rewrite your homepage to speak directly to that specific audience, not to financial services broadly"
+      "Start asking every new client the same two questions: how did you find us, and what did you read or look at before you called",
+      "Add a simple source field to your CRM or client intake process and record it for every new enquiry",
+      "Estimate what percentage of your last 12 months of new business came from introductions versus other sources — even a rough number is more useful than none"
      ]
     },
     "mid": {
-     "headline": "Your positioning is directionally right but not specific enough",
-     "text": "You are not invisible to your target audience, but you are probably not the obvious choice either. The firms that attract the strongest inbound are the ones where a prospect reads the site and thinks: this firm works with people in exactly my situation. The gap between where you are and that position is usually smaller than it looks — it is a specificity problem, not a structural one.",
+     "headline": "You have some data — now use it to direct investment",
+     "text": "Knowing where your clients come from is the start. The firms that use that data well are directing their marketing budget and time toward the channels that are already working — not spreading it equally or defaulting to whatever feels most visible.",
      "steps": [
-      "Identify the two or three situations your best clients were in when they first made contact with your firm",
-      "Check whether those situations are described clearly anywhere on your website or in your content",
-      "Produce one piece of content that speaks directly to that specific situation, rather than to your sector broadly"
+      "Build a simple monthly report: new enquiries, source, conversion rate, and average deal or retainer value by source",
+      "Compare the fit quality of referral and non-referral clients over the last two years — retention, fee level, ease of working relationship",
+      "Set a specific target for non-referral enquiries and review it quarterly"
      ]
     },
     "high": {
-     "headline": "Your audience recognises itself in what you publish",
-     "text": "Specificity is one of the strongest signals of expertise in financial services. When a prospect reads your content and feels it was written for their situation, the conversion from reading to making contact tends to be stronger — and the fit at engagement tends to hold. The question now is whether you are protecting that specificity as you grow.",
+     "headline": "You know what is working — keep that measurement discipline",
+     "text": "The firms that move decisively past referral dependency are the ones that track both what is producing pipeline and the quality of what it produces. You are doing this. The question worth asking now is whether you are investing in the right channels in proportion to what they are actually delivering.",
      "steps": [
-      "Review whether your case studies and client outcomes reflect the specific segment you want to attract, not just the range of work you have done",
-      "Check that your visual identity and tone sit at the right point in the trust spectrum for your specific audience",
-      "Identify adjacent questions your ideal clients are asking during the research phase that you are not yet answering"
+      "Review whether your measurement is capturing the full research trail, not just the last touchpoint before enquiry",
+      "Model what a 10-percentage-point shift from referral to marketing-driven would mean for revenue and dependency risk",
+      "Use your data when briefing external partners — it is more useful than assumptions about what should work"
      ]
     }
    }
@@ -566,24 +601,17 @@
  },
  "computed_outputs": [
   {
-   "id": "annual_referral_hours",
-   "label": "Senior partner hours per year on referral maintenance (weekly hours x 52 weeks)",
-   "format": "hours_per_period",
-   "formula": "referral_hours_weekly * 52",
+   "id": "annual_referral_cost",
+   "label": "Annual cost of referral relationship management",
+   "format": "currency_per_period",
+   "formula": "weekly_referral_hours * hourly_rate * 52",
    "show_in_result": true
   },
   {
-   "id": "referral_pipeline_ratio",
-   "label": "Share of your pipeline that depends on introductions",
+   "id": "referral_dependency_rate",
+   "label": "Share of pipeline still dependent on referrals",
    "format": "percent",
-   "formula": "referral_percentage",
-   "show_in_result": true
-  },
-  {
-   "id": "referral_clients_count",
-   "label": "New clients per year sourced from introductions",
-   "format": "integer",
-   "formula": "Math.round(new_clients_annual * (referral_percentage / 100))",
+   "formula": "100 - marketing_driven_pct",
    "show_in_result": true
   }
  ],
@@ -593,20 +621,20 @@
   "text": "Which best describes your firm?",
   "answers": [
    {
-    "label": "Asset management or fund management",
-    "tag": "asset_manager"
+    "label": "Financial planning or wealth management",
+    "tag": "financial_planning"
    },
    {
-    "label": "Financial planning or wealth management",
-    "tag": "financial_planner"
+    "label": "Asset management or fund management",
+    "tag": "asset_management"
    },
    {
     "label": "Commercial finance or lending",
     "tag": "commercial_finance"
    },
    {
-    "label": "FinTech, accounting or professional services",
-    "tag": "fintech_professional"
+    "label": "FinTech, accounting, or other regulated sector",
+    "tag": "other_regulated"
    }
   ]
  }
