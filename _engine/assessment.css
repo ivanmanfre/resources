@@ -1,4 +1,4 @@
-.lmc-root{--paper:#FFFFFF;--paper-sunk:#F4F2EC;--paper-raise:#fff;--ink:#131210;--ink-soft:#6B675E;--ink-mute:#6B675E;--hairline:#13121026;--hairline-bold:#13121040;--accent:#131210;--accent-light:#131210;--accent-ink:#131210;--accent-soft:#13121014;--accent-glow:rgba(19, 18, 16,.18);--shadow-subtle:0 1px 3px #1312100f,0 1px 2px #1312100a;--shadow-lift:0 8px 24px #1312101a,0 2px 6px #1312100d;--font-sans:'Schibsted Grotesk',Georgia,serif;--font-drama:"Schibsted Grotesk",Georgia,serif;--font-mono:'Courier Prime',Georgia,serif;font-family:var(--font-sans);color:var(--ink);background:0 0}.lmc-root *{box-sizing:border-box}.lmc-container{max-width:880px;margin:0 auto;padding:1.5rem}.lmc-hero{border-bottom:1px solid var(--hairline);background:var(--paper);padding:6rem 1.5rem 5rem}.lmc-badge{color:#131210;text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1.5rem;padding:0;font-family:"Source Serif 4",Georgia,serif;font-size:13px;font-weight:600;display:inline-flex}.lmc-badge:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-h1{font-family:var(--font-drama);letter-spacing:-.01em;max-width:38rem;color:var(--ink);text-transform:none;margin:0 0 1.25rem;font-size:clamp(2.25rem,6vw,3.5rem);font-weight:400;line-height:1.05}.lmc-h1 em,.lmc-h1 i{font-family:var(--font-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-sub{max-width:42rem;color:var(--ink-soft);margin:0 0 2rem;font-size:clamp(1.05rem,2vw,1.25rem);font-weight:400;line-height:1.55}.lmc-meta-chip{text-transform:uppercase;letter-spacing:.08em;color:#131210;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;padding:0;font-family:"Source Serif 4",Georgia,serif;font-size:13px;font-weight:600;display:inline-flex}.lmc-meta-chip:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-meta{flex-wrap:wrap;gap:1.5rem;display:flex}.lmc-widget{max-width:880px;margin:5rem auto;padding:0 1.5rem}.lmc-card{background:var(--paper);border:1px solid var(--hairline);box-shadow:none;border-left:4px solid var(--accent);border-radius:0;padding:2.5rem 2rem}.lmc-progress-row{text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);justify-content:space-between;align-items:center;gap:1rem;margin-bottom:2rem;font-family:"Source Serif 4",Georgia,serif;font-size:13px;font-weight:600;display:flex}.lmc-progress-bar{background:var(--paper-sunk);border:1px solid var(--hairline);border-radius:4px;flex:auto;height:.4rem;position:relative;overflow:hidden}.lmc-progress-fill{background:var(--accent);width:0%;height:100%;transition:width .25s}.lmc-category{color:#131210;text-transform:uppercase;letter-spacing:.08em;text-overflow:ellipsis;white-space:nowrap;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;max-width:100%;margin-bottom:1.25rem;padding:0;font-family:"Source Serif 4",Georgia,serif;font-size:13px;font-weight:600;display:inline-flex;overflow:hidden}.lmc-category:before{content:"";background:var(--accent);flex-shrink:0;width:6px;height:6px;display:inline-block}.lmc-question{font-family:var(--font-drama);letter-spacing:-.01em;color:var(--ink);text-transform:none;margin:0 0 1.75rem;font-size:clamp(1.45rem,3vw,2rem);font-weight:400;line-height:1.2}.lmc-question em,.lmc-question i{font-family:var(--font-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-options{flex-direction:column;gap:.5rem;margin:0 0 1.75rem;padding:0;list-style:none;display:flex}.lmc-opt{cursor:pointer;background:var(--paper-raise);border:1px solid var(--hairline);color:var(--ink);border-radius:0;padding:1rem 1.15rem;font-size:1rem;font-weight:500;line-height:1.45;transition:background .15s,border-color .15s;display:block;position:relative}.lmc-opt:hover{border-color:var(--hairline-bold);background:#1312100a}.lmc-opt.selected{border-color:var(--hairline);color:var(--ink);background:0 0;border-left:4px solid var(--accent);padding-left:calc(1.15rem - 3px);font-weight:600}.lmc-opt input[type=radio]{clip:rect(0,0,0,0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.lmc-opt input[type=radio]:focus+span{outline-offset:4px;border-radius:0;outline:2px solid var(--accent)}.lmc-nav{border-top:1px solid var(--hairline);justify-content:space-between;gap:.75rem;padding-top:1.5rem;display:flex}.lmc-btn{color:#FFFFFF;letter-spacing:0;cursor:pointer;box-shadow:none;text-transform:none;background:#131210;border:none;border-radius:0;justify-content:center;align-items:center;gap:.5rem;padding:14px 28px;font-family:"Source Serif 4",Georgia,serif;font-size:17px;font-weight:600;text-decoration:none;transition:background 80ms;display:inline-flex}.lmc-btn:hover:not([disabled]){color:#FFFFFF;background:#000}.lmc-btn:focus-visible{outline-offset:2px;outline:2px solid var(--accent)}.lmc-btn[disabled]{background:var(--paper-sunk);color:var(--ink-mute);border:1px solid var(--hairline);cursor:not-allowed}.lmc-btn-secondary{color:var(--ink-soft);border:1px solid var(--hairline-bold);background:0 0;padding:12px 22px;font-family:"Source Serif 4",Georgia,serif;font-size:15px;font-weight:600}.lmc-btn-secondary:hover:not([disabled]){background:var(--paper-sunk);color:var(--ink)}.lmc-result{text-align:left;padding:1rem 0}.lmc-score-ring{width:200px;height:200px;margin:0 0 1.5rem;position:relative}.lmc-score-ring svg{transform:rotate(-90deg)}.lmc-score-ring circle{fill:none;stroke-width:8px}.lmc-score-ring .track{stroke:var(--paper-sunk)}.lmc-score-ring .arc{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .6s}.lmc-score-ring .score-num{flex-direction:column;justify-content:center;align-items:center;display:flex;position:absolute;inset:0}.lmc-score-ring .score-num .num{font-family:var(--font-drama);letter-spacing:-.01em;color:var(--ink);font-feature-settings:"tnum" 1,"lnum" 1;font-variant-numeric:tabular-nums lining-nums;font-size:3.75rem;font-weight:400;line-height:1}.lmc-score-ring .score-num .suffix{color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase;margin-top:.5rem;font-family:"Source Serif 4",Georgia,serif;font-size:13px;font-weight:600}.lmc-tier-pill{color:#131210;text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1.25rem;padding:0;font-family:"Source Serif 4",Georgia,serif;font-size:14px;font-weight:600;display:inline-flex}.lmc-tier-pill:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-tier-pill.medium{background:var(--paper-sunk);color:var(--ink-soft);border-color:var(--hairline-bold)}.lmc-tier-pill.low{background:var(--paper-sunk);color:var(--ink-mute);border-color:var(--hairline-bold)}.lmc-result-lead{color:var(--ink-soft);max-width:42rem;margin:0 0 1.75rem;font-family:"Source Serif 4",Georgia,serif;font-size:1.125rem;font-weight:400;line-height:1.55}.lmc-capture{background:var(--ink);color:var(--paper);text-align:left;box-shadow:none;border-radius:0;margin:2.5rem 0;padding:4rem 2rem}.lmc-capture h3{font-family:var(--font-drama);letter-spacing:0;color:var(--paper);text-transform:none;margin:0 0 .6rem;font-size:1.5rem;font-weight:400;line-height:1.2}.lmc-capture h3 em,.lmc-capture h3 i{font-family:var(--font-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-capture p{color:#ffffffc7;margin:0 0 1.5rem;font-size:.95rem;line-height:1.55}.lmc-form{flex-wrap:wrap;gap:.5rem;display:flex}.lmc-form-input{min-width:0;color:var(--paper);font-size:1rem;font-family:var(--font-sans);background:#ffffff0f;border:1px solid #ffffff38;border-radius:4px;flex:240px;padding:.85rem 1rem}.lmc-form-input::placeholder{color:#ffffff73}.lmc-form-input:focus{border-color:var(--accent-light);background:#ffffff1a;outline:none;box-shadow:0 0 0 3px var(--accent-glow)}.lmc-note{color:var(--ink-mute);margin-top:.85rem;font-size:.82rem;line-height:1.5}.lmc-unlocked{margin-top:2rem}.lmc-category-block{border:1px solid var(--hairline);background:var(--paper-sunk);border-radius:4px;margin:1rem 0;padding:1.25rem 1.5rem}.lmc-category-block h4{letter-spacing:0;color:var(--ink);text-transform:none;margin:0 0 .5rem;font-family:"Source Serif 4",Georgia,serif;font-size:1.1rem;font-weight:600}.lmc-cat-bar{align-items:center;gap:1rem;margin-bottom:.85rem;display:flex}.lmc-cat-track{background:var(--paper-raise);border:1px solid var(--hairline);border-radius:4px;flex:auto;height:.4rem;overflow:hidden}.lmc-cat-fill{background:var(--accent);height:100%;transition:width .4s}.lmc-cat-pct{font-variant-numeric:tabular-nums;text-align:right;min-width:3rem;color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:.95rem;font-weight:600}.lmc-share{border-top:1px solid var(--hairline);flex-wrap:wrap;gap:.5rem;margin-top:2rem;padding-top:1.5rem;display:flex}.lmc-rec{background:var(--paper-sunk);color:var(--ink);border-left:2px solid var(--accent);border-radius:0 4px 4px 0;margin:.75rem 0;padding:1rem 1.15rem;font-family:"Source Serif 4",Georgia,serif;font-size:1rem;line-height:1.55}.lmc-rec strong{text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.4rem;font-family:"Source Serif 4",Georgia,serif;font-size:12px;font-weight:600;display:block}.lmc-toast{background:var(--ink);color:var(--paper);letter-spacing:0;border:1px solid var(--ink);box-shadow:var(--shadow-lift);z-index:100;opacity:0;pointer-events:none;border-radius:4px;padding:.85rem 1.25rem;font-family:"Source Serif 4",Georgia,serif;font-size:.95rem;font-weight:600;transition:opacity .25s,transform .25s;position:fixed;bottom:1.5rem;right:1.5rem;transform:translateY(10px)}.lmc-toast.show{opacity:1;pointer-events:auto;transform:translateY(0)}.lmc-intro{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--hairline);padding:5rem 1.5rem;position:relative;overflow:hidden}.lmc-intro-inner{flex-wrap:wrap;align-items:flex-start;gap:2.5rem;max-width:880px;margin:0 auto;display:flex;position:relative}.lmc-intro-avatar{border:1px solid var(--hairline);object-fit:cover;width:128px;height:128px;box-shadow:none;filter:saturate(.45)sepia(.18)contrast(1.1)brightness(.95);border-radius:4px;flex-shrink:0}.lmc-intro-body{flex:320px;min-width:0}.lmc-intro-badge{color:#131210;text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1rem;padding:0;font-family:"Source Serif 4",Georgia,serif;font-size:13px;font-weight:600;display:inline-flex}.lmc-intro-badge:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-intro-h{font-family:var(--font-drama);letter-spacing:-.01em;color:var(--ink);text-transform:none;margin:0 0 .75rem;font-size:clamp(1.65rem,3.5vw,2.5rem);font-weight:400;line-height:1.1}.lmc-intro-h em,.lmc-intro-h i{font-family:var(--font-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-intro-p{max-width:38rem;color:var(--ink-soft);margin:0 0 1.5rem;font-size:1.05rem;font-weight:400;line-height:1.55}.lmc-intro-points{color:var(--ink);flex-direction:column;gap:.65rem;margin:0 0 1.75rem;padding:0;font-size:.95rem;list-style:none;display:flex}.lmc-intro-points li{align-items:flex-start;gap:.85rem;line-height:1.5;display:flex}.lmc-intro-icon{background:var(--accent);color:#fff;border-radius:4px;flex-shrink:0;justify-content:center;align-items:center;width:22px;height:22px;margin-top:2px;font-family:"Source Serif 4",Georgia,serif;font-size:.78rem;font-weight:600;display:flex}.lmc-intro-icon.a,.lmc-intro-icon.b,.lmc-intro-icon.c{background:var(--accent);color:#fff}.lmc-intro-start{color:#FFFFFF;box-shadow:none;cursor:pointer;background:#131210;border:none;border-radius:0;align-items:center;gap:.5rem;padding:14px 28px;font-family:"Source Serif 4",Georgia,serif;font-size:17px;font-weight:600;text-decoration:none;transition:background 80ms;display:inline-flex}.lmc-intro-start:hover{color:#FFFFFF;background:#000}.lmc-intro-note{color:var(--ink-mute);max-width:32rem;margin-top:1rem;font-size:.82rem;line-height:1.5}@media (prefers-reduced-motion:reduce){.lmc-progress-fill,.lmc-opt,.lmc-btn,.lmc-cat-fill,.lmc-score-ring .arc,.lmc-toast{transition:none!important}}@media (width<=640px){.lmc-hero{padding:2.5rem 1.25rem 2rem}.lmc-card{padding:1.75rem 1.25rem}.lmc-nav{flex-direction:column-reverse}.lmc-btn{width:100%}.lmc-intro{padding:2.5rem 1.25rem}.lmc-intro-avatar{width:96px;height:96px}.lmc-score-ring{width:160px;height:160px}.lmc-score-ring .score-num .num{font-size:2.5rem}}
+.lmc-root{--paper:#FFFFFF;--paper-sunk:#F4F2EC;--paper-raise:#fff;--ink:#131210;--ink-soft:#6B675E;--ink-mute:#6B675E;--hairline:#13121026;--hairline-bold:#13121040;--accent:#131210;--accent-light:#131210;--accent-ink:#131210;--accent-soft:#13121014;--accent-glow:rgba(19, 18, 16,.18);--shadow-subtle:0 1px 3px #1312100f,0 1px 2px #1312100a;--shadow-lift:0 8px 24px #1312101a,0 2px 6px #1312100d;--afe-sans:'Schibsted Grotesk',Georgia,serif;--afe-drama:"Schibsted Grotesk",Georgia,serif;--afe-mono:'Courier Prime',Georgia,serif;--font-serif:'Source Serif 4',Georgia,serif;font-family:var(--afe-sans);color:var(--ink);background:0 0}.lmc-root *{box-sizing:border-box}.lmc-container{max-width:880px;margin:0 auto;padding:1.5rem}.lmc-hero{border-bottom:1px solid var(--hairline);background:var(--paper);padding:6rem 1.5rem 5rem}.lmc-badge{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1.5rem;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex}.lmc-badge:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-h1{font-family:var(--afe-drama);letter-spacing:-.01em;max-width:38rem;color:var(--ink);text-transform:none;margin:0 0 1.25rem;font-size:clamp(2.25rem,6vw,3.5rem);font-weight:400;line-height:1.05}.lmc-h1 em,.lmc-h1 i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-sub{max-width:42rem;color:var(--ink-soft);margin:0 0 2rem;font-size:clamp(1.05rem,2vw,1.25rem);font-weight:400;line-height:1.55}.lmc-meta-chip{text-transform:uppercase;letter-spacing:.08em;color:var(--ink);background:0 0;border:none;border-radius:0;align-items:center;gap:6px;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex}.lmc-meta-chip:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-meta{flex-wrap:wrap;gap:1.5rem;display:flex}.lmc-widget{max-width:880px;margin:5rem auto;padding:0 1.5rem}.lmc-card{background:var(--paper);border:1px solid var(--hairline);box-shadow:none;border-left:4px solid var(--accent);border-radius:0;padding:2.5rem 2rem}.lmc-progress-row{text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);justify-content:space-between;align-items:center;gap:1rem;margin-bottom:2rem;font-family:var(--font-serif);font-size:13px;font-weight:600;display:flex}.lmc-progress-bar{background:var(--paper-sunk);border:1px solid var(--hairline);border-radius:4px;flex:auto;height:.4rem;position:relative;overflow:hidden}.lmc-progress-fill{background:var(--accent);width:0%;height:100%;transition:width .25s}.lmc-category{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;text-overflow:ellipsis;white-space:nowrap;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;max-width:100%;margin-bottom:1.25rem;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex;overflow:hidden}.lmc-category:before{content:"";background:var(--accent);flex-shrink:0;width:6px;height:6px;display:inline-block}.lmc-question{font-family:var(--afe-drama);letter-spacing:-.01em;color:var(--ink);text-transform:none;margin:0 0 1.75rem;font-size:clamp(1.45rem,3vw,2rem);font-weight:400;line-height:1.2}.lmc-question em,.lmc-question i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-options{flex-direction:column;gap:.5rem;margin:0 0 1.75rem;padding:0;list-style:none;display:flex}.lmc-opt{cursor:pointer;background:var(--paper-raise);border:1px solid var(--hairline);color:var(--ink);border-radius:0;padding:1rem 1.15rem;font-size:1rem;font-weight:500;line-height:1.45;transition:background .15s,border-color .15s;display:block;position:relative}.lmc-opt:hover{border-color:var(--hairline-bold);background:#1312100a}.lmc-opt.selected{border-color:var(--hairline);color:var(--ink);background:0 0;border-left:4px solid var(--accent);padding-left:calc(1.15rem - 3px);font-weight:600}.lmc-opt input[type=radio]{clip:rect(0,0,0,0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.lmc-opt input[type=radio]:focus+span{outline-offset:4px;border-radius:0;outline:2px solid var(--accent)}.lmc-nav{border-top:1px solid var(--hairline);justify-content:space-between;gap:.75rem;padding-top:1.5rem;display:flex}.lmc-btn{color:var(--paper);letter-spacing:0;cursor:pointer;box-shadow:none;text-transform:none;background:var(--ink);border:none;border-radius:0;justify-content:center;align-items:center;gap:.5rem;padding:14px 28px;font-family:var(--font-serif);font-size:17px;font-weight:600;text-decoration:none;transition:background 80ms;display:inline-flex}.lmc-btn:hover:not([disabled]){color:var(--paper);background:#000}.lmc-btn:focus-visible{outline-offset:2px;outline:2px solid var(--accent)}.lmc-btn[disabled]{background:var(--paper-sunk);color:var(--ink-mute);border:1px solid var(--hairline);cursor:not-allowed}.lmc-btn-secondary{color:var(--ink-soft);border:1px solid var(--hairline-bold);background:0 0;padding:12px 22px;font-family:var(--font-serif);font-size:15px;font-weight:600}.lmc-btn-secondary:hover:not([disabled]){background:var(--paper-sunk);color:var(--ink)}.lmc-result{text-align:left;padding:1rem 0}.lmc-score-ring{width:200px;height:200px;margin:0 0 1.5rem;position:relative}.lmc-score-ring svg{transform:rotate(-90deg)}.lmc-score-ring circle{fill:none;stroke-width:8px}.lmc-score-ring .track{stroke:var(--paper-sunk)}.lmc-score-ring .arc{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .6s}.lmc-score-ring .score-num{flex-direction:column;justify-content:center;align-items:center;display:flex;position:absolute;inset:0}.lmc-score-ring .score-num .num{font-family:var(--afe-drama);letter-spacing:-.01em;color:var(--ink);font-feature-settings:"tnum" 1,"lnum" 1;font-variant-numeric:tabular-nums lining-nums;font-size:3.75rem;font-weight:400;line-height:1}.lmc-score-ring .score-num .suffix{color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase;margin-top:.5rem;font-family:var(--font-serif);font-size:13px;font-weight:600}.lmc-tier-pill{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1.25rem;padding:0;font-family:var(--font-serif);font-size:14px;font-weight:600;display:inline-flex}.lmc-tier-pill:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-tier-pill.medium{background:var(--paper-sunk);color:var(--ink-soft);border-color:var(--hairline-bold)}.lmc-tier-pill.low{background:var(--paper-sunk);color:var(--ink-mute);border-color:var(--hairline-bold)}.lmc-result-lead{color:var(--ink-soft);max-width:42rem;margin:0 0 1.75rem;font-family:var(--font-serif);font-size:1.125rem;font-weight:400;line-height:1.55}.lmc-capture{background:var(--ink);color:var(--paper);text-align:left;box-shadow:none;border-radius:0;margin:2.5rem 0;padding:4rem 2rem}.lmc-capture h3{font-family:var(--afe-drama);letter-spacing:0;color:var(--paper);text-transform:none;margin:0 0 .6rem;font-size:1.5rem;font-weight:400;line-height:1.2}.lmc-capture h3 em,.lmc-capture h3 i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-capture p{color:#ffffffc7;margin:0 0 1.5rem;font-size:.95rem;line-height:1.55}.lmc-form{flex-wrap:wrap;gap:.5rem;display:flex}.lmc-form-input{min-width:0;color:var(--paper);font-size:1rem;font-family:var(--afe-sans);background:#ffffff0f;border:1px solid #ffffff38;border-radius:4px;flex:240px;padding:.85rem 1rem}.lmc-form-input::placeholder{color:#ffffff73}.lmc-form-input:focus{border-color:var(--accent-light);background:#ffffff1a;outline:none;box-shadow:0 0 0 3px var(--accent-glow)}.lmc-note{color:var(--ink-mute);margin-top:.85rem;font-size:.82rem;line-height:1.5}.lmc-unlocked{margin-top:2rem}.lmc-category-block{border:1px solid var(--hairline);background:var(--paper-sunk);border-radius:4px;margin:1rem 0;padding:1.25rem 1.5rem}.lmc-category-block h4{letter-spacing:0;color:var(--ink);text-transform:none;margin:0 0 .5rem;font-family:var(--font-serif);font-size:1.1rem;font-weight:600}.lmc-cat-bar{align-items:center;gap:1rem;margin-bottom:.85rem;display:flex}.lmc-cat-track{background:var(--paper-raise);border:1px solid var(--hairline);border-radius:4px;flex:auto;height:.4rem;overflow:hidden}.lmc-cat-fill{background:var(--accent);height:100%;transition:width .4s}.lmc-cat-pct{font-variant-numeric:tabular-nums;text-align:right;min-width:3rem;color:var(--ink);font-family:var(--font-serif);font-size:.95rem;font-weight:600}.lmc-share{border-top:1px solid var(--hairline);flex-wrap:wrap;gap:.5rem;margin-top:2rem;padding-top:1.5rem;display:flex}.lmc-rec{background:var(--paper-sunk);color:var(--ink);border-left:2px solid var(--accent);border-radius:0 4px 4px 0;margin:.75rem 0;padding:1rem 1.15rem;font-family:var(--font-serif);font-size:1rem;line-height:1.55}.lmc-rec strong{text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.4rem;font-family:var(--font-serif);font-size:12px;font-weight:600;display:block}.lmc-toast{background:var(--ink);color:var(--paper);letter-spacing:0;border:1px solid var(--ink);box-shadow:var(--shadow-lift);z-index:100;opacity:0;pointer-events:none;border-radius:4px;padding:.85rem 1.25rem;font-family:var(--font-serif);font-size:.95rem;font-weight:600;transition:opacity .25s,transform .25s;position:fixed;bottom:1.5rem;right:1.5rem;transform:translateY(10px)}.lmc-toast.show{opacity:1;pointer-events:auto;transform:translateY(0)}.lmc-intro{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--hairline);padding:5rem 1.5rem;position:relative;overflow:hidden}.lmc-intro-inner{flex-wrap:wrap;align-items:flex-start;gap:2.5rem;max-width:880px;margin:0 auto;display:flex;position:relative}.lmc-intro-avatar{border:1px solid var(--hairline);object-fit:cover;width:128px;height:128px;box-shadow:none;filter:saturate(.45)sepia(.18)contrast(1.1)brightness(.95);border-radius:4px;flex-shrink:0}.lmc-intro-body{flex:320px;min-width:0}.lmc-intro-badge{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1rem;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex}.lmc-intro-badge:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-intro-h{font-family:var(--afe-drama);letter-spacing:-.01em;color:var(--ink);text-transform:none;margin:0 0 .75rem;font-size:clamp(1.65rem,3.5vw,2.5rem);font-weight:400;line-height:1.1}.lmc-intro-h em,.lmc-intro-h i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-intro-p{max-width:38rem;color:var(--ink-soft);margin:0 0 1.5rem;font-size:1.05rem;font-weight:400;line-height:1.55}.lmc-intro-points{color:var(--ink);flex-direction:column;gap:.65rem;margin:0 0 1.75rem;padding:0;font-size:.95rem;list-style:none;display:flex}.lmc-intro-points li{align-items:flex-start;gap:.85rem;line-height:1.5;display:flex}.lmc-intro-icon{background:var(--accent);color:#fff;border-radius:4px;flex-shrink:0;justify-content:center;align-items:center;width:22px;height:22px;margin-top:2px;font-family:var(--font-serif);font-size:.78rem;font-weight:600;display:flex}.lmc-intro-icon.a,.lmc-intro-icon.b,.lmc-intro-icon.c{background:var(--accent);color:var(--paper)}.lmc-intro-start{color:var(--paper);box-shadow:none;cursor:pointer;background:var(--ink);border:none;border-radius:0;align-items:center;gap:.5rem;padding:14px 28px;font-family:var(--font-serif);font-size:17px;font-weight:600;text-decoration:none;transition:background 80ms;display:inline-flex}.lmc-intro-start:hover{color:var(--paper);background:#000}.lmc-intro-note{color:var(--ink-mute);max-width:32rem;margin-top:1rem;font-size:.82rem;line-height:1.5}@media (prefers-reduced-motion:reduce){.lmc-progress-fill,.lmc-opt,.lmc-btn,.lmc-cat-fill,.lmc-score-ring .arc,.lmc-toast{transition:none!important}}@media (width<=640px){.lmc-hero{padding:2.5rem 1.25rem 2rem}.lmc-card{padding:1.75rem 1.25rem}.lmc-nav{flex-direction:column-reverse}.lmc-btn{width:100%}.lmc-intro{padding:2.5rem 1.25rem}.lmc-intro-avatar{width:96px;height:96px}.lmc-score-ring{width:160px;height:160px}.lmc-score-ring .score-num .num{font-size:2.5rem}}
 
 /* ─── 2026-05-25 — Start gate + slide transitions + result reveal ─────── */
 
@@ -76,7 +76,7 @@
   text-align: center;
 }
 .lmc-score-hero .lmc-score-number {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-style: italic; font-weight: 400;
   font-size: 5.75rem; line-height: 1;
   color: var(--accent);
@@ -86,7 +86,7 @@
 @media (max-width: 980px) { .lmc-score-hero .lmc-score-number { font-size: 4.75rem; } }
 @media (max-width: 640px) { .lmc-score-hero .lmc-score-number { font-size: 4.25rem; } }
 .lmc-score-hero .lmc-score-denom {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   color: rgba(19, 18, 16, 0.5);
@@ -95,39 +95,39 @@
 
 .lmc-score-body { display: flex; flex-direction: column; gap: 0.85rem; min-width: 0; }
 .lmc-score-eyebrow {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 13px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
-  color: #131210;
+  color: var(--ink, #131210);
   display: inline-flex; align-items: center; gap: 10px;
 }
 .lmc-score-eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1px; background: var(--accent); }
 .lmc-score-headline {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-size: clamp(1.85rem, 3.6vw, 2.6rem);
   font-weight: 400; line-height: 1.1;
   letter-spacing: -0.01em;
-  color: #131210;
+  color: var(--ink, #131210);
   margin: 0;
 }
 .lmc-score-headline em {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-style: italic; font-weight: 400;
   color: var(--accent);
 }
 .lmc-score-note {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 1.05rem; line-height: 1.6;
-  color: #4A463E;
+  color: #4A463E; /* NOT var(--ink-soft) — assessment.css's own .lmc-root locally redefines --ink-soft to #6B675E for its minified-block rules; using the shared token here would silently recolor this text. Literal kept for exact parity. */
   margin: 0; max-width: 34rem;
 }
-.lmc-score-note strong { color: #131210; font-weight: 600; }
+.lmc-score-note strong { color: var(--ink, #131210); font-weight: 600; }
 
 /* Critical tier: swap sage for ink so the visual weight matches the message. */
-.lmc-score-hero[data-tier="critical"] .ring-fill { stroke: #131210; }
-.lmc-score-hero[data-tier="critical"] .lmc-score-number { color: #131210; }
-.lmc-score-hero[data-tier="critical"] .lmc-score-eyebrow::before { background: #131210; }
-.lmc-score-hero[data-tier="critical"] .lmc-score-headline em { color: #131210; }
+.lmc-score-hero[data-tier="critical"] .ring-fill { stroke: var(--ink, #131210); }
+.lmc-score-hero[data-tier="critical"] .lmc-score-number { color: var(--ink, #131210); }
+.lmc-score-hero[data-tier="critical"] .lmc-score-eyebrow::before { background: var(--ink, #131210); }
+.lmc-score-hero[data-tier="critical"] .lmc-score-headline em { color: var(--ink, #131210); }
 
 /* Staggered fade-in for downstream result sections. Set --lmc-delay inline. */
 .lmc-result-section {
@@ -155,11 +155,11 @@
 }
 .lmc-result .lmc-category-block:first-of-type { border-top: none; }
 .lmc-result .lmc-category-block h4 {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 13px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   margin: 0 0 0.75rem;
-  color: #131210;
+  color: var(--ink, #131210);
 }
 .lmc-result .lmc-cat-bar { gap: 1.5rem; align-items: center; }
 .lmc-result .lmc-cat-track {
@@ -172,7 +172,7 @@
 }
 .lmc-result .lmc-cat-fill { background: var(--accent); border-radius: 999px; }
 .lmc-result .lmc-cat-pct {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-style: italic; font-weight: 400;
   font-size: 1.5rem; color: var(--accent);
   min-width: 4ch; text-align: right;
@@ -187,11 +187,11 @@
   margin: 1rem 0 0;
   font-size: 0.96rem;
   line-height: 1.55;
-  color: #4A463E;
+  color: #4A463E; /* NOT var(--ink-soft) — assessment.css's own .lmc-root locally redefines --ink-soft to #6B675E for its minified-block rules; using the shared token here would silently recolor this text. Literal kept for exact parity. */
 }
 .lmc-result .lmc-rec strong {
   display: block;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--accent);
@@ -203,15 +203,15 @@
 
 /* Per-category section header */
 .lmc-result-unlock-h {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-size: clamp(1.5rem, 2.8vw, 1.85rem);
   font-weight: 400;
   letter-spacing: -0.01em;
   margin: 0 0 1.25rem;
-  color: #131210;
+  color: var(--ink, #131210);
 }
 .lmc-result-unlock-h em {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-style: italic; font-weight: 400;
   color: var(--accent);
 }
@@ -220,8 +220,8 @@
 .lmc-result .lmc-retake-wrap { margin-top: 2.5rem; }
 .lmc-result .lmc-retake {
   background: transparent; border: none; padding: 0;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 0.9rem; color: #6B675E;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 0.9rem; color: var(--ink-mute, #6B675E);
   cursor: pointer;
   border-bottom: 1px solid rgba(19, 18, 16, 0.2);
   padding-bottom: 2px;
@@ -244,26 +244,26 @@
 .lmc-start-slide { padding: 0.25rem 0; }
 .lmc-start-eyebrow { margin-bottom: 1.5rem !important; }
 .lmc-start-h {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-size: clamp(1.85rem, 4vw, 2.75rem);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.01em;
   margin: 0 0 1rem;
-  color: #131210;
+  color: var(--ink, #131210);
   max-width: 30rem;
 }
 .lmc-start-h em {
-  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
   font-style: italic;
   font-weight: 400;
   color: var(--accent);
 }
 .lmc-start-p {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #4A463E;
+  color: #4A463E; /* NOT var(--ink-soft) — assessment.css's own .lmc-root locally redefines --ink-soft to #6B675E for its minified-block rules; using the shared token here would silently recolor this text. Literal kept for exact parity. */
   margin: 0 0 1.75rem;
   max-width: 36rem;
 }
@@ -272,12 +272,12 @@
   flex-wrap: wrap;
   gap: 1.5rem 1.75rem;
   margin: 0 0 2rem;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #131210;
+  color: var(--ink, #131210);
 }
 .lmc-start-meta-item { display: inline-flex; align-items: center; gap: 8px; }
 .lmc-start-meta-dot { display: inline-block; width: 6px; height: 6px; background: var(--accent); }
@@ -295,7 +295,7 @@
 .lmc-progress { margin: 0 0 1.5rem; }
 .lmc-progress-row {
   display: flex; align-items: baseline; justify-content: space-between;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -333,9 +333,9 @@
 /* Reset progress link — surfaces in the intro only when localStorage has
    saved answers. Quiet by default; sage on hover. */
 .lmc-intro-reset {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
   font-size: 0.88rem;
-  color: #6B675E;
+  color: var(--ink-mute, #6B675E);
   margin: 1rem 0 0;
   line-height: 1.5;
 }
@@ -345,7 +345,7 @@
   border: none;
   padding: 0;
   font: inherit;
-  color: #6B675E;
+  color: var(--ink-mute, #6B675E);
   cursor: pointer;
   border-bottom: 1px solid rgba(19, 18, 16, 0.22);
   padding-bottom: 1px;
@@ -377,7 +377,7 @@
 .lmc-intro-h i {
   position: relative;
   font-style: italic;
-  color: #131210 !important; /* override the green em color — sage lives in the sweep, not the text */
+  color: var(--ink, #131210) !important; /* override the green em color — sage lives in the sweep, not the text */
   display: inline-block;
   isolation: isolate;
   padding: 0 0.04em;
@@ -434,7 +434,7 @@
 .lmc-intro h2.lmc-intro-h,
 .lmc-root h2.lmc-start-h,
 .lmc-root h2.lmc-intro-h {
-  font-family: 'Schibsted Grotesk', Georgia, serif !important;
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif) !important;
   font-weight: 400 !important;
   letter-spacing: -0.02em !important;
   line-height: 1.0 !important;
@@ -451,7 +451,7 @@
 .lmc-h1 i {
   position: relative;
   font-style: italic;
-  color: #131210 !important;
+  color: var(--ink, #131210) !important;
   display: inline-block;
   isolation: isolate;
   padding: 0 0.04em;
@@ -473,7 +473,7 @@
 }
 /* Same for the in-quiz question headline (it's also h2 inside .lmc-card) */
 .lmc-question {
-  font-family: 'Schibsted Grotesk', Georgia, serif !important;
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif) !important;
   font-weight: 400 !important;
   letter-spacing: -0.02em !important;
   text-transform: none !important;
@@ -594,7 +594,7 @@ html.lmc-embed-dark .lmc-form-input::placeholder { color: rgba(255,255,255,0.45)
 /* Persona-branched closing (persona_copy, 2026-07-10) */
 .lmc-persona-close{margin:2rem 0 0;padding:1.5rem 1.75rem;background:var(--paper-sunk,#FFFFFF);border:1px solid var(--hairline,rgba(19, 18, 16,.12));border-left:3px solid #131210;border-radius:4px;}
 .lmc-persona-close-p{font-size:1.02rem;line-height:1.65;color:var(--ink,#131210);margin:0 0 .85rem;}
-.lmc-persona-proof{font-family:'Source Serif 4',Georgia,serif;font-size:.95rem;line-height:1.6;color:var(--ink-soft,rgba(19, 18, 16,.72));font-style:italic;margin:0;}
+.lmc-persona-proof{font-family:var(--font-serif);font-size:.95rem;line-height:1.6;color:var(--ink-soft,rgba(19, 18, 16,.72));font-style:italic;margin:0;}
 
 /* scan embeds: the page reads as the PROSPECT'S asset; Ivan's nav + work-with-me footer never render inside the frame (JS-rendered after the embed cleanup pass, so CSS is the order-proof gate). */
 .lmc-embed .im-footer,.lmc-embed .im-nav{display:none!important}
