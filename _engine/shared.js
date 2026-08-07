@@ -172,6 +172,20 @@
     return (c && c.id) ? c : null;
   }
 
+  // ── Phase 5 host-brand opt-out (2026-08-07) ────────────────────────────
+  // A lead-shell wrapper that wants engine-injected copy suppressed but has
+  // no client{} tenant object (e.g. a synthesis/preview shell, or a page that
+  // only wants the CSS-var re-skin without the full R1B tenant machinery) can
+  // set data-lm-brand="host" on #lmc-root or <html>. Opt-out only: absent on
+  // every page today, so this is inert for the whole Ivan + client{} catalog.
+  function hostBranded() {
+    try {
+      var root = document.querySelector("#lmc-root");
+      if (root && root.getAttribute("data-lm-brand") === "host") return true;
+      return document.documentElement.getAttribute("data-lm-brand") === "host";
+    } catch (_) { return false; }
+  }
+
   function applyClientTheme() {
     var wc = clientOf(null);
     if (!wc) return;
@@ -182,6 +196,14 @@
         rs.setProperty("--accent-light", wc.accent);
         rs.setProperty("--accent-ink", wc.ink || wc.accent);
       }
+      // Font/ink bridge (2026-08-07) — optional client{} fields feeding the
+      // --font-sans/--font-drama/--ink/--paper tokens shared.css + assessment.css
+      // now read in every component rule. All optional; a client{} object that
+      // only sets accent (every one shipped before today) is unaffected.
+      if (wc.font_sans) rs.setProperty("--font-sans", wc.font_sans);
+      if (wc.font_drama) rs.setProperty("--font-drama", wc.font_drama);
+      if (wc.ink) rs.setProperty("--ink", wc.ink);
+      if (wc.paper) rs.setProperty("--paper", wc.paper);
       var tm = document.querySelector('meta[name="theme-color"]');
       if (tm && wc.accent) tm.setAttribute("content", wc.accent);
     } catch (_) {}
@@ -224,13 +246,15 @@
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
     var _wc = clientOf(data);
+    var _hostOnly = !_wc && hostBranded(); // host-only opt-out, no client{} object
     var img = _wc
       ? (_wc.portrait ? make("img", { class: "lmc-intro-avatar", src: _wc.portrait, alt: _wc.name || "" }) : null)
-      : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
+      : (_hostOnly ? null : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" }));
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" },
-      _wc ? esc("Hey, I'm " + (_wc.short_name || _wc.name) + ".") : "Hey, I&rsquo;m Ivan."));
+      _wc ? esc("Hey, I'm " + (_wc.short_name || _wc.name) + ".") :
+      (_hostOnly ? "Here&rsquo;s how this works." : "Hey, I&rsquo;m Ivan.")));
     var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
     editModeRegisterField(introPara, "intro.paragraph", { multiline: true });
     body.appendChild(introPara);
@@ -892,7 +916,10 @@
     // White-label client LMs (window.__lm_client) carry their own footer/CTA
     // and must never show Ivan's Calendly footer. Opt-out only; no existing
     // page sets the flag, so this is inert for the whole Ivan catalog.
-    if (window.__lm_client) return;
+    // hostBranded() (2026-08-07) is the lighter-weight sibling opt-out for
+    // shells that want the same suppression without a full client{} object —
+    // also inert unless data-lm-brand="host" is explicitly set.
+    if (window.__lm_client || hostBranded()) return;
     // Embed mode (assessment shown inside a prospect's scan): the sample is framed as the
     // PROSPECT's own asset — never inject Ivan's "Work with me" footer into it. assessment-v2
     // strips the shell .im-footer on embed load; without this guard the injection below
@@ -993,6 +1020,7 @@
     buildInstallStrip: buildInstallStrip,
     frontier: frontier,
     tierFor: tierFor,
+    clientOf: clientOf, hostBranded: hostBranded,
     makeField: makeField, makeFieldArray: makeFieldArray,
     editMode: {
       enabled: function () { return editModeState.enabled; },
