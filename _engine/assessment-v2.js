@@ -101,14 +101,17 @@
     // must never greet with Ivan's name or portrait. Additive — no existing v2 assessment
     // carries a `client` block, so this is inert for the whole published catalog.
     var _wc = (data && data.client && data.client.id) ? data.client : null;
+    // Phase 5 (2026-08-07): data-lm-brand="host" opt-out, same contract as shared.js/assessment.js.
+    var _hostOnly = !_wc && !!(window.LM && window.LM.hostBranded && window.LM.hostBranded());
     var avatarEl = _wc
       ? (_wc.portrait ? make("img", { class: "lmc-intro-avatar", src: _wc.portrait, alt: _wc.name || "" }) : null)
-      : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" });
+      : (_hostOnly ? null : make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" }));
     if (avatarEl) inner.appendChild(avatarEl);
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
     body.appendChild(make("h2", { class: "lmc-intro-h" },
-      _wc ? esc("Hey, I'm " + (_wc.short_name || _wc.name) + ".") : "Hey, I&rsquo;m Ivan."));
+      _wc ? esc("Hey, I'm " + (_wc.short_name || _wc.name) + ".") :
+      (_hostOnly ? "Here&rsquo;s how this works." : "Hey, I&rsquo;m Ivan.")));
     var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
     if (window.LM && window.LM.editMode) {
       window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
