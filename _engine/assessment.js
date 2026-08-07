@@ -128,14 +128,26 @@
     var note = intro.note || opts.defaultNote || "No signup required. Scroll back up anytime to reread.";
     var sec = make("section", { class: "lmc-intro", "aria-labelledby": "lmc-intro-h" });
     var inner = make("div", { class: "lmc-intro-inner" });
+    // R1B client tenant (matches shared.js clientOf): data.client.id set → this
+    // is a white-label lead page, never show Ivan's portrait/greeting.
+    // Phase 5 (2026-08-07): data-lm-brand="host" on #lmc-root/<html> is the
+    // lighter opt-out for shells with no client{} object at all. Both are
+    // opt-in only — absent on every existing LM, so this path is unchanged.
+    var _wc = (data && data.client && data.client.id) ? data.client : null;
+    var _hostOnly = !_wc && !!(window.LM && window.LM.hostBranded && window.LM.hostBranded());
     // In a prospect scan sample, the assessment must read as THEIR tool. Drop Ivan's portrait
     // and personal greeting; a neutral "How this works." keeps the orientation without the author.
     // Per-LM persona override (e.g. a client-branded assessment): intro.no_avatar drops the
     // portrait, intro.avatar / intro.avatar_alt swap it. Defaults unchanged for every other LM.
-    var img = (opts.embed || intro.no_avatar) ? null : make("img", { class: "lmc-intro-avatar", src: intro.avatar || "https://ivanmanfredi.com/ivan-portrait.jpg", alt: intro.avatar_alt || "Ivan Manfredi" });
+    var img = (opts.embed || intro.no_avatar || _hostOnly) ? null
+      : _wc ? (_wc.portrait ? make("img", { class: "lmc-intro-avatar", src: _wc.portrait, alt: _wc.name || "" }) : null)
+      : make("img", { class: "lmc-intro-avatar", src: intro.avatar || "https://ivanmanfredi.com/ivan-portrait.jpg", alt: intro.avatar_alt || "Ivan Manfredi" });
     var body = make("div", { class: "lmc-intro-body" });
     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
-    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, opts.embed ? "How this works." : (intro.greeting || "Hey, I&rsquo;m Ivan.")));
+    body.appendChild(make("h2", { class: "lmc-intro-h", id: "lmc-intro-h" }, opts.embed ? "How this works." :
+      _wc ? escapeHtml("Hey, I'm " + (_wc.short_name || _wc.name) + ".") :
+      _hostOnly ? "Here&rsquo;s how this works." :
+      (intro.greeting || "Hey, I&rsquo;m Ivan.")));
     var introPara = make("p", { class: "lmc-intro-p" }, escapeHtml(welcomeLine));
     if (window.LM && window.LM.editMode) {
       window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
