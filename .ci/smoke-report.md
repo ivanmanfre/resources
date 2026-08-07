@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: ee5c71e423c5587f316d09655c17d29eac151c98 at 2026-08-07T11:51:34.457Z
+Deploy: b3be63d113629f51f3eb64ca5966261adb8849dd at 2026-08-07T12:00:47.422Z
 
-- natalie-hogg-d2-qa-preview-assessment: data.json HTTP 404
+- richard-fowler-af-qa-preview-assessment: data.json HTTP 404
