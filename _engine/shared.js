@@ -562,7 +562,9 @@
           ? (_wc.portrait ? '<img src="' + esc(_wc.portrait) + '" alt="" loading="lazy" />' : '') +
             '<span><strong>' + esc(_wc.name || "") + '</strong>' + esc(_wc.site_label || "") + '</span>'
           : '<img src="https://ivanmanfredi.com/ivan-portrait.jpg" alt="" loading="lazy" />' +
-            '<span><strong>Ivan Manfredi</strong>AI systems for service businesses</span>') +
+            (location.hostname.indexOf('inboundonsteroids.com') !== -1
+              ? '<span><strong>InboundOnSteroids</strong>AI systems for service businesses</span>'
+              : '<span><strong>Ivan Manfredi</strong>AI systems for service businesses</span>')) +
       '</div>';
 
     editModeRegisterField(sec.querySelector(".lmc-closing-h"), "closing_cta.headline_html", { contenteditable: true });
@@ -981,8 +983,11 @@
       meta.innerHTML = _fc
         ? '<span>© ' + year + ' ' + esc(_fc.name || "") + '</span>' +
           '<span><a href="' + esc(_fc.site || "#") + '">' + esc(_fc.site_label || _fc.site || "") + '</a></span>'
-        : '<span>© ' + year + ' Iván Manfredi</span>' +
-          '<span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>';
+        : (location.hostname.indexOf('inboundonsteroids.com') !== -1
+          ? '<span>© ' + year + ' InboundOnSteroids</span>' +
+            '<span><a href="https://inboundonsteroids.com">inboundonsteroids.com</a></span>'
+          : '<span>© ' + year + ' Iván Manfredi</span>' +
+            '<span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>');
     }
   }
 
