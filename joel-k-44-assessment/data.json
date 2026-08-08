@@ -1,0 +1,606 @@
+{
+ "slug": "joel-k-44-assessment",
+ "title": "The Social Proof Maturity Score",
+ "subtitle": "Measure whether your customer stories are built, deployed, and actually closing deals — or just sitting in a folder nobody opens.",
+ "brand": {
+  "accent": "#97fbcb",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "your_proof_library",
+   "name": "Your Proof Library",
+   "questions": [
+    {
+     "id": "your_proof_library_q1",
+     "text": "How many video testimonials do you currently have published and available for your sales team to use?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None",
+       "score": 1
+      },
+      {
+       "label": "1–5",
+       "score": 2
+      },
+      {
+       "label": "6–15",
+       "score": 3
+      },
+      {
+       "label": "16–30",
+       "score": 4
+      },
+      {
+       "label": "More than 30",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "your_proof_library_q2",
+     "text": "How many written case studies do you have covering your most common buyer personas or use cases?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None",
+       "score": 1
+      },
+      {
+       "label": "1–2, but they're outdated or too generic to use confidently",
+       "score": 2
+      },
+      {
+       "label": "A handful covering one or two use cases",
+       "score": 3
+      },
+      {
+       "label": "Solid coverage for most of our main buyer types",
+       "score": 4
+      },
+      {
+       "label": "Current, well-segmented case studies for every major persona and use case",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "your_proof_library_q3",
+     "text": "How recent is your newest published testimonial or case study?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "More than 2 years old",
+       "score": 1
+      },
+      {
+       "label": "1–2 years old",
+       "score": 2
+      },
+      {
+       "label": "6–12 months old",
+       "score": 3
+      },
+      {
+       "label": "3–6 months old",
+       "score": 4
+      },
+      {
+       "label": "We published something in the last 3 months",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "your_proof_library_q4",
+     "text": "When a prospect asks 'do you work with companies like mine?', how often can you send them a customer story that mirrors their situation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — we stretch our existing stories to make them fit",
+       "score": 1
+      },
+      {
+       "label": "Sometimes — maybe 1 in 4 prospects finds something relevant",
+       "score": 2
+      },
+      {
+       "label": "About half the time",
+       "score": 3
+      },
+      {
+       "label": "Most of the time — we have good coverage with some gaps",
+       "score": 4
+      },
+      {
+       "label": "Almost always — prospects consistently find a story that looks like their world",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're selling without proof — and asking buyers to take your word for it.",
+     "text": "Every claim you make, your prospect has to accept on faith. Modern buyers don't. Before anything else: identify your three best customer outcomes and capture them in any format — a short video, a one-page write-up, a strong email quote with permission. Get something real in front of prospects now. Don't wait for it to be polished.",
+     "steps": [
+      "Identify your top 3 customers by outcome this week and ask for a 5-minute video conversation",
+      "Use one question: 'What specifically changed after working with us?'",
+      "Publish whatever you capture immediately — imperfect proof beats no proof every time"
+     ]
+    },
+    "mid": {
+     "headline": "You have proof, but coverage gaps are costing you deals you don't see.",
+     "text": "A handful of case studies gets you started. It doesn't get you to the end of the deal when a prospect asks about their industry, their company size, or their specific use case and you have nothing to show them. Map your existing proof to your buyer types and find the holes — those holes are where deals quietly stall.",
+     "steps": [
+      "List every major buyer persona, industry, and use case you actively sell into",
+      "Map your current proof assets against that list and mark the uncovered cells",
+      "Prioritize your next three story requests from customers in the two biggest gaps"
+     ]
+    },
+    "high": {
+     "headline": "You've built a real proof library. The job now is keeping it current.",
+     "text": "A strong library is the foundation. The risk at this level is staleness and coverage drift as you expand into new markets or shift buyer focus. A case study from three years ago does less work than a fresh one — and prospects notice the dates. Make quarterly library audits a standing habit.",
+     "steps": [
+      "Audit your library every quarter: flag anything over 18 months old for refresh or replacement",
+      "Track which stories get used in closed-won deals — prioritize producing more like those",
+      "Before entering any new market, front-load story capture before the sales push starts"
+     ]
+    }
+   }
+  },
+  {
+   "id": "story_strategy_capture",
+   "name": "Story Strategy & Capture",
+   "questions": [
+    {
+     "id": "story_strategy_capture_q1",
+     "text": "How do you decide which customers to approach for a testimonial or case study?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We ask whoever comes to mind — no real criteria",
+       "score": 1
+      },
+      {
+       "label": "We ask happy customers when we think of it, but there's no cadence",
+       "score": 2
+      },
+      {
+       "label": "We have informal criteria but no consistent outreach process",
+       "score": 3
+      },
+      {
+       "label": "We have defined criteria and a running list of story candidates we work through",
+       "score": 4
+      },
+      {
+       "label": "A systematic program: criteria, sourcing, outreach, and scheduling all follow a defined process",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "story_strategy_capture_q2",
+     "text": "From the moment a customer agrees to participate to the moment the finished asset publishes, how long does it typically take?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "More than 6 months — it frequently stalls or dies before publishing",
+       "score": 1
+      },
+      {
+       "label": "3–6 months",
+       "score": 2
+      },
+      {
+       "label": "1–3 months",
+       "score": 3
+      },
+      {
+       "label": "4–8 weeks",
+       "score": 4
+      },
+      {
+       "label": "Under 4 weeks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "story_strategy_capture_q3",
+     "text": "Who owns customer storytelling in your organization?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody really — it falls between teams and gets dropped",
+       "score": 1
+      },
+      {
+       "label": "Someone handles it part-time alongside other responsibilities",
+       "score": 2
+      },
+      {
+       "label": "One dedicated person, but they're stretched thin and mostly reactive",
+       "score": 3
+      },
+      {
+       "label": "A dedicated function with clear ownership and a documented process",
+       "score": 4
+      },
+      {
+       "label": "A strategic program with dedicated headcount, budget, and executive sponsorship",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_story_hours",
+     "type": "number",
+     "text": "How many hours per month does your team spend coordinating customer stories — requesting participation, following up, scheduling, managing production, and chasing approvals?",
+     "hint": "Count all team members who touch this work: marketing, CS, account management, anyone sending reminder emails",
+     "suffix": "hours/month",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 15,
+     "normalize_formula": "Math.max(0, 100 - x * 2)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your stories are random acts of advocacy — and the gaps in your library prove it.",
+     "text": "Without a system, you'll always be behind: scrambling when sales asks for proof that doesn't exist, or letting promising customer relationships go cold because nobody followed up. The fix isn't more effort — it's a process. Define what a good story candidate looks like, keep a running list, and reach out on a cadence. One story a month, done systematically, compounds fast.",
+     "steps": [
+      "Write down exactly what a perfect story candidate looks like: specific outcomes achieved, relationship health, willingness to participate publicly",
+      "Ask your CS team this week for 10 customers who fit that description",
+      "Send a short, personal outreach batch — a two-sentence ask that makes the effort feel minimal"
+     ]
+    },
+    "mid": {
+     "headline": "You have the instincts. You don't have the infrastructure.",
+     "text": "The gap between knowing you should do this and running it as a real program is where most companies live for years. The production lag is the tell — when a case study takes three months to publish, deals close or die in the meantime without the proof they needed. Compress the timeline and assign clear ownership at every step.",
+     "steps": [
+      "Map every step in your current production process and identify the three longest wait times",
+      "Assign a single owner to each bottleneck — ambiguous ownership is usually the root cause of delays",
+      "Set a target: a finished, published asset within 30 days of the customer saying yes"
+     ]
+    },
+    "high": {
+     "headline": "Your story machine is running. Now push for velocity.",
+     "text": "You've built the infrastructure. The focus now is throughput — more stories, faster, covering more of your market. Look at where production still slows down and ask whether that step needs to stay internal or whether it can move faster with the right outside help.",
+     "steps": [
+      "Track average time-to-publish monthly and set a target to reduce it by 20% this quarter",
+      "Identify which story formats take longest and audit whether the bottleneck is internal review or production",
+      "Run a quarterly candidate refresh so your outreach pipeline never runs dry"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sales_deployment",
+   "name": "Sales Deployment",
+   "questions": [
+    {
+     "id": "sales_deployment_q1",
+     "text": "How do your sales reps use customer proof during an active deal?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They rarely use it — they rely on their own pitch and product demos",
+       "score": 1
+      },
+      {
+       "label": "They occasionally share a general testimonial when a prospect asks",
+       "score": 2
+      },
+      {
+       "label": "They send a case study at some point, but not tied to specific stages or buyer types",
+       "score": 3
+      },
+      {
+       "label": "Reps know which proof to use at each deal stage and with which buyer type",
+       "score": 4
+      },
+      {
+       "label": "Proof is embedded in the sales playbook — the right story reaches the right prospect at the right moment, every time",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sales_deployment_q2",
+     "text": "When a prospect raises a common objection, how often does your team have a customer story ready to address it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost never — we handle objections with our own words and logic",
+       "score": 1
+      },
+      {
+       "label": "Sometimes — a few stories happen to cover common objections",
+       "score": 2
+      },
+      {
+       "label": "About half the time",
+       "score": 3
+      },
+      {
+       "label": "Most major objections have a matching customer story",
+       "score": 4
+      },
+      {
+       "label": "Every significant objection has a proof asset mapped to it — reps pull it on the spot",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sales_deployment_q3",
+     "text": "How easy is it for a sales rep to find the right case study or testimonial the moment they need it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They ask marketing or dig through shared drives — it takes 10+ minutes to find anything useful",
+       "score": 1
+      },
+      {
+       "label": "There's a folder somewhere but it's disorganized and reps aren't sure what's current",
+       "score": 2
+      },
+      {
+       "label": "We have a shared library but reps don't use it consistently or confidently",
+       "score": 3
+      },
+      {
+       "label": "Proof is organized and accessible — most reps know where to find what they need",
+       "score": 4
+      },
+      {
+       "label": "Organized by persona, industry, use case, and objection — a rep pulls the right story in under 60 seconds",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "stalled_deals",
+     "type": "number",
+     "text": "How many deals are currently stalled or stuck in your pipeline where social proof or credibility is a likely factor?",
+     "hint": "Count deals that haven't moved in 3+ weeks. If a prospect is 'thinking it over' or 'needs to discuss internally', count it — proof gaps are usually underneath that.",
+     "suffix": "deals",
+     "min": 0,
+     "max": 500,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "Math.max(0, 100 - x * 10)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your team is leaving proof on the table — and deals are dying because of it.",
+     "text": "You paid to produce assets your reps aren't using. That's two problems: a library problem and an adoption problem. Start with a proof cheat sheet — one page, five objections, a customer story matched to each one, and a link to where the asset lives. That single document is worth more than a sales training deck.",
+     "steps": [
+      "List your five most common prospect objections and match each to your single best existing story",
+      "Build a one-page proof cheat sheet for reps: objection → customer story → where to find it",
+      "Add proof deployment to your next sales team meeting as a 15-minute practice session, not a slide deck"
+     ]
+    },
+    "mid": {
+     "headline": "Proof is in the room, but it's not doing the job it could.",
+     "text": "The gap between 'we have case studies' and 'the right case study closed this deal' is a playbook gap. Sending a general case study late in a deal is not the same as leading with the right story for the right buyer at the right stage. That difference is worth a material improvement in close rate — map it out.",
+     "steps": [
+      "Audit your last 10 closed-won deals: what proof was used, when, and with which buyer?",
+      "Audit your last 10 lost deals: was proof used at all? If so, was it the right story at the right time?",
+      "Build a deal stage × buyer type matrix and map your best matching story to each cell"
+     ]
+    },
+    "high": {
+     "headline": "Proof is embedded in how your team sells. Protect it and extend it.",
+     "text": "This is where proof actually shortens sales cycles. The risk at this level is reps defaulting to familiar stories — the ones they've always used — even when newer or more relevant proof exists. Keep the playbook current and run a monthly proof refresh so reps know what's just been published.",
+     "steps": [
+      "Run a monthly proof refresh in your sales team meeting: here's what's new, here's where it fits in the playbook",
+      "Track which proof assets appear in closed-won deals consistently — produce more of exactly those",
+      "Review your proof-to-objection map every quarter and retire anything stale"
+     ]
+    }
+   }
+  },
+  {
+   "id": "customer_advocacy_health",
+   "name": "Customer Advocacy Health",
+   "questions": [
+    {
+     "id": "customer_advocacy_health_q1",
+     "text": "When you ask a customer to appear in a testimonial or case study, what is their typical response?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most say no or go silent — participation is a constant battle",
+       "score": 1
+      },
+      {
+       "label": "About half agree, but participation often feels reluctant",
+       "score": 2
+      },
+      {
+       "label": "Most agree, but the process is slow and customers feel the burden",
+       "score": 3
+      },
+      {
+       "label": "Most agree and the experience is smooth — customers don't complain about the process",
+       "score": 4
+      },
+      {
+       "label": "Customers frequently say yes, enjoy the experience, and share the finished asset on their own",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_advocacy_health_q2",
+     "text": "How much work does participating in your production process require from the customer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A lot — they manage their own scheduling, prep, and multiple review rounds",
+       "score": 1
+      },
+      {
+       "label": "Quite a bit — they do most of the heavy lifting with minimal guidance from us",
+       "score": 2
+      },
+      {
+       "label": "Moderate — we handle some logistics, but customers still feel the friction",
+       "score": 3
+      },
+      {
+       "label": "Light — we handle logistics and prep; customers show up and talk",
+       "score": 4
+      },
+      {
+       "label": "Minimal — we handle everything: scheduling, briefing, production, and review. Customers do almost nothing.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_advocacy_health_q3",
+     "text": "After a testimonial or case study publishes, what typically happens next for that customer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing — we publish it and move on",
+       "score": 1
+      },
+      {
+       "label": "We send a thank-you email",
+       "score": 2
+      },
+      {
+       "label": "We share the asset with them so they can post it if they want",
+       "score": 3
+      },
+      {
+       "label": "We promote their story on our channels and tag or credit them",
+       "score": 4
+      },
+      {
+       "label": "We treat them as ongoing advocates — recognition, co-marketing, referrals, and future storytelling",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "avg_deal_value",
+     "type": "number",
+     "text": "What is your average deal or contract value?",
+     "hint": "Your typical annual contract value or average one-time project fee. Used to calculate what's sitting at risk in stalled deals.",
+     "suffix": "USD",
+     "min": 1000,
+     "max": 5000000,
+     "step": 1000,
+     "default": 50000,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "If customers keep saying no, the ask is the problem — not the customers.",
+     "text": "Timing, framing, and logistics all determine whether a customer says yes or quietly disappears. The ask should land when the relationship is at its warmest — right after a strong outcome, not months later when they've moved on. And the process has to feel genuinely easy, not like they're doing you a favor. If it feels like a favor, it will be treated like one.",
+     "steps": [
+      "Map your customer journey and identify the exact moment relationship health peaks — that is when the ask goes out",
+      "Rewrite your outreach template: lead with what's in it for them (visibility, recognition, a story about their own success)",
+      "Make the effort feel minimal: 'It's a 20-minute conversation. We handle everything else.'"
+     ]
+    },
+    "mid": {
+     "headline": "You're getting participation, but the process is spending relationship capital.",
+     "text": "A customer who feels burdened by your case study process doesn't become an advocate. They participate once and politely decline next time. The production experience is part of the product — it should leave the customer feeling recognized and well taken care of, not relieved it's over. Fix the process and add a post-publish moment that makes them glad they did it.",
+     "steps": [
+      "Send a short survey to your last five case study participants: what was the hardest part of the process?",
+      "Identify one step you can take off the customer's plate immediately — usually it's scheduling or review cycles",
+      "Build a simple post-publish playbook: send the asset, promote their story, thank them publicly"
+     ]
+    },
+    "high": {
+     "headline": "Your customers are doing your marketing. Keep earning that.",
+     "text": "Customers who advocate for you once will do it again if you keep the relationship warm and make them feel genuinely valued. At this level, the work shifts from process improvement to advocacy program design: events, early access, referrals, co-marketing. The story was the entry point. The relationship is the asset.",
+     "steps": [
+      "Build a lightweight advocate tier: customers who've participated get early access, referral benefits, or event invitations",
+      "Track which advocates have come back for a second story — those relationships are compounding and deserve specific attention",
+      "Ask your top advocates who else in their network might be a fit for what you do"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "proof_gap_pipeline",
+   "label": "Pipeline at Risk from Proof Gaps",
+   "format": "currency",
+   "formula": "stalled_deals * avg_deal_value",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_story_hours",
+   "label": "Hours Spent on Story Coordination Per Year",
+   "format": "hours_per_period",
+   "formula": "monthly_story_hours * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role in customer storytelling at your company?",
+  "answers": [
+   {
+    "label": "Revenue or Sales Leader (CRO, VP Sales, Head of Revenue)",
+    "tag": "revenue"
+   },
+   {
+    "label": "Marketing Leader (CMO, VP Marketing, Demand Gen)",
+    "tag": "marketing"
+   },
+   {
+    "label": "Customer Success or Advocacy Leader",
+    "tag": "cs_advocacy"
+   },
+   {
+    "label": "Founder or CEO",
+    "tag": "founder"
+   }
+  ]
+ }
+}
