@@ -1,7 +1,7 @@
 {
  "slug": "tiffany-spahl-nally-dd-assessment",
  "title": "LinkedIn Pipeline Readiness Score",
- "subtitle": "Find out whether your LinkedIn presence is actually building predictable pipeline or just collecting impressions.",
+ "subtitle": "Measure how well your ICP clarity, content, outreach, and pipeline system work together to turn LinkedIn into a real source of revenue.",
  "brand": {
   "accent": "#ee18c3",
   "hero_badge": "Interactive Assessment"
@@ -9,88 +9,88 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "icp_clarity",
-   "name": "ICP Clarity",
+   "id": "icp_messaging_clarity",
+   "name": "ICP & Messaging Clarity",
    "questions": [
     {
-     "id": "icp_clarity_q1",
-     "text": "How well can you describe what your ideal client has already tried before finding you?",
+     "id": "icp_messaging_clarity_q1",
+     "text": "How deeply can you describe what your ideal client is actually frustrated by right now?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I focus on their title and company size. I have not thought much beyond that.",
+       "label": "I know their job title and general industry",
        "score": 1
       },
       {
-       "label": "I have a general sense but could not name specific things they have attempted.",
+       "label": "I know their goals and a few common pain points",
        "score": 2
       },
       {
-       "label": "I know a few common pain points but not the full picture of what they have tried.",
+       "label": "I know what they've tried before and why it hasn't worked",
        "score": 3
       },
       {
-       "label": "I can name specific tactics or solutions they tried that did not work.",
+       "label": "I know their frustrations, what finally makes them take action, and the objections that stop them from buying",
        "score": 4
       },
       {
-       "label": "I know exactly what they tried, why it failed, and what finally made them take action.",
+       "label": "I know all of that AND what each individual buyer persona within an account actually cares about",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "icp_clarity_q2",
-     "text": "When you write content, how specifically do you speak to your ideal client's frustrations, not just what they want?",
+     "id": "icp_messaging_clarity_q2",
+     "text": "How does your LinkedIn messaging stack up against others in your space?",
      "max_score": 5,
      "answers": [
       {
-       "label": "My content is mostly about what I do and what I offer.",
+       "label": "I'm still figuring out how to position what I do",
        "score": 1
       },
       {
-       "label": "I mention pain points occasionally but mostly lead with my solution.",
+       "label": "I can explain what I do but it probably sounds like most competitors",
        "score": 2
       },
       {
-       "label": "I address frustrations sometimes but it is not a consistent part of my strategy.",
+       "label": "My messaging is clear but I'm not sure it's actually connecting with buyers",
        "score": 3
       },
       {
-       "label": "I regularly write about their specific frustrations and it connects.",
+       "label": "My messaging speaks directly to my ICP's specific frustrations using their own words",
        "score": 4
       },
       {
-       "label": "My content consistently names the exact frustrations that make my ICP stop scrolling.",
+       "label": "My ideal clients read my content and feel like I wrote it specifically about their situation",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "icp_clarity_q3",
-     "text": "How clearly do you understand what objections stop your ideal client from buying, and what finally makes them take action?",
+     "id": "icp_messaging_clarity_q3",
+     "text": "If your ideal client stumbled across your last five LinkedIn posts today, what would most likely happen?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I have not mapped this out. I respond to objections as they come up on calls.",
+       "label": "They'd probably scroll right past — the content wouldn't feel relevant to them",
        "score": 1
       },
       {
-       "label": "I know a couple of common objections but have not dug into what triggers a decision.",
+       "label": "They might stop and read but probably wouldn't feel moved to take any action",
        "score": 2
       },
       {
-       "label": "I understand the main objections but I am fuzzy on what tips them into action.",
+       "label": "They'd connect with the message but likely wouldn't reach out",
        "score": 3
       },
       {
-       "label": "I know both their objections and the moment they typically decide to move.",
+       "label": "They'd follow me and save a post or two for later",
        "score": 4
       },
       {
-       "label": "I can name every major objection and the exact trigger that makes them reach out or buy.",
+       "label": "They'd reach out or book a call because the content speaks directly to exactly what they're dealing with",
        "score": 5
       }
      ],
@@ -99,117 +99,117 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Your ICP is still blurry. Your messaging shows it.",
-     "text": "The most common reason LinkedIn content does not generate leads is not the platform. It is that you are saying the right things to the wrong picture of a person. More activity will not fix this. It just amplifies it. Before you post another thing, get clear on who you are actually talking to.",
+     "headline": "Your message can't land if you don't know exactly who you're talking to",
+     "text": "Before you publish one more post or send one more outreach message, get clear on your ICP — not just their title and industry, but what they've tried, what frustrated them, and what finally makes them take action. Right now your messaging is probably blending into the noise. This is the most fixable thing in your business, and it changes everything downstream.",
      "steps": [
-      "Interview 3 to 5 current or past clients specifically about what they tried before finding you and why it did not work",
-      "Write a one-paragraph before-state for your ICP: their frustration, their failed attempts, the moment they knew they needed help",
-      "Read your last 10 posts and ask honestly: if I were my ideal client, would any of these make me stop scrolling?"
+      "Interview 3–5 past or current clients and ask them three things: what were you struggling with before we worked together, what had you already tried, and what finally made you decide to do something about it",
+      "Write a one-paragraph ICP description that goes beyond title and industry — include what they want, what they've tried, what frustrates them, and what finally makes them move",
+      "Rewrite your LinkedIn headline using the exact words your clients used in those conversations, not your own"
      ]
     },
     "mid": {
-     "headline": "You know your client. Now go a layer deeper.",
-     "text": "You have the foundation. But knowing your ICP's job title and general pain points is not the same as knowing what keeps getting deprioritized on their list, or what objection stops them right before they buy. That is the layer that makes content actually hit.",
+     "headline": "You know your client — now sharpen how you talk to them",
+     "text": "You have a real foundation here. You know who you're after. The gap is getting your messaging tight enough that your ideal client reads your content and immediately feels like you wrote it specifically for them. That's the difference between content that gets likes and content that generates inbound leads.",
      "steps": [
-      "Pick your top 2 buyer personas and write out their complete before-story: what they tried, what frustrated them, what finally made them move",
-      "Audit your content from the last 30 days. Are you speaking to their frustrations or mostly your solutions?",
-      "Add one post this week that names a specific objection you hear often and addresses it directly"
+      "Pull your last 10 posts and honestly ask: does each one speak to a specific frustration my ICP has, or is it general industry content that anyone could have written?",
+      "Ask a current client to read your LinkedIn about section and tell you what stands out — and what's missing from their perspective",
+      "Pick the one buyer persona most likely to close and build three posts this month built entirely around their biggest frustration"
      ]
     },
     "high": {
-     "headline": "You know your buyer. That is a real advantage.",
-     "text": "Deep ICP clarity is rare, and it shows up in content that makes people feel seen. Keep feeding this. The more real conversations you have with clients, the sharper your messaging stays.",
+     "headline": "Your ICP clarity is a real competitive edge — keep building on it",
+     "text": "Most people post and hope the right client finds them. You actually know who you're talking to and what they need to hear. That's rare, and it shows in your results. Now make sure that clarity is consistently embedded across everything you publish — not just when you're actively thinking about it.",
      "steps": [
-      "Make sure your ICP insights are making it into your content consistently, not just in occasional posts",
-      "Review your content quarterly and check whether your messaging still matches where your buyers actually are right now",
-      "Use client language verbatim in your posts when possible. The exact words your buyers use are more powerful than anything you would write from scratch."
+      "Document your ICP profile so it stays consistent as you create more content or bring in support — clarity that only lives in your head is a bottleneck",
+      "Map your ICP insights to every layer of your content: your hooks, your body copy, and your calls to action should all be pulling in the same direction",
+      "Look at your inbound leads from the last 90 days — are the right people showing up? If not, one detail in your ICP description is off and worth revisiting"
      ]
     }
    }
   },
   {
-   "id": "messaging_and_positionin",
-   "name": "Messaging and Positioning",
+   "id": "content_that_builds_auth",
+   "name": "Content That Builds Authority",
    "questions": [
     {
-     "id": "messaging_and_positionin_q1",
-     "text": "If you received your own cold outreach message today, how likely would you be to respond?",
+     "id": "content_that_builds_auth_q1",
+     "text": "When someone reads your LinkedIn content, what are they most likely to do next?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Honestly? Probably not. It looks like every other message in my inbox.",
+       "label": "Not much — I'm not sure my content prompts any specific action",
        "score": 1
       },
       {
-       "label": "Maybe. It is decent but nothing about it stands out.",
+       "label": "Like or comment, but rarely visit my profile or reach out",
        "score": 2
       },
       {
-       "label": "I might respond if the timing was right.",
+       "label": "Visit my profile sometimes, but I don't see many leads coming from it",
        "score": 3
       },
       {
-       "label": "Probably yes. It is relevant and speaks to something real.",
+       "label": "Follow me, save posts, and occasionally start a conversation",
        "score": 4
       },
       {
-       "label": "Absolutely. It would stop me, feel personal, and make the next step obvious.",
+       "label": "Download my lead magnet, DM me, or book a call because the content makes the next step obvious",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "messaging_and_positionin_q2",
-     "text": "How clearly does your LinkedIn profile communicate who you help and what changes for them when they work with you?",
+     "id": "content_that_builds_auth_q2",
+     "text": "How would you describe the strategy behind what you publish on LinkedIn?",
      "max_score": 5,
      "answers": [
       {
-       "label": "It lists my experience and title. People have to work to figure out how I help.",
+       "label": "I post when I have something to say or when I find the time",
        "score": 1
       },
       {
-       "label": "It mentions what I do but does not clearly spell out who it is for or what they get.",
+       "label": "I try to post consistently but there's no real framework behind it",
        "score": 2
       },
       {
-       "label": "It is clear enough but the outcome for the client is not front and center.",
+       "label": "I have a content plan but it's mostly about topics rather than buyer outcomes",
        "score": 3
       },
       {
-       "label": "It is clear who I help and what the main outcome is.",
+       "label": "My content is mapped to what my buyers care about and designed to build authority over time",
        "score": 4
       },
       {
-       "label": "Someone in my ICP would read my profile and immediately think: this is exactly for me.",
+       "label": "Every post I publish is intentionally designed to attract my ICP, build trust, and move the right people toward a conversation",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "messaging_and_positionin_q3",
-     "text": "How clearly can you explain what makes your approach different from others who offer something similar?",
+     "id": "content_that_builds_auth_q3",
+     "text": "What happens between someone seeing your content and becoming an actual lead?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I know we are different but I struggle to articulate it clearly.",
+       "label": "Honestly, nothing — there's no real bridge between the two right now",
        "score": 1
       },
       {
-       "label": "I can explain it but it comes out differently every time I try.",
+       "label": "I mention booking a call at the end of posts sometimes",
        "score": 2
       },
       {
-       "label": "I have a positioning statement but it could be sharper.",
+       "label": "I have a lead magnet but I'm not promoting it consistently",
        "score": 3
       },
       {
-       "label": "I can explain my differentiation clearly and use it consistently.",
+       "label": "I have a lead magnet that solves a real problem my ICP has and I promote it regularly",
        "score": 4
       },
       {
-       "label": "My positioning is locked in and shows up the same way in my content, profile, and conversations.",
+       "label": "I have a complete system — lead magnet, newsletter, and a clear next step that moves interested readers toward a sales conversation",
        "score": 5
       }
      ],
@@ -218,383 +218,276 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "More activity will not fix broken messaging. It amplifies it.",
-     "text": "Before you ask yourself how to generate more leads, ask yourself: if I were my ideal client, would I respond to my own messaging? If the honest answer is no, posting more and reaching out to more people is not the fix. Clarity is.",
+     "headline": "Your content is working hard but not working smart",
+     "text": "If people aren't responding to your content with leads and real conversations, it's not a volume problem. More posts with the same approach won't fix it. Content that actually builds a pipeline has to earn attention AND give buyers a clear reason to take the next step. Right now, one of those pieces is missing — and adding more content without fixing it just amplifies the gap.",
      "steps": [
-      "Rewrite your LinkedIn headline to include who you help and what changes for them. Cut the generic job title language.",
-      "Send your current cold outreach message to a trusted peer and ask them honestly: would you respond to this?",
-      "Write one sentence that explains your differentiation and test it in your next three conversations"
+      "Audit your last 10 posts: how many were designed to drive a specific action — visit my profile, download something, start a conversation — versus just share information?",
+      "Create or update one lead magnet that solves a real, specific problem your ICP has. Make it something they'd genuinely want even if they never hired you",
+      "Write your next post starting with the outcome your ideal client wants — not the service you offer — then work backwards to your expertise"
      ]
     },
     "mid": {
-     "headline": "Your message is getting there. Tighten the specificity.",
-     "text": "You have the bones of strong positioning. The gap is usually specificity. Vague outcomes do not create urgency the way specific ones do. 'I help you grow' lands very differently than 'I help B2B founders book 10 qualified calls a month from LinkedIn alone.'",
+     "headline": "You have content — now build the system around it",
+     "text": "You're showing up, your content has value, and people are paying attention. The gap is connecting that attention to actual pipeline. Every piece of content you publish should have a clear next step for the right reader — and right now that last mile isn't fully in place.",
      "steps": [
-      "Look at your last 5 outreach messages. Where do they get vague? Replace abstract language with concrete outcomes.",
-      "Ask 3 past clients what they would have searched for before finding you. Use their exact words in your next post.",
-      "Test two different versions of your positioning with real prospects this week and track which one generates more responses"
+      "Add one clear call to action to every piece of content you publish — lead magnet download, DM trigger, or profile visit prompt — so interested readers always have somewhere to go",
+      "Promote your lead magnet in your content at least once a week so the people who are already watching you have a reason to raise their hand",
+      "Set up a simple email newsletter to capture warm leads so you own a direct line to your audience beyond whatever the algorithm decides to show"
      ]
     },
     "high": {
-     "headline": "Sharp messaging is your biggest competitive advantage. Protect it.",
-     "text": "When your message is dialed in, everything gets easier. Outreach lands. Content attracts the right people. Sales conversations start with the hard work already done. Stay close to your ICP so your message stays sharp as the market moves.",
+     "headline": "Your content is doing its job — make sure the system around it keeps up",
+     "text": "You're creating content with real intent and it's paying off. You're earning attention and you have a way to capture it. Now the question is whether every part of your system is pulling the right people into the right next step consistently — not just when things go well.",
      "steps": [
-      "Audit your positioning every quarter. What your buyers care about shifts, and your message should shift with it.",
-      "Make sure your messaging is consistent across your profile, content, outreach, and proposals",
-      "Build messaging into how you onboard new clients. Their language and story will keep your positioning sharp."
+      "Track leads generated per post so you know what's actually working — not just what gets the most engagement",
+      "Review your lead magnet conversion rate. If people aren't opting in, either the offer or the way you're promoting it needs a fresh look",
+      "Find the one point in your content-to-lead journey where people drop off and fix that before adding anything new to the system"
      ]
     }
    }
   },
   {
-   "id": "content_that_converts",
-   "name": "Content That Converts",
+   "id": "outreach_that_earns_resp",
+   "name": "Outreach That Earns Responses",
    "questions": [
     {
-     "id": "content_that_converts_q1",
-     "text": "What happens most often after someone reads your LinkedIn content?",
+     "id": "outreach_that_earns_resp_q1",
+     "text": "How would you describe your typical first message to a new prospect on LinkedIn?",
      "max_score": 5,
      "answers": [
       {
-       "label": "They like it or comment. It rarely leads to a conversation or a next step.",
+       "label": "I introduce myself and explain what I do and how I can help them",
        "score": 1
       },
       {
-       "label": "Occasionally someone reaches out, but it is unpredictable.",
+       "label": "I mention something specific about them and then pitch what I offer",
        "score": 2
       },
       {
-       "label": "Some posts drive conversations but I do not have a consistent pattern.",
+       "label": "I ask a genuine question or share something relevant to start a real conversation",
        "score": 3
       },
       {
-       "label": "My content regularly leads to profile visits, DMs, or lead magnet downloads.",
+       "label": "I lead with something genuinely useful to them before anything about what I do",
        "score": 4
       },
       {
-       "label": "My content reliably drives qualified conversations, inbound requests, and real pipeline activity.",
+       "label": "My outreach already feels warm because I've built context through content or a shared connection before I ever send the first message",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "content_that_converts_q2",
-     "text": "How intentional is your content strategy? Do your posts connect to a clear next step for the reader?",
+     "id": "outreach_that_earns_resp_q2",
+     "text": "When a prospect hasn't responded to your outreach, how do you follow up?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I post when I have something to say. There is no real strategy behind it.",
+       "label": "I send a reminder that I haven't heard back or ask if they saw my message",
        "score": 1
       },
       {
-       "label": "I try to post regularly but the posts do not always connect to a business outcome.",
+       "label": "I send 2–3 follow-ups with variations of my original message",
        "score": 2
       },
       {
-       "label": "Some posts have a clear CTA or next step but it is not consistent across everything I publish.",
+       "label": "I follow up a few times and try to add a bit more context or value each time",
        "score": 3
       },
       {
-       "label": "Most of my content has a clear purpose and leads somewhere intentional.",
+       "label": "Each follow-up adds something genuinely new — a question, an insight, or a relevant resource — so there's an actual reason to respond",
        "score": 4
       },
       {
-       "label": "Every post is part of a strategy. Attention earns trust, trust drives action, action builds pipeline.",
+       "label": "My follow-up sequence gives without expecting, and I move on without frustration when someone is simply not interested",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "content_that_converts_q3",
-     "text": "Do you have a lead magnet (guide, checklist, template, or resource) that captures interest from warm prospects?",
+     "id": "outreach_that_earns_resp_q3",
+     "text": "How do you decide who to reach out to on LinkedIn?",
      "max_score": 5,
      "answers": [
       {
-       "label": "No. People either book a call or do nothing.",
+       "label": "I search by job title and message anyone who looks like they could be a fit",
        "score": 1
       },
       {
-       "label": "I have thought about building one but have not done it yet.",
+       "label": "I target people in the right industry and company size",
        "score": 2
       },
       {
-       "label": "I have something but it is not getting much traction.",
+       "label": "I filter by title, industry, and size, and check their profile before I reach out",
        "score": 3
       },
       {
-       "label": "I have a lead magnet and it drives some downloads, though I could promote it more.",
+       "label": "I look for signals — content engagement, profile activity, shared connections — that suggest they're actually open to a conversation right now",
        "score": 4
       },
       {
-       "label": "My lead magnet consistently surfaces buying intent and moves the right people into my pipeline.",
+       "label": "I prioritize warm prospects first: people who've engaged with my content, downloaded a lead magnet, or show a clear trigger that makes the conversation timely",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your outreach is asking before it's earned anything",
+     "text": "Your prospects don't owe you a response. They don't know you, they're busy, and your message is competing with a hundred others in their inbox. Before you can ask for anything — a call, a response, even acknowledgment — you need to earn the right to be in that conversation. Right now, your outreach is skipping straight to the ask.",
+     "steps": [
+      "Delete every outreach template that opens with what you do or what you're offering and start from scratch",
+      "Write 3 new first messages that lead with something genuinely useful to the specific person you're contacting — no pitch, no ask, no mention of your services in the opener",
+      "Rebuild your follow-up sequence so every touchpoint adds something new — not just a reminder that you're waiting on them"
+     ]
+    },
+    "mid": {
+     "headline": "Your outreach is moving in the right direction — now make every message feel personal",
+     "text": "You're thinking about the person on the other end, which already puts you ahead of most people filling inboxes with self-serving pitches. The next level is making every single touchpoint feel like it was written specifically for that one person — not a category of people who share a job title.",
+     "steps": [
+      "Spend 5 focused minutes researching each prospect before you reach out — find one specific thing you can genuinely reference that shows you actually looked",
+      "Make sure your first message gives them a reason to respond that has nothing to do with you — an insight, a sharp question, a relevant resource",
+      "Review your last 20 outreach conversations and find what the ones that turned into calls had in common — then build your next sequences around that"
+     ]
+    },
+    "high": {
+     "headline": "Your outreach builds real relationships instead of burning through contacts — keep going",
+     "text": "You understand that persistence means following up with purpose, and that moving on without entitlement is what separates people who build real pipelines from people who just send more messages. Your results show it. The goal now is to make warm outreach the default, not the exception.",
+     "steps": [
+      "Start warming your best-fit prospects with intentional content engagement before you ever send a message — people respond to people they recognize",
+      "Add voice notes or short video messages to your highest-priority outreach conversations — trust builds faster when they can actually hear you",
+      "Trace back the clients who came directly from LinkedIn outreach and map out exactly how those relationships started. That's your repeatable blueprint"
+     ]
+    }
+   }
+  },
+  {
+   "id": "your_linkedin_pipeline_s",
+   "name": "Your LinkedIn Pipeline System",
+   "questions": [
+    {
+     "id": "your_linkedin_pipeline_s_q1",
+     "text": "How clearly can you trace a straight line from your LinkedIn activity to actual revenue?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I honestly can't draw that line right now",
+       "score": 1
+      },
+      {
+       "label": "I've gotten a client or two from LinkedIn but couldn't tell you exactly how",
+       "score": 2
+      },
+      {
+       "label": "I know LinkedIn contributes but I don't have a consistent system turning it into pipeline",
+       "score": 3
+      },
+      {
+       "label": "I have a process connecting content to outreach to conversations, though it's not fully consistent yet",
+       "score": 4
+      },
+      {
+       "label": "I have a repeatable system where content, outreach, and conversion work together and compound over time",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "leads_per_month",
+     "id": "your_linkedin_pipeline_s_q2",
+     "text": "What happens to a lead who shows genuine interest but isn't ready to buy right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They probably fall off — I don't have a real way to stay in touch beyond that first conversation",
+       "score": 1
+      },
+      {
+       "label": "I occasionally check back in but there's no real system behind it",
+       "score": 2
+      },
+      {
+       "label": "I have a newsletter but it's not consistently connected to my LinkedIn activity",
+       "score": 3
+      },
+      {
+       "label": "I have a newsletter that builds trust with warm leads and keeps me top of mind between touchpoints",
+       "score": 4
+      },
+      {
+       "label": "I have a nurture system that keeps leads warm, reinforces authority, and naturally surfaces buying intent when the timing is right for them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_linkedin_hours",
      "type": "number",
-     "text": "How many qualified leads does LinkedIn generate for you in a typical month?",
-     "hint": "Count inbound DMs, conversations from content that turned into calls, and lead magnet downloads that became real conversations. A consistent LinkedIn system generates 10 or more qualified conversations per month.",
+     "text": "How many hours per week do you spend on LinkedIn — writing content, engaging intentionally, and doing outreach combined?",
+     "hint": "Count honestly. Scrolling and passively reading don't count. Writing posts, leaving meaningful comments, and sending messages do. We'll multiply by 4 to calculate your monthly investment.",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x <= 10 ? x * 10 : 100"
+    },
+    {
+     "id": "monthly_linkedin_leads",
+     "type": "number",
+     "text": "On average, how many leads does your LinkedIn activity generate per month?",
+     "hint": "A lead = someone who raised their hand, booked a call, or directly asked about working with you as a result of LinkedIn — not a cold contact you found there.",
      "suffix": "leads/month",
      "min": 0,
      "max": 100,
      "step": 1,
-     "default": 2,
-     "normalize_formula": "Math.min(100, (x / 10) * 100)"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "Attention without a next step is a dead end.",
-     "text": "A post with 100,000 impressions and no next step might make your ego feel great, but it does not build a pipeline. If your content is getting attention but not driving real conversations, you are missing the bridge. That bridge is a clear next step that gives buyers somewhere to go when they are ready.",
-     "steps": [
-      "Audit your last 10 posts: does each one have a clear next step? A lead magnet, a DM prompt, a profile worth visiting?",
-      "Build one lead magnet this month that solves a specific problem your ICP already knows they have",
-      "Add a consistent CTA to every post. It does not have to be a pitch. Just a logical next step for someone who is interested."
-     ]
-    },
-    "mid": {
-     "headline": "You are getting traction. Now make it repeatable.",
-     "text": "You have proof that your content can drive real pipeline. The next step is making it predictable instead of occasional. That means a lead magnet doing its job, consistent CTAs, and content mapped to where your buyers are in the decision process.",
-     "steps": [
-      "Identify your 2 or 3 highest-performing posts and figure out what made them land. Replicate that pattern.",
-      "Promote your lead magnet in your next 5 posts if you have one. Most people under-promote their best asset.",
-      "Set up a simple way to track which content is driving real conversations so you know what to do more of"
-     ]
-    },
-    "high": {
-     "headline": "Your content is working. Now protect the system behind it.",
-     "text": "Content that consistently builds pipeline is rare. You have built something that compounds. Each post builds authority, each lead magnet captures intent, and each conversation starts warmer because of the trust you have already built. Do not mess with what is working.",
-     "steps": [
-      "Document what is working now so you can maintain it as you scale",
-      "Test new content formats or angles while keeping your proven pillars running",
-      "Look at where leads are falling off after initial interest. That is where to focus next."
-     ]
-    }
-   }
-  },
-  {
-   "id": "outreach_and_warm_conver",
-   "name": "Outreach and Warm Conversations",
-   "questions": [
-    {
-     "id": "outreach_and_warm_conver_q1",
-     "text": "How much trust have you built with a prospect before your first outreach message lands in their inbox?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "None. I reach out cold with my offer and trust builds from there if they respond.",
-       "score": 1
-      },
-      {
-       "label": "I personalize the message but usually get to the pitch pretty quickly.",
-       "score": 2
-      },
-      {
-       "label": "I try to lead with value but I am not always consistent about it.",
-       "score": 3
-      },
-      {
-       "label": "I build some context through content or a lead magnet before reaching out.",
-       "score": 4
-      },
-      {
-       "label": "Every outreach I send is warm. They know who I am before I ever message them.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "default": 0,
+     "normalize_formula": "x <= 20 ? x * 5 : 100"
     },
     {
-     "id": "outreach_and_warm_conver_q2",
-     "text": "When a prospect does not respond, what does your follow-up look like?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "I send a reminder letting them know I have not heard back.",
-       "score": 1
-      },
-      {
-       "label": "I follow up a couple more times before giving up, usually rephrasing the same message.",
-       "score": 2
-      },
-      {
-       "label": "I try to add value in my follow-ups but I am not always sure what to say.",
-       "score": 3
-      },
-      {
-       "label": "I follow up with something new: a different angle, a useful resource, or a better question.",
-       "score": 4
-      },
-      {
-       "label": "Each follow-up gives them a genuine reason to engage. If they still do not respond, I move on without guilt.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "outreach_and_warm_conver_q3",
-     "text": "How often do your LinkedIn conversations lead to a qualified sales meeting?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Rarely. Most conversations go quiet before we ever get to a call.",
-       "score": 1
-      },
-      {
-       "label": "Occasionally. Maybe one every couple of months.",
-       "score": 2
-      },
-      {
-       "label": "Sometimes. A few per month but it is inconsistent.",
-       "score": 3
-      },
-      {
-       "label": "Regularly. LinkedIn is a consistent source of qualified meetings for me.",
-       "score": 4
-      },
-      {
-       "label": "LinkedIn is my primary pipeline driver. Most new meetings start here.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "Entitled follow-ups are costing you real relationships.",
-     "text": "Your prospects do not owe you a response. Entering someone's inbox without context, then following up like they forgot to do their homework, gets you deleted. Your job is not to guilt them into acknowledging you. It is to make the conversation worth joining.",
-     "steps": [
-      "Audit your last 10 outreach messages. If any of them open with what you do or what you want, rewrite them.",
-      "Before reaching out to someone, make sure they have seen your content or engaged with something you shared. Warm beats cold every single time.",
-      "Replace follow-up nudges ('just checking in', 'I have not heard back') with actual value: a useful insight, a question, a resource relevant to their situation"
-     ]
-    },
-    "mid": {
-     "headline": "Your outreach is working. Make it warmer before you send it.",
-     "text": "You have figured out that value-first beats pitch-first. The next level is making sure more of your outreach goes to people who already know who you are, through your content, your lead magnets, or a shared conversation. That is when outreach stops feeling like sales and starts feeling like a natural next step.",
-     "steps": [
-      "Segment your outreach list into people who know your work versus completely cold contacts. Treat them differently.",
-      "Try voice notes or video for your most important outreach. It stands out and it is harder to ignore.",
-      "Track your response rates by outreach type and double down on what is actually working"
-     ]
-    },
-    "high": {
-     "headline": "Warm outreach at scale is your real advantage. Keep compounding it.",
-     "text": "When trust comes first, outreach is just a conversation between two people who already understand each other. You have built that. The goal now is to keep growing the volume of warm relationships so your pipeline stays full without depending on cold volume.",
-     "steps": [
-      "Map your current pipeline back to where each relationship started. It will show you where to invest more.",
-      "Systemize the move from content engagement to outreach so it happens on a schedule, not just when you remember",
-      "Protect your reply rate by never sacrificing quality for volume"
-     ]
-    }
-   }
-  },
-  {
-   "id": "system_and_repeatability",
-   "name": "System and Repeatability",
-   "questions": [
-    {
-     "id": "system_and_repeatability_q1",
-     "text": "How would you describe your current LinkedIn workflow, including content creation, outreach, and follow-up?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "I do it when I have time and energy. There is no real system.",
-       "score": 1
-      },
-      {
-       "label": "I have some routines but they fall apart when I get busy.",
-       "score": 2
-      },
-      {
-       "label": "I have a process for some parts but not all. Content might be regular but outreach is not, or the other way around.",
-       "score": 3
-      },
-      {
-       "label": "I have a process for most of it but I am still manually managing more than I should.",
-       "score": 4
-      },
-      {
-       "label": "My LinkedIn system runs whether I am busy or not. Content, outreach, and follow-up all have a clear process.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "system_and_repeatability_q2",
-     "text": "How well does your current approach connect content, outreach, and sales conversations into one system?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "They are completely disconnected. Content is one thing, outreach is another, sales is separate.",
-       "score": 1
-      },
-      {
-       "label": "There is some connection but it is mostly coincidental.",
-       "score": 2
-      },
-      {
-       "label": "I try to connect them but it is not consistent.",
-       "score": 3
-      },
-      {
-       "label": "Content and outreach work together and often lead to pipeline conversations.",
-       "score": 4
-      },
-      {
-       "label": "Content, outreach, and sales are one connected system. Each part feeds the next.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "hours_per_week",
+     "id": "average_deal_size",
      "type": "number",
-     "text": "How many hours per week do you spend on LinkedIn activities, including content creation, outreach, and follow-up combined?",
-     "hint": "Be honest here. A well-systemized LinkedIn workflow runs in 5 hours or less per week. Spending more than 20 hours per week suggests your process is mostly manual and disconnected.",
-     "suffix": "hours/week",
+     "text": "What is your average deal or monthly retainer size?",
+     "hint": "Enter the dollar amount of a typical closed deal or monthly retainer. This lets us show you the annual pipeline your current LinkedIn activity is generating — or leaving on the table.",
+     "suffix": "USD",
      "min": 0,
-     "max": 40,
-     "step": 1,
-     "default": 8,
-     "normalize_formula": "Math.max(0, Math.min(100, 100 - Math.max(0, x - 5) * (100 / 15)))"
+     "max": 100000,
+     "step": 500,
+     "default": 5000,
+     "normalize_formula": "x <= 50000 ? x / 500 : 100"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Without a system, LinkedIn becomes another thing that falls apart when life gets busy.",
-     "text": "Random posting and reactive outreach can produce occasional wins, but they do not build a pipeline. Predictable results come from a predictable process. If you cannot describe exactly what happens on LinkedIn this week, this month, and next month, you do not have a system yet.",
+     "headline": "You're putting time into LinkedIn without a system to capture what it generates",
+     "text": "LinkedIn is not a posting hobby — it's a business asset. But without a connected system where content earns attention, something captures it, and outreach converts it, you're leaving a lot on the table every single week. The good news is building that system doesn't have to be complicated. It just has to be intentional.",
      "steps": [
-      "Map out what a repeatable LinkedIn week looks like for you: how many posts, what kind of outreach, how you follow up",
-      "Batch your content creation. One focused session per week beats scrambling every day.",
-      "Identify the one part of your LinkedIn workflow that takes the most time and find a way to simplify it first"
+      "Map out what actually happens after someone engages with your content. Is there a next step for them, or does the opportunity just disappear into the scroll?",
+      "Create or promote one lead magnet that gives warm readers a specific reason to raise their hand — not a generic resource, something they'd genuinely want",
+      "Set up a simple email newsletter so you own a direct line to your audience that no algorithm can take away from you"
      ]
     },
     "mid": {
-     "headline": "You have pieces of a system. Now wire them together.",
-     "text": "When content, outreach, and sales live in separate silos, you lose momentum between them. The goal is one connected process where your content warms people up, your lead magnet captures their hand-raise, and your outreach reaches them while they are already thinking about you.",
+     "headline": "Your system exists — now make the pieces talk to each other",
+     "text": "You have some of the pieces in place but they're probably living in separate lanes. Content happens. Outreach happens. Sometimes a lead shows up. But a real pipeline machine has all three working together and feeding each other — and that connection is what turns LinkedIn from something you do into something that compounds.",
      "steps": [
-      "Draw a simple map of your current LinkedIn flow from content to conversation to call. Find where people fall out.",
-      "Create a consistent weekly routine that covers all three: content, outreach, and follow-up",
-      "Start tracking which content is driving pipeline so you stop spending time on what is not working"
+      "Write out step by step what the journey looks like from someone's first impression of your content to a booked call — then find the gaps where people are falling off",
+      "Make sure your content actively promotes your lead magnet, and that your lead magnet connects to a nurture sequence that keeps warm leads moving toward a conversation",
+      "Start tracking where your leads actually come from so you can put more time into what's working and cut what isn't"
      ]
     },
     "high": {
-     "headline": "You have built a system that compounds. Most people never get here.",
-     "text": "A connected LinkedIn system where content builds trust, lead magnets capture intent, outreach starts warm conversations, and all of it feeds a repeatable pipeline, is one of the most valuable things you can build in B2B sales. Protect it.",
+     "headline": "You have a real system — now protect it and let it compound",
+     "text": "Most people on LinkedIn are guessing. You're not. You have a connected approach and you can see how the pieces work together. Now it's about consistency, measurement, and letting the compounding effect do what it does when you stop starting over.",
      "steps": [
-      "Document your system clearly enough that it could be handed off or replicated",
-      "Review it quarterly and cut anything that is taking time without producing pipeline",
-      "Look for the next constraint: is it volume, conversion, or offer? That is where to focus now."
+      "Document your full system so it can grow with you — a process that only lives in your head is a bottleneck waiting to happen the moment you want to scale or bring in support",
+      "Identify the one part of your pipeline right now — content, lead magnet, nurture, or outreach — that's your biggest constraint, and fix that before adding anything new",
+      "Set a monthly review of your LinkedIn numbers: leads generated, conversations started, calls booked. That's how you optimize what's already working instead of just doing more of everything"
      ]
     }
    }
@@ -617,40 +510,40 @@
  },
  "computed_outputs": [
   {
-   "id": "monthly_hours",
-   "label": "Monthly hours invested in LinkedIn",
-   "format": "hours_per_period",
-   "formula": "hours_per_week * 4",
+   "id": "hours_per_lead",
+   "label": "LinkedIn Hours Invested Per Lead Generated",
+   "format": "hours",
+   "formula": "(weekly_linkedin_hours * 4) / Math.max(monthly_linkedin_leads, 1)",
    "show_in_result": true
   },
   {
-   "id": "hours_per_lead",
-   "label": "Monthly hours invested per qualified lead",
-   "format": "hours",
-   "formula": "(hours_per_week * 4) / Math.max(leads_per_month, 1)",
+   "id": "annual_pipeline_opportunity",
+   "label": "Annual Pipeline Your LinkedIn Is Generating at Current Rate",
+   "format": "currency",
+   "formula": "monthly_linkedin_leads * 12 * average_deal_size",
    "show_in_result": true
   }
  ],
  "schema_version": "v2",
  "persona_selector": {
   "id": "role",
-  "text": "Which best describes you right now?",
+  "text": "Which of these best describes where you are with LinkedIn right now?",
   "answers": [
    {
-    "label": "CEO or founder building executive authority",
-    "tag": "executive"
+    "label": "I'm posting but barely getting any leads from it",
+    "tag": "posting-no-leads"
    },
    {
-    "label": "Sales professional driving my own pipeline",
-    "tag": "sales_pro"
+    "label": "I'm doing outreach but getting ignored or ghosted",
+    "tag": "outreach-ignored"
    },
    {
-    "label": "B2B consultant or coach",
-    "tag": "consultant"
+    "label": "I haven't built a real LinkedIn strategy yet",
+    "tag": "not-started"
    },
    {
-    "label": "Agency owner managing LinkedIn for clients",
-    "tag": "agency_owner"
+    "label": "I get some results but nothing consistent or predictable",
+    "tag": "want-consistency"
    }
   ]
  }
