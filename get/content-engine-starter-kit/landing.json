@@ -17,5 +17,6 @@
   "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
   "resource_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-downloads/content-engine-starter-kit.zip",
   "gate_keyword": "ENGINE",
-  "cta_label": "Email me the Starter Kit"
+  "cta_label": "Email me the Starter Kit",
+  "proof_avatar_alt": "Ivan Manfredi"
 }

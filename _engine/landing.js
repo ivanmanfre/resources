@@ -35,7 +35,11 @@
     .then(function (r) { if (!r.ok) throw new Error("load"); return r.json(); })
     .then(function (d) { render(d); window.__lm_rerender = function(){ render(window.__lm_data); }; })
     .catch(function () {
-      root.innerHTML = '<div class="lp" style="padding:4rem 0;text-align:center"><p>This page didn\'t load. <a href="https://ivanmanfredi.com" style="color:#131210">ivanmanfredi.com</a></p></div>';
+      // Fallback link is host-configurable so client-tenant pages never surface
+      // Ivan's domain (wrong-brand skeptic finding, 2026-08-08).
+      var fbHref = root.getAttribute("data-lm-fallback-href") || "https://ivanmanfredi.com";
+      var fbLabel = root.getAttribute("data-lm-fallback-label") || "ivanmanfredi.com";
+      root.innerHTML = '<div class="lp" style="padding:4rem 0;text-align:center"><p>This page didn\'t load. <a href="' + esc(fbHref) + '" style="color:#131210">' + esc(fbLabel) + "</a></p></div>";
     });
 
   function render(d) {
@@ -52,7 +56,7 @@
       : '<div class="lp-cover-fallback">' + esc(d.headline || d.category || "Free resource") + "</div>";
 
     var avatar = d.proof_avatar
-      ? '<img class="lp-ava" src="' + esc(d.proof_avatar) + '" alt="Ivan Manfredi">'
+      ? '<img class="lp-ava" src="' + esc(d.proof_avatar) + '" alt="' + esc(d.proof_avatar_alt || "") + '">'
       : '<span class="lp-ava"></span>';
 
     var ctaLabel = esc(d.cta_label || ("Email me the " + (d.format_label ? d.format_label.toLowerCase() : "resource")));
