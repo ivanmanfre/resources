@@ -163,7 +163,8 @@
         })
         .catch(function () {
           btn.disabled = false; btn.textContent = label;
-          errEl.textContent = "Something went wrong — try again, or DM me on LinkedIn and I'll send it.";
+          // error_help is data-driven so client-tenant pages don't inherit Ivan's register.
+          errEl.textContent = d.error_help || "That didn't send. Try again in a minute, or DM me on LinkedIn and I'll send it.";
         });
     });
   }
