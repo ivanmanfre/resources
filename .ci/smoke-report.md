@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: c05bfd10b723e6f815e6a65dda58fa2ac30bc71f at 2026-08-08T18:19:25.038Z
+Deploy: 66276566ad80d611849408b8fbace12f456098ca at 2026-08-09T20:06:57.617Z
 
-- joel-k-44-assessment: data.json HTTP 404
+- kat-sale-da-assessment: data.json HTTP 404
