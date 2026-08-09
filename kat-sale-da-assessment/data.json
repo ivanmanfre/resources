@@ -1,0 +1,542 @@
+{
+ "slug": "kat-sale-da-assessment",
+ "title": "Paid Media Performance Maturity Score",
+ "subtitle": "Find out how mature your paid media operation really is — and where the gaps are costing you.",
+ "brand": {
+  "accent": "#1863dc",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "strategy_budget_deployme",
+   "name": "Strategy & Budget Deployment",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "When a peak period comes around (Black Friday, Christmas, key seasonal moments), how do you decide where to push budget?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "We increase budget across everything and see what happens",
+       "score": 1
+      },
+      {
+       "label": "We roughly match what we spent last year",
+       "score": 2
+      },
+      {
+       "label": "We look at last year's CPA and ROAS data before deciding",
+       "score": 3
+      },
+      {
+       "label": "We model the opportunity, front-weight budget strategically, and set clear CPA targets before committing",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "When a campaign underperforms, what does your diagnosis actually look like?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "We pause it or cut budget immediately",
+       "score": 1
+      },
+      {
+       "label": "We try a few things until something improves",
+       "score": 2
+      },
+      {
+       "label": "We check CPA, CTR, and impression share before making changes",
+       "score": 3
+      },
+      {
+       "label": "We run through a structured checklist: ad copy, landing page, bid strategy, match type, AI campaign influence — in that order",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "How far ahead is your paid media activity planned?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Week to week — we react to what's happening",
+       "score": 1
+      },
+      {
+       "label": "Roughly a month ahead",
+       "score": 2
+      },
+      {
+       "label": "A quarter ahead with a clear plan",
+       "score": 3
+      },
+      {
+       "label": "A full-year plan with seasonal strategy and budget allocation built in",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your spend is reactive — and that's an expensive way to operate.",
+     "text": "If budget decisions are made week to week or based on gut feel, you're leaving money on the table. The brands that win peak periods aren't always the ones with the biggest budgets — they're the ones who decided where to push before the peak started. Throwing money at it isn't a strategy.",
+     "steps": [
+      "Map your key trading periods now — even a rough calendar is a better starting point than nothing",
+      "Pull last year's CPA and ROAS data by week to find where spend actually worked",
+      "Set a CPA target before any peak campaign goes live, not during it"
+     ]
+    },
+    "mid": {
+     "headline": "You're looking at the right data — but you're still catching up rather than getting ahead.",
+     "text": "You've got the basics, which is a solid start. The next step is making the uncomfortable calls early: whether to compete on Black Friday at all, where to front-weight spend, which channels to pull back on. Most brands default to 'increase everything' — and most brands don't win peak. Thinking strategically is what separates the ones that do.",
+     "steps": [
+      "Build a proper peak period model before committing budget — not after the campaign is live",
+      "Decide upfront whether you'll compete on the biggest days and have a plan if you don't",
+      "Review CPA targets by channel, not just overall"
+     ]
+    },
+    "high": {
+     "headline": "Your strategy is in good shape — now it's about sharpening the details.",
+     "text": "You're thinking ahead and making evidence-based calls. The difference between good and excellent here is usually in how precisely you model opportunity, how quickly you can change course mid-peak, and whether your creative pipeline keeps up with your budget strategy.",
+     "steps": [
+      "Run a post-peak review every time — capture what actually drove performance vs. what you predicted",
+      "Front-weight budget earlier than feels comfortable — most brands still leave it too late",
+      "Make sure creative is ready before budget goes up, not after"
+     ]
+    }
+   }
+  },
+  {
+   "id": "account_structure_data_q",
+   "name": "Account Structure & Data Quality",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "How clean are your search term reports right now?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "We don't review them that often",
+       "score": 1
+      },
+      {
+       "label": "We check occasionally and add negatives when we spot something bad",
+       "score": 2
+      },
+      {
+       "label": "We review regularly and have a clear negative keyword process",
+       "score": 3
+      },
+      {
+       "label": "Squeaky clean — we could analyse match type performance from them right now without cleaning anything first",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "How are your campaigns structured by match type?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Mixed match types in the same ad groups",
+       "score": 1
+      },
+      {
+       "label": "Some separation, but it's not consistent across all campaigns",
+       "score": 2
+      },
+      {
+       "label": "Clear ad group splits between match types in most campaigns",
+       "score": 3
+      },
+      {
+       "label": "Full separation across the whole account — we can compare exact, phrase, and broad performance cleanly",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "If I asked you right now which match type is delivering your best CPA — could you tell me?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "No — we don't have that level of visibility",
+       "score": 1
+      },
+      {
+       "label": "Roughly, but the data isn't clean enough to fully trust",
+       "score": 2
+      },
+      {
+       "label": "Yes, with some work to pull the numbers together",
+       "score": 3
+      },
+      {
+       "label": "Yes, immediately — and I'd already know where to look next",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your account structure is making it hard to see what's actually working.",
+     "text": "If your search terms aren't clean and match types are mixed together, you can't trust your own data — which means every decision is based on noise. This is one of the most fixable problems in paid search, and sorting it makes everything else easier. You can't analyse what you can't see clearly.",
+     "steps": [
+      "Do a search term audit this week — add negatives for anything that shouldn't be triggering your ads",
+      "Check whether match types are split at ad group level or just roughly mixed — mixing hides what's working",
+      "Note quality scores by campaign, find the three weakest, and start the investigation there"
+     ]
+    },
+    "mid": {
+     "headline": "Your account is reasonably tidy — but the gaps are costing you clarity.",
+     "text": "You're doing some of the right things. The value of a properly structured account is that you can spot the non-obvious things — like exact match CPA beating broad even though broad has a higher conversion rate, because the CTR difference is playing out in the auction. That kind of insight only comes from clean, separated data.",
+     "steps": [
+      "Audit your ad group structure — is match type separation genuine or just roughly gestured at?",
+      "Set a monthly search term review if you don't have one",
+      "Pick one campaign and do a proper quality score investigation — find the root cause, not just the number"
+     ]
+    },
+    "high": {
+     "headline": "Solid structural foundations — that's where the real performance insights live.",
+     "text": "A mature account structure makes the interesting analysis possible. You're in a position to spot the non-obvious things and act on them quickly. The next step is using that clean data to find where you're leaving impression share on the table — and deciding whether the CPA justifies going for it.",
+     "steps": [
+      "Look at CPC vs. conversion rate by match type — the pattern is sometimes the opposite of what you'd expect",
+      "Check impression share by campaign — where are you leaving volume behind?",
+      "Use your clean data for a bid strategy review — are your targets still calibrated to current business goals?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "creative_landing_pages",
+   "name": "Creative & Landing Pages",
+   "questions": [
+    {
+     "id": "q7",
+     "text": "When a campaign underperforms, how systematically do you review ad copy and landing pages as a cause?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "We usually look at bids and budget first — creative is rarely the first check",
+       "score": 1
+      },
+      {
+       "label": "We look at it sometimes but it's not part of a structured process",
+       "score": 2
+      },
+      {
+       "label": "Ad copy is in our standard performance review checklist",
+       "score": 3
+      },
+      {
+       "label": "Ad copy, landing page, and full user journey are all in our structured diagnosis — alongside bid and match type",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8",
+     "text": "How well do your landing pages match your ad copy right now?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "We send most traffic to the homepage or a general page",
+       "score": 1
+      },
+      {
+       "label": "We have dedicated pages but they're not always updated to match the campaign",
+       "score": 2
+      },
+      {
+       "label": "Campaign pages are specific and reasonably aligned to the ad",
+       "score": 3
+      },
+      {
+       "label": "Message, offer, and CTA are consistent from ad click through to conversion — and we check this regularly",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Creative is doing more damage to your performance than you probably realise.",
+     "text": "Bad ad copy and mismatched landing pages are two of the most common causes of a poor conversion rate — and they're often the last things people look at. If you're not checking creative as part of your underperformance diagnosis, you'll keep chasing the wrong problems and wondering why nothing sticks.",
+     "steps": [
+      "Check your highest-spend ads right now — is the copy still relevant, specific, and accurate?",
+      "Map your top campaigns to their landing pages and check the message match end to end",
+      "Add 'ad copy review' and 'landing page check' to your standard underperformance checklist"
+     ]
+    },
+    "mid": {
+     "headline": "Creative is in your process — but it needs to be more systematic.",
+     "text": "You're thinking about ad copy and landing pages, which puts you ahead of a lot of accounts. The next step is making the review more consistent so you're generating real learnings, not just one-off checks that get forgotten the next time a campaign fires up.",
+     "steps": [
+      "Pick one campaign and do a proper creative audit: which ads are carrying the performance, and why?",
+      "Review your landing pages against your best-performing ads — are they genuinely aligned or just roughly on-topic?",
+      "Factor in AI campaign influence (PMax, AI Max) when reviewing creative — it affects where ads show and what copy needs to do"
+     ]
+    },
+    "high": {
+     "headline": "Creative is clearly a performance lever for you — good.",
+     "text": "Treating creative as a performance variable rather than an afterthought separates well-run accounts from average ones. The next level is making sure your testing generates learnings that carry forward — not just individual tests that live and die in isolation.",
+     "steps": [
+      "Document what you've learned from creative tests — what hooks work, what CTAs convert, what context matters",
+      "Review your landing page journey as frequently as your ad copy — they need to move together",
+      "Check creative performance alongside AI campaign influence — they interact more than most people account for"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_platform_readiness",
+   "name": "AI & Platform Readiness",
+   "questions": [
+    {
+     "id": "q9",
+     "text": "How does your team currently use AI in day-to-day paid media work?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "We don't really use AI tools yet",
+       "score": 1
+      },
+      {
+       "label": "Occasionally — mainly for writing copy or drafting reports",
+       "score": 2
+      },
+      {
+       "label": "Several people use it regularly to save time and sharpen thinking",
+       "score": 3
+      },
+      {
+       "label": "Embedded across the team: analysis, creative ideation, search term review, challenging our own assumptions",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q10",
+     "text": "When Google or Meta announces a major change (like a bid strategy update or a new AI campaign type), how does your team respond?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "We usually find out after it's already affected performance",
+       "score": 1
+      },
+      {
+       "label": "We hear about changes but often don't act until something breaks",
+       "score": 2
+      },
+      {
+       "label": "We stay reasonably informed and make planned changes before deadlines",
+       "score": 3
+      },
+      {
+       "label": "We're proactive — we audit accounts ahead of changes and have a clear action plan before the deadline hits",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're behind on AI — and the platforms aren't slowing down.",
+     "text": "AI is already embedded in how the platforms work: PMax, AI Max, smart bidding, ChatGPT ads. If your team isn't engaging with these tools, you're not just missing efficiency gains — you're at risk of not understanding what your own account is actually doing. Everyday's a school day, for all of us.",
+     "steps": [
+      "Pick one practical AI use case to start with: use ChatGPT to analyse a search term report or brief an ad",
+      "Check whether your campaigns have AI campaign influence you haven't accounted for in your analysis",
+      "Set up a way to track Google and Meta platform changes before they hit your accounts"
+     ]
+    },
+    "mid": {
+     "headline": "You're using AI — but not getting the full value from it yet.",
+     "text": "The gap between 'we use AI sometimes' and 'AI is genuinely embedded in the team' is mostly about habit and structure. The teams I see getting the most from it haven't automated everything — they've found the specific tasks where it saves real time and makes their thinking sharper.",
+     "steps": [
+      "Ask your team what they actually use AI for right now — you might find more or less than you expect",
+      "Identify the two most time-consuming manual tasks in your week and try AI there first",
+      "Make sure someone on the team understands how PMax and AI Max are influencing account performance — not just that they're running"
+     ]
+    },
+    "high": {
+     "headline": "Your team is using AI the right way — practically, not as a gimmick.",
+     "text": "Real AI adoption in paid media is about saving time on repetitive tasks and making better decisions — not replacing the thinking. You're in a good place. Keep exploring: there are still real lessons to learn, even for the platforms themselves. ChatGPT ads don't even alert you when an ad gets disapproved yet.",
+     "steps": [
+      "Review how well you're feeding your AI campaigns: asset quality, audience signals, conversion data",
+      "Keep exploring newer formats — the rules are still being written and early movers have an advantage",
+      "Make sure your bid strategy review cadence is accounting for recent platform changes"
+     ]
+    }
+   }
+  },
+  {
+   "id": "team_capability_partners",
+   "name": "Team Capability & Partnership Quality",
+   "questions": [
+    {
+     "id": "q11",
+     "text": "How would you describe the paid media expertise in your current setup — whether in-house, agency, or both?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Paid media isn't a specialist skill in our team or setup",
+       "score": 1
+      },
+      {
+       "label": "We have some knowledge but there are gaps that slow us down",
+       "score": 2
+      },
+      {
+       "label": "Solid expertise across most paid media areas",
+       "score": 3
+      },
+      {
+       "label": "Deep expertise — we know what we're doing, we're honest when things aren't right, and we can prove performance with data",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12",
+     "text": "How collaborative is your paid media relationship — whether that's with an agency, a consultant, or your internal team?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Accounts are managed and reports are sent — we don't dig into the detail together",
+       "score": 1
+      },
+      {
+       "label": "Regular meetings but the collaboration is fairly surface level",
+       "score": 2
+      },
+      {
+       "label": "A good working relationship — we challenge each other when needed",
+       "score": 3
+      },
+      {
+       "label": "A genuine partnership: honest feedback both ways, shared challenges, exploring new things as a team — it feels like one unit",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "manual_hours",
+     "type": "number",
+     "text": "How many hours per week does your team spend on manual paid media tasks?",
+     "hint": "Think: pulling reports by hand, reviewing search terms manually, formatting data, making manual bid adjustments — tasks that aren't automated or systematised yet",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 8,
+     "normalize_formula": "x <= 1 ? 100 : x >= 20 ? 0 : Math.round(100 - ((x - 1) / 19) * 100)"
+    },
+    {
+     "id": "hourly_cost",
+     "type": "number",
+     "text": "What does that team member's time cost per hour?",
+     "hint": "Divide their annual salary by 1,760 (standard working hours). Include employer costs if you know them. Or enter their day rate divided by 8.",
+     "suffix": "£/hour",
+     "min": 10,
+     "max": 300,
+     "step": 5,
+     "default": 35,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your team or partnership setup is a performance risk right now.",
+     "text": "Paid media without specialist knowledge is expensive — not because you're doing things wrong intentionally, but because you can't see what you're missing. The brands that consistently perform well have either built genuine expertise in-house or have a partner who's genuinely invested in their outcomes — not just sending reports and hitting meeting time.",
+     "steps": [
+      "Identify the biggest paid media skill gap in your current setup — be honest about it",
+      "List the questions you can't currently answer about your own accounts",
+      "Whether it's training, consultancy, or a different agency relationship — get the right expertise in"
+     ]
+    },
+    "mid": {
+     "headline": "You have a decent base — but the partnership or team dynamic needs sharpening.",
+     "text": "The middle ground is the most common place to get stuck. Things are 'fine', performance is 'okay'. The shift usually comes from deciding you want genuine collaboration: honest feedback when things aren't right, shared challenges, real investment in outcomes rather than just competent meetings.",
+     "steps": [
+      "Ask your agency or team one hard question this week: what's the one thing holding your accounts back?",
+      "Make sure paid media targets connect clearly to business goals — not just platform metrics",
+      "If the relationship isn't as honest and collaborative as it should be, have that conversation. The best ones are built on it."
+     ]
+    },
+    "high": {
+     "headline": "You've got the right people and the right dynamic — that's genuinely rare.",
+     "text": "A team or partnership that combines deep expertise with honest collaboration is hard to build and easy to underestimate. It's what separates paid media that keeps improving from paid media that just ticks along. Keep investing in both the people and the relationship.",
+     "steps": [
+      "Capture what's working in your team setup so you can protect and scale it",
+      "Keep exploring new things together — ChatGPT ads, new AI campaign features, creative approaches you haven't tried",
+      "Don't let the collaboration get too comfortable — the best partnerships keep challenging each other"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_manual_cost",
+   "label": "Annual cost of manual paid media tasks",
+   "format": "currency_per_period",
+   "formula": "manual_hours * 52 * hourly_cost",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your situation?",
+  "answers": [
+   {
+    "label": "In-house marketer at a brand",
+    "tag": "brand_marketer"
+   },
+   {
+    "label": "Agency account manager or director",
+    "tag": "agency_manager"
+   },
+   {
+    "label": "Brand owner managing paid media yourself",
+    "tag": "brand_owner"
+   }
+  ]
+ }
+}
