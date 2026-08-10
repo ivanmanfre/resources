@@ -1,6 +1,5 @@
 # Resource smoke failures
 
-Deploy: 7e11d3c098058090f806a46e323936616dca5a27 at 2026-08-10T13:21:20.705Z
+Deploy: ff14340759e04b8f8cd650de013a9116366bd92d at 2026-08-10T14:44:38.198Z
 
-- peter-ruchti-8f-assessment: engine asset /_engine/assessment-score.js HTTP 503
-- peter-ruchti-8f-assessment: data.json HTTP 404
+- shaun-devan-22-assessment: data.json HTTP 404
