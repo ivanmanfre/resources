@@ -1,0 +1,638 @@
+{
+ "slug": "peter-ruchti-8f-assessment",
+ "title": "Are You Staying Booked? Pipeline Health Check",
+ "subtitle": "Score your online marketing from website to lead intake to find exactly where your phone stops ringing.",
+ "brand": {
+  "accent": "#971b00",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "website_messaging",
+   "name": "Website & Messaging",
+   "questions": [
+    {
+     "id": "site-value-prop",
+     "text": "When a homeowner lands on your website, how clearly does it tell them what you do and why they should call you instead of the next contractor?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It lists our services but gives no real reason to pick us",
+       "score": 1
+      },
+      {
+       "label": "There is some explanation but it reads generic",
+       "score": 2
+      },
+      {
+       "label": "Clear enough, but not specific to our local market",
+       "score": 3
+      },
+      {
+       "label": "Strong value proposition, specific to our area and services",
+       "score": 4
+      },
+      {
+       "label": "Immediately clear — specific, with social proof and a direct call to action above the fold",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "site-questions",
+     "text": "Does your website answer the questions homeowners actually ask before hiring — pricing ranges, timeline, what the process looks like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not address cost or process — everything is 'call for a quote'",
+       "score": 1
+      },
+      {
+       "label": "We hint that info is available but do not publish it",
+       "score": 2
+      },
+      {
+       "label": "We cover a few common questions",
+       "score": 3
+      },
+      {
+       "label": "We have a real FAQ with honest, specific answers",
+       "score": 4
+      },
+      {
+       "label": "Every question a homeowner has before calling is answered on the site, including pricing context",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "site-content",
+     "text": "How authoritative and industry-specific is the written content on your site?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Generic — nothing a non-expert could not have written",
+       "score": 1
+      },
+      {
+       "label": "Mostly generic with a few local or service-specific touches",
+       "score": 2
+      },
+      {
+       "label": "Written by us but not crafted to rank or persuade",
+       "score": 3
+      },
+      {
+       "label": "Industry-specific and locally focused",
+       "score": 4
+      },
+      {
+       "label": "Expert-level content a competitor without our experience could not replicate",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your website is not working for you.",
+     "text": "Right now your site is a digital brochure. Homeowners land, find nothing that answers their real questions, and move on to the next contractor on the list. The phone only rings consistently when your site gives people a reason to call.",
+     "steps": [
+      "Put a clear headline on your homepage that names your service and your city in the first line",
+      "Answer 'how much does this cost?' directly — vague pricing stops calls before they start",
+      "Write at least one page of content that only a real expert in your service could have written",
+      "Add at least three customer reviews to your site with the job type and city named"
+     ]
+    },
+    "mid": {
+     "headline": "Your site is decent — but it is leaving calls on the table.",
+     "text": "You are not invisible, but you are not pulling ahead of the competition either. The contractors who stay booked 2+ weeks out have sites that do the selling before the phone ever rings.",
+     "steps": [
+      "Sharpen your value proposition — one sentence, above the fold, that names who you serve and what problem you solve",
+      "Add pricing context to your most-searched service pages",
+      "Make sure your content passes the expertise test — specific technical details only a real pro would know"
+     ]
+    },
+    "high": {
+     "headline": "Your website is doing the heavy lifting.",
+     "text": "This is what a site that consistently generates calls looks like. Keep it current, keep building authoritative content, and make sure every new service or market area gets the same treatment.",
+     "steps": [
+      "Audit your content once a year to make sure it reflects what you are actually selling",
+      "Add location-specific pages if you serve multiple cities or counties",
+      "Make sure AI search models can read and cite your content — structured data on your service pages helps"
+     ]
+    }
+   }
+  },
+  {
+   "id": "search_visibility_ai_pre",
+   "name": "Search Visibility & AI Presence",
+   "questions": [
+    {
+     "id": "gbp-status",
+     "text": "How actively managed is your Google Business Profile?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Barely set up — basic name, address, phone, that is it",
+       "score": 1
+      },
+      {
+       "label": "Filled out but not updated since we created it",
+       "score": 2
+      },
+      {
+       "label": "Has photos and reviews, nothing more",
+       "score": 3
+      },
+      {
+       "label": "Regularly updated with posts, Q&A, and fresh photos",
+       "score": 4
+      },
+      {
+       "label": "Fully optimized and we track its performance alongside our paid and organic channels",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "organic-leads",
+     "text": "How often do you receive leads from organic Google search — homeowners who found you without clicking a paid ad?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely or never — almost everything is word of mouth or referral",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, but I could not tell you how many",
+       "score": 2
+      },
+      {
+       "label": "A few per month",
+       "score": 3
+      },
+      {
+       "label": "Consistently — organic search is a real lead source for us",
+       "score": 4
+      },
+      {
+       "label": "Organic search is one of our top two lead channels",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai-search-check",
+     "text": "Have you tested whether your business shows up when homeowners ask AI tools — ChatGPT, Google AI Overviews, Perplexity — for your type of service in your area?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never thought to check",
+       "score": 1
+      },
+      {
+       "label": "Searched once and called it done",
+       "score": 2
+      },
+      {
+       "label": "Checked a handful of times across different queries",
+       "score": 3
+      },
+      {
+       "label": "Tested multiple times across at least two different AI models",
+       "score": 4
+      },
+      {
+       "label": "We run 20+ searches across multiple models — we know our AI visibility and how it varies by model",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Homeowners are searching — and not finding you.",
+     "text": "Traditional Google search is your biggest driver today, and AI search is the next one. Right now you have gaps in both. Every week you are not showing up is a week those calls go to someone else in your market.",
+     "steps": [
+      "Complete every field in your Google Business Profile — it is free and it moves the needle",
+      "Ask every satisfied customer to leave a Google review and send them the direct link",
+      "Search for your services in your city on ChatGPT and Google AI Overviews — run it five times, not once",
+      "If AI search does not return your name, the fix starts with authoritative content on your site"
+     ]
+    },
+    "mid": {
+     "headline": "You are visible — but not consistently.",
+     "text": "You show up sometimes. That is better than nothing, but it means there are calls going to competitors that should be coming to you. AI search is not one answer — it is a probability. Knowing yours matters.",
+     "steps": [
+      "Post to your Google Business Profile at least twice a month to keep it active in results",
+      "Run your AI search test 20+ times per model — one result tells you almost nothing about your real visibility",
+      "Different AI models show very different variance; test at least ChatGPT, Google AI Overviews, and Perplexity"
+     ]
+    },
+    "high": {
+     "headline": "You are showing up where it counts.",
+     "text": "You understand that AI search visibility is not one answer — it is how often your name appears across dozens of searches on multiple models. Keep testing, keep building authoritative content, and stay ahead of the contractors who still think a single search result tells them anything.",
+     "steps": [
+      "Track AI search visibility monthly — models update and your results can shift without warning",
+      "Make sure your GBP data matches your website exactly — inconsistencies confuse both Google and AI models",
+      "Look into schema markup so AI models can more easily surface your business in answer results"
+     ]
+    }
+   }
+  },
+  {
+   "id": "lead_intake_follow_up",
+   "name": "Lead Intake & Follow-Up",
+   "questions": [
+    {
+     "id": "response-speed",
+     "text": "When a new inquiry comes in — a call, a form fill, a text — how quickly does your team respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "End of the day or next business day",
+       "score": 1
+      },
+      {
+       "label": "Within a few hours",
+       "score": 2
+      },
+      {
+       "label": "Within an hour during business hours",
+       "score": 3
+      },
+      {
+       "label": "Within 15 minutes",
+       "score": 4
+      },
+      {
+       "label": "Within minutes, with an automated acknowledgment even after hours",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "missed-lead-system",
+     "text": "What happens when a homeowner calls and no one can answer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Goes to voicemail, we call back when we get a chance",
+       "score": 1
+      },
+      {
+       "label": "Voicemail with a callback promise — usually same day",
+       "score": 2
+      },
+      {
+       "label": "Voicemail plus a contact form on the site as a backup",
+       "score": 3
+      },
+      {
+       "label": "An auto-text goes out immediately so the lead knows we received their message",
+       "score": 4
+      },
+      {
+       "label": "Structured follow-up: auto-text within minutes, callback attempt, second follow-up if no answer",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "intake-consistency",
+     "text": "How consistent is the way your team captures information from new leads?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No real process — depends entirely on who picks up",
+       "score": 1
+      },
+      {
+       "label": "We ask the basics but it is not consistent across the team",
+       "score": 2
+      },
+      {
+       "label": "A standard set of questions most of the time",
+       "score": 3
+      },
+      {
+       "label": "Scripted intake that most of the team follows",
+       "score": 4
+      },
+      {
+       "label": "Every lead goes through the same intake process, logged in our system",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "unconverted_pct",
+     "type": "number",
+     "text": "Roughly what percentage of your monthly inquiries do NOT convert to a booked job?",
+     "hint": "Example: if 20 homeowners contact you and 14 book, your non-conversion rate is 30%",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 30,
+     "normalize_formula": "Math.max(0, 100 - x)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your marketing is working harder than your intake process.",
+     "text": "You are generating leads and then losing them. A homeowner who calls and gets a slow response does not wait around — they call the next number. This is the most common place money leaks out of a service business, and the fix is more straightforward than most people expect.",
+     "steps": [
+      "Set a hard rule: every inquiry gets a response within the hour, no exceptions",
+      "Set up an auto-text for missed calls — it does not need to be complicated to work",
+      "Write a simple intake script so anyone who answers asks the same questions in the same order",
+      "Start logging every inquiry so you know your actual close rate by month"
+     ]
+    },
+    "mid": {
+     "headline": "Your intake is solid — but not airtight.",
+     "text": "You are catching most leads. The gap is the ones slipping through the seams — calls after hours that got a mediocre voicemail, forms that sat for three hours. Those are real jobs going to a competitor.",
+     "steps": [
+      "Add automated acknowledgment for every channel: call, form, and text",
+      "Make intake consistent across your team — script it and train to it",
+      "Track which leads do not convert and why — the pattern tells you exactly where the process breaks"
+     ]
+    },
+    "high": {
+     "headline": "Your intake is a real competitive advantage.",
+     "text": "Most contractors in your market are losing calls in the exact places you have addressed. Keep the process tight, keep tracking, and make sure it holds as your team grows.",
+     "steps": [
+      "Audit call recordings quarterly to catch drift before it becomes a habit",
+      "Review unconverted leads monthly — the reason they did not book almost always points to one fixable gap",
+      "If you are not already tracking cost-per-booked-job by channel, that is the next metric to add"
+     ]
+    }
+   }
+  },
+  {
+   "id": "marketing_intelligence_t",
+   "name": "Marketing Intelligence & Tracking",
+   "questions": [
+    {
+     "id": "lead-source-tracking",
+     "text": "Do you know which channels — Google Ads, organic search, Google Business Profile, referral — generated each lead you received last month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No — I just know the phone rang",
+       "score": 1
+      },
+      {
+       "label": "I guess based on what callers say when I ask",
+       "score": 2
+      },
+      {
+       "label": "I check Google Analytics a few times a year",
+       "score": 3
+      },
+      {
+       "label": "I track sources for most leads",
+       "score": 4
+      },
+      {
+       "label": "I know exactly where every lead came from and what each one cost to generate",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "spend-measurement",
+     "text": "How well do you understand what your marketing spend is actually producing?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I am not sure what I am spending or what it is generating",
+       "score": 1
+      },
+      {
+       "label": "I know roughly what I spend but not what it produces",
+       "score": 2
+      },
+      {
+       "label": "I track clicks and traffic but not calls or booked jobs",
+       "score": 3
+      },
+      {
+       "label": "I track calls coming from my marketing channels",
+       "score": 4
+      },
+      {
+       "label": "I know my cost per lead and cost per booked job for each channel",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "review-frequency",
+     "text": "How often do you review your marketing performance data?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — only when something seems wrong",
+       "score": 1
+      },
+      {
+       "label": "Once or twice a year",
+       "score": 2
+      },
+      {
+       "label": "Quarterly",
+       "score": 3
+      },
+      {
+       "label": "Monthly",
+       "score": 4
+      },
+      {
+       "label": "Weekly — I have a standing review of the numbers that matter",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are spending money without knowing if it is working.",
+     "text": "If you do not know where your leads come from, you cannot fix what is broken or put more budget behind what is working. Every marketing dollar spent without tracking is a guess.",
+     "steps": [
+      "Set up call tracking so you know which channel drove each call",
+      "Connect Google Analytics to your site and commit to checking it once a month",
+      "If you run Google Ads, turn on call conversion tracking — clicks alone tell you nothing about revenue",
+      "Ask every new lead how they found you and log the answer — even this is better than guessing"
+     ]
+    },
+    "mid": {
+     "headline": "You are tracking some things but missing the full picture.",
+     "text": "You have enough data to make some decisions. The gap is that you are likely optimizing for what you can see — clicks, traffic — rather than what actually drives a full calendar: cost per booked job by channel.",
+     "steps": [
+      "Connect every lead source to a closed job so you know which channels actually produce revenue",
+      "Move from quarterly to monthly reviews — the market changes faster than once a quarter",
+      "Add GBP performance to your monthly review alongside paid and organic numbers"
+     ]
+    },
+    "high": {
+     "headline": "You are running on real numbers.",
+     "text": "This is how you make every budget decision with confidence. You know what is working, what is not, and where to invest next. Keep the data habits tight as your channels evolve.",
+     "steps": [
+      "Add AI search visibility to your monthly tracking — it is becoming a real lead channel in this industry",
+      "Build a simple dashboard that pulls GBP, Google Ads, and organic into one weekly view",
+      "Watch channel mix quarterly — especially as AI search grows in the water and radon market"
+     ]
+    }
+   }
+  },
+  {
+   "id": "pipeline_booking_health",
+   "name": "Pipeline & Booking Health",
+   "questions": [
+    {
+     "id": "booking-depth",
+     "text": "Right now, how far out is your calendar booked with new jobs?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have open slots this week and next",
+       "score": 1
+      },
+      {
+       "label": "Booked about a week out",
+       "score": 2
+      },
+      {
+       "label": "Booked about 2 weeks out",
+       "score": 3
+      },
+      {
+       "label": "Booked 3 to 4 weeks out",
+       "score": 4
+      },
+      {
+       "label": "Booked 5+ weeks out and managing capacity or turning work away",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_inquiries",
+     "type": "number",
+     "text": "On average, how many new job inquiries do you receive per month — calls, form fills, and texts combined?",
+     "hint": "Count every inbound contact from a homeowner looking to book a job, not referrals from other contractors",
+     "suffix": "inquiries/month",
+     "min": 0,
+     "max": 500,
+     "step": 5,
+     "default": 20,
+     "normalize_formula": "Math.min(100, x * 2)"
+    },
+    {
+     "id": "avg_job_value",
+     "type": "number",
+     "text": "What is your average completed job value in dollars?",
+     "hint": "Use your most common job type — a water softener install, a radon mitigation system, or whichever makes up the bulk of your calendar",
+     "suffix": "$",
+     "min": 100,
+     "max": 20000,
+     "step": 100,
+     "default": 2000,
+     "normalize_formula": "Math.min(100, (x - 100) / 19900 * 100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your pipeline has gaps — and that is fixable.",
+     "text": "Open slots this week means marketing needs to work harder, or something in your intake is letting leads slip through. You need to know which one it is.",
+     "steps": [
+      "Audit the last 30 days of inquiries: how many called, how many actually booked?",
+      "Run your AI search test today — if you are not showing up, that is the first place to address",
+      "Check response time on your last ten inquiries — slow follow-up is the most common cause of a thin calendar"
+     ]
+    },
+    "mid": {
+     "headline": "You are close to where you want to be.",
+     "text": "Two weeks booked is the floor, not the ceiling. The contractors with the most pricing power and the least pressure to discount are booked three to four weeks out or more. That gap is worth closing.",
+     "steps": [
+      "Identify your highest-converting lead channel and put more behind it",
+      "Plan for slower seasons now — do not wait until the calendar gets thin to turn marketing back on",
+      "Tighten intake to make sure every inquiry that comes in has a real shot at converting"
+     ]
+    },
+    "high": {
+     "headline": "You are running a full pipeline.",
+     "text": "Staying booked 4+ weeks out gives you pricing power, the ability to choose the best jobs, and real freedom from the feast-or-famine cycle. Protect it — especially through the slower months.",
+     "steps": [
+      "Document exactly what is driving your bookings so you can replicate it when things slow down",
+      "Use this position to raise prices or get more selective about job type and geography",
+      "Keep marketing active even when the calendar is full — pipelines dry up the moment you stop feeding them"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_unconverted_revenue",
+   "label": "Annual revenue you are not capturing from your current lead volume",
+   "format": "currency",
+   "formula": "monthly_inquiries * (unconverted_pct / 100) * avg_job_value * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "What type of work fills most of your calendar?",
+  "answers": [
+   {
+    "label": "Water treatment (softeners, filtration, well water)",
+    "tag": "water"
+   },
+   {
+    "label": "Radon mitigation and testing",
+    "tag": "radon"
+   },
+   {
+    "label": "Both water and radon",
+    "tag": "both"
+   },
+   {
+    "label": "Other home services",
+    "tag": "other"
+   }
+  ]
+ }
+}
