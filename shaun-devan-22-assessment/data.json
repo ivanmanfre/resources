@@ -1,0 +1,566 @@
+{
+ "slug": "shaun-devan-22-assessment",
+ "title": "AI-Native Readiness Score",
+ "subtitle": "Measures how close your business is to scaling without adding headcount, and where the biggest operational drain is hiding right now.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "where_you_are_today",
+   "name": "Where You Are Today",
+   "questions": [
+    {
+     "id": "q1-ai-use",
+     "text": "How are employees in your business currently using AI?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A few people open ChatGPT on their own. Nothing is tracked or standardized.",
+       "score": 1
+      },
+      {
+       "label": "We bought tools with AI in the marketing copy. A CRM feature, an inbox assistant. The work is the same work.",
+       "score": 2
+      },
+      {
+       "label": "Someone wired up an automation between two systems. It mostly holds until an input changes format.",
+       "score": 3
+      },
+      {
+       "label": "At least one real workflow runs on an agent, connected to our system of record, with a person approving anything that leaves the building.",
+       "score": 4
+      },
+      {
+       "label": "Several workflows run on agents. New volume does not automatically mean a new hire.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2-breakage",
+     "text": "When an automation or AI workflow breaks in your operation, how do you usually find out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A customer or team member tells us something is wrong, usually days later.",
+       "score": 1
+      },
+      {
+       "label": "Someone notices the numbers look off in a report, usually within a week.",
+       "score": 2
+      },
+      {
+       "label": "We check it manually at set intervals.",
+       "score": 3
+      },
+      {
+       "label": "The workflow sends an alert when it fails.",
+       "score": 4
+      },
+      {
+       "label": "Every run is logged with receipts. Failures surface immediately with context.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3-messy-inputs",
+     "text": "How do your automated workflows handle messy, real-world inputs: missing fields, unexpected formats, records that should not exist?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not have automated workflows yet.",
+       "score": 1
+      },
+      {
+       "label": "They break silently on anything outside the demo-ready input.",
+       "score": 2
+      },
+      {
+       "label": "We have documented the most common edge cases but the workflow still skips them.",
+       "score": 3
+      },
+      {
+       "label": "We mapped the failure modes before going live and built handling for the main ones.",
+       "score": 4
+      },
+      {
+       "label": "The workflow handles the ugly version of the input. Humans step in only for true exceptions.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are at Level 1 or 2. The work has not changed yet.",
+     "text": "You are in the tool-buying phase, not the transformation phase. ChatGPT opened and closed, features checked off, but nothing about how the operation runs has shifted. That is where most businesses are right now. The ones that move in the next 12 months will compound that advantage for three years before anyone else catches up.",
+     "steps": [
+      "Pick one workflow where someone on your team copies, checks, or chases the same thing every day.",
+      "Before you touch any AI tool, document every way that task goes wrong.",
+      "Build one agent that handles the clean version of that task first, then expand to the messy version."
+     ]
+    },
+    "mid": {
+     "headline": "You are at Level 3. It works until it does not.",
+     "text": "You have moved faster than most. Something is automated and running. The gap now is production-hardening: silent failures, messy inputs nobody mapped, workflows that still need someone watching them. Level 3 is where most companies think they are at Level 5. That gap is the actual risk.",
+     "steps": [
+      "Run a failure-mode audit on every live automation: what breaks it, how would you know, who fixes it?",
+      "Add a logging layer to every workflow so failures surface with context, not silence.",
+      "Pick your highest-volume workflow and rebuild it to handle the three ugliest inputs you have seen in production."
+     ]
+    },
+    "high": {
+     "headline": "You are at Level 4 or 5. The model is working.",
+     "text": "You are in rare company. Agents are running real work, not demos, and your operation is starting to decouple headcount from capacity. The next move is expanding the surface area: more workflows, tighter approvals, and building the team's muscle for maintaining what runs. Do not let one rushed build reset the standard.",
+     "steps": [
+      "Audit which workflows are still fully manual and rank them by volume and repetition.",
+      "Formalize your agent approval rules: what always needs a human, and what can the agent do unsupervised as it earns trust.",
+      "Build the internal capability to maintain and expand what has been deployed, not just run it."
+     ]
+    }
+   }
+  },
+  {
+   "id": "workflow_identification",
+   "name": "Workflow Identification",
+   "questions": [
+    {
+     "id": "q4-workflow-id",
+     "text": "How do you decide which workflows to automate?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We automate whatever a vendor demo showed us was possible.",
+       "score": 1
+      },
+      {
+       "label": "We go after the obvious ones: email, scheduling, basic data entry.",
+       "score": 2
+      },
+      {
+       "label": "We have mapped workflows by department but have not ranked them by cost or volume.",
+       "score": 3
+      },
+      {
+       "label": "We find the work that runs the most times per week and bleeds the most time, and start there.",
+       "score": 4
+      },
+      {
+       "label": "We run a structured audit to surface the 20% of work that should be automated, then build in that order.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5-high-volume",
+     "text": "Think about your highest-volume repetitive work: order entry, collections follow-up, quote building, customer updates, inbox triage, reporting. How much of it is currently handled by an agent?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None of it. It all runs on people.",
+       "score": 1
+      },
+      {
+       "label": "One or two steps are partially automated, but a person still owns the workflow end to end.",
+       "score": 2
+      },
+      {
+       "label": "One of these workflows runs mostly on automation, but only on clean inputs.",
+       "score": 3
+      },
+      {
+       "label": "One workflow runs end to end on an agent, including the messy inputs.",
+       "score": 4
+      },
+      {
+       "label": "Multiple high-volume workflows run on agents. The team watches the edges.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6-time-map",
+     "text": "How clearly can you identify where your team spends time copying, checking, moving, chasing, or updating things?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No idea. It is spread across everyone's job and nobody tracks it.",
+       "score": 1
+      },
+      {
+       "label": "We have a rough sense but have not mapped it to hours or frequency.",
+       "score": 2
+      },
+      {
+       "label": "We have had one conversation about it but it did not lead anywhere concrete.",
+       "score": 3
+      },
+      {
+       "label": "We have mapped the main culprits and know roughly how many hours they eat per week.",
+       "score": 4
+      },
+      {
+       "label": "We have a workflow inventory with hours, frequency, and error rates for each workflow.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "manual_hours_weekly",
+     "type": "number",
+     "text": "Roughly how many person-hours per week does your team spend on repetitive manual tasks: copying, checking, chasing, updating, reporting?",
+     "hint": "Add up all staff doing this type of work across all departments. Include partial hours. If you are unsure, start with your ops team alone. This number feeds your annual cost estimate (hours x rate x 52 weeks).",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 500,
+     "step": 5,
+     "default": 40,
+     "normalize_formula": "x < 1 ? 100 : x <= 10 ? 90 : x <= 25 ? 70 : x <= 50 ? 50 : x <= 100 ? 30 : x <= 200 ? 15 : 5"
+    },
+    {
+     "id": "employee_hourly_cost",
+     "type": "number",
+     "text": "What is the average fully-loaded hourly cost of the employees doing that manual work?",
+     "hint": "Fully-loaded means salary plus benefits plus payroll taxes. Quick formula: annual salary divided by 2,000 working hours. A $80,000 per year employee is roughly $40 per hour. A $120,000 per year employee is roughly $60 per hour.",
+     "suffix": "$/hour",
+     "min": 15,
+     "max": 250,
+     "step": 5,
+     "default": 50,
+     "normalize_formula": "100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You cannot automate what you have not mapped.",
+     "text": "Before you buy another tool or talk to another vendor, spend two hours mapping where the same steps repeat every day. The highest-volume, most-manual work in a mid-market company is invisible. It is spread across job descriptions that say nothing about it, and nobody is tracking the hours. That map is the first deliverable. Everything else comes after it.",
+     "steps": [
+      "Run a workflow audit: ask each department lead where their team spends time copying, checking, or chasing.",
+      "Rank by frequency (times per week) multiplied by average time per instance.",
+      "Pick the top two workflows and document every step, including every way they go wrong."
+     ]
+    },
+    "mid": {
+     "headline": "You know where the waste is. Now build in the right order.",
+     "text": "You have done more than most. You can name the workflows bleeding time. The question now is sequence. The fastest win is never the biggest or most complex workflow. It is the one that runs 500 times a week on predictable inputs, with no customer waiting on a judgment call at the other end.",
+     "steps": [
+      "Rank your identified workflows by volume multiplied by repetition, not by the most visible pain.",
+      "Remove any workflow from the list where the output requires a judgment call every single time.",
+      "Build the first agent on the top-ranked workflow. Production data in four weeks, not four months."
+     ]
+    },
+    "high": {
+     "headline": "You are building in the right order. Keep the inventory current.",
+     "text": "You have the workflow visibility most companies spend months trying to build. The trap at this stage is letting the inventory go stale. Workflows change, volumes shift, and the next automatable layer is sitting right behind the one you just shipped.",
+     "steps": [
+      "Set a quarterly review cadence to update the workflow inventory with new hours and volumes.",
+      "After each agent ships, run a retro: what edge cases hit production that were not mapped beforehand?",
+      "Use the freed capacity to take on more volume, not more headcount."
+     ]
+    }
+   }
+  },
+  {
+   "id": "agent_architecture",
+   "name": "Agent Architecture",
+   "questions": [
+    {
+     "id": "q7-hard-no",
+     "text": "For any AI agents you have deployed or are planning to deploy, how do you handle actions with real-world consequences: sending a customer email, committing an order, moving money?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The agent handles it. We trust the output.",
+       "score": 1
+      },
+      {
+       "label": "We check the output after the fact, sometimes.",
+       "score": 2
+      },
+      {
+       "label": "We have informal rules but they are not written down or enforced by the system.",
+       "score": 3
+      },
+      {
+       "label": "High-stakes actions require a human to approve before they execute.",
+       "score": 4
+      },
+      {
+       "label": "Day one, everything is gated. The agent earns autonomy as it proves its accuracy over time.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8-determinism",
+     "text": "In the AI workflows your business runs or is building, how much of the logic is predictable code versus model-generated output?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We let the model do everything. The prompt is the workflow.",
+       "score": 1
+      },
+      {
+       "label": "The model does most of the work. Code just moves data around it.",
+       "score": 2
+      },
+      {
+       "label": "It is roughly half and half, but we have not been deliberate about the split.",
+       "score": 3
+      },
+      {
+       "label": "We use the model only for judgment calls. Regular code handles the predictable steps.",
+       "score": 4
+      },
+      {
+       "label": "The model gets the smallest job in the building: the decisions a person used to make. Everything else is deterministic code.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q9-receipts",
+     "text": "When an agent runs a task, what record is kept?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing is logged. The output appears and we trust it.",
+       "score": 1
+      },
+      {
+       "label": "We keep the final output but not what led to it.",
+       "score": 2
+      },
+      {
+       "label": "We log errors, but not the full run from input to output.",
+       "score": 3
+      },
+      {
+       "label": "Each run logs inputs, outputs, and any exceptions.",
+       "score": 4
+      },
+      {
+       "label": "Every single action is logged. We can reconstruct exactly what happened on any run.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "A demo agent and a production agent are two different things.",
+     "text": "Demos work because someone fed the model a clean input in a conference room. Production is missing data, formats you do not control, and records that should not exist. The agents that survive are boring: 90% deterministic code and API calls, 10% model. The model gets the smallest job. Anything less structured than that breaks in ways you cannot predict before it costs you.",
+     "steps": [
+      "Before your next build, list every way the task can go wrong. All of them, not just the obvious ones.",
+      "Define a hard NO list: email a customer, commit an order, move money. None of it without a human approval.",
+      "Add logging to every run from day one. A retrofit log is always incomplete. You need the receipt from the start."
+     ]
+    },
+    "mid": {
+     "headline": "You have the foundation. Tighten the architecture.",
+     "text": "You are building with the right instincts: some gates, some logging, some separation between code and model. The gap is usually discipline. It held in the last build but nobody wrote the rules down for the next one. The agents that survive long-term have architecture decisions that are explicit, not remembered.",
+     "steps": [
+      "Write your agent architecture rules down: what always needs deterministic code, what goes to the model, what requires human approval.",
+      "Audit your current agents against that standard. How many have silent failure modes right now?",
+      "Set one rule: every new agent ships with logging from day one, not as a retrofit."
+     ]
+    },
+    "high": {
+     "headline": "You are building agents that survive. Keep the standard high.",
+     "text": "You are in the 10% of companies that deploy agents properly: boring, deterministic, receipts on every run, hard NO list enforced by the system. The next risk is drift. A well-intentioned shortcut on the next build sets a new standard. The architecture decisions that made the first agents work need to carry to every build, not just the ones that shipped under scrutiny.",
+     "steps": [
+      "Document your agent architecture decisions so new builders inherit them instead of improvising.",
+      "Run a quarterly audit of live agents: are they still logging, still gated on the right actions?",
+      "When the next build starts, hand the failure-mode worksheet to the builder before they write a single line."
+     ]
+    }
+   }
+  },
+  {
+   "id": "headcount_vs_capacity",
+   "name": "Headcount vs. Capacity",
+   "questions": [
+    {
+     "id": "q10-capacity",
+     "text": "When your business takes on 30% more volume: more clients, more orders, more requests. What happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We hire. New volume always means new headcount.",
+       "score": 1
+      },
+      {
+       "label": "The existing team absorbs it until someone burns out, then we hire.",
+       "score": 2
+      },
+      {
+       "label": "We have automated one or two things, so the team can stretch a bit further than before.",
+       "score": 3
+      },
+      {
+       "label": "One or two workflows handle the volume increase without new headcount.",
+       "score": 4
+      },
+      {
+       "label": "New volume routes to agents. The team only grows when judgment calls increase, not when volume does.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q11-hire-trigger",
+     "text": "What triggers a new hire in your business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "When workload visibly overflows. Someone is working nights and weekends.",
+       "score": 1
+      },
+      {
+       "label": "When a department head asks for headcount.",
+       "score": 2
+      },
+      {
+       "label": "We look at capacity but do not have a formal framework for the decision.",
+       "score": 3
+      },
+      {
+       "label": "We run a capacity model before opening any role.",
+       "score": 4
+      },
+      {
+       "label": "We ask whether the bottleneck is a person problem or a workflow problem, and only hire after ruling out automation.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12-tribal-knowledge",
+     "text": "How much of your operational knowledge lives only in people's heads?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of it. Key people could walk out and the process would follow them.",
+       "score": 1
+      },
+      {
+       "label": "Some things are written down, but the real logic is still in the team's heads.",
+       "score": 2
+      },
+      {
+       "label": "We have SOPs but they are outdated and nobody follows them.",
+       "score": 3
+      },
+      {
+       "label": "We have working documentation for the main workflows, updated at least quarterly.",
+       "score": 4
+      },
+      {
+       "label": "Tribal knowledge is codified into prompts, agents, and SOPs. New people ramp in days, not months.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your capacity is still a headcount equation.",
+     "text": "Every unit of new work requires a new unit of people. That is the model BCG charges $75,000 to audit for the Fortune 500. The mid-market can break it faster than anyone, because the workflows are smaller and the teams are closer to the work. The goal is not fewer people. It is stopping new volume from automatically meaning a new hire.",
+     "steps": [
+      "Look at your last three hires. Write down whether each role was opened because of a workflow problem that was never fixed.",
+      "Run a capacity model for one department: if volume doubled tomorrow, what breaks first: a person or a process?",
+      "Before the next role opens, ask one question: is this a headcount problem or a workflow problem?"
+     ]
+    },
+    "mid": {
+     "headline": "You have decoupled a little. Now go further.",
+     "text": "You have proven the model works in at least one place. New volume does not always mean new headcount. The next move is expanding the surface area and formalizing the decision framework for when to hire versus when to build. Companies that get this right do not just save on salaries. They move faster when demand spikes, and that speed is the actual advantage.",
+     "steps": [
+      "Document the trigger for every role opened in the last 12 months. How many were automation opportunities first?",
+      "Apply your capacity model to the next two departments closest to breaking.",
+      "Set one rule: no role opens until the workflow audit for that team is complete."
+     ]
+    },
+    "high": {
+     "headline": "Capacity and headcount are coming apart. Protect that separation.",
+     "text": "New volume routes to agents. The team only grows when judgment calls increase. That is the outcome and it is also fragile. The risk is a hiring decision made under pressure that resets the default back to headcount-first. The discipline has to be explicit, not assumed.",
+     "steps": [
+      "Write the rule down: what conditions justify a hire that cannot be addressed by an agent or workflow change?",
+      "Track the ratio of volume growth to headcount growth as an operational metric, reviewed quarterly.",
+      "Every quarter, identify one more workflow that is still manually staffed and build the case for automation."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "weekly_manual_cost",
+   "label": "Weekly cost of manual repetitive work",
+   "format": "currency_per_period",
+   "formula": "manual_hours_weekly * employee_hourly_cost",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_manual_cost",
+   "label": "Annual cost of manual repetitive work (52 weeks)",
+   "format": "currency",
+   "formula": "manual_hours_weekly * employee_hourly_cost * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which describes your situation right now?",
+  "answers": [
+   {
+    "label": "Founder or CEO running the business day-to-day",
+    "tag": "founder"
+   },
+   {
+    "label": "COO or ops lead managing the workflows",
+    "tag": "coo"
+   },
+   {
+    "label": "Department head trying to move faster without more headcount",
+    "tag": "dept-head"
+   },
+   {
+    "label": "Evaluating AI options and building the internal business case",
+    "tag": "evaluator"
+   }
+  ]
+ }
+}
