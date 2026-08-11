@@ -1,0 +1,606 @@
+{
+ "slug": "vijay-kumar-n-2b-assessment",
+ "title": "The Booked-Client Readiness Score",
+ "subtitle": "Find out whether your current ad system is built to fill a calendar or just generate clicks.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "offer_clarity",
+   "name": "Offer Clarity",
+   "questions": [
+    {
+     "id": "offer-specificity",
+     "text": "When a stranger reads your ad, how clearly does it name the exact person it is for?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Wide net — we try to reach as many people as possible",
+       "score": 1
+      },
+      {
+       "label": "Fairly broad — we appeal to a few different buyer types",
+       "score": 2
+      },
+      {
+       "label": "Somewhat clear — the right people self-select, but so do others",
+       "score": 3
+      },
+      {
+       "label": "Pretty specific — most readers recognize themselves in it",
+       "score": 4
+      },
+      {
+       "label": "One specific role, one specific problem — no ambiguity",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "outcome-clarity",
+     "text": "How concrete is the outcome your service promises on the landing page?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not nailed the outcome statement; it changes by client",
+       "score": 1
+      },
+      {
+       "label": "Process-focused — we describe what we do, not what they get",
+       "score": 2
+      },
+      {
+       "label": "A general outcome — 'grow your business' or 'better marketing'",
+       "score": 3
+      },
+      {
+       "label": "A clear outcome, not yet tied to a specific number",
+       "score": 4
+      },
+      {
+       "label": "A specific result with a number — booked calls, pipeline value, or revenue",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "call-readiness",
+     "text": "When a qualified lead gets on a discovery call, how often do they already understand what you offer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost never — we start from scratch explaining what we do every time",
+       "score": 1
+      },
+      {
+       "label": "Rarely — most calls begin by explaining what we actually offer",
+       "score": 2
+      },
+      {
+       "label": "About half the time — real education is still needed on the call",
+       "score": 3
+      },
+      {
+       "label": "Most of the time — a few questions and they are ready to move",
+       "score": 4
+      },
+      {
+       "label": "Almost always — the ad and page did the selling before they showed up",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your offer is the leak — fix it before touching your budget",
+     "text": "Advantage+ will scale whatever offer you give it. A fuzzy offer finds fuzzy buyers. Write one sentence that names the exact person, their exact problem, and the result they walk away with. That sentence is your offer. Get it right before spending another dollar.",
+     "steps": [
+      "Write this sentence: '[Specific role] who [specific problem] get [specific result] in [timeframe].' If you cannot fill in all four blanks, you do not have an offer yet.",
+      "Put that sentence as the first line of your landing page and the first five seconds of your video ad.",
+      "Pull your last 10 leads and count how many match that profile exactly. If it is under 4 out of 10, the offer is still too broad."
+     ]
+    },
+    "mid": {
+     "headline": "Close but leaking — your offer needs sharper edges",
+     "text": "You are attracting the right people some of the time. The gap is specificity. Vague outcomes attract vague buyers. One concrete number — calls booked, revenue added, leads generated — does more work than three paragraphs of description.",
+     "steps": [
+      "Add one outcome number to your headline. If you do not have a client result to use, lead with a time-to-result ('qualified leads within 30 days').",
+      "Read your landing page and ask: does this read like it was written for one type of person, or does it try to serve three? Cut for one.",
+      "Run your current offer past someone who has never heard of your business. If they cannot tell you who it is for within 10 seconds, rewrite it."
+     ]
+    },
+    "high": {
+     "headline": "Offer is working — now let the machine scale it",
+     "text": "Your offer is pulling its weight. The next move is feeding it to Advantage+ with clean first-party data — closed deals and revenue events, not raw form fills. That is how the algorithm finds more of the same person.",
+     "steps": [
+      "Pass purchase or qualified-lead events back to Meta and Google, not just form submissions.",
+      "Build a lookalike audience from your best-fit closed clients and seed Advantage+ with it.",
+      "Test your current offer against one new angle — same result, different framing — to find the ceiling of what this market will respond to."
+     ]
+    }
+   }
+  },
+  {
+   "id": "lead_qualification_syste",
+   "name": "Lead Qualification System",
+   "questions": [
+    {
+     "id": "qualified_pct",
+     "type": "number",
+     "text": "Of the leads that came in this month, roughly what percentage would you call sales-ready?",
+     "hint": "Sales-ready means they have the budget, the need, and are ready to move — not just curious or browsing.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 20,
+     "normalize_formula": "x"
+    },
+    {
+     "id": "ad_budget",
+     "type": "number",
+     "text": "What is your current monthly ad spend in USD (or USD equivalent)?",
+     "hint": "Combined Meta and Google spend across all active campaigns.",
+     "suffix": "USD/month",
+     "min": 500,
+     "max": 100000,
+     "step": 500,
+     "default": 3000,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "first-touch",
+     "text": "What happens the moment a new lead fills in a form or expresses interest?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Leads come in and we get to them when we have time",
+       "score": 1
+      },
+      {
+       "label": "We follow up same day when we can",
+       "score": 2
+      },
+      {
+       "label": "Someone on my team follows up within the hour",
+       "score": 3
+      },
+      {
+       "label": "An automated message goes out within minutes and filters their intent",
+       "score": 4
+      },
+      {
+       "label": "An AI system qualifies them instantly — only sales-ready people reach my team",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "buyer-filter",
+     "text": "How do you currently separate a serious buyer from someone who is just browsing?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We treat every lead the same until they say no",
+       "score": 1
+      },
+      {
+       "label": "A few messages back and forth before we can tell",
+       "score": 2
+      },
+      {
+       "label": "A discovery call — we find out once we get them talking",
+       "score": 3
+      },
+      {
+       "label": "A short intake form that filters out people not ready to invest",
+       "score": 4
+      },
+      {
+       "label": "Automated qualification questions on the landing page with hard routing rules",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "team-time-waste",
+     "text": "How much of your team's selling time goes to leads who were never going to buy?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The majority — our pipeline is full of people who will not convert",
+       "score": 1
+      },
+      {
+       "label": "A lot — close to half our conversations go nowhere",
+       "score": 2
+      },
+      {
+       "label": "A fair amount — roughly 1 in 3",
+       "score": 3
+      },
+      {
+       "label": "A small amount — maybe 1 in 5 conversations is clearly the wrong fit",
+       "score": 4
+      },
+      {
+       "label": "Almost none — the system filters them before they reach a human",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are paying to fill your team's calendar with the wrong people",
+     "text": "Meta and Google will happily send you volume. The qualification is your job, not theirs. Right now, a large share of your budget is finding people who will never buy. Put a qualifier before your team touches a lead — not after.",
+     "steps": [
+      "Add three qualifying questions to your landing page before the form: budget, timeline, and one specific-fit question. Anyone who cannot answer all three does not get to book a call.",
+      "Build a simple routing rule: leads who meet your criteria get the calendar link immediately. Everyone else goes into a nurture sequence.",
+      "Run this for 30 days and compare sales conversations before and after. The total number of calls will drop. The number of closed deals will not."
+     ]
+    },
+    "mid": {
+     "headline": "Some filters in place — but the machine can handle more of this",
+     "text": "You are screening leads but probably manually or inconsistently. Every hour your team spends deciding whether someone is a fit is an hour not spent closing the ones who are. Automating the first contact runs 24 hours a day without a salary.",
+     "steps": [
+      "Write down what makes a lead sales-ready for your business: three to five criteria — budget threshold, decision-making authority, timeline. These are your routing rules.",
+      "Build those criteria into an intake form or an AI qualifier that routes leads before a human gets involved.",
+      "Send the algorithm your qualified-lead event, not the raw form fill. It will find more of the right person."
+     ]
+    },
+    "high": {
+     "headline": "Qualification is working — now sharpen the signal you send the platform",
+     "text": "Your team is spending time on the right people. The next move is closing the loop with the ad platform. Feed closed deals and booked calls back to Meta and Google as conversion events. That is when the algorithm starts hunting buyers instead of browsers.",
+     "steps": [
+      "Set up offline conversion uploads or CRM-connected events so Meta and Google know which leads actually became clients.",
+      "Build a lookalike audience from your best-fit closed clients and use it to seed Advantage+.",
+      "Review your qualification criteria every quarter — buyer profiles shift, and a filter built 12 months ago may be letting the wrong people through."
+     ]
+    }
+   }
+  },
+  {
+   "id": "follow_up_speed_automati",
+   "name": "Follow-Up Speed & Automation",
+   "questions": [
+    {
+     "id": "response_hours",
+     "type": "number",
+     "text": "On average, how many hours pass before a new lead gets their first reply from you or your system?",
+     "hint": "Count from the moment they submit the form or message you to the moment they receive a response — including nights and weekends if that is when leads come in.",
+     "suffix": "hours",
+     "min": 0,
+     "max": 24,
+     "step": 1,
+     "default": 4,
+     "normalize_formula": "Math.max(0, 100 - x * 20)"
+    },
+    {
+     "id": "first-contact-experience",
+     "text": "What does a lead experience between the moment they convert and the moment they are booked?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No consistent system — it depends on who sees the notification first",
+       "score": 1
+      },
+      {
+       "label": "Someone follows up within a few hours when available",
+       "score": 2
+      },
+      {
+       "label": "A human replies within the hour and moves them toward a call",
+       "score": 3
+      },
+      {
+       "label": "Semi-automated — fast automatic reply, a human closes the booking",
+       "score": 4
+      },
+      {
+       "label": "Fully automated — a reply in under a minute, qualification, and a booked slot without a human",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "re-engagement",
+     "text": "If a lead does not pick up or reply on the first attempt, what happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No consistent re-engagement process",
+       "score": 1
+      },
+      {
+       "label": "One follow-up message and then we move on",
+       "score": 2
+      },
+      {
+       "label": "One or two more tries over the next few days",
+       "score": 3
+      },
+      {
+       "label": "Two to three follow-up attempts in the first 48 hours across at least two channels",
+       "score": 4
+      },
+      {
+       "label": "Automated multi-channel sequence across WhatsApp, SMS, and email — no lead goes cold",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "nurture-length",
+     "text": "How many follow-up touchpoints does an unconverted lead receive before you stop reaching out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None — if they do not respond to the first message, we move on",
+       "score": 1
+      },
+      {
+       "label": "One follow-up attempt after the initial contact",
+       "score": 2
+      },
+      {
+       "label": "Two to three follow-ups, mostly through one channel",
+       "score": 3
+      },
+      {
+       "label": "Four to six touchpoints spread across multiple channels",
+       "score": 4
+      },
+      {
+       "label": "Seven or more — a full nurture sequence over two to four weeks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Speed is the cheapest lead-gen lever you are not pulling",
+     "text": "You are spending money to get someone's attention at the exact moment they are ready to act — and then making them wait. A lead that waits an hour cools off. A lead that gets a reply in 60 seconds books the call. The ads are doing their job. The follow-up is not.",
+     "steps": [
+      "Set up an automated reply that goes out the moment a lead submits — WhatsApp or SMS, not email. Three sentences: acknowledge they reached out, tell them what happens next, give them a way to respond immediately.",
+      "If you cannot automate it today, put your phone on lead notifications and commit to a 15-minute maximum reply window during business hours as a starting point.",
+      "Count how many leads came in last month after 6pm. That number times your average deal size is the revenue sitting in a slow inbox."
+     ]
+    },
+    "mid": {
+     "headline": "You are following up, but the machine could run this faster and longer",
+     "text": "You have some follow-up in place but it is probably manual or single-channel. Manual follow-up depends on someone's bandwidth that day — it is inconsistent by nature. Automating the first 48 hours of contact frees your team for the conversations that are actually moving.",
+     "steps": [
+      "Map your current follow-up sequence on paper. Every step where a human decides whether to reach out is a step that can be automated.",
+      "Build a minimum three-touch automated sequence: immediate reply, 24-hour check-in, 72-hour re-engagement — across at least two channels.",
+      "Add WhatsApp to your follow-up stack if you are not using it. For markets like India and UAE, response rates there run significantly higher than email."
+     ]
+    },
+    "high": {
+     "headline": "Fast and consistent — keep the sequence fed with better leads",
+     "text": "Your follow-up system is working. The constraint shifts upstream: the better your qualification before someone enters the sequence, the higher the conversion rate out the other end. A fast follow-up on a bad lead is still wasted time.",
+     "steps": [
+      "Review your sequence length against your actual booking window. If most leads book within 72 hours, sequences running 30 days are hitting cold contacts with the wrong message.",
+      "Add a re-engagement branch for leads who went cold — a separate sequence 30 to 60 days out with a new offer or a useful piece of content, not the same ask.",
+      "Feed booked-call and closed-deal events back to the ad platform so it optimizes for buyers, not just responders."
+     ]
+    }
+   }
+  },
+  {
+   "id": "ad_signals_creative_test",
+   "name": "Ad Signals & Creative Testing",
+   "questions": [
+    {
+     "id": "conversion-signal",
+     "text": "What conversion data do you currently send back to Meta or Google for campaign optimization?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Conversion tracking is not set up or has not been checked recently",
+       "score": 1
+      },
+      {
+       "label": "Not sure what event the platform is currently optimizing against",
+       "score": 2
+      },
+      {
+       "label": "Raw form fills or landing page submissions — whatever the pixel fires on",
+       "score": 3
+      },
+      {
+       "label": "Qualified leads or booked calls — a better signal than raw form fills",
+       "score": 4
+      },
+      {
+       "label": "Closed deals and revenue — the algorithm knows which leads became paying clients",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "creative-volume",
+     "text": "How many unique ad creatives are you currently testing in a given campaign?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "One creative — we have not tested alternatives",
+       "score": 1
+      },
+      {
+       "label": "1 to 2 — running one or two main ads",
+       "score": 2
+      },
+      {
+       "label": "3 to 4 — a few variations of the same approach",
+       "score": 3
+      },
+      {
+       "label": "5 to 9 — a solid variety of angles and formats",
+       "score": 4
+      },
+      {
+       "label": "10 or more — constantly rotating hooks, formats, and messages",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "creative-refresh",
+     "text": "How often do you update or replace your ad creatives?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not refreshed creatives in over six months",
+       "score": 1
+      },
+      {
+       "label": "Every few months or when someone brings it up",
+       "score": 2
+      },
+      {
+       "label": "Monthly or when we notice performance dropping",
+       "score": 3
+      },
+      {
+       "label": "Every two to four weeks based on performance data",
+       "score": 4
+      },
+      {
+       "label": "Weekly — testing new angles before current ones saturate",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "underperformance-response",
+     "text": "When a campaign underperforms, what do you adjust first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not sure what to change — we adjust things until something shifts",
+       "score": 1
+      },
+      {
+       "label": "Ad copy tweaks and a budget adjustment",
+       "score": 2
+      },
+      {
+       "label": "Audience targeting and bid settings",
+       "score": 3
+      },
+      {
+       "label": "Usually the creative — a new hook or format",
+       "score": 4
+      },
+      {
+       "label": "The offer or the creative — the machine controls the rest",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are optimizing the things the machine now controls better than you",
+     "text": "Advantage+ and Performance Max are the defaults now, not the options. The platform controls targeting and delivery. Your edge lives in two places: the signal you send it and the creative you give it. Adjusting audiences and bid settings is not the move anymore.",
+     "steps": [
+      "Stop touching audience targeting for one full month. Let Advantage+ run. Put the time you save into building five new creative variations instead.",
+      "Check what conversion event your campaigns are optimizing against. If it is a form fill or a page view, switch it to a qualified lead or booked call event.",
+      "Shoot one new video ad this week. 15 to 30 seconds, first three seconds are a direct statement of the problem you solve. Test it against what you are currently running."
+     ]
+    },
+    "mid": {
+     "headline": "You understand where the edge is — now increase creative output",
+     "text": "You know the creative matters. The gap is volume. One or two creatives means the algorithm has limited raw material to test. The more angles you give it, the faster it finds the one that converts. Production does not have to be expensive — test the concept first, polish the winner.",
+     "steps": [
+      "Set a standing rule: a minimum of five creative variations per campaign, not five versions of the same ad — five different hooks or angles.",
+      "Use AI video tools to generate test variations quickly. The bar for a test is one good idea, not a finished production.",
+      "Document what has worked: hook type, format, length. You are building a pattern library, not starting from scratch each time."
+     ]
+    },
+    "high": {
+     "headline": "Creative engine is running — close the loop with better data",
+     "text": "You are testing creatives and feeding the machine real signal. The ceiling from here is data quality. The brands running 2x returns and the ones running 5x are often on the same platforms with similar creatives. The difference is what they tell the algorithm about who actually bought.",
+     "steps": [
+      "Set up offline conversion uploads if you are not already sending CRM data back to Meta. For service businesses, this is the single highest-impact data move available.",
+      "Run a monthly creative review: what stopped working, what held up, what theme is in the top performers. Pull the pattern, build the next batch on it.",
+      "Test a point-of-view angle — an ad that states a belief about your market — alongside your direct-offer creatives. In a world where everyone has the same targeting, the brand with a view wins."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "budget-on-unqualified",
+   "label": "Monthly ad budget reaching unqualified leads",
+   "format": "currency",
+   "formula": "ad_budget * (1 - qualified_pct / 100)",
+   "show_in_result": true
+  },
+  {
+   "id": "budget-on-qualified",
+   "label": "Monthly budget reaching sales-ready prospects",
+   "format": "currency",
+   "formula": "ad_budget * (qualified_pct / 100)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your situation right now?",
+  "answers": [
+   {
+    "label": "Service business owner running my own ads",
+    "tag": "solo-operator"
+   },
+   {
+    "label": "Agency or consultant managing client campaigns",
+    "tag": "agency-owner"
+   },
+   {
+    "label": "In-house marketer at a growing company",
+    "tag": "in-house"
+   },
+   {
+    "label": "Founder building my first paid acquisition system",
+    "tag": "first-time"
+   }
+  ]
+ }
+}
