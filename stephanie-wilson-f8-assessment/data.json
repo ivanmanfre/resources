@@ -1,0 +1,578 @@
+{
+ "slug": "stephanie-wilson-f8-assessment",
+ "title": "Funding Compass Readiness Score",
+ "subtitle": "Find out where your organization stands across the four pillars funders actually evaluate — before you submit your next proposal.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "funding_strategy_directi",
+   "name": "Funding Strategy & Direction",
+   "questions": [
+    {
+     "id": "funding_strategy_directi_q1",
+     "text": "When a new funding opportunity appears, how does your organization typically respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We apply if the deadline allows and the amount seems worth the effort.",
+       "score": 1
+      },
+      {
+       "label": "We check it against a short list of priorities before deciding.",
+       "score": 2
+      },
+      {
+       "label": "We assess mission fit and capacity before committing to pursue.",
+       "score": 3
+      },
+      {
+       "label": "We evaluate it against a defined funding strategy and only apply when it aligns.",
+       "score": 4
+      },
+      {
+       "label": "We have a proactive funding calendar; new opportunities are assessed against it.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "funding_strategy_directi_q2",
+     "text": "How far ahead does your organization plan its funding activities?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Month to month — we respond to deadlines as they surface.",
+       "score": 1
+      },
+      {
+       "label": "We have a rough sense of what we will pursue in the next six months.",
+       "score": 2
+      },
+      {
+       "label": "We have a 12-month funding plan we revisit quarterly.",
+       "score": 3
+      },
+      {
+       "label": "We have a multi-year funding roadmap with clear revenue diversification targets.",
+       "score": 4
+      },
+      {
+       "label": "Our funding roadmap is integrated into our full organizational strategy with annual reviews.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "funding_strategy_directi_q3",
+     "text": "How clearly does your leadership team understand your current funding strategy?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The plan lives with one person — most leaders could not describe it.",
+       "score": 1
+      },
+      {
+       "label": "Leadership has a general sense but could not articulate it in detail.",
+       "score": 2
+      },
+      {
+       "label": "Most leaders know our primary funding sources and near-term priorities.",
+       "score": 3
+      },
+      {
+       "label": "Leadership can describe our funding strategy and how decisions are made.",
+       "score": 4
+      },
+      {
+       "label": "Board, executive team, and development staff share a clear, documented strategy.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are reacting to funding, not leading it.",
+     "text": "Right now your funding activity is driven by deadlines, not direction. That is how organizations miss the opportunities that actually fit — and exhaust themselves chasing ones that do not. The good news: a strategy does not have to be complicated. It has to be clear and shared.",
+     "steps": [
+      "Document your top three funding priorities for the next 12 months — one sentence each.",
+      "Map your existing funders to those priorities. Identify where the gaps are.",
+      "Set a simple decision rule: if an opportunity does not fit your top three, it waits."
+     ]
+    },
+    "mid": {
+     "headline": "You have priorities. Now build the structure around them.",
+     "text": "You are thinking about funding more intentionally than most, but the strategy may still live in your head rather than in a plan your whole team can use. When funding strategy is shared across leadership, decisions get faster, proposals get stronger, and opportunities stop slipping through the cracks.",
+     "steps": [
+      "Put your 12-month funding priorities in writing and share them with your full leadership team.",
+      "Build a funding calendar that maps known opportunities to quarters so your team is never surprised.",
+      "Test alignment: ask three team members to describe your funding strategy without prompting. The gaps will be obvious."
+     ]
+    },
+    "high": {
+     "headline": "Your strategy is working. The next layer is integration.",
+     "text": "You are operating with real strategic discipline, and funders can feel that. The opportunity at this stage is to tighten the connection between your funding roadmap and your operational and program planning — so your team is not just chasing funding, they are building toward it.",
+     "steps": [
+      "Review your multi-year roadmap annually with your Board — not just through a finance lens, but through mission alignment.",
+      "Identify one area where funder expectations and program operations could be better aligned.",
+      "Document lessons from your last major funding cycle and share them across the team before the next one begins."
+     ]
+    }
+   }
+  },
+  {
+   "id": "backend_readiness_govern",
+   "name": "Backend Readiness & Governance",
+   "questions": [
+    {
+     "id": "backend_readiness_govern_q1",
+     "text": "If a funder requested your governance documents tomorrow, how confident would you be?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would scramble — documents exist somewhere but are not current or organized.",
+       "score": 1
+      },
+      {
+       "label": "Most documents are on file but would take time to locate and review.",
+       "score": 2
+      },
+      {
+       "label": "Key documents are current and accessible.",
+       "score": 3
+      },
+      {
+       "label": "All governance documents are organized, current, and ready to produce within 24 hours.",
+       "score": 4
+      },
+      {
+       "label": "We maintain a funder-ready governance package that is updated on a set schedule.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "backend_readiness_govern_q2",
+     "text": "How aligned are your program operations with what your funding proposals describe?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There are gaps — proposals describe what we hope to build, not what currently exists.",
+       "score": 1
+      },
+      {
+       "label": "Some alignment, but program delivery varies from what we committed to funders.",
+       "score": 2
+      },
+      {
+       "label": "Generally aligned, though we sometimes stretch to meet funder language.",
+       "score": 3
+      },
+      {
+       "label": "Strong alignment — our programs operate as described in funded proposals.",
+       "score": 4
+      },
+      {
+       "label": "Full alignment — operational systems, reporting, and delivery match our funding commitments.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "backend_readiness_govern_q3",
+     "text": "How well does your organization track and report outcomes to funders?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We pull together what we can and finalize reports close to the deadline.",
+       "score": 1
+      },
+      {
+       "label": "We have basic tracking, but reporting often feels rushed.",
+       "score": 2
+      },
+      {
+       "label": "We have consistent tracking systems and meet all reporting requirements.",
+       "score": 3
+      },
+      {
+       "label": "Outcome data feeds directly into funder reports without a scramble.",
+       "score": 4
+      },
+      {
+       "label": "We proactively share outcomes beyond minimum requirements, building funder trust between cycles.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "rework_hours",
+     "type": "number",
+     "text": "On average, how many hours per week does your team spend on reactive proposal work — last-minute revisions, scrambling to meet deadlines, or reworking rejected materials?",
+     "hint": "Count all team members involved in proposal development, including leadership review time. Organizations with strong backend readiness typically operate below 10 hours per week; 40 or more hours per week is the threshold used to normalize this score as a critical gap.",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 80,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.max(0, 100 - (x / 40 * 100))"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Funders are seeing the gaps before you do.",
+     "text": "When backend readiness is low, a strong mission is not enough. Funders — especially government funders — evaluate your organizational infrastructure as much as your program idea. The issues they find on the backend are often exactly what does not appear in the rejection letter. That is the part we help you see before it costs you.",
+     "steps": [
+      "Audit your governance documents: bylaws, board minutes, financial statements, organizational chart. What is missing or outdated?",
+      "List the three largest gaps between what your proposals promise and what your operations currently deliver.",
+      "Start a funder-ready file: one organized folder with current versions of your five most-requested documents."
+     ]
+    },
+    "mid": {
+     "headline": "You are ready enough to get in — but not ready enough to stay in.",
+     "text": "You have the basics in place, which gets you past the first review. The risk at this stage is that deeper funder due diligence — particularly for government contracts — surfaces inconsistencies your team has not caught. Tightening the backend now pays off on your next major ask, and on the renewal after that.",
+     "steps": [
+      "Review your last three funder reports. Is what you delivered consistent with what you proposed?",
+      "Set a quarterly governance review so documents never go stale before a deadline hits.",
+      "Identify one operational system that is creating reporting friction and fix it before your next submission."
+     ]
+    },
+    "high": {
+     "headline": "Your backend is a competitive advantage. Make it visible.",
+     "text": "Most organizations cannot say what you can: that their operations actually match their proposals. That is rare, and funders notice it — especially after the second and third cycle. At this level, the opportunity is to make that backend strength explicit in your narratives, your stewardship, and how you position relative to competing applicants.",
+     "steps": [
+      "Reference your operational track record directly in funding narratives — program completion rates, reporting history, audit results.",
+      "Develop a one-page organizational snapshot that funders can reference before a site visit or meeting.",
+      "Share outcome data proactively with current funders mid-cycle, not just at report time."
+     ]
+    }
+   }
+  },
+  {
+   "id": "proposal_positioning_nar",
+   "name": "Proposal Positioning & Narrative",
+   "questions": [
+    {
+     "id": "proposal_positioning_nar_q1",
+     "text": "When your organization receives a rejection, how do you handle the feedback?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We rarely get detailed feedback — usually just a form letter.",
+       "score": 1
+      },
+      {
+       "label": "We get some feedback but are not sure what to change.",
+       "score": 2
+      },
+      {
+       "label": "We review feedback and make surface-level adjustments to the next draft.",
+       "score": 3
+      },
+      {
+       "label": "We dig into feedback and assess both the proposal and our underlying readiness.",
+       "score": 4
+      },
+      {
+       "label": "Every rejection is a diagnostic — we identify whether the issue was positioning, readiness, or fit.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "proposal_positioning_nar_q2",
+     "text": "How would you describe your organization's funding narrative right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We adapt the same general description of our work for each opportunity.",
+       "score": 1
+      },
+      {
+       "label": "We tailor our narrative somewhat, but do not have a clear, consistent positioning.",
+       "score": 2
+      },
+      {
+       "label": "We have a solid case for support, but it does not always land with government funders.",
+       "score": 3
+      },
+      {
+       "label": "Our narrative is clear, evidence-based, and tailored by funder type.",
+       "score": 4
+      },
+      {
+       "label": "Our funding narrative is a strategic asset — it communicates both impact and organizational credibility.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "proposal_positioning_nar_q3",
+     "text": "How does your team approach budget components like in-kind contributions and matching requirements?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We fill in budget lines to hit the required numbers without a clear strategy.",
+       "score": 1
+      },
+      {
+       "label": "We include in-kind contributions when required but treat them as a formality.",
+       "score": 2
+      },
+      {
+       "label": "We have a basic approach, but it could be more intentional.",
+       "score": 3
+      },
+      {
+       "label": "We plan in-kind and matching strategically as part of our proposal positioning.",
+       "score": 4
+      },
+      {
+       "label": "In-kind, match, and leverage strategies are built into our funding model and positioned as strengths.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "apps_submitted",
+     "type": "number",
+     "text": "How many funding applications did your organization submit in the past 12 months?",
+     "hint": "Include grants, government proposals, and formal partner funding requests of any size. Organizations actively pursuing strategic funding typically submit 10 or more per year; this threshold is used to normalize your score.",
+     "suffix": "applications",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "Math.min(100, x * 10)"
+    },
+    {
+     "id": "apps_awarded",
+     "type": "number",
+     "text": "How many of those applications were funded or awarded?",
+     "hint": "Count full awards and partial awards. If still pending, count only confirmed awards. Securing 5 or more awards per year reflects strong conversion relative to most peer organizations; this threshold is used to normalize your score.",
+     "suffix": "funded",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 1,
+     "normalize_formula": "Math.min(100, x * 20)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "A strong idea with weak positioning loses.",
+     "text": "What funders evaluate is not only what you are proposing — it is whether they believe your organization can deliver it. Without a clear narrative and a strategic approach to components like in-kind contributions and matching, even a compelling program gets passed over. This is one of the most fixable gaps in the funding process, and one of the most overlooked.",
+     "steps": [
+      "Rewrite your organizational description from a funder's perspective: what problem do you solve, and what is your track record of solving it?",
+      "Map your in-kind contributions across all current partnerships — most organizations undercount this significantly.",
+      "For your next proposal, identify your two strongest proof points and lead with them before you describe the program."
+     ]
+    },
+    "mid": {
+     "headline": "Your narrative is close. The gap is strategic framing.",
+     "text": "You are telling a reasonable story, but funding panels — especially government reviewers — are looking for specific signals. In-kind strategy, matching leverage, and clear alignment between your narrative and the funder's stated priorities are often the difference between the shortlist and the award. Small shifts in how you frame what you already have can change outcomes.",
+     "steps": [
+      "Pull your last two proposals and read them as a reviewer who has never heard of your organization. What is missing?",
+      "Identify one in-kind or matching element you have been treating as a formality. Rebuild it as a positioning strategy.",
+      "Develop a two-paragraph organizational positioning statement you can adapt — not copy-paste — for different funder types."
+     ]
+    },
+    "high": {
+     "headline": "Your narrative is an asset. Keep it current.",
+     "text": "You have built a funding story that funders trust. The discipline at this level is making sure that story stays accurate and does not get diluted when different team members adapt it for different proposals. Consistent, evidence-based positioning is what builds funder confidence over years, not just across a single cycle.",
+     "steps": [
+      "Document your core narrative in a shared resource your whole team can pull from and adapt consistently.",
+      "Audit your last five proposals for consistency in how you describe organizational capacity and track record.",
+      "Update your proof points annually so your narrative reflects current performance, not work from three years ago."
+     ]
+    }
+   }
+  },
+  {
+   "id": "funder_relationships_ste",
+   "name": "Funder Relationships & Stewardship",
+   "questions": [
+    {
+     "id": "funder_relationships_ste_q1",
+     "text": "How does your organization maintain contact with funders between grant cycles?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We reach out when we have a new proposal to submit.",
+       "score": 1
+      },
+      {
+       "label": "We send required reports and share occasional updates.",
+       "score": 2
+      },
+      {
+       "label": "We share impact updates and keep funders aware of our work between cycles.",
+       "score": 3
+      },
+      {
+       "label": "We have a relationship calendar with regular touchpoints for key funders.",
+       "score": 4
+      },
+      {
+       "label": "Funder stewardship is a defined strategy — we treat relationships as multi-year, not transactional.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "funder_relationships_ste_q2",
+     "text": "When government funders evaluate your organization, how confident are you in what they find?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not confident — we have not reviewed the backend from a funder's perspective.",
+       "score": 1
+      },
+      {
+       "label": "Somewhat worried — there are gaps we know about but have not addressed.",
+       "score": 2
+      },
+      {
+       "label": "We have addressed the most obvious risks but have not run a full diagnostic.",
+       "score": 3
+      },
+      {
+       "label": "We have reviewed our readiness through a funder lens and addressed key gaps.",
+       "score": 4
+      },
+      {
+       "label": "We run regular readiness reviews and can speak to our organizational confidence with specifics.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "funder_relationships_ste_q3",
+     "text": "How engaged is your Board and executive leadership in your funding strategy?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Funding is handled by one person — leadership approves when needed.",
+       "score": 1
+      },
+      {
+       "label": "Leadership is aware of major pursuits but not deeply involved in strategy.",
+       "score": 2
+      },
+      {
+       "label": "Leadership participates in major decisions but is not always aligned on direction.",
+       "score": 3
+      },
+      {
+       "label": "Board and executive leadership are engaged in funding strategy and key funder relationships.",
+       "score": 4
+      },
+      {
+       "label": "Funding leadership is distributed — Board, executives, and program leads all understand and support the strategy.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your funders know you when you need something. That needs to change.",
+     "text": "Funder relationships built only around asks do not hold. Government funders in particular make renewal and expansion decisions based on trust built between cycles — through reporting quality, proactive communication, and demonstrated follow-through. If the only time you show up is with a new proposal in hand, you are starting from zero every time.",
+     "steps": [
+      "List your five most important funders. When did you last contact each one outside of a proposal or report deadline?",
+      "Set one touchpoint per quarter with each — a brief impact update, a relevant news item, or an invitation to a program event.",
+      "Engage your Board in at least one funder relationship this year. They are an underused stewardship asset in most organizations."
+     ]
+    },
+    "mid": {
+     "headline": "You are maintaining relationships. Now make them strategic.",
+     "text": "You are showing up more than most, and that matters. The next step is intentionality — knowing which funder relationships have real growth potential and building structure around them. A relationship calendar is not complicated. It is one of the highest-return tools a funding team can put in place.",
+     "steps": [
+      "Build a simple funder map: current funders, relationship health, renewal timeline, and growth potential.",
+      "Identify two relationships with expansion potential and design a six-month stewardship plan for each.",
+      "Review your Board's network annually. Who could be introduced to a current or prospective funder?"
+     ]
+    },
+    "high": {
+     "headline": "You are building the kind of funder trust that compounds over time.",
+     "text": "Long-term funder relationships are one of the most durable advantages a funded organization can have. You have invested in stewardship, and that shows in renewal rates, award sizes, and funder introductions. The discipline at this level is documenting what is working so it survives staff transitions and keeps producing.",
+     "steps": [
+      "Document your funder stewardship approach in a simple playbook your team can follow consistently.",
+      "Identify one relationship where you could deepen involvement — an advisory role, a pilot program, or co-design on a future funding initiative.",
+      "Ask a long-term funder for candid feedback on your organization's positioning. The answer will likely surprise you."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "funding_success_rate",
+   "label": "Funding Success Rate (Past 12 Months)",
+   "format": "percent",
+   "formula": "apps_submitted > 0 ? Math.round(apps_awarded / apps_submitted * 100) : 0",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_rework_hours",
+   "label": "Annual Hours Lost to Reactive Proposal Work",
+   "format": "hours",
+   "formula": "rework_hours * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your organization right now?",
+  "answers": [
+   {
+    "label": "Nonprofit or social enterprise",
+    "tag": "nonprofit"
+   },
+   {
+    "label": "Education or workforce organization",
+    "tag": "education"
+   },
+   {
+    "label": "Tech or SaaS company pursuing grants",
+    "tag": "tech"
+   },
+   {
+    "label": "Government-adjacent or public sector entity",
+    "tag": "govt"
+   }
+  ]
+ }
+}
