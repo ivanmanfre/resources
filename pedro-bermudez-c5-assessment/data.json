@@ -1,0 +1,629 @@
+{
+ "slug": "pedro-bermudez-c5-assessment",
+ "title": "The Secret Income Readiness Score",
+ "subtitle": "Find out exactly how ready you are to build income your boss can't see — and what's actually holding you back.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "job_security_reality",
+   "name": "Job Security Reality",
+   "questions": [
+    {
+     "id": "layoff-signs",
+     "text": "In the past 12 months, how many warning signs have you noticed at your company — perks cut, colleagues let go, office mandates, AI tools replacing roles?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None that I've noticed",
+       "score": 1
+      },
+      {
+       "label": "One or two small things",
+       "score": 2
+      },
+      {
+       "label": "A handful — I've noticed a pattern forming",
+       "score": 3
+      },
+      {
+       "label": "Several clear signals — I'm watching carefully",
+       "score": 4
+      },
+      {
+       "label": "The writing is on the wall and I know it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "runway",
+     "text": "If your employer let you go tomorrow, how long could you cover your family's expenses without touching retirement savings?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Less than one month",
+       "score": 1
+      },
+      {
+       "label": "One to two months",
+       "score": 2
+      },
+      {
+       "label": "Three to five months",
+       "score": 3
+      },
+      {
+       "label": "Six months to a year",
+       "score": 4
+      },
+      {
+       "label": "Over a year — I have real runway",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "income-dependence",
+     "text": "What percentage of your household's total income comes from your employer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "100% — it all comes from my job",
+       "score": 1
+      },
+      {
+       "label": "About 80 to 99%",
+       "score": 2
+      },
+      {
+       "label": "About 60 to 79%",
+       "score": 3
+      },
+      {
+       "label": "About 40 to 59%",
+       "score": 4
+      },
+      {
+       "label": "Less than 40% — I have real income diversity",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're one board meeting away from a layoff notice.",
+     "text": "Amazon let go of 30,000. Meta used an algorithm to pick who to cut — and it chose people on medical leave, parental leave, family leave. The people least able to fight back. Your employer is not your partner. Your income is one spreadsheet decision away from being gone. The good news: you already see it coming. Most people don't.",
+     "steps": [
+      "Write down three skills from your job that someone outside your company would pay for.",
+      "Calculate your real monthly expenses — that number is your first side income target.",
+      "Set a 90-day deadline to generate your first dollar outside your employer."
+     ]
+    },
+    "mid": {
+     "headline": "You see the risk. Now act before the decision gets made for you.",
+     "text": "You have some runway and some awareness, but your income is still mostly in one place. That one place answers to a spreadsheet, not to you. The difference between where you are and where you want to be is not more information. It's action.",
+     "steps": [
+      "Identify the skill from your job that people already come to you for.",
+      "Block two hours this week that belong to you — not your employer.",
+      "Find one person outside your job who would pay for what you know and start that conversation."
+     ]
+    },
+    "high": {
+     "headline": "You're already thinking like a company. Now build one.",
+     "text": "You have runway, you've started to diversify, and you're reading the signals correctly. The next step is not more preparation. It's your first $1,000 outside the 9-5. That number changes everything. It proves the skill pays.",
+     "steps": [
+      "Pick the simplest version of your side business — one that could bill a client in 30 days.",
+      "Build it in secret. Tell no one at your job.",
+      "Set a 90-day revenue target and reverse-engineer the number of clients you need."
+     ]
+    }
+   }
+  },
+  {
+   "id": "skills_you_re_not_using_",
+   "name": "Skills You're Not Using for Yourself",
+   "questions": [
+    {
+     "id": "skill-demand",
+     "text": "How often do colleagues, friends, or people outside work ask for your help with something you do in your job?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — people don't come to me for this",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, maybe once a month",
+       "score": 2
+      },
+      {
+       "label": "A few times a month — I'm the go-to for certain things",
+       "score": 3
+      },
+      {
+       "label": "Regularly — people know to find me",
+       "score": 4
+      },
+      {
+       "label": "Constantly — I give this knowledge away for free all the time",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "skills-clarity",
+     "text": "How clearly can you name the skill from your job that someone outside your company would pay real money for?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have no idea what that would be",
+       "score": 1
+      },
+      {
+       "label": "I have a vague sense but nothing specific",
+       "score": 2
+      },
+      {
+       "label": "I have one or two candidates but haven't tested them",
+       "score": 3
+      },
+      {
+       "label": "I know what it is — I just haven't charged for it yet",
+       "score": 4
+      },
+      {
+       "label": "I know exactly what it is and what the market pays for it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "outside-income",
+     "text": "Have you ever made money outside your employer's payroll using something you already know how to do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never — I wouldn't know where to start",
+       "score": 1
+      },
+      {
+       "label": "I thought about it but never acted",
+       "score": 2
+      },
+      {
+       "label": "I tried once — it went nowhere",
+       "score": 3
+      },
+      {
+       "label": "Yes — I made money but it wasn't consistent",
+       "score": 4
+      },
+      {
+       "label": "Yes — and I know I can do it again at a bigger scale",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You have profitable skills. You just haven't seen them that way yet.",
+     "text": "Everyone with a job has a skill someone else needs. Your employer figured out your skills are worth money a long time ago — that is why they pay you. It's time you started using those skills for yourself. The market for what you know already exists. You just haven't found your way into it.",
+     "steps": [
+      "List every task you do at work that a small business owner would not know how to do.",
+      "Pick the one you'd enjoy doing for someone else.",
+      "Search what freelancers charge for that skill — you'll find the market is already there."
+     ]
+    },
+    "mid": {
+     "headline": "You know what you're worth. You just haven't charged for it.",
+     "text": "The hardest part isn't the skill — you have that. The hardest part is believing someone outside your employer would pay for it. They will. You've already seen the demand when colleagues come to you for help. That is the market telling you something.",
+     "steps": [
+      "Say this out loud: 'I help [type of person] with [specific problem].'",
+      "Find three people outside your job who have that problem right now.",
+      "Offer to solve it for one of them. The price is negotiable. The action is not."
+     ]
+    },
+    "high": {
+     "headline": "You already know your value. Now build the system around it.",
+     "text": "You have proof that people pay for what you do. The gap between where you are and $10k a month isn't skill — it's repeatability. You need a way to find clients without chasing each one. That is what a side business actually is.",
+     "steps": [
+      "Write down the exact steps you take to deliver your skill — that is your process.",
+      "Set a price that reflects your real value, not your hourly rate at your employer.",
+      "Get your next paying client outside your job before the end of this month."
+     ]
+    }
+   }
+  },
+  {
+   "id": "time_and_calendar_contro",
+   "name": "Time and Calendar Control",
+   "questions": [
+    {
+     "id": "bs_hours",
+     "type": "number",
+     "text": "How many hours per week do you spend in meetings, check-ins, or tasks that benefit your employer but add zero value to your own life?",
+     "hint": "Count recurring meetings, status updates, and busywork. Be honest.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 60,
+     "step": 1,
+     "default": 15,
+     "normalize_formula": "Math.max(0, 100 - (x / 40) * 100)"
+    },
+    {
+     "id": "hourly_rate",
+     "type": "number",
+     "text": "What is your rough hourly rate at your current job? Divide your annual salary by 2,000 to find it — for example, $80,000 ÷ 2,000 = $40 per hour.",
+     "hint": "Use your best estimate. This shows you what your time is actually worth.",
+     "suffix": "$/hour",
+     "min": 10,
+     "max": 500,
+     "step": 5,
+     "default": 40,
+     "normalize_formula": "Math.min(100, x)"
+    },
+    {
+     "id": "time-blocks",
+     "text": "Do you have any recurring time blocks in your week that are genuinely yours — no employer work, no meetings, just time to build something for yourself?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No — my week belongs entirely to my employer",
+       "score": 1
+      },
+      {
+       "label": "Barely — maybe 30 minutes here and there",
+       "score": 2
+      },
+      {
+       "label": "Sometimes — I carve out an hour when things are slow",
+       "score": 3
+      },
+      {
+       "label": "Yes — I protect a few hours a week consistently",
+       "score": 4
+      },
+      {
+       "label": "Yes — I have scheduled blocks and I guard them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your calendar is running you. That has to change before anything else.",
+     "text": "If your employer owns every hour, there is no time left to build income they can't see. The calendar is the first thing to fight for — not a side business, not a plan. Time. One two-hour block a week, marked DO NOT BOOK. Nobody will ask what it's for. That is how I won.",
+     "steps": [
+      "Block two hours this week with no label or a label no one will question.",
+      "Use that block for nothing but your side business — no email, no Slack, no exceptions.",
+      "Track how many hours you spend in employer meetings versus on yourself for the next two weeks."
+     ]
+    },
+    "mid": {
+     "headline": "You have some time. Now make it count.",
+     "text": "You've carved out space for yourself. That puts you further than most people get. The next move is consistency — same time, same days, same focus. Two protected hours a week, used well, compound faster than you think.",
+     "steps": [
+      "Make your time blocks recurring — lock them on the calendar permanently.",
+      "During those hours, work only on the one thing that brings in outside income.",
+      "Log what you do in each block. Progress you can see is progress that stays."
+     ]
+    },
+    "high": {
+     "headline": "You own your calendar. Now fill those hours with income.",
+     "text": "Most people never get here. They give the whole week to their employer and wonder why nothing changes. You've built the habit of protecting your time. That's the foundation. Fill those blocks with income-generating work — not planning, not research. Work that pays.",
+     "steps": [
+      "Audit your protected blocks: how many go to actual income work versus preparation?",
+      "Set a weekly output goal for each block — one proposal written, one client contacted.",
+      "Increase your protected time by 30 minutes a week until you hit 10 hours a week."
+     ]
+    }
+   }
+  },
+  {
+   "id": "family_and_financial_sta",
+   "name": "Family and Financial Stakes",
+   "questions": [
+    {
+     "id": "money-home-stress",
+     "text": "How much does money pressure affect your home life and relationships right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not at all — money isn't a source of stress at home",
+       "score": 1
+      },
+      {
+       "label": "Occasionally — it comes up but we manage it",
+       "score": 2
+      },
+      {
+       "label": "Fairly often — it limits things we'd like to do as a family",
+       "score": 3
+      },
+      {
+       "label": "Regularly — it causes real tension at home",
+       "score": 4
+      },
+      {
+       "label": "It affects everything — my family deserves better than this",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "income-gap",
+     "text": "How would an extra $8,000 to $10,000 per month change your family's life right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly we're fine — it would be nice but not life-changing",
+       "score": 1
+      },
+      {
+       "label": "It would let us stop worrying about a few things",
+       "score": 2
+      },
+      {
+       "label": "It would cover what we keep saying no to — tuition, vacations, investing",
+       "score": 3
+      },
+      {
+       "label": "It would let me pay off debt and actually start building wealth",
+       "score": 4
+      },
+      {
+       "label": "It would change everything — I could say no to work I hate and yes to my family",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're in a comfortable spot. Use that to build — not to wait.",
+     "text": "Financial pressure isn't forcing your hand right now. That is genuinely good. It also means you have the clearest head to start building income you own. The best time to build a side business is before you desperately need it — before the decision gets made for you.",
+     "steps": [
+      "Define what $8,000 to $10,000 a month would unlock for your family — make it specific.",
+      "Use your current stability as runway to build without desperation.",
+      "Start with the simplest possible version of your side business, not the most ambitious one."
+     ]
+    },
+    "mid": {
+     "headline": "You know what the money would do for your family. Now go get it.",
+     "text": "You've done the math. The tuition, the vacations, the investments — you know exactly what $10k a month would cover. The only thing standing between you and that number is the time you spend building it. You have the skills. You have the reason. The path is what's missing.",
+     "steps": [
+      "Write down one specific thing you'd give your family if you had an extra $8k a month.",
+      "Let that be the reason you show up on the days you don't feel like it.",
+      "Map out how many clients you need at what price to hit that number in 90 days."
+     ]
+    },
+    "high": {
+     "headline": "Your family is counting on you to figure this out. Here's how.",
+     "text": "I built my life the way I did so I could say no. No to meetings I don't want. No to jobs that drain me. No to missing the moments that don't come back. You can build that life. The money is the tool. The time with your family is the point.",
+     "steps": [
+      "Stop waiting for the right moment — every week you wait costs you time you can't get back.",
+      "Pick your side business idea today and commit to it for 60 days.",
+      "Build it in secret. Protect the idea until it's making money."
+     ]
+    }
+   }
+  },
+  {
+   "id": "side_income_action_stage",
+   "name": "Side Income Action Stage",
+   "questions": [
+    {
+     "id": "commitment-level",
+     "text": "How committed are you to building income outside your job in the next 90 days?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I'm curious about it but haven't made a real decision",
+       "score": 1
+      },
+      {
+       "label": "I want to — but honestly I'm not sure I'll follow through",
+       "score": 2
+      },
+      {
+       "label": "I plan to start — I just haven't set a firm deadline yet",
+       "score": 3
+      },
+      {
+       "label": "I'm committed — I have a plan and I'm moving on it",
+       "score": 4
+      },
+      {
+       "label": "I'm all in — nothing will stop me from building this",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "current-effort",
+     "text": "Right now, how many hours per week are you actively working on building income outside your employer — not thinking about it, actually doing the work?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Zero — nothing yet",
+       "score": 1
+      },
+      {
+       "label": "Less than an hour — sporadic at best",
+       "score": 2
+      },
+      {
+       "label": "One to two hours — trying but inconsistent",
+       "score": 3
+      },
+      {
+       "label": "Three to five hours — it's part of my week now",
+       "score": 4
+      },
+      {
+       "label": "More than five hours — I'm building this seriously",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "business-clarity",
+     "text": "How clear are you on what your side business would actually be — who you'd serve, what you'd sell, and what you'd charge?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No idea — complete blank slate",
+       "score": 1
+      },
+      {
+       "label": "A rough direction but nothing specific",
+       "score": 2
+      },
+      {
+       "label": "I know the general area but not the details",
+       "score": 3
+      },
+      {
+       "label": "I know what it is — I need the first paying client",
+       "score": 4
+      },
+      {
+       "label": "Clear on all of it — I just need to move faster",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "first-dollar",
+     "text": "Have you made money outside your employer's payroll in the past 12 months?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, and I have no idea how I would start",
+       "score": 1
+      },
+      {
+       "label": "No, but I have a conversation or lead in progress",
+       "score": 2
+      },
+      {
+       "label": "No, but I know exactly how I would do it",
+       "score": 3
+      },
+      {
+       "label": "Yes — one or two small wins",
+       "score": 4
+      },
+      {
+       "label": "Yes — it's starting to become consistent",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You've been thinking about this long enough. Make the decision today.",
+     "text": "I stopped asking what had happened to me and started asking who I'd have to become. That question costs nothing. No money, no contacts, no plan. It works at 17 and it works at 37 and it still works at 57. The gap between thinking about a side income and building one is not a better plan. It's a decision.",
+     "steps": [
+      "Choose one business idea today — not the perfect one, just one you can start.",
+      "Tell one person outside your job that you're building something. Accountability changes what happens next.",
+      "Set a 60-day deadline to make your first dollar outside your employer."
+     ]
+    },
+    "mid": {
+     "headline": "You're moving. Now move faster.",
+     "text": "You've started. That puts you ahead of the majority of people who will read this and do nothing. The danger zone is the middle — working but not yet earning. Push through it. The first client is the hardest one. Everything after that is momentum.",
+     "steps": [
+      "Stop optimizing the plan. Talk to your next potential client this week.",
+      "Make one offer — even an uncomfortable one. Quoting a number builds the muscle.",
+      "Show up to your side business hours whether you feel ready or not."
+     ]
+    },
+    "high": {
+     "headline": "You're building. Now build a system, not just hustle.",
+     "text": "You've made money outside your employer. That is the hardest proof point. Now the move is repeatability. Getting to $10k a month isn't about working harder — it's about clients finding you without you chasing each one. That is the engine.",
+     "steps": [
+      "Map out exactly how your last client found you — then do that 10 times.",
+      "Build one asset this month that brings clients to you: a post, a workshop, a resource.",
+      "Set your 90-day revenue target and reverse-engineer the client count you need."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "weekly-value-lost",
+   "label": "Dollar value of time you give your employer for free each week",
+   "format": "currency_per_period",
+   "formula": "bs_hours * hourly_rate",
+   "show_in_result": true
+  },
+  {
+   "id": "annual-value-lost",
+   "label": "Annual dollar value of hours your employer gets for free",
+   "format": "currency",
+   "formula": "bs_hours * hourly_rate * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Where are you right now?",
+  "answers": [
+   {
+    "label": "Employed and nervous — AI and layoffs are on my mind",
+    "tag": "nervous_employee"
+   },
+   {
+    "label": "Employed and planning — I've been thinking about a side business",
+    "tag": "planning_employee"
+   },
+   {
+    "label": "I started something but it stalled out",
+    "tag": "stalled_starter"
+   },
+   {
+    "label": "Already making side income and want to grow it",
+    "tag": "scaling"
+   }
+  ]
+ }
+}
