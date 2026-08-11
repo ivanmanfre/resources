@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: d31ce63f79b3e09a7dfe3358a8678fc238df7121 at 2026-08-11T02:28:17.779Z
+Deploy: b4358406dd4a38eba3b078d16e67b38de14ec667 at 2026-08-11T05:10:06.598Z
 
-- pedro-bermudez-c5-assessment: data.json HTTP 404
+- vijay-kumar-n-2b-assessment: data.json HTTP 404
