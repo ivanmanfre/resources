@@ -1,0 +1,585 @@
+{
+ "slug": "yonah-zeff-db-assessment",
+ "title": "The Outbound Readiness Score",
+ "subtitle": "Find out whether your outbound function is compounding pipeline or resetting it every time an SDR leaves.",
+ "brand": {
+  "accent": "#4a19e4",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "sdr_consistency_pipeline",
+   "name": "SDR Consistency & Pipeline Compounding",
+   "questions": [
+    {
+     "id": "sdr_consistency_pipeline_q1",
+     "text": "How long does your average SDR stay in the role?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Less than 6 months",
+       "score": 1
+      },
+      {
+       "label": "6–12 months",
+       "score": 2
+      },
+      {
+       "label": "13–18 months",
+       "score": 3
+      },
+      {
+       "label": "19–24 months",
+       "score": 4
+      },
+      {
+       "label": "25 months or more",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sdr_consistency_pipeline_q2",
+     "text": "When an SDR leaves or is replaced, what happens to your pipeline in the 60 days that follow?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It resets — the new rep has no ICP knowledge, no relationships, no momentum",
+       "score": 1
+      },
+      {
+       "label": "Major disruption — takes 2–3 months to get back to baseline",
+       "score": 2
+      },
+      {
+       "label": "Moderate disruption — playbooks help but there is still a real gap",
+       "score": 3
+      },
+      {
+       "label": "Minor impact — process and data carry over reasonably well",
+       "score": 4
+      },
+      {
+       "label": "Almost none — our systems hold the continuity the rep built up",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sdr_daily_calls",
+     "type": "number",
+     "text": "On average, how many outbound calls does each SDR on your team make per day?",
+     "hint": "Elite outbound SDRs consistently hit 200–300 calls per day. Enter your team's real daily average — not the target.",
+     "suffix": "calls/day",
+     "min": 0,
+     "max": 500,
+     "step": 10,
+     "default": 50,
+     "normalize_formula": "Math.min(100, (x / 200) * 100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your pipeline is resetting before it compounds.",
+     "text": "The average in-house SDR stays 6–12 months. You spend three months hiring them, three months ramping them — and the moment they would start paying you back, they are gone. Every restart wipes the ICP knowledge, the objection handling, and the product confidence that took half a year to build. This is not a people problem. It is structural. And it keeps repeating until you fix the structure.",
+     "steps": [
+      "Track your last four SDR departures — at what month did each leave, and what happened to pipeline in the 60 days after?",
+      "Check whether your reps are actually dialing. Month one enthusiasm fades. Audit real call volume at month three, month six, and month twelve.",
+      "Ask whether your SDR function sits under Marketing or Sales — neither gives reps volume, quality, and process knowledge at the same time. That gap is usually structural, not individual."
+     ]
+    },
+    "mid": {
+     "headline": "Tenure is decent — but call consistency may be slipping.",
+     "text": "Reps who stick around are valuable. The question is whether they are still picking up the phone the way they did in month one. Less than 1% of SDRs will cold call consistently over a long period. The ones who do are the ones who genuinely chose outbound. If your reps are staying but calls are dropping, pipeline will plateau — not compound.",
+     "steps": [
+      "Pull daily call volume for each rep across month one, month three, and month six and look for the drift.",
+      "Build playbooks that capture ICP knowledge, winning objection handles, and key account context — so that knowledge lives in the system, not just in the rep's head.",
+      "Make sure your SDRs are not staying because they are waiting for an AE promotion — reps who see outbound as a stepping stone will leave the moment they are good enough."
+     ]
+    },
+    "high": {
+     "headline": "Your SDR bench is compounding — that is rare.",
+     "text": "When SDRs stay and keep dialing, pipeline does not restart — it builds. You have cracked the structural problem most companies never acknowledge. The next frontier is making sure your data, speed, and diagnostic systems are sharp enough to get the most out of that consistency.",
+     "steps": [
+      "Document what is keeping your reps this long — it is a competitive advantage worth protecting and systematizing.",
+      "If call volume is already strong and tenure is high, the next gain comes from data quality and targeting precision, not more dials.",
+      "Review your onboarding playbook — if a rep left tomorrow, could a replacement reach full productivity in under two weeks?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "data_quality_icp_targeti",
+   "name": "Data Quality & ICP Targeting",
+   "questions": [
+    {
+     "id": "data_quality_icp_targeti_q1",
+     "text": "How precisely is your Ideal Customer Profile defined right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Broad strokes — industry or company size, that is about it",
+       "score": 1
+      },
+      {
+       "label": "We have an ICP doc, but SDRs apply it differently from each other",
+       "score": 2
+      },
+      {
+       "label": "Defined titles and firmographics, reviewed occasionally",
+       "score": 3
+      },
+      {
+       "label": "Clear ICP reviewed quarterly — SDRs get filtered lists to work from",
+       "score": 4
+      },
+      {
+       "label": "Precise ICP with specific trigger events — SDRs are handed pre-scored, clean lists every time",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "data_quality_icp_targeti_q2",
+     "text": "How actively do you test and rotate your data vendors?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We use one vendor and have not benchmarked anything else",
+       "score": 1
+      },
+      {
+       "label": "We have looked at alternatives once or twice — nothing systematic",
+       "score": 2
+      },
+      {
+       "label": "We test when connect rates drop noticeably",
+       "score": 3
+      },
+      {
+       "label": "We benchmark vendors once or twice a year on connect rates",
+       "score": 4
+      },
+      {
+       "label": "We test constantly — connect rates and conversation rates drive every vendor decision",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "data_quality_icp_targeti_q3",
+     "text": "When a campaign underperforms, what does your team look at first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No structured process — it is mainly gut feel or manager intuition",
+       "score": 1
+      },
+      {
+       "label": "The SDR's effort or attitude",
+       "score": 2
+      },
+      {
+       "label": "The messaging and script",
+       "score": 3
+      },
+      {
+       "label": "Data quality — are we actually reaching the right people at working numbers?",
+       "score": 4
+      },
+      {
+       "label": "A diagnostic checklist covering data, ICP fit, connect rates, call recordings, and number health",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Bad data is the most expensive problem in outbound that almost nobody talks about.",
+     "text": "You can have the best SDRs and the best script. If the data is wrong, none of it lands. Outbound comes down to one thing: can you actually reach the right person and have a conversation? More connects. More conversations. More pipeline. It all starts with the data — and right now yours is not working as hard as it should be.",
+     "steps": [
+      "Audit your current data vendor on two numbers: connection rate and conversation rate per 100 dials. If you do not track these, start this week.",
+      "Test one alternative vendor on a parallel campaign for 30 days — same ICP, same script, different data source. Let the numbers decide.",
+      "Write your ICP with trigger events, not just titles and firmographics — closed-lost accounts, event attendees, ad responders, and cold accounts that went quiet are your lowest-hanging fruit."
+     ]
+    },
+    "mid": {
+     "headline": "Your ICP is defined — but your data infrastructure may not match it.",
+     "text": "Having a clear ICP and handing your reps clean, pre-scored lists are two different things. Clever messaging gets you a 1–3% uptick. Targeting the right people with working contact data is where the real gains sit. Most SDRs are still hunting alone on dirty lists. That is where the meetings go missing.",
+     "steps": [
+      "Compare your current connect rate to 3 months ago — if it is drifting down, your data is getting stale before you are testing new vendors.",
+      "Map your ICP to the highest-converting accounts from the last 12 months and look for the specific trigger events or signals that showed up right before they signed.",
+      "Build a priority list for your SDRs: closed-lost, cold accounts, ad responders, and event lists — hand them the sequence, not just the target."
+     ]
+    },
+    "high": {
+     "headline": "Clean data, tested vendors, precise ICP — your reps start every dial ahead.",
+     "text": "Most companies are dialing dirty lists with a loose ICP and wondering why they are not getting meetings. You have built the foundation that makes volume work. The next layer is making sure you are running the right checks when campaigns underperform — so you can diagnose fast and fix faster.",
+     "steps": [
+      "Keep testing vendors even when performance is strong — today's best vendor can drift within six months.",
+      "Build trigger-event lists into your regular ICP refresh cycle — the signals that fired before your best clients signed are worth tracking systematically.",
+      "If you are not running diagnostics against a standard checklist when campaigns miss, that is the next thing to build."
+     ]
+    }
+   }
+  },
+  {
+   "id": "speed_to_lead_inbound_ro",
+   "name": "Speed to Lead & Inbound Routing",
+   "questions": [
+    {
+     "id": "speed_to_lead_inbound_ro_q1",
+     "text": "How quickly does your team respond to a new inbound lead — from the moment it lands to first contact?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "24–48 hours or longer — we get to them when we can",
+       "score": 1
+      },
+      {
+       "label": "4–24 hours — same business day, usually",
+       "score": 2
+      },
+      {
+       "label": "1–4 hours — we move fairly quickly",
+       "score": 3
+      },
+      {
+       "label": "Within the hour — someone picks it up fast",
+       "score": 4
+      },
+      {
+       "label": "Under 5 minutes — AI responds instantly, SDR qualifies and calls immediately after",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_inbound_leads",
+     "type": "number",
+     "text": "How many inbound leads does your business receive per month?",
+     "hint": "Include all sources: form fills, demo requests, content downloads, ad conversions. Used to estimate the pipeline value your follow-up speed is protecting or losing.",
+     "suffix": "leads/month",
+     "min": 0,
+     "max": 5000,
+     "step": 5,
+     "default": 30,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "avg_deal_value",
+     "type": "number",
+     "text": "What is your average deal or contract value in USD?",
+     "hint": "Use your average new client contract value — monthly retainer × 12 if sold annually, or average one-time deal size.",
+     "suffix": "USD",
+     "min": 0,
+     "max": 500000,
+     "step": 500,
+     "default": 15000,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Five minutes or 48 hours — right now you are closer to 48.",
+     "text": "The ideal follow-up window is under five minutes. Most companies take 24 to 48 hours. By then, odds of closing that lead have dropped by half. Every lead marketing paid for is worth half as much by tomorrow morning — and that loss compounds every day the routing stays the same.",
+     "steps": [
+      "Set up AI to respond to every inbound lead the second it lands — even a personalized acknowledgment beats a 4-hour silence.",
+      "Get a real SDR on the phone as fast as possible after AI makes first contact — especially for technical products or complex offers where a bad-fit lead quietly eats rep time.",
+      "Separate inbound routing from outbound prospecting — SDRs should not be managing both manually. Build routing so inbound gets priority handling automatically."
+     ]
+    },
+    "mid": {
+     "headline": "You are responding — but not fast enough to capture the full value.",
+     "text": "Same-day follow-up is better than most. But the data on response time is unambiguous: odds of qualifying a lead drop fast after the first 5 minutes and keep falling. An hour feels fast from inside the business. From the lead's side, they have already moved on.",
+     "steps": [
+      "Benchmark your actual average response time — not the policy, the real time from lead submission to first contact.",
+      "Test AI for instant acknowledgment on your highest-volume lead source first — get that channel under 5 minutes before optimizing anything else.",
+      "Make sure inbound leads are going to an SDR who can actually call, not just email — the phone is what converts a warm lead into a booked meeting."
+     ]
+    },
+    "high": {
+     "headline": "Speed and routing are in order. The next gain is conversion quality.",
+     "text": "Under 5 minutes with a real SDR following up is where meetings get booked. The optimization from here is not faster — it is sharper: better qualification, cleaner handoff, and making sure outbound is running at the same time inbound routing is handling the pipeline.",
+     "steps": [
+      "Audit your AI first-response quality — speed matters, but a generic response at 2 minutes loses to a personalized one at 4.",
+      "Make sure SDRs are not idle between inbound leads — they should be running outbound simultaneously, so you are paying for pipeline, not availability.",
+      "Track which lead sources convert from inbound contact to booked meeting and put the most follow-up muscle behind the highest-converting channels."
+     ]
+    }
+   }
+  },
+  {
+   "id": "channel_mix_ai_use",
+   "name": "Channel Mix & AI Use",
+   "questions": [
+    {
+     "id": "channel_mix_ai_use_q1",
+     "text": "How does your team currently use AI in outbound?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not use AI in outbound yet",
+       "score": 1
+      },
+      {
+       "label": "AI writes or personalizes email copy",
+       "score": 2
+      },
+      {
+       "label": "AI helps with research and building target lists",
+       "score": 3
+      },
+      {
+       "label": "AI handles research and targeting — humans handle all direct outreach",
+       "score": 4
+      },
+      {
+       "label": "AI manages instant inbound response and research; SDRs focus entirely on calling and qualification",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "channel_mix_ai_use_q2",
+     "text": "How would you describe the state of your cold email infrastructure?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Sending from our primary domain — no dedicated sending setup",
+       "score": 1
+      },
+      {
+       "label": "Secondary domains set up but not properly warmed",
+       "score": 2
+      },
+      {
+       "label": "Domains are warmed but we do not test deliverability regularly",
+       "score": 3
+      },
+      {
+       "label": "Multiple warmed secondary domains, monitored monthly",
+       "score": 4
+      },
+      {
+       "label": "Deliverability treated as infrastructure — domains warmed for months, continuously monitored, rotated when health drops",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "channel_mix_ai_use_q3",
+     "text": "How does cold calling factor into your SDRs' daily routine?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have moved away from calling — email and LinkedIn only",
+       "score": 1
+      },
+      {
+       "label": "Calling is encouraged but not tracked or enforced",
+       "score": 2
+      },
+      {
+       "label": "SDRs call, but volume varies significantly from rep to rep",
+       "score": 3
+      },
+      {
+       "label": "Calling is a core part of the role with minimum daily targets",
+       "score": 4
+      },
+      {
+       "label": "SDRs hit the phones every day without exception — that is the job",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are missing the channel mix that actually gets meetings booked.",
+     "text": "There is no such thing as an AI SDR. There is automated email and LinkedIn outreach, and that has existed for years. What AI actually does well: research, targeting, figuring out who your ICP is and what they care about. What it cannot do: cold call legally or beat a good human on the phone. LinkedIn is capped on volume. Email is 95% infrastructure. The phone is the channel that closes the argument.",
+     "steps": [
+      "If you have stopped calling, run a 30-day test — put one SDR on the phones with a clean list and a tight script and track connects and meetings booked.",
+      "Separate your email sending from your primary domain now, before you need to — domain health takes months to build and minutes to damage.",
+      "Use AI for research and targeting only. The ICP definition, the trigger events, the pre-scored list — that is where AI earns its place in outbound."
+     ]
+    },
+    "mid": {
+     "headline": "Good instincts on channel mix — the infrastructure may not match.",
+     "text": "You know calling matters. The question is whether your reps are actually doing it — every day, not just in month one. Email only works if the infrastructure is clean. Most teams get the strategy right and let the infrastructure drift. That is where the gap shows up: calls that do not connect, emails landing in spam, LinkedIn capping out.",
+     "steps": [
+      "Run an infrastructure audit: check domain health scores, email reply rates by domain, and compare each SDR's call volume week-by-week over the last 90 days.",
+      "If AI is being used for copy instead of research, flip the priority — better targeting beats better messaging every time.",
+      "Track which channel is producing meetings, not just activity — you may find the phone is doing more work than email at half the effort."
+     ]
+    },
+    "high": {
+     "headline": "Right tools in the right hands — AI does the research, humans do the dialing.",
+     "text": "That is the split that works. AI for speed and research, humans for calling and qualifying. Email as infrastructure, not the hero. LinkedIn for signal, not scale. When the channel mix is right, each SDR works a cleaner list, handles fewer bad-fit calls, and books more meetings per hour.",
+     "steps": [
+      "Keep monitoring email infrastructure — high-performing domains are one poor campaign away from a reputation hit.",
+      "Make sure your AI research layer is actually cutting list-building time for reps — if SDRs are still spending hours on research, the tool is not doing its job.",
+      "The next optimization is targeting precision: are your highest-converting accounts coming from specific trigger events or data sources? Build that back into the ICP."
+     ]
+    }
+   }
+  },
+  {
+   "id": "accountability_diagnosti",
+   "name": "Accountability & Diagnostics",
+   "questions": [
+    {
+     "id": "accountability_diagnosti_q1",
+     "text": "When a campaign is trending toward missing its meeting target, what typically happens first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We wait and hope it recovers before anyone notices",
+       "score": 1
+      },
+      {
+       "label": "We flag it internally but do not tell the client until we have to",
+       "score": 2
+      },
+      {
+       "label": "We tell the client, but without a specific plan for what changes",
+       "score": 3
+      },
+      {
+       "label": "We notify the client quickly with a partial explanation of what is off",
+       "score": 4
+      },
+      {
+       "label": "We go to the client immediately — here is what slipped, here is why, here is exactly what we are doing about it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "accountability_diagnosti_q2",
+     "text": "How structured is your diagnostic process when campaigns miss their targets?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No formal process — it varies by manager or rep",
+       "score": 1
+      },
+      {
+       "label": "A loose checklist that gets applied inconsistently",
+       "score": 2
+      },
+      {
+       "label": "A standard review process that covers the main failure points",
+       "score": 3
+      },
+      {
+       "label": "A documented diagnostic covering data quality, ICP fit, connect rates, scripts, and call recordings",
+       "score": 4
+      },
+      {
+       "label": "A systematic diagnostic with 20+ checks — recovery tasks assigned from what has worked across previous accounts",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Clients do not leave when results are bad — they leave when they do not trust you are on it.",
+     "text": "Going quiet when a campaign misses is the fastest way to lose a client. Most agencies hope the problem fixes itself before anyone notices. The ones that keep clients through rough patches are the ones who go first — not with an excuse, but with a diagnosis and a plan already in hand. Most people stop at pointing out the problem. Owning the solution is what separates the agencies people stay with.",
+     "steps": [
+      "Build a standard diagnostic checklist now — at minimum: data quality, ICP match, connect rates, number health, script, call recordings. Run it the moment you see a miss coming.",
+      "Define your communication protocol: when do you tell the client, what do you say, and what is the minimum recovery plan you need in hand before you call?",
+      "Track your recovery rate — of the campaigns that miss a target and get a documented recovery plan, what percentage hit the following month? That number should trend up."
+     ]
+    },
+    "mid": {
+     "headline": "You are communicating when things go wrong — the recovery plan needs to be sharper.",
+     "text": "Telling a client things are off is the right move. Clients can handle bad news. What they cannot handle is bad news without a plan. 'We are looking into it' is not a plan. A prioritized list of fixes — built from what has worked across every campaign you have run — is a plan.",
+     "steps": [
+      "Standardize what your recovery plan looks like — every diagnosis should end with a prioritized task list and a timeline, not just a summary of what went wrong.",
+      "Pull your last five missed-target campaigns and check whether the same failure points showed up more than once. Patterns in the data are the system telling you what to fix permanently.",
+      "Set up an internal alert the moment a campaign trends below target — so the outreach to the client is proactive, not reactive."
+     ]
+    },
+    "high": {
+     "headline": "Transparent accountability with a structured recovery system — that is how you earn trust when performance dips.",
+     "text": "Going to a client the moment results slip — with the diagnosis and the fix already in hand — turns a bad week into the moment they trust you most. You have built that system. Keep it systematic and keep updating it as new failure patterns show up.",
+     "steps": [
+      "Keep your diagnostic checklist current — add new failure patterns every quarter as you see them across accounts.",
+      "Track your first-contact-to-recovery-plan time — the client should hear from you within hours of the miss being detected, not days.",
+      "Use your recovery data in new business conversations — a documented system for handling bad weeks is rare and worth saying out loud."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "at-risk-revenue",
+   "label": "Monthly pipeline at risk from slow follow-up",
+   "format": "currency_per_period",
+   "formula": "monthly_inbound_leads * avg_deal_value * 0.5",
+   "show_in_result": true
+  },
+  {
+   "id": "call-volume-vs-elite",
+   "label": "Your daily call volume as a % of the elite SDR benchmark (200 calls/day)",
+   "format": "percent",
+   "formula": "Math.round(sdr_daily_calls / 200 * 100)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "What best describes your outbound setup right now?",
+  "answers": [
+   {
+    "label": "In-house SDR team",
+    "tag": "in-house"
+   },
+   {
+    "label": "Fully outsourced SDR function",
+    "tag": "outsourced"
+   },
+   {
+    "label": "Mix of in-house and outsourced",
+    "tag": "hybrid"
+   },
+   {
+    "label": "No dedicated SDR function yet",
+    "tag": "no-sdr"
+   }
+  ]
+ }
+}
