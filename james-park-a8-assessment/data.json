@@ -1,0 +1,543 @@
+{
+ "slug": "james-park-a8-assessment",
+ "title": "Global GTM Readiness Score",
+ "subtitle": "Measures whether your startup has the customer insight, GTM motion, local network, and investor narrative to enter a new market.",
+ "brand": {
+  "accent": "#36ff90",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "customer_and_market_clar",
+   "name": "Customer and Market Clarity",
+   "questions": [
+    {
+     "id": "icp-sharpness",
+     "text": "How precisely can you describe your ideal customer — not just the company type, but the specific person inside it with the budget and the burning problem?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have a broad target segment but have not gone deeper than industry and company size",
+       "score": 1
+      },
+      {
+       "label": "We have named a job title and a pain point but have not validated it with real customers yet",
+       "score": 2
+      },
+      {
+       "label": "We have a working ICP built from at least 5 to 10 real conversations",
+       "score": 3
+      },
+      {
+       "label": "We have a sharp ICP with a specific role, trigger event, and budget range validated through closed deals",
+       "score": 4
+      },
+      {
+       "label": "We have refined our ICP at least twice based on who actually buys versus who we thought would buy",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_interviews",
+     "type": "number",
+     "text": "How many real customer interviews did you run before locking your current ICP and GTM approach?",
+     "hint": "Count actual phone or in-person conversations, not surveys or sign-up forms",
+     "suffix": "interviews",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x >= 20 ? 100 : x * 5"
+    },
+    {
+     "id": "lost-deal-analysis",
+     "text": "When your last potential customer said no, how clearly did you understand why — and did it change anything?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not track lost deals or talk to customers who did not buy",
+       "score": 1
+      },
+      {
+       "label": "We have a general sense but do not document reasons systematically",
+       "score": 2
+      },
+      {
+       "label": "We debrief after losses but rarely change the pitch or ICP based on them",
+       "score": 3
+      },
+      {
+       "label": "We interview lost or churned prospects and feed that back into our targeting",
+       "score": 4
+      },
+      {
+       "label": "Lost deal analysis directly shapes which segments we pursue next",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "market-differentiation",
+     "text": "How would you describe your competitive differentiation in the new market you are trying to enter?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are better, faster, or cheaper, but we have not tested whether that lands with local buyers",
+       "score": 1
+      },
+      {
+       "label": "We have a positioning statement but have not stress-tested it with local prospects",
+       "score": 2
+      },
+      {
+       "label": "We have spoken to 5 or more local buyers and have a working hypothesis",
+       "score": 3
+      },
+      {
+       "label": "We have run competitive deals in the new market and know exactly where we win and lose",
+       "score": 4
+      },
+      {
+       "label": "We have proof points specific to the new market: logos, metrics, or case studies from local deals",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are still in the mirror room.",
+     "text": "Building a GTM motion without knowing exactly who buys, and why, is the most expensive mistake a startup makes. This is fixable before you enter a new market.",
+     "steps": [
+      "Run 10 real customer interviews with people who fit your target profile before your next GTM push",
+      "Ask every lost prospect one question: what would have to be true for you to have said yes",
+      "Write your ICP as a single named person, not a segment: job title, company size, the problem that is costing them sleep"
+     ]
+    },
+    "mid": {
+     "headline": "You have a hypothesis. Now you need more reps.",
+     "text": "Your ICP work has started but it is not yet sharp enough to anchor a new market entry. Tighten it with more customer conversations before you commit resources.",
+     "steps": [
+      "Push your interview count to 20 or more across your target market before scaling any channel",
+      "Document win and loss patterns in a simple tracker — you need to see the pattern, not just feel it",
+      "Test your differentiation claim with 3 local prospects before locking the pitch"
+     ]
+    },
+    "high": {
+     "headline": "Your market clarity is an asset. Protect it as you scale.",
+     "text": "You have done the customer work that most startups skip. The risk now is assuming the ICP that works in one market transfers cleanly to another.",
+     "steps": [
+      "Run a fresh round of 5 to 10 interviews in each new market before assuming your ICP travels",
+      "Document your differentiation proof points market by market — what closes in Korea may not close in the UAE",
+      "Build a one-page competitive map for each new geography you are entering"
+     ]
+    }
+   }
+  },
+  {
+   "id": "gtm_motion_and_traction",
+   "name": "GTM Motion and Traction",
+   "questions": [
+    {
+     "id": "monthly_revenue",
+     "type": "number",
+     "text": "What is your current monthly revenue in USD?",
+     "hint": "Enter 0 if pre-revenue. Used to calculate your GTM efficiency ratio.",
+     "suffix": "USD/mo",
+     "min": 0,
+     "max": 5000000,
+     "step": 1000,
+     "default": 10000,
+     "normalize_formula": "x >= 100000 ? 100 : x >= 30000 ? 75 : x >= 10000 ? 50 : x >= 1000 ? 25 : 0"
+    },
+    {
+     "id": "gtm_hours_monthly",
+     "type": "number",
+     "text": "How many hours per month does your founding team spend on GTM activities — outreach, demos, pitches, and marketing combined?",
+     "hint": "Include all founders' time combined. Used to calculate your revenue per GTM hour.",
+     "suffix": "hrs/mo",
+     "min": 0,
+     "max": 400,
+     "step": 5,
+     "default": 80,
+     "normalize_formula": "x >= 80 ? 100 : x >= 40 ? 70 : x >= 20 ? 40 : x >= 10 ? 20 : 0"
+    },
+    {
+     "id": "sales-repeatability",
+     "text": "How repeatable is your current sales motion — could a new hire run the same playbook and get similar results within 90 days?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It is entirely relationship-driven and lives in the founder's head",
+       "score": 1
+      },
+      {
+       "label": "We have some scripts and decks but the founder still closes everything personally",
+       "score": 2
+      },
+      {
+       "label": "We have a documented process a new hire could follow, but it has not been tested with a real hire",
+       "score": 3
+      },
+      {
+       "label": "We have onboarded at least one non-founder seller who is closing deals from the playbook",
+       "score": 4
+      },
+      {
+       "label": "Two or more non-founders consistently close deals from a documented, tested playbook",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "channel-clarity",
+     "text": "Where does your best new business actually come from right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are not sure — deals come from different places and we have not tracked the source",
+       "score": 1
+      },
+      {
+       "label": "Mostly the founder's personal network, nothing scalable yet",
+       "score": 2
+      },
+      {
+       "label": "We have one channel producing results but have not invested in making it repeatable",
+       "score": 3
+      },
+      {
+       "label": "We have one clear primary channel and are actively scaling it",
+       "score": 4
+      },
+      {
+       "label": "We have a primary channel working at scale and a second one in active testing",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your GTM is founder-dependent. That caps your ceiling.",
+     "text": "If only the founder can close deals and you cannot say which channel is working, entering a new market multiplies the problem. Fix the motion at home first.",
+     "steps": [
+      "Track where your last 10 deals came from before spending another dollar on a new channel",
+      "Write down the 5-step process you actually use to close a deal — get it out of your head and into a document",
+      "Pick one channel, commit to it for 90 days, and measure it before adding another"
+     ]
+    },
+    "mid": {
+     "headline": "You have early signals. Now make them repeatable.",
+     "text": "Something is working but it is not documented or scalable. A new market will require handing this motion to someone else — write it down now.",
+     "steps": [
+      "Document your current sales process step by step, including what you actually say in each conversation",
+      "Run a 90-day test with one non-founder seller using only the written playbook",
+      "Define what a working channel looks like in numbers: specific lead volume, conversion rate, CAC — before calling it proven"
+     ]
+    },
+    "high": {
+     "headline": "Your motion is scalable. Now check whether it travels.",
+     "text": "A repeatable GTM is the hardest thing to build and you have it. The question is whether the same motion works in a market with different buyer behavior.",
+     "steps": [
+      "Run 10 deals in the new market using your existing playbook before modifying it — learn what breaks first",
+      "Check whether your primary channel has the same reach in the new geography: LinkedIn penetration, event culture, and relationship norms all differ",
+      "Hire a local GTM lead who knows the buyer — your playbook is the starting point, not the final answer"
+     ]
+    }
+   }
+  },
+  {
+   "id": "global_market_entry_read",
+   "name": "Global Market Entry Readiness",
+   "questions": [
+    {
+     "id": "market-selection",
+     "text": "How did you decide which market to expand into next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It felt like the right move or we received one inbound inquiry from there",
+       "score": 1
+      },
+      {
+       "label": "We looked at market size and picked the largest opportunity",
+       "score": 2
+      },
+      {
+       "label": "We researched market size, competitive density, and buyer culture before deciding",
+       "score": 3
+      },
+      {
+       "label": "We validated the choice by running initial conversations with local prospects and partners",
+       "score": 4
+      },
+      {
+       "label": "We ran a structured market analysis and have closed at least one pilot deal in the target market",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "local-network",
+     "text": "What is your current network depth in the market you are trying to enter?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We know almost no one there — we would be starting from zero",
+       "score": 1
+      },
+      {
+       "label": "We have a few LinkedIn connections but no real relationships",
+       "score": 2
+      },
+      {
+       "label": "We have 2 to 3 warm contacts who could make introductions",
+       "score": 3
+      },
+      {
+       "label": "We have a local partner, advisor, or champion who knows the buyers",
+       "score": 4
+      },
+      {
+       "label": "We have an active local partner with existing client relationships in our target segment",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "localization-readiness",
+     "text": "How ready is your messaging, pricing, and proposal for a buyer in the new market?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We plan to use exactly what we use at home — no changes",
+       "score": 1
+      },
+      {
+       "label": "We would translate the language but keep everything else the same",
+       "score": 2
+      },
+      {
+       "label": "We have adapted our pitch based on a few local conversations",
+       "score": 3
+      },
+      {
+       "label": "We have run at least 3 real sales conversations in the market and adjusted based on objections",
+       "score": 4
+      },
+      {
+       "label": "We have closed deals in the market and have a localized playbook with local proof points",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Entering a new market without local intelligence is expensive.",
+     "text": "Most startups that fail at market entry did not fail because the market was wrong. They failed because they brought a home-market playbook to a place with completely different buyer behavior.",
+     "steps": [
+      "Before committing budget, run 10 customer conversations in the target market — remote calls count",
+      "Find one local advisor or partner who has sold to your buyer profile in that market",
+      "Map the top 3 differences in buyer culture, decision process, and relationship expectations before you enter"
+     ]
+    },
+    "mid": {
+     "headline": "You have a starting point. Now build the local layer.",
+     "text": "You know the market well enough to start, but you are still missing the local network and proof points that make a new market efficient to scale.",
+     "steps": [
+      "Invest in one strong local relationship before you invest in headcount — an advisor with the right network opens more doors faster",
+      "Run 5 more local sales conversations and document every objection — that is your localization brief",
+      "Check your pricing model against local norms — what is standard in North America may not work in Korea or the UAE"
+     ]
+    },
+    "high": {
+     "headline": "You are ready to move fast. Set a 90-day milestone.",
+     "text": "You have the local intelligence and relationships to move quickly. The risk now is that early traction in a new market creates overconfidence before the motion is actually proven.",
+     "steps": [
+      "Set a hard milestone for the first 90 days: a specific number of meetings, pilots, or signed deals — not just progress",
+      "Track local CAC and sales cycle length separately from your home market — they will differ",
+      "Plan your first local hire before you think you need them — strong local GTM talent has long lead times"
+     ]
+    }
+   }
+  },
+  {
+   "id": "fundraising_and_investor",
+   "name": "Fundraising and Investor Readiness",
+   "questions": [
+    {
+     "id": "pitch-deck-quality",
+     "text": "If a relevant VC asked to see your pitch deck tomorrow, how would you rate what you would send?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not have one ready — it would take at least a week to put something together",
+       "score": 1
+      },
+      {
+       "label": "We have a deck but it has not been reviewed by anyone outside our team",
+       "score": 2
+      },
+      {
+       "label": "We have a deck we have used in a few investor conversations with mixed results",
+       "score": 3
+      },
+      {
+       "label": "We have a deck that has generated meetings and we have refined it based on real investor feedback",
+       "score": 4
+      },
+      {
+       "label": "We have a deck with clear traction metrics and are actively managing an investor pipeline",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "investor-network",
+     "text": "How well do you know the investors most likely to fund your next round?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would start from scratch — cold outreach to a list we have not built yet",
+       "score": 1
+      },
+      {
+       "label": "We follow some relevant VCs on LinkedIn but have no real relationships",
+       "score": 2
+      },
+      {
+       "label": "We have a short list of target funds but only weak connections to 1 or 2 of them",
+       "score": 3
+      },
+      {
+       "label": "We have warm intros lined up to 5 or more relevant investors through our advisor or founder network",
+       "score": 4
+      },
+      {
+       "label": "Multiple investors have already expressed interest or we are receiving inbound from relevant funds",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "international-narrative",
+     "text": "How clearly can you tell the story of why your startup wins in your target market — specifically for an international investor who does not know your home market?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have only pitched to local investors who already know the market context",
+       "score": 1
+      },
+      {
+       "label": "We have a general pitch but have not adapted it for investors from a different market",
+       "score": 2
+      },
+      {
+       "label": "We have a version of the pitch that contextualizes the market opportunity for international audiences",
+       "score": 3
+      },
+      {
+       "label": "We have pitched to international investors and incorporated their specific feedback",
+       "score": 4
+      },
+      {
+       "label": "We have closed international investors or have strong LOIs from funds outside our home market",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your fundraising narrative is not ready for a global audience.",
+     "text": "International VCs do not have the local context you assume. If your pitch depends on investors already knowing your market, you are cutting yourself off from most of the capital available to you.",
+     "steps": [
+      "Review 5 pitch decks from a16z or YC portfolio companies in your category — notice how they contextualize their market for a global reader",
+      "Build your investor shortlist now, before you are in the market — sourcing takes 3 times longer than founders expect",
+      "Find one advisor who has raised from international investors in your sector and run your pitch by them"
+     ]
+    },
+    "mid": {
+     "headline": "You have a fundable story. Now build the relationships before you need them.",
+     "text": "The founders who close rounds quickly already had the investor relationships in place. The deck is secondary.",
+     "steps": [
+      "Map your path to warm intros for your top 20 target investors — LinkedIn connections and advisor networks both count",
+      "Get one external review of your deck from a founder who has raised from international VCs",
+      "Practice your international pitch with 5 people who have no context on your home market — their confusion is your feedback"
+     ]
+    },
+    "high": {
+     "headline": "You are in a strong position. Protect your momentum.",
+     "text": "You have the narrative, the network, and the traction story. The risk now is process — fundraising without a clear timeline and investor management system turns into a distraction.",
+     "steps": [
+      "Set a hard close date for your round and work backwards from it to manage your investor pipeline",
+      "Dedicate one founder to fundraising full-time — mixing GTM and fundraising dilutes both",
+      "Keep building your investor relationship log between rounds — the best fundraises start 12 months before the ask"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "revenue-per-gtm-hour",
+   "label": "Revenue per GTM hour (monthly)",
+   "format": "currency",
+   "formula": "monthly_revenue / Math.max(1, gtm_hours_monthly)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes you right now?",
+  "answers": [
+   {
+    "label": "Founder running GTM myself",
+    "tag": "founder"
+   },
+   {
+    "label": "GTM or sales leader at a startup",
+    "tag": "gtm-lead"
+   },
+   {
+    "label": "Startup team member contributing to growth",
+    "tag": "team-member"
+   },
+   {
+    "label": "Investor or advisor evaluating a startup's GTM",
+    "tag": "advisor"
+   }
+  ]
+ }
+}
