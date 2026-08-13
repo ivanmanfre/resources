@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: d66e11c5973cff4a6fc7ebfa08915d0f0941c016 at 2026-08-12T22:40:03.611Z
+Deploy: 952f886c10680f146fe0d39042411d240b1f353a at 2026-08-13T09:53:25.201Z
 
-- james-park-a8-assessment: data.json HTTP 404
+- tomas-loucky-42-assessment: data.json HTTP 404
