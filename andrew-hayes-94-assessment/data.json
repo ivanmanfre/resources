@@ -1,0 +1,657 @@
+{
+ "slug": "andrew-hayes-94-assessment",
+ "title": "The 99-1 Readiness Score",
+ "subtitle": "Find out how much of your LinkedIn content reaches the 99% who aren't looking yet, and how much gets buried by the algorithm.",
+ "brand": {
+  "accent": "#7F7F7F",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "the_99_vs_the_1",
+   "name": "The 99 vs. The 1",
+   "questions": [
+    {
+     "id": "posts_per_month",
+     "type": "number",
+     "text": "How many LinkedIn posts does your brand publish each month?",
+     "hint": "Count every post your brand account publishes. More posts means more chances to reach the 99%.",
+     "suffix": "posts",
+     "min": 1,
+     "max": 30,
+     "step": 1,
+     "default": 4,
+     "normalize_formula": "Math.min(100, x * 6.25)"
+    },
+    {
+     "id": "the_99_vs_the_1_q2",
+     "text": "When you sit down to write a LinkedIn post, who are you picturing as the reader?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Someone actively searching for a product or service like mine",
+       "score": 1
+      },
+      {
+       "label": "A mix of people who are ready to buy and people who are just browsing",
+       "score": 2
+      },
+      {
+       "label": "Industry peers who might refer me someday",
+       "score": 3
+      },
+      {
+       "label": "Someone not looking for anything in particular, just checking who got promoted",
+       "score": 4
+      },
+      {
+       "label": "Someone who has never heard of my brand, scrolling LinkedIn out of habit",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_99_vs_the_1_q3",
+     "text": "How do most of your posts begin?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "With our company name, our product, or a direct claim about what we do",
+       "score": 1
+      },
+      {
+       "label": "With an industry stat or trend that leads into what we sell",
+       "score": 2
+      },
+      {
+       "label": "With a question aimed at people who already know they have the problem we solve",
+       "score": 3
+      },
+      {
+       "label": "With a description of a specific person or moment that mirrors a real customer experience",
+       "score": 4
+      },
+      {
+       "label": "With a character in a scene, before our brand is mentioned at all",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_99_vs_the_1_q4",
+     "text": "What do you treat as a successful LinkedIn post?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Strong impressions and follower growth",
+       "score": 1
+      },
+      {
+       "label": "Likes and comments from people who look like potential buyers",
+       "score": 2
+      },
+      {
+       "label": "Direct messages or inquiries from people who saw the post",
+       "score": 3
+      },
+      {
+       "label": "Comments from people saying the post reminded them of their own situation",
+       "score": 4
+      },
+      {
+       "label": "New leads who say the story sounded exactly like them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're writing for the 1% who are already looking.",
+     "text": "That's the smallest and most competitive slice of LinkedIn. The 99% who aren't ready yet are scrolling right past your posts because the posts are about you, not them. The good news is this is fixable with one change to how you open.",
+     "steps": [
+      "Pick one recent post and rewrite the opening so it starts with a specific person in a specific moment. No brand name, no product mention. Just the scene.",
+      "Before your next post, ask: would someone who has never heard of me stop for this? If the honest answer is no, start over.",
+      "Find one real customer story. Write the scene before they found you, not the part where you solved their problem."
+     ]
+    },
+    "mid": {
+     "headline": "You understand the rule. The execution isn't fully there yet.",
+     "text": "You know the 99% aren't ready to buy. But your content still leans toward the people who are. The gap usually lives in the opening line and in who you've made the hero of the story.",
+     "steps": [
+      "Look at your last five posts and count how many open with your brand name or a pitch. That number is your baseline to beat.",
+      "Write your next post entirely about one customer, from the moment they first noticed the problem to the moment they acted. Your brand shows up at the end, if at all.",
+      "Stop setting up your solution in the opening paragraph. The reader should be several paragraphs in before they know what you sell."
+     ]
+    },
+    "high": {
+     "headline": "You're writing for the right person.",
+     "text": "You've flipped the script. Your content reaches people who weren't looking for you. When they finally do have the problem you solve, your brand already feels familiar. That familiarity is worth more than any pitch.",
+     "steps": [
+      "Start collecting switching-moment stories from category-level customers, not just your own. Their language is the raw material for your next run of posts.",
+      "Build a sequence. Each story should tease the next one. That's how you build a reader who comes back for the story, not to find your company.",
+      "Track how often a new lead says they've been following your stories for a while. That number tells you your content is working before the sale ever starts."
+     ]
+    }
+   }
+  },
+  {
+   "id": "customer_as_hero",
+   "name": "Customer as Hero",
+   "questions": [
+    {
+     "id": "customer_as_hero_q1",
+     "text": "In your most recent LinkedIn post, who was the main character?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Our company, product, or team",
+       "score": 1
+      },
+      {
+       "label": "An industry trend or a data point",
+       "score": 2
+      },
+      {
+       "label": "Me or our founder",
+       "score": 3
+      },
+      {
+       "label": "A customer, described in general terms",
+       "score": 4
+      },
+      {
+       "label": "A specific person with a name, a job, and a concrete obstacle they ran into",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_as_hero_q2",
+     "text": "How specific are the obstacles you describe in your stories?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We describe the general pain point our product solves",
+       "score": 1
+      },
+      {
+       "label": "We describe the type of problem without naming exact details",
+       "score": 2
+      },
+      {
+       "label": "We use real customer examples but smooth out the specifics",
+       "score": 3
+      },
+      {
+       "label": "We describe a real situation: the moment, the location, the frustration",
+       "score": 4
+      },
+      {
+       "label": "We describe the exact scene: the morning routine, the thought the person had right before things changed",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_as_hero_q3",
+     "text": "What role does your brand play in the stories you publish?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The hero who solved the problem, with the post explaining how we did it",
+       "score": 1
+      },
+      {
+       "label": "Front and center throughout, referenced often",
+       "score": 2
+      },
+      {
+       "label": "Mentioned in the second half as the solution",
+       "score": 3
+      },
+      {
+       "label": "We show up at the end to say: if this sounds familiar, we hear you",
+       "score": 4
+      },
+      {
+       "label": "The guide in the background. The story belongs entirely to the customer",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_as_hero_q4",
+     "text": "How do your posts end?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "With a call to action to book a demo or make a purchase",
+       "score": 1
+      },
+      {
+       "label": "With a summary of what our product or service does",
+       "score": 2
+      },
+      {
+       "label": "With a lesson or takeaway from the customer's experience",
+       "score": 3
+      },
+      {
+       "label": "With a tease for the next story in the series",
+       "score": 4
+      },
+      {
+       "label": "With the reader thinking about their own situation, not our product",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand is still the hero. That's the problem.",
+     "text": "When a company makes itself the hero of its own story, the reader tunes out. They're not on LinkedIn to read about your product. They're thinking about themselves, their goals, their problems. Give the story to the customer.",
+     "steps": [
+      "Rewrite your next post so your brand name does not appear until the final paragraph.",
+      "Name the character in your story. Give them a job, a city, a daily routine. The more specific the person, the more a reader sees themselves in them.",
+      "Describe the obstacle before you describe the solution. Your brand does not need to appear at all if the story does its job."
+     ]
+    },
+    "mid": {
+     "headline": "You have the right instinct, but you're still making it about you too early.",
+     "text": "You know the customer should be the hero. But the habit of explaining what you do creeps in before the story has had time to land. The reader needs to feel the obstacle before they're ready to hear about anything else.",
+     "steps": [
+      "Before you write a post, write the scene first. Where is the person, what time is it, what just happened. Then decide if you need to mention your brand at all.",
+      "Read your last post out loud and count how many times your company name, your product, or the word 'we' appears. Every instance is a place the reader stops seeing themselves and starts reading about you.",
+      "End your next post without a pitch. Let the story close on its own terms. Watch what happens to the comments."
+     ]
+    },
+    "high": {
+     "headline": "You've built the hardest habit in content: making someone else the hero.",
+     "text": "The reader is the point. Your brand shows up as the guide, not the main event. That's why people stop for your stories and keep coming back.",
+     "steps": [
+      "Start collecting direct quotes from real customers about the moment before they switched. The exact words they use are your best raw material.",
+      "Test a post with no brand mention at all. Let the story carry the whole thing. See how it performs against posts that reference you.",
+      "Use the end of each story to set up the next one. A reader who wants to know what comes next is the audience you're building."
+     ]
+    }
+   }
+  },
+  {
+   "id": "real_customer_language",
+   "name": "Real Customer Language",
+   "questions": [
+    {
+     "id": "pitch_pct",
+     "type": "number",
+     "text": "Of your posts from the last three months, what percentage lead with a direct pitch, your company name, or a product claim rather than a customer story?",
+     "hint": "Be honest. If most posts start with 'At [Company], we...' or 'Our new feature...' or 'We help companies...', that counts as a pitch.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 75,
+     "normalize_formula": "100 - x"
+    },
+    {
+     "id": "real_customer_language_q2",
+     "text": "Where do the actual words in your posts come from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Our marketing team writes them based on what we know about our customers",
+       "score": 1
+      },
+      {
+       "label": "We use AI to generate content from our product's value proposition",
+       "score": 2
+      },
+      {
+       "label": "We pull quotes from reviews or testimonials occasionally",
+       "score": 3
+      },
+      {
+       "label": "We interview customers and use their phrasing directly in the stories we write",
+       "score": 4
+      },
+      {
+       "label": "We collect the exact words customers use to describe the moment before they switched",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "real_customer_language_q3",
+     "text": "Have you ever researched category-level customers who switched to a competitor specifically to learn how they describe that moment of change?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, we focus on people who are already our customers",
+       "score": 1
+      },
+      {
+       "label": "We read competitor reviews to understand common complaints",
+       "score": 2
+      },
+      {
+       "label": "We survey our own customers after the sale",
+       "score": 3
+      },
+      {
+       "label": "We talk to prospects who chose someone else to understand what drove the decision",
+       "score": 4
+      },
+      {
+       "label": "We have run a research project specifically to capture the language people use to describe their switching moment",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your content sounds like you wrote it. Not like your customer lived it.",
+     "text": "When a marketing team writes from product knowledge, the language comes out polished and vague. Your future customer reads it and thinks: that's not how I'd describe my problem. And they keep scrolling. The fix is to go find the real words.",
+     "steps": [
+      "Find three customers who switched to you from something else. Ask them one question: what were you feeling the morning you finally decided to make a change? Record the answer word for word.",
+      "Take one phrase from a real customer conversation and use it as your opening line. Don't clean it up.",
+      "Stop describing the problem from your perspective. Describe it from the customer's Tuesday morning."
+     ]
+    },
+    "mid": {
+     "headline": "You're getting closer to the real language. Stay with it.",
+     "text": "You're pulling from real sources. But the polish that happens between the customer's words and the published post is where the authenticity gets smoothed out. That gap is where the scroll-stop dies.",
+     "steps": [
+      "Use more of the customer's actual phrasing, even when it's not grammatically clean or marketing-ready. That roughness is exactly what stops the scroll.",
+      "Run a switching-moment research project on category-level customers, not just your own. The people who almost went somewhere else have the most useful language.",
+      "Before you publish, ask: could I have written this without ever talking to a real customer? If the answer is yes, go back to the source."
+     ]
+    },
+    "high": {
+     "headline": "Your posts sound like a real person lived this. That's the whole game.",
+     "text": "You've done the research. You have the real language. LinkedIn's algorithm rewards this because real engagement follows real language. The reader stops because they recognize the scene. That recognition is what the 99-1 Rule is built on.",
+     "steps": [
+      "Build a library of switching-moment stories. The more you have, the further ahead your content calendar can run on real material.",
+      "Keep the raw transcripts. The exact words a customer uses today will be the right words for a post six months from now.",
+      "Look for patterns across your stories. The obstacle that shows up in eight different switching moments is your next series."
+     ]
+    }
+   }
+  },
+  {
+   "id": "audience_or_broadcast",
+   "name": "Audience or Broadcast?",
+   "questions": [
+    {
+     "id": "audience_or_broadcast_q1",
+     "text": "Does each post you publish connect to the next one?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, every post is standalone and independent",
+       "score": 1
+      },
+      {
+       "label": "We have themes, but posts don't reference each other",
+       "score": 2
+      },
+      {
+       "label": "We occasionally do a series, but it's not our default approach",
+       "score": 3
+      },
+      {
+       "label": "We often tease the next story at the end of a post",
+       "score": 4
+      },
+      {
+       "label": "Each post is part of a deliberate sequence that brings the reader back for what comes next",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "audience_or_broadcast_q2",
+     "text": "How do you think about the people who follow your LinkedIn page?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "As potential customers who need to understand what we sell",
+       "score": 1
+      },
+      {
+       "label": "As people we need to impress with expertise and credentials",
+       "score": 2
+      },
+      {
+       "label": "As a mix of buyers and industry peers",
+       "score": 3
+      },
+      {
+       "label": "As people who don't know us yet but share the same world as our future customers",
+       "score": 4
+      },
+      {
+       "label": "As people we want to feel familiar with our brand before they ever have a reason to look for us",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "audience_or_broadcast_q3",
+     "text": "By the time a follower finally has the problem your product or service solves, what do they know about you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing. They'd need to search for a solution and hopefully find us",
+       "score": 1
+      },
+      {
+       "label": "They might have seen our name in their feed once or twice",
+       "score": 2
+      },
+      {
+       "label": "They've probably seen a few posts but don't remember much",
+       "score": 3
+      },
+      {
+       "label": "They've read enough of our stories to recognize our tone and point of view",
+       "score": 4
+      },
+      {
+       "label": "We already feel familiar. They've been reading our stories for months before the need ever came up",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're broadcasting. You're not building.",
+     "text": "Isolated posts get consumed and forgotten. The 99% who aren't ready to buy today move on. When they finally are ready, they don't remember you. You're starting from zero every single time.",
+     "steps": [
+      "Think of your next three posts as one story told in three parts. The first sets the scene. The second raises the problem. The third shows what changed.",
+      "End your next post with a sentence that makes the reader wonder what happens in the next one.",
+      "Your goal isn't a follower who liked one post. It's a reader who comes back because they want to know what comes next. Write accordingly."
+     ]
+    },
+    "mid": {
+     "headline": "You're starting to think in sequences. Keep going.",
+     "text": "You understand that one post doesn't do the whole job. But the connection between posts is still loose. A reader who misses one loses the thread. The series needs to pull them back even if they missed the last one.",
+     "steps": [
+      "Give your content series a clear premise. Something a reader could describe to a colleague in one sentence.",
+      "Tease the next story at the end of every post, not just occasionally. Make coming back feel like the obvious next move.",
+      "Track how many followers engage with three or more posts in a row. That number tells you whether you're building an audience or just a content calendar."
+     ]
+    },
+    "high": {
+     "headline": "You're building an audience, not just a following.",
+     "text": "People are coming back for the next story, not because they're looking for your company. That's the version of LinkedIn that compounds. The 99% who aren't ready yet are warming up. By the time they are ready, you're already familiar.",
+     "steps": [
+      "Map out the next ten stories before you publish the next one. An audience that trusts you to deliver is an asset. Don't let the supply chain run dry.",
+      "Start letting the stories build toward a bigger question your audience is sitting with. The answer to that question becomes your offer.",
+      "Measure how often a new inquiry starts with the words 'I've been following your stories.' That number is your signal that the content is working before the sale."
+     ]
+    }
+   }
+  },
+  {
+   "id": "algorithm_alignment",
+   "name": "Algorithm Alignment",
+   "questions": [
+    {
+     "id": "algorithm_alignment_q1",
+     "text": "What do you think happens to a LinkedIn post that opens with your company name and a direct product claim?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It reaches our target audience well. That's why we write it that way",
+       "score": 1
+      },
+      {
+       "label": "It probably does okay with our existing followers",
+       "score": 2
+      },
+      {
+       "label": "I suspect it gets buried, but I don't know what to do instead",
+       "score": 3
+      },
+      {
+       "label": "I know LinkedIn's algorithm deprioritizes pitch content and rewards real stories",
+       "score": 4
+      },
+      {
+       "label": "I've seen story posts outperform pitch posts in our own account and we've changed our approach because of it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "algorithm_alignment_q2",
+     "text": "When someone stops scrolling on a post in their LinkedIn feed, what caused them to stop?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A compelling headline about a product's benefits",
+       "score": 1
+      },
+      {
+       "label": "A surprising stat or a strong visual",
+       "score": 2
+      },
+      {
+       "label": "A relatable situation from someone in their industry",
+       "score": 3
+      },
+      {
+       "label": "A specific person's story that mirrored something they had experienced themselves",
+       "score": 4
+      },
+      {
+       "label": "The moment they saw themselves in the story before they even registered who wrote it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The algorithm changed. Most of your content is being buried right now.",
+     "text": "LinkedIn reads content for meaning. It buries generic, pitch-heavy posts and rewards the ones that real people stop for. If your posts open with your brand name, they're fighting the platform and losing. This isn't a matter of opinion anymore. It's how the feed works.",
+     "steps": [
+      "Pull up your last ten posts and compare the reach on pitch-first posts versus posts that opened with a scene or a person. The gap will show you what's happening.",
+      "Write your next post as if LinkedIn's algorithm is your first reader. Its job is to figure out who would stop for this. Make that easy by starting with a specific person and a specific moment.",
+      "Look at what your best-performing post has in common with posts that have performed well for others. That pattern is the algorithm telling you what it wants."
+     ]
+    },
+    "mid": {
+     "headline": "You understand the algorithm. Now build a system around it.",
+     "text": "You know story content outperforms pitch content on LinkedIn. But knowing it and having a repeatable system around it are two different things. Right now you're winning on instinct. The goal is to win on process.",
+     "steps": [
+      "Document which post types get the most reach in your account. Use the data to decide what to write, not what feels comfortable to write.",
+      "Build a bank of real customer stories so you always have material to draw from. The algorithm rewards consistency and consistency requires a supply chain.",
+      "Stop treating high-reach posts as lucky accidents. They have a structure. Reverse-engineer your best-performing posts and use that structure again."
+     ]
+    },
+    "high": {
+     "headline": "You're working with the algorithm, not against it.",
+     "text": "You've matched the way you write to the way the platform distributes. Real stories in real customer language get matched to the right readers before those readers have ever heard of you. That's the 99-1 Rule working the way it's supposed to.",
+     "steps": [
+      "Keep testing. The algorithm evolves and so does your audience. What stopped the scroll six months ago may not be what stops it today.",
+      "Use engagement data to find out which customer profiles respond most to which types of stories. That's the input for your next research project.",
+      "At this level, your constraint is story supply, not story format. Build the research pipeline so the raw material never runs out."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "story_posts_per_month",
+   "label": "Story posts you're publishing each month",
+   "format": "decimal",
+   "formula": "posts_per_month * (100 - pitch_pct) / 100",
+   "show_in_result": true
+  },
+  {
+   "id": "pitch_posts_per_month",
+   "label": "Pitch posts per month the algorithm is likely burying",
+   "format": "decimal",
+   "formula": "posts_per_month * pitch_pct / 100",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which describes how you use LinkedIn for your business?",
+  "answers": [
+   {
+    "label": "Founder or owner writing my own content",
+    "tag": "founder"
+   },
+   {
+    "label": "Marketing lead managing a brand account",
+    "tag": "marketer"
+   },
+   {
+    "label": "Consultant or agency creating content for clients",
+    "tag": "agency"
+   },
+   {
+    "label": "Solo service provider building my own pipeline",
+    "tag": "solo"
+   }
+  ]
+ }
+}
