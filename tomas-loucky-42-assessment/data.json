@@ -1,0 +1,650 @@
+{
+ "slug": "tomas-loucky-42-assessment",
+ "title": "Podcast Repurposing Readiness Score",
+ "subtitle": "Find out how much you're leaving on the table from every episode you record.",
+ "brand": {
+  "accent": "#382f42",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "the_recording_foundation",
+   "name": "The Recording Foundation",
+   "questions": [
+    {
+     "id": "recording-frequency",
+     "text": "How often do you publish new podcast episodes?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A few times a year at most",
+       "score": 1
+      },
+      {
+       "label": "Once or twice a month, inconsistently",
+       "score": 2
+      },
+      {
+       "label": "Monthly, fairly reliably",
+       "score": 3
+      },
+      {
+       "label": "Weekly, most weeks",
+       "score": 4
+      },
+      {
+       "label": "Weekly or more — it's built into my schedule",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "episode-structure",
+     "text": "How much of each episode's structure is decided before you hit record?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I usually figure it out live",
+       "score": 1
+      },
+      {
+       "label": "I have a rough idea but the episode shifts a lot",
+       "score": 2
+      },
+      {
+       "label": "I follow a loose outline most of the time",
+       "score": 3
+      },
+      {
+       "label": "I have a clear format I brief guests on",
+       "score": 4
+      },
+      {
+       "label": "Every episode follows a defined structure built for repurposing",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your podcast isn't a machine yet — and that's the real bottleneck.",
+     "text": "You can't repurpose what you're not consistently recording. Everything else in this score depends on a steady stream of episodes. Nothing changes until the recording cadence is solid.",
+     "steps": [
+      "Pick a cadence you can actually hold — once a month beats once a quarter you skip",
+      "Design a simple repeatable episode format before your next recording: same opening, same key segments, same close",
+      "Block one recurring calendar slot labeled 'record' and treat it like a client call"
+     ]
+    },
+    "mid": {
+     "headline": "You're showing up, but the structure isn't designed for what comes after.",
+     "text": "Inconsistent structure is a repurposing tax. If every episode flows differently, every repurposing attempt starts from scratch. Fix the format, and repurposing gets faster every single time.",
+     "steps": [
+      "Write down the repeating segments already in your episodes — make the invisible structure visible",
+      "Add one dedicated segment per episode designed to extract: a key takeaway, a one-liner, a story",
+      "Review your last three episodes and find where the structure broke down — fix that one thing first"
+     ]
+    },
+    "high": {
+     "headline": "Solid foundation. The question now is whether your repurposing is keeping pace.",
+     "text": "Your podcast runs reliably and the structure is clear. The only question left is whether you're extracting everything each episode is giving you.",
+     "steps": [
+      "Map every segment of your standard episode format to a specific content format",
+      "Check whether your best old episodes have been fully mined — not just the recent ones",
+      "Add one dedicated episode moment designed specifically for a LinkedIn post hook"
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_repurposing_system",
+   "name": "The Repurposing System",
+   "questions": [
+    {
+     "id": "formats-per-episode",
+     "text": "After an episode publishes, how many different content formats do you create from it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Just the audio — maybe an episode link post",
+       "score": 1
+      },
+      {
+       "label": "The audio plus one or two posts, inconsistently",
+       "score": 2
+      },
+      {
+       "label": "2–4 formats: clips, a post, maybe a quote card",
+       "score": 3
+      },
+      {
+       "label": "5–7 formats: clips, posts, carousel, newsletter section",
+       "score": 4
+      },
+      {
+       "label": "7 or more formats extracted systematically from every episode",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "extraction-process",
+     "text": "How do you pull the best moments out of a recorded episode?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't — I publish and move on",
+       "score": 1
+      },
+      {
+       "label": "I pull something if a moment stands out while editing",
+       "score": 2
+      },
+      {
+       "label": "I re-listen and manually note key moments",
+       "score": 3
+      },
+      {
+       "label": "I follow a checklist or process after each episode",
+       "score": 4
+      },
+      {
+       "label": "I have a repeatable system that runs every episode through the same extraction steps",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "old-episode-mining",
+     "text": "How much of your best content from past episodes is still sitting unused?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of it — the archive is barely touched",
+       "score": 1
+      },
+      {
+       "label": "A lot — I've shared a few things but no system for going back",
+       "score": 2
+      },
+      {
+       "label": "Some — I pull from older episodes occasionally",
+       "score": 3
+      },
+      {
+       "label": "Not much — I actively mine old episodes",
+       "score": 4
+      },
+      {
+       "label": "Almost none — old episodes are part of my regular content rotation",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "episodes_per_month",
+     "type": "number",
+     "text": "How many podcast episodes do you publish per month?",
+     "hint": "Count only episodes you actually published in the last 30 days",
+     "suffix": "episodes / month",
+     "min": 0,
+     "max": 20,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "Math.min(x / 4 * 100, 100)"
+    },
+    {
+     "id": "assets_per_episode",
+     "type": "number",
+     "text": "How many pieces of content do you actually publish from a single episode (posts, clips, carousels, newsletters, quote cards)?",
+     "hint": "Count what you publish, not ideas you've had",
+     "suffix": "pieces / episode",
+     "min": 0,
+     "max": 30,
+     "step": 1,
+     "default": 1,
+     "normalize_formula": "Math.min(x / 7 * 100, 100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're sitting on a content library you haven't opened.",
+     "text": "Every episode you've recorded already has 7 to 10 LinkedIn posts inside it. The bottleneck isn't ideas — it's the extraction step. One episode, done right, should fuel your feed for a week.",
+     "steps": [
+      "Pick one old episode and list every distinct insight, story, or quote in it",
+      "Turn one of those into a LinkedIn post today — just one, not a system",
+      "Set up a simple extraction template: key moment, one-liner, story, data point — what do you look for every time?"
+     ]
+    },
+    "mid": {
+     "headline": "You're repurposing, but it's costing more effort than it should.",
+     "text": "The goal is a system where repurposing is the default, not the exception. If you have to decide what to do with an episode each time, the system isn't finished.",
+     "steps": [
+      "Write out every step you currently take after an episode publishes — make the invisible process visible",
+      "Find the one format that takes longest and figure out how to cut that time in half",
+      "Set a number: how many pieces should every episode produce? Build toward that number consistently"
+     ]
+    },
+    "high": {
+     "headline": "Your repurposing system is working. Now push the volume.",
+     "text": "You're extracting well. The next lever is the archive. If you have 20 conversations and each has 5 posts in it, that's 100 pieces of content you haven't touched yet.",
+     "steps": [
+      "Build a backlog from your 5 oldest episodes using your current extraction process",
+      "Track how many pieces each episode actually produces vs. how many it could",
+      "Add one new format to your repurposing checklist — the format you keep skipping"
+     ]
+    }
+   }
+  },
+  {
+   "id": "linkedin_distribution",
+   "name": "LinkedIn Distribution",
+   "questions": [
+    {
+     "id": "podcast-to-linkedin",
+     "text": "How often does your podcast directly feed what you post on LinkedIn?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — my LinkedIn and podcast operate mostly separately",
+       "score": 1
+      },
+      {
+       "label": "Occasionally — when something obvious stands out from an episode",
+       "score": 2
+      },
+      {
+       "label": "A few times a month from podcast content",
+       "score": 3
+      },
+      {
+       "label": "Weekly — the podcast is a consistent source of LinkedIn posts",
+       "score": 4
+      },
+      {
+       "label": "My podcast is my primary LinkedIn content source",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "post-specificity",
+     "text": "When you share a podcast moment on LinkedIn, how concrete and specific is the post?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Generic — 'great conversation today, link in comments'",
+       "score": 1
+      },
+      {
+       "label": "A brief description of the episode topic",
+       "score": 2
+      },
+      {
+       "label": "One main idea from the episode, written into a post",
+       "score": 3
+      },
+      {
+       "label": "A specific quote, moment, or story extracted and built into a post",
+       "score": 4
+      },
+      {
+       "label": "Every piece is built around one precise insight the episode gave me",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content-backlog",
+     "text": "When you sit down to post on LinkedIn, how often do you already know what you're writing about?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost never — I wait until something comes to me",
+       "score": 1
+      },
+      {
+       "label": "Sometimes — I try to think of something new each time",
+       "score": 2
+      },
+      {
+       "label": "About half the time — I occasionally look back at episodes",
+       "score": 3
+      },
+      {
+       "label": "Usually — my podcast gives me a running backlog of ideas",
+       "score": 4
+      },
+      {
+       "label": "Always — I have more ideas from the podcast than I can use",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your podcast and your LinkedIn are two separate things. They shouldn't be.",
+     "text": "Your podcast is the hard part. Writing a LinkedIn post from something you already said out loud is the easy part. The connection between them isn't there yet — and that's the gap to close.",
+     "steps": [
+      "Listen to your last episode and find one specific thing that was said that could become a post",
+      "Write that one thing this week — no episode link, no 'check out my podcast', just the idea",
+      "Do that for the next 4 episodes and track what your audience responds to"
+     ]
+    },
+    "mid": {
+     "headline": "You're connecting podcast to LinkedIn. Now make the posts sharper.",
+     "text": "The link is working. The question now is specificity. Generic episode posts get scrolled past. Posts built on one precise moment, quote, or story from the conversation get read.",
+     "steps": [
+      "For your next episode, find the single sharpest exchange or moment before you write anything",
+      "Write the post around that one moment — not the episode topic in general",
+      "Test: could this post exist without the episode? If yes, it's too generic — go more specific"
+     ]
+    },
+    "high": {
+     "headline": "LinkedIn is running on podcast fuel. Keep the pipeline tight.",
+     "text": "This is the model. Your podcast gives you the ideas; LinkedIn gets the output. The only risk is drifting toward generic — every post needs to be as concrete as the last.",
+     "steps": [
+      "Review your last 10 LinkedIn posts: how many are built on a specific moment vs. a general topic?",
+      "If any are drifting generic, trace it back — what moment from that episode got skipped?",
+      "Consider posting more than one thing per episode — most conversations have 3 to 5 posts in them"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_as_exploration_tool",
+   "name": "AI as Exploration Tool",
+   "questions": [
+    {
+     "id": "ai-role",
+     "text": "When you use AI in your content workflow, what role does it actually play?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't use AI in my content process",
+       "score": 1
+      },
+      {
+       "label": "I use it to write drafts and mostly publish what it gives me",
+       "score": 2
+      },
+      {
+       "label": "I use it to speed things up but rewrite significantly",
+       "score": 3
+      },
+      {
+       "label": "I use it to explore directions and options, then I decide what works",
+       "score": 4
+      },
+      {
+       "label": "AI gives me more versions to compare — I always make the final call",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "voice-control",
+     "text": "When AI helps you produce content, how much of the final piece sounds like you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Hard to say — it's a mix and I can't always tell",
+       "score": 1
+      },
+      {
+       "label": "Close to me, but something's usually off",
+       "score": 2
+      },
+      {
+       "label": "Most of it, after I edit enough",
+       "score": 3
+      },
+      {
+       "label": "Consistently mine — I use tools but stay in control of the voice",
+       "score": 4
+      },
+      {
+       "label": "Every piece is unmistakably mine — AI explores the options, I decide",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai-judgment",
+     "text": "How do you decide which AI-generated version of something to keep?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I pick whichever looks most polished",
+       "score": 1
+      },
+      {
+       "label": "I go with what feels right in the moment",
+       "score": 2
+      },
+      {
+       "label": "I compare options but don't have clear criteria",
+       "score": 3
+      },
+      {
+       "label": "I know my voice well enough to filter AI output against it",
+       "score": 4
+      },
+      {
+       "label": "I know what I'm testing, what worked, and why — AI is a direction machine, not a decision-maker",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "If AI is making the call, it's working instead of you — not for you.",
+     "text": "The point is more directions to explore, not a replacement for the judgment that makes your content yours. AI didn't make the creative decision for me in my best content work. It gave me more options to compare.",
+     "steps": [
+      "Next time you use AI for a post, generate 3 versions instead of 1 — then pick and rewrite the best yourself",
+      "Write down 3 things that define your voice before generating anything — use those as your filter",
+      "If the final piece doesn't sound like something you'd say out loud, it goes back in"
+     ]
+    },
+    "mid": {
+     "headline": "You're using AI as a tool, not a replacement. Keep the judgment with you.",
+     "text": "The difference between AI running your content and AI expanding your options is whether you're still in the decision seat. You're close — tighten the criteria you use to decide what stays.",
+     "steps": [
+      "Before your next AI session, write down what you're actually testing: tone, structure, length, angle",
+      "Compare versions with that test in mind — not just feel",
+      "Edit what you keep until it passes a simple test: would you say this in a real conversation?"
+     ]
+    },
+    "high": {
+     "headline": "AI is a direction machine for you — and that's exactly how it should work.",
+     "text": "You're exploring more ideas without giving up the call. More directions to compare, you decide what works, and everything stays yours. That's how good content compounds over time.",
+     "steps": [
+      "Document which AI-generated directions have worked best — patterns emerge over time",
+      "Apply the same exploration approach to older content: take an old post and run it through 3 new angles",
+      "Build a simple brief you hand to AI every session — same instructions, consistent output, you stay in control"
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_mental_game",
+   "name": "The Mental Game",
+   "questions": [
+    {
+     "id": "posting-friction",
+     "text": "When you sit down to turn a podcast moment into a LinkedIn post, what does it feel like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Heavy — I overthink every word and often don't publish",
+       "score": 1
+      },
+      {
+       "label": "Uncomfortable — there's pressure I haven't fully figured out",
+       "score": 2
+      },
+      {
+       "label": "Manageable — I push through but it takes more energy than it should",
+       "score": 3
+      },
+      {
+       "label": "Usually fine — I have a process that removes most of the friction",
+       "score": 4
+      },
+      {
+       "label": "Easy — I have the idea from the episode, write one clear thing, and post it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "performance-reaction",
+     "text": "When a post underperforms, what actually happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I take it personally and it slows me down for days",
+       "score": 1
+      },
+      {
+       "label": "I feel deflated and it takes me a while to bounce back",
+       "score": 2
+      },
+      {
+       "label": "I'm disappointed but move on within a day",
+       "score": 3
+      },
+      {
+       "label": "I treat it as data and keep posting",
+       "score": 4
+      },
+      {
+       "label": "Nothing changes — one post is one data point, not a verdict on the whole strategy",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "idea-clarity",
+     "text": "How clearly do you know what you're going to say before you start writing a post?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I usually start writing and hope it becomes clear",
+       "score": 1
+      },
+      {
+       "label": "I have a rough direction but it shifts completely as I write",
+       "score": 2
+      },
+      {
+       "label": "I have an idea but it takes a while to sharpen it",
+       "score": 3
+      },
+      {
+       "label": "I start with one clear idea and write toward that",
+       "score": 4
+      },
+      {
+       "label": "One episode moment equals one clear idea. I never start blank",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "What's draining you isn't content. It's pressure.",
+     "text": "Every post becomes a test. A judgement. A performance. That's what makes something simple feel heavy. The pressure comes from not having a process — so every post is treated like a statement. It's not burnout. It's friction.",
+     "steps": [
+      "Your next post: one clear idea from your last episode, written in under 20 minutes, posted without a second reread",
+      "Post something that's just true, not perfect — see what happens",
+      "Time how long it actually takes to write a post — the number is almost always smaller than the dread"
+     ]
+    },
+    "mid": {
+     "headline": "You're posting, but you're working harder than you need to.",
+     "text": "The friction isn't the writing. It's the decision about what to write. When your podcast gives you the idea, the post is already half-done. Use the episode as the brief — not the blank page.",
+     "steps": [
+      "Before you write anything, write one sentence: what's the one thing from this episode that surprised me or cleared something up?",
+      "Write the post about that. One thing. Done.",
+      "Stop rereading before you post — you're editing in circles at that point"
+     ]
+    },
+    "high": {
+     "headline": "You've got the mental game right. One idea, post it, move on.",
+     "text": "That's the whole formula. And it's rarer than it should be. The system works because you stopped treating every post as a performance and started treating it as one clear thing you noticed and wrote down.",
+     "steps": [
+      "Keep the cadence — the mental game compounds through consistency more than any individual post",
+      "If friction ever comes back, trace it: was the idea clear before you started writing?",
+      "Share the process openly — most people in your audience are still stuck in the overthinking loop"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly-content-volume",
+   "label": "Monthly content pieces your podcast should be generating",
+   "format": "integer",
+   "formula": "episodes_per_month * assets_per_episode",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these best describes where you are right now?",
+  "answers": [
+   {
+    "label": "I have episodes but barely repurpose them",
+    "tag": "recorded-not-repurposing"
+   },
+   {
+    "label": "I share podcast content but have no real system yet",
+    "tag": "ad-hoc-repurposer"
+   },
+   {
+    "label": "I'm building a repurposing workflow and want to stress-test it",
+    "tag": "active-builder"
+   },
+   {
+    "label": "I'm exploring podcasting as a LinkedIn content engine",
+    "tag": "content-first"
+   }
+  ]
+ }
+}
