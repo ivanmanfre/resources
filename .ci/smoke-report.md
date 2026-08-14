@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 4f0a253b7605f7facad5464619356597950c0df9 at 2026-08-13T17:55:04.718Z
+Deploy: d4a9020bb2c8b185d91b92e285e301a7720ea350 at 2026-08-14T01:21:39.794Z
 
-- nevada-pascolini-06-assessment: data.json HTTP 404
+- farhan-malik-1d-assessment: data.json HTTP 404
