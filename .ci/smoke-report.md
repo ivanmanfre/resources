@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: d4a9020bb2c8b185d91b92e285e301a7720ea350 at 2026-08-14T01:21:39.794Z
+Deploy: e0473712fd86945e85f51bfce4a7779aba2941b4 at 2026-08-14T06:13:16.633Z
 
-- farhan-malik-1d-assessment: data.json HTTP 404
+- marta-vakiv-b6-assessment: data.json HTTP 404
