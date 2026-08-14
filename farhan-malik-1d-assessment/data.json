@@ -1,7 +1,7 @@
 {
  "slug": "farhan-malik-1d-assessment",
  "title": "Creator-Led Growth Readiness Score",
- "subtitle": "Find out how ready your strategy, funnel, and tracking are to turn creator attention into pipeline.",
+ "subtitle": "Measures whether your distribution is building pipeline or a list of spectators.",
  "brand": {
   "accent": "#5B6470",
   "hero_badge": "Interactive Assessment"
@@ -9,116 +9,88 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "icp_and_audience_relevan",
-   "name": "ICP and Audience Relevance",
+   "id": "audience_and_icp_alignme",
+   "name": "Audience and ICP Alignment",
    "questions": [
     {
-     "id": "icp_and_audience_relevan_q1",
-     "text": "Before signing a creator deal, how do you verify their audience matches your buyers?",
+     "id": "q_icp_overlap",
+     "text": "When you look at who actually engages with your content or creator campaigns, how well do they match your target buyer?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We go by follower count and whether the content topic feels relevant.",
+       "label": "Most engagement comes from people with no buying intent — curious, but not buyers",
        "score": 1
       },
       {
-       "label": "We look at engagement rate and check the creator covers our category.",
+       "label": "Some buyers are in there but we are not tracking it consistently",
        "score": 2
       },
       {
-       "label": "We ask the creator for basic audience demographics before signing.",
+       "label": "We estimate 20 to 30 percent are ICP — gut feel, no hard data",
        "score": 3
       },
       {
-       "label": "We review past sponsored post comments and results for buyer signals before committing.",
+       "label": "We check engagement demographics against our ICP after each campaign",
        "score": 4
       },
       {
-       "label": "We require audience demographic data and at least one past campaign conversion rate before any budget is committed.",
+       "label": "More than half of engaged accounts match our ICP and we have data to back it",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "icp_and_audience_relevan_q2",
-     "text": "After a creator campaign, how do you evaluate the quality of the audience it attracted?",
+     "id": "q_creator_selection",
+     "text": "How do you decide which creators to partner with for a campaign?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We measure success by clicks and views — quality is hard to track.",
+       "label": "Follower count and general topic fit — biggest audience we can afford",
        "score": 1
       },
       {
-       "label": "We track signups but do not separate them by whether they match our ICP.",
+       "label": "Reach and engagement rates within our content category",
        "score": 2
       },
       {
-       "label": "We check whether signups fit our ICP criteria once the campaign ends.",
+       "label": "Audience demographics, but mostly gut feel on whether they fit our buyer",
        "score": 3
       },
       {
-       "label": "We compare creator-sourced signup-to-trial rates against our other acquisition channels.",
+       "label": "We filter for creators whose specific audience overlaps with our buyer profile before any conversation",
        "score": 4
       },
       {
-       "label": "We track creator-sourced signups all the way to paid conversion and compare ICP fit per creator partner.",
+       "label": "We require audience data before signing and score every creator against a written ICP brief",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "icp_and_audience_relevan_q3",
-     "text": "How specific is the audience targeting guidance you give creators in your brief?",
+     "id": "q_campaign_success_metric",
+     "text": "After a creator campaign ends, what is the first number you look at to call it a success or a miss?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We share what the product does and let the creator decide the angle.",
+       "label": "Views, impressions, or follower growth",
        "score": 1
       },
       {
-       "label": "We describe the industry and a few use cases we are targeting.",
+       "label": "Clicks and website traffic",
        "score": 2
       },
       {
-       "label": "We name the job title and company size of our ideal buyer.",
+       "label": "Total signups or trials generated",
        "score": 3
       },
       {
-       "label": "We describe the specific pain point our ideal buyer has and ask the creator to address it.",
+       "label": "Trial-to-paid conversion rate from that specific campaign",
        "score": 4
       },
       {
-       "label": "We give the creator a buyer brief with three concrete pain points, proof points, and the exact response we want the audience to have.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "icp_and_audience_relevan_q4",
-     "text": "How well do you understand the gap between your current audience and your actual ICP?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We assume most followers could eventually become customers.",
-       "score": 1
-      },
-      {
-       "label": "We know some followers are not buyers but have not measured how many.",
-       "score": 2
-      },
-      {
-       "label": "We have done a rough estimate — maybe half our audience realistically fits our ICP.",
-       "score": 3
-      },
-      {
-       "label": "We have segmented our audience and know approximately what percentage fits our ICP.",
-       "score": 4
-      },
-      {
-       "label": "We track ICP ratio across channels and actively cut campaigns that grow the wrong audience.",
+       "label": "Revenue attributed to the campaign with CAC tracked back to the individual creator",
        "score": 5
       }
      ],
@@ -127,423 +99,423 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You are buying reach, not buyers.",
-     "text": "Your campaigns are building a list of spectators. LinkedIn will keep showing your content to those same people, and your pipeline will keep underperforming. Follower count does not pay the bills. The right 200 do more work than the wrong 10,000.",
+     "headline": "Reach without the right buyers is just a bigger list of spectators.",
+     "text": "LinkedIn rewards you by showing your next post to more of whoever already engaged. If that group is not your buyer, more spend just reaches more spectators. A creator with 30K followers whose audience is 70 percent your ICP will outperform one with 200K followers who only loosely fit. The filter is what is missing, and no budget increase fixes that.",
      "steps": [
-      "Before your next creator deal, ask for audience demographics and a sample of comments from a past sponsored post.",
-      "Write a one-line ICP test: 'Would someone with [job title] at [company size] in [industry] pay for this?' Run every creator through it before signing.",
-      "After your next campaign, count how many signups match that ICP definition — not the total number of signups."
+      "Pull the last 90 days of campaign engagement and tag each account as ICP or not — be honest about the actual percentage",
+      "Write a one-page ICP brief before the next creator partnership: job title, company size, and the specific pain they search before they find you",
+      "Score every creator candidate against that brief and pass on any whose audience overlap is below 25 percent regardless of their reach"
      ]
     },
     "mid": {
-     "headline": "You know your ICP. Audience size is still pulling you off course.",
-     "text": "You understand the theory — relevance beats reach every time. But your creator selection still drifts toward bigger audiences when you should be filtering for tighter ones. That gap is showing up on the backend.",
+     "headline": "You are past vanity metrics. The selection filter still has gaps.",
+     "text": "You are tracking the right signals, which puts you ahead of most teams in this space. The gap is that creator selection still has gut feel in it. Micro-communities convert better than large audiences because the trust is already built inside them — but that only works when the ICP filter is applied every time, not just when you have bandwidth to check.",
      "steps": [
-      "Add an ICP match check to your creator vetting process before any budget is committed.",
-      "Give every creator a pain brief, not a product sheet — one page, three buyer pains, no product jargon.",
-      "Track ICP match rate on signups monthly, not just total signup volume."
+      "Break conversion rate by individual creator — find which audience types actually buy, not just click",
+      "Add one ICP-fit question to your creator vetting call: ask them to describe who their top 20 percent most engaged followers are",
+      "Set a hard threshold and stick to it: if less than 30 percent of a creator's audience matches your buyer profile, do not run regardless of reach"
      ]
     },
     "high": {
-     "headline": "Your targeting is tight. Now double down on what is working.",
-     "text": "You are consistently reaching the right people. The compounding effect of creator campaigns built around your ICP takes 3 to 6 months to show fully in your numbers. Stay consistent and track which creators are driving the highest-quality signups, not just the most.",
+     "headline": "You are thinking in pipelines, not follower counts.",
+     "text": "You have already skipped the failure mode that stalls most teams. The next move is making the process faster and repeatable so it runs at scale without losing the standard you have built. What you do intuitively needs to be written down before it becomes a bottleneck.",
      "steps": [
-      "Build a creator scorecard that ranks past partners by ICP match rate in signups, not click volume.",
-      "Brief your next creator with a specific buyer story pulled from a real customer — specificity in the brief shows up as specificity in the video.",
-      "Set a rolling 90-day baseline for creator-sourced ICP signups so you can spot early when quality dips."
+      "Turn your ICP-fit criteria into a one-page creator scorecard your team can run without you in the room",
+      "Test one niche channel this quarter — a Discord, Slack group, or industry newsletter — where your exact buyer already talks",
+      "Track revenue attribution by individual creator for every active deal and build a ranked list that informs future spend before intuition does"
      ]
     }
    }
   },
   {
-   "id": "funnel_and_activation_re",
-   "name": "Funnel and Activation Readiness",
+   "id": "outreach_and_campaign_cl",
+   "name": "Outreach and Campaign Clarity",
    "questions": [
     {
-     "id": "funnel_and_activation_re_q1",
-     "text": "What does your landing page look like for someone arriving from a creator video for the first time?",
+     "id": "q_outreach_clarity",
+     "text": "If a prospect opened your last outreach DM or cold email right now, how quickly would they know the specific problem you solve for them?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We send creator traffic to our homepage or product page, same as all other traffic.",
+       "label": "It would take a few back-and-forths — the first message is about starting a conversation",
        "score": 1
       },
       {
-       "label": "We have a landing page, but it is written for people who already know what we do.",
+       "label": "The problem is in there but buried in the second or third paragraph",
        "score": 2
       },
       {
-       "label": "We have a dedicated landing page for creator traffic but have not tested it with real cold visitors.",
+       "label": "It is in the first paragraph alongside some context about us",
        "score": 3
       },
       {
-       "label": "We have a tested landing page written for cold audiences, built from what creator traffic actually does on the page.",
+       "label": "The first two sentences name their problem and what we do about it",
        "score": 4
       },
       {
-       "label": "We have per-creator landing pages, each optimized based on that creator's audience and post-click behavior data.",
+       "label": "The subject line or opening line calls out their exact situation — they know within five seconds",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "funnel_and_activation_re_q2",
-     "text": "How much friction does your free trial or signup process add for a cold visitor coming from creator content?",
+     "id": "q_campaign_brief_quality",
+     "text": "How specific is your creator campaign brief about what action you want the audience to take?",
      "max_score": 5,
      "answers": [
       {
-       "label": "More than 6 fields, and we ask for a credit card before the trial starts.",
+       "label": "The brief is mainly about brand vibe, tone, and authentic integration",
        "score": 1
       },
       {
-       "label": "4 to 6 fields, no card required.",
+       "label": "We have a general CTA but leave the details to the creator",
        "score": 2
       },
       {
-       "label": "3 fields — name, email, password — no card.",
+       "label": "We specify the CTA but not the exact offer, pain point, or hook",
        "score": 3
       },
       {
-       "label": "Email only at signup; we collect more information after they have activated.",
+       "label": "We brief the specific offer, the exact CTA, and the audience pain to address",
        "score": 4
       },
       {
-       "label": "Single-click or SSO signup with a guided activation path built in from the first screen.",
+       "label": "We script the trust handoff from creator to product, review drafts before publish, and require a single clear action from the audience",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "funnel_and_activation_re_q3",
-     "text": "Once someone signs up from a creator campaign, what does their first 48 hours look like?",
+     "id": "q_underperform_response",
+     "text": "When a creator campaign underperforms, what is the first thing you change?",
      "max_score": 5,
      "answers": [
       {
-       "label": "They get a generic welcome email and access to the product — the rest is up to them.",
+       "label": "Increase the budget or add more creators to recover the volume",
        "score": 1
       },
       {
-       "label": "They receive our standard onboarding sequence, same as all other signups.",
+       "label": "Try different creators or shift to a different channel",
        "score": 2
       },
       {
-       "label": "They get onboarding content that references the pain point the creator covered.",
+       "label": "Rewrite the creative or test a different hook",
        "score": 3
       },
       {
-       "label": "They enter a creator-specific onboarding flow designed to get them to a defined activation milestone within 48 hours.",
+       "label": "Audit each funnel step to find exactly where the drop-off happened",
        "score": 4
       },
       {
-       "label": "We have a defined activation event, a measured time-to-activation target, and a tested sequence that drives creator-sourced users there specifically.",
+       "label": "Check the trust handoff first — did the creator's audience have a clear reason to act, or did we arrive as a stranger to them?",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "activation_rate",
+     "id": "outreach_hours_per_week",
      "type": "number",
-     "text": "What percentage of people who sign up from creator campaigns reach your product's activation milestone?",
-     "hint": "Your activation milestone is the first moment the product clicks for a user — first report created, first workflow built, first integration synced. Enter 0 if you do not track this yet.",
-     "suffix": "%",
-     "min": 0,
-     "max": 100,
-     "step": 1,
-     "default": 20,
-     "normalize_formula": "x"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "More creator budget will make the leak more expensive.",
-     "text": "A creator sent 400,000 people to a product I worked with. Under 2% reached the signup screen. The video performed perfectly. The funnel did not. Scale creator spend before fixing the landing page and trial flow and you are paying to find out how expensive the leak really is.",
-     "steps": [
-      "Send a cold colleague to your landing page without context and ask them to explain what you do in 30 seconds. If they cannot, rewrite the headline.",
-      "Count every field on your signup form. Remove anything you do not need in the first 24 hours of a trial.",
-      "Define your activation milestone — the one event that means a user actually gets it. Build onboarding to deliver that event in the first 48 hours."
-     ]
-    },
-    "mid": {
-     "headline": "Your funnel works for warm traffic. Creator traffic is colder.",
-     "text": "Creator traffic arrives with zero brand awareness. They trust the creator, not you. A landing page built for your SEO or referral visitors will lose most of what the creator paid to send you. Build a cold-audience version of the page before scaling spend.",
-     "steps": [
-      "Build one creator-specific landing page variant that assumes zero prior awareness — no product jargon, just the problem and the outcome.",
-      "Add an onboarding step at signup that ties back to the specific pain point the creator covered.",
-      "Set up a 7-day activation sequence for creator-sourced signups, tracked separately from your main cohorts."
-     ]
-    },
-    "high": {
-     "headline": "Your funnel is ready. Now optimize per creator.",
-     "text": "You have the fundamentals in place — landing page, low-friction signup, activation path. The next lever is per-creator optimization. Different creators send different buyer types, and your funnel should meet each of them differently.",
-     "steps": [
-      "A/B test landing page messaging for your top two creator partners and measure activation rate by variant.",
-      "Track time-to-activation separately for creator-sourced users versus other acquisition channels.",
-      "Build a creator-specific activation event in your analytics — the standard activated flag may not match the use case the creator's audience is coming in for."
-     ]
-    }
-   }
-  },
-  {
-   "id": "creator_brief_and_outrea",
-   "name": "Creator Brief and Outreach Quality",
-   "questions": [
-    {
-     "id": "creator_brief_and_outrea_q1",
-     "text": "What do the first two lines of your creator outreach message actually say?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "A warm intro and a mention that we think they would be a great fit to collaborate.",
-       "score": 1
-      },
-      {
-       "label": "An overview of our product and why we think their audience would find it interesting.",
-       "score": 2
-      },
-      {
-       "label": "A specific pain point their audience has and how our product addresses it.",
-       "score": 3
-      },
-      {
-       "label": "The exact problem we solve, why their audience specifically fits, and what we are offering them.",
-       "score": 4
-      },
-      {
-       "label": "A two-line hook that answers — what problem we solve, why this audience specifically, and what is in it for them — before we say a word about ourselves.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "creator_brief_and_outrea_q2",
-     "text": "What does your campaign brief tell the creator about the outcome you are optimizing for?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We describe the product and let the creator choose the angle.",
-       "score": 1
-      },
-      {
-       "label": "We share key messages and suggest a content format.",
-       "score": 2
-      },
-      {
-       "label": "We define the call to action and the specific step we want viewers to take.",
-       "score": 3
-      },
-      {
-       "label": "We define the CTA, the buyer pain we want addressed, and the trust-transfer moment the creator needs to build.",
-       "score": 4
-      },
-      {
-       "label": "We brief the creator on the exact conversion event we are optimizing for, the ICP pain to surface, and the landing page they are sending traffic to — with metrics from past campaigns to set expectations.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "creator_brief_and_outrea_q3",
-     "text": "When a creator campaign underperforms, what do you do next?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We assume the creator's audience was not the right fit and look for a different creator.",
-       "score": 1
-      },
-      {
-       "label": "We review the creative and check how the video performed on the creator's own channel.",
-       "score": 2
-      },
-      {
-       "label": "We check the click-through rate and compare it to our benchmarks.",
-       "score": 3
-      },
-      {
-       "label": "We trace the underperformance to a specific step — click, signup, activation, or conversion — and fix that step.",
-       "score": 4
-      },
-      {
-       "label": "We run a structured post-campaign breakdown that separates creator performance from funnel performance, and carries the findings directly into the next brief.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "creator_brief_and_outrea_q4",
-     "text": "How do you ensure the creator's audience trust carries through to your product?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We rely on the creator's endorsement to do the heavy lifting.",
-       "score": 1
-      },
-      {
-       "label": "We make sure the creator mentions they have actually used the product.",
-       "score": 2
-      },
-      {
-       "label": "We give the creator a real use case or customer outcome to reference.",
-       "score": 3
-      },
-      {
-       "label": "We co-create the narrative — the creator speaks to the pain in their own words, not ours.",
-       "score": 4
-      },
-      {
-       "label": "The campaign is built around the creator's authentic story with the product — the trust transfer is earned through their real experience, not a scripted plug.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "Vague briefs produce vague results.",
-     "text": "If your outreach opens with 'I think we would be a great fit to collaborate' and your brief is a product overview, your conversion rate is showing it. The creator's audience trusts the creator, not you. The brief is where you earn the right to borrow that trust.",
-     "steps": [
-      "Rewrite your outreach so the first sentence names the specific pain you solve for their audience — not what your product does.",
-      "Replace your product-feature brief with a buyer-pain brief: three problems your customers come to you with, in plain language.",
-      "Ask the creator to share one question their audience has about your category. Use it to sharpen the video angle."
-     ]
-    },
-    "mid": {
-     "headline": "Your briefs drive clicks. Now build for conversion.",
-     "text": "You have moved past the generic 'let us collaborate' stage. Your creators understand what you need. The gap is what happens after the click. The brief needs to set up the landing page, not just the video.",
-     "steps": [
-      "Make sure your brief specifies the exact CTA and the landing page URL the creator sends traffic to.",
-      "Add a trust-transfer requirement: the creator must describe a specific outcome a real user got, not just what the product does.",
-      "After each campaign, review the comments for questions the audience asked — those are your next landing page headline tests."
-     ]
-    },
-    "high": {
-     "headline": "Your brief quality is a real edge. Now make it repeatable.",
-     "text": "You are running campaigns with the clarity most teams do not build until year two. The risk now is that process living in someone's head instead of becoming a scalable asset.",
-     "steps": [
-      "Templatize your brief into a one-page format that anyone on your team can fill in before a creator call.",
-      "Build a brief library organized by ICP pain point so your third campaign brief starts where your second one ended.",
-      "Add a post-campaign brief debrief: what worked in the angle, what the audience responded to, what goes directly into the next brief."
-     ]
-    }
-   }
-  },
-  {
-   "id": "conversion_tracking_and_",
-   "name": "Conversion Tracking and Measurement",
-   "questions": [
-    {
-     "id": "conversion_tracking_and__q1",
-     "text": "What metrics do you include when reporting on a creator campaign internally?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Views, impressions, and follower growth from the campaign period.",
-       "score": 1
-      },
-      {
-       "label": "Clicks and cost per click.",
-       "score": 2
-      },
-      {
-       "label": "Signups and cost per signup.",
-       "score": 3
-      },
-      {
-       "label": "Signups, activation rate, and trial-to-paid conversion from creator-sourced traffic.",
-       "score": 4
-      },
-      {
-       "label": "Revenue attributed to each creator, with CAC and LTV tracked per source.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "conversion_tracking_and__q2",
-     "text": "How do you handle a creator campaign that drives strong engagement but no pipeline?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We do not pause it — high engagement usually means the campaign is working.",
-       "score": 1
-      },
-      {
-       "label": "We have done it once or twice but it is not a standard part of our process.",
-       "score": 2
-      },
-      {
-       "label": "We pause when the gap between engagement and signups becomes obvious.",
-       "score": 3
-      },
-      {
-       "label": "If engagement does not correlate with signups within two weeks, we pause and reallocate budget.",
-       "score": 4
-      },
-      {
-       "label": "Every campaign has a pipeline target. Anything not tracking to it within a defined window gets cut.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "manual_reporting_hours",
-     "type": "number",
-     "text": "How many hours per week does your team spend manually pulling and formatting creator campaign reports?",
-     "hint": "Include spreadsheet prep, screenshot collection, writing update emails, and manual data pulls from ad platforms or creator dashboards. Scoring: each hour per week costs 5 points; 20 or more hours per week scores 0.",
+     "text": "How many hours per week does your team currently spend on manual outreach — writing DMs, emails, and follow-ups by hand?",
+     "hint": "Count time spent writing, personalizing, and sending. Do not count time inside tools that automate those tasks.",
      "suffix": "hours/week",
      "min": 0,
      "max": 40,
      "step": 1,
      "default": 5,
-     "normalize_formula": "x === 0 ? 100 : Math.max(0, 100 - (x * 5))"
-    },
-    {
-     "id": "monthly_creator_spend",
-     "type": "number",
-     "text": "What is your average monthly creator campaign budget?",
-     "hint": "Total paid to creators plus any paid amplification or production costs, monthly average. $10,000 per month is used as the upper benchmark for investment scale in this score.",
-     "suffix": "USD/month",
-     "min": 0,
-     "max": 50000,
-     "step": 100,
-     "default": 2000,
-     "normalize_formula": "x > 0 ? Math.min(100, x / 100) : 0"
+     "normalize_formula": "Math.max(0, 100 - x * 5)"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "You are reading the wrong scoreboard.",
-     "text": "Impressions, clicks, and follower growth feel like progress. The only metric that proves a creator campaign worked is revenue traced back to it. Everything else is the dashboard — useful to look at, useless to act on.",
+     "headline": "Vague pitches go straight to archive. No one buys from a fog machine.",
+     "text": "If your first message cannot answer in the first two lines what problem you solve for this specific person, why you and not the next option, and what is in it for them concretely, you are filling inboxes. The same goes for creator briefs: if the brief is all collaboration and no concrete value, your conversion rate will show it. Clarity and proof and relevance — that is the whole job.",
      "steps": [
-      "Set up UTM parameters for every creator campaign so you can trace signups and conversions back to each source.",
-      "Define three metrics that actually matter — signups, activation rate, trial-to-paid — and report only those after every campaign.",
-      "Remove CPM and impressions from your campaign reports. Replace them with cost per activated trial and cost per paid conversion."
+      "Rewrite your current outreach template so the first two sentences answer: what problem, why you, what they get — then delete everything before those two sentences",
+      "Add a so-what test to every campaign brief before it goes to the creator: if you cannot state the audience's specific pain in one sentence, the brief is not ready",
+      "Pull the last 10 outreach messages you sent and count how many named a specific problem in the opening line — use that number as your baseline"
      ]
     },
     "mid": {
-     "headline": "You are tracking conversions. You are missing the full path.",
-     "text": "You have moved past vanity metrics — you are watching signups and trial starts. The next layer is activation and paid conversion per creator. A creator that drives 500 signups at 5% trial-to-paid beats one that drives 1,000 at 1%.",
+     "headline": "The structure is right. The specificity still needs work.",
+     "text": "You have clarity in the brief but the details are still general enough that the right person does not fully recognize themselves. Relevance is about how precisely you describe their situation. A broad descriptor like 'growing AI companies' is not a problem statement. The exact role, the specific trigger, and the concrete cost — that is what gets a reply.",
      "steps": [
-      "Add activation rate as a standard metric in your post-campaign report, broken out by creator source.",
-      "Calculate cost per paid conversion per creator — not just cost per signup.",
-      "Set a minimum trial-to-paid conversion benchmark that any creator campaign must hit to earn a renewal."
+      "Replace any descriptor like 'growing brands' or 'AI companies' in your outreach with the exact role, company size, and buying trigger you are responding to",
+      "Add one concrete proof point to your opening — a result, a number, or a direct reference to something specific about them or their business",
+      "Build a brief template that requires the creator to name one specific audience pain before any copy is written — make it a required field, not a suggestion"
      ]
     },
     "high": {
-     "headline": "You are measuring what matters. Now build the feedback loop.",
-     "text": "You are tracking the right numbers. The advantage now is speed — using those numbers to feed back into your briefs, landing pages, and creator selection faster than your competitors do.",
+     "headline": "You lead with clarity. Now build the process so it scales.",
+     "text": "Most teams spend months on campaigns that never name the problem. You have already skipped that. The next step is turning what you do well into something repeatable that runs at higher volume without losing the specificity that makes it work.",
      "steps": [
-      "Build a creator scorecard that ranks partners by trial-to-paid rate, not views or subscriber count.",
-      "Run a monthly review where campaign data directly informs the next round of briefs.",
-      "Use your highest-converting campaigns as the template for all new partner briefs — the proof is already in the numbers."
+      "Document your current briefing format as a reusable template your team can own and run without you in the room",
+      "Build a swipe file of your highest-converting outreach openings so the pattern is teachable to the next person who writes one",
+      "Test one brief variation where you give the creator a specific audience pain line to open with — track whether it moves the click-to-signup rate and keep the winner"
+     ]
+    }
+   }
+  },
+  {
+   "id": "funnel_and_activation_he",
+   "name": "Funnel and Activation Health",
+   "questions": [
+    {
+     "id": "q_landing_page_fit",
+     "text": "What does your landing page assume about a visitor arriving from a creator's video or post?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The same as any other visitor — one page, same message for everyone",
+       "score": 1
+      },
+      {
+       "label": "We have a generic intro paragraph explaining what we do",
+       "score": 2
+      },
+      {
+       "label": "We acknowledge creator traffic but the rest of the page is untailored",
+       "score": 3
+      },
+      {
+       "label": "We have a creator-specific page that opens with the audience's pain, not our product features",
+       "score": 4
+      },
+      {
+       "label": "We test creator-specific pages per campaign and iterate based on what that audience already heard from the creator",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q_activation_moment",
+     "text": "After someone signs up for your trial, how quickly do they reach the first moment where your product actually makes sense to them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not mapped this — they explore on their own after signup",
+       "score": 1
+      },
+      {
+       "label": "Most users need multiple sessions before they understand what the product does for them",
+       "score": 2
+      },
+      {
+       "label": "We have onboarding emails but we are not sure how many users actually reach the key moment",
+       "score": 3
+      },
+      {
+       "label": "We have an activation flow built around one specific moment and we track whether users hit it",
+       "score": 4
+      },
+      {
+       "label": "We know the exact action that predicts retention and we build the first session around reaching it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q_funnel_leak_response",
+     "text": "A creator video sends 5,000 visitors to your site and under 2 percent complete signup. What do you do first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Find a bigger creator to recover the volume",
+       "score": 1
+      },
+      {
+       "label": "Rebrief the creator with a different hook or creative angle",
+       "score": 2
+      },
+      {
+       "label": "Cut signup form fields and retest the flow",
+       "score": 3
+      },
+      {
+       "label": "Map the drop-off across all four stages: click rate, landing page conversion, signup completion, first activation",
+       "score": 4
+      },
+      {
+       "label": "Fix the funnel before buying more traffic — the same budget through a fixed conversion beats more spend into the same leak",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "creator_conversion_pct",
+     "type": "number",
+     "text": "What percentage of trial signups from creator campaigns convert to paid within 30 days?",
+     "hint": "If you track this separately from other traffic sources, use that number. Otherwise use your overall trial-to-paid rate as an estimate.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.min(100, x * 4)"
+    },
+    {
+     "id": "monthly_creator_budget",
+     "type": "number",
+     "text": "What is your current monthly spend on creator campaigns and paid distribution combined? (USD)",
+     "hint": "Include creator fees, ad spend, and any paid amplification of creator content.",
+     "suffix": "USD/month",
+     "min": 0,
+     "max": 100000,
+     "step": 100,
+     "default": 2000,
+     "normalize_formula": "x >= 5000 ? 80 : x >= 1000 ? 60 : x > 0 ? 40 : 20"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "More traffic will not fix a leaky funnel. It makes the leak more expensive.",
+     "text": "Across 100-plus paid creator campaigns, the drop-off happens in the same four places every time: the trust handoff from creator to product, a landing page written for people who already know what you do, signup friction, and the gap between signing up and the moment the product actually clicks. Buying more attention before addressing these is how CAC climbs with nothing to show for it. The team that fixed their landing page and trial flow first got 80 percent of video visitors into the paid plan on the same budget.",
+     "steps": [
+      "Map your funnel as four stages and find where the biggest drop is: click rate from creator content, landing page to signup start, signup completion, signup to first activation",
+      "Rewrite your landing page assuming the visitor knows nothing about your product beyond what the creator said in their video",
+      "Count the fields in your signup form and remove every one that is not required to reach the first value moment — every field costs you conversions"
+     ]
+    },
+    "mid": {
+     "headline": "You are tracking the funnel. Close the gaps you already know about.",
+     "text": "You are past the stage of ignoring conversion data, which is the first real step most teams skip. The next move is getting specific about the activation moment. A churned trial is a worse outcome than no trial — it burns the creator's trust with their own audience and makes the next campaign harder to pitch.",
+     "steps": [
+      "Define your activation event: the one action that, if taken in the first session, predicts the user stays past day 7",
+      "Build a sequence that moves new signups toward that action immediately — a specific instruction, not a welcome email",
+      "Track activation rate by traffic source and compare creator traffic to direct — the gap tells you exactly how warm your creator trust handoff really is"
+     ]
+    },
+    "high": {
+     "headline": "Your funnel works. Stress-test it at higher volume.",
+     "text": "You have done what most teams avoid: fixed the leak before buying more attention. The question at this stage is whether the funnel holds when campaign volume doubles. Activation flows break at scale in ways they do not at low volume, and the best time to find that ceiling is before you commit to a larger spend.",
+     "steps": [
+      "Run a higher-volume campaign and check whether the trial-to-paid rate holds or drops — find the ceiling before assuming it does not exist",
+      "Build a creator-specific onboarding path that references the exact pain the creator named in their content — the trust they built compounds when the product experience continues it",
+      "Set a monthly funnel audit: flag any stage that drops more than five points month over month and investigate before increasing spend"
+     ]
+    }
+   }
+  },
+  {
+   "id": "retention_and_revenue_mo",
+   "name": "Retention and Revenue Model",
+   "questions": [
+    {
+     "id": "q_follow_up_cadence",
+     "text": "How often do you reach back out to past customers or churned trials with something genuinely relevant to them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — we are focused on new acquisition and barely touch the existing list",
+       "score": 1
+      },
+      {
+       "label": "We send a re-engagement email when we remember or when something new launches",
+       "score": 2
+      },
+      {
+       "label": "We have an automated win-back sequence but have not checked whether the content is still relevant",
+       "score": 3
+      },
+      {
+       "label": "We track why trials churned and follow up within 30 days with something specific to their reason for leaving",
+       "score": 4
+      },
+      {
+       "label": "We run a full lifecycle: a check-in at day 30, a follow-up at day 90, and product tips tied to their actual use case",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q_monetization_engine",
+     "text": "How would you describe your monetization engine right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are still figuring out where most of our revenue comes from",
+       "score": 1
+      },
+      {
+       "label": "We have one primary stream but it is not consistent or predictable",
+       "score": 2
+      },
+      {
+       "label": "We have a primary stream that works and one or two others we are testing",
+       "score": 3
+      },
+      {
+       "label": "We have a ranked set of streams — we know which converts best for our specific audience",
+       "score": 4
+      },
+      {
+       "label": "We have a defined primary engine plus supporting streams, each matched to what our audience naturally buys next",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q_owned_distribution",
+     "text": "If your main creator or paid distribution channel stopped working tomorrow, how much of your audience could you still reach directly?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very little — almost all traffic depends on paid or creator-driven sources",
+       "score": 1
+      },
+      {
+       "label": "We have a small email list but it is cold and we have not emailed them in months",
+       "score": 2
+      },
+      {
+       "label": "We have a list we could activate but it would take a few weeks to re-engage them",
+       "score": 3
+      },
+      {
+       "label": "We have a warm list we could send something to this week and get replies",
+       "score": 4
+      },
+      {
+       "label": "Owned channels are our first distribution layer — creator and paid sources amplify what already converts",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You have a follow-up problem, not a lead-gen problem.",
+     "text": "Most businesses keep collecting customer data and then do nothing with it. The people who already bought, or started a trial and left, already fit your ICP, have heard of you, and had a reason to try. Small, consistent contact is how you stay in their memory: a birthday message, a post-purchase tip, a check-in six months later. One saved date, one written template, one automated send. The brands people come back to are the ones that kept showing up with something relevant.",
+     "steps": [
+      "Pull your churned trial list from the last 6 months and count how many you have followed up with something specific to why they left — not a discount, something that addresses the actual gap",
+      "Set up one automated post-trial sequence: a check-in at day 7, a resource tied to their use case at day 30, and a follow-up at day 90 with a new feature or relevant result",
+      "Pick one owned channel — email, community, or newsletter — and commit to a monthly send before adding any new acquisition spend"
+     ]
+    },
+    "mid": {
+     "headline": "You are touching the right channels. The depth is still missing.",
+     "text": "You have built the infrastructure. The gap is relevance. Generic re-engagement emails get the same response as generic cold outreach. Every touchpoint needs to be tied to something specific about that person's situation — what they tried, what they did not finish, or what they purchased six months ago. That specificity is the difference between a brand that feels present and one that feels like spam.",
+     "steps": [
+      "Segment your list by product behavior — what they activated and where they churned — and build separate sequences for each segment rather than one message for everyone",
+      "Add one behavioral trigger to your win-back flow: if a churned user visits your pricing page again, follow up within 24 hours with something specific to where they dropped off",
+      "Map your monetization streams by conversion rate and put more behind the one that closes fastest for your actual audience type — the business model wins every time"
+     ]
+    },
+    "high": {
+     "headline": "You have built the engine most teams are still trying to describe.",
+     "text": "Owned distribution, a ranked monetization model, and a lifecycle that does not depend on what the algorithm decides tomorrow. The next phase is using what retention data tells you about your best customers to sharpen how you acquire, not just how you keep.",
+     "steps": [
+      "Feed your best-retained customer profiles back into your creator selection criteria — the audience that activates and stays is the audience worth paying to reach",
+      "Build one referral or community mechanism that turns your retained customers into a distribution channel on their own",
+      "Review your monetization stack against your top 20 percent of customers and ask: what is their next natural buy that you are not currently offering?"
      ]
     }
    }
@@ -566,36 +538,40 @@
  },
  "computed_outputs": [
   {
-   "id": "annual_reporting_hours",
-   "label": "Annual hours lost to manual campaign reporting",
+   "id": "annual_manual_outreach_hours",
+   "label": "Annual hours spent on manual outreach",
    "format": "hours_per_period",
-   "formula": "manual_reporting_hours * 52",
+   "formula": "outreach_hours_per_week * 52",
    "show_in_result": true
   },
   {
-   "id": "budget_not_reaching_activation",
-   "label": "Monthly creator budget reaching users who never activate",
+   "id": "monthly_budget_not_converting",
+   "label": "Monthly budget not converting to paid",
    "format": "currency_per_period",
-   "formula": "monthly_creator_spend * (1 - activation_rate / 100)",
+   "formula": "monthly_creator_budget * (1 - creator_conversion_pct / 100)",
    "show_in_result": true
   }
  ],
  "schema_version": "v2",
  "persona_selector": {
   "id": "role",
-  "text": "What is your role in creator-led growth right now?",
+  "text": "Which best describes your current situation?",
   "answers": [
    {
-    "label": "Founder or CEO running creator campaigns alongside everything else",
+    "label": "Founder running creator campaigns in-house",
     "tag": "founder"
    },
    {
-    "label": "Marketing or growth lead managing creator partnerships",
-    "tag": "marketing-lead"
+    "label": "Growth or marketing lead at an AI or SaaS company",
+    "tag": "growth_lead"
    },
    {
-    "label": "We have not launched creator campaigns yet — evaluating whether it is the right channel",
-    "tag": "early-stage"
+    "label": "Creator building your own product or monetization engine",
+    "tag": "creator"
+   },
+   {
+    "label": "Agency running creator campaigns for clients",
+    "tag": "agency"
    }
   ]
  }
