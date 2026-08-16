@@ -1,0 +1,37 @@
+{
+  "_comment": "Per-client PERSONA OVERRIDE for an assessment-engine LM clone. Merge these keys over the cloned tool's data.json. Its ONLY job is to make it structurally impossible for the tool to greet as the operator ('Hey, I'm Ivan.'). Engine fallback is 'Hey, I'm Ivan.' (see phase0-grounding 0.7) — these keys MUST be present or the clone ships the operator's identity. The generator writes this for operator review; the LM tool clone itself is NOT built by this generator (out of v1 scope).",
+  "title": "{{OPERATOR_FILL_lm_title}}",
+  "subtitle": "{{OPERATOR_FILL_lm_subtitle}}",
+  "intro": {
+    "greeting": "Hey, I'm Davorin.",
+    "no_avatar": true,
+    "avatar": null,
+    "avatar_alt": "Davorin Šmit, founder of ARCH"
+  },
+  "brand": {
+    "accent": "#3562FF",
+    "hero_badge": "ARCH"
+  },
+  "cta": {
+    "headline": "{{OPERATOR_FILL_cta_headline}}",
+    "description": "{{OPERATOR_FILL_cta_description}}",
+    "button": "Book a call with Davorin",
+    "url": ""
+  },
+  "capture_gate": {
+    "enabled": true,
+    "headline": "{{OPERATOR_FILL_capture_headline}}",
+    "subhead": "See your full breakdown. Enter your email and it's yours.",
+    "button": "Show my results"
+  },
+  "start_screen": {
+    "eyebrow": "ARCH",
+    "headline": "{{OPERATOR_FILL_lm_title}}",
+    "subhead": "{{OPERATOR_FILL_lm_subtitle}}",
+    "button": "Start"
+  },
+  "persona_selector": {
+    "enabled": false,
+    "_note": "Single-author tool: the author is always Davorin Šmit. Never expose the operator persona."
+  }
+}

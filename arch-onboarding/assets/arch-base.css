@@ -1,0 +1,87 @@
+/* ARCH base kit — generated from ARCH-BRAND-TOKENS.json (book p4/p6). Do not invent values. */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: block;
+  src: url('fonts/dm-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: block;
+  src: url('fonts/dm-sans-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  /* palette — book p4, the ONLY seven */
+  --arch-navy: #000F41;
+  --arch-blue: #3562FF;
+  --arch-yellow: #F2FF82;
+  --arch-white: #FFFFFF;
+  --arch-light-gray: #EDEDED;
+  --arch-gray: #666666;
+  --arch-near-black: #101010;
+
+  /* type — book p6 weights */
+  --arch-font: 'DM Sans', sans-serif;
+  --w-extralight: 200;
+  --w-regular: 400;
+  --w-semibold: 600;
+  --w-extrabold: 800;
+
+  /* register — arch.agency (guidance, not law) */
+  --r-card-outer: 35px;
+  --r-card-inner: 25px;
+  --r-pill: 999px;
+  --hairline: 1px solid var(--arch-navy);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { font-family: var(--arch-font); }
+
+/* headline grammar — caps display (book p7/p13) */
+.arch-display {
+  font-weight: var(--w-semibold);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+.arch-label {
+  font-weight: var(--w-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.arch-body { font-weight: var(--w-regular); line-height: 1.35; }
+
+/* wordmark: ALWAYS the extracted master via <img class="arch-wordmark" src=".../arch-wordmark-<color>.svg">.
+   NEVER text, NEVER a font. Clearspace >= 0.75 cap-height => padding via margin on the img. */
+img.arch-wordmark { display: block; height: auto; }
+
+/* pill buttons/chips — book p10 (web/doc surfaces; NOT containers on carousel slides) */
+.arch-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--r-pill);
+  font-weight: var(--w-semibold); text-transform: uppercase;
+  padding: 0.9em 2em;
+}
+.arch-pill--yellow { background: var(--arch-yellow); color: var(--arch-navy); }
+.arch-pill--navy   { background: var(--arch-navy);   color: var(--arch-yellow); }
+.arch-pill--blue   { background: var(--arch-blue);   color: var(--arch-white); }
+
+/* noise texture — book p5, dark surfaces only, subtle */
+.arch-noise { position: relative; }
+.arch-noise::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='7'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035; mix-blend-mode: screen;
+}
+
+/* hairline outline boxes on yellow field — book p13 register */
+.arch-outline-box {
+  border: var(--hairline);
+  border-radius: var(--r-card-inner);
+}
