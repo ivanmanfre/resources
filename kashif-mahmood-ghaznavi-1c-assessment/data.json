@@ -1,0 +1,559 @@
+{
+ "slug": "kashif-mahmood-ghaznavi-1c-assessment",
+ "title": "The Business Transformation Readiness Score",
+ "subtitle": "Measures how ready your organisation is to move through uncertainty and build for the next stage, assessed across mindset, relationships, strategy, and operations.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "founder_mindset_and_resi",
+   "name": "Founder Mindset and Resilience",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "When an opportunity you prepared for doesn't go anywhere, how do you typically respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I lose momentum for weeks and need real time to recover",
+       "score": 1
+      },
+      {
+       "label": "I take a break, then restart, but it slows me down noticeably",
+       "score": 2
+      },
+      {
+       "label": "I review what happened, adjust, and move to the next conversation within a week",
+       "score": 3
+      },
+      {
+       "label": "I treat it as useful data, note the lesson, and shift focus immediately",
+       "score": 4
+      },
+      {
+       "label": "I pick up straight away. I have learned that the next YES is usually close behind the last NO",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "When you hit a knowledge gap while delivering work for a client, what do you do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I worry it will damage the relationship and sometimes delay saying anything",
+       "score": 1
+      },
+      {
+       "label": "I acknowledge it but struggle to address it quickly enough",
+       "score": 2
+      },
+      {
+       "label": "I bring in outside help, though it slows the delivery",
+       "score": 3
+      },
+      {
+       "label": "I learn what is needed and deliver, even if it means extra hours",
+       "score": 4
+      },
+      {
+       "label": "I treat it as a normal part of growth and handle it without breaking the client's trust or my own momentum",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "How does your drive to work hold up during stretches when no new opportunities are coming in?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It drops significantly. I find it hard to stay focused",
+       "score": 1
+      },
+      {
+       "label": "I stay busy, but doubt creeps in faster than I would like",
+       "score": 2
+      },
+      {
+       "label": "I refocus on existing clients and internal improvement",
+       "score": 3
+      },
+      {
+       "label": "I treat the quiet period as preparation time and use it deliberately",
+       "score": 4
+      },
+      {
+       "label": "My output stays at full intensity regardless. Tomorrow has expenses attached to it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The foundation is still being built.",
+     "text": "Every founder who has built something real has been exactly where you are. The nights that feel uncertain are doing more for your business than you can see right now. The work is not just to survive. It is to build the resilience that will carry you through every stage ahead.",
+     "steps": [
+      "Find one person who has navigated a similar path and have a genuine conversation with them this month",
+      "Keep a short weekly record of what you resolved this week that you did not know how to handle last month. Evidence of progress compounds",
+      "After every failed opportunity, write one sentence on what the NO was telling you and what you would adjust next time"
+     ]
+    },
+    "mid": {
+     "headline": "The mindset is developing. Now make it deliberate.",
+     "text": "You are recovering from setbacks and continuing to move. The next step is turning that instinct into a system. Resilience stops being luck when it becomes a practice.",
+     "steps": [
+      "After every failed opportunity, write one sentence on what you would do differently and put it somewhere you will see it before the next pitch",
+      "Start treating your working hours as non-negotiable, even before the pipeline is full",
+      "Identify the one belief about your business that still wavers when things get hard and actively build the evidence that challenges it"
+     ]
+    },
+    "high": {
+     "headline": "You have the founder's core quality: you keep going.",
+     "text": "This is what separates businesses that survive their early years from those that do not. Small was a stage. You moved through it. Now the question is whether the systems around you can match the resilience inside you.",
+     "steps": [
+      "Document your own story. Not for marketing, but so your team understands why this business exists and what it has already overcome",
+      "Start paying the resilience forward. The founder who reaches out to you this month deserves the same answer you once needed",
+      "Use your hard-won clarity to build processes that protect your team from the uncertainty you once carried alone"
+     ]
+    }
+   }
+  },
+  {
+   "id": "relationship_capital",
+   "name": "Relationship Capital",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "When someone gives you an early opportunity, a referral, an introduction, or a first project, how do you treat it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "As a business transaction I need to complete well",
+       "score": 1
+      },
+      {
+       "label": "With appreciation, though my focus stays mostly on the deliverable",
+       "score": 2
+      },
+      {
+       "label": "With real care. I go further than expected to deliver",
+       "score": 3
+      },
+      {
+       "label": "As the start of a long relationship. I follow up even after the work is done",
+       "score": 4
+      },
+      {
+       "label": "As something I never forget. I give everything I have and carry that person with me as the business grows",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "How often do you deliberately create momentum for someone else, through an introduction, a referral, or a conversation that costs you nothing but could matter enormously to them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely. I am focused on building my own pipeline right now",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, when something obvious comes up",
+       "score": 2
+      },
+      {
+       "label": "A few times a month when I see a clear match",
+       "score": 3
+      },
+      {
+       "label": "Regularly. I actively look for ways to connect people",
+       "score": 4
+      },
+      {
+       "label": "It is a core part of how I operate. One introduction can change someone's trajectory",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "When you attend a professional event or networking session, what does success look like to you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A strong list of new contacts and LinkedIn connections",
+       "score": 1
+      },
+      {
+       "label": "A couple of follow-up conversations lined up for potential work",
+       "score": 2
+      },
+      {
+       "label": "A few real exchanges with people in industries I find interesting",
+       "score": 3
+      },
+      {
+       "label": "One or two conversations that could become a collaboration or referral down the track",
+       "score": 4
+      },
+      {
+       "label": "People leaving better connected than when they arrived, whether it benefits me directly or not",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q7",
+     "text": "How strong is your network's ability to provide introductions, referrals, or advice when you need it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I would struggle to find the right person at short notice",
+       "score": 1
+      },
+      {
+       "label": "I have some contacts but they are not particularly active relationships",
+       "score": 2
+      },
+      {
+       "label": "I have reliable connections in a couple of areas",
+       "score": 3
+      },
+      {
+       "label": "I can reach the right person in most situations within a day or two",
+       "score": 4
+      },
+      {
+       "label": "My network is actively reciprocal. I give to it consistently and it responds in kind",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Relationship capital is the most underestimated business asset.",
+     "text": "The deals, clients, and partnerships that will matter most in five years are sitting in rooms you have not walked into yet. Transactional networking produces transactional results. Start building relationships you are not expecting anything from. That is the only kind that compounds.",
+     "steps": [
+      "Attend one event in the next 30 days with no pitch agenda. Your only job is to find out what someone else is building",
+      "Identify three people who helped you in the last two years and reach out with no ask. Just acknowledgement",
+      "Make one introduction this week between two people in your network who should know each other"
+     ]
+    },
+    "mid": {
+     "headline": "You understand relationship-building. Now build the habit.",
+     "text": "You know that the room matters. The next step is making this deliberate and consistent rather than occasional. Communities worth belonging to exist because someone decided to show up and kept showing up.",
+     "steps": [
+      "Find one professional community that fits your values and commit to attending for at least three consecutive months",
+      "After every meaningful conversation, note one way you could help that person and follow through within a week",
+      "Track the referrals and introductions you give over the next quarter. The pattern will tell you something worth knowing"
+     ]
+    },
+    "high": {
+     "headline": "You understand that relationships are the infrastructure.",
+     "text": "A single conversation can introduce a new perspective, open a door, or become the beginning of something neither person could have predicted. You are building that kind of network. Now invest in protecting and growing it at scale.",
+     "steps": [
+      "Identify the one or two community spaces that give back the most and consider how you can contribute more, not just attend",
+      "Start recording the introductions you make. Who you connected, what came of it. This is part of your professional legacy",
+      "Think about how to create the conditions for others to connect within your own sphere, the way the best connectors you know do for you"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_and_digital_strategy",
+   "name": "AI and Digital Strategy",
+   "questions": [
+    {
+     "id": "q8",
+     "text": "When your organisation considers adopting a new technology, where does the conversation typically begin?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at what tools our competitors are using",
+       "score": 1
+      },
+      {
+       "label": "We explore what is popular or trending in the market right now",
+       "score": 2
+      },
+      {
+       "label": "We evaluate options based on industry recommendations or vendor presentations",
+       "score": 3
+      },
+      {
+       "label": "We identify a specific business problem first, then look at which technology could solve it",
+       "score": 4
+      },
+      {
+       "label": "We map our most urgent operational gaps, then assess technology against those gaps. The problem always comes before the tool",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q9",
+     "text": "How clearly can your organisation identify where AI could make the most meaningful difference right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not mapped this yet",
+       "score": 1
+      },
+      {
+       "label": "We have some ideas but nothing concrete or prioritised",
+       "score": 2
+      },
+      {
+       "label": "We have identified one or two areas but have not confirmed they are the right starting points",
+       "score": 3
+      },
+      {
+       "label": "We have mapped friction points and have a short, prioritised list of opportunities",
+       "score": 4
+      },
+      {
+       "label": "We have a clear picture and have already started evaluating or building solutions against those gaps",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q10",
+     "text": "Where does your organisation currently sit on its AI adoption journey?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Waiting to see how things develop before committing",
+       "score": 1
+      },
+      {
+       "label": "Curious and watching, but uncertain where to start",
+       "score": 2
+      },
+      {
+       "label": "Internal conversations have started but no action has been taken yet",
+       "score": 3
+      },
+      {
+       "label": "Running small experiments and learning from the results",
+       "score": 4
+      },
+      {
+       "label": "We have a roadmap and are actively building capability. Moving through uncertainty, not waiting for certainty",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The most expensive AI mistake is starting with the technology.",
+     "text": "Before asking what AI can do, ask what your organisation urgently needs to do better. That single question leads to stronger investments, faster adoption, and results that actually matter. You do not need to know everything about AI. You need to know where the real problem is.",
+     "steps": [
+      "List the three places where your customers experience unnecessary friction in your current process",
+      "Identify which operational tasks your team repeats every week that do not require human judgement",
+      "Have a conversation with someone who has already been through this in a business similar to yours before you speak to a single vendor"
+     ]
+    },
+    "mid": {
+     "headline": "You are asking the right questions. Now act on the answers.",
+     "text": "Organisations that lead tomorrow are making thoughtful decisions today. Not reckless ones. Decisive ones. You have identified the gaps. The next step is converting that clarity into a prioritised starting point with a defined 90-day outcome.",
+     "steps": [
+      "Take your list of friction points and rank them by business impact, not by how interesting the technology might be",
+      "Choose one. Define what success looks like in 90 days if that problem were resolved",
+      "Bring in an outside perspective before you commit. Someone who will tell you honestly whether the problem is worth solving with AI or whether a simpler fix exists"
+     ]
+    },
+    "high": {
+     "headline": "You are building the capability to move through uncertainty.",
+     "text": "Transformation is not about the technology. It is about the intelligence you build around it. You are already thinking this way. Now make sure your governance, team capability, and data readiness can match your ambition.",
+     "steps": [
+      "Review whether your current AI experiments connect to a broader strategic roadmap or are running as isolated pilots",
+      "Assess your team's readiness to adopt and manage what you are building. Technology without capability is expensive shelf-ware",
+      "Evaluate your AI governance framework. Responsible AI is not a compliance step. It is a competitive advantage"
+     ]
+    }
+   }
+  },
+  {
+   "id": "operational_clarity",
+   "name": "Operational Clarity",
+   "questions": [
+    {
+     "id": "q11",
+     "text": "How well does your team know which daily tasks create real value versus which tasks simply consume time?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "This is not something we have formally looked at",
+       "score": 1
+      },
+      {
+       "label": "We have a general sense but nothing is documented",
+       "score": 2
+      },
+      {
+       "label": "We have had conversations about it but do not act on it consistently",
+       "score": 3
+      },
+      {
+       "label": "We actively review time allocation and remove low-value work when we find it",
+       "score": 4
+      },
+      {
+       "label": "We have a clear picture and continuously realign effort to where it creates the most value",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12",
+     "text": "When a customer experiences friction, a slow response, a confusing process, or an unresolved question, how quickly do you detect and address it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We usually find out after losing the client",
+       "score": 1
+      },
+      {
+       "label": "We hear about it through complaints when things go wrong",
+       "score": 2
+      },
+      {
+       "label": "We review feedback periodically and address patterns over time",
+       "score": 3
+      },
+      {
+       "label": "We have systems that flag issues as they happen",
+       "score": 4
+      },
+      {
+       "label": "We proactively map the customer journey and address friction before customers feel it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q13",
+     "type": "number",
+     "text": "Across your whole team, how many hours per week are spent on repetitive manual tasks that have not yet been automated? Include data entry, report generation, manual follow-ups, and status updates.",
+     "hint": "A rough estimate is fine. Count time across all team members, not just yourself.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.max(0, 100 - (x / 80) * 100)"
+    },
+    {
+     "id": "q14",
+     "type": "number",
+     "text": "What is the average hourly cost of a team member performing those manual tasks? Include salary on-costs. For contractors, use their hourly rate.",
+     "hint": "This figure, combined with your weekly hours above, shows the monthly cost your business currently carries for work that could potentially be automated. Use AUD. The calculation uses 4.33 weeks per month.",
+     "suffix": "AUD/hour",
+     "min": 20,
+     "max": 500,
+     "step": 5,
+     "default": 60,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You cannot improve what you cannot see.",
+     "text": "The businesses that change fastest are not always the ones with the most advanced technology. They are the ones that know exactly where their time and money are going. Start there. Before any tool, any platform, any vendor conversation.",
+     "steps": [
+      "Ask each team member to track how they spend their time across three days this week. A simple list works fine",
+      "Map your customer's experience from first contact to delivery. Every step, every handoff, every wait",
+      "Identify the one process that, if it ran faster and with fewer errors, would have the biggest impact on client satisfaction"
+     ]
+    },
+    "mid": {
+     "headline": "You know where the friction is. Now build the systems to remove it.",
+     "text": "Operational clarity is not a destination. It is a discipline. You have identified the gaps. The next step is making those gaps visible to everyone on the team and creating clear accountability for improving them.",
+     "steps": [
+      "Document your top three high-effort, low-value processes and assign an owner to each with a 60-day improvement target",
+      "Introduce a simple weekly review where the team flags recurring friction. A problem that happens twice is a process, not an incident",
+      "Assess which identified manual task is the best candidate for automation. Start with the one that frees the most hours or removes the most client-facing risk"
+     ]
+    },
+    "high": {
+     "headline": "You have the operational clarity to act intelligently.",
+     "text": "Technology should serve the business objective. The business should never be redesigned to justify a technology purchase. You already have the clarity most organisations are still searching for. Now the question is whether your technology decisions are keeping pace with what you know.",
+     "steps": [
+      "Review your current automation against your latest operational map. Are the tools you have solving the problems you know exist?",
+      "Identify the next layer of complexity your team encounters after the obvious manual tasks are handled. This is often where AI agents and intelligent workflows create the most value",
+      "Consider how your operational clarity can become a client-facing advantage. Faster delivery, fewer errors, and more predictable outcomes are things clients will pay for"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly_manual_cost",
+   "label": "Monthly cost of unautomated manual work",
+   "format": "currency_per_period",
+   "formula": "q13 * 4.33 * q14",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "Founder still building from the ground up",
+    "tag": "early_founder"
+   },
+   {
+    "label": "Business owner ready to scale what is working",
+    "tag": "growth_stage"
+   },
+   {
+    "label": "Leader evaluating AI and digital transformation",
+    "tag": "enterprise_leader"
+   },
+   {
+    "label": "Established agency or professional services firm",
+    "tag": "agency_owner"
+   }
+  ]
+ }
+}
