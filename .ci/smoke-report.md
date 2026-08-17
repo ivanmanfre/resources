@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: d3c353366a2cdc73a35671141d735e9cfffdbb92 at 2026-08-17T08:59:40.038Z
+Deploy: dbd2f90b4207247c6d2cb865f8ae907b1d7f409b at 2026-08-17T11:17:52.568Z
 
-- mahika-singhal-16-assessment: data.json HTTP 404
+- kashif-mahmood-ghaznavi-1c-assessment: data.json HTTP 404
