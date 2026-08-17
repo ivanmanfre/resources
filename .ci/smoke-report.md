@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: e0473712fd86945e85f51bfce4a7779aba2941b4 at 2026-08-14T06:13:16.633Z
+Deploy: d3c353366a2cdc73a35671141d735e9cfffdbb92 at 2026-08-17T08:59:40.038Z
 
-- marta-vakiv-b6-assessment: data.json HTTP 404
+- mahika-singhal-16-assessment: data.json HTTP 404
