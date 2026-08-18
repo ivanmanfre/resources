@@ -1,0 +1,587 @@
+{
+ "slug": "gemma-telford-83-assessment",
+ "title": "The Partner Revenue Readiness Score",
+ "subtitle": "Find out whether your channel marketing is planting seeds for a long-term harvest — or scrambling at year-end.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "revenue_planning_horizon",
+   "name": "Revenue Planning Horizon",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "When does your team start building partner revenue plans for the coming year?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We react to targets when they arrive — usually Q4 or later",
+       "score": 1
+      },
+      {
+       "label": "We start planning in Q3 but it is rushed and often incomplete",
+       "score": 2
+      },
+      {
+       "label": "We begin in Q2 with some forward visibility but no formal cycle",
+       "score": 3
+      },
+      {
+       "label": "We run a structured planning cycle starting at least 12 months out",
+       "score": 4
+      },
+      {
+       "label": "We run rolling 18-month plans and review them every quarter",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "How would you describe your Q3 and Q4 each year?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Stressful — we are always chasing the number with no clear plan",
+       "score": 1
+      },
+      {
+       "label": "Busy and reactive — lots of last-minute activity to close gaps",
+       "score": 2
+      },
+      {
+       "label": "Moderately controlled — we have a plan but still face surprises",
+       "score": 3
+      },
+      {
+       "label": "Well-managed — we know roughly where we will land and are already thinking about next year",
+       "score": 4
+      },
+      {
+       "label": "Calm and confident — our harvest reflects seeds planted 12 months ago",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "How clearly can you trace today's partner marketing activity to a specific revenue target 12 months from now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We cannot — activity and targets are managed separately",
+       "score": 1
+      },
+      {
+       "label": "We have a rough sense but no formal link between activity and future targets",
+       "score": 2
+      },
+      {
+       "label": "Some programmes tie to future targets; others do not",
+       "score": 3
+      },
+      {
+       "label": "Most activity maps to specific targets with clear milestones",
+       "score": 4
+      },
+      {
+       "label": "Every programme has a named pipeline owner, a revenue target, and a review date",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reactive_hours_weekly",
+     "type": "number",
+     "text": "How many hours per week does your team spend on reactive partner requests or ad-hoc work — rather than planned strategic activity?",
+     "hint": "Be honest — this includes last-minute briefs, unplanned campaigns, and chasing approvals. We'll show you the annual cost of this across 52 working weeks.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.max(0, 100 - x * 5)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're firefighting, not farming.",
+     "text": "The year-end panic is a symptom, not the problem. The real problem is that revenue planning is reactive — which means the seeds for next year's harvest are not being planted right now. Forward-thinking partner teams are not scrambling in Q4 because they had a plan in Q2 of the year before.",
+     "steps": [
+      "Block time in the next four weeks to map the partner marketing activity you need to run in the coming 12 months against your revenue targets — even a rough plan beats none at all",
+      "Assign a named owner to each planned programme with a pipeline number attached, not just an activity metric",
+      "Set a quarterly review date now so you are adapting before the panic sets in, not after"
+     ]
+    },
+    "mid": {
+     "headline": "You're starting to think like a farmer — but there are gaps in the plan.",
+     "text": "You are ahead of most. But if Q3 and Q4 still feel rushed, the planning cycle has a leak somewhere — in the initial target-setting, the programme design, or the review cadence. Finding where it breaks is the most valuable thing you can do this quarter.",
+     "steps": [
+      "Look at the last three years of Q4 performance: when did you know whether you would hit the number, and why? That moment usually reveals exactly where the plan broke down",
+      "Tighten the link between partner marketing activity and pipeline reporting so leadership can see the connection — that visibility protects your budget when it matters most",
+      "Bring your top partners into planning conversations earlier — they have market timing insight you are probably not using yet"
+     ]
+    },
+    "high": {
+     "headline": "You're running a well-tended harvest. Now protect the plan.",
+     "text": "Strong planning discipline puts you in a small minority of channel teams. The risk at this stage is not falling behind — it is that a strategy built for last year's market has not evolved with your partners' changing needs.",
+     "steps": [
+      "Run an annual audit of your top partners: are they still the right ones to invest in, or has the market shifted around them?",
+      "Build contingency into your plans so a single partner underperforming does not blow your year",
+      "The best channel teams pull partners into strategy conversations, not just execution — if you are not doing this yet, start there"
+     ]
+    }
+   }
+  },
+  {
+   "id": "mdf_utilisation",
+   "name": "MDF Utilisation",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "How would you describe your approach to claiming MDF each quarter?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We rarely claim it — the process is unclear and the admin feels like too much effort",
+       "score": 1
+      },
+      {
+       "label": "We claim some, but often leave money on the table by the quarter's end",
+       "score": 2
+      },
+      {
+       "label": "We claim most of it, but mainly for the same types of activity each time",
+       "score": 3
+      },
+      {
+       "label": "We have a consistent claiming process and plan activity against the budget in advance",
+       "score": 4
+      },
+      {
+       "label": "MDF is fully integrated into our annual marketing plan with defined programmes and ROI tracking",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "When you use MDF, how is the activity designed?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We pick something quick that is easy to get approved — usually events or branded collateral",
+       "score": 1
+      },
+      {
+       "label": "We run whatever the vendor suggests without always linking it to our own pipeline goals",
+       "score": 2
+      },
+      {
+       "label": "We pitch activities that work for both sides, though the strategy varies by programme",
+       "score": 3
+      },
+      {
+       "label": "Activities are chosen to serve a specific pipeline or audience goal agreed with the vendor upfront",
+       "score": 4
+      },
+      {
+       "label": "Every MDF programme has a defined audience, a revenue target, and a review date agreed before a penny is spent",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "How do you measure the return on MDF-funded activity?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not track it beyond submitting the claim form",
+       "score": 1
+      },
+      {
+       "label": "We track attendance or outputs such as leads generated, but not revenue impact",
+       "score": 2
+      },
+      {
+       "label": "We track influenced pipeline but it is not always tied back to the specific MDF programme",
+       "score": 3
+      },
+      {
+       "label": "We track leads, pipeline, and closed revenue per programme and report this to the vendor",
+       "score": 4
+      },
+      {
+       "label": "ROI data from each programme informs the next planning cycle and strengthens our case for future MDF allocation",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "mdf_claim_rate",
+     "type": "number",
+     "text": "What percentage of your available MDF do you typically claim and spend each quarter?",
+     "hint": "Industry data suggests around 60% of MDF goes unclaimed every quarter. Enter your honest number — this feeds your results.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 40,
+     "normalize_formula": "x"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "60% of MDF goes unclaimed every quarter. Don't let yours add to that number.",
+     "text": "MDF is sales opportunity support — and if you are not claiming it, you are effectively funding other partners' growth. The admin feels like the barrier, but the real barrier is not having a plan to use it strategically. That is fixable in one conversation with your vendor rep.",
+     "steps": [
+      "Book a call this month specifically to understand what MDF you have available and what activities qualify — most vendors want to spend it and simply need someone to show up with a plan",
+      "Draft a 90-day plan for two or three activities tied to a specific pipeline target and bring it to that conversation — partners who arrive with a plan get funded first",
+      "Start tracking outputs from every MDF activity, even informally: leads, meetings, pipeline influenced. That data is what gets you more next quarter"
+     ]
+    },
+    "mid": {
+     "headline": "You're using MDF. Now make it work much harder.",
+     "text": "Claiming MDF for the sake of it does not build your business. The teams I see getting the most out of it treat it like investment capital: specific activity, specific audience, specific outcome. If your vendor cannot see a clear ROI story in your reporting, you are at risk of losing budget to partners who can.",
+     "steps": [
+      "Review your last three MDF-funded programmes: what pipeline did they create? Which performed best and why?",
+      "Shift at least one upcoming programme to a targeted approach — a defined list of accounts rather than a broad campaign",
+      "Build a one-page ROI template for every programme so vendor reporting becomes fast and your case for future MDF gets stronger each quarter"
+     ]
+    },
+    "high": {
+     "headline": "You're treating MDF like investment capital. That's exactly right.",
+     "text": "Strong utilisation with solid ROI reporting puts you in a position to ask for more budget — and get it. The next move is using that data to influence vendor planning cycles, not just react to them.",
+     "steps": [
+      "Take your ROI data into your next vendor QBR and open a conversation about co-planning next year's MDF allocation — not just claiming what is given",
+      "Identify the one or two programmes that consistently outperform and build a repeatable playbook around them",
+      "Consider sharing your approach publicly — an article or talk on making MDF work builds your profile with both prospects and vendors, and most people in the channel never do it"
+     ]
+    }
+   }
+  },
+  {
+   "id": "partner_value_propositio",
+   "name": "Partner Value Proposition",
+   "questions": [
+    {
+     "id": "q7",
+     "text": "How clearly defined is your (or your partners') unique value proposition in the market?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not formally defined one — we describe what we do, not why we are different",
+       "score": 1
+      },
+      {
+       "label": "We have something written down but it sounds like every other partner in our space",
+       "score": 2
+      },
+      {
+       "label": "We have a value proposition but it does not consistently appear in our marketing or sales conversations",
+       "score": 3
+      },
+      {
+       "label": "Our value proposition is clear, differentiated, and understood by the sales team",
+       "score": 4
+      },
+      {
+       "label": "Our value proposition is specific, evidenced with customer proof, and used consistently across all channels",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8",
+     "text": "If a prospect asked your best salesperson 'why should I choose you over the other three resellers I'm talking to?' — what would happen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They would lead with price or the vendor's product features — not what makes us different",
+       "score": 1
+      },
+      {
+       "label": "They would say something reasonable but it would differ from what a colleague would say",
+       "score": 2
+      },
+      {
+       "label": "There is a consistent answer but it is still feature-focused rather than outcome-led",
+       "score": 3
+      },
+      {
+       "label": "They would give a clear, differentiated answer grounded in our track record and specific to the prospect's situation",
+       "score": 4
+      },
+      {
+       "label": "They would tell a compelling, consistent story with proof points specific to that prospect's world — and every salesperson would tell the same story",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q9",
+     "text": "How does your marketing communicate what makes you (or your partners) genuinely different from the competition?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of it is vendor-branded content we have repurposed — our own voice is largely absent",
+       "score": 1
+      },
+      {
+       "label": "We produce some original content but it focuses on product features rather than our specific expertise",
+       "score": 2
+      },
+      {
+       "label": "We have original content that reflects our expertise but it is inconsistent and does not always connect to pipeline",
+       "score": 3
+      },
+      {
+       "label": "Our marketing consistently reflects our positioning and drives conversations with the right types of buyers",
+       "score": 4
+      },
+      {
+       "label": "Our content, campaigns, and sales materials all reinforce a clear point of view that our target customers recognise and respond to",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "If your customers can't articulate why they chose you, your marketing hasn't done its job.",
+     "text": "In a crowded channel, the partners who win are not always the ones with the best product access — they are the ones who can articulate their own value most clearly. Relying on vendor content and product specs means you are competing on price, not on what makes you genuinely worth choosing.",
+     "steps": [
+      "Talk to two or three of your best customers this week: ask them why they chose you and what would happen if you were not there. Write down exactly what they say — that is your value proposition draft",
+      "Audit your last ten pieces of marketing content: how much is vendor material versus your own point of view? Set a target to shift the balance over the next quarter",
+      "Write one piece of content this month that only you could have written — a specific client outcome, a decision you made, a view on your market that is genuinely yours"
+     ]
+    },
+    "mid": {
+     "headline": "You know what makes you different. Now make sure your market does too.",
+     "text": "Having a clear value proposition internally is the starting point, not the finish line. The gap I see most often is consistency — how reliably it shows up in conversations, in content, and in how your team talks about you when you are not in the room.",
+     "steps": [
+      "Create a one-page 'why us' document for your salespeople — not a corporate deck, but a straight answer to the question prospects ask most often",
+      "Take your strongest customer story and turn it into three formats: a reference call offer, a written case study, and a social post. One story, three sales tools",
+      "Test your value proposition with a prospect who does not know you well — does it land clearly, or does it need sharpening?"
+     ]
+    },
+    "high": {
+     "headline": "Strong positioning is a competitive advantage. Now scale it.",
+     "text": "Clear, consistent, evidenced positioning is genuinely rare in the channel. You have done the hard work — the opportunity now is making sure it reaches the right people at the right scale.",
+     "steps": [
+      "Map your value proposition to specific buyer personas: does it land equally well with IT directors, finance leads, and ops managers, or does it need nuancing by audience?",
+      "Use your strongest proof points as the foundation for an ABM programme targeting the accounts where your positioning is most compelling",
+      "Consider whether your positioning could also attract better talent — the best people want to work for businesses with a clear point of view"
+     ]
+    }
+   }
+  },
+  {
+   "id": "account_based_targeting",
+   "name": "Account-Based Targeting",
+   "questions": [
+    {
+     "id": "q10",
+     "text": "How targeted is your partner marketing activity — as a vendor investing in partners, or as a partner investing in your own pipeline?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Mostly broad — we campaign to the widest audience possible and hope the right people respond",
+       "score": 1
+      },
+      {
+       "label": "We segment by industry or company size but do not work from named account lists",
+       "score": 2
+      },
+      {
+       "label": "We work with some named account lists but ABM is applied inconsistently",
+       "score": 3
+      },
+      {
+       "label": "We have a defined tiered account list and tailor content and outreach to specific accounts or segments",
+       "score": 4
+      },
+      {
+       "label": "ABM is central to our approach — every major programme is built around named accounts with specific outcomes",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q11",
+     "text": "How aligned are your marketing and sales teams around which accounts to target?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Marketing and sales operate independently — there is no shared account list",
+       "score": 1
+      },
+      {
+       "label": "There is some overlap but marketing and sales are often pursuing different audiences",
+       "score": 2
+      },
+      {
+       "label": "We align quarterly but day-to-day execution still drifts apart",
+       "score": 3
+      },
+      {
+       "label": "Marketing and sales share the same account list and review it together at least monthly",
+       "score": 4
+      },
+      {
+       "label": "Marketing, sales, and the vendor partner team are fully aligned on target accounts with a shared pipeline view",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12",
+     "text": "How do you decide which accounts deserve the most marketing investment?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Budget tends to follow the most noise or urgency — there is no formal process",
+       "score": 1
+      },
+      {
+       "label": "We use gut instinct or whichever accounts are most active on our list",
+       "score": 2
+      },
+      {
+       "label": "We use some scoring criteria such as size, sector, or fit — but not consistently",
+       "score": 3
+      },
+      {
+       "label": "We have a scoring model that tiers accounts by potential and budget allocation follows it",
+       "score": 4
+      },
+      {
+       "label": "We score accounts on fit, potential, and intent data — investment decisions are driven by that model and reviewed regularly",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q13",
+     "text": "When a vendor offers you marketing support or co-investment, how do you respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We take what is offered and run it as given, without shaping it to our audience or pipeline",
+       "score": 1
+      },
+      {
+       "label": "We adapt the materials slightly but run the campaign broadly as the vendor designed it",
+       "score": 2
+      },
+      {
+       "label": "We use the vendor's framework but overlay our own customer insight and targeting",
+       "score": 3
+      },
+      {
+       "label": "We co-plan campaigns with the vendor from the start, bringing our own account data and pipeline context",
+       "score": 4
+      },
+      {
+       "label": "We have a standing process for vendor co-marketing that starts with our accounts and pipeline, not the vendor's calendar",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Fishing with a net in a sea of noise isn't a strategy. It's hope.",
+     "text": "Broad campaigns feel productive because they generate activity. But in the channel, the highest-returning marketing I see is almost always the most targeted. ABM for partners is still under-used — which means there is a real advantage for the teams who get it right first.",
+     "steps": [
+      "Start small: ask your top three salespeople to name their ten most important target accounts each. That combined list of thirty is your first ABM tier — start there this quarter",
+      "Run one campaign exclusively for those named accounts — personalised, specific, and tightly followed up by sales",
+      "Measure the difference in engagement and pipeline between that targeted activity and your next broad campaign, and let the numbers make the case internally"
+     ]
+    },
+    "mid": {
+     "headline": "You're doing some targeting. Now make it systematic.",
+     "text": "The jump from 'we do some ABM' to 'ABM is how we run our channel' comes from consistency. Named account lists, regular marketing and sales alignment, and a clear view of which accounts move and why — that is where the revenue lives.",
+     "steps": [
+      "Formalise your account tiering: Tier 1 strategic and high-touch, Tier 2 growth and programmatic, Tier 3 nurture and light touch — and make sure budget allocation actually reflects that split",
+      "Add a monthly marketing and sales alignment meeting with one standing agenda item: which accounts moved, which did not, and what are we changing?",
+      "Ask your vendor partner manager about overlaying their intent data or install base with your account list — most vendors have this; most partners never ask for it"
+     ]
+    },
+    "high": {
+     "headline": "You're using ABM properly. Now use it to pull better investment from your vendors.",
+     "text": "A mature ABM approach with named accounts and pipeline data is the strongest possible case for vendor co-investment. You are in a position most channel marketers are not — the move now is making sure your vendors know it.",
+     "steps": [
+      "Take your account data and pipeline model into your next vendor QBR and use it to negotiate co-investment in your top accounts — come with the numbers, not just the ask",
+      "Look at whether ABM techniques could extend to partner recruitment: are you targeting the right new partners with the same rigour you apply to customers?",
+      "Consider publishing a point of view on ABM for partners in your market — you have real experience, and most people in the channel are still figuring it out"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "reactive_hours_annual",
+   "label": "Hours lost to reactive work per year",
+   "format": "hours_per_period",
+   "formula": "reactive_hours_weekly * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your position in the channel?",
+  "answers": [
+   {
+    "label": "I work for a vendor managing or growing a partner channel",
+    "tag": "vendor"
+   },
+   {
+    "label": "I'm an MSP or reseller growing my business with vendor support",
+    "tag": "partner"
+   },
+   {
+    "label": "I manage channel marketing or programmes for a distributor",
+    "tag": "distributor"
+   },
+   {
+    "label": "I advise channel businesses as a consultant or agency",
+    "tag": "consultant"
+   }
+  ]
+ }
+}
