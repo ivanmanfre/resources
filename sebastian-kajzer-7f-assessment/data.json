@@ -1,7 +1,7 @@
 {
  "slug": "sebastian-kajzer-7f-assessment",
- "title": "GTM Revenue Engine Score",
- "subtitle": "Measures how far your B2B marketing has evolved from tracking activity to running a full revenue engine: AI-assisted, account-precise, and built to scale without adding headcount.",
+ "title": "B2B GTM Maturity Score",
+ "subtitle": "Measures how well your go-to-market engine is built to scale revenue without adding headcount proportionally.",
  "brand": {
   "accent": "#5B6470",
   "hero_badge": "Interactive Assessment"
@@ -9,88 +9,116 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "revenue_intelligence",
-   "name": "Revenue Intelligence",
+   "id": "revenue_engine_architect",
+   "name": "Revenue Engine Architecture",
    "questions": [
     {
-     "id": "revenue_intelligence_q1",
-     "text": "When you present marketing performance to the CEO or board, what is the primary metric on slide one?",
+     "id": "revenue_engine_architect_q1",
+     "text": "How would you describe the current state of your GTM setup?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Impressions, reach, or follower growth",
+       "label": "Marketing, sales, and ops run independently. Separate tools, separate data, minimal coordination.",
        "score": 1
       },
       {
-       "label": "MQL volume and email open rates",
+       "label": "Teams share a CRM but most processes and handoffs are still manual.",
        "score": 2
       },
       {
-       "label": "SQLs and total pipeline created",
+       "label": "We have some automation and shared data, but attribution and reporting require manual work.",
        "score": 3
       },
       {
-       "label": "Pipeline influenced and revenue contribution broken down by channel",
+       "label": "Most GTM signals flow between teams automatically. Lag is low but not eliminated.",
        "score": 4
       },
       {
-       "label": "Marketing-sourced revenue, CAC, and payback period tied to one attribution model",
+       "label": "GTM runs as one integrated system: data, tooling, sales, and ops feed each other without manual intervention.",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "revenue_intelligence_q2",
-     "text": "How are marketing targets set at your company?",
+     "id": "revenue_engine_architect_q2",
+     "text": "How quickly can your team validate a new GTM approach: new channel, new message, new play?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Activity targets: posts published, emails sent, events organized",
+       "label": "Months. Budget approval and multiple stakeholder meetings come first.",
        "score": 1
       },
       {
-       "label": "Lead volume targets (MQLs) owned by marketing alone",
+       "label": "4 to 8 weeks, when the team is aligned.",
        "score": 2
       },
       {
-       "label": "SQL and pipeline targets handed down from sales leadership",
+       "label": "2 to 4 weeks with the resources we have today.",
        "score": 3
       },
       {
-       "label": "Shared pipeline target negotiated and agreed between marketing and sales",
+       "label": "Under 2 weeks. We can spin up and read a signal quickly.",
        "score": 4
       },
       {
-       "label": "Co-owned revenue quota — marketing and sales measured on the same number",
+       "label": "Days. Small test, clear signal, then we decide to scale or drop.",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "revenue_intelligence_q3",
-     "text": "When you lose a deal, how much do you know about which marketing touchpoints were part of the journey?",
+     "id": "revenue_engine_architect_q3",
+     "text": "When a buying signal comes in (high-intent visit, intent data spike, engagement from a target account), how does your team respond?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Almost nothing — we hear about the loss through sales after the fact",
+       "label": "We do not have visibility into those signals.",
        "score": 1
       },
       {
-       "label": "We can see if a contact was ever in a campaign, but the path is unclear",
+       "label": "Someone manually checks the tools and alerts the right person when they remember to.",
        "score": 2
       },
       {
-       "label": "We track first-touch and last-touch but not the full buying committee journey",
+       "label": "We have alerts set up, but follow-up is inconsistent.",
        "score": 3
       },
       {
-       "label": "We have multi-touch attribution and know which channels influenced the deal",
+       "label": "Signals trigger automated workflows that route to the right rep or sequence.",
        "score": 4
       },
       {
-       "label": "We can reconstruct the full buying committee journey: every touchpoint, every stakeholder",
+       "label": "Signals are scored, cross-referenced across tools, and routed automatically within minutes.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "revenue_engine_architect_q4",
+     "text": "How does your GTM strategy account for buying committees of 6 to 11 people making decisions together?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We target one contact per account and rely on them to sell internally.",
+       "score": 1
+      },
+      {
+       "label": "We know multi-stakeholder decisions happen but have no structured approach for them.",
+       "score": 2
+      },
+      {
+       "label": "We map stakeholders per deal, but only after the first meeting.",
+       "score": 3
+      },
+      {
+       "label": "We proactively map buying committees and build content for multiple roles.",
+       "score": 4
+      },
+      {
+       "label": "We run multi-touch, multi-stakeholder plays before the first conversation. We are in the room before the meeting.",
        "score": 5
       }
      ],
@@ -99,474 +127,411 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Marketing is an island. Fix the revenue wiring first.",
-     "text": "Right now marketing generates activity and sales generates revenue. Those are two separate stories. CEOs nod at lead numbers, then ask about revenue — and that gap is where marketing credibility goes to die. Before you change any campaign or tool, fix how success is defined and measured.",
+     "headline": "Your GTM is a collection of tools, not a system.",
+     "text": "B2B teams running 20 to 30 disconnected automations and calling it a strategy is the norm at this stage. The cost is not in the tools. It is in signal lag. Every hour a buying signal sits unactioned is an hour a competitor gets to that account first.",
      "steps": [
-      "Book a 30-minute session with your CRO or head of sales to agree on a shared pipeline definition. One number you are both measured on.",
-      "Implement basic multi-touch attribution in your CRM before your next board review.",
-      "Replace your top-line MQL report with a pipeline-created and revenue-influenced table. A spreadsheet is fine to start."
+      "Audit your current GTM tools and find the 3 biggest handoff gaps between marketing, sales, and ops.",
+      "Pick one buying signal (high-intent visit, competitor page view, ICP engagement) and build one automated response workflow for it this month.",
+      "Map your buying committee for your top 3 deal types before your next campaign runs: who is the champion, the economic buyer, the blocker."
      ]
     },
     "mid": {
-     "headline": "You are speaking revenue. Now make it automatic.",
-     "text": "You have the right metrics on the table and the right conversations happening. The next bottleneck is speed: you are probably still pulling these numbers by hand or waiting on sales ops to run reports. AI-native teams fix this in the data layer, not the reporting layer.",
+     "headline": "You have the pieces. Now wire them together.",
+     "text": "You are not starting from zero. You have automation, you have data. The gap is that the pieces are not talking to each other yet. Teams at this stage often have the infrastructure to move fast. They just have not connected the loops.",
      "steps": [
-      "Automate your pipeline and attribution reports so they are live, not compiled weekly.",
-      "Define a marketing-sourced versus marketing-influenced split your CFO will sign off on. Remove the ambiguity.",
-      "Set up a shared Slack channel with sales leadership that surfaces deal signals in real time."
+      "Map the full signal-to-response flow for your top two demand channels and find the first manual step that could be automated.",
+      "Cut your validation cycle in half: pick one GTM test this quarter and run it in 10 days instead of your usual timeline.",
+      "Build a buying committee playbook for your core ICP: at minimum, who the champion, economic buyer, and blocker typically are."
      ]
     },
     "high": {
-     "headline": "You are running at board level. Now optimize the engine.",
-     "text": "Revenue attribution is solved. The opportunity now is velocity: using that data to kill losing plays faster and double down on what is working, without waiting for a quarterly review.",
+     "headline": "You are running a revenue engine, not a marketing department.",
+     "text": "This is where GTM becomes a compounding advantage. The question is not whether you are fast. It is whether the system keeps improving. The teams that win long-term treat GTM architecture as a product they ship, test, and refine continuously.",
      "steps": [
-      "Build a campaign performance dashboard that flags underperformers within 72 hours, not 3 weeks.",
-      "Run a CAC cohort analysis by channel and cut the bottom quartile before next quarter.",
-      "Present a marketing-to-revenue waterfall at your next leadership meeting: channel by channel, with payback period."
+      "Document your GTM architecture so the system does not depend on any one person to run it.",
+      "Add one new signal type or data layer this quarter: intent data, AI search visibility, or dark-funnel tracking.",
+      "Run a GTM retrospective every 6 weeks: what did the system learn, what do you retire, what do you scale?"
      ]
     }
    }
   },
   {
-   "id": "gtm_stack_ai",
-   "name": "GTM Stack & AI",
+   "id": "content_authority_and_ch",
+   "name": "Content Authority and Channel Mix",
    "questions": [
     {
-     "id": "gtm_stack_ai_q1",
-     "text": "How integrated is your current GTM tech stack?",
+     "id": "content_authority_and_ch_q1",
+     "text": "When GenAI flooded your market with templated content and templated outbound, how did your content strategy respond?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Tools work in isolation — data lives in separate platforms with no sync",
+       "label": "It did not. We are still publishing the same type of content on the same schedule.",
        "score": 1
       },
       {
-       "label": "CRM and email are connected but reporting is still manually compiled",
+       "label": "We slowed down publishing but have not changed the approach.",
        "score": 2
       },
       {
-       "label": "Most tools share data but we still rely on spreadsheets for key decisions",
+       "label": "We are moving toward more specific, data-backed content but have not fully committed.",
        "score": 3
       },
       {
-       "label": "Stack is integrated and most reporting is automated with minimal manual work",
+       "label": "We repositioned around POV-driven content: who says it matters as much as what is said.",
        "score": 4
       },
       {
-       "label": "Single revenue data layer: one source of truth, real-time, AI-assisted interpretation",
+       "label": "Authority is the primary differentiator. Buyers find us through credibility, not volume.",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "gtm_stack_ai_q2",
-     "text": "How does AI currently operate in your GTM workflows?",
+     "id": "content_authority_and_ch_q2",
+     "text": "How does your company build credibility and generate demand in your market?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Occasional ad-hoc use by individuals: ChatGPT for copy, nothing systematic",
+       "label": "Mainly through our website, paid ads, and case studies.",
        "score": 1
       },
       {
-       "label": "A few team members use AI tools personally, not embedded in any team workflow",
+       "label": "Word of mouth and founder networks, mostly unstructured.",
        "score": 2
       },
       {
-       "label": "AI is embedded in 2 to 3 specific processes: content, prospecting, or reporting",
+       "label": "Some thought leadership content, but it is inconsistent and not tied to pipeline.",
        "score": 3
       },
       {
-       "label": "AI runs multiple GTM workflows and we track its measurable impact on output and speed",
+       "label": "Active founder-led content and B2B influencer relationships drive a share of pipeline.",
        "score": 4
       },
       {
-       "label": "AI is wired into the full revenue engine: content, targeting, scoring, and reporting all have live AI layers",
+       "label": "Founder-led selling and owned authority are primary demand drivers. Buyers come to us before we reach them.",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "manual_hours",
+     "id": "content_authority_and_ch_q3",
+     "text": "How does your current strategy account for AI search (GEO and AEO) as a discovery channel?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It does not. We are focused on traditional SEO.",
+       "score": 1
+      },
+      {
+       "label": "We know it matters but have not changed how we create or structure content.",
+       "score": 2
+      },
+      {
+       "label": "We are experimenting with formats that show up in AI-generated answers.",
+       "score": 3
+      },
+      {
+       "label": "We have audited our content for AI search visibility and made structural changes to how we publish.",
+       "score": 4
+      },
+      {
+       "label": "GEO and AEO are core parts of our content and SEO strategy with dedicated testing and measurement.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Volume without authority is noise.",
+     "text": "The playbooks that worked 3 years ago are dead. GenAI dropped content production cost to near zero. Publishing more of the same is now the minimum requirement for being ignored. The teams winning are building credibility, not output. One credible voice now outperforms a full content team publishing templated posts.",
+     "steps": [
+      "Audit your last 10 pieces of content: would a buyer trust it more because of who wrote it, or is it interchangeable with what your competitors publish?",
+      "Pick one senior voice in your company (founder, CMO, or domain expert) and build a consistent publishing rhythm for them on LinkedIn.",
+      "Run a basic GEO audit: search for 5 questions your ideal buyer asks before they buy and check whether you appear in the AI-generated answers."
+     ]
+    },
+    "mid": {
+     "headline": "You are moving in the right direction. Now connect it to pipeline.",
+     "text": "You have a POV and some credibility-building in motion. The gap most teams face at this stage is that the content strategy is not tied directly to demand and pipeline. Thought leadership that does not generate named leads or booked conversations is a branding exercise, not a GTM play.",
+     "steps": [
+      "Add a demand capture layer to your top-performing content: a specific next step tied to the audience's decision, not a generic contact form.",
+      "Map your content to your buying committee: are you building content for the economic buyer, not just the practitioner?",
+      "Test one GEO-optimized piece this quarter: structured, specific, answering a question your ICP actively searches before they buy."
+     ]
+    },
+    "high": {
+     "headline": "Authority is your advantage. Now make it compound.",
+     "text": "When who said it matters more than what was said, you are ahead of most B2B teams. The next move is turning the audience you built into a pipeline engine that runs independently of campaign spend.",
+     "steps": [
+      "Build a content-to-pipeline attribution model: track which pieces of content appear in the journey of your closed deals.",
+      "Add a B2B influencer or co-creation layer to your strategy to amplify credibility through adjacent voices in your market.",
+      "Treat GEO and AEO as a primary channel, not an experiment. Allocate dedicated budget and measurement for one full quarter."
+     ]
+    }
+   }
+  },
+  {
+   "id": "pipeline_intelligence_an",
+   "name": "Pipeline Intelligence and Revenue Proof",
+   "questions": [
+    {
+     "id": "pipeline_intelligence_an_q1",
+     "text": "When you present marketing results to your CEO or CFO, what metric drives the conversation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Marketing Qualified Leads (MQLs) or lead volume.",
+       "score": 1
+      },
+      {
+       "label": "Meetings booked or opportunities created by marketing.",
+       "score": 2
+      },
+      {
+       "label": "Pipeline value influenced by marketing-sourced deals.",
+       "score": 3
+      },
+      {
+       "label": "Revenue influenced by marketing across the full funnel, with an attribution model behind it.",
+       "score": 4
+      },
+      {
+       "label": "Marketing's contribution to closed revenue. The conversation starts and ends in euros.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "pipeline_intelligence_an_q2",
+     "text": "How confident are you in your pipeline attribution: knowing which channels and campaigns actually drive revenue?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We cannot reliably connect marketing spend to pipeline or closed revenue.",
+       "score": 1
+      },
+      {
+       "label": "We use last-touch attribution. We know it is incomplete.",
+       "score": 2
+      },
+      {
+       "label": "We have multi-touch attribution but leadership does not fully trust the model.",
+       "score": 3
+      },
+      {
+       "label": "We have a clear view of which channels drive pipeline, and the team makes budget decisions based on it.",
+       "score": 4
+      },
+      {
+       "label": "Leadership uses the attribution model to allocate budget. It is trusted, not just tracked.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_per_week",
      "type": "number",
-     "text": "How many hours per week does your marketing team collectively spend on manual reporting, data pulls, and dashboard updates?",
-     "hint": "Count all team hours: pulling platform data, building slides, updating trackers. We use €80/hr as the loaded cost reference for a mid-senior marketing hire in Central/Western Europe — this is used in the cost calculation below.",
-     "suffix": "hrs/week",
+     "text": "How many hours per week does your team spend on manual GTM reporting and attribution: pulling data, building slides, reconciling numbers across tools?",
+     "hint": "Count all time: marketing ops, demand gen lead, and your own prep for leadership reporting.",
+     "suffix": "hours/week",
      "min": 0,
      "max": 40,
      "step": 1,
-     "default": 8,
-     "normalize_formula": "x <= 1 ? 100 : x >= 25 ? 0 : Math.round(100 - (x - 1) * (100 / 24))"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "Your stack is costing more than it saves. Start with the data layer.",
-     "text": "Disconnected tools and manual reporting are not just inefficient — they delay decisions. By the time you have compiled the report, the window to act has already closed. AI-native GTM teams run at a fraction of the tool count, with everything wired together into one revenue layer.",
-     "steps": [
-      "Audit your current stack: list every tool, its monthly cost, and how often the team actually uses it. Cut anything that is not wired to revenue data.",
-      "Pick one reporting workflow to automate this month. The goal is zero manual compilation, not a perfect dashboard.",
-      "Run a small AI pilot in one workflow (content drafts, lead scoring, or follow-up sequencing) and measure before-versus-after output time."
-     ]
-    },
-    "mid": {
-     "headline": "Good foundation. Now systematize the AI layer.",
-     "text": "You have built the connections. The next move is shifting AI from a productivity tool to a revenue tool: embedded in how you score accounts, surface intent signals, and decide where to spend the next campaign budget.",
-     "steps": [
-      "Map every manual decision your team makes weekly and identify which ones could run on a model or a rule.",
-      "Connect your AI tooling to your CRM so insights are pushed to where sales actually works, not sitting in a separate dashboard.",
-      "Define one AI use case that directly touches pipeline (lead scoring, buying signal detection, account prioritization) and run it for 60 days."
-     ]
-    },
-    "high": {
-     "headline": "You are running an AI-assisted engine. Now build the moat.",
-     "text": "A single person with the right AI stack can now ship what took a full team 6 months ago. You are close. The move that creates real distance is proprietary data: your own signals, your own scoring logic that competitors cannot replicate by buying the same SaaS tools.",
-     "steps": [
-      "Start capturing proprietary behavioral signals (content engagement patterns, deal velocity by persona, repeat touchpoints) that feed your own models.",
-      "Document your AI workflow stack and run a quarterly audit. What was new 6 months ago is likely already a standard feature in the market.",
-      "Build one automation that removes a full headcount-equivalent task from the team's plate this quarter."
-     ]
-    }
-   }
-  },
-  {
-   "id": "content_authority",
-   "name": "Content & Authority",
-   "questions": [
-    {
-     "id": "content_authority_q1",
-     "text": "How does your company appear in AI-driven search results (ChatGPT, Perplexity, Google AI Overviews)?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We have never checked — we do not know if we appear at all",
-       "score": 1
-      },
-      {
-       "label": "We show up occasionally but cannot explain why or how to influence it",
-       "score": 2
-      },
-      {
-       "label": "We have audited our GEO/AEO presence, found the gaps, but have no strategy yet",
-       "score": 3
-      },
-      {
-       "label": "We have a content strategy specifically designed to appear in AI search on our key topics",
-       "score": 4
-      },
-      {
-       "label": "We are consistently surfaced in AI responses for our target topics and we track it as a channel",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "default": 5,
+     "normalize_formula": "x <= 1 ? 100 : x >= 20 ? 0 : 100 - (x - 1) * 100 / 19"
     },
     {
-     "id": "content_authority_q2",
-     "text": "How strong and consistent is your company's point of view in the market?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We publish content, mostly product updates and curated industry news",
-       "score": 1
-      },
-      {
-       "label": "We write thought leadership occasionally but the angle and voice shift between authors",
-       "score": 2
-      },
-      {
-       "label": "We have a defined POV documented internally, but it is not consistently visible in our public content",
-       "score": 3
-      },
-      {
-       "label": "We publish a consistent POV and peers in our space actively reference us for it",
-       "score": 4
-      },
-      {
-       "label": "Our POV sets the conversation in our niche: buyers and analysts cite us, not just follow us",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "content_authority_q3",
-     "text": "Who carries your company's commercial voice in the market?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "The marketing team posts on brand channels — leadership rarely appears publicly",
-       "score": 1
-      },
-      {
-       "label": "Marketing plus occasional LinkedIn posts from the CEO, with no coordinated strategy",
-       "score": 2
-      },
-      {
-       "label": "Two or three executives post regularly but each runs their own content without a GTM link",
-       "score": 3
-      },
-      {
-       "label": "We run an active founder-led or executive-led content program with clear pipeline intent",
-       "score": 4
-      },
-      {
-       "label": "Founder-led selling and B2B influencer content are tracked, optimized, and our top pipeline source",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "When content production cost hits zero, who said it matters more than what was said.",
-     "text": "GenAI flooded every B2B channel with empty content. If your company's voice is not distinctive and consistently out in the market, you are invisible — not just to buyers but to the AI search engines now shaping how they discover you. This is a distribution problem, not a content quality problem.",
-     "steps": [
-      "Write down your company's three non-obvious beliefs about your market: the takes most competitors will not say out loud. That is your starting POV.",
-      "Run an AI search audit: ask ChatGPT and Perplexity what they say about your category, your competitors, and your company. Map the gap.",
-      "Get the founder or CEO to commit to two posts per week for 90 days: not marketing-approved brand content, but real opinions backed by what you have built and seen."
-     ]
-    },
-    "mid": {
-     "headline": "You have a voice. Now build the distribution engine around it.",
-     "text": "You have content and a point of view. What is missing is the system: a way to convert that content into consistent GEO presence, inbound signals, and named leads that show up in your pipeline. Good content without a capture layer is reach without revenue.",
-     "steps": [
-      "Audit your top 10 content pieces: which ones are structured to appear in AI search results (clear questions, direct answers, structured data)? Rebuild the bottom half.",
-      "Add a capture mechanism to every high-performing content piece: a comment trigger, a DM link, or a form that ties back to pipeline.",
-      "Build a 30-day editorial calendar that connects your POV to active buying signals in your pipeline. Write toward the deals, not the industry trends."
-     ]
-    },
-    "high": {
-     "headline": "You are building a content moat. Protect and systematize it.",
-     "text": "You are doing what most B2B marketing teams cannot: turning authority into pipeline. The risk at this stage is key-person dependency. If your POV lives in one person's head, you are one departure away from losing the asset.",
-     "steps": [
-      "Document your content POV framework so it can scale across multiple voices on your team without diluting the angle.",
-      "Track GEO/AEO performance monthly: which queries are you winning, which did you lose this quarter, and what is the content gap to close?",
-      "Build a B2B influencer or partner co-content program. Your audience is their audience, and co-posts consistently outperform single-author on reach and trust signals."
-     ]
-    }
-   }
-  },
-  {
-   "id": "abm_demand_gen",
-   "name": "ABM & Demand Gen",
-   "questions": [
-    {
-     "id": "abm_demand_gen_q1",
-     "text": "How precisely are your demand gen campaigns targeted?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Broad targeting: any company that loosely fits a description of our market",
-       "score": 1
-      },
-      {
-       "label": "We have an ICP definition but campaigns still run to large, loosely filtered lists",
-       "score": 2
-      },
-      {
-       "label": "We have a defined ICP and tiered target account list, mostly inbound execution",
-       "score": 3
-      },
-      {
-       "label": "Named account programs with personalized outreach coordinated between marketing and sales",
-       "score": 4
-      },
-      {
-       "label": "Full ABM motion: tiered account list, buying committee mapped per account, plays triggered by real-time intent data",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "abm_demand_gen_q2",
-     "text": "How do you address the full buying committee in a typical B2B deal?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We target the main decision-maker and assume they will manage internal buy-in",
-       "score": 1
-      },
-      {
-       "label": "We create content for different roles occasionally but have no coordinated multi-stakeholder approach",
-       "score": 2
-      },
-      {
-       "label": "We have mapped the typical buying committee (6 to 11 people) and have content for each role",
-       "score": 3
-      },
-      {
-       "label": "We run coordinated programs touching each committee member by role with relevant content",
-       "score": 4
-      },
-      {
-       "label": "We track committee-level engagement per account and trigger sales plays based on multi-stakeholder signals",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "abm_demand_gen_q3",
-     "text": "How does your outbound motion perform compared to three years ago?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Worse: reply rates have dropped sharply and we are not sure why",
-       "score": 1
-      },
-      {
-       "label": "Flat: we are sending more volume to maintain the same results",
-       "score": 2
-      },
-      {
-       "label": "We have moved toward more personalized outreach and seen some improvement",
-       "score": 3
-      },
-      {
-       "label": "We rebuilt our outbound around intent signals and buying triggers: results are back up",
-       "score": 4
-      },
-      {
-       "label": "Outbound is a minor part of our pipeline. Inbound and referral now dominate.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "Templated outbound gets zero response. You need account-level targeting.",
-     "text": "The marketing playbooks that worked 3 years ago are dead. GenAI flooded every B2B channel. Broad targeting and spray-and-pray outbound do not just underperform — they damage your domain reputation and burn your best contacts. Precision beats volume every time now.",
-     "steps": [
-      "Run a win/loss analysis on your last 20 closed deals. Map the ICP characteristics of the 10 you won. That is your real target, not your stated one.",
-      "Build a named account list of 50 to 100 companies before your next campaign. If you cannot name them, you do not have a target — you have a description.",
-      "Stop sending the same message to 5,000 contacts. Pick 20 accounts this month and run a fully personalized 3-touch sequence per buying committee role."
-     ]
-    },
-    "mid": {
-     "headline": "Good targeting. Now wire in the buying committee layer.",
-     "text": "You are running account-based. But if you are still selling to one contact per account, you are leaving deals on the table. B2B buying committees average 6 to 11 people. Decisions happen in places you cannot track. The teams winning deals now show up for every stakeholder, not just the champion.",
-     "steps": [
-      "Map the buying committee structure for your top 20 target accounts: identify the champion, the budget holder, the technical evaluator, and the likely blocker.",
-      "Build one content piece per committee role that addresses the specific objection each role brings to the table.",
-      "Set up account-level intent scoring in your CRM that aggregates signals from all contacts at an account, not just your main contact."
-     ]
-    },
-    "high": {
-     "headline": "You are running ABM properly. Now automate the signal layer.",
-     "text": "Named accounts, mapped committees, coordinated plays. That is the playbook. The next level is intent data operating in real time: knowing when an account is active before they fill out a form, and getting the right play in front of sales before the window closes.",
-     "steps": [
-      "Integrate a third-party intent data source (G2, Bombora, LinkedIn Insights) with your CRM and define threshold triggers for sales escalation.",
-      "Build an account health score that weights buying committee engagement, not just individual contact activity.",
-      "Run a quarterly ABM review: which account tiers are converting, which are not, and what is the committee penetration rate (contacts reached versus total committee size)?"
-     ]
-    }
-   }
-  },
-  {
-   "id": "speed_validation",
-   "name": "Speed & Validation",
-   "questions": [
-    {
-     "id": "speed_validation_q1",
-     "text": "When a new GTM approach gets proposed (new channel, new message, new ICP segment), how does your team evaluate it?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We discuss it in planning meetings and decide based on gut feel and past experience",
-       "score": 1
-      },
-      {
-       "label": "We add it to next quarter's roadmap and test it when capacity allows",
-       "score": 2
-      },
-      {
-       "label": "We can usually run a small test within 4 to 6 weeks if it clears an internal review",
-       "score": 3
-      },
-      {
-       "label": "We have a fast-test framework: lightweight experiments are live within 2 weeks",
-       "score": 4
-      },
-      {
-       "label": "New approaches go live in days. We validate with real data before committing budget.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "speed_validation_q2",
-     "text": "How does your team learn and adapt from underperforming campaigns?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We move on to the next thing: there is no formal retrospective process",
-       "score": 1
-      },
-      {
-       "label": "We discuss what went wrong in team meetings but rarely change the approach as a result",
-       "score": 2
-      },
-      {
-       "label": "We run post-mortems on major campaigns and update our playbook once a quarter",
-       "score": 3
-      },
-      {
-       "label": "We have a documented test-learn cycle: hypotheses logged, results captured, playbook updated in real time",
-       "score": 4
-      },
-      {
-       "label": "AI-assisted analysis surfaces learnings automatically. Our playbook updates after every campaign, not quarterly.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "weeks_to_validate",
+     "id": "hourly_rate",
      "type": "number",
-     "text": "How many weeks does it typically take from 'let's test this GTM approach' to having your first real data back?",
-     "hint": "Count from when the idea is agreed on to the point you have enough data to make a go/no-go call. We calculate the cost using 3 GTM contributors × 40 hrs/week × €80/hr loaded cost versus a 1-week AI-native baseline — this drives the figure shown below. AI-native teams typically land at 1 to 2 weeks.",
-     "suffix": "weeks",
-     "min": 1,
-     "max": 16,
-     "step": 1,
-     "default": 6,
-     "normalize_formula": "x <= 1 ? 100 : x >= 12 ? 0 : Math.round(100 - (x - 1) * (100 / 11))"
+     "text": "What is the all-in hourly cost (gross salary plus overhead) of the person doing most of that reporting work?",
+     "hint": "Quick estimate: monthly gross salary multiplied by 1.5 for overhead, divided by 168 working hours.",
+     "suffix": "euros/hour",
+     "min": 20,
+     "max": 250,
+     "step": 5,
+     "default": 60,
+     "normalize_formula": "50"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Your validation cycle is a competitive liability.",
-     "text": "AI-native GTM teams validate new approaches in days, not quarters — with a fraction of the resources. If it takes 6 to 8 weeks to know whether a new channel works, you will run 2 experiments a year while a faster competitor runs 20. Speed of learning is the compounding advantage in modern GTM.",
+     "headline": "MQLs do not control the budget. Revenue does.",
+     "text": "I have sat in enough boardrooms to know that 'marketing generated X leads' does not land. CEOs nod. Then they ask about revenue. Proving marketing's value as a revenue function is the work. Better reporting alone will not get you there.",
      "steps": [
-      "Define a minimum viable test standard for your team: what is the smallest version of this idea that gives you real signal within 2 weeks?",
-      "Remove the approval layers that slow down small experiments. Anything under a defined budget threshold should not need committee sign-off.",
-      "Pick one campaign running right now and build a 72-hour checkpoint into it: what do the early signals say, and would you still make the same call with that data?"
+      "Stop reporting MQLs to leadership. Replace that metric with pipeline sourced and revenue influenced by marketing, even if the initial number is smaller.",
+      "Build a simple attribution model for your top 3 acquisition channels: even last-touch is better than no attribution.",
+      "Map one closed deal back to its first marketing touch and bring that path to your CEO or CFO in the next review."
      ]
     },
     "mid": {
-     "headline": "Good testing culture. Now build the institutional memory.",
-     "text": "You are running experiments. The question is whether the team actually learns from them and carries those findings into the next decision. Most teams test, then forget. The ones that win build a compounding knowledge base where last quarter's failure makes next quarter's test faster and cheaper.",
+     "headline": "You have the data. Now make leadership trust it.",
+     "text": "Attribution data that leadership does not trust is as useful as no data. The gap at this stage is usually one of two things: the model is right but the story is not told clearly, or the model has known gaps that have not been addressed. Either way, the fix is the same: close the gap and bring the evidence.",
      "steps": [
-      "Build a shared experiment log: hypothesis, setup, result, decision — 5 lines per test, owned by whoever ran it.",
-      "Before launching any new campaign, require a 10-minute review of the three most relevant past experiments and what they showed.",
-      "Automate the learning extraction: set up an AI-assisted synthesis that pulls campaign data and surfaces the key signal without a manual report."
+      "Run a closed-deal audit: pick your last 10 closed-won deals and trace the full marketing touch sequence for each.",
+      "Present attribution data alongside a specific business outcome: not 'we drove 30 opportunities,' but 'three of the four deals that closed this quarter touched this campaign first.'",
+      "Identify the one attribution gap generating the most skepticism from leadership and address it this quarter."
      ]
     },
     "high": {
-     "headline": "You are running at market speed. Now build the flywheel.",
-     "text": "Fast validation is a real edge in B2B GTM right now. The teams moving at this pace are the ones reshaping how buyers discover, evaluate, and buy in their categories. The next step is not faster — it is building the proprietary playbook that competitors cannot copy because it is built from your data, not a shared methodology.",
+     "headline": "Revenue-fluent marketing changes the budget conversation.",
+     "text": "When marketing proves its value in euros, budget conversations shift. You stop defending the function and start allocating capital. The next move is using attribution confidence to make smarter bets: scaling what compounds and cutting what only looks good on a slide.",
      "steps": [
-      "Document your test-learn framework formally. It should be the first thing a new GTM hire reads on day one.",
-      "Build a forecast model that factors in experiment velocity, not just pipeline coverage. Show leadership what 2x more tests per quarter is worth in revenue terms.",
-      "Share one validated insight from your GTM experiments publicly every quarter. It is an authority signal and a recruiting signal at the same time."
+      "Build a 12-month pipeline forecast driven by marketing inputs and show leadership where pipeline will come from before it exists.",
+      "Add customer revenue expansion to your attribution model: marketing's contribution does not stop at closed-won.",
+      "Turn your reporting cadence into a decision loop: every review ends with one allocation decision, not just a recap."
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_native_gtm_execution",
+   "name": "AI-Native GTM Execution",
+   "questions": [
+    {
+     "id": "ai_native_gtm_execution_q1",
+     "text": "How does your team currently use AI across GTM execution?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Writing assistance and basic content generation. That is about it.",
+       "score": 1
+      },
+      {
+       "label": "A few specific tasks are automated: email sequences, data enrichment, or basic lead scoring.",
+       "score": 2
+      },
+      {
+       "label": "AI runs 3 to 5 key workflows: scoring, enrichment, content, or reporting.",
+       "score": 3
+      },
+      {
+       "label": "Most repetitive GTM tasks run on AI-assisted workflows. The team focuses on decisions, not execution.",
+       "score": 4
+      },
+      {
+       "label": "Our GTM stack runs on interconnected AI systems. One person now outputs what used to take a full team.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_native_gtm_execution_q2",
+     "text": "How does your team decide which AI tools or approaches to adopt?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We try tools as they get popular, mostly based on what shows up in our feed.",
+       "score": 1
+      },
+      {
+       "label": "Someone on the team champions a tool and others follow when capacity allows.",
+       "score": 2
+      },
+      {
+       "label": "We evaluate tools against specific use cases before rolling them out.",
+       "score": 3
+      },
+      {
+       "label": "We have a structured evaluation process tied to GTM outcomes and team capacity.",
+       "score": 4
+      },
+      {
+       "label": "We validate new AI approaches in days: test, read the signal, integrate or drop. Validation speed is itself an advantage.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_native_gtm_execution_q3",
+     "text": "How is your revenue operations (RevOps) function structured today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No dedicated RevOps function. Everyone does a bit of it.",
+       "score": 1
+      },
+      {
+       "label": "RevOps tasks are spread across marketing, sales, and ops: whoever has time handles them.",
+       "score": 2
+      },
+      {
+       "label": "One person owns RevOps, but mostly reactively: fixing problems rather than building systems.",
+       "score": 3
+      },
+      {
+       "label": "RevOps is a proactive function building and improving the revenue system on a defined roadmap.",
+       "score": 4
+      },
+      {
+       "label": "RevOps, marketing ops, and sales ops are unified into one team running the full revenue engine.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_native_gtm_execution_q4",
+     "text": "When you think about scaling revenue over the next 12 months, what is your primary approach?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Hiring more salespeople and marketers.",
+       "score": 1
+      },
+      {
+       "label": "Increasing spend on the channels that already work.",
+       "score": 2
+      },
+      {
+       "label": "A mix of headcount and improved tooling, with no clear priority between them.",
+       "score": 3
+      },
+      {
+       "label": "Mostly tooling and process improvement. Headcount scales when the system is ready for it.",
+       "score": 4
+      },
+      {
+       "label": "The system scales first. We build revenue infrastructure that multiplies the output of the team we already have.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "AI as a writing tool is the floor, not the ceiling.",
+     "text": "Most teams at this stage are using AI for content and calling it transformation. The real work is in the workflow layer: scoring, enrichment, routing, reporting. One person with the right AI stack can now ship what took a full team 6 months ago. The question is whether you are building that stack or watching others do it.",
+     "steps": [
+      "Pick one repetitive GTM task your team does every week and build an AI workflow for it this month. Start with the most time-consuming, lowest-judgment task.",
+      "Audit your current tool stack: which tools overlap, which do not connect to each other, and which could be replaced by one AI-assisted workflow?",
+      "Find one AI-native GTM team in your industry and map out what their stack likely looks like. That is your benchmark."
+     ]
+    },
+    "mid": {
+     "headline": "You are building the stack. Now make it compound.",
+     "text": "Three to five integrated workflows is real progress. Most teams are not there. The shift now is from individual workflow automation to interconnected systems where one signal triggers a chain of actions. That is where the output gap between your team and a headcount-heavy competitor starts to show up.",
+     "steps": [
+      "Map the connections between your existing AI workflows: what should trigger what, and which handoffs are still manual?",
+      "Test one multi-step AI play this quarter: a signal from one system automatically triggers actions in two others without manual intervention.",
+      "Document the AI systems you have built so they survive team changes. A workflow no one else understands is a liability."
+     ]
+    },
+    "high": {
+     "headline": "You are running the GTM model most teams are still planning.",
+     "text": "When your GTM stack runs as an interconnected system, every person you add has a multiplied output. The teams that stay here do not coast. They keep the validation loop tight, retire what stops working, and add new AI layers before competitors catch up.",
+     "steps": [
+      "Measure your AI GTM system output per headcount. This is the number that makes the internal case for the next system you build.",
+      "Find the next workflow layer you have not built yet: customer expansion, competitive monitoring, or partner channel automation.",
+      "Run a quarterly AI stack audit: retire tools that no longer add signal and put that budget toward the next experiment."
      ]
     }
    }
@@ -589,40 +554,37 @@
  },
  "computed_outputs": [
   {
-   "id": "annual_reporting_waste",
-   "label": "Annual cost of manual reporting",
+   "id": "annual_manual_reporting_cost",
+   "label": "Annual cost of manual GTM reporting",
    "format": "currency_per_period",
-   "formula": "manual_hours * 80 * 52",
-   "show_in_result": true
-  },
-  {
-   "id": "validation_lag_cost",
-   "label": "Cost per GTM validation cycle vs. AI-native baseline",
-   "format": "currency",
-   "formula": "Math.max(0, (weeks_to_validate - 1) * 9600)",
+   "formula": "hours_per_week * hourly_rate * 52",
    "show_in_result": true
   }
  ],
  "schema_version": "v2",
  "persona_selector": {
   "id": "role",
-  "text": "Which best describes your current seat at the GTM table?",
+  "text": "Which best describes your role?",
   "answers": [
    {
-    "label": "CMO / Head of Marketing",
+    "label": "CMO / VP Marketing",
     "tag": "cmo"
    },
    {
-    "label": "Founder running GTM themselves",
-    "tag": "founder-gtm"
+    "label": "Founder or CEO with GTM ownership",
+    "tag": "founder"
    },
    {
-    "label": "CRO / Revenue or Growth Leader",
-    "tag": "cro"
+    "label": "Head of Growth or Demand Gen",
+    "tag": "growth"
    },
    {
-    "label": "Marketing Manager / Senior IC",
-    "tag": "mktg-manager"
+    "label": "RevOps or Marketing Ops Lead",
+    "tag": "revops"
+   },
+   {
+    "label": "Sales or GTM Team Leader",
+    "tag": "sales_leader"
    }
   ]
  }
