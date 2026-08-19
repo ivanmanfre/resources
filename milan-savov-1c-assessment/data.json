@@ -1,0 +1,622 @@
+{
+ "slug": "milan-savov-1c-assessment",
+ "title": "The AI-Era Revenue Engine Score",
+ "subtitle": "Find out whether your B2B SaaS organic strategy is building predictable pipeline or just counting visits.",
+ "brand": {
+  "accent": "#ff485c",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "ai_search_visibility",
+   "name": "AI Search Visibility",
+   "questions": [
+    {
+     "id": "ai-presence",
+     "text": "When you type the question your best buyer would ask into ChatGPT, Perplexity, or Claude, your brand...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Doesn't appear in any response",
+       "score": 1
+      },
+      {
+       "label": "Shows up occasionally in long lists",
+       "score": 2
+      },
+      {
+       "label": "Appears in some queries but not the high-intent ones",
+       "score": 3
+      },
+      {
+       "label": "Consistently shows up across several key questions",
+       "score": 4
+      },
+      {
+       "label": "Appears in most queries including competitor comparisons",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "competitor-alternative",
+     "text": "You've tested whether your brand appears when someone asks for a '[competitor] alternative' in an AI tool. What did you find?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Haven't checked",
+       "score": 1
+      },
+      {
+       "label": "Checked once and we weren't there",
+       "score": 2
+      },
+      {
+       "label": "We show up sometimes but not consistently",
+       "score": 3
+      },
+      {
+       "label": "We appear in most alternative searches",
+       "score": 4
+      },
+      {
+       "label": "We appear in nearly every relevant comparison prompt",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai-extraction",
+     "text": "Your site is structured so that an AI system can extract and accurately summarize your category role, what you do, and who you help.",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We've never thought about this",
+       "score": 1
+      },
+      {
+       "label": "We have basic 'about' info but nothing built for AI extraction",
+       "score": 2
+      },
+      {
+       "label": "Some pages are clear but the site is inconsistent",
+       "score": 3
+      },
+      {
+       "label": "Most pages are structured around specific buyer questions",
+       "score": 4
+      },
+      {
+       "label": "An AI can accurately describe what we do and who we serve from our site alone",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're invisible where buyers are starting their search",
+     "text": "Buyers no longer open 10 tabs to compare tools. They ask ChatGPT, get 3-4 names, and that's where the research ends. If your name doesn't come back, you weren't in the conversation. Run the test now: open ChatGPT, Perplexity, and Claude and ask the question your best buyer would actually ask. The gap grows every day you don't close it.",
+     "steps": [
+      "Run the AI visibility test: ask your top 5 buyer questions in ChatGPT, Perplexity, and Claude. Screenshot what shows up.",
+      "Find the 2-3 competitors that appear and audit what makes their content citable: format, specificity, and authority signals.",
+      "Rewrite your core category and use-case pages to directly answer buyer questions, not just rank for keywords."
+     ]
+    },
+    "mid": {
+     "headline": "You're in some AI answers but not consistently enough to own your category",
+     "text": "Showing up sometimes isn't the same as being in the conversation. The buyer gets 3-4 names and moves on. The gap is usually in how clearly your site signals your category role. AI systems run the same sitewide trust check Google does. If the signal is mixed, the citation goes to someone else.",
+     "steps": [
+      "Audit your top 10 pages: can an AI extract what you do, who you help, and why in under 30 seconds?",
+      "Build comparison and alternative content. These are the highest-intent queries in AI search.",
+      "Build brand mentions and editorial citations from trusted sources in your niche."
+     ]
+    },
+    "high": {
+     "headline": "You have real AI visibility. Now own the comparison journey.",
+     "text": "Appearing in AI answers is the new first page. You're there. The next move is owning the moment when a buyer asks which tool is better. That's where deals start.",
+     "steps": [
+      "Expand into '[competitor] vs [you]' and '[competitor] alternative' formats at scale.",
+      "Get cited in analyst reports, industry roundups, and high-authority publications in your category.",
+      "Track which content gets cited most in AI answers and build more content in that format."
+     ]
+    }
+   }
+  },
+  {
+   "id": "traffic_to_pipeline_conn",
+   "name": "Traffic-to-Pipeline Connection",
+   "questions": [
+    {
+     "id": "monthly_organic_visitors",
+     "type": "number",
+     "text": "How many organic visitors does your site get per month?",
+     "hint": "Check Google Search Console: Performance, then Total clicks for the last 30 days.",
+     "suffix": "visitors/month",
+     "min": 0,
+     "max": 500000,
+     "step": 500,
+     "default": 5000,
+     "normalize_formula": "Math.min(100, Math.max(0, Math.log10(x + 1) * 25))"
+    },
+    {
+     "id": "monthly_pipeline_leads",
+     "type": "number",
+     "text": "How many qualified leads (demo requests, trial signups, booked calls) came from organic search last month?",
+     "hint": "Check your CRM or form analytics filtered to organic source. If you can't attribute it yet, enter your best estimate.",
+     "suffix": "leads/month",
+     "min": 0,
+     "max": 1000,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "Math.min(100, Math.max(0, x * 5))"
+    },
+    {
+     "id": "pipeline-attribution",
+     "text": "When sales asks 'where are the opportunities from organic?' your answer is...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We can't give a clear answer",
+       "score": 1
+      },
+      {
+       "label": "We point to traffic numbers but can't trace actual opportunities",
+       "score": 2
+      },
+      {
+       "label": "We have some data but attribution is incomplete",
+       "score": 3
+      },
+      {
+       "label": "We can show specific leads and what content brought them in",
+       "score": 4
+      },
+      {
+       "label": "We have a live view of organic leads, pipeline stage, and revenue",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "top-pages-conversion",
+     "text": "Your highest-traffic pages are also the ones that drive the most demo requests or trial signups.",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We've never mapped this",
+       "score": 1
+      },
+      {
+       "label": "We checked and the highest-traffic pages don't convert",
+       "score": 2
+      },
+      {
+       "label": "Some overlap but most traffic lands on pages that don't convert",
+       "score": 3
+      },
+      {
+       "label": "Several top-traffic pages are also top-converting",
+       "score": 4
+      },
+      {
+       "label": "We've optimized top pages for conversion and can measure the impact",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Organic is pulling visits. The pipeline isn't there yet.",
+     "text": "Rankings going up while sales keeps asking 'where are the opportunities' is one of the clearest signs that organic and revenue aren't connected yet. Understanding which pages your buyers actually land on before they book a call is the first move. Making the next step obvious on those pages is the second.",
+     "steps": [
+      "Set up UTM tracking or CRM source attribution so every lead has an organic source attached.",
+      "Map your top 20 traffic pages to conversion data and find the gap between visits and demo requests.",
+      "Pick the 3 pages with high traffic and low conversion. Add a specific, single call to action and run it for 60 days."
+     ]
+    },
+    "mid": {
+     "headline": "Organic is reaching pipeline. Close the attribution gap.",
+     "text": "You can see organic working but you can't fully trace it. That gap makes it hard to defend the investment and harder to double down on what's actually generating pipeline. Tightening attribution is the priority before adding more content.",
+     "steps": [
+      "Audit your lead forms: are you capturing traffic source at the point of conversion?",
+      "Identify your top 5 converting pages and find 5 more with similar content and intent that aren't converting yet.",
+      "Run a quarterly review: organic leads generated, pipeline value, and closed revenue from organic sources."
+     ]
+    },
+    "high": {
+     "headline": "Organic is feeding your pipeline. Make it compound.",
+     "text": "You've done what most SaaS companies haven't: connected organic traffic to real pipeline. Every new piece of content, every technical fix, and every new channel (including AI search) should feed the same system.",
+     "steps": [
+      "Document which content types and intent stages drive the highest pipeline-to-close rate.",
+      "Expand your highest-converting content formats into new use cases, verticals, or buyer stages.",
+      "Add AI search as a pipeline channel: track which AI-cited pages generate contact requests."
+     ]
+    }
+   }
+  },
+  {
+   "id": "trust_technical_foundati",
+   "name": "Trust & Technical Foundation",
+   "questions": [
+    {
+     "id": "technical-health",
+     "text": "When you think about the technical health of your site — crawlability, indexation, rendering — the current state is...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We've never had a full technical audit",
+       "score": 1
+      },
+      {
+       "label": "We've had an audit but known issues haven't been fixed",
+       "score": 2
+      },
+      {
+       "label": "We fixed the urgent issues but the foundation still has gaps",
+       "score": 3
+      },
+      {
+       "label": "Most issues are resolved with a few edge cases remaining",
+       "score": 4
+      },
+      {
+       "label": "Crawlability and indexation are confirmed clean and monitored regularly",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "drop-response",
+     "text": "If your site took a significant traffic drop across all intent categories at once (informational, commercial, and transactional), your first move would be...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Publish more content and wait to see if it recovers",
+       "score": 1
+      },
+      {
+       "label": "Check rankings and monitor for a few weeks",
+       "score": 2
+      },
+      {
+       "label": "Pull Search Console and Ahrefs data and start investigating",
+       "score": 3
+      },
+      {
+       "label": "Run a structured diagnosis: technical first, then content, then intent alignment",
+       "score": 4
+      },
+      {
+       "label": "Follow a documented triage process: high-impact/low-effort fixes first, content restructuring second",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "authority-signals",
+     "text": "The trust signals that Google and AI systems use to decide whether to cite you (backlinks, brand mentions, editorial citations) are...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We haven't built any intentionally",
+       "score": 1
+      },
+      {
+       "label": "We have some backlinks but no real strategy behind them",
+       "score": 2
+      },
+      {
+       "label": "We're building links but mainly targeting volume over authority",
+       "score": 3
+      },
+      {
+       "label": "We focus on trusted sources in our niche with a clear strategy",
+       "score": 4
+      },
+      {
+       "label": "We earn citations from high-authority sources and our brand appears in editorial content organically",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "A weak technical foundation signals distrust to both Google and AI systems",
+     "text": "When a site loses visibility across all intent categories at once — informational, commercial, transactional — that's a sitewide trust concern. Google and AI Overviews run the same check before citing a source. A technical problem that costs you Google rankings keeps you out of AI answers too.",
+     "steps": [
+      "Get a technical SEO audit before publishing any new content. Technical fixes deliver the fastest recovery signal to Google.",
+      "Prioritize crawlability and indexation issues first. These are high-impact, low-effort wins.",
+      "Build an intentional link-earning strategy focused on 5-10 trusted publications in your category, not on volume."
+     ]
+    },
+    "mid": {
+     "headline": "You've handled the urgent technical issues. Build the authority layer.",
+     "text": "The pattern most SaaS companies follow: urgent technical problems get fixed, and the authority layer never gets built. The editorial mentions, backlinks from trusted sources, and brand citations that tell both Google and AI systems you're worth citing — those take deliberate effort.",
+     "steps": [
+      "Run a full crawl with Screaming Frog or a similar tool to find any remaining technical gaps.",
+      "Audit your backlink profile: how many links come from sites your buyers would actually read?",
+      "Identify 10 industry publications or analyst sites in your category and build a consistent presence in each one."
+     ]
+    },
+    "high": {
+     "headline": "Strong foundation. Extend it to AI citation.",
+     "text": "You've built the kind of technical and authority foundation that compounds over time. The sites that dominate AI citations aren't always the biggest. They're the ones with the clearest signals. Applying that same discipline to AI search is the next move.",
+     "steps": [
+      "Set up monthly monitoring for your AI citation rate across ChatGPT, Perplexity, and Claude.",
+      "Get your brand mentioned in content AI models prioritize: industry reports, widely-linked blog posts, podcast transcripts.",
+      "Review your structured data and FAQ content. These are the formats AI systems extract from most reliably."
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_intent_alignment",
+   "name": "Content & Intent Alignment",
+   "questions": [
+    {
+     "id": "intent-coverage",
+     "text": "Your content covers all three buyer intent stages: informational (how and why questions), commercial (comparisons and alternatives), and transactional (demo, buy, try).",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We mainly publish blog posts — mostly informational",
+       "score": 1
+      },
+      {
+       "label": "We cover informational well but rarely touch commercial or transactional",
+       "score": 2
+      },
+      {
+       "label": "We have some content across stages but no intentional coverage plan",
+       "score": 3
+      },
+      {
+       "label": "We have a content map that covers all three stages with specific pages",
+       "score": 4
+      },
+      {
+       "label": "Each intent stage has dedicated pages we monitor and update when the SERP shifts",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "serp-intent-shifts",
+     "text": "When Google shifts the intent of a keyword you rank for — a blog post replaced by a Reddit thread, a YouTube video, or a comparison article — you...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Only notice when traffic drops significantly",
+       "score": 1
+      },
+      {
+       "label": "Notice the change but don't have a process to respond",
+       "score": 2
+      },
+      {
+       "label": "Track SERP changes but respond slowly",
+       "score": 3
+      },
+      {
+       "label": "Have alerts and a review process when intent shifts on important pages",
+       "score": 4
+      },
+      {
+       "label": "Monitor SERP composition regularly and update content before traffic drops",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "icp-query-coverage",
+     "text": "When a buyer searches for your category plus a specific use case — the long-tail, high-intent phrase — your site shows up.",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't know which specific use-case queries our ICP actually searches",
+       "score": 1
+      },
+      {
+       "label": "We've checked a few and we don't rank for them",
+       "score": 2
+      },
+      {
+       "label": "We rank for some but miss most specific use-case terms",
+       "score": 3
+      },
+      {
+       "label": "We cover most major use cases with dedicated content",
+       "score": 4
+      },
+      {
+       "label": "We've mapped our ICP's specific queries and have content built for each one",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your content is attracting traffic but missing the moment buyers decide",
+     "text": "Informational content builds awareness. Commercial and transactional content is where buyers decide. A strategy that stops at blog posts does the work to attract visits and hands the conversion to someone else's comparison page.",
+     "steps": [
+      "Audit your content library and tag every page by intent: informational, commercial, or transactional.",
+      "Find the commercial and transactional gaps: the '[your category] alternatives', '[competitor] vs [you]', and '[use case] software' pages you don't have yet.",
+      "Build 3-5 high-intent pages targeting specific buyer moments before publishing more informational content."
+     ]
+    },
+    "mid": {
+     "headline": "You're covering multiple intent stages. Tighten the SERP alignment.",
+     "text": "Content across intent stages is the right move. The next layer is making sure each page matches what Google and AI systems actually want to show for that query right now. A page that's ranking can lose its position overnight when the intent shifts. You find out after the traffic drops.",
+     "steps": [
+      "Run a monthly SERP check on your top 20 ranking pages: what format is Google currently favoring for each query?",
+      "Identify any pages where the current SERP format no longer matches your content format.",
+      "Update or restructure those pages before the ranking drops."
+     ]
+    },
+    "high": {
+     "headline": "Strong intent coverage. Extend it into AI query formats.",
+     "text": "You're mapping content to buyer intent and catching SERP shifts early. The next layer is doing the same thing for AI search. The question formats buyers use in ChatGPT and Perplexity are different from what they type in Google, and most sites aren't built for both.",
+     "steps": [
+      "Collect the actual questions your buyers ask in AI tools and build content that answers them directly.",
+      "Add FAQ-style sections to your commercial pages that mirror the question format AI users type.",
+      "Track which of your pages get cited in AI answers and build more content in those formats."
+     ]
+    }
+   }
+  },
+  {
+   "id": "strategic_foundation",
+   "name": "Strategic Foundation",
+   "questions": [
+    {
+     "id": "compounding-investment",
+     "text": "The SEO investment you've made in the last 12 months is primarily...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "One-time projects: an audit, a few articles",
+       "score": 1
+      },
+      {
+       "label": "Mostly tactical: fixing issues as they surface",
+       "score": 2
+      },
+      {
+       "label": "A mix of tactical fixes and some longer-term content",
+       "score": 3
+      },
+      {
+       "label": "A structured program where content and technical work compound over time",
+       "score": 4
+      },
+      {
+       "label": "A full SEO and GEO strategy where every investment is built to compound across Google and AI search",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "icp-focus",
+     "text": "Your ICP targeting in organic search is...",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Broad — we try to rank for everything relevant to our space",
+       "score": 1
+      },
+      {
+       "label": "Somewhat focused but we still target general, high-volume terms",
+       "score": 2
+      },
+      {
+       "label": "We know our ICP but our content mix doesn't fully reflect it yet",
+       "score": 3
+      },
+      {
+       "label": "We've narrowed our keyword targets to match our ICP closely",
+       "score": 4
+      },
+      {
+       "label": "We've narrowed both our ICP and our organic targets, and our close rate from organic has improved",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're funding one-time results in a channel that rewards compounding",
+     "text": "Paid ads generate a return and stop. SEO builds returns every month after the work stops, but only if you build it that way. One-time audits and sporadic content don't compound. The founders and CMOs who get the most from organic stopped funding anything that only pays once and moved that budget into whatever keeps building after the work stops.",
+     "steps": [
+      "Shift from project-based to program-based SEO: a rolling 12-month plan with specific pipeline targets, not a deliverable list.",
+      "Narrow your ICP target in organic search before expanding content. More specific targeting means less content doing more work.",
+      "Track compounding metrics: which content from 6 months ago is still generating leads today?"
+     ]
+    },
+    "mid": {
+     "headline": "You're building toward compounding. Lock in the strategic layer.",
+     "text": "You've moved past purely tactical SEO. The gap between mid and high is usually ICP clarity. Companies that narrow their audience and keyword targets consistently outperform the ones trying to cover the whole space.",
+     "steps": [
+      "Review your keyword targets and cut anything attracting traffic outside your ICP.",
+      "Build a 90-day content plan around one specific buyer journey: from first search to demo request.",
+      "Set a pipeline target from organic for the next two quarters, not a traffic target."
+     ]
+    },
+    "high": {
+     "headline": "You're building a compounding organic channel. Add AI search to the same system.",
+     "text": "Organic as a compounding revenue channel is exactly what it should be. The same strategic discipline — ICP focus, intent alignment, trust signals — applies to how you show up in AI search. Extending it there is the next move.",
+     "steps": [
+      "Treat AI search as a channel with its own keyword set: the question formats buyers use in ChatGPT and Perplexity.",
+      "Build your GEO strategy on the same foundation as your SEO: trusted content, clear category signals, specific ICP targeting.",
+      "Set a quarterly review cadence for AI visibility alongside your standard Google rankings review."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "organic-pipeline-rate",
+   "label": "Organic Pipeline Conversion Rate",
+   "format": "percent",
+   "formula": "(monthly_pipeline_leads / (monthly_organic_visitors + 1)) * 100",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you sit in the growth conversation?",
+  "answers": [
+   {
+    "label": "Founder or CEO making the SEO call",
+    "tag": "founder"
+   },
+   {
+    "label": "CMO or Head of Marketing",
+    "tag": "cmo"
+   },
+   {
+    "label": "SEO or content lead in-house",
+    "tag": "seo-lead"
+   },
+   {
+    "label": "Advisor or agency working with a SaaS client",
+    "tag": "advisor"
+   }
+  ]
+ }
+}
