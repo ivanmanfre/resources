@@ -1,0 +1,594 @@
+{
+ "slug": "daniele-mauro-9d-assessment",
+ "title": "Email Revenue Score",
+ "subtitle": "Misura quanto fatturato stai lasciando sul tavolo con l'email marketing del tuo eCommerce.",
+ "brand": {
+  "accent": "#7F7F7F",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "flussi_automatici",
+   "name": "Flussi Automatici",
+   "questions": [
+    {
+     "id": "flows-count",
+     "text": "Quanti flussi automatici hai attivi sul tuo account?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nessuno, o solo l'email di conferma iscrizione",
+       "score": 1
+      },
+      {
+       "label": "1-2 flussi, configurati in modo minimal (es. solo benvenuto base)",
+       "score": 2
+      },
+      {
+       "label": "3-5 flussi attivi, con qualche email per ciascuno",
+       "score": 3
+      },
+      {
+       "label": "6-8 flussi con sequenze strutturate e più email per flusso",
+       "score": 4
+      },
+      {
+       "label": "9+ flussi avanzati: welcome, post-acquisto, browse abandon, checkout abandon, sunset, win-back e altri",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "welcome-flow",
+     "text": "Nel tuo Welcome Flow, quante email riceve un nuovo iscritto nella prima settimana?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "0-1 email (o non ho un Welcome Flow)",
+       "score": 1
+      },
+      {
+       "label": "1-2 email: conferma iscrizione e magari un codice sconto",
+       "score": 2
+      },
+      {
+       "label": "3-4 email con una mini-sequenza sul brand",
+       "score": 3
+      },
+      {
+       "label": "5-6 email strutturate: storia del brand, prodotti chiave, offerta con scadenza",
+       "score": 4
+      },
+      {
+       "label": "7+ email con percorso diverso in base al comportamento del nuovo iscritto",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "abandon-flows",
+     "text": "Hai sia il Browse Abandon (chi guarda senza comprare) che il Checkout Abandon (chi lascia il carrello)?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Non ho nessuno dei due",
+       "score": 1
+      },
+      {
+       "label": "Ho solo il Checkout Abandon con 1 email",
+       "score": 2
+      },
+      {
+       "label": "Ho entrambi, ma con 1-2 email ciascuno e nessuna personalizzazione",
+       "score": 3
+      },
+      {
+       "label": "Ho entrambi con 3+ email e timing testato",
+       "score": 4
+      },
+      {
+       "label": "Ho entrambi completi, più un flusso Product View separato per i più coinvolti",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "review-routing",
+     "text": "Nel flusso post-acquisto, come gestisci la richiesta di recensione?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Non ho un flusso post-acquisto strutturato",
+       "score": 1
+      },
+      {
+       "label": "Mando tutti direttamente su Google o Trustpilot",
+       "score": 2
+      },
+      {
+       "label": "Ho un'email di richiesta recensione, ma uguale per tutti",
+       "score": 3
+      },
+      {
+       "label": "Chiedo prima 'Com'è stata la tua esperienza?' e divido il percorso in base alla risposta",
+       "score": 4
+      },
+      {
+       "label": "Routing completo: insoddisfatti al supporto, soddisfatti alle recensioni, con follow-up automatico per entrambi",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "I tuoi flussi sono praticamente spenti",
+     "text": "Ogni giorno senza flussi attivi è fatturato che sfugge. Il Welcome Flow è il flusso con il ROI più alto in assoluto: chi si iscrive è già pronto a comprare, e se non riceve nulla nella prima settimana, l'opportunità è persa. La buona notizia: una volta costruiti, i flussi lavorano in automatico ogni giorno.",
+     "steps": [
+      "Parti subito dal Welcome Flow: minimo 5 email nei primi 7 giorni, con storia del brand, prodotti chiave e un'offerta con scadenza reale",
+      "Attiva il Checkout Abandon: 3 email, timing 1h - 24h - 72h dopo l'abbandono",
+      "Aggiungi il Browse Abandon per chi visita le pagine prodotto senza aggiungere nulla al carrello"
+     ]
+    },
+    "mid": {
+     "headline": "Hai una base, ma le sequenze sono ancora corte",
+     "text": "Hai i flussi principali attivi, ma con 1-2 email ciascuno ti fermi troppo presto. Ogni email aggiuntiva in un flusso già esistente è fatturato in più a costo quasi zero. E il post-acquisto è il momento più sottovalutato: il cliente è nel picco di soddisfazione.",
+     "steps": [
+      "Allunga ogni flusso esistente: porta il Checkout Abandon a 3-4 email e il Welcome Flow a 6-7",
+      "Aggiungi il routing recensioni: una domanda prima di mandarli su Trustpilot riduce le negative e aumenta le positive — il sistema lavora in automatico ogni giorno",
+      "Personalizza la sequenza post-acquisto in base al prodotto comprato: non mandare la stessa email a chi ha comprato scarpe da running e a chi ha comprato un accessorio"
+     ]
+    },
+    "high": {
+     "headline": "I tuoi flussi sono solidi. Ora ottimizza ogni variabile",
+     "text": "Hai una struttura avanzata. Il passo successivo è l'ottimizzazione sistematica: A/B test su ogni flusso, timing basato sui dati reali e personalizzazione per segmento. Ogni variabile che non testi è un dato che non hai.",
+     "steps": [
+      "Inizia A/B test sistematici sugli oggetti dei flussi più performanti: su scala, anche una piccola differenza vale migliaia di euro",
+      "Analizza il timing con i dati Klaviyo: quando smettono davvero di comprare dopo aver visto un prodotto specifico?",
+      "Valuta un flusso Direct Mail per chi non apre le email da 3+ mesi: arriva dove le email non arrivano più"
+     ]
+    }
+   }
+  },
+  {
+   "id": "newsletter_e_segmentazio",
+   "name": "Newsletter e Segmentazione",
+   "questions": [
+    {
+     "id": "newsletter-frequency",
+     "text": "Con che frequenza invii newsletter alla tua lista?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Raramente o mai (meno di 1 al mese)",
+       "score": 1
+      },
+      {
+       "label": "1-2 al mese con un template fisso uguale per tutti",
+       "score": 2
+      },
+      {
+       "label": "1 a settimana, contenuto variabile",
+       "score": 3
+      },
+      {
+       "label": "2-3 a settimana con segmentazione base",
+       "score": 4
+      },
+      {
+       "label": "3-4 a settimana con contenuti diversi per segmenti diversi",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "segmentation-depth",
+     "text": "Come invii le campagne email alla tua lista?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A tutta la lista, senza distinzioni",
+       "score": 1
+      },
+      {
+       "label": "Divido tra chi ha già comprato e chi no, niente di più",
+       "score": 2
+      },
+      {
+       "label": "Segmento per comportamento: aperture, clic, acquisti recenti",
+       "score": 3
+      },
+      {
+       "label": "Segmento per valore del cliente, categoria di prodotto e frequenza d'acquisto",
+       "score": 4
+      },
+      {
+       "label": "Segmentazione avanzata: CLV, prodotto preferito, livello di engagement, timing di riacquisto",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "discount-strategy",
+     "text": "Come strutturi i codici sconto nelle email?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Non uso codici sconto nelle email",
+       "score": 1
+      },
+      {
+       "label": "Uso codici generici come BENVENUTO10 o ESTATE20, uguali per tutti",
+       "score": 2
+      },
+      {
+       "label": "Uso codici con scadenza reale, ma sempre lo stesso per ogni campagna",
+       "score": 3
+      },
+      {
+       "label": "Uso codici che cambio spesso per creare urgenza concreta",
+       "score": 4
+      },
+      {
+       "label": "Uso codici univoci e personalizzati (tipo VIP-4K7N) con scadenza vera: ogni cliente riceve il suo e ci crede davvero",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "La tua lista non sente praticamente niente da te",
+     "text": "2 newsletter al mese con un template fisso è il minimo sindacale. I brand che portano l'email al 40-50% del fatturato mandano 3-4 comunicazioni a settimana. Non è spam: è la differenza tra un brand che occupa la inbox e uno che viene dimenticato. E i codici generici come BENVENUTO10? Il cliente sa che può usarli domani, tra un mese. Quindi non li usa mai.",
+     "steps": [
+      "Porta la frequenza a 1 newsletter a settimana come primo obiettivo, poi sale",
+      "Passa ai codici univoci nel Welcome Flow: VIP-4K7N invece di BENVENUTO10 — quando l'email dice 'scade tra 24 ore', con il codice personale ci crede davvero",
+      "Segmenta almeno tra chi ha già comprato e chi non ha ancora convertito: il messaggio giusto per il momento giusto cambia il risultato"
+     ]
+    },
+    "mid": {
+     "headline": "Stai comunicando, ma in modo uniforme",
+     "text": "Mandi email con buona frequenza, ma la lista riceve tutti lo stesso messaggio. Il guadagno reale arriva quando ogni segmento riceve quello che gli interessa, al momento giusto. E la campagna che ricordi come la migliore di solito non lo è, se togli sconti e settimane di saldi.",
+     "steps": [
+      "Crea almeno 3 segmenti chiave: nuovi iscritti, clienti attivi, clienti inattivi da 90+ giorni",
+      "Personalizza l'offerta: chi ha già comprato non ha bisogno dello stesso messaggio di chi non ha ancora convertito",
+      "Analizza le campagne per margine reale in Klaviyo: quale ha guadagnato davvero, tolti sconti e promozioni?"
+     ]
+    },
+    "high": {
+     "headline": "La tua strategia di comunicazione è matura",
+     "text": "Stai segmentando bene e comunicando con frequenza. Il passo successivo è affinare ancora di più: quale segmento risponde meglio a quale offerta, e quale mittente funziona meglio con quale pubblico.",
+     "steps": [
+      "Analizza quali clienti sembrano i migliori in aperture ma non lo sono in CLV reale: la risposta sorprende quasi sempre",
+      "Testa oggetti e mittenti diversi per segmento: lo stesso oggetto non funziona allo stesso modo con tutti",
+      "Aggiungi il canale Direct Mail per il segmento degli inattivi da 3+ mesi: funziona proprio perché arriva dove le email non arrivano più"
+     ]
+    }
+   }
+  },
+  {
+   "id": "analisi_test_e_dati",
+   "name": "Analisi, Test e Dati",
+   "questions": [
+    {
+     "id": "ab-testing",
+     "text": "Con che frequenza fai A/B test sulle email?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Non ho mai fatto A/B test",
+       "score": 1
+      },
+      {
+       "label": "L'ho fatto 1-2 volte, ma senza un metodo sistematico",
+       "score": 2
+      },
+      {
+       "label": "Testo occasionalmente gli oggetti delle newsletter",
+       "score": 3
+      },
+      {
+       "label": "Testo regolarmente oggetti, CTA e orari di invio",
+       "score": 4
+      },
+      {
+       "label": "Ho un sistema continuo: oggetto, mittente, CTA, design, offerta, timing — ogni email è un esperimento che lascia un dato",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "klaviyo-data",
+     "text": "Come usi i dati Klaviyo per prendere decisioni strategiche?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Guardo solo aperture e clic. Niente di più",
+       "score": 1
+      },
+      {
+       "label": "Controllo le revenue per campagna, ma senza analisi strutturata",
+       "score": 2
+      },
+      {
+       "label": "Analizzo le performance per segmento e identifico i flussi più redditizi",
+       "score": 3
+      },
+      {
+       "label": "Uso i dati per capire timing di riacquisto, valore del cliente nel tempo e comportamento per prodotto",
+       "score": 4
+      },
+      {
+       "label": "Ogni dato diventa una decisione: so quando mandare ogni email, per ogni prodotto, per ogni segmento",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_revenue",
+     "type": "number",
+     "text": "Qual è il fatturato mensile medio del tuo eCommerce?",
+     "hint": "Non serve il numero esatto, una stima va bene. Usiamo questo dato per calcolare il fatturato email che potresti generare.",
+     "suffix": "€/mese",
+     "min": 5000,
+     "max": 500000,
+     "step": 5000,
+     "default": 50000,
+     "normalize_formula": "Math.min(100, Math.max(0, (x - 5000) / 495000 * 100))"
+    },
+    {
+     "id": "current_email_pct",
+     "type": "number",
+     "text": "Che percentuale del tuo fatturato viene oggi dall'email marketing?",
+     "hint": "Trovi il dato in Klaviyo → Overview → Revenue Attribution. I brand ottimizzati che seguiamo raggiungono il 35% o più. Se non lo sai con precisione, metti la tua stima.",
+     "suffix": "%",
+     "min": 0,
+     "max": 80,
+     "step": 1,
+     "default": 15,
+     "normalize_formula": "Math.min(100, Math.max(0, x / 35 * 100))"
+    },
+    {
+     "id": "revenue-tracking",
+     "text": "Sai esattamente quante revenue genera ogni singolo flusso del tuo account?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, non ho questa informazione",
+       "score": 1
+      },
+      {
+       "label": "So il totale dell'email, ma non il dettaglio per flusso o campagna",
+       "score": 2
+      },
+      {
+       "label": "Conosco le revenue dei flussi principali (welcome, carrello abbandonato)",
+       "score": 3
+      },
+      {
+       "label": "Monitoro le revenue di tutti i flussi attivi ogni mese",
+       "score": 4
+      },
+      {
+       "label": "Ho il dato preciso per ogni flusso e campagna, margine reale incluso dopo sconti e promozioni",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Stai navigando senza dati",
+     "text": "Senza A/B test e senza analisi strutturata, stai mandando email basandoti sull'istinto. L'istinto ha un limite. Un A/B test impostato in pochi minuti può valere migliaia di euro: stesso flusso di checkout abbandonato, stessa lista, stessa offerta — solo l'oggetto cambiava. Risultato: 542€ vs 860€ su 340 persone. Moltiplica per 100.",
+     "steps": [
+      "Inizia con un A/B test semplice sull'oggetto della prossima newsletter: due varianti, vince chi apre di più. Un test a settimana",
+      "Vai su Klaviyo e guarda il breakdown revenue per campagna: capirai in 5 minuti quale flusso genera davvero",
+      "Calcola subito la % di fatturato che viene dall'email: è il numero che ti dice quanto stai lasciando sul tavolo ogni mese"
+     ]
+    },
+    "mid": {
+     "headline": "Usi i dati, ma non ancora come metodo sistematico",
+     "text": "Hai qualche test e qualche analisi, ma non è ancora un sistema. L'A/B test non è un evento occasionale: ogni email che mandi è un esperimento. Ogni variante che non testi è un dato che non hai.",
+     "steps": [
+      "Rendi gli A/B test una routine: almeno un test per ogni flusso principale, ogni mese",
+      "Analizza il timing di riacquisto per i 5 prodotti più venduti: scoprirai che molti clienti ricomprano prima di quanto pensi, e puoi agire prima che vadano dalla concorrenza",
+      "Controlla quale campagna ha guadagnato davvero tolti sconti e saldi: la campagna che ricordi come la migliore di solito non lo è"
+     ]
+    },
+    "high": {
+     "headline": "I dati guidano ogni tua decisione",
+     "text": "Stai usando Klaviyo come uno strumento strategico, non solo operativo. Ora puoi spingere ancora più in profondità, trasformando ogni analisi in output concreti in pochi minuti.",
+     "steps": [
+      "Testa il mittente oltre all'oggetto: cambiare chi 'firma' l'email può avere un impatto superiore all'oggetto stesso",
+      "Usa i dati CLV per capire quali clienti sembrano i migliori in aperture ma non lo sono in spesa reale nel tempo",
+      "Calcola il costo del sunset: quanto fatturato perdi se smetti di scrivere a chi non apre da 4, 6 o 12 mesi? Il numero ti dice se vale il tentativo di win-back prima di eliminare"
+     ]
+    }
+   }
+  },
+  {
+   "id": "salute_della_lista_e_del",
+   "name": "Salute della Lista e Deliverability",
+   "questions": [
+    {
+     "id": "popup-conversion",
+     "text": "Qual è il tasso di conversione del tuo popup di iscrizione alla lista?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Non ho un popup attivo sul sito",
+       "score": 1
+      },
+      {
+       "label": "Ho un popup ma non conosco il tasso di conversione",
+       "score": 2
+      },
+      {
+       "label": "Intorno all'1-2%",
+       "score": 3
+      },
+      {
+       "label": "Tra il 3% e il 5%",
+       "score": 4
+      },
+      {
+       "label": "Sopra il 5% (oppure lo monitoro attivamente e lo ottimizzo con test regolari)",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "deliverability",
+     "text": "Come valuteresti la deliverability del tuo account email?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Non so cosa sia o come misurarla",
+       "score": 1
+      },
+      {
+       "label": "Ne ho sentito parlare ma non l'ho mai analizzata seriamente",
+       "score": 2
+      },
+      {
+       "label": "So che è bassa o mediocre, ma non ho ancora agito",
+       "score": 3
+      },
+      {
+       "label": "L'ho analizzata e sto lavorando per migliorarla",
+       "score": 4
+      },
+      {
+       "label": "Sopra il 90%, la monitoro regolarmente con SPF, DKIM e DMARC configurati correttamente",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sunset-flow",
+     "text": "Hai un flusso di Sunset automatico per chi non apre le email da mesi?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, mando email a tutti indipendentemente dall'engagement",
+       "score": 1
+      },
+      {
+       "label": "Elimino periodicamente chi non apre, ma a mano e senza un flusso automatico",
+       "score": 2
+      },
+      {
+       "label": "Ho un flusso sunset base che tenta un riengaggio prima di eliminare",
+       "score": 3
+      },
+      {
+       "label": "Ho sunset + win-back con più touchpoint prima della pulizia lista",
+       "score": 4
+      },
+      {
+       "label": "Ho sunset, win-back con canale alternativo, e so esattamente quanto fatturato rischio di perdere prima di decidere se eliminare",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "La lista è un problema che cresce ogni giorno",
+     "text": "Mandare email a tutti senza gestire la deliverability è come versare acqua in un secchio bucato. Una deliverability bassa significa email che finiscono in spam. Quello che sembra 'bassa apertura' è spesso 'la email non è nemmeno arrivata'. E senza popup attivo, la lista non cresce.",
+     "steps": [
+      "Controlla la tua deliverability su Google Postmaster Tools: è gratis e ti dice subito dove sei",
+      "Attiva un popup sul sito e testa il testo dell'offerta: abbiamo visto brand passare dal 2% all'8,5% cambiando pochi elementi",
+      "Smetti di mandare a tutti: crea un segmento degli iscritti attivi degli ultimi 90 giorni e parti da lì per ricostruire la reputazione mittente"
+     ]
+    },
+    "mid": {
+     "headline": "Hai un popup, ma la lista non è gestita in modo sistematico",
+     "text": "Stai raccogliendo iscritti e pulisci occasionalmente la lista. Ma senza un sunset flow automatico, la deliverability si degrada nel tempo senza che te ne accorga. Una lista gonfia di inattivi abbassa il tasso di apertura reale e, con lui, la tua reputazione mittente.",
+     "steps": [
+      "Attiva un flusso di sunset: un tentativo di riengaggio automatico prima di eliminare definitivamente chi non risponde",
+      "Calcola quanto fatturato perderesti smettendo di scrivere a chi non apre da 4 mesi: il numero ti dice se vale il tentativo di win-back",
+      "Ottimizza il popup: testa il testo dell'offerta e il momento in cui appare (exit intent vs tempo sulla pagina)"
+     ]
+    },
+    "high": {
+     "headline": "La lista è sana e cresce in modo controllato",
+     "text": "Hai un processo serio di gestione della lista. Ora puoi spingere sulla crescita: un popup all'8%+ di conversione, su una lista pulita con buona deliverability, moltiplica il valore di ogni nuovo iscritto.",
+     "steps": [
+      "Analizza da dove vengono i tuoi iscritti migliori: quale fonte di traffico porta chi poi compra davvero?",
+      "Valuta il canale Direct Mail per il win-back dei più inattivi: arriva dove le email non arrivano più",
+      "Testa nuove varianti del popup ogni trimestre: anche un popup che converte bene può fare ancora meglio"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "current_email_revenue",
+   "label": "Fatturato mensile attuale dall'email",
+   "format": "currency_per_period",
+   "formula": "(current_email_pct / 100) * monthly_revenue",
+   "show_in_result": true
+  },
+  {
+   "id": "email_revenue_gap",
+   "label": "Fatturato email che potresti generare in più ogni mese (obiettivo 35%)",
+   "format": "currency_per_period",
+   "formula": "Math.max(0, (0.35 - current_email_pct / 100) * monthly_revenue)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Chi gestisce oggi l'email marketing del tuo brand?",
+  "answers": [
+   {
+    "label": "Lo gestisco io direttamente",
+    "tag": "founder"
+   },
+   {
+    "label": "Un membro del mio team interno",
+    "tag": "team"
+   },
+   {
+    "label": "Un'agenzia o freelance esterno",
+    "tag": "agency"
+   },
+   {
+    "label": "Nessuno, è praticamente abbandonato",
+    "tag": "nobody"
+   }
+  ]
+ }
+}
