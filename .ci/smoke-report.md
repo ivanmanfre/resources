@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: b4fab703e0fd21c4e8e409aaa6e8e731ff0b58d2 at 2026-08-18T20:06:39.020Z
+Deploy: 7ce9a402e376178d0be48a46272344dd2986d7f2 at 2026-08-19T17:01:03.624Z
 
-- sebastian-kajzer-7f-assessment: data.json HTTP 404
+- daniele-mauro-9d-assessment: data.json HTTP 404
