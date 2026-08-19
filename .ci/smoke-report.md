@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 7ce9a402e376178d0be48a46272344dd2986d7f2 at 2026-08-19T17:01:03.624Z
+Deploy: b398caba9bd487788d8488ee62e0c8cdfbce6ba8 at 2026-08-19T21:38:27.978Z
 
-- daniele-mauro-9d-assessment: data.json HTTP 404
+- milan-savov-1c-assessment: data.json HTTP 404
