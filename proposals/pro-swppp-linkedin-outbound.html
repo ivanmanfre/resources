@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Outbound • Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--paper:#F7F4EF;--paper-sunk:#EFEBE3;--paper-raise:#FFFFFF;--ink:#1A1A1A;--ink-soft:#4A4A48;--ink-mute:#5A5752;--hairline:rgba(26,26,26,.15);--hairline-bold:rgba(26,26,26,.25);--accent:#4C6E3D;--accent-ink:#344B29;--accent-soft:rgba(76,110,61,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
+a{color:inherit}
+
+/* COVER */
+.cover{min-height:100vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:64px;align-items:end}
+.cover-nav{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:40px;height:40px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.05em;color:var(--ink)}
+.logo-text{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.cover-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-tag{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px}
+.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,5.2vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.01em;color:var(--ink);margin-bottom:32px;max-width:760px}
+.cover h1 em{font-style:italic;color:var(--accent)}
+.cover-sub{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:520px;margin-bottom:0;border-left:2px solid var(--accent);padding-left:20px}
+.cover-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;text-align:right}
+.cover-numeral{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(140px,18vw,260px);line-height:.85;color:var(--accent);letter-spacing:-.04em;margin-bottom:12px}
+.cover-monthyear{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink)}
+.cover-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:36px;margin-top:64px;border-top:1px solid var(--hairline);grid-column:1 / -1}
+.cover-detail{display:flex;flex-direction:column;gap:8px;min-width:0}
+.cover-detail-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px}
+.cover-detail-value{font-size:16px;font-weight:600;color:var(--ink);line-height:1.4}
+
+/* SECTION */
+.section{padding:80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;position:relative}
+.section-number{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.4vw,46px);font-weight:400;line-height:1.08;letter-spacing:-.005em;margin-bottom:32px;color:var(--ink);max-width:900px}
+.section h2 em{font-style:italic;color:var(--accent)}
+.section h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-top:56px;margin-bottom:20px;padding-left:14px;border-left:2px solid var(--accent);font-family:'IBM Plex Mono',monospace}
+.section p{font-size:16px;color:var(--ink-soft);line-height:1.75;max-width:720px;margin-bottom:20px}
+.section p strong{color:var(--ink);font-weight:600}
+
+/* PROBLEM */
+.problem-card{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:32px 40px;margin:32px 0;max-width:840px}
+.problem-card p{color:var(--ink);font-size:18px;line-height:1.7;max-width:none;margin:0}
+
+/* FLOW */
+.flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.flow-step{padding:36px 40px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.flow-step-number{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:56px;line-height:.95;color:var(--accent);display:block;margin-bottom:16px;letter-spacing:-.02em}
+.flow-step-title{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;color:var(--ink);font-family:'IBM Plex Mono',monospace}
+.flow-step-desc{font-size:15px;color:var(--ink-soft);line-height:1.7}
+
+/* SCOPE */
+.scope-grid{margin:0;border-top:1px solid var(--hairline)}
+.scope-group{margin:32px 0 40px}
+.scope-group:first-of-type{margin-top:24px}
+.scope-group-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.scope-item{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--hairline);font-size:15px;line-height:1.6;color:var(--ink)}
+.scope-check{width:11px;height:11px;min-width:11px;background:var(--accent);margin-top:7px;flex-shrink:0}
+.scope-item.excluded{opacity:.45;color:var(--ink-mute)}
+.scope-item.excluded .scope-check{background:transparent;border:1px solid var(--hairline-bold)}
+
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+@media(max-width:1100px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.skill-card{padding:32px 28px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:48px;line-height:.95;color:var(--accent);display:block;margin-bottom:14px;letter-spacing:-.02em}
+.skill-name{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em;line-height:1.25}
+.skill-outcome{font-size:14px;color:var(--ink-soft);line-height:1.65}
+
+/* STACK */
+.stack-group{margin:24px 0 32px}
+.stack-cat{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.stack-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--hairline)}
+.stack-list li{padding:14px 0;border-bottom:1px solid var(--hairline);font-size:15px;color:var(--ink);line-height:1.6;display:flex;align-items:flex-start;gap:14px}
+.stack-list li::before{content:"";width:11px;height:11px;background:var(--accent);flex-shrink:0;margin-top:7px}
+
+/* TIMELINE */
+.timeline-table{width:100%;border-collapse:collapse;margin:32px 0}
+.timeline-table th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-mute);letter-spacing:.2em;text-transform:uppercase;padding:14px 24px 14px 0;border-bottom:2px solid var(--ink)}
+.timeline-table td{padding:24px 24px 24px 0;font-size:15px;border-bottom:1px solid var(--hairline);vertical-align:top;color:var(--ink-soft);line-height:1.65}
+.timeline-table tr:last-child td{border-bottom:none}
+.timeline-table .phase-name{font-weight:700;color:var(--ink)}
+.timeline-table .phase-duration{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);font-weight:500;white-space:nowrap}
+.timeline-table .phase-deliverable{color:var(--ink-soft)}
+.timeline-total{display:inline-block;background:var(--ink);color:var(--paper);padding:8px 16px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-top:8px}
+
+/* INVESTMENT */
+.investment-box{display:grid;grid-template-columns:auto minmax(0,1fr);gap:64px;margin:32px 0;padding:48px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);align-items:center}
+.investment-price{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(72px,9vw,128px);line-height:.9;color:var(--ink);letter-spacing:-.04em;white-space:nowrap}
+.investment-currency{font-family:'DM Serif Display',serif;font-style:italic;font-size:.42em;color:var(--accent);vertical-align:top;margin-right:6px;letter-spacing:0;line-height:1}
+.investment-right{display:flex;flex-direction:column;gap:24px;min-width:0}
+.investment-model{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:520px}
+.investment-terms{display:flex;gap:40px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--hairline)}
+.investment-term{display:flex;flex-direction:column;gap:8px;min-width:160px}
+.investment-term-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+.investment-term-value{font-size:14px;font-weight:600;color:var(--ink);line-height:1.5}
+.investment-recurring{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:28px 32px;margin-top:32px;color:var(--ink);max-width:none}
+.investment-recurring-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
+.investment-recurring-lead{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin-bottom:16px;max-width:none}
+.investment-recurring-list{list-style:none;padding:0;margin:0}
+.investment-recurring-list li{padding:10px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft);line-height:1.6}
+.investment-recurring-list li:last-child{border-bottom:none}
+.tiers-intro{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:720px;margin:0 0 28px}
+.tiers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:24px 0 36px}
+.tier-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
+.tier-card.recommended{border:1.5px solid var(--accent);box-shadow:0 2px 12px rgba(76,110,61,.08)}
+.tier-card.deferred{background:var(--paper-sunk);border-style:dashed}
+.tier-badge{position:absolute;top:-11px;left:24px;background:var(--accent);color:#fff;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.tier-name{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.tier-price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tier-price{font-family:'DM Serif Display',serif;font-size:52px;font-weight:400;line-height:1;color:var(--ink);letter-spacing:-.015em}
+.tier-price .currency{font-size:.45em;color:var(--accent);vertical-align:top;margin-right:3px;font-style:italic}
+.tier-period{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase}
+.tier-summary{font-size:14px;color:var(--ink-soft);line-height:1.55;margin:4px 0 8px}
+.tier-included{list-style:none;padding:0;margin:0;border-top:1px solid var(--hairline);padding-top:14px}
+.tier-included li{padding:5px 0 5px 18px;font-size:13.5px;color:var(--ink);line-height:1.5;position:relative}
+.tier-included li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
+.tier-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:3px;align-self:flex-start;transition:opacity .15s}
+.tier-link:hover{opacity:.7}
+.tier-payment-note{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--ink-mute);margin:-4px 0 4px}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px;margin:32px 0}
+.proof-card{background:var(--paper-raise);border:1px solid var(--hairline);overflow:hidden;display:flex;flex-direction:column}
+.proof-card img{width:100%;height:auto;display:block;border-bottom:1px solid var(--hairline)}
+.proof-card-body{padding:18px 22px}
+.proof-card-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.proof-card-caption{font-size:14px;color:var(--ink);line-height:1.5}
+@media(max-width:760px){.proof-grid{grid-template-columns:1fr}}
+.investment-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;padding:24px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin:0 0 24px}
+.investment-meta .investment-term{display:flex;flex-direction:column;gap:6px}
+@media (max-width:780px){.tiers-grid{grid-template-columns:1fr}}
+
+/* ROI */
+.roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.roi-stat{padding:40px 32px 40px 0;border-right:1px solid var(--hairline)}
+.roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:32px}
+.roi-stat:last-child{border-right:none}
+.roi-stat-value{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:96px;line-height:.9;color:var(--ink);letter-spacing:-.03em;margin-bottom:8px}
+.roi-stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* ACCESS LIST */
+.access-list{list-style:none;margin:32px 0;border-top:1px solid var(--hairline)}
+.access-list li{padding:18px 0;border-bottom:1px solid var(--hairline);font-size:15px;color:var(--ink);display:flex;align-items:flex-start;gap:14px;line-height:1.65}
+.access-list li::before{content:'';width:11px;height:11px;background:var(--accent);flex-shrink:0;margin-top:7px}
+
+/* AGREEMENT */
+.agreement-section{background:var(--paper-sunk)}
+.terms-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.term-item{padding:28px 32px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.term-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.term-text{font-size:14px;color:var(--ink-soft);line-height:1.7}
+.agreement-footnote{margin-top:32px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);letter-spacing:.05em}
+
+/* CTA */
+.cta-section{padding:96px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;text-align:left}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(36px,4.4vw,60px);font-weight:400;line-height:1.05;letter-spacing:-.005em;margin-bottom:24px;color:var(--ink);max-width:800px}
+.cta-section h2 em{font-style:italic;color:var(--accent)}
+.cta-section p{font-size:17px;color:var(--ink-soft);margin-bottom:40px;max-width:520px;line-height:1.7}
+.cta-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:18px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s ease}
+.btn-primary:hover{background:var(--accent-ink)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink);padding:18px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);cursor:pointer;transition:background .2s ease,color .2s ease}
+.btn-secondary:hover{background:var(--ink);color:var(--paper)}
+
+/* UPSELL */
+.upsell-box{margin-top:64px;padding:32px 40px;background:var(--paper-sunk);border-left:2px solid var(--accent)}
+.upsell-box h3{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 16px;border-left:none;padding-left:0}
+.upsell-box p{font-size:15px;color:var(--ink-soft);line-height:1.75;margin:0;max-width:none}
+.upsell-list{list-style:none;padding:0;margin:0}
+.upsell-list li{padding:10px 0 10px 22px;font-size:14.5px;color:var(--ink);line-height:1.55;position:relative;border-bottom:1px solid var(--hairline)}
+.upsell-list li:last-child{border-bottom:none}
+.upsell-list li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
+.upsell-lead{font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 14px}
+.mermaid-wrap{margin:24px 0 12px;padding:32px 24px;background:var(--paper-raise);border:1px solid var(--hairline);overflow-x:auto;display:flex;justify-content:center}
+.mermaid-wrap .mermaid{font-family:'IBM Plex Mono',monospace !important;min-width:0}
+.mermaid-wrap svg{max-width:100%;height:auto}
+.mermaid-wrap .label,.mermaid-wrap .nodeLabel{font-family:'IBM Plex Mono',monospace !important;font-weight:500;font-size:12px !important}
+.mermaid-wrap .cluster rect{fill:var(--paper-sunk) !important;stroke:var(--ink-mute) !important}
+.mermaid-wrap .cluster .nodeLabel{font-family:'IBM Plex Mono',monospace !important;letter-spacing:.18em;text-transform:uppercase;font-size:10px !important;font-weight:600;fill:var(--accent)}
+.mermaid-wrap .edgeLabel{background:var(--paper-raise);font-family:'IBM Plex Mono',monospace !important;font-size:10px !important;letter-spacing:.1em;color:var(--ink-mute) !important}
+.mermaid-wrap .edgePath path{stroke:var(--accent) !important;stroke-width:1.5px !important}
+.mermaid-wrap .marker{fill:var(--accent) !important;stroke:var(--accent) !important}
+.mermaid-caption{font-size:13px;color:var(--ink-mute);font-style:italic;text-align:center;margin:0 0 32px}
+/* Custom system flow (replaces mermaid) */
+.sysflow{margin:28px 0 12px;display:grid;grid-template-columns:1fr auto 1.3fr auto 1fr;gap:0;align-items:stretch}
+.sysflow-stage{padding:24px 22px;background:var(--paper-raise);border:1px solid var(--hairline);position:relative;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sysflow-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:38px;color:var(--accent);line-height:.9;letter-spacing:-.02em}
+.sysflow-title{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);border-top:1px solid var(--hairline);padding-top:10px;line-height:1.4}
+.sysflow-items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0}
+.sysflow-item{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed var(--hairline);font-size:14px;line-height:1.45}
+.sysflow-item:last-child{border-bottom:none}
+.sysflow-item-text{font-weight:500;color:var(--ink)}
+.sysflow-item-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.06em;white-space:nowrap}
+.sysflow-arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Serif Display',serif;font-style:italic;font-size:44px;padding:0 6px;line-height:1}
+.sysflow-branch{margin-top:14px;padding:14px 16px;background:var(--accent-soft);border-left:2px dashed var(--accent);font-size:13px;color:var(--ink);line-height:1.55}
+.sysflow-branch-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+@media(max-width:880px){.sysflow{grid-template-columns:1fr}.sysflow-arrow{transform:rotate(90deg);padding:14px 0;font-size:32px}}
+
+/* FOOTER */
+.footer{padding:32px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-left{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--ink-mute);text-decoration:none;transition:color .2s ease}
+.footer-right a:hover{color:var(--accent)}
+
+/* PROGRESS BAR */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9999;transition:width .1s linear;width:0}
+
+/* ANIMATIONS */
+.section,.cover,.cta-section,.agreement-section,.footer{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.section.visible,.cover.visible,.cta-section.visible,.agreement-section.visible,.footer.visible{opacity:1;transform:translateY(0)}
+
+/* TABLE SCROLL */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .skills-grid{grid-template-columns:1fr}
+  .cover{grid-template-columns:1fr;padding:120px 32px 48px;gap:32px}
+  .cover-nav{left:32px;right:32px;top:24px;flex-wrap:wrap;gap:8px}
+  .cover h1{font-size:44px}
+  .cover-numeral{font-size:120px}
+  .cover-right{align-items:flex-start;text-align:left}
+  .cover-details{grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px}
+  .section{padding:48px 32px}
+  .cta-section{padding:48px 32px}
+  .flow-grid,.terms-grid{grid-template-columns:1fr}
+  .roi-grid{grid-template-columns:1fr}
+  .roi-stat{border-right:none;border-bottom:1px solid var(--hairline);padding:32px 0}
+  .roi-stat:last-child{border-bottom:none}
+  .roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:0}
+  .roi-stat-value{font-size:64px}
+  .investment-box{grid-template-columns:1fr;gap:24px}
+  .investment-price{font-size:64px}
+  .footer{flex-direction:column;align-items:flex-start;padding:32px}
+}
+
+/* MOBILE TIMELINE: stack table rows into cards */
+@media(max-width:600px){
+  .timeline-table thead{display:none}
+  .timeline-table,.timeline-table tbody,.timeline-table tr,.timeline-table td{display:block;width:100%}
+  .timeline-table tr{padding:24px 0;border-bottom:1px solid var(--hairline)}
+  .timeline-table tr:last-child{border-bottom:none}
+  .timeline-table td{padding:0;border:none;margin:0}
+  .timeline-table .phase-name{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.2}
+  .timeline-table .phase-duration{display:inline-block;background:var(--paper-sunk);padding:4px 10px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;margin-bottom:10px;color:var(--accent);white-space:nowrap}
+  .timeline-table .phase-deliverable{font-size:14px;line-height:1.7;color:var(--ink-soft)}
+}
+
+/* PRINT */
+@media print{
+  *{background:transparent !important;box-shadow:none !important}
+  body{font-size:11pt;color:#000 !important;background:#fff !important}
+  .cover{min-height:auto;page-break-after:always;padding:48px}
+  .section{page-break-inside:avoid;padding:32px 48px}
+  .scroll-progress{display:none}
+  .section,.cover,.cta-section,.agreement-section,.footer{opacity:1 !important;transform:none !important}
+}
+</style>
+<noscript><style>.section,.cover,.cta-section,.agreement-section,.footer{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+<div class="scroll-progress"></div>
+<div class="cover">
+    <div class="cover-nav">
+      <div class="logo">
+        <div class="logo-mark">IM</div>
+        <span class="logo-text">Iván Manfredi</span>
+      </div>
+      <span class="cover-meta">Proposal • August 20, 2026</span>
+    </div>
+    <div class="cover-left">
+      
+      <h1>LinkedIn Outbound</h1>
+      <p class="cover-sub">Reach the estimators and project managers your email engine cannot touch, on LinkedIn, timed to the bid, and turn them into first orders.</p>
+    </div>
+    <div class="cover-right">
+      <div class="cover-numeral">20</div>
+      <div class="cover-monthyear">AUGUST 2026</div>
+    </div>
+    <div class="cover-details">
+      <div class="cover-detail"><span class="cover-detail-label">Prepared For</span><span class="cover-detail-value">Derek</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Engagement</span><span class="cover-detail-value">Pro SWPPP, LLC</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Delivery</span><span class="cover-detail-value">Live in 5 business days</span></div>
+      
+      <div class="cover-detail"><span class="cover-detail-label">Investment</span><span class="cover-detail-value">$1,000</span></div>
+    </div>
+  </div>
+<div class="section">
+    <span class="section-number">01 • The Problem</span>
+    <h2>What’s costing you time</h2>
+    <div class="problem-card"><p>About half the contacts sitting in your pipeline have no working email, so the SDR engine never reaches them at all. CMD flags roughly 788 new companies a month with live projects, and your CRM holds around two people at each one.</p></div>
+    
+    <p>Currently absorbing approximately <strong>15+ hours per week</strong> in manual work.</p>
+    
+  </div>
+<div class="section">
+    <span class="section-number">02 • The Solution</span>
+    <h2>What we’re building</h2>
+    <p>Reach the estimators and project managers your email engine cannot touch, on LinkedIn, timed to the bid, and turn them into first orders.</p>
+    <p>Built on <strong>n8n</strong>. Designed to remove manual touchpoints while keeping you in full control.</p>
+    
+    <h3>System Flow</h3>
+    <div class="flow-grid">
+      <div class="flow-step"><span class="flow-step-number">01</span><div class="flow-step-title">Triggers</div><div class="flow-step-desc">CMD flags a new project and the company enters Pipedrive. We filter to companies that have never ordered, then pick the contacts your email engine cannot reach: no email on file, unverified, or previously bounced.</div></div>
+      <div class="flow-step"><span class="flow-step-number">02</span><div class="flow-step-title">Process</div><div class="flow-step-desc">We find those people on LinkedIn plus their colleagues on the same project, run a liveness check so we skip dead profiles, and queue a connect. Every message is drafted against the live project and waits for your approval before it sends.</div></div>
+      <div class="flow-step"><span class="flow-step-number">03</span><div class="flow-step-title">Output</div><div class="flow-step-desc">A Pipedrive record is created the moment the connect goes out, stamped with the source, the date and the thread. When they reply, the conversation runs until they ask for a quote or book time with your team.</div></div>
+      <div class="flow-step"><span class="flow-step-number">04</span><div class="flow-step-title">Confirm</div><div class="flow-step-desc">Your rep inherits a record that already carries the stamp, so nothing depends on anyone remembering to log it. You get a saved filter in your own Pipedrive showing every deal this lane produced, which you can open any time without asking me for a number.</div></div>
+    </div>
+    
+  </div>
+<div class="section">
+      <span class="section-number">03 • Scope of Work</span>
+      <h2>What’s included</h2>
+      <div class="scope-grid"><div class="scope-item"><div class="scope-check"></div><div>LinkedIn outreach to estimators and PMs at CMD-flagged companies</div></div><div class="scope-item"><div class="scope-check"></div><div>Targeting scoped to contacts your email engine cannot reach</div></div><div class="scope-item"><div class="scope-check"></div><div>Your 780 existing customer companies excluded at pick time</div></div><div class="scope-item"><div class="scope-check"></div><div>Your do-not-contact list honoured before anything sends</div></div><div class="scope-item"><div class="scope-check"></div><div>Liveness check before we spend a connect on a dead profile</div></div><div class="scope-item"><div class="scope-check"></div><div>Every message drafted and held for your approval</div></div><div class="scope-item"><div class="scope-check"></div><div>Source stamping written into Pipedrive at send time</div></div><div class="scope-item"><div class="scope-check"></div><div>Reply handling through to a quote request or booked call</div></div><div class="scope-item"><div class="scope-check"></div><div>Saved Pipedrive filter so you audit the numbers yourself</div></div><div class="scope-item"><div class="scope-check"></div><div>M&amp;A target list, 600 to 800 companies, owner enriched (optional add-on)</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Phone calling on either lane</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>M&amp;A deal support, diligence, or LOI work</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>EBITDA or revenue verification on acquisition targets</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Owner personal mailing addresses</div></div></div>
+      <h3>Not Included</h3><p>No calling on either lane. CAPTARGET runs a US calling team and for retiring owner-operators that is the channel that decides the outcome, so keep that conversation with them. I also do not do diligence, LOI support, or EBITDA verification. On the M&amp;A list I hand you data and you own it. I run no outreach against it and I promise you no meetings from it.</p>
+    </div>
+<div class="section">
+      <span class="section-number">04 • Timeline</span>
+      <h2>Delivery schedule</h2>
+      <div class="table-scroll">
+        <table class="timeline-table">
+          <thead><tr><th>Phase</th><th>Duration</th><th>Deliverable</th></tr></thead>
+          <tbody><tr><td class="phase-name">Setup</td><td class="phase-duration">5 business days</td><td class="phase-deliverable">Seat connected, targeting filters built, exclusion lists loaded, source stamping wired into Pipedrive, first message approved by you</td></tr><tr><td class="phase-name">Pilot</td><td class="phase-duration">2 weeks</td><td class="phase-deliverable">200 connects sent, acceptance rate measured against my baseline from other accounts, copy tuned on what comes back</td></tr><tr><td class="phase-name">Run</td><td class="phase-duration">Monthly, ongoing</td><td class="phase-deliverable">Full cadence at seat capacity, replies worked to a quote request or a booked call, weekly numbers in your Pipedrive</td></tr><tr><td class="phase-name">M&amp;A list (optional)</td><td class="phase-duration">2 weeks</td><td class="phase-deliverable">600 to 800 US companies built off Apollo plus the CPESC, CESSWI and state inspector registries, owner name, title, LinkedIn URL, verified work email, direct dial where it exists</td></tr></tbody>
+        </table>
+      </div>
+      <div class="timeline-total">Total: Live in 5 business days</div>
+    </div>
+<div class="section">
+    <span class="section-number">05 • Investment</span>
+    <h2>Pricing</h2>
+    <div class="investment-box">
+        <div class="investment-price"><span class="investment-currency">$</span>1000</div>
+        <div class="investment-right">
+          <div class="investment-model">$1,000 per month base, plus $500 for every new company that places a first order. New means a company with no prior order in your Pipedrive, checked against the 780 that have already bought. Optional M&amp;A target list is $2,000 one time and you own the data.</div>
+          <div class="investment-terms">
+            <div class="investment-term"><span class="investment-term-label">Payment Terms</span><span class="investment-term-value">Monthly in advance. Performance fees invoiced at month end against the Pipedrive filter. 30 day notice either side.</span></div>
+            <div class="investment-term"><span class="investment-term-label">Support Included</span><span class="investment-term-value">Ongoing while engaged</span></div>
+            <div class="investment-term"><span class="investment-term-label">Start Date</span><span class="investment-term-value">Upon LinkedIn and Pipedrive access</span></div>
+          </div>
+        </div>
+      </div>
+    <div class="investment-recurring">
+        <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
+        <p class="investment-recurring-lead">Sales Navigator seat you already hold.</p>
+        <ul class="investment-recurring-list"><li>No new tooling.</li></ul>
+      </div>
+  </div>
+<div class="section">
+    <span class="section-number">06 • Expected ROI</span>
+    <h2>What you get back</h2>
+    <p>You win about 192 new accounts a year from every channel you have. Five a month from this lane is a 31% lift on that, and at $500 each it costs you $2,500 in a month where it delivers. Your median first order is $1,250 and your accounts buy an average of 2.08 times, so a company acquired here is worth around $2,600 to you against a $500 fee. You pay after the order lands, so there is no month where this costs you money without producing.</p>
+    <div class="roi-grid">
+      <div class="roi-stat"><div class="roi-stat-value">20+</div><div class="roi-stat-label">Hours Saved / Month</div></div><div class="roi-stat"><div class="roi-stat-value">0</div><div class="roi-stat-label">Manual Errors</div></div><div class="roi-stat"><div class="roi-stat-value">2x</div><div class="roi-stat-label">Scale Capacity</div></div>
+    </div>
+  </div>
+<div class="section">
+      <span class="section-number">07 • Requirements</span>
+      <h2>What I need from you</h2>
+      <ul class="access-list"><li>LinkedIn account with Sales Navigator (you already have this)</li><li>Pipedrive access for the source stamping and the saved filter</li><li>Your list of companies you do not want contacted</li><li>30 minute kickoff to lock targeting and approve the first message</li></ul>
+    </div>
+<div class="section agreement-section">
+      <span class="section-number">08 • Agreement &amp; Terms</span>
+      <h2>Terms of engagement</h2>
+      <p>Both parties agree to the following terms governing this engagement:</p>
+      <div class="terms-grid"><div class="term-item"><div class="term-title">Scope</div><div class="term-text">This proposal defines the work. Anything beyond is a separate agreement.</div></div><div class="term-item"><div class="term-title">Payment</div><div class="term-text">Monthly in advance. Performance fees invoiced at month end against the Pipedrive filter. 30 day notice either side.</div></div><div class="term-item"><div class="term-title">Intellectual Property</div><div class="term-text">Upon full payment, all deliverables become the Client’s property. I retain the right to reference the project in case studies without disclosing confidential data.</div></div><div class="term-item"><div class="term-title">Cancellation</div><div class="term-text">Either party may terminate with 7 days written notice. Work completed up to that date is billed proportionally; deposits are non-refundable for work already underway.</div></div></div>
+      <p class="agreement-footnote">Governed by the laws of Spain. Disputes resolved through good-faith negotiation before formal proceedings.</p>
+    </div>
+<div class="cta-section">
+    
+      <h2>Ready to move forward?</h2>
+      <p>Reply to this proposal to get started, or send any questions my way.</p>
+      <div class="cta-buttons">
+        <a href="mailto:im@ivanmanfredi.com" class="btn-primary">Get Started →</a>
+      </div>
+    
+    <div class="upsell-box"><h3>Future Opportunities</h3><p>If the pilot lands near my normal acceptance rate, a second seat roughly doubles the connect capacity against a CMD feed that already brings in more companies than one seat can work. The industrial multi-sector permit market is the other one worth a conversation once the construction lane is running, since those sites renew every five years and need quarterly inspections.</p></div>
+  </div>
+<div class="footer">
+  <div class="footer-left">Iván Manfredi</div>
+  <div class="footer-right">
+    <a href="https://ivanmanfredi.com">ivanmanfredi.com</a>
+    <a href="mailto:im@ivanmanfredi.com">im@ivanmanfredi.com</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  const bar=document.querySelector('.scroll-progress');
+  if(bar){window.addEventListener('scroll',()=>{
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=h>0?(window.scrollY/h*100)+'%':'0';
+  },{passive:true})}
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.section,.cover,.cta-section,.agreement-section,.footer').forEach(el=>obs.observe(el));
+  const numObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target;
+      const text=el.textContent.trim();
+      const num=parseFloat(text.replace(/[^0-9.]/g,''));
+      if(isNaN(num)||num===0)return;
+      const suffix=text.replace(/[0-9.,]/g,'');
+      const isInt=!text.includes('.');
+      let start=0;
+      const duration=1200;
+      const startTime=performance.now();
+      function tick(now){
+        const p=Math.min((now-startTime)/duration,1);
+        const ease=1-Math.pow(1-p,3);
+        const val=start+(num-start)*ease;
+        el.textContent=(isInt?Math.round(val):val.toFixed(1))+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      numObs.unobserve(el);
+    })
+  },{threshold:0.5});
+  document.querySelectorAll('.roi-stat-value').forEach(el=>numObs.observe(el));
+  const cover=document.querySelector('.cover');
+  if(cover)setTimeout(()=>cover.classList.add('visible'),100);
+})();
+</script>
+</body>
+</html>
