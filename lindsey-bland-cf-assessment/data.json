@@ -1,0 +1,641 @@
+{
+ "slug": "lindsey-bland-cf-assessment",
+ "title": "B2B LinkedIn Ads Readiness Score",
+ "subtitle": "Measures how well your targeting, creative, landing pages, and lead handling work together to drive consistent B2B growth from LinkedIn.",
+ "brand": {
+  "accent": "#5e3e57",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "account_profile_foundati",
+   "name": "Account & Profile Foundation",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "When someone clicks your company name inside a LinkedIn ad, where do they land?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Directly on our fully set-up LinkedIn company page — I've confirmed it",
+       "score": 5
+      },
+      {
+       "label": "Our company page, though it could use some work",
+       "score": 4
+      },
+      {
+       "label": "I think our company page, but I haven't checked recently",
+       "score": 3
+      },
+      {
+       "label": "I've never tested what actually happens when someone clicks through",
+       "score": 2
+      },
+      {
+       "label": "We don't have a LinkedIn company page connected to the ad account",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "How would you describe the current state of your LinkedIn company page?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Complete — logo, banner, description, website, and recent posts all in place",
+       "score": 5
+      },
+      {
+       "label": "Mostly filled in, with some posts but nothing consistent",
+       "score": 4
+      },
+      {
+       "label": "Basic info is there but it hasn't been updated in months",
+       "score": 3
+      },
+      {
+       "label": "Fairly sparse — a few fields filled in, no real presence built up",
+       "score": 2
+      },
+      {
+       "label": "I wouldn't feel confident sending a prospect there right now",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "When did someone on your team last review your LinkedIn ad account setup end-to-end?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "This month — it's part of how we run things regularly",
+       "score": 5
+      },
+      {
+       "label": "In the last quarter",
+       "score": 4
+      },
+      {
+       "label": "Six or more months ago",
+       "score": 3
+      },
+      {
+       "label": "When we launched — not since then",
+       "score": 2
+      },
+      {
+       "label": "I'm not sure it's ever been properly reviewed",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Fix the foundation before you scale the spend",
+     "text": "The basics matter more than people think. A broken company page link, a sparse profile, or an unreviewed account setup quietly undermines every ad you run — the moment someone clicks through, trust is already at stake. These are fast fixes with immediate payback.",
+     "steps": [
+      "Test the link between your ad account and company page — click through yourself and see what a prospect actually lands on",
+      "Update your company page: logo, banner, clear description, website link, and at least a few recent posts",
+      "Do a full review of your ad account setup including tracking, permissions, and billing — small gaps compound"
+     ]
+    },
+    "mid": {
+     "headline": "Good start — close the gaps before they cost you",
+     "text": "The basics are mostly in place, but there are probably things that haven't been looked at in a while. Small oversights at the foundation level have a way of costing more than they should.",
+     "steps": [
+      "Verify the company page connection is working correctly — click through from an active ad and confirm where it lands",
+      "Set a quarterly review of your company page and account setup so nothing drifts",
+      "Make sure your LinkedIn presence reflects what a prospect would expect after seeing your ad"
+     ]
+    },
+    "high": {
+     "headline": "Solid foundation — now make sure it's working for you",
+     "text": "You've got the housekeeping sorted. The next question is whether your setup is actively building trust with prospects or just not getting in the way.",
+     "steps": [
+      "Look at your company page with fresh eyes — does it build confidence for someone who's never heard of you?",
+      "Keep the review cadence consistent so nothing quietly breaks between campaigns",
+      "Treat your LinkedIn company page as a trust signal, not just a technical requirement"
+     ]
+    }
+   }
+  },
+  {
+   "id": "targeting_precision",
+   "name": "Targeting Precision",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "How clearly defined is the ideal person your LinkedIn ads are trying to reach?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very clearly — job title, seniority, company size, industry, and buying intent are all defined and tested",
+       "score": 5
+      },
+      {
+       "label": "Pretty clearly — we know who we're going after and have built targeting to match",
+       "score": 4
+      },
+      {
+       "label": "Roughly — we have a general picture but haven't stress-tested it",
+       "score": 3
+      },
+      {
+       "label": "Not very clearly — we targeted broadly to see who engages",
+       "score": 2
+      },
+      {
+       "label": "Not defined — we haven't built a proper target audience profile yet",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "How often do you go back and refine your LinkedIn audience targeting based on what the data shows?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Regularly — after each meaningful data point or campaign cycle",
+       "score": 5
+      },
+      {
+       "label": "Every quarter",
+       "score": 4
+      },
+      {
+       "label": "Every six months or so",
+       "score": 3
+      },
+      {
+       "label": "Rarely — targeting was set when we launched and hasn't changed much",
+       "score": 2
+      },
+      {
+       "label": "Never — it's the same as day one",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "How much do you know about what your competitors are currently running on LinkedIn Ads?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A lot — we research competitor ads, messaging, and positioning before and during campaigns",
+       "score": 5
+      },
+      {
+       "label": "Some — we did a review at the start and check in occasionally",
+       "score": 4
+      },
+      {
+       "label": "A rough sense — we know our competitors but haven't studied their LinkedIn ads specifically",
+       "score": 3
+      },
+      {
+       "label": "Very little — we haven't really looked at their LinkedIn advertising",
+       "score": 2
+      },
+      {
+       "label": "Nothing — competitor research hasn't been part of our process",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Targeting is the fastest lever you can pull right now",
+     "text": "If you're not clear on who you're reaching, everything else — creative, messaging, landing pages, lead handling — becomes guesswork. Nailing targeting is the first step to making LinkedIn Ads worth the spend.",
+     "steps": [
+      "Define your ideal customer specifically: job title, seniority, company size, and industry — not just a general description",
+      "Research what your competitors are running in LinkedIn Ads before you write a word of ad copy — gaps in their messaging are often your best opportunities",
+      "Set a monthly review of audience performance data so you can cut what isn't working and put more behind what is"
+     ]
+    },
+    "mid": {
+     "headline": "You're pointed in the right direction — sharpen it",
+     "text": "You have a working picture of who you're going after. The gap is usually in how often you revisit it and how much you know about what's working in your space right now.",
+     "steps": [
+      "Use LinkedIn's audience insights to check whether the people actually engaging match who you thought you were targeting",
+      "Do a competitor ad review this quarter — it takes a couple of hours and the gaps you find are often directly usable",
+      "Test a tighter audience segment alongside your current one and let the data tell you which performs better"
+     ]
+    },
+    "high": {
+     "headline": "Strong targeting practice — keep the loop tight",
+     "text": "You're doing the things that make targeting compound over time. The risk at this stage is assuming what worked last quarter still holds — markets shift, and so does your competition.",
+     "steps": [
+      "Keep running regular competitor checks — what's working for them today is data you can act on now",
+      "Document your targeting decisions so you can track what changed, when, and why",
+      "Test new audience segments as you grow — don't let a working setup turn into a stale one"
+     ]
+    }
+   }
+  },
+  {
+   "id": "creative_messaging",
+   "name": "Creative & Messaging",
+   "questions": [
+    {
+     "id": "q7",
+     "text": "How do you decide what to say in your LinkedIn ad creative?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We base messaging on real buyer conversations, test multiple angles, and update based on performance data",
+       "score": 5
+      },
+      {
+       "label": "We know our audience well and test messaging when we can",
+       "score": 4
+      },
+      {
+       "label": "We write what sounds right and run it — testing has been ad hoc at best",
+       "score": 3
+      },
+      {
+       "label": "We've adapted our general marketing copy and haven't seriously tested alternatives",
+       "score": 2
+      },
+      {
+       "label": "We're not confident our messaging speaks to the right problems",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8",
+     "text": "How often do you refresh your LinkedIn ad creative?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Proactively — we test new creative before performance starts to drop",
+       "score": 5
+      },
+      {
+       "label": "When we notice performance is falling off",
+       "score": 4
+      },
+      {
+       "label": "Every few months, roughly",
+       "score": 3
+      },
+      {
+       "label": "Occasionally, when someone remembers to do it",
+       "score": 2
+      },
+      {
+       "label": "Our creative is the same as when we launched",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q9",
+     "text": "How specific and appropriate is the action you're asking prospects to take in your LinkedIn ads?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very specific — a low-friction offer matched to where the prospect is in their buying journey",
+       "score": 5
+      },
+      {
+       "label": "Clear, though it's the same ask regardless of audience or stage",
+       "score": 4
+      },
+      {
+       "label": "General — something like 'learn more' or 'visit our website'",
+       "score": 3
+      },
+      {
+       "label": "We point people to our homepage and hope they find what they need",
+       "score": 2
+      },
+      {
+       "label": "We're not confident the call to action is doing its job",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Weak creative and messaging costs you leads every day",
+     "text": "Ads that say the wrong thing to the right people don't convert. Before you increase spend, get the message right. That starts with real buyer language — not what you think they want to hear.",
+     "steps": [
+      "Pull your last 5–10 sales conversations and find the exact words your buyers use to describe their problems — that's your ad copy",
+      "Run at least two messaging angles at the same time so you have data to make decisions with, not just opinions",
+      "Set a four-week creative performance review as a non-negotiable — ad fatigue kills results quietly and quickly"
+     ]
+    },
+    "mid": {
+     "headline": "Good instincts — build a proper test and refresh process",
+     "text": "You've got messaging that works well enough. The problem is that 'well enough' erodes over time, and ad hoc testing rarely catches it before performance drops.",
+     "steps": [
+      "Move from occasional testing to always running at least two creative variants — the comparison is where the learning happens",
+      "Build a refresh schedule before performance drops, not after — proactive beats reactive every time",
+      "Check whether your call to action fits where the buyer actually is — someone who's never heard of you needs a different ask than a warm lead"
+     ]
+    },
+    "high": {
+     "headline": "Strong creative discipline — now tighten the buyer journey match",
+     "text": "You're running creative the right way. The next lever is usually in how precisely your ask maps to each stage of the buyer journey.",
+     "steps": [
+      "Review whether each audience segment has creative designed specifically for them — a single message is a missed opportunity",
+      "Look at which calls to action have the best downstream conversion rate, not just the best click-through rate",
+      "Keep testing — what's converting now won't always convert"
+     ]
+    }
+   }
+  },
+  {
+   "id": "post_click_lead_handling",
+   "name": "Post-Click & Lead Handling",
+   "questions": [
+    {
+     "id": "q10",
+     "text": "How well does your landing page match the LinkedIn ad that sent someone there?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very well — message, offer, and tone are consistent, and we check this for every campaign",
+       "score": 5
+      },
+      {
+       "label": "Reasonably well — there's a clear connection, though we haven't stress-tested it",
+       "score": 4
+      },
+      {
+       "label": "Broadly — we use a general page that covers most of our traffic",
+       "score": 3
+      },
+      {
+       "label": "Not well — people land on our homepage or a page not built for ads",
+       "score": 2
+      },
+      {
+       "label": "I've never thought about whether the ad and landing page need to match",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q11",
+     "text": "What happens to a lead the moment they convert on one of your LinkedIn ads?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They enter a documented follow-up process and someone contacts them within 24 hours",
+       "score": 5
+      },
+      {
+       "label": "They get an automated confirmation and someone follows up within a couple of days",
+       "score": 4
+      },
+      {
+       "label": "They get an automated email and we follow up when we have capacity",
+       "score": 3
+      },
+      {
+       "label": "They land in a spreadsheet or CRM and we get to them when we can",
+       "score": 2
+      },
+      {
+       "label": "I'm not entirely sure what happens after someone converts",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12",
+     "text": "What do you do with leads who don't convert immediately after clicking a LinkedIn ad?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have a structured nurture sequence that stays in contact with them over time",
+       "score": 5
+      },
+      {
+       "label": "We retarget with ads and follow up by email",
+       "score": 4
+      },
+      {
+       "label": "We occasionally retarget but there's no consistent follow-up process",
+       "score": 3
+      },
+      {
+       "label": "Most unconverted leads go quiet — we rely on the ones who come back on their own",
+       "score": 2
+      },
+      {
+       "label": "We have nothing in place for leads who don't convert straight away",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Leads are falling through the cracks after the click",
+     "text": "The ad is only half the job. What happens after someone clicks — the landing page they see, the follow-up they get, and what you do if they don't convert immediately — is where most of the money is lost. Fix this before increasing spend.",
+     "steps": [
+      "Check whether your landing page continues the conversation the ad started — if the message changes between the ad and the page, you're losing people right there",
+      "Set up a clear, fast follow-up process for every lead that converts — the longer you wait, the colder they get",
+      "Build even a basic retargeting sequence for leads who didn't convert straight away — most B2B buyers need more than one touch before they're ready"
+     ]
+    },
+    "mid": {
+     "headline": "The basics are there — close the gaps in follow-up",
+     "text": "You're not losing everything after the click, but there are gaps in how consistently leads get followed up with and what happens to the ones who don't convert immediately.",
+     "steps": [
+      "Document your lead follow-up process so it doesn't depend on bandwidth or memory",
+      "Audit the message match between your ads and landing pages — even small inconsistencies reduce conversion rates",
+      "Set up retargeting for unconverted leads if you haven't already — it's often the highest-ROI addition you can make to an existing campaign"
+     ]
+    },
+    "high": {
+     "headline": "You're thinking beyond the ad — that's what makes results sustainable",
+     "text": "Most people focus on the ad and ignore what comes after. You're not doing that, and it's why your campaigns have a better chance of building on each other over time.",
+     "steps": [
+      "Keep reviewing landing page message match as you introduce new creative — it drifts if you're not watching it",
+      "Track lead response time and downstream conversion rate by source to see where the follow-up process breaks down",
+      "Test different nurture approaches for unconverted leads — some buyers take longer and the right sequence makes the difference"
+     ]
+    }
+   }
+  },
+  {
+   "id": "strategy_measurement",
+   "name": "Strategy & Measurement",
+   "questions": [
+    {
+     "id": "monthly_ad_spend",
+     "type": "number",
+     "text": "What is your current monthly LinkedIn Ads budget?",
+     "hint": "At least $1,000/month is needed to generate meaningful data. Most B2B campaigns get reliable traction from $2,000–$5,000/month.",
+     "suffix": "$/month",
+     "min": 0,
+     "max": 50000,
+     "step": 100,
+     "default": 2000,
+     "normalize_formula": "x >= 5000 ? 100 : x >= 2000 ? 75 : x >= 1000 ? 50 : x / 20"
+    },
+    {
+     "id": "monthly_leads",
+     "type": "number",
+     "text": "How many qualified leads does LinkedIn Ads generate for you each month?",
+     "hint": "Count only leads you would actually follow up on — not all form fills or clicks.",
+     "suffix": "leads/month",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x >= 20 ? 100 : x * 5"
+    },
+    {
+     "id": "hours_per_week",
+     "type": "number",
+     "text": "How many hours per week does your team spend managing LinkedIn Ads?",
+     "hint": "Include time checking dashboards, writing briefs, reviewing reports, and handling leads. Exclude time your agency spends.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 4,
+     "normalize_formula": "x <= 2 ? 100 : x <= 5 ? 80 : x <= 10 ? 60 : Math.max(0, 100 - x * 2)"
+    },
+    {
+     "id": "q13",
+     "text": "How do you measure whether your LinkedIn Ads are actually working?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We track from click through to closed revenue — not just impressions, clicks, or leads",
+       "score": 5
+      },
+      {
+       "label": "We track leads and cost per lead, and connect them to pipeline",
+       "score": 4
+      },
+      {
+       "label": "We look at clicks, impressions, and leads but haven't tied them to revenue",
+       "score": 3
+      },
+      {
+       "label": "We mostly rely on what LinkedIn's native dashboard shows us",
+       "score": 2
+      },
+      {
+       "label": "We don't have proper tracking in place — we're going on gut feel",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Without measurement, you're spending blind",
+     "text": "If you can't tell whether LinkedIn Ads are working, you can't improve them. Setting up basic tracking and a review cadence is a one-time investment that pays back every month you run campaigns.",
+     "steps": [
+      "Set up conversion tracking in LinkedIn Campaign Manager and connect it to your CRM so leads are tied to specific campaigns",
+      "Pick three metrics you'll review every month: cost per lead, lead quality, and pipeline generated",
+      "Build a simple spend decision rule — what number tells you to scale, and what tells you to pull back?"
+     ]
+    },
+    "mid": {
+     "headline": "Good data habits — connect the dots all the way to revenue",
+     "text": "You're tracking the right things at the top of the funnel. The next step is tying those numbers to what actually closes, so you're making spend decisions based on revenue, not just lead volume.",
+     "steps": [
+      "Work with your sales team to track which LinkedIn leads progress through the pipeline and which go cold",
+      "Review performance monthly, not just quarterly — trends show up faster than most people expect",
+      "Build your spend decision rule around cost per qualified opportunity, not just cost per lead"
+     ]
+    },
+    "high": {
+     "headline": "You're running LinkedIn Ads like a proper growth channel",
+     "text": "You measure what matters and make decisions based on data. That's what separates B2B companies who get sustainable results from LinkedIn Ads from the ones who give up after three months.",
+     "steps": [
+      "Keep the measurement loop tight as you scale — what you track at $2k/month needs to evolve at $10k/month",
+      "Document your review cadence and spend decision rules so they survive team changes",
+      "Use attribution data to push budget toward the campaigns and audiences that close, not just the ones that click"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "cost_per_lead",
+   "label": "Your estimated cost per qualified LinkedIn lead",
+   "format": "currency",
+   "formula": "monthly_ad_spend / (monthly_leads > 0 ? monthly_leads : 1)",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_management_hours",
+   "label": "Hours your team spends on LinkedIn Ads management each year",
+   "format": "hours_per_period",
+   "formula": "hours_per_week * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your situation with LinkedIn Ads?",
+  "answers": [
+   {
+    "label": "Founder or CEO driving B2B growth",
+    "tag": "founder-ceo"
+   },
+   {
+    "label": "Marketing or demand gen manager",
+    "tag": "marketing-manager"
+   },
+   {
+    "label": "I manage LinkedIn Ads for client accounts",
+    "tag": "agency-consultant"
+   },
+   {
+    "label": "Exploring LinkedIn Ads for the first time",
+    "tag": "exploring"
+   }
+  ]
+ }
+}
