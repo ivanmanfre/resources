@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: b398caba9bd487788d8488ee62e0c8cdfbce6ba8 at 2026-08-19T21:38:27.978Z
+Deploy: 6ce9e10c2ae9460202eb92874a56dba113002949 at 2026-08-20T08:57:04.416Z
 
-- milan-savov-1c-assessment: data.json HTTP 404
+- lindsey-bland-cf-assessment: data.json HTTP 404
