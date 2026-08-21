@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 6ce9e10c2ae9460202eb92874a56dba113002949 at 2026-08-20T08:57:04.416Z
+Deploy: 24507ca504e440e53f80a9adea4e62dd26b7a66a at 2026-08-21T13:43:11.352Z
 
-- lindsey-bland-cf-assessment: data.json HTTP 404
+- svetlana-gordienko-f6-assessment: data.json HTTP 404
