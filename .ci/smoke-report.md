@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 24507ca504e440e53f80a9adea4e62dd26b7a66a at 2026-08-21T13:43:11.352Z
+Deploy: ad1c664a1fee75bc10cfa07c8fc65b5b555ca64b at 2026-08-23T08:48:18.429Z
 
-- svetlana-gordienko-f6-assessment: data.json HTTP 404
+- kelvin-m-81-assessment: data.json HTTP 404
