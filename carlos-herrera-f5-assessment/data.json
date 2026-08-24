@@ -1,0 +1,515 @@
+{
+ "slug": "carlos-herrera-f5-assessment",
+ "title": "Diagnóstico de Demanda B2B",
+ "subtitle": "Mide qué tan listo está tu sistema para convertir visibilidad en pipeline calificado.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "claridad_del_perfil_de_c",
+   "name": "Claridad del Perfil de Cuenta",
+   "questions": [
+    {
+     "id": "icp-definition",
+     "text": "¿Cómo defines la empresa que quieres atraer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No tenemos una definición clara de empresa objetivo",
+       "score": 1
+      },
+      {
+       "label": "Tenemos una lista de sectores o tamaños sin criterios precisos",
+       "score": 2
+      },
+      {
+       "label": "Definimos industria, tamaño y país, pero no quién decide",
+       "score": 3
+      },
+      {
+       "label": "Definimos empresa, cargo del decisor y el problema que resolvemos",
+       "score": 4
+      },
+      {
+       "label": "Tenemos el ICP documentado con empresa, cargo, problema activo y momento de búsqueda",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "decision-makers",
+     "text": "¿Quién está involucrado en la decisión de compra en tu cuenta ideal?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No lo sabemos con claridad",
+       "score": 1
+      },
+      {
+       "label": "Conocemos el cargo del comprador principal, pero no los demás involucrados",
+       "score": 2
+      },
+      {
+       "label": "Identificamos 2 o 3 roles que participan en la decisión",
+       "score": 3
+      },
+      {
+       "label": "Sabemos quién inicia, quién aprueba y quién puede bloquear la compra",
+       "score": 4
+      },
+      {
+       "label": "Esto está documentado y Ventas lo usa para preparar cada acercamiento",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "buying-trigger",
+     "text": "¿Cuándo empieza a buscar una cuenta que podría comprarte?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No lo sabemos",
+       "score": 1
+      },
+      {
+       "label": "Suponemos que cuando tienen presupuesto o cambian de proveedor",
+       "score": 2
+      },
+      {
+       "label": "Identificamos el momento general, pero no señales específicas",
+       "score": 3
+      },
+      {
+       "label": "Sabemos 2 o 3 señales concretas que indican que están evaluando opciones",
+       "score": 4
+      },
+      {
+       "label": "Detectamos esas señales activamente y las usamos para priorizar cuentas",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Sin mapa, no hay ruta",
+     "text": "Si no sabes exactamente a quién quieres llegar, cualquier esfuerzo de marketing puede verse bien en el reporte y no mover el negocio. El primer paso no es más contenido ni más presupuesto: es definir la empresa, el cargo y el problema que resuelves.",
+     "steps": [
+      "Documenta las 3 a 5 cuentas más parecidas a tu cliente ideal y escribe qué tienen en común: tamaño, industria, cargo del decisor y el problema que resolvieron contigo.",
+      "Define un momento de búsqueda: ¿qué cambio en su negocio los lleva a buscar lo que ofreces?",
+      "Comparte esa definición con tu equipo de ventas y ajústala con lo que ellos escuchan en las llamadas."
+     ]
+    },
+    "mid": {
+     "headline": "Tienes dirección, pero el mapa todavía tiene huecos",
+     "text": "Ya sabes a quién apuntas, pero si no tienes claro quién decide ni cuándo empieza a buscar, estás llegando a cuentas correctas en el momento equivocado o con el mensaje dirigido a la persona equivocada.",
+     "steps": [
+      "Mapea el comité de compra de tus últimos 3 clientes: ¿quién inició, quién aprobó y quién pudo haber bloqueado?",
+      "Identifica la señal que más se repite antes de que una cuenta te contacte: un cambio de proveedor, una expansión, una licitación.",
+      "Usa esa señal como criterio de prioridad en tu CRM, no solo el tamaño de la empresa."
+     ]
+    },
+    "high": {
+     "headline": "Tienes la base. Ahora conéctala al sistema",
+     "text": "Tienes claridad sobre a quién apuntas y cuándo busca. Lo que sigue es asegurarte de que esa definición esté viva en tus herramientas: en los criterios de calificación del CRM y en lo que Ventas revisa antes de cada contacto.",
+     "steps": [
+      "Verifica que el ICP documentado esté en el CRM como criterio de calificación, no solo en un documento aparte.",
+      "Valida con Ventas cada trimestre si las señales que detectas siguen siendo las que más convierten.",
+      "Evalúa herramientas como Clay o Apollo para detectar esas señales de forma automática en tus cuentas objetivo."
+     ]
+    }
+   }
+  },
+  {
+   "id": "alineaci_n_marketing_ven",
+   "name": "Alineación Marketing–Ventas",
+   "questions": [
+    {
+     "id": "mql-definition",
+     "text": "¿Cómo define tu empresa que una cuenta está lista para que Ventas la contacte?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No hay definición: Ventas recibe todo lo que llega",
+       "score": 1
+      },
+      {
+       "label": "Hay criterios informales que cada vendedor interpreta a su manera",
+       "score": 2
+      },
+      {
+       "label": "Existen criterios por escrito, pero no los revisan juntos",
+       "score": 3
+      },
+      {
+       "label": "Marketing y Ventas acordaron los criterios y los ajustan con regularidad",
+       "score": 4
+      },
+      {
+       "label": "Existe un acuerdo documentado con criterios claros, tiempo de respuesta y feedback registrado en el CRM",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sales-context",
+     "text": "Cuando Ventas recibe una cuenta nueva, ¿qué información tiene disponible?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Solo el nombre y el correo",
+       "score": 1
+      },
+      {
+       "label": "El nombre, el correo y el canal de origen",
+       "score": 2
+      },
+      {
+       "label": "La empresa, el cargo y el contenido o página que vio",
+       "score": 3
+      },
+      {
+       "label": "La empresa, el cargo, qué revisaron y el siguiente paso sugerido",
+       "score": 4
+      },
+      {
+       "label": "Todo lo anterior más los roles involucrados, señales recientes y por qué importa contactarlos ahora",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "response_lag",
+     "type": "number",
+     "text": "¿Cuántas horas pasan en promedio desde que un lead muestra interés hasta que Ventas lo contacta por primera vez?",
+     "hint": "Incluye tiempo de fin de semana si aplica. Si no lo mides con exactitud, usa tu estimación más honesta.",
+     "suffix": "horas",
+     "min": 0,
+     "max": 168,
+     "step": 1,
+     "default": 24,
+     "normalize_formula": "x <= 1 ? 100 : x <= 4 ? 80 : x <= 24 ? 50 : x <= 72 ? 20 : 0"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Ventas recibe trabajo extra, no oportunidades",
+     "text": "Cuando no hay una definición compartida de lo que califica, Marketing celebra volumen y Ventas llama a personas que no saben quién eres. La solución no es más leads: es acordar qué tiene que cumplir una cuenta antes de que alguien la contacte.",
+     "steps": [
+      "Organiza una sesión de 90 minutos entre Marketing y Ventas con un solo objetivo: escribir juntos qué hace que una cuenta valga la pena contactar (empresa, cargo, señal y contexto mínimo).",
+      "Define un tiempo máximo de respuesta al primer contacto y asigna un responsable de cumplirlo.",
+      "Crea un campo en el CRM donde Ventas registre por qué una cuenta no calificó: ese dato es lo que le enseña a Marketing qué ajustar."
+     ]
+    },
+    "mid": {
+     "headline": "Tienen la dirección. Les falta el hábito",
+     "text": "Ya existe algún acuerdo sobre qué califica, pero si no lo revisan juntos con regularidad, el criterio se desactualiza y el choque entre equipos regresa. La clave es convertir esa conversación en un ciclo, no en una reunión que ocurre cuando ya hay problemas.",
+     "steps": [
+      "Establece una revisión quincenal breve: ¿cuántas cuentas pasaron, cuántas avanzaron, cuáles no y por qué?",
+      "Documenta los patrones que aparecen: ¿qué señales predicen mejor una oportunidad real?",
+      "Apunta a que el tiempo entre el primer interés y el primer contacto esté por debajo de 4 horas para cuentas que cumplen el ICP."
+     ]
+    },
+    "high": {
+     "headline": "Tienen el sistema. Ahora afílenlo",
+     "text": "La alineación existe. Lo que corresponde ahora es medir qué contexto ayuda más a Ventas a abrir una conversación y asegurarte de que ese contexto llegue siempre, sin depender de un proceso manual.",
+     "steps": [
+      "Pregunta a Ventas qué pieza de contexto les resulta más útil al primer contacto y confirma que siempre llega en la notificación.",
+      "Automatiza la entrega de ese contexto para que no dependa de que alguien lo busque.",
+      "Mide el tiempo de respuesta por segmento de cuenta y trabaja en reducirlo donde mayor impacto tenga."
+     ]
+    }
+   }
+  },
+  {
+   "id": "detecci_n_de_se_ales_y_c",
+   "name": "Detección de Señales y Contexto",
+   "questions": [
+    {
+     "id": "pre-form-signals",
+     "text": "¿Cómo identifica tu empresa que una cuenta muestra interés real antes de completar un formulario?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No lo detectamos: esperamos el formulario",
+       "score": 1
+      },
+      {
+       "label": "Vemos visitas en el sitio, pero no sabemos de qué empresa vienen",
+       "score": 2
+      },
+      {
+       "label": "Identificamos algunas empresas a través de campañas o descargas",
+       "score": 3
+      },
+      {
+       "label": "Podemos ver qué páginas específicas visitan y de qué empresa vienen",
+       "score": 4
+      },
+      {
+       "label": "Conectamos señales de múltiples personas en la misma cuenta y las priorizamos para Ventas",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "multi-contact-tracking",
+     "text": "Si tres personas de la misma empresa visitan tu sitio en una semana, ¿lo sabrías?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No: veo tráfico total, no por empresa",
+       "score": 1
+      },
+      {
+       "label": "Solo si alguna llena un formulario",
+       "score": 2
+      },
+      {
+       "label": "Podría verlo en analytics, pero nadie lo revisa activamente",
+       "score": 3
+      },
+      {
+       "label": "Sí, tenemos una herramienta que agrupa señales por cuenta",
+       "score": 4
+      },
+      {
+       "label": "Sí, y Ventas recibe una alerta automática con el contexto de esa cuenta",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "signal-context-delivery",
+     "text": "¿Qué información recibe Ventas cuando tu sistema detecta actividad en una cuenta objetivo?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nada automático: el vendedor tiene que buscarlo por su cuenta",
+       "score": 1
+      },
+      {
+       "label": "Un nombre y un correo, sin contexto adicional",
+       "score": 2
+      },
+      {
+       "label": "El canal de origen, pero sin detalle del interés específico",
+       "score": 3
+      },
+      {
+       "label": "La empresa, el cargo y qué contenido o página revisaron",
+       "score": 4
+      },
+      {
+       "label": "La empresa, las personas involucradas, qué revisaron y por qué importa contactarlas ahora",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Estás esperando que te encuentren. El mercado B2B no funciona así",
+     "text": "Si solo detectas interés cuando alguien llena un formulario, estás viendo una fracción pequeña de las cuentas que ya están evaluando opciones. La mayoría investiga antes de hablar con alguien, y ese es el momento que tu sistema debería capturar.",
+     "steps": [
+      "Implementa una herramienta de identificación de empresas en tu sitio web para ver qué cuentas lo visitan sin completar formularios.",
+      "Define qué páginas representan una señal de interés real: especificaciones técnicas, precios, casos de uso específicos de tu industria.",
+      "Establece un proceso semanal para revisar esas visitas y contrastarlas con tu lista de cuentas objetivo."
+     ]
+    },
+    "mid": {
+     "headline": "Ya ves señales. El problema es que llegan sueltas",
+     "text": "Detectas actividad, pero si cada señal llega a un lugar distinto y nadie conecta la historia, Ventas sigue viendo cero oportunidades donde ya hay tres personas de la misma empresa investigando. El trabajo es unir esas señales por cuenta.",
+     "steps": [
+      "Consolida las señales de tu sitio, campañas y descargas en un solo lugar, idealmente el CRM.",
+      "Define una regla simple: si más de dos personas de la misma empresa muestran interés en la misma semana, es una señal que merece atención.",
+      "Entrega esa señal a Ventas con contexto: empresa, quiénes estuvieron activos y qué vieron."
+     ]
+    },
+    "high": {
+     "headline": "Tu torre de control está funcionando. Ahora hazla más rápida",
+     "text": "Detectas señales y las conectas por cuenta. Lo que resta es reducir el tiempo entre la señal y la acción de Ventas, y confirmar que el contexto que entregas es el que más ayuda a abrir una conversación.",
+     "steps": [
+      "Automatiza la alerta a Ventas cuando una cuenta supere el umbral de señales que definiste.",
+      "Incluye en esa alerta el siguiente paso sugerido, no solo la información sobre la cuenta.",
+      "Evalúa si la IA puede preparar el contexto antes de que alguien complete un formulario, resumiendo qué revisó cada persona y por qué vale la pena contactarlos ahora."
+     ]
+    }
+   }
+  },
+  {
+   "id": "medici_n_y_atribuci_n",
+   "name": "Medición y Atribución",
+   "questions": [
+    {
+     "id": "attribution",
+     "text": "¿Tu reporte de marketing puede decir qué campaña o contenido específico generó una oportunidad de ventas?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No: solo reportamos alcance, seguidores y piezas publicadas",
+       "score": 1
+      },
+      {
+       "label": "Sabemos qué canal trajo más tráfico, pero no su impacto en ventas",
+       "score": 2
+      },
+      {
+       "label": "Vemos leads por fuente, pero no su conversión a oportunidad en el CRM",
+       "score": 3
+      },
+      {
+       "label": "Podemos rastrear leads desde el origen hasta la oportunidad en el CRM",
+       "score": 4
+      },
+      {
+       "label": "Tenemos atribución completa: sabemos qué proveedor, campaña y contenido generó qué resultado comercial",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "marketing-metrics",
+     "text": "¿Qué métricas usa tu equipo de marketing para reportar resultados a dirección?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Alcance, seguidores e impresiones",
+       "score": 1
+      },
+      {
+       "label": "Clics, tráfico y formularios completados",
+       "score": 2
+      },
+      {
+       "label": "Leads generados y costo por lead",
+       "score": 3
+      },
+      {
+       "label": "Leads calificados, costo por oportunidad y cuentas objetivo alcanzadas",
+       "score": 4
+      },
+      {
+       "label": "Pipeline atribuido, conversaciones con decisores del ICP y cuentas objetivo con señal activa",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "unqualified_hours",
+     "type": "number",
+     "text": "¿Cuántas horas por semana dedica un ejecutivo de ventas a contactar leads que al final no califican?",
+     "hint": "Suma el tiempo de llamadas, seguimientos y revisión de cuentas que no avanzan. Si tienes más de un vendedor, estima el promedio por persona.",
+     "suffix": "horas por semana",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x <= 2 ? 100 : x <= 5 ? 70 : x <= 10 ? 40 : x <= 20 ? 15 : 0"
+    },
+    {
+     "id": "sales_rep_monthly_cost",
+     "type": "number",
+     "text": "¿Cuál es el costo mensual total de un ejecutivo de ventas en tu empresa (salario más prestaciones, en USD)?",
+     "hint": "Usa el costo real para la empresa, incluyendo prestaciones y beneficios. Este número se combina con las horas en leads no calificados para estimar el costo anual del tiempo perdido, tomando como base una semana laboral de 40 horas.",
+     "suffix": "USD al mes",
+     "min": 500,
+     "max": 20000,
+     "step": 100,
+     "default": 3000,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Estás midiendo actividad, no resultados",
+     "text": "Si el reporte de marketing no puede decirle a dirección qué generó una oportunidad real, no es posible saber qué repetir y qué cortar. Y si nadie definió qué resultado importa, el equipo o la agencia va a reportar lo que puede medir, que suele ser lo que no mueve el negocio.",
+     "steps": [
+      "Define junto con dirección comercial cuál es el resultado que marketing debe mover: oportunidades calificadas, cuentas objetivo alcanzadas o costo por oportunidad.",
+      "Conecta tu herramienta de anuncios y contenido con el CRM para que cada lead tenga registrada su fuente de origen.",
+      "Pide a tu agencia o equipo que incluya en el reporte mensual al menos una métrica de negocio, aunque sea el costo por lead calificado."
+     ]
+    },
+    "mid": {
+     "headline": "Ves números, pero no la historia completa",
+     "text": "Ya tienes algunas métricas de negocio, pero si no puedes rastrear una oportunidad hasta la campaña que la generó, estás tomando decisiones de presupuesto con información incompleta. Lo que más convierte puede estar oculto entre lo que se ve bien en el reporte.",
+     "steps": [
+      "Cierra el ciclo: verifica que cada oportunidad en el CRM tenga registrada la fuente que la originó.",
+      "Revisa qué contenido o campaña generó las últimas 10 oportunidades que avanzaron en el proceso.",
+      "Usa ese dato para decidir qué recibe más presupuesto o esfuerzo, no lo que genera más impresiones."
+     ]
+    },
+    "high": {
+     "headline": "Mides lo que importa. Ahora optimiza lo que funciona",
+     "text": "Tienes atribución y métricas de negocio. El siguiente paso es usar esa información para tomar decisiones de asignación de recursos más rápido, y reducir el tiempo que Ventas gasta en cuentas que no califican.",
+     "steps": [
+      "Define un umbral de costo por oportunidad calificada que determine cuándo vale la pena escalar un canal.",
+      "Analiza qué tienen en común las cuentas que avanzan más rápido y ajusta los criterios de calificación con esos datos.",
+      "Automatiza el feedback de Ventas al sistema de calificación para que los criterios mejoren con el tiempo."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual-waste-cost",
+   "label": "Costo anual estimado del tiempo de ventas en leads no calificados",
+   "format": "currency",
+   "formula": "(unqualified_hours / 40) * sales_rep_monthly_cost * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "¿Cuál describe mejor tu rol en la empresa?",
+  "answers": [
+   {
+    "label": "Director o Gerente de Marketing",
+    "tag": "mktg-director"
+   },
+   {
+    "label": "Director Comercial o VP de Ventas",
+    "tag": "sales-director"
+   },
+   {
+    "label": "CEO o Fundador",
+    "tag": "ceo-founder"
+   },
+   {
+    "label": "Consultor o CMO Externo",
+    "tag": "consultant"
+   }
+  ]
+ }
+}
