@@ -1,0 +1,648 @@
+{
+ "slug": "stephen-honight-58-assessment",
+ "title": "AI Shelf Space Readiness Score",
+ "subtitle": "Measures how well your consumer brand is positioned to win the AI shortlist — the new discovery layer in ChatGPT, Gemini, and Amazon Rufus.",
+ "brand": {
+  "accent": "#facc15",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "ai_search_visibility",
+   "name": "AI Search Visibility",
+   "questions": [
+    {
+     "id": "ai_search_visibility_q1",
+     "text": "How consistently does your brand appear by name in ChatGPT, Gemini, or Amazon Rufus for your core category queries?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have never checked",
+       "score": 1
+      },
+      {
+       "label": "We checked once or twice and took a screenshot — we assumed it was stable",
+       "score": 2
+      },
+      {
+       "label": "We run occasional checks but have no systematic process",
+       "score": 3
+      },
+      {
+       "label": "We run regular checks across multiple query types and log the results",
+       "score": 4
+      },
+      {
+       "label": "We run high-volume continuous monitoring across marketplaces and platforms — we know our brand rotation rate",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_search_visibility_q2",
+     "text": "Amazon Rufus names an average of 2.2 brands per answer. How often is your brand one of them for your category's buying queries?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No idea — we have not looked",
+       "score": 1
+      },
+      {
+       "label": "We have seen our brand appear a few times but cannot say how consistently",
+       "score": 2
+      },
+      {
+       "label": "We appear sometimes, but other brands dominate — we do not know why",
+       "score": 3
+      },
+      {
+       "label": "We appear regularly and we have started to understand which queries drive that",
+       "score": 4
+      },
+      {
+       "label": "We appear consistently across our priority queries and actively manage our shortlist position",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_search_visibility_q3",
+     "text": "In 34% of Rufus responses, a brand is named in the text but has no matching product card in the carousel. How confident are you that your brand name and listings are properly aligned in AI responses?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not looked — this is the first time we have heard of this mismatch",
+       "score": 1
+      },
+      {
+       "label": "We assume they are aligned because our listings look fine",
+       "score": 2
+      },
+      {
+       "label": "We have checked a handful of queries and spotted some mismatches",
+       "score": 3
+      },
+      {
+       "label": "We have audited alignment and fixed the obvious gaps",
+       "score": 4
+      },
+      {
+       "label": "We monitor brand-to-carousel alignment regularly across our catalog",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are not on the shortlist — and you do not know it",
+     "text": "Rufus names about two brands per answer. If you checked visibility once and assumed it was stable, you are missing most of the picture. In 70,000 queries we ran, only 13% of categories had one brand lead consistently — the rest rotated. An average of 3.7 different brands took the first-named slot. A screenshot is not a strategy.",
+     "steps": [
+      "Run your top 20 category queries through ChatGPT, Gemini and Amazon Rufus this week — not once, across multiple days on a clean account with no purchase history",
+      "Check whether your brand appears in both the Rufus text response AND the product card carousel — they are often misaligned and that gap costs you sales",
+      "Treat AI search as a separate monitoring job from SEO — the inputs, query shapes and brand signals are different"
+     ]
+    },
+    "mid": {
+     "headline": "You are on the map but not consistently on the shortlist",
+     "text": "You know your brand appears sometimes. The challenge is that visibility fluctuates — 3.7 different brands rotate through the first-named slot on average. Knowing you appeared yesterday tells you nothing about today. You need consistent data, not snapshots.",
+     "steps": [
+      "Move from occasional checks to running the same queries repeatedly across clean accounts — consistency in the inputs is how you spot real shifts",
+      "Map which query types surface your brand versus which surface competitors — the gap tells you where to improve content and product signals",
+      "Fix any text-to-carousel mismatches immediately — they mean Rufus is recommending you but shoppers cannot find your product"
+     ]
+    },
+    "high": {
+     "headline": "You are tracking the shortlist — now turn data into strategy",
+     "text": "Systematic monitoring puts you ahead of most consumer brands. The next move is feeding that visibility data into your ad targeting and content decisions so AI visibility translates into sales, not just impressions.",
+     "steps": [
+      "Wire AI visibility data into your ad strategy — the queries where you appear consistently should inform your keyword targeting on Amazon and Google",
+      "Build a shortlist-to-sale attribution model that connects AI recommendations to downstream branded search volume and conversion",
+      "Track lead-brand rotation in your category over time — shifts in who holds the slot are commercial signals worth acting on"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_and_product_elig",
+   "name": "Content and Product Eligibility",
+   "questions": [
+    {
+     "id": "content_and_product_elig_q1",
+     "text": "Rufus filters on sales velocity, reviews, and ratings before it reads a single word of your content. How well does your core Amazon range meet that eligibility bar?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of our products have under 50 reviews or sit below 4 stars — we are probably being filtered out before content is read",
+       "score": 1
+      },
+      {
+       "label": "A few hero SKUs qualify but the rest of our range does not",
+       "score": 2
+      },
+      {
+       "label": "Around half our range meets the threshold for Rufus consideration",
+       "score": 3
+      },
+      {
+       "label": "Most of our range qualifies and we have a process to push new SKUs through the eligibility bar",
+       "score": 4
+      },
+      {
+       "label": "Our full range meets the eligibility threshold and we track this as a primary operational metric",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_and_product_elig_q2",
+     "text": "Once a product is eligible, content is what gets it recommended. How has your product content been written?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Written for old-school keyword search — short fragments and dense terms, not how a human asks a question",
+       "score": 1
+      },
+      {
+       "label": "Human-readable copy but not structured for how AI reads, retrieves and cites product content",
+       "score": 2
+      },
+      {
+       "label": "We have started rewriting some listings with AI recommendation in mind",
+       "score": 3
+      },
+      {
+       "label": "We have a content approach built around AI retrieval — question-answering, use-case led, ingredient and benefit structured",
+       "score": 4
+      },
+      {
+       "label": "All live content is engineered for AI readability and we update it based on what query data shows AI is asking for",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "skus_total",
+     "type": "number",
+     "text": "How many active SKUs does your brand currently have listed on Amazon?",
+     "hint": "Count individual variants — size, flavour, colour — as separate SKUs",
+     "suffix": "SKUs",
+     "min": 1,
+     "max": 5000,
+     "step": 1,
+     "default": 20,
+     "normalize_formula": "x < 5 ? 45 : x <= 20 ? 65 : x <= 100 ? 80 : x <= 500 ? 75 : 60"
+    },
+    {
+     "id": "skus_eligible",
+     "type": "number",
+     "text": "How many of those SKUs have 50 or more reviews AND a rating of 4.0 stars or above?",
+     "hint": "These are roughly the thresholds Rufus applies before reading any content — below them, your copy does not matter",
+     "suffix": "SKUs",
+     "min": 0,
+     "max": 5000,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x < 1 ? 10 : x <= 3 ? 30 : x <= 10 ? 55 : x <= 30 ? 75 : 90"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Rufus is filtering you out before it reads a word",
+     "text": "The most important finding from the Publicis Groupe Rufus data: eligibility gates fire before content. A weak product cannot be written into the shortlist. If your SKUs are below the review and rating threshold, the best content in the world gets you nowhere. Fix the product fundamentals first.",
+     "steps": [
+      "Identify your top five revenue SKUs and make getting them above the review and rating bar the priority — not a nice-to-have",
+      "Set up a post-purchase review request sequence if you do not have one — review velocity matters as much as total review count",
+      "Hold off on content rewrites for ineligible products — eligibility first, then content engineering"
+     ]
+    },
+    "mid": {
+     "headline": "Some of your range is in the game — your content probably is not",
+     "text": "You have eligible products. The challenge is that content written for keyword-match search does not work for conversational AI retrieval. Rufus reads to answer a shopper question. Your content needs to do the same thing.",
+     "steps": [
+      "Pull your most conversational Google Search Console queries for your category — they are the closest proxy for what Rufus is asking about your products",
+      "Rewrite A+ content and bullet points to answer use-case questions rather than stack keyword fragments",
+      "Build a pipeline to push new product launches through the eligibility threshold before you spend time on content"
+     ]
+    },
+    "high": {
+     "headline": "You are eligible and your content is working for you",
+     "text": "You have cleared the eligibility bar and built content AI can read and retrieve. The next step is making sure the broader signal environment confirms what your listings claim — third-party reviews, community conversations, independent coverage AI can find outside your own pages.",
+     "steps": [
+      "Audit where AI systems can find proof of your brand claims outside your own site and Amazon listing",
+      "Seed independent review platforms and category subreddits with genuine content from real customers",
+      "Feed AI visibility data back into your content update cycle — if a query type is not surfacing your brand, the content gap is usually findable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "agentic_commerce_prepare",
+   "name": "Agentic Commerce Preparedness",
+   "questions": [
+    {
+     "id": "agentic_commerce_prepare_q1",
+     "text": "The eCommerce journey is shifting from Search → PDP → Checkout → Payment to Intent → AI Agent → Product Selection → Permission → Payment. Where is your brand's thinking on this?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are focused on the current channel journey — this feels like a future problem",
+       "score": 1
+      },
+      {
+       "label": "We know it is coming but have not changed how we work",
+       "score": 2
+      },
+      {
+       "label": "We have started thinking about what it means for our discovery and content strategy",
+       "score": 3
+      },
+      {
+       "label": "We have made concrete changes to content and presence to position for agent-driven discovery",
+       "score": 4
+      },
+      {
+       "label": "Agentic commerce is central to our growth strategy and we are building for it now",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "agentic_commerce_prepare_q2",
+     "text": "Consumers are starting to build personal buying agents that watch markets and purchase when conditions are met. How machine-readable and discoverable is your brand to an AI agent evaluating your category?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have no idea what a buying agent would see when it looks at our category",
+       "score": 1
+      },
+      {
+       "label": "We assume our current listings are sufficient — we have not looked at this specifically",
+       "score": 2
+      },
+      {
+       "label": "We have audited our product data quality but have not optimised for agent retrieval",
+       "score": 3
+      },
+      {
+       "label": "We have clean, structured product data and a strategy for being on the agent's shortlist",
+       "score": 4
+      },
+      {
+       "label": "We have tested our brand from an agent's point of view — we know what it finds and have optimised for it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "agentic_commerce_prepare_q3",
+     "text": "Mastercard is building Agent Pay — infrastructure for AI agents to make purchases on behalf of consumers. Discovery, selection and payment are all becoming agentic. How are you planning accordingly?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not thought about what happens when AI handles the full purchase journey",
+       "score": 1
+      },
+      {
+       "label": "We are aware of the direction but it feels early to act",
+       "score": 2
+      },
+      {
+       "label": "We are starting to plan for agent-compatible discovery and structured product data",
+       "score": 3
+      },
+      {
+       "label": "We have a roadmap that treats AI agents as a buyer cohort, not a channel feature",
+       "score": 4
+      },
+      {
+       "label": "Agentic buying infrastructure is already part of our product and commercial strategy",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are optimising for a journey that is already changing underneath you",
+     "text": "Mastercard is talking about it on earnings calls. Amazon Rufus is live. Consumers are building personal buying agents for high-ticket items. The brands that win the next five years are the ones treating AI agents as their next buyer cohort, not a future curiosity. The window to build ahead of mainstream adoption is now.",
+     "steps": [
+      "Map your current customer journey and identify at which step an AI agent could replace or shortcut it — the answer tells you where to prioritise",
+      "Audit your product data for machine readability — missing specs and inconsistent fields are invisible to humans but fatal for agent evaluation",
+      "Think about your brand as a set of signals an agent reads: run your category in ChatGPT Shopping and see whether your product makes the list"
+     ]
+    },
+    "mid": {
+     "headline": "You see the shift — now build infrastructure ahead of it",
+     "text": "You understand agentic commerce is real. The gap is converting awareness into infrastructure. Brands that win this space will not be the ones who reacted fastest — they will be the ones who had repeatable systems in place before everyone else noticed.",
+     "steps": [
+      "Prioritise structured product data and schema as a foundation — it serves both AI search and agent-driven selection at the same time",
+      "Build a consistent signal environment across every surface an AI agent might check: your site, Amazon, Reddit, independent review platforms",
+      "Start tracking which content types drive AI citation — then build systems around what works"
+     ]
+    },
+    "high": {
+     "headline": "You are building for the right future",
+     "text": "Most consumer brands are still fighting for Google page one. You are building for the layer above it. The next 12 months will see a lot more brands wake up to agentic commerce — your advantage is the infrastructure, content and data head start.",
+     "steps": [
+      "Test your brand from inside an actual agent workflow — build a simple buying agent for your category and see whether your product wins the shortlist",
+      "Build systems that update your AI-facing content automatically as query patterns shift — velocity beats perfection here",
+      "Document your agentic commerce approach as a repeatable playbook — the process is the asset as much as the results"
+     ]
+    }
+   }
+  },
+  {
+   "id": "measurement_and_attribut",
+   "name": "Measurement and Attribution",
+   "questions": [
+    {
+     "id": "measurement_and_attribut_q1",
+     "text": "Consumers are 2-4x more likely to visit a brand AI recommended — but that visit shows up days later as branded search, not as an AI referral. How are you currently measuring AI search impact?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We only look at last-click attribution — AI search is invisible in our reporting",
+       "score": 1
+      },
+      {
+       "label": "We have noticed branded search uplift but have not connected it to AI recommendations",
+       "score": 2
+      },
+      {
+       "label": "We are building proxy metrics — conversational GSC queries, branded search trend — but have not joined the dots",
+       "score": 3
+      },
+      {
+       "label": "We use conversational GSC queries and branded search trend as AI visibility proxies in our monthly reporting",
+       "score": 4
+      },
+      {
+       "label": "We have a measurement model that connects AI visibility data to downstream branded search and sales outcomes",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "measurement_and_attribut_q2",
+     "text": "Your longest, most conversational Google Search Console queries are the closest public proxy to your brand's AI query graph — they show how people phrase intent when talking to AI search. How closely are you watching these?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at GSC occasionally but focus on short keyword fragments",
+       "score": 1
+      },
+      {
+       "label": "We have seen longer conversational queries but treated them as low-volume noise",
+       "score": 2
+      },
+      {
+       "label": "We have started separating conversational queries from keyword fragments in our reporting",
+       "score": 3
+      },
+      {
+       "label": "We actively mine conversational GSC queries as a proxy for what AI is asking about our brand",
+       "score": 4
+      },
+      {
+       "label": "Our content strategy is driven by conversational GSC queries — we build to answer what they ask for: reviews, comparisons, proof",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_visibility_checking",
+     "type": "number",
+     "text": "How many hours per week does your team currently spend manually checking brand visibility across AI search platforms — ChatGPT, Gemini, Rufus?",
+     "hint": "Include time running queries, logging results, and compiling reports. We multiply by 52 weeks to show the annual total.",
+     "suffix": "hours / week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "x < 1 ? 15 : x <= 3 ? 50 : x <= 7 ? 72 : x <= 15 ? 58 : 35"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You cannot win a channel you cannot see",
+     "text": "If your attribution model only reads last-click, AI search is invisible — but it is still shaping your buyers' shortlists. Brands are 2-4x more likely to get a visit after being recommended by AI. That visit lands in your analytics as branded search or direct, days later. You are probably already seeing the effect. You just cannot name it.",
+     "steps": [
+      "Pull your branded search volume trend for the last 12 months and compare it against when you started publishing AI-relevant content or optimising for Rufus",
+      "Look at your longest, most conversational GSC queries — that is the closest public view of what AI is asking about your brand",
+      "Set a baseline this week: run your top 10 category queries in ChatGPT, Gemini and Rufus, log the results, and repeat in 30 days"
+     ]
+    },
+    "mid": {
+     "headline": "You are seeing the signals — now connect them",
+     "text": "You have spotted the fingerprints of AI search impact. The gap is connecting them into a model that links AI visibility to downstream commercial outcomes. That connection is what justifies continued investment and lets you scale what is working.",
+     "steps": [
+      "Build a simple monthly report that tracks conversational GSC queries alongside branded search volume — watch for correlation over time",
+      "Set up consistent AI query monitoring: the same prompts, run multiple times daily, on clean accounts with no purchase history",
+      "Map which content updates correlate with changes in AI citation — the pattern is there before the attribution is perfect"
+     ]
+    },
+    "high": {
+     "headline": "You are measuring what most brands still cannot see",
+     "text": "You have built the measurement infrastructure to connect AI visibility to business outcomes. That is a commercial advantage in itself — you can prove what is working and scale it with confidence.",
+     "steps": [
+      "Feed AI visibility data into your media planning — high AI citation rate for a query type should inform your keyword targeting and bid strategy",
+      "Build a reporting cadence that shows AI share-of-voice alongside traditional search and retail metrics so leadership can see the full picture",
+      "Document your attribution methodology — it is a differentiator you can use with investors and commercial partners who are still working this out"
+     ]
+    }
+   }
+  },
+  {
+   "id": "signals_and_social_proof",
+   "name": "Signals and Social Proof",
+   "questions": [
+    {
+     "id": "signals_and_social_proof_q1",
+     "text": "Reddit and community platforms are increasingly influential in how AI models form views on brands and categories — the people building AEO tools and shaping category rules are already there. What is your brand's Reddit strategy?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have no Reddit presence and have not considered it",
+       "score": 1
+      },
+      {
+       "label": "We know it matters but have not done anything",
+       "score": 2
+      },
+      {
+       "label": "We monitor what is being said about us on Reddit but do not participate",
+       "score": 3
+      },
+      {
+       "label": "We contribute genuinely to relevant subreddits — value first, no promotion",
+       "score": 4
+      },
+      {
+       "label": "Reddit is part of our AI search strategy with a clear playbook for community participation and signal building",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "signals_and_social_proof_q2",
+     "text": "When an AI system assembles a recommendation for your category it runs sub-queries looking for third-party proof: reviews, case studies, comparisons. What would it find about your brand?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost everything points back to our own site or Amazon listing — there is little independent proof",
+       "score": 1
+      },
+      {
+       "label": "Some press and reviews exist but we did not build them with AI retrieval in mind",
+       "score": 2
+      },
+      {
+       "label": "We have decent third-party coverage but it is not structured for AI to find and use",
+       "score": 3
+      },
+      {
+       "label": "We have reviews, case studies and community content distributed across findable sources",
+       "score": 4
+      },
+      {
+       "label": "Our proof architecture is deliberately built around the questions AI systems use to verify brands in our category",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "signals_and_social_proof_q3",
+     "text": "Conversational GSC queries like 'brand reviews and case studies from consumer brands' reveal what AI search is asking about your brand to verify it. Have you published content that directly answers those questions?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not looked at this — we focus on high-volume short-tail keywords",
+       "score": 1
+      },
+      {
+       "label": "We have seen these longer queries but do not have content that answers them",
+       "score": 2
+      },
+      {
+       "label": "We have identified the key question types but have not yet published content to address them",
+       "score": 3
+      },
+      {
+       "label": "We have published case studies, comparisons and proof content in response to what our conversational queries reveal",
+       "score": 4
+      },
+      {
+       "label": "Our content roadmap is driven by conversational query intent — we systematically cover what AI search is asking for about our brand",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "AI models cannot verify you — so they will not recommend you",
+     "text": "When AI assembles a recommendation it does not just read your website. It looks for independent signals: Reddit threads, third-party reviews, comparisons, proof. If all the evidence points back to your own pages, it reads as a brand with something to hide. Build the signal environment that lets AI verify you from the outside.",
+     "steps": [
+      "Check what comes up in Reddit for your product category and your brand name — if you are absent, that absence is a signal the model picks up",
+      "Publish at least two real customer case studies as open, crawlable web pages in the next 60 days — not gated PDFs, not slides",
+      "Get customers to leave reviews on platforms beyond Amazon: Trustpilot, Google, category-specific forums and subreddits"
+     ]
+    },
+    "mid": {
+     "headline": "The proof exists — make it findable for AI",
+     "text": "You have reviews and coverage but they are scattered or not structured for retrieval. AI search runs sub-queries about your brand. If your case studies are buried in a PDF or locked behind a form, they do not count in the answer.",
+     "steps": [
+      "Audit where your proof currently lives and whether AI systems can index it — if it needs a login or a download, it is invisible",
+      "Republish key case studies as public web pages structured to answer the questions your conversational GSC queries raise",
+      "Start participating in relevant Reddit communities — the conversation is happening about your category with or without you"
+     ]
+    },
+    "high": {
+     "headline": "You are building the kind of authority AI systems trust",
+     "text": "Third-party signals, Reddit presence, structured proof architecture — you are building the off-site environment that makes AI models confident recommending you. The next step is keeping it current and scaling it alongside your brand.",
+     "steps": [
+      "Build a systematic process for turning customer wins into published, findable proof assets — a repeatable system, not a one-off effort",
+      "Monitor your brand's presence in key subreddits and independent review platforms over time — track movement as a metric",
+      "Consider contributing to category-level conversations in places like r/AEO — the brands that shape the category narrative win a disproportionate share of the shortlist"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "hours_lost_annually",
+   "label": "Hours spent per year on manual AI visibility checking",
+   "format": "hours_per_period",
+   "formula": "hours_visibility_checking * 52",
+   "show_in_result": true
+  },
+  {
+   "id": "eligible_sku_ratio",
+   "label": "Share of your Amazon catalog currently eligible for Rufus recommendation",
+   "format": "percent",
+   "formula": "skus_total > 0 ? (skus_eligible / skus_total) * 100 : 0",
+   "show_in_result": true
+  },
+  {
+   "id": "skus_in_the_dark",
+   "label": "SKUs currently invisible to Rufus — below the eligibility threshold",
+   "format": "integer",
+   "formula": "skus_total - skus_eligible",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your situation right now?",
+  "answers": [
+   {
+    "label": "Founder or CEO of a consumer brand",
+    "tag": "founder"
+   },
+   {
+    "label": "eCommerce or Digital lead at a consumer brand",
+    "tag": "ecomm"
+   },
+   {
+    "label": "Marketing Director or CMO",
+    "tag": "cmo"
+   },
+   {
+    "label": "Agency or Consultant working with consumer brands",
+    "tag": "agency"
+   }
+  ]
+ }
+}
