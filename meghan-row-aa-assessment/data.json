@@ -1,0 +1,641 @@
+{
+ "slug": "meghan-row-aa-assessment",
+ "title": "The Ember Diagnostic",
+ "subtitle": "A 15-question assessment that measures how aligned your brand, sales, operations, and team are with the business you actually want to build.",
+ "brand": {
+  "accent": "#d71f27",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "brand_clarity",
+   "name": "Brand Clarity",
+   "questions": [
+    {
+     "id": "brand_articulation",
+     "text": "How clearly can you articulate what your business stands for — what it does, who it is for, and why it matters — in one sentence?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I struggle to say it concisely; the answer changes depending on who is asking",
+       "score": 1
+      },
+      {
+       "label": "I have a version, but it feels incomplete or shifts in certain conversations",
+       "score": 2
+      },
+      {
+       "label": "I can explain it clearly, though it is not consistently reflected in our materials",
+       "score": 3
+      },
+      {
+       "label": "I can say it cleanly and it shows up the same way across everything we do",
+       "score": 4
+      },
+      {
+       "label": "Our positioning is sharp, consistent, and my team can say it just as well as I can",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_consistency",
+     "text": "When a potential client looks at your website, social content, and sales conversations back to back, how consistent is the message they get?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very different — each channel says something slightly different",
+       "score": 1
+      },
+      {
+       "label": "Somewhat consistent, but the tone or message shifts noticeably",
+       "score": 2
+      },
+      {
+       "label": "Mostly consistent, with a few gaps I know I need to address",
+       "score": 3
+      },
+      {
+       "label": "Consistent — the message and feel hold across channels",
+       "score": 4
+      },
+      {
+       "label": "Fully aligned — a stranger could not tell which channel they landed on first",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_word_of_mouth",
+     "text": "When a client refers someone your way, how accurately does that referral understand what you do and who you serve before your first conversation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely accurately — referrals often arrive expecting something different",
+       "score": 1
+      },
+      {
+       "label": "Close, but there are usually gaps or mismatches I have to correct",
+       "score": 2
+      },
+      {
+       "label": "Generally accurate, though the nuance gets lost sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually spot-on — referrals show up already understanding the work",
+       "score": 4
+      },
+      {
+       "label": "Consistently accurate — our clients are our best advocates and they nail it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand is doing quiet harm",
+     "text": "When the market cannot clearly say what you stand for, you are competing on price and luck. Clarity is not polish. It is what makes the right people find you and the wrong ones self-select out.",
+     "steps": [
+      "Write one sentence that names who you serve, what you solve, and what makes you the right choice. Read it out loud. If you would not say it in a real conversation, rewrite it.",
+      "Pull up your last three sales conversations and note how you described the work. Is that description on your website? If not, update the site first.",
+      "Ask your two best current clients to describe what you do in their own words. Where they land is where your next positioning draft should start."
+     ]
+    },
+    "mid": {
+     "headline": "You have the foundation — now close the gaps",
+     "text": "Your message exists but it is not fully holding. The clients who find you get it. You are losing people in the middle because the story is not consistent end to end.",
+     "steps": [
+      "Identify the one channel where the message is weakest and bring it in line with the strongest one. Start with the channel new prospects hit first.",
+      "Document the sentences you use naturally in sales conversations. That is your real positioning. Make sure your homepage says the same thing.",
+      "Build a short onboarding touchpoint that confirms why a new client chose you. Their language will sharpen yours."
+     ]
+    },
+    "high": {
+     "headline": "Clarity is working — protect it as you grow",
+     "text": "You have done the hard work of knowing what you stand for. The risk now is drift — new services, new team members, or new channels that quietly pull the message off-center. The job shifts from defining to defending.",
+     "steps": [
+      "Document your brand position as a one-page internal reference so the message does not live only in your head as the team grows.",
+      "Run a quick audit each quarter: pick one new piece of content and hold it next to your strongest. Are they still saying the same thing?",
+      "When you add a new service, run it through your core position first. If it does not fit cleanly, decide whether to stretch the position or hold the line."
+     ]
+    }
+   }
+  },
+  {
+   "id": "sales_and_revenue_growth",
+   "name": "Sales and Revenue Growth",
+   "questions": [
+    {
+     "id": "pipeline_predictability",
+     "text": "How predictable is your revenue pipeline? If someone asked you today how much new business is coming in next quarter, how confident would your answer be?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have no real visibility — revenue feels like it comes in waves I cannot control",
+       "score": 1
+      },
+      {
+       "label": "I can make a rough guess but I am often surprised by how far off I am",
+       "score": 2
+      },
+      {
+       "label": "I have a general sense, though the accuracy varies month to month",
+       "score": 3
+      },
+      {
+       "label": "I have decent visibility — I can usually forecast within a reasonable range",
+       "score": 4
+      },
+      {
+       "label": "I can forecast with confidence — I know the pipeline, the timeline, and the close rate",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "conversion_path",
+     "text": "When someone expresses interest in working with you, how clear and repeatable is the path from that first conversation to a signed client?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It is different every time — I figure it out as I go",
+       "score": 1
+      },
+      {
+       "label": "I have a general approach but it is not documented and varies by person",
+       "score": 2
+      },
+      {
+       "label": "I have a process, though it still depends heavily on my energy and availability",
+       "score": 3
+      },
+      {
+       "label": "There is a clear path and most prospects move through it predictably",
+       "score": 4
+      },
+      {
+       "label": "The path from interest to signed is defined, repeatable, and does not require me to reinvent it each time",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "client_journey",
+     "text": "How intentional is the experience a prospect has between discovering your business and becoming a client?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There is no designed experience — people find us and we respond",
+       "score": 1
+      },
+      {
+       "label": "We have some touchpoints but they were built reactively rather than designed",
+       "score": 2
+      },
+      {
+       "label": "There is a rough sequence, but gaps exist that I know are costing us opportunities",
+       "score": 3
+      },
+      {
+       "label": "The journey is designed and mostly working — a few things I would tighten",
+       "score": 4
+      },
+      {
+       "label": "The journey from first touch to closed client is mapped, tested, and genuinely serves the prospect",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Revenue is happening to you, not for you",
+     "text": "When the path to a client is unclear, every sale takes more energy than it should. The goal is a client journey that works whether you are having your best week or your hardest one.",
+     "steps": [
+      "Write down exactly what happens after someone says they are interested. Every step, in order. Where does it break down or go quiet? That is your first fix.",
+      "Define one clear next step for every inquiry you receive and make sure your website and every channel points to it the same way.",
+      "Track the last five clients you closed: where did they come from, what moved them to yes, and how long did it take? Those three data points are the beginning of a real pipeline picture."
+     ]
+    },
+    "mid": {
+     "headline": "The process exists — now make it work without you",
+     "text": "You are converting, but the path is still too reliant on your personal effort. When it works, it works because you showed up for it. The next level is building it so it works even when you do not.",
+     "steps": [
+      "Document the five to seven touchpoints that reliably move a prospect forward. Once they are written down, you can build or delegate around them.",
+      "Identify the one stage where leads go cold most often. That is where to focus the next 30 days.",
+      "Set up a simple way to track where every active prospect stands at any given moment — even a basic spreadsheet beats running it from memory."
+     ]
+    },
+    "high": {
+     "headline": "Turn it into an asset, not just a process",
+     "text": "Your sales process is working. The opportunity now is to make it compound — so that every client who moves through it either becomes a repeat buyer or sends someone who does.",
+     "steps": [
+      "Build a deliberate referral moment into the client journey — a specific point where you ask, when the relationship is at its strongest.",
+      "Look at your close rate by lead source. Double down on the one or two channels producing your best clients.",
+      "Build or refine an email sequence that does the warming work before a sales conversation, so the conversation starts further along."
+     ]
+    }
+   }
+  },
+  {
+   "id": "operations_and_systems",
+   "name": "Operations and Systems",
+   "questions": [
+    {
+     "id": "founder_dependency",
+     "text": "How much does the business depend on you personally to keep running day to day?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost entirely — if I step away for a week, things stop or fall apart",
+       "score": 1
+      },
+      {
+       "label": "Heavily — most decisions and most delivery still run through me",
+       "score": 2
+      },
+      {
+       "label": "Moderately — I have handed off pieces, but the important things still need me",
+       "score": 3
+      },
+      {
+       "label": "Partially — the team handles most of the day-to-day, though bottlenecks remain",
+       "score": 4
+      },
+      {
+       "label": "Minimally — the business runs on documented systems and a capable team with or without me in the room",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "systems_scalability",
+     "text": "If you added 30% more clients tomorrow, how well would your current systems and processes handle the growth?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would break — the volume would overwhelm what we have right now",
+       "score": 1
+      },
+      {
+       "label": "We would struggle significantly and quality would likely suffer",
+       "score": 2
+      },
+      {
+       "label": "We could manage, but it would require a lot of manual effort and stress",
+       "score": 3
+      },
+      {
+       "label": "We could handle it with some adjustments — the foundation is mostly there",
+       "score": 4
+      },
+      {
+       "label": "We are built for it — our systems flex to meet growth without adding chaos",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_outside_genius",
+     "type": "number",
+     "text": "How many hours per week do you spend on work that falls outside your zone of genius?",
+     "hint": "Think admin, tasks someone else could do better, decisions that drain you, or anything you handle simply because no one else is. We use $175/hr as a benchmark for senior founder time to estimate your weekly opportunity cost.",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 60,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.max(0, 100 - (x * 5))"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are the system — and that is the risk",
+     "text": "When the business is you, any growth you create just adds to your load. Sustainable growth needs structure that holds without you having to hold it personally.",
+     "steps": [
+      "Pick the one operational bottleneck that burns the most time and write down exactly how it works today. That document is the beginning of a handoff.",
+      "Identify two or three tasks you do every week that someone else could own with clear instructions. Start delegating one this month.",
+      "List every recurring decision that runs through you. Flag the ones that could have a standing rule so the answer is already there."
+     ]
+    },
+    "mid": {
+     "headline": "You have structure — now stress-test it",
+     "text": "You have built some of the scaffolding. The question is whether it holds when things get hard — when volume spikes, a team member is out, or the month does not go as planned.",
+     "steps": [
+      "Run a mental fire drill: what breaks first if you are unavailable for two weeks? Whatever that is, document and delegate it first.",
+      "Review your tools and ask whether they are set up to give you answers or just store data. If you cannot ask your systems a real question and get a real answer, that is a gap.",
+      "Set a standing weekly rhythm — even 30 minutes — to look at what the business is telling you about pace, capacity, and where things are slipping."
+     ]
+    },
+    "high": {
+     "headline": "Strong foundation — now build the intelligence layer",
+     "text": "Your operations hold. The next move is not more systems but smarter ones — connecting what you have so you can see the whole picture in one place and make faster, better-informed calls.",
+     "steps": [
+      "Identify the three to five numbers that tell you, at a glance, how the business is actually doing. If you do not know them off the top of your head, that is the gap to close.",
+      "Look at where data lives in silos and prioritize connecting two systems that would give you a clearer view of client health or pipeline.",
+      "Build a quarterly operating rhythm: a set of questions you ask the business every 90 days, with the data already in place to answer them."
+     ]
+    }
+   }
+  },
+  {
+   "id": "team_and_zone_of_genius",
+   "name": "Team and Zone of Genius",
+   "questions": [
+    {
+     "id": "right_work_right_people",
+     "text": "How often are you personally handling work that someone on your team could do better, or that pulls you away from your highest-value contribution?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of the time — I handle things because it is faster than explaining them",
+       "score": 1
+      },
+      {
+       "label": "Often — I know I should hand things off but have not built the path to do it",
+       "score": 2
+      },
+      {
+       "label": "Sometimes — I have handed off some things but real gaps remain",
+       "score": 3
+      },
+      {
+       "label": "Occasionally — most of my time is in my zone, though I still catch myself filling gaps",
+       "score": 4
+      },
+      {
+       "label": "Rarely — my time is protected for the work only I can do and the team handles the rest",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "role_clarity",
+     "text": "How clearly does everyone on your team know what they are responsible for — without needing to ask you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It is unclear — roles overlap and ownership is fuzzy",
+       "score": 1
+      },
+      {
+       "label": "There is a general understanding, but edge cases and gaps come back to me regularly",
+       "score": 2
+      },
+      {
+       "label": "Mostly clear, though a few responsibilities still create confusion",
+       "score": 3
+      },
+      {
+       "label": "Clear — the team generally knows who owns what and handles it",
+       "score": 4
+      },
+      {
+       "label": "Crystal clear — ownership is documented, the team operates independently, and decisions land at the right level",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "specialist_vs_generalist",
+     "text": "How well does your current team setup match actual expertise to the work — with each person operating in their zone of genius rather than being stretched across everything?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have generalists handling most things — people wear too many hats",
+       "score": 1
+      },
+      {
+       "label": "Some roles are well-matched but others are stretched into areas outside their strength",
+       "score": 2
+      },
+      {
+       "label": "Mostly matched — a few gaps remain where the right specialist is missing",
+       "score": 3
+      },
+      {
+       "label": "Well-matched — the people doing the work are genuinely strong at it",
+       "score": 4
+      },
+      {
+       "label": "Each person operates in their zone of genius and we bring in the right expert when a gap appears",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are the generalist, and it is costing you",
+     "text": "When one person handles everything, the ceiling is that person's capacity. Every hour you spend outside your zone of genius is an hour the business is not getting your best.",
+     "steps": [
+      "Write down the five things only you can do in this business. Everything else is a delegation or hiring opportunity.",
+      "List the three tasks that drain you most each week. Those are the first to hand off, even imperfectly, so you can get back time for what only you can do.",
+      "When you hire or bring on a contractor, hire for a specific zone of genius — not a generalist who can do several things adequately."
+     ]
+    },
+    "mid": {
+     "headline": "The team is taking shape — fill the right gaps next",
+     "text": "You have started to build around specialization. The next move is deliberate: identify the gaps holding the business back and find the exact expertise to close them.",
+     "steps": [
+      "Map the work your team is doing against their actual strengths. Where there is a mismatch, flag it as a hiring or restructuring priority.",
+      "Identify one function where a true specialist would create the biggest lift for your clients and your business, and make that your next hire.",
+      "Build a simple onboarding process so the next person you bring in understands their role, the team's rhythm, and how they fit — without it all running through you."
+     ]
+    },
+    "high": {
+     "headline": "Zone of genius is your model — protect it as you scale",
+     "text": "You have built around specialization from the start. The work now is protecting that standard as you grow — making sure every new role adds a distinct strength, not just more capacity.",
+     "steps": [
+      "Before your next hire, define the specific zone of genius the role requires. Resist the pull to hire for availability and hire for the strength the business actually needs.",
+      "Review your team and contractor network twice a year. Are all the right zones covered? Are there strengths you are not fully using?",
+      "Document how each person on your team uniquely impacts client outcomes. That clarity helps you communicate the model externally and retain people internally."
+     ]
+    }
+   }
+  },
+  {
+   "id": "founder_alignment",
+   "name": "Founder Alignment",
+   "questions": [
+    {
+     "id": "love_vs_like",
+     "text": "When you look at the work you did this week, how much of it was work you genuinely love — not just work you are good at or work that needed to get done?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost none — I am mostly doing what needs to happen, not what I love",
+       "score": 1
+      },
+      {
+       "label": "A small portion — there are moments I love, but they are not the majority",
+       "score": 2
+      },
+      {
+       "label": "About half — a real mix of work I love and work I am just getting through",
+       "score": 3
+      },
+      {
+       "label": "Most of it — I am largely in work I love, with some unavoidable exceptions",
+       "score": 4
+      },
+      {
+       "label": "Almost all of it — I built this specifically so I could do the work I love most days",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sustainability",
+     "text": "If you kept the exact same pace, structure, and workload for the next six months, how sustainable does that feel?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not at all — I am already running close to empty and something will have to give",
+       "score": 1
+      },
+      {
+       "label": "Barely — I can keep going but I know it is not healthy long-term",
+       "score": 2
+      },
+      {
+       "label": "Manageable, but not something I would want to sustain indefinitely",
+       "score": 3
+      },
+      {
+       "label": "Mostly sustainable — I have room and a few things I want to adjust",
+       "score": 4
+      },
+      {
+       "label": "Fully sustainable — I have built the business around a pace I can keep without burning out",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "future_vision",
+     "text": "How confident are you that what you are building today is genuinely what you want to be building three years from now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I am not sure — I have drifted from my original vision and have not recalibrated",
+       "score": 1
+      },
+      {
+       "label": "Somewhat unsure — there are parts of the business I have outgrown or no longer love",
+       "score": 2
+      },
+      {
+       "label": "Mostly aligned — the direction is right, though some pieces do not fully fit yet",
+       "score": 3
+      },
+      {
+       "label": "Confident — I know where I am going and what I am building toward",
+       "score": 4
+      },
+      {
+       "label": "Very confident — this is a deliberate expression of what I want to build and I am building it on purpose",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are building the right business for someone else",
+     "text": "There is a difference between liking what you do and loving it. Sustainable businesses are built by founders who are genuinely in it — not just capable of doing it. Now is the time to recalibrate.",
+     "steps": [
+      "Block two hours this week to write down what you would build if you were starting fresh today. Compare it to what you are currently building. The gap tells you something important.",
+      "Identify the one part of the business that consistently drains you and ask whether it is there because you chose it or because it just grew that way.",
+      "Find one thing you love about the work and protect at least four hours per week around it — not as a reward, but as the foundation you build from."
+     ]
+    },
+    "mid": {
+     "headline": "You are close — close the gap between good and right",
+     "text": "You are building something with real potential and you care about it. The distance between where you are and where you want to be is smaller than it feels. Small adjustments now protect you from drift later.",
+     "steps": [
+      "Name the two or three pieces of the business that feel most like work you love. Ask yourself what it would take to spend more time there and less time elsewhere.",
+      "Schedule a real review of your workload — not just tasks, but the shape of your week. A week that works for your business might not be working for you.",
+      "Talk to someone you trust about where the business is going. Sometimes saying it out loud surfaces a misalignment you have been quietly managing."
+     ]
+    },
+    "high": {
+     "headline": "You built something you love — keep building it that way",
+     "text": "You know the difference between liking something and loving it, and you made the harder choice. That is rare. The work now is making sure growth does not pull you away from what made it worth building.",
+     "steps": [
+      "As you grow, revisit your role every six months. Growth should move you toward more of what you love, not just more of everything.",
+      "Document what a good week looks like for you — the rhythm, the work, the energy. Use that as a check against decisions that trade short-term gain for long-term drain.",
+      "Model the pace and structure you have built for your team. If you have built something sustainable for yourself, build that same standard into how you bring others in."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "weekly_opportunity_cost",
+   "label": "Estimated weekly opportunity cost of work outside your zone of genius",
+   "format": "currency_per_period",
+   "formula": "hours_outside_genius * 175",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_opportunity_cost",
+   "label": "Estimated annual opportunity cost of misaligned work",
+   "format": "currency",
+   "formula": "hours_outside_genius * 175 * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "I am building solo or with a very small team and still figuring out the foundation",
+    "tag": "early-founder"
+   },
+   {
+    "label": "I have a team and clients but growth feels harder than it should",
+    "tag": "growth-founder"
+   },
+   {
+    "label": "I am established and looking for clarity, alignment, or a reset",
+    "tag": "reset-founder"
+   }
+  ]
+ }
+}
