@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 94d4b0c675cade152e6750ba4ec03cc4f9f2b3b8 at 2026-08-25T15:41:45.364Z
+Deploy: c478edca21f4c2620d002f2dd46c33e3898cc495 at 2026-08-26T07:29:34.241Z
 
-- orsi-szentes-a4-assessment: data.json HTTP 404
+- andreea-borcea-26-assessment: data.json HTTP 404
