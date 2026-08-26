@@ -1,0 +1,606 @@
+{
+ "slug": "andreea-borcea-26-assessment",
+ "title": "Your Retention Readiness Score",
+ "subtitle": "Measures how well your brand earns the relationship after the first purchase — and builds the trust that turns customers into people who stay.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "post_purchase_experience",
+   "name": "Post-Purchase Experience",
+   "questions": [
+    {
+     "id": "post_purchase_experience_q1",
+     "text": "What happens in the 24 hours after a customer places an order — beyond the automated order confirmation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Just the order confirmation — that is it until shipping",
+       "score": 1
+      },
+      {
+       "label": "An order confirmation and a shipping notification",
+       "score": 2
+      },
+      {
+       "label": "A confirmation, a shipping update, and a brief welcome email",
+       "score": 3
+      },
+      {
+       "label": "A personal welcome email signed by a real person, plus a day-3 check-in",
+       "score": 4
+      },
+      {
+       "label": "A structured 30-day sequence: personal welcome, delivery check-in, usage guidance, and a genuine relationship touchpoint",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "post_purchase_experience_q2",
+     "text": "When a customer receives a damaged or missing item, what does their experience look like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They contact us; we respond within a few days and sort it out",
+       "score": 1
+      },
+      {
+       "label": "We apologize and offer a refund or replacement when they reach out",
+       "score": 2
+      },
+      {
+       "label": "We respond quickly and resolve it within 24 hours",
+       "score": 3
+      },
+      {
+       "label": "We proactively fix the issue and follow up to make sure they are satisfied",
+       "score": 4
+      },
+      {
+       "label": "We resolve it before they have to ask twice and reach out personally afterward to check in",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "post_purchase_experience_q3",
+     "text": "Do you have a structured check-in sequence in the weeks after a customer's first purchase?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No — we send a discount code a few weeks later and that is it",
+       "score": 1
+      },
+      {
+       "label": "We have a generic follow-up email that goes out at some point",
+       "score": 2
+      },
+      {
+       "label": "We have a basic email sequence but it feels automated",
+       "score": 3
+      },
+      {
+       "label": "We have a sequence with a genuine check-in and some product education",
+       "score": 4
+      },
+      {
+       "label": "We have a personal sequence: welcome, day-7 check-in, education, and a real ask about their experience",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "post_purchase_experience_q4",
+     "text": "If a long-time customer emailed unprompted to say 'thank you — this felt really thoughtful,' what would they most likely be referring to?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly not sure — we do not do much that would prompt that",
+       "score": 1
+      },
+      {
+       "label": "Probably our product quality or packaging",
+       "score": 2
+      },
+      {
+       "label": "A smooth checkout or fast delivery",
+       "score": 3
+      },
+      {
+       "label": "A personal follow-up or a response that felt human",
+       "score": 4
+      },
+      {
+       "label": "Something specific we do intentionally — a note, a check-in, a moment that shows we remembered them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your biggest growth lever is on the other side of checkout",
+     "text": "Most brands I work with have mastered getting the customer. The drop-off is almost always what happens next. After the order confirmation, there is silence. And in that silence, customers move on — not intentionally, they are just recalibrating their world and you are no longer in it. Start with one thing: write a welcome email that sounds like a person. Not 'The Team.' A name. A sentence about why you are glad they ordered. That is where the second purchase starts.",
+     "steps": [
+      "Write a welcome email signed by a real first name on your team, not 'The Brand Team'",
+      "Add a day-7 check-in: 'How is everything going with your order?' with no ask attached",
+      "Map out what actually happens after checkout and mark every moment of silence — that map is your retention roadmap"
+     ]
+    },
+    "mid": {
+     "headline": "You have structure — the next step is making it feel human",
+     "text": "You have thought about what happens after the sale, which puts you ahead of most brands I see. But there are still gaps where customers slip away unnoticed. The goal is to move from automated to felt — sequences that feel like someone on your team thought about the customer, not just the conversion.",
+     "steps": [
+      "Audit your post-purchase emails by reading each one out loud and asking whether it sounds like a person or a system",
+      "Add one touchpoint that asks for nothing — a check-in, a useful tip, something genuinely helpful with no offer attached",
+      "Order something from your own store and experience the post-purchase journey as a customer"
+     ]
+    },
+    "high": {
+     "headline": "Your post-purchase experience is a retention asset — protect it",
+     "text": "What you have built after checkout is rare. Most brands never get here. The work now is to maintain it. Customer needs shift, and what felt personal six months ago can start to feel like a template if you stop paying attention to it.",
+     "steps": [
+      "Review your post-purchase sequence every quarter and ask honestly whether it still sounds human",
+      "Read replies to your check-in emails every month — they are your best retention research",
+      "Share one customer reply with your whole team each month so the reason behind the work stays visible"
+     ]
+    }
+   }
+  },
+  {
+   "id": "human_communication",
+   "name": "Human Communication",
+   "questions": [
+    {
+     "id": "human_communication_q1",
+     "text": "If you read your last 10 marketing emails, how many would feel like they came from a real person rather than a brand template?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None — they are promotional and template-driven",
+       "score": 1
+      },
+      {
+       "label": "Maybe 1 or 2, but most are offer-focused",
+       "score": 2
+      },
+      {
+       "label": "About half feel personal; the rest feel automated",
+       "score": 3
+      },
+      {
+       "label": "Most feel like they came from a person, with occasional lapses into template language",
+       "score": 4
+      },
+      {
+       "label": "All 10 — each sounds like a specific person with a specific reason for writing",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "human_communication_q2",
+     "text": "When you have something to announce — a new product, a launch, a sale — how do you typically open the email?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We lead with the offer or the discount",
+       "score": 1
+      },
+      {
+       "label": "We announce what is new and explain why it is good",
+       "score": 2
+      },
+      {
+       "label": "We share the story behind what we are launching",
+       "score": 3
+      },
+      {
+       "label": "We open with something our customer actually cares about, then bring in the announcement",
+       "score": 4
+      },
+      {
+       "label": "We open with a real moment — something that happened, something we noticed — and the announcement follows from that",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "human_communication_q3",
+     "text": "How often do you ask customers a genuine open-ended question — no survey form, no hidden agenda, just a real question?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not — our emails are mostly one-way broadcasts",
+       "score": 1
+      },
+      {
+       "label": "We include a survey link a couple of times a year",
+       "score": 2
+      },
+      {
+       "label": "We ask for reviews or feedback occasionally",
+       "score": 3
+      },
+      {
+       "label": "We reach out regularly with a simple honest question and read the replies",
+       "score": 4
+      },
+      {
+       "label": "We have a habit of asking one question and using what customers say to shape what we do next",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your emails are working but not connecting",
+     "text": "There is a gap between a brand customers feel loyal to and one they forget. That gap is often just warmth — the sense that a real person wrote this and they wrote it for me. That is not a feature of your product. It is a quality of how you communicate. One change makes the biggest difference first: a real name at the bottom of every email.",
+     "steps": [
+      "Replace 'The Brand Team' with a real first name on every email you send",
+      "Write your next email as if you are writing to one specific customer you actually know",
+      "Add one sentence explaining why you are sending the email — context, not just content"
+     ]
+    },
+    "mid": {
+     "headline": "Some of your emails land — the work is making it consistent",
+     "text": "You have moments of real communication mixed in with template-driven ones. Customers feel the difference immediately, even if they cannot explain why. The goal is to close that gap so every email sounds like the same person wrote it — warm, clear, and with a reason for being in someone's inbox.",
+     "steps": [
+      "Identify the 2 or 3 email types that feel most robotic and rewrite those first",
+      "Create a one-page voice guide: how do we open, how do we close, what phrases do we never use",
+      "Read every email out loud before it sends — if it sounds like a press release, rewrite it"
+     ]
+    },
+    "high": {
+     "headline": "You communicate like a brand people remember",
+     "text": "You have built the foundation: warmth, a real voice, and the habit of asking genuine questions. The next step is depth — going beyond being felt to being useful. What are you learning from your customers that you could give back to them?",
+     "steps": [
+      "Once a quarter, send an email purely to give something: a finding, an observation, something useful from what you have seen",
+      "Collect the exact words customers use in reply emails and use their language in your next campaign",
+      "Let one real customer story — with their permission — drive an entire email from open to close"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_search_brand_visibili",
+   "name": "AI Search & Brand Visibility",
+   "questions": [
+    {
+     "id": "ai_search_brand_visibili_q1",
+     "text": "Have you tested what happens when someone asks ChatGPT or Gemini to recommend products in your category?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No — I did not know this was something to check",
+       "score": 1
+      },
+      {
+       "label": "I have heard about it but have not tested it",
+       "score": 2
+      },
+      {
+       "label": "I tested it once informally",
+       "score": 3
+      },
+      {
+       "label": "I have tested it several times across different ways of asking",
+       "score": 4
+      },
+      {
+       "label": "I test it regularly and track how our brand appears compared to our competitors",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_search_brand_visibili_q2",
+     "text": "How clearly can you state why a customer should choose your brand over the next closest option?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I know we are good but I would struggle to say it in one sentence",
+       "score": 1
+      },
+      {
+       "label": "We have a general value proposition but it is not specific to a particular customer",
+       "score": 2
+      },
+      {
+       "label": "We have a clear differentiator but it is not consistently communicated everywhere",
+       "score": 3
+      },
+      {
+       "label": "We have a specific concrete reason and we state it consistently across our marketing",
+       "score": 4
+      },
+      {
+       "label": "We have a sharp differentiator backed by proof that appears consistently at every customer touchpoint",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_search_brand_visibili_q3",
+     "text": "How well does your product content — descriptions, FAQs, specs — communicate to AI shopping systems?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have never thought about this",
+       "score": 1
+      },
+      {
+       "label": "Our product descriptions exist but were written for traditional SEO and have not changed",
+       "score": 2
+      },
+      {
+       "label": "We have updated descriptions but have not structured them for how AI reads and summarizes content",
+       "score": 3
+      },
+      {
+       "label": "We have started thinking about this and made some targeted changes",
+       "score": 4
+      },
+      {
+       "label": "We have audited our product content for AI readability — it accurately describes what we sell and why someone should choose us",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand may not exist where some customers are already looking",
+     "text": "AI shopping is already where a growing number of your customers start their search. If you have not looked, you may not know whether your brand appears at all — and there is no dashboard that tells you. You find out because a customer mentions it, or because you go looking. Most brands have not gone looking. The first step is not a strategy. It is a test.",
+     "steps": [
+      "Ask ChatGPT: 'What are the best brands for [your category] and why?' and read the full answer carefully",
+      "Check your product pages: if AI had to summarize what you sell in two sentences, would it get it right?",
+      "Find two competitors who appear in AI answers and note what their product content does that yours does not"
+     ]
+    },
+    "mid": {
+     "headline": "You see the shift — now close the gap between awareness and action",
+     "text": "You know AI shopping matters and you have started paying attention. The risk is not that AI dislikes your brand. It is that AI cannot describe your brand accurately because your content does not give it enough to work with. Specific claims, real proof, a clear reason to choose you — that is what AI needs to recommend you.",
+     "steps": [
+      "Review your top 5 product pages: are your claims specific and backed by proof, or are they general and interchangeable with any competitor?",
+      "Make sure your single strongest differentiator appears clearly on every product page — not buried, not vague",
+      "Test at least 5 different ways a customer might ask AI about your category and document what you find each time"
+     ]
+    },
+    "high": {
+     "headline": "You are ahead — the next step is making it a system",
+     "text": "Most brands in your category have not started here yet. The opportunity now is to move from occasional testing to a regular practice — so you catch changes early and keep your brand's AI presence accurate and competitive as the space keeps moving.",
+     "steps": [
+      "Add an AI visibility check to your quarterly marketing review",
+      "Compare your brand's AI presence to your top two competitors every quarter and document what shifts",
+      "Write down what AI currently says about your brand versus what you would want it to say — then work to close that gap systematically"
+     ]
+    }
+   }
+  },
+  {
+   "id": "customer_retention_brand",
+   "name": "Customer Retention & Brand Consistency",
+   "questions": [
+    {
+     "id": "customer_retention_brand_q1",
+     "text": "When your acquisition numbers are strong, where does most of your team's energy go?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Scaling acquisition further — more spend, more reach",
+       "score": 1
+      },
+      {
+       "label": "Celebrating and planning the next campaign",
+       "score": 2
+      },
+      {
+       "label": "Analyzing what drove it and repeating the approach",
+       "score": 3
+      },
+      {
+       "label": "Reviewing acquisition numbers alongside our repeat purchase rate",
+       "score": 4
+      },
+      {
+       "label": "Tracking whether those new customers come back — acquisition only counts if they return",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_retention_brand_q2",
+     "text": "When results dip for a quarter, how does your brand respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We refresh the brand identity or try a new platform",
+       "score": 1
+      },
+      {
+       "label": "We launch something new to re-energize attention",
+       "score": 2
+      },
+      {
+       "label": "We analyze what changed and adjust our tactics",
+       "score": 3
+      },
+      {
+       "label": "We stay consistent in our messaging while we work out what shifted",
+       "score": 4
+      },
+      {
+       "label": "We hold steady — we trust the relationship we have built and work through the dip without changing who we are",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_retention_brand_q3",
+     "text": "A brand in a complementary category approaches you about a collaboration. Your first instinct is:",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Concern — what if they reach my customers and I lose ground?",
+       "score": 1
+      },
+      {
+       "label": "Caution — I am open but want to protect our customer list",
+       "score": 2
+      },
+      {
+       "label": "Evaluate the fit carefully before committing to anything",
+       "score": 3
+      },
+      {
+       "label": "If they serve my customers well, this could strengthen both brands",
+       "score": 4
+      },
+      {
+       "label": "Start with what the customer would gain — if the experience improves for them, it is worth exploring",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "repeat_purchase_rate",
+     "type": "number",
+     "text": "What percentage of your customers buy from you again within 6 months?",
+     "hint": "Check your store analytics if you are not sure. If you genuinely do not know, enter your best estimate — the result will still be useful.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 20,
+     "normalize_formula": "x"
+    },
+    {
+     "id": "monthly_new_customers",
+     "type": "number",
+     "text": "How many new customers do you acquire each month on average?",
+     "hint": "New customers only — not returning buyers. Use your last 3-month average if monthly numbers vary.",
+     "suffix": "customers",
+     "min": 0,
+     "max": 10000,
+     "step": 10,
+     "default": 100,
+     "normalize_formula": "Math.min(x / 500, 1) * 100"
+    },
+    {
+     "id": "avg_order_value",
+     "type": "number",
+     "text": "What is your average order value for a first purchase?",
+     "hint": "Enter in USD. Use your typical first-order value, not lifetime value.",
+     "suffix": "$",
+     "min": 0,
+     "max": 5000,
+     "step": 5,
+     "default": 75,
+     "normalize_formula": "Math.min(x / 500, 1) * 100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your growth is acquisition-dependent — and that is the most expensive way to grow",
+     "text": "Every customer who buys once and does not return cost you money to find. If most of your customers only buy once, you are running a business that needs to constantly fill a leaking bucket. I have sat in the meeting where the acquisition numbers look great and no one has checked the repeat purchase rate. That is the number that tells you whether the business is actually working. Retention does not require a new strategy — it requires paying attention to what happens after the sale.",
+     "steps": [
+      "Find your repeat purchase rate in your store analytics — if you do not know it, that is the first thing to fix before anything else",
+      "Email 5 long-time customers one honest question: 'Why do you keep coming back?' and read every reply",
+      "Decide on one change to make to your post-purchase experience this quarter and make it"
+     ]
+    },
+    "mid": {
+     "headline": "You are tracking the right things — now build around them",
+     "text": "You have some retention thinking in place and you are paying attention to the numbers. The next level is making retention a business habit, not a quarterly project. Something your team looks at alongside acquisition every month, not separately — because the two numbers only make sense together.",
+     "steps": [
+      "Add your repeat purchase rate to your monthly business review alongside acquisition numbers — every single month",
+      "Run a simple customer conversation series: 3 to 5 customers, one open question each, and actually read what they say",
+      "Find the customer segment with your highest repeat rate and understand why — then build toward more of them intentionally"
+     ]
+    },
+    "high": {
+     "headline": "Your brand earns relationships, not just transactions",
+     "text": "You are building the kind of brand that lasts — steady, consistent, and genuinely invested in the customer after the sale. The most valuable thing you can do now is document what is working, so it scales with you as the business grows and the team expands. What lives only in your head right now will not survive the next stage.",
+     "steps": [
+      "Write down the retention practices that are driving your repeat purchase rate so they do not live only in your head",
+      "Build a monthly habit of reading customer replies, reviews, and feedback as a team — not just as a marketing function",
+      "Share your repeat purchase rate as a whole-business success metric, not just a marketing number"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "customers_lost_monthly",
+   "label": "Customers not returning each month",
+   "format": "integer",
+   "formula": "Math.round(monthly_new_customers * (1 - repeat_purchase_rate / 100))",
+   "show_in_result": true
+  },
+  {
+   "id": "revenue_at_risk_monthly",
+   "label": "Revenue at risk from non-returning customers (monthly)",
+   "format": "currency_per_period",
+   "formula": "Math.round(monthly_new_customers * (1 - repeat_purchase_rate / 100) * avg_order_value)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your business?",
+  "answers": [
+   {
+    "label": "Ecommerce / DTC brand (Shopify or similar)",
+    "tag": "dtc"
+   },
+   {
+    "label": "Service-based business or agency",
+    "tag": "service"
+   },
+   {
+    "label": "B2B or SaaS",
+    "tag": "b2b"
+   },
+   {
+    "label": "Brick and mortar or hybrid retail",
+    "tag": "hybrid"
+   }
+  ]
+ }
+}
