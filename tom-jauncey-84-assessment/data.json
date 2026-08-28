@@ -1,0 +1,641 @@
+{
+ "slug": "tom-jauncey-84-assessment",
+ "title": "The Founder Foundations Score",
+ "subtitle": "Measures the five foundations every experienced founder needs to carry the business and themselves through the next stage.",
+ "brand": {
+  "accent": "#00417c",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "mindset_forward_motion",
+   "name": "Mindset & Forward Motion",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "When you know what you need to do but have not done it yet, what is usually going on?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I am waiting for things to be more certain before I move.",
+       "score": 1
+      },
+      {
+       "label": "I can name the reason I am stalling but have not acted on it.",
+       "score": 2
+      },
+      {
+       "label": "I take a step even when I do not feel fully ready.",
+       "score": 3
+      },
+      {
+       "label": "I move quickly, even when it is uncomfortable.",
+       "score": 4
+      },
+      {
+       "label": "I have a real process for getting out of my own way.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "How do you tend to respond when a month goes badly?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I question everything — the direction, the business, whether any of it is working.",
+       "score": 1
+      },
+      {
+       "label": "I worry a lot but eventually level out.",
+       "score": 2
+      },
+      {
+       "label": "I sit with it but keep moving.",
+       "score": 3
+      },
+      {
+       "label": "I look at what happened and adjust without too much drama.",
+       "score": 4
+      },
+      {
+       "label": "I expect hard months and have a way of working through them.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "How often do you back yourself without needing outside validation first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely. I usually want someone else to confirm the direction before I move.",
+       "score": 1
+      },
+      {
+       "label": "Sometimes. It depends on how big the decision feels.",
+       "score": 2
+      },
+      {
+       "label": "More often than I used to.",
+       "score": 3
+      },
+      {
+       "label": "Most of the time. I trust my read on things.",
+       "score": 4
+      },
+      {
+       "label": "Almost always. I have learned to act on my own judgment.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The business is usually fine. The voice in your head is the problem.",
+     "text": "I have been here. Most founders have. The thing that keeps people stuck is rarely a bad business — it is fear dressed up as strategy. Waiting for the right moment, needing one more thing in place, convincing yourself the market is not ready. None of that is a business problem. It is a mindset one. The good news is that it is fixable, and the fact you are looking at this honestly means you already know it.",
+     "steps": [
+      "Name one thing you have been putting off that you already know you should do. Write it down today.",
+      "Give yourself 48 hours to take a first step — not the whole thing, just the first move.",
+      "Find at least one other founder to talk to honestly. People who get it without you having to explain it are worth more than any strategy."
+     ]
+    },
+    "mid": {
+     "headline": "You are moving, but there is still a gap between knowing and doing.",
+     "text": "The awareness is there, which is more than most people have. You are not stuck — you are just carrying more hesitation than you need to. The difference between where you are and where you want to be is usually not a new plan. It is the decision to get out of your own way a bit more consistently.",
+     "steps": [
+      "Look at the last three times you delayed something. Was the reason real, or was it fear with a sensible face on?",
+      "Practice making the uncomfortable decision first, before you talk yourself out of it.",
+      "Seek out honest peer conversations — not people who tell you what you want to hear."
+     ]
+    },
+    "high": {
+     "headline": "You have got the mindset piece working. That is a real advantage.",
+     "text": "Most founders never fully shake the fear — they just learn to move anyway. You are there. The focus now is making sure the other parts of your foundation are as solid as your head. Mindset without systems or protection around it only goes so far.",
+     "steps": [
+      "Use that confidence to have the uncomfortable business conversations you might still be avoiding — pricing, client fit, team issues.",
+      "Keep going. The clarity you have built is rare.",
+      "Share it when it is useful. Other founders need to hear this stuff more than they let on."
+     ]
+    }
+   }
+  },
+  {
+   "id": "business_protection_infr",
+   "name": "Business Protection & Infrastructure",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "How covered is your business if something goes seriously wrong tomorrow — a legal dispute, a key person out, a client who does not pay?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly, not at all. It would be a scramble.",
+       "score": 1
+      },
+      {
+       "label": "We have some insurance but I am not sure it covers the right things.",
+       "score": 2
+      },
+      {
+       "label": "We have the basics but there are gaps I know about and have not closed.",
+       "score": 3
+      },
+      {
+       "label": "Most things are covered. We have reviewed it properly at some point.",
+       "score": 4
+      },
+      {
+       "label": "Fully in place — legal, insurance, financial, all reviewed.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "Do you have a lawyer or dispute resolution contact you trust before you actually need them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No. I would figure it out if something happened.",
+       "score": 1
+      },
+      {
+       "label": "I have used someone before but there is no ongoing relationship.",
+       "score": 2
+      },
+      {
+       "label": "I know who I would call, loosely.",
+       "score": 3
+      },
+      {
+       "label": "Yes, someone I trust who knows our business.",
+       "score": 4
+      },
+      {
+       "label": "Yes, and we have already worked through a real situation together.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "How often do you speak to someone outside the business — a therapist, coach, or peer group — just to get things out of your head?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never. I carry it all myself.",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, when it gets too heavy.",
+       "score": 2
+      },
+      {
+       "label": "A few times a year.",
+       "score": 3
+      },
+      {
+       "label": "Monthly or close to it.",
+       "score": 4
+      },
+      {
+       "label": "Regularly and intentionally. It is built into how I run.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Most founders are massively underprotected. You are not the only one.",
+     "text": "This is the stuff nobody talks about until something goes wrong. Legal disputes, unexpected illness, invoices that never get paid — these happen. And when they do, the scramble is expensive. That is not pessimism. That is just business. Getting this sorted is not a big project. It is a few phone calls. The cost of not having it in place is always higher than the cost of putting it there.",
+     "steps": [
+      "Start with insurance: legal expenses, key person, critical illness, health, invoice protection. Most founders are underinsured across all of them.",
+      "Find a lawyer or dispute resolution contact before you need one. Ask other founders who they use and actually trust.",
+      "Book a session with a therapist or join a founder peer group — not because something has to be wrong, but to get things out of your head."
+     ]
+    },
+    "mid": {
+     "headline": "You have some of it in place. The gaps are worth closing now, not when it matters.",
+     "text": "The awareness is there and some of the infrastructure is there. The issue is that gaps you know about tend to stay gaps — right up until they become the problem. A proper review of what is covered and what is not takes a few hours. That is a reasonable trade.",
+     "steps": [
+      "Review your current insurance properly — not just whether you have it, but what it actually covers.",
+      "Build an ongoing relationship with a legal or dispute resolution contact, not just a one-off number.",
+      "If you are not speaking to someone outside the business regularly, block the time and book it."
+     ]
+    },
+    "high": {
+     "headline": "This is the stuff that pays off when everything else goes sideways.",
+     "text": "Having the right people in your corner before you need them is one of the things experienced founders do differently. Most learn it the hard way. You have not had to. Keep reviewing it as the business grows — what was enough two years ago may not be enough now.",
+     "steps": [
+      "Review coverage annually. The business changes and the protection needs to keep up.",
+      "Keep the external outlet going. The pressure does not go away — you just carry it better with the right support.",
+      "If you are doing this well, tell other founders. It is the kind of thing that actually helps people."
+     ]
+    }
+   }
+  },
+  {
+   "id": "client_discipline_revenu",
+   "name": "Client Discipline & Revenue Health",
+   "questions": [
+    {
+     "id": "q7",
+     "text": "When a potential client feels wrong — the brief, the attitude, the budget — what do you usually do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Take them on and hope for the best.",
+       "score": 1
+      },
+      {
+       "label": "Have doubts but convince myself it will work out.",
+       "score": 2
+      },
+      {
+       "label": "Sometimes say no, depending on how the pipeline looks.",
+       "score": 3
+      },
+      {
+       "label": "Push back on the terms before I agree.",
+       "score": 4
+      },
+      {
+       "label": "Turn them down without hesitation. The wrong client costs more than the fee.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8",
+     "text": "How confident are you that your pricing reflects the value you actually deliver?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are undercharging and I know it.",
+       "score": 1
+      },
+      {
+       "label": "Probably a bit low, but raising it feels risky.",
+       "score": 2
+      },
+      {
+       "label": "About right, I think.",
+       "score": 3
+      },
+      {
+       "label": "We have reviewed and adjusted it in the last year.",
+       "score": 4
+      },
+      {
+       "label": "Our pricing is set with full confidence and clients pay it.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "avg_retainer",
+     "type": "number",
+     "text": "What is your average monthly client retainer or project fee?",
+     "hint": "If it varies widely, use the number that feels most typical. This is used only in your results — it is not stored.",
+     "suffix": "£/month",
+     "min": 0,
+     "max": 50000,
+     "step": 500,
+     "default": 2000,
+     "normalize_formula": "x >= 5000 ? 100 : x >= 3000 ? 80 : x >= 1500 ? 60 : x >= 800 ? 40 : x >= 300 ? 20 : 10"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Saying yes to the wrong clients cost us more than any no ever did.",
+     "text": "I learned this one the hard way and most founders do. We undercharged and it attracted the wrong people every single time. There is a direct link between pricing confidence and client quality. The number you charge sends a signal before anyone has spoken to you. When things feel messy on the client side, the fix is usually sharper filters going in and the confidence to hold your actual number.",
+     "steps": [
+      "List your current clients and mark each one honestly as right or wrong for the business. The pattern will tell you something.",
+      "Set your actual rate — the one that would feel fair — and hold it for the next three new conversations.",
+      "Write down the criteria a client has to meet for you to work with them. Use it before you agree to a call."
+     ]
+    },
+    "mid": {
+     "headline": "You are making better choices. There is still room to tighten the filter.",
+     "text": "You know what a wrong client looks like. The challenge now is staying consistent about saying no even when the pipeline looks quiet. That is where most of the leaks are. A quiet month is not a reason to lower the standard — it is a reason to look at why the pipeline is quiet and fix that instead.",
+     "steps": [
+      "Review your last ten new clients. How many would you take on again in exactly the same situation?",
+      "Identify the one type of client you are still taking on that you know you should not. Build a filter that catches them earlier.",
+      "If a recent client pushed back hard on price, the pricing is not the problem — the wrong person is."
+     ]
+    },
+    "high": {
+     "headline": "Strong. This is what a well-run client side looks like.",
+     "text": "When your pricing is confident and your filters are tight, the whole business runs differently. The right clients are easier to do great work for. You have more energy. The results are better. It compounds. The next step is usually writing down what makes a great client for you so that standard does not slip when things get busy.",
+     "steps": [
+      "Write your ideal client profile in concrete terms and use it in your marketing, not just your sales conversations.",
+      "If you have not reviewed your prices in the last 12 months, look at whether you should.",
+      "Keep the filter. The temptation when things are going well is to get looser about who you take on."
+     ]
+    }
+   }
+  },
+  {
+   "id": "digital_visibility",
+   "name": "Digital Visibility",
+   "questions": [
+    {
+     "id": "q9",
+     "text": "If a potential client searched for your services on ChatGPT or Claude today, do you think they would find you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost certainly not. We have not thought about this.",
+       "score": 1
+      },
+      {
+       "label": "Probably not, but I know it is becoming more important.",
+       "score": 2
+      },
+      {
+       "label": "Possibly. We do some SEO but have not adapted for AI search.",
+       "score": 3
+      },
+      {
+       "label": "We are actively working on it.",
+       "score": 4
+      },
+      {
+       "label": "Yes — we have tested it and our content shows up.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q10",
+     "text": "How consistently does your business put out content your ideal client would actually find useful?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are basically invisible right now.",
+       "score": 1
+      },
+      {
+       "label": "We post occasionally but there is no real strategy behind it.",
+       "score": 2
+      },
+      {
+       "label": "We put out content but it could be sharper and more consistent.",
+       "score": 3
+      },
+      {
+       "label": "We have a rhythm and it is generating inbound interest.",
+       "score": 4
+      },
+      {
+       "label": "Content is a real driver of new business for us.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q11",
+     "text": "How well does your website communicate what you do and who it is for?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It is outdated or unclear about what we actually offer.",
+       "score": 1
+      },
+      {
+       "label": "It gives the general idea but needs real work.",
+       "score": 2
+      },
+      {
+       "label": "It is decent but not doing as much as it could.",
+       "score": 3
+      },
+      {
+       "label": "It is clear and we get good feedback on it.",
+       "score": 4
+      },
+      {
+       "label": "It positions us exactly right and converts well.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Google used to be the only search engine that mattered. That is not true anymore.",
+     "text": "ChatGPT, Claude, Gemini — people are finding businesses on all of them now. And most websites are completely invisible on every single one. The businesses that figure this out now are the ones that will not be playing catch-up in two years. This is not a prediction. It is already happening. Getting ahead of it now is a lot cheaper than trying to catch up later.",
+     "steps": [
+      "Search for your own business on ChatGPT and Claude right now. See what comes up. That is your starting point.",
+      "Audit your website copy: does it say clearly what you do, who it is for, and why you are the right choice? If not, start there.",
+      "Start putting out content your ideal client would actually search for. One useful piece a week is more than most competitors are doing."
+     ]
+    },
+    "mid": {
+     "headline": "You are visible but the gaps are real and worth closing.",
+     "text": "You have something to build on. The difference between doing some content and content that drives business is usually clarity on who it is actually for and consistency over time. The AI search piece is still a real opportunity — most businesses have not adapted. Being early on this matters.",
+     "steps": [
+      "Test your visibility on at least two AI search platforms right now, using the language your clients actually search with.",
+      "Pick one content format and do it consistently for 90 days before you judge whether it is working.",
+      "Get someone outside the business to read your website and tell you what you do. What they say will probably surprise you."
+     ]
+    },
+    "high": {
+     "headline": "Solid visibility. The next step is staying ahead as search keeps shifting.",
+     "text": "You have built something most competitors have not. The challenge is that the ground keeps moving — what works in search changes, AI platforms evolve, and the businesses that stay ahead are the ones who keep adapting. The advantage you have built is real. Do not let it go stale.",
+     "steps": [
+      "Test your AI search visibility every quarter. What shows up changes as platforms update.",
+      "If content is driving business, go deeper on what is working rather than spreading across new formats.",
+      "Look at how your best content can work harder — updated, repurposed, redistributed — rather than always starting from scratch."
+     ]
+    }
+   }
+  },
+  {
+   "id": "recovery_sustainable_pac",
+   "name": "Recovery & Sustainable Pace",
+   "questions": [
+    {
+     "id": "q12",
+     "text": "How often do you fully switch off — no laptop, no Slack, no guilt?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost never. It feels irresponsible to stop.",
+       "score": 1
+      },
+      {
+       "label": "Once in a while, but I usually drift back in.",
+       "score": 2
+      },
+      {
+       "label": "I try to, but the boundary between work and home is blurry.",
+       "score": 3
+      },
+      {
+       "label": "Regularly. I have learned to protect that time.",
+       "score": 4
+      },
+      {
+       "label": "It is built into my week. I switch off without the guilt now.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q13",
+     "text": "When you are at your best — clearest, most useful, most decisive — what is usually true?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly, I am not sure. I am usually just tired.",
+       "score": 1
+      },
+      {
+       "label": "I have usually had at least one slightly lighter day recently.",
+       "score": 2
+      },
+      {
+       "label": "I have had some proper rest within the last week or two.",
+       "score": 3
+      },
+      {
+       "label": "I have protected my recovery and it shows in how I work.",
+       "score": 4
+      },
+      {
+       "label": "I know what my best conditions look like and I protect them consistently.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_avoidable",
+     "type": "number",
+     "text": "How many hours per week do you spend on tasks you know should be handled differently — admin, chasing invoices, work that gets redone?",
+     "hint": "Be honest. Most founders underestimate this by half. Your answer is multiplied by 52 working weeks to show the annual picture.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 8,
+     "normalize_formula": "x === 0 ? 100 : x <= 3 ? 80 : x <= 7 ? 60 : x <= 12 ? 40 : x <= 20 ? 20 : 10"
+    },
+    {
+     "id": "hourly_rate",
+     "type": "number",
+     "text": "What is your effective hourly rate — or what would you charge for one extra hour of your time?",
+     "hint": "If you bill by project, divide a typical fee by the hours you actually spend on it. Round numbers are fine. This feeds the annual cost calculation across 52 working weeks.",
+     "suffix": "£/hour",
+     "min": 0,
+     "max": 1000,
+     "step": 10,
+     "default": 75,
+     "normalize_formula": "x >= 250 ? 100 : x >= 150 ? 80 : x >= 100 ? 65 : x >= 60 ? 50 : x >= 30 ? 30 : 10"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The months where I feel most on top of things are never the months I worked hardest.",
+     "text": "It took me way too long to work this out. There is a version of founder culture that basically glamorises running yourself into the ground — early mornings, late nights, always on. I understand the drive. But there is a real difference between drive and just never stopping. I have had periods where I pushed through when I should have stopped and it cost me more time in the long run than just taking a few days would have. The version of you that switches off properly is a better founder.",
+     "steps": [
+      "Pick one evening this week and close the laptop at a set time. Not because the work is done — it never is — but because you decided to.",
+      "Look at the number you put in for avoidable hours. Multiply it by your rate. That is not a small number.",
+      "Move. Whatever that looks like — gym, walking, anything. Not because it is productive. Because it makes everything else work better."
+     ]
+    },
+    "mid": {
+     "headline": "You are getting better at switching off. The returns compound from here.",
+     "text": "The awareness is there and you are making progress. The gap now is consistency. Switching off occasionally still means you are running mostly on fumes. The goal is making recovery a reliable part of how you run, not something that happens when you are forced to stop. The business usually does not fall apart when you step back. And if it does, that is worth knowing sooner.",
+     "steps": [
+      "Block recovery time in the diary the same way you block client calls. It gets cancelled just as often until you treat it like a commitment.",
+      "Look honestly at the avoidable hours you named. Even halving that number changes the week significantly.",
+      "Find the one thing that helps you fully reset and protect it — not as a reward, as a requirement."
+     ]
+    },
+    "high": {
+     "headline": "You have figured out something most founders take years to learn.",
+     "text": "The version of you that switches off properly is ten times better at the job than the one running on empty. You know this and you are living it. The next layer is usually making sure the tasks you are still doing manually are handled, so you are not still losing hours every week to things that should not need you.",
+     "steps": [
+      "Look at the avoidable hours you named. That number across 52 weeks is real time and real money — worth acting on.",
+      "Keep protecting recovery. The pressure does not go away; you just carry it better with the right setup in place.",
+      "Tell other founders what is working for you. Not as advice. Just as an honest conversation."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_avoidable_hours",
+   "label": "Hours lost to avoidable work this year",
+   "format": "hours_per_period",
+   "formula": "hours_avoidable * 52",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_avoidable_cost",
+   "label": "Annual cost of avoidable work at your rate",
+   "format": "currency_per_period",
+   "formula": "hours_avoidable * hourly_rate * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these best describes where you are right now?",
+  "answers": [
+   {
+    "label": "Solopreneur or freelancer building toward a team",
+    "tag": "solo"
+   },
+   {
+    "label": "Agency owner with a small team (under 10)",
+    "tag": "small-agency"
+   },
+   {
+    "label": "Founder or agency owner with a growing team (10+)",
+    "tag": "growth-stage"
+   },
+   {
+    "label": "In-house marketer or operator inside someone else's business",
+    "tag": "in-house"
+   }
+  ]
+ }
+}
