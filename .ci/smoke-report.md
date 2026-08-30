@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: ecdc296467aa889c9622ab431c9dd9eb05f6b454 at 2026-08-28T21:44:10.164Z
+Deploy: 5169c1a4da7f999ec5af46e40897ae30f439c45d at 2026-08-30T21:04:36.755Z
 
-- tom-jauncey-84-assessment: data.json HTTP 404
+- riccardo-demi-e0-assessment: data.json HTTP 404
