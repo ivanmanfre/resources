@@ -1,0 +1,555 @@
+{
+ "slug": "riccardo-demi-e0-assessment",
+ "title": "The Reputation Readiness Score",
+ "subtitle": "Measures how structured your personal brand engine is, and what it costs to leave it unbuilt.",
+ "brand": {
+  "accent": "#a71a66",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "substance_and_visibility",
+   "name": "Substance and Visibility",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "When you close a deal, finish a project, or get a strong client result — what happens to it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It stays internal. The client knows; no one else does.",
+       "score": 1
+      },
+      {
+       "label": "I share it eventually, but only once the numbers look final and polished.",
+       "score": 2
+      },
+      {
+       "label": "I turn it into a post or case study within a few weeks.",
+       "score": 3
+      },
+      {
+       "label": "I document it in real time, even before the result is complete.",
+       "score": 4
+      },
+      {
+       "label": "I have a process that captures results and turns them into content systematically, regardless of how complete the data is.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "If a qualified prospect searched your name today, what would they find?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Practically nothing current or relevant.",
+       "score": 1
+      },
+      {
+       "label": "An old profile and maybe some outdated posts.",
+       "score": 2
+      },
+      {
+       "label": "Some content, but it does not reflect what I actually do today.",
+       "score": 3
+      },
+      {
+       "label": "Content that shows my thinking and recent client work.",
+       "score": 4
+      },
+      {
+       "label": "A coherent body of work they can read to understand my delivery before we ever speak.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "Looking honestly at your actual delivery quality versus your public visibility — which is closer to the truth?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "My public presence promises more than I actually deliver.",
+       "score": 1
+      },
+      {
+       "label": "I have never mapped both. I genuinely do not know.",
+       "score": 2
+      },
+      {
+       "label": "They are roughly matched.",
+       "score": 3
+      },
+      {
+       "label": "My delivery is clearly stronger than what anyone outside can see.",
+       "score": 4
+      },
+      {
+       "label": "My results exceed my visibility, and I am actively closing that gap with a plan.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are working in the invisible quadrant.",
+     "text": "Your delivery may be real, but it is illegible to the market. In the absence of readable signals, a prospect cannot distinguish you from someone doing half the work. This is the information asymmetry problem: quality is there, but it is locked inside. Every new client has to be convinced from scratch, because nothing public is doing the convincing for you.",
+     "steps": [
+      "Write one honest sentence about the last three results you delivered. Do not polish them. Just write what happened.",
+      "Publish one of them this week, imperfect numbers included. The in-progress moment is the story, not the final number.",
+      "Make a rule: no result stays internal for more than two weeks. That rule is the start of the fix."
+     ]
+    },
+    "mid": {
+     "headline": "You are partially visible, but inconsistently.",
+     "text": "You have the substance. The problem is that your visibility is sporadic enough that the market cannot form a stable picture of you. A prospect who found you six months ago and one who finds you today would come away with two different impressions. That inconsistency is costly: every interaction has to reconstruct trust from zero.",
+     "steps": [
+      "Count the results you delivered in the last 90 days. How many became public content? Calculate that ratio honestly.",
+      "Pick one format that matches how you already communicate — a post, a short write-up, a case study — and use only that for the next 60 days.",
+      "Set a floor: one piece per week, tied to something real that happened that week."
+     ]
+    },
+    "high": {
+     "headline": "Your substance and visibility are aligned.",
+     "text": "You have solved the information asymmetry problem. A prospect can read your delivery quality before they ever reach out. That is the position most founders spend years trying to reach. The next move is building the engine that produces this at the pace of your actual output, not just when you find the time to write.",
+     "steps": [
+      "Build a capture process so results enter a content backlog automatically, not only when you remember.",
+      "Identify which of your existing pieces are your eternal content — the ones that both performed well and positioned you correctly — and plan to refresh rather than replace them.",
+      "Bring in more voices. A single person publishing cannot keep up with the IP a growing company generates."
+     ]
+    }
+   }
+  },
+  {
+   "id": "marketing_ethic",
+   "name": "Marketing Ethic",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "How often do you publish about work that is still in progress — a half-finished project, a decision you are still working through, a result that is not final yet?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never. I only publish when something is finished and I am confident in it.",
+       "score": 1
+      },
+      {
+       "label": "Rarely. Putting out unfinished things makes me uncomfortable.",
+       "score": 2
+      },
+      {
+       "label": "Sometimes, when the in-progress moment seems impressive enough to share.",
+       "score": 3
+      },
+      {
+       "label": "Often. I see the process itself as the story, not just the final result.",
+       "score": 4
+      },
+      {
+       "label": "This is how I work. Documenting while doing is part of my routine, not an extra step.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "When you sit down to create content, what is your typical starting point?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I wait until I feel inspired or have something important enough to say.",
+       "score": 1
+      },
+      {
+       "label": "I look at trending topics and try to say something relevant.",
+       "score": 2
+      },
+      {
+       "label": "I look at what performed well before and try to repeat it.",
+       "score": 3
+      },
+      {
+       "label": "I pull from recent conversations, client sessions, or decisions I made that week.",
+       "score": 4
+      },
+      {
+       "label": "I draw from a capture backlog I feed continuously from real, current work.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "How consistent has your publishing cadence been over the last 6 months?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Sporadic. I go weeks or months without publishing.",
+       "score": 1
+      },
+      {
+       "label": "In bursts. I post a lot when I am in the mood, then nothing.",
+       "score": 2
+      },
+      {
+       "label": "Somewhat regular. Once or twice a month on average.",
+       "score": 3
+      },
+      {
+       "label": "Mostly consistent. At least weekly, most weeks.",
+       "score": 4
+      },
+      {
+       "label": "Very consistent. A cadence that does not depend on my mood or how busy I am.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your marketing ethic is not there yet.",
+     "text": "Work ethic is invisible to the market. Nobody outside your company can audit how hard you go — they can only read what is public. Two founders with identical substance, one publishing consistently and one publishing nothing, will diverge sharply over 18 months. Right now you are on the quiet side of that divergence.",
+     "steps": [
+      "This week: pick one thing you are working on right now, unfinished, and write one honest paragraph about it. Publish it.",
+      "Do not wait for a polished result. The discipline of talking publicly while doing is the habit you are building, not the quality of any single post.",
+      "Set a minimum: one piece per week tied directly to something that happened in your work that week."
+     ]
+    },
+    "mid": {
+     "headline": "You publish, but you wait too long.",
+     "text": "The instinct to wait until results are final is understandable. But showing your thinking in real time signals expertise more clearly than the polished case study does. You are leaving that signal on the table in the months when you are executing hardest — which is exactly when visibility would do the most work.",
+     "steps": [
+      "Run one experiment: publish something before you feel ready. Note how it performs against your polished posts.",
+      "Start a capture habit. Every week, write down three things that happened in your work. One of them becomes content.",
+      "Stop treating 'I have nothing to say this week' as a fact. If you are working, you have something to say."
+     ]
+    },
+    "high": {
+     "headline": "Your marketing ethic is strong.",
+     "text": "You have built the discipline of publishing while doing. That consistency is what makes your trajectory readable over time, and it is also the thing that compounds. Prospects who have followed you for six months arrive pre-sold in a way that no single great post can replicate.",
+     "steps": [
+      "Formalize what you are doing intuitively. Document your capture and publishing process so it survives your busiest weeks.",
+      "Find your eternal content — the post from the last year that both performed well and positioned you correctly. Refresh and republish it; do not archive it.",
+      "Look at expanding: another platform, a newsletter, a format you have not tried. You have earned the base to test on."
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_engine",
+   "name": "Content Engine",
+   "questions": [
+    {
+     "id": "q7",
+     "text": "Where does your content process currently live?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "In my head. I think of something and post it.",
+       "score": 1
+      },
+      {
+       "label": "In a notes app or email drafts, with no real structure.",
+       "score": 2
+      },
+      {
+       "label": "In a document or spreadsheet I update inconsistently.",
+       "score": 3
+      },
+      {
+       "label": "In a defined workflow with clear stages: capture, draft, review, publish.",
+       "score": 4
+      },
+      {
+       "label": "In a full content engine with a backlog, editorial calendar, and clear roles for each step.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8",
+     "text": "How much does your content output depend on your personal inspiration or available time that week?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Completely. If I am busy or uninspired, nothing goes out.",
+       "score": 1
+      },
+      {
+       "label": "Heavily. Output drops sharply when I am in execution mode.",
+       "score": 2
+      },
+      {
+       "label": "Somewhat. I try to batch, but my energy still drives the result.",
+       "score": 3
+      },
+      {
+       "label": "Rarely. I have enough queued that output does not stop when I am under pressure.",
+       "score": 4
+      },
+      {
+       "label": "Not at all. The process runs independently of my daily state.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_founder_hours",
+     "type": "number",
+     "text": "How many hours per week does the founder or executive spend on content-related work right now — writing, briefing, reviewing drafts, approving before publish?",
+     "hint": "Include all time: drafting posts, sitting for a recording session, reviewing what the team has written, approving before it goes live.",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 4,
+     "normalize_formula": "x <= 1 ? 100 : x <= 3 ? 75 : x <= 6 ? 50 : x <= 10 ? 25 : 0"
+    },
+    {
+     "id": "hourly_value",
+     "type": "number",
+     "text": "What is the approximate value of one hour of that person's time? Divide their monthly revenue target or salary by 160 to get a working hourly rate.",
+     "hint": "Example: a founder targeting €10k/month = roughly €62/hr. This number is used only to calculate the annual cost of unstructured content work — it does not affect your score.",
+     "suffix": "€/hr",
+     "min": 20,
+     "max": 2000,
+     "step": 10,
+     "default": 150,
+     "normalize_formula": "100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You have a habit, not an engine.",
+     "text": "Right now your content output is entirely inspiration-dependent. In the months you are executing hardest — when visibility matters most — you go quiet. The founder or executive is spending hours on this that have a real annual cost, which you can see calculated above. A content engine decouples output from the founder's daily availability. That is what the cost figure is measuring.",
+     "steps": [
+      "Before anything else: look at the annual cost figure above. That is the price of the current setup, in concrete terms.",
+      "Build the simplest possible capture process: a weekly 15-minute session where you note three things that happened in your work that week. That is the raw material.",
+      "Separate the roles. The executive provides IP and context. Someone else handles drafting, editing, and publishing. Those are different jobs."
+     ]
+    },
+    "mid": {
+     "headline": "You have the pieces, but no assembly line.",
+     "text": "You are producing content, but it is still founder-dependent. The moment the founder gets busy, output drops. The 100-day goal is a content engine that produces at the pace the company works — not at the pace the founder finds time to write. You are producing. Now you need to systematize.",
+     "steps": [
+      "Document your current process in writing, even roughly. You cannot improve what is not visible.",
+      "Find the bottleneck: is it capture, drafting, or approval? That is where to focus first.",
+      "Test one week where the founder's only content job is a 30-minute IP capture session. Someone else handles everything downstream from there."
+     ]
+    },
+    "high": {
+     "headline": "Your content engine is running.",
+     "text": "You have built what most founders spend years trying to reach: a process that does not stop when daily inspiration runs out. The next level is velocity — producing at the pace the company actually generates IP.",
+     "steps": [
+      "Audit the pipeline: how many pieces are in backlog right now? Less than 4 weeks of queued content means the engine is not deep enough yet.",
+      "Identify your eternal content — posts that both performed and positioned correctly. Those do not get replaced; they get refreshed.",
+      "In 2026, a single voice is not enough. Look at activating 3 to 5 key voices across the company or team."
+     ]
+    }
+   }
+  },
+  {
+   "id": "niche_positioning",
+   "name": "Niche Positioning",
+   "questions": [
+    {
+     "id": "q9",
+     "text": "How clearly defined is the perimeter of your authority — the specific area where you want to be the go-to voice?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not defined. I post about whatever feels relevant that week.",
+       "score": 1
+      },
+      {
+       "label": "I have a broad topic area but no specific angle or consistent point of view.",
+       "score": 2
+      },
+      {
+       "label": "I have a perspective, but I communicate it inconsistently.",
+       "score": 3
+      },
+      {
+       "label": "I own a specific angle that my audience consistently associates with me.",
+       "score": 4
+      },
+      {
+       "label": "I am the named reference for something specific inside my industry. People cite me, recommend me by name, and know exactly what I stand for.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q10",
+     "text": "How does most of your new business arrive today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Cold outreach. I initiate almost every new conversation.",
+       "score": 1
+      },
+      {
+       "label": "Referrals from existing clients, but rarely from my content.",
+       "score": 2
+      },
+      {
+       "label": "A mix. Some referrals, occasional inbound from content.",
+       "score": 3
+      },
+      {
+       "label": "Mostly inbound. People reach out having already read my content.",
+       "score": 4
+      },
+      {
+       "label": "A clear inbound pipeline. Prospects arrive pre-sold on my positioning. My job is mostly to qualify.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q11",
+     "text": "When a decision-maker in your industry thinks about your specific area of expertise, how likely are they to think of you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very unlikely. I am not visible enough for that to happen.",
+       "score": 1
+      },
+      {
+       "label": "Only if someone introduces me to them first.",
+       "score": 2
+      },
+      {
+       "label": "Possibly. I am recognized within my immediate network.",
+       "score": 3
+      },
+      {
+       "label": "Likely. I am known as a relevant voice in my area.",
+       "score": 4
+      },
+      {
+       "label": "Very likely. I am one of the first names that comes up when the topic is discussed.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12",
+     "text": "How does your content treat trending or viral topics in your industry?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I chase them. Trending topics drive most of my editorial decisions.",
+       "score": 1
+      },
+      {
+       "label": "I follow them often because they seem like the fastest way to get reach.",
+       "score": 2
+      },
+      {
+       "label": "I engage occasionally, but try to tie trends back to my area.",
+       "score": 3
+      },
+      {
+       "label": "I only engage with a trend when I have a genuine, specific take rooted in my own experience.",
+       "score": 4
+      },
+      {
+       "label": "I rarely follow trends. My positioning is specific enough that the right people find me without them.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are broadcasting, not positioning.",
+     "text": "Posting broadly might feel safer, but it builds a readership with no common profile. Niche fame — being recognized and trusted within a defined perimeter — is a fundamentally different asset from general visibility. It generates inbound from exactly the people you want to work with, and it compounds in a way that broad reach does not.",
+     "steps": [
+      "Write down the 20 decision-makers you most want to work with. What is the one thing they would need to believe about you to reach out? That is your positioning.",
+      "Look at your last 10 posts. If a stranger could not name your specialty from reading them, your audience cannot either.",
+      "Pick one specific claim to own for the next 90 days. Build every piece of content around evidence for that claim — not trends, not general advice."
+     ]
+    },
+    "mid": {
+     "headline": "You are visible, but not yet magnetic.",
+     "text": "People know you exist. Your positioning is just not sharp enough yet to generate automatic inbound. The goal is a smaller group of highly relevant people who associate your name with one specific, valuable thing. A dense audience of 3,000 practitioners and decision-makers in your field will outperform 30,000 generic followers every time.",
+     "steps": [
+      "Audit the last 90 days of content: how much of it actively reinforces your specific positioning? If less than half, you are diluting it.",
+      "Find 2 or 3 posts that both performed well and positioned you correctly. That is your eternal content. It tells you the slot you are trying to own.",
+      "Sharpen your CTAs. End with a question that only the specific person you are targeting would find interesting."
+     ]
+    },
+    "high": {
+     "headline": "You have built niche authority.",
+     "text": "You are in the position very few people reach: a dense audience of practitioners, decision-makers, and potential clients who recognize your name inside a specific field. The economics here are asymmetric. Inbound clients arrive pre-sold, referrals include context about your positioning, and the market reprices you upward without you having to ask.",
+     "steps": [
+      "Protect your positioning actively. Every piece that drifts outside your perimeter is a small dilution — build an audit habit to catch it.",
+      "Scale the engine, not just the output. Bring 3 to 5 voices from your team or network into the same perimeter. One voice at scale is a ceiling.",
+      "Build owned assets: a newsletter, a named framework, something that captures demand and holds it independent of any single platform."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_content_cost",
+   "label": "Estimated annual cost of unstructured content work (founder hours per week x hourly value x 52 weeks)",
+   "format": "currency_per_period",
+   "formula": "weekly_founder_hours * hourly_value * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your situation right now?",
+  "answers": [
+   {
+    "label": "Founder or CEO building my own personal brand",
+    "tag": "founder"
+   },
+   {
+    "label": "Marketing manager building a content engine for C-level executives",
+    "tag": "marketing_manager"
+   },
+   {
+    "label": "Executive or tech lead building visibility within a company",
+    "tag": "executive"
+   }
+  ]
+ }
+}
