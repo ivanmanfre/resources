@@ -1,0 +1,551 @@
+{
+ "slug": "tom-egan-ea-assessment",
+ "title": "The Founder Design Maturity Score",
+ "subtitle": "Find out whether your design is working as hard as your product.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "brand_identity",
+   "name": "Brand Identity",
+   "questions": [
+    {
+     "id": "brand_identity_q1",
+     "text": "When someone encounters your brand for the first time — on social, on your site, or in a deck — what do they walk away knowing?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "That we exist",
+       "score": 1
+      },
+      {
+       "label": "What we do, roughly",
+       "score": 2
+      },
+      {
+       "label": "What we do and who it's for",
+       "score": 3
+      },
+      {
+       "label": "What we do, who it's for, and why we're different",
+       "score": 4
+      },
+      {
+       "label": "Exactly what we stand for — and who we're not for",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_identity_q2",
+     "text": "How does your brand handle being trusted and shareable at the same time?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We haven't thought about shareability — we focus on looking credible",
+       "score": 1
+      },
+      {
+       "label": "We try for both but haven't nailed either",
+       "score": 2
+      },
+      {
+       "label": "We're credible, but people don't really spread our brand",
+       "score": 3
+      },
+      {
+       "label": "Our brand travels — people share it without being asked",
+       "score": 4
+      },
+      {
+       "label": "Trust and shareability are built into the system: the assets, the tone, the motion",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_identity_q3",
+     "text": "How would you describe your brand's visual personality?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look like every other company in our space",
+       "score": 1
+      },
+      {
+       "label": "Clean and professional, but nothing distinctive",
+       "score": 2
+      },
+      {
+       "label": "We have a clear style, but it's safe",
+       "score": 3
+      },
+      {
+       "label": "We have a point of view that shows up consistently",
+       "score": 4
+      },
+      {
+       "label": "Our brand has personality — people recognize it before they see the name",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand is describing you, not positioning you",
+     "text": "Right now your brand tells people what you do. That's a start, but it won't make anyone remember you, share you, or choose you over a competitor who looks equally competent. A brand system that earns both trust and attention is a design problem with a design fix.",
+     "steps": [
+      "Define one thing your brand stands for that a competitor can't honestly claim",
+      "Ask 5 people who don't know your product what they walk away thinking after seeing your site — you'll find the gap fast",
+      "Brief a brand system that works equally well on a social card, a product screen, and a pitch deck"
+     ]
+    },
+    "mid": {
+     "headline": "Your brand is clear, not yet memorable",
+     "text": "You've got positioning and you're communicating it consistently. The gap is usually visual personality — the brand is doing its job but not doing extra work. Memorable brands aren't just understood; they're felt.",
+     "steps": [
+      "Audit every brand touchpoint: are they consistent and do they all carry the same personality?",
+      "Push your brand into motion — static identity only tells half the story",
+      "Add one unexpected visual element that isn't in the brief but is unmistakably yours"
+     ]
+    },
+    "high": {
+     "headline": "Your brand is doing real work",
+     "text": "People recognize it, share it, and it's building ahead of your sales process. Keep it alive as the product grows — brands drift when nobody's actively maintaining them.",
+     "steps": [
+      "Document your brand decisions so the team holds the standard without you in every call",
+      "Revisit the brand system each time you enter a new channel or market",
+      "Fast growth is where brands go generic — protect the personality deliberately"
+     ]
+    }
+   }
+  },
+  {
+   "id": "product_design_quality",
+   "name": "Product Design Quality",
+   "questions": [
+    {
+     "id": "product_design_quality_q1",
+     "text": "How would you describe your product's visual design right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Functional but rough — design hasn't been a real investment yet",
+       "score": 1
+      },
+      {
+       "label": "Clean but standard — it looks like most tools in our space",
+       "score": 2
+      },
+      {
+       "label": "Polished and consistent, but missing personality",
+       "score": 3
+      },
+      {
+       "label": "Clean, modern, and unmistakably ours",
+       "score": 4
+      },
+      {
+       "label": "The design is a differentiator — people comment on it unprompted",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "product_design_quality_q2",
+     "text": "When you hand off a design task, how clear is the brief?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "A Slack message or quick verbal — figure it out from there",
+       "score": 1
+      },
+      {
+       "label": "I describe the problem and the outcome I want",
+       "score": 2
+      },
+      {
+       "label": "I include context, references, and what done looks like",
+       "score": 3
+      },
+      {
+       "label": "I brief with examples, constraints, and the feeling I want to create",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "product_design_quality_q3",
+     "text": "When your product ships a new feature, how does the design hold up against what's already there?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It's visibly inconsistent — each release looks slightly different",
+       "score": 1
+      },
+      {
+       "label": "It works but feels bolted on",
+       "score": 2
+      },
+      {
+       "label": "Consistent, but we go through several revision rounds to get there",
+       "score": 3
+      },
+      {
+       "label": "New features fit the system naturally without major rework",
+       "score": 4
+      },
+      {
+       "label": "New features strengthen the design system rather than strain it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your design is costing you conversions you can't see",
+     "text": "A rough or inconsistent UI creates doubt in the exact moment someone is deciding whether to trust you. People can't always say why they didn't convert — but design friction is usually part of the answer.",
+     "steps": [
+      "Pick the one screen your users see most and redesign it: clean, modern, and with a point of view",
+      "Build a minimal design system — even a shared colour palette and component set stops the drift",
+      "Brief design with feeling, not just function: what should someone feel when they use this?"
+     ]
+    },
+    "mid": {
+     "headline": "You've got the foundation — now give it character",
+     "text": "Clean is the baseline. The difference between clean-and-forgettable and clean-and-memorable is personality: a typographic choice, a motion detail, a colour that's slightly unexpected. That's where craft earns its keep.",
+     "steps": [
+      "Find one place in the product where a small unexpected detail would make someone pause in a good way",
+      "Push your UI into motion for key interactions — static screens tell you what, animation tells you how",
+      "Get an outside perspective on where the personality is missing — you're often too close to see the flatness"
+     ]
+    },
+    "high": {
+     "headline": "Your product design is an asset, not a cost",
+     "text": "You've got a system that scales and a product people notice. The next investment is keeping it ahead of the product as it grows, not catching up after.",
+     "steps": [
+      "Keep the design system live and versioned — it erodes fast when teams ship without referencing it",
+      "Use motion and interaction design as the next layer of differentiation",
+      "Invest in one flagship piece of design craft per quarter that raises the bar for everything else"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_craft_judgment",
+   "name": "AI + Craft Judgment",
+   "questions": [
+    {
+     "id": "ai_craft_judgment_q1",
+     "text": "When you use AI for a design or creative task, how do you decide the output is ready?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "If it renders and looks reasonable, it ships",
+       "score": 1
+      },
+      {
+       "label": "I do a quick gut check and fix the obvious problems",
+       "score": 2
+      },
+      {
+       "label": "I compare it against the brief and correct what doesn't match",
+       "score": 3
+      },
+      {
+       "label": "I evaluate intent — does each choice feel considered, or just generated?",
+       "score": 4
+      },
+      {
+       "label": "I know before I prompt whether AI can close the gap, or whether craft is needed",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_craft_judgment_q2",
+     "text": "Where does your team currently use AI in the design and development process?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't — it feels too unpredictable to trust",
+       "score": 1
+      },
+      {
+       "label": "For rough ideation and early exploration only",
+       "score": 2
+      },
+      {
+       "label": "For specific repeatable tasks where the output is predictable",
+       "score": 3
+      },
+      {
+       "label": "We've mapped which tasks AI handles well and which ones need judgment",
+       "score": 4
+      },
+      {
+       "label": "AI runs the tasks it's good at so we focus on the ones it isn't",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_craft_judgment_q3",
+     "text": "Think about the last time AI produced creative output for your product or brand. How close was it to what you actually shipped?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We shipped it almost unchanged — speed was the priority",
+       "score": 1
+      },
+      {
+       "label": "We used it as a base but made significant changes",
+       "score": 2
+      },
+      {
+       "label": "It was a useful starting point; craft shaped the final result",
+       "score": 3
+      },
+      {
+       "label": "We treated it as a draft — judgment and taste finished the job",
+       "score": 4
+      },
+      {
+       "label": "We didn't use AI for that work — we knew it couldn't produce what it needed",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "AI is giving you output. You need result.",
+     "text": "AI can produce motion, copy, and code. It can't produce judgment — knowing when a transition feels considered versus templated, when copy is clear versus flat. Shipping AI output unchanged is a fast way to look like every other company running the same tools.",
+     "steps": [
+      "Before the next AI output ships, ask: does every choice feel intentional, or just generated?",
+      "Pick one creative task you've been using AI for and do it by hand once — you'll see exactly where the gap is",
+      "Build a simple rule: AI for the first 60%, craft for the last 40% that actually matters"
+     ]
+    },
+    "mid": {
+     "headline": "You're using AI well — now build the judgment layer",
+     "text": "You're getting real value from AI without shipping its defaults. The next step is making those decisions explicit so the whole team applies the same standard, not just you.",
+     "steps": [
+      "Document which tasks AI handles in your process and what the handoff criteria are",
+      "Define what 'done' looks like for AI-assisted work — specific, not just 'it feels right'",
+      "Give someone on the team explicit ownership of the craft review before anything AI-touched ships"
+     ]
+    },
+    "high": {
+     "headline": "You're running AI as infrastructure, not a shortcut",
+     "text": "You know what AI is good for and you know its ceiling. That judgment is the actual competitive edge — most teams are either avoiding AI entirely or shipping whatever it generates.",
+     "steps": [
+      "Make your AI/craft boundaries explicit and documented for the whole team",
+      "Keep testing AI on tasks you currently do by hand — the ceiling moves, and being early to the ones that close matters",
+      "The judgment call itself is a skill — invest in keeping the team's craft sharp alongside the AI tools"
+     ]
+    }
+   }
+  },
+  {
+   "id": "speed_execution",
+   "name": "Speed + Execution",
+   "questions": [
+    {
+     "id": "speed_execution_q1",
+     "text": "From design brief to first direction, how long does it typically take?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Weeks — the back-and-forth alone takes that long",
+       "score": 1
+      },
+      {
+       "label": "A week or more",
+       "score": 2
+      },
+      {
+       "label": "A few days",
+       "score": 3
+      },
+      {
+       "label": "Same day or next day",
+       "score": 4
+      },
+      {
+       "label": "Hours — when the brief is clear, execution follows fast",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "speed_execution_q2",
+     "text": "How many revision rounds does a typical design project take before you're happy with the direction?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Five or more — it takes a lot of cycles",
+       "score": 1
+      },
+      {
+       "label": "Three to four rounds",
+       "score": 2
+      },
+      {
+       "label": "Two to three rounds",
+       "score": 3
+      },
+      {
+       "label": "One to two — the first direction is usually close",
+       "score": 4
+      },
+      {
+       "label": "Revisions are refinements, not redirects",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "speed_execution_q3",
+     "text": "When you bring in a new design partner or agency, how quickly do they produce work that fits your brand?",
+     "max_score": 4,
+     "answers": [
+      {
+       "label": "Months — there's a lot of back-and-forth before they get the feel",
+       "score": 1
+      },
+      {
+       "label": "A few weeks once they've seen enough reference",
+       "score": 2
+      },
+      {
+       "label": "About a week with a solid brief",
+       "score": 3
+      },
+      {
+       "label": "Fast — because we have a documented brand system they can work from",
+       "score": 4
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "design_hours",
+     "type": "number",
+     "text": "How many hours per week do you spend reviewing, revising, or giving feedback on design work?",
+     "hint": "Count time in Figma comments, Slack threads, email back-and-forth, and live review calls",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x <= 1 ? 100 : x >= 20 ? 0 : Math.round(100 - ((x - 1) / 19) * 100)"
+    },
+    {
+     "id": "hourly_rate",
+     "type": "number",
+     "text": "What is your effective hourly rate as a founder?",
+     "hint": "Rough guide: divide your annual revenue target by 2,000. Used below to show the real cost of time spent in design back-and-forth.",
+     "suffix": "$/hour",
+     "min": 50,
+     "max": 2000,
+     "step": 25,
+     "default": 150,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Design is eating your calendar",
+     "text": "Every revision round is a cost you're paying in founder hours. Multiple cycles don't usually mean the designer is wrong — they mean the brief wasn't clear enough to get to the right answer fast. That's a system problem.",
+     "steps": [
+      "Before the next project, write the brief in writing — what it is, what done looks like, and one reference that's close to the feeling you want",
+      "Set a revision budget at the start: two rounds maximum, and a third only if the brief changed",
+      "Build a brand reference document your design partners can work from without a kickoff call"
+     ]
+    },
+    "mid": {
+     "headline": "You're moving at a decent pace — tighten the brief and you'll move faster",
+     "text": "Two to three revision rounds is reasonable, but most of that friction comes from briefs that describe the output rather than the intent. Clear intent cuts cycles.",
+     "steps": [
+      "Add one line to every brief: 'This should feel like...' — that single line saves more time than any other brief element",
+      "After your next project, note which revision round changed the direction versus refined it — that's where the brief broke down",
+      "Try briefing with one tight reference before any creative exploration starts"
+     ]
+    },
+    "high": {
+     "headline": "You've built an execution system that works",
+     "text": "Fast first directions and minimal revision rounds mean your briefs are clear and your design partner is close to the brand. That speed compounds — you ship more, learn faster, and stay ahead.",
+     "steps": [
+      "Document what makes your briefs work so anyone on the team can run the same process",
+      "Use the time you're saving on revisions to go one level deeper on craft and motion",
+      "Build a lightweight async review process so nothing waits for a call"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_design_overhead",
+   "label": "Annual founder cost of design back-and-forth",
+   "format": "currency",
+   "formula": "design_hours * hourly_rate * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which describes you right now?",
+  "answers": [
+   {
+    "label": "Building my first product",
+    "tag": "first-time-founder"
+   },
+   {
+    "label": "Scaling an existing product",
+    "tag": "growth-founder"
+   },
+   {
+    "label": "Rebuilding or rebranding",
+    "tag": "rebuilding-founder"
+   },
+   {
+    "label": "Evaluating my current design setup",
+    "tag": "design-auditor"
+   }
+  ]
+ }
+}
