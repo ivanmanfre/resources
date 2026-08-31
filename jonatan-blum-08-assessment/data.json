@@ -1,0 +1,606 @@
+{
+ "slug": "jonatan-blum-08-assessment",
+ "title": "AI Operator Readiness Score",
+ "subtitle": "Find out how close you are to running a coordinated AI workforce — and exactly where you're still stuck in isolated chatbots.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "your_ai_foundation",
+   "name": "Your AI Foundation",
+   "questions": [
+    {
+     "id": "q-foundation-1",
+     "text": "How do you typically interact with Claude or your main AI tool on a given workday?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I type questions into a fresh chat and copy the answers somewhere else by hand",
+       "score": 1
+      },
+      {
+       "label": "I use Projects or saved prompts but most sessions still start from scratch",
+       "score": 2
+      },
+      {
+       "label": "I have a few routines or scheduled prompts running, but they don't connect to each other",
+       "score": 3
+      },
+      {
+       "label": "I run multiple specialized agents, most on a schedule, each with its own tools",
+       "score": 4
+      },
+      {
+       "label": "I have a coordinated fleet of agents that read each other's outputs and share one state",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-foundation-2",
+     "text": "When you discover a new Claude capability — Cowork, Dispatch, Routines, an MCP connector — what usually happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I hear about it weeks later, or not at all",
+       "score": 1
+      },
+      {
+       "label": "I try it once in chat but don't build it into any workflow",
+       "score": 2
+      },
+      {
+       "label": "I experiment with it and sometimes plug it into an existing routine",
+       "score": 3
+      },
+      {
+       "label": "I evaluate it against my current stack and integrate it if it improves a running agent",
+       "score": 4
+      },
+      {
+       "label": "I have a system for testing and deploying new capabilities across my agents quickly",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "agents_running",
+     "type": "number",
+     "text": "How many live agents or scheduled routines are you running right now?",
+     "hint": "Count anything that runs on a schedule or trigger without you manually starting it each time.",
+     "suffix": "agents",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "Math.min(100, x * 5)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're in the chat box. That's where everyone starts.",
+     "text": "Most people stay in the chat, typing questions and getting answers, and assume that's all there is. It isn't — not even close. The gap between where you are and a real AI-first operation starts with one agent that runs without you.",
+     "steps": [
+      "Set up your first Claude Project with a persistent system prompt so you stop starting from scratch every session.",
+      "Build one routine that runs daily and writes its output somewhere you can check — even a single table works.",
+      "Pick one repetitive task you do every week and describe it to Claude as a scheduled job, not a one-off question."
+     ]
+    },
+    "mid": {
+     "headline": "You have agents. The coordination layer is what's missing.",
+     "text": "You've moved past the chat box — that's real progress. But routines that don't share context and agents that don't hand off to each other hit a ceiling fast. The next unlock is a shared state they can all read and write.",
+     "steps": [
+      "Give your agents a structured table they can all access — leads, decisions, tasks — so they're not each starting from nothing.",
+      "Chain two of your existing agents so one picks up exactly where the other left off, no copy-paste in between.",
+      "Set up one place where every agent output lands — so you're checking one view in the morning, not ten chat logs."
+     ]
+    },
+    "high": {
+     "headline": "You're operating. Now build the coordination layer that scales it.",
+     "text": "You're ahead of most people using Claude. The work now is about coordination and visibility — making sure your agents are aligned and not quietly contradicting each other in the background.",
+     "steps": [
+      "Add a shared memory layer so every agent reads the same state before each run, not just its own last session.",
+      "Build an executive view: one place that shows you what every agent did, what it flagged, and what it produced.",
+      "Run a contradiction audit — two agents working toward the same goal with slightly different assumptions will eventually conflict."
+     ]
+    }
+   }
+  },
+  {
+   "id": "memory_and_persistent_st",
+   "name": "Memory and Persistent State",
+   "questions": [
+    {
+     "id": "q-memory-1",
+     "text": "When an agent finishes a run, where does its output end up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Inside the Claude chat — I copy out what I need by hand",
+       "score": 1
+      },
+      {
+       "label": "In a doc or spreadsheet I update manually",
+       "score": 2
+      },
+      {
+       "label": "In a connected tool via a workflow, but my other agents can't query it",
+       "score": 3
+      },
+      {
+       "label": "In a structured table or database my other agents can read on their next run",
+       "score": 4
+      },
+      {
+       "label": "In a unified memory system that all agents read before every run and write to after",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-memory-2",
+     "text": "You made a key pricing or positioning decision last month. How does the agent that handles your outreach know about it today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It doesn't — I'd have to paste it into the next session by hand",
+       "score": 1
+      },
+      {
+       "label": "I'd rewrite its system prompt manually so it knows",
+       "score": 2
+      },
+      {
+       "label": "It's in a shared doc the agent sometimes references if I remember to point it there",
+       "score": 3
+      },
+      {
+       "label": "It lives in a central context file most of my agents inherit automatically",
+       "score": 4
+      },
+      {
+       "label": "Any decision I log updates the shared state — every agent picks it up on the next run",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "rebriefing_hours",
+     "type": "number",
+     "text": "How many hours per week do you spend re-briefing agents, pasting context into new sessions, or re-explaining decisions they should already know?",
+     "hint": "Include time copy-pasting outputs between tools, rewriting prompts after a session went blank, or correcting agents that forgot what you already told them.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "Math.max(0, 100 - x * 10)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your agents have no memory. You are the memory.",
+     "text": "Every session that starts blank forces you to paste, re-explain, and re-brief. That's not an AI workflow — that's you doing extra admin. The fix isn't a better model. It's a persistent place for your agents to read and write.",
+     "steps": [
+      "Pick the one piece of context every agent needs — your ICP, your pricing, your SOPs — and put it in one place they all read.",
+      "Route every agent output to a structured table, not just a chat log you'll have to dig through later.",
+      "Give Claude one tracker it can query before each run — a really good table plus an API is often 80% of what you need."
+     ]
+    },
+    "mid": {
+     "headline": "Some context is persisting. The gaps are costing you more than you think.",
+     "text": "You've solved part of the memory problem, but agents that can't query each other's outputs still re-tread covered ground every run. A single shared state is the next step.",
+     "steps": [
+      "Consolidate your agent outputs into one queryable source of truth — even a well-structured table beats five separate Slack messages.",
+      "Make sure new agents inherit decisions already logged, not just their own system prompt.",
+      "Set a rule: any decision made with or by an agent gets written back to the central memory before the session closes."
+     ]
+    },
+    "high": {
+     "headline": "Your agents remember. That puts you well ahead of the field.",
+     "text": "Shared persistent memory is what separates a fleet that compounds from a set of isolated runs. You're building real leverage here. The work now is hardening it.",
+     "steps": [
+      "Audit which decisions are still living only in your head — and get them into the shared state before they drift.",
+      "Add timestamped context so agents can reason about recency and know when something was decided versus something recent.",
+      "Check for agents that read from memory but never write — they're pulling context without contributing to it."
+     ]
+    }
+   }
+  },
+  {
+   "id": "agent_coordination",
+   "name": "Agent Coordination",
+   "questions": [
+    {
+     "id": "q-coord-1",
+     "text": "When a piece of work needs multiple steps — find the signal, enrich the lead, send the message — how do you handle it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I do each step manually in separate Claude chats",
+       "score": 1
+      },
+      {
+       "label": "I have one large agent that tries to do all of it in one run",
+       "score": 2
+      },
+      {
+       "label": "I have separate agents for each step but I copy the output from one to the next by hand",
+       "score": 3
+      },
+      {
+       "label": "I have specialized agents chained in sequence — one finishes, the next picks up",
+       "score": 4
+      },
+      {
+       "label": "The full pipeline runs autonomously — each agent's output triggers the next without me touching it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-coord-2",
+     "text": "When you need to update an SOP or instruction that affects multiple agents, what do you actually do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I update it in the next chat I open — the other agents don't know about it",
+       "score": 1
+      },
+      {
+       "label": "I update each agent's system prompt by hand, one at a time",
+       "score": 2
+      },
+      {
+       "label": "I update a shared doc but I'm not sure all agents actually reference it on their next run",
+       "score": 3
+      },
+      {
+       "label": "I update a central context that most agents inherit automatically",
+       "score": 4
+      },
+      {
+       "label": "One update to the shared state propagates to every agent the next time they run",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-coord-3",
+     "text": "How would you describe the shape of your current AI operation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Just me in the chat — no agents, no routines",
+       "score": 1
+      },
+      {
+       "label": "A few agents each doing a broad range of tasks, running alone",
+       "score": 2
+      },
+      {
+       "label": "Some specialized agents for specific jobs, but they don't pass information to each other",
+       "score": 3
+      },
+      {
+       "label": "Specialized agents, loosely chained, with most handoffs working automatically",
+       "score": 4
+      },
+      {
+       "label": "A coordinated system — specialized agents that share context, hand off sequentially, and report back to one view",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're cramming multi-step work into one agent or one chat. Both break.",
+     "text": "One big agent fragments its focus and gets worse results as context grows. Separate chats lose the handoff entirely. The answer isn't a smarter prompt — it's specialized agents working in sequence, each reading what the last one produced.",
+     "steps": [
+      "Pick one multi-step workflow you run manually and split it into three agents: one researches, one drafts, one sends.",
+      "Chain them so the first agent writes its output to a table the second reads automatically — no copy-paste.",
+      "Stop trying to make one agent do everything. Focused agents with narrow jobs consistently get better results."
+     ]
+    },
+    "mid": {
+     "headline": "You have specialization. The handoff layer is the gap.",
+     "text": "Specialized agents are the right direction. The problem is making sure they actually pass context to each other without you in the middle. Manual copy-paste between agents is just new manual work.",
+     "steps": [
+      "Automate the handoff between your two most-used agents — one writes, the next reads, no copy-paste in between.",
+      "Add a shared identifier (lead ID, task ID, run ID) so each agent in the chain can find the previous one's work.",
+      "Test what happens when one agent fails mid-run: does the next one still get context or start blank?"
+     ]
+    },
+    "high": {
+     "headline": "Your agents coordinate. Most people building with AI will never get here.",
+     "text": "A coordinated fleet where agents hand off sequentially and share state is rare. The work now is hardening it — making sure updates propagate cleanly and the chain doesn't break on edge cases.",
+     "steps": [
+      "Run a contradiction audit: do any two agents have conflicting instructions about the same goal or topic?",
+      "Add a logging step to each handoff so every transition is traceable when something breaks downstream.",
+      "Map the full chain visually — you should be able to see the entire flow in one view without opening individual agents."
+     ]
+    }
+   }
+  },
+  {
+   "id": "visibility_and_control",
+   "name": "Visibility and Control",
+   "questions": [
+    {
+     "id": "q-visibility-1",
+     "text": "After your agents run while you're asleep or focused on other work, how do you find out what they actually did?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I dig through old chat logs manually — there's no other way",
+       "score": 1
+      },
+      {
+       "label": "I check each agent individually; there's no single place to look",
+       "score": 2
+      },
+      {
+       "label": "Some agents post to Slack or send an email summary, but it's inconsistent",
+       "score": 3
+      },
+      {
+       "label": "I have a dashboard or log that shows me what ran and what it produced",
+       "score": 4
+      },
+      {
+       "label": "Full visibility across all agents in one view — every run, every output, every flag",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-visibility-2",
+     "text": "Two of your agents are working toward the same goal but with slightly different assumptions. How would you find out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I wouldn't — not until something broke badly enough to notice",
+       "score": 1
+      },
+      {
+       "label": "I'd notice eventually from bad outputs, but it would take a while",
+       "score": 2
+      },
+      {
+       "label": "I review outputs occasionally and might catch it by hand if I'm looking",
+       "score": 3
+      },
+      {
+       "label": "I have a review step that compares outputs across agents for consistency",
+       "score": 4
+      },
+      {
+       "label": "My system flags contradictions before they compound — I see it on the next review",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "tools_count",
+     "type": "number",
+     "text": "How many separate AI tools, tabs, or platforms do you currently juggle to manage your agents and their outputs?",
+     "hint": "Count Claude, automation tools, your notes system, output trackers, communication platforms your agents touch — everything you open to stay on top of what's running.",
+     "suffix": "tools",
+     "min": 1,
+     "max": 30,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "Math.max(0, 100 - (x - 1) * 7)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your agents are running blind. So are you.",
+     "text": "If you can't see what your agents did without digging through chat logs, you're not running a system — you're hoping. Visibility is what separates an AI workforce from an expensive guess.",
+     "steps": [
+      "Set up a simple output log: every agent run writes a one-line summary to the same table before it closes.",
+      "Add one Slack or email notification to your most critical agent — you need to know it ran and what it found.",
+      "Before you build your next agent, decide how you'll review its work. Build the visibility in before you build the agent."
+     ]
+    },
+    "mid": {
+     "headline": "You have some visibility. The gaps are where problems hide.",
+     "text": "Partial visibility is better than none, but inconsistent reporting means problems compound in the blind spots. A contradiction between two agents is easy to miss when you're checking each one in a separate place.",
+     "steps": [
+      "Consolidate your agent summaries into one place — even a single table beats five separate Slack messages.",
+      "Add a consistency check between any two agents working on the same goal — run it weekly.",
+      "Set a review cadence: one view, all agents, what ran and what didn't — every morning takes five minutes."
+     ]
+    },
+    "high": {
+     "headline": "Full visibility is the actual edge. You have it.",
+     "text": "Most people running agents have no idea what their agents are doing between runs. You do. That's not a small thing — it's the difference between a system that compounds over time and one that silently drifts.",
+     "steps": [
+      "Add historical trending: not just what an agent did today, but how its outputs have shifted across the last 30 runs.",
+      "Build an alert for runs that produce zero output — a silent failure is harder to catch than an error message.",
+      "Document your review cadence so it survives a week where you're heads-down on something else."
+     ]
+    }
+   }
+  },
+  {
+   "id": "gtm_and_real_output",
+   "name": "GTM and Real Output",
+   "questions": [
+    {
+     "id": "q-gtm-1",
+     "text": "How much of your lead generation and outreach currently runs without you being in the loop for each step?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "All of it is manual — I research, write, and send everything myself",
+       "score": 1
+      },
+      {
+       "label": "I use AI to draft messages, but I approve and send each one individually",
+       "score": 2
+      },
+      {
+       "label": "Some sequences run automatically but I still manage replies and follow-ups by hand",
+       "score": 3
+      },
+      {
+       "label": "Most of my outreach pipeline — from signal to first message — runs without me",
+       "score": 4
+      },
+      {
+       "label": "The full motion from signal detection to booked meeting runs autonomously; I review results, not steps",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-gtm-2",
+     "text": "When you find a new community or channel where your ICP is active, how quickly can you have an agent working there?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I engage there myself when I have time — which isn't often",
+       "score": 1
+      },
+      {
+       "label": "I add it to a list I plan to work through but rarely actually get to",
+       "score": 2
+      },
+      {
+       "label": "I manually engage there occasionally and use AI to help me draft replies",
+       "score": 3
+      },
+      {
+       "label": "I can point an existing agent at it and have it start engaging within the day",
+       "score": 4
+      },
+      {
+       "label": "I have an agent template ready — a new channel is live and running in under an hour",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-gtm-3",
+     "text": "What actually happens in your business while you're asleep or away for a full day?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing — everything waits for me to come back",
+       "score": 1
+      },
+      {
+       "label": "A few automations fire but none of them touch leads or deals",
+       "score": 2
+      },
+      {
+       "label": "Some agents run but I need to check their outputs and decide what to do when I'm back",
+       "score": 3
+      },
+      {
+       "label": "My agents run, produce outputs, and queue actions for me to review in the morning",
+       "score": 4
+      },
+      {
+       "label": "My agents research, engage, and move work forward — I wake up to results, not a pile of tasks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your GTM is still a manual job. That's the ceiling.",
+     "text": "If lead generation stops when you stop, you have a job, not a system. The point of building GTM agents isn't to save a few hours — it's to have a machine that runs the motion while you focus on closing and building.",
+     "steps": [
+      "Pick one signal — companies hiring for a specific role, people asking a specific question in a community — and build one agent to find it daily.",
+      "Give that agent a table it writes to every run, so you review what it found each morning without opening any chats.",
+      "Once you trust the signal, add a second agent that drafts the first message based on what the first agent found — chain them."
+     ]
+    },
+    "mid": {
+     "headline": "Your GTM has automation. The full motion isn't connected yet.",
+     "text": "Getting AI to help you draft messages is real progress. The gap is connecting the signal to the draft to the send — so the whole motion runs without you approving each individual step.",
+     "steps": [
+      "Map the full path from signal to booked meeting and mark every step that still requires your hands.",
+      "Automate the handoff between signal detection and message drafting — that's usually where the biggest manual gap lives.",
+      "Build a simple reply-handling agent for the three most common response types: yes, not now, tell me more."
+     ]
+    },
+    "high": {
+     "headline": "Your GTM motion runs. The focus now is compounding it.",
+     "text": "An autonomous GTM motion that runs without you is the actual goal — most people never get there. You're there or close. The next layer is making it smarter, not bigger.",
+     "steps": [
+      "Add a quality gate before outreach fires — not every signal should trigger a message; add a scoring step.",
+      "Track which message types are converting to meetings and feed that data back into the drafting agent.",
+      "Expand to one new channel or signal source per month — your infrastructure can handle it; your judgment is the bottleneck now."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly_rebriefing_hours",
+   "label": "Hours lost per month re-briefing agents",
+   "format": "hours_per_period",
+   "formula": "rebriefing_hours * 4",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes you right now?",
+  "answers": [
+   {
+    "label": "Founder or operator running my own company",
+    "tag": "founder"
+   },
+   {
+    "label": "GTM or sales lead at a startup or agency",
+    "tag": "gtm"
+   },
+   {
+    "label": "Agency owner building systems for clients",
+    "tag": "agency"
+   },
+   {
+    "label": "Builder or developer exploring agentic systems",
+    "tag": "builder"
+   }
+  ]
+ }
+}
