@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 4945fb13b7a712144165d7a65cffd1358b750b7f at 2026-09-01T10:16:43.175Z
+Deploy: cf4fa6525defc3279a948fdd8d779ed23b17ef78 at 2026-09-01T12:54:22.838Z
 
-- neha-lamba-ac-assessment: data.json HTTP 404
+- mark-macdonald-f1-assessment: data.json HTTP 404
