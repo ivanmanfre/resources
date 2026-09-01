@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-07-10T20:03:22.901Z",
+ "generated_at": "2026-09-01T18:01:24.421Z",
  "as_of": "2026-07-10",
  "stale": false,
  "source": "frontier_models (curated + human-confirmed)",
@@ -25,17 +25,36 @@
    "knowledge_cutoff": null,
    "released_on": "2026-05-28",
    "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
-   "confirmed_at": "2026-07-10"
+   "confirmed_at": "2026-07-10",
+   "stale": true
+  },
+  {
+   "provider": "anthropic",
+   "model_id": "claude-fable-5-1",
+   "display_name": "Fable 5.1",
+   "family": null,
+   "tier": "flagship",
+   "is_current_flagship": false,
+   "status": "current",
+   "pricing": {
+    "input": null,
+    "output": null,
+    "cached_input": null,
+    "unit": "per_mtok",
+    "currency": "USD"
+   },
+   "context_window": null,
+   "max_output_tokens": null,
+   "knowledge_cutoff": null,
+   "released_on": null,
+   "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
+   "confirmed_at": "2026-09-01"
   }
  ],
  "flagships": {
   "anthropic": "claude-opus-4-8"
  },
- "constants": {
-  "frontier_input_per_mtok": 5,
-  "frontier_output_per_mtok": 25,
-  "frontier_context_window": 1000000
- },
+ "constants": {},
  "model_currency": {
   "as_of": "2026-07-10",
   "stamp": "Models and pricing current as of Jul 10, 2026",
@@ -45,6 +64,14 @@
   ]
  },
  "changelog": [
+  {
+   "date": "2026-09-01",
+   "event": "model_launch",
+   "models": [
+    "claude-fable-5-1"
+   ],
+   "summary": "Fable 5.1 launched"
+  },
   {
    "date": "2026-07-10",
    "event": "model_launch",
