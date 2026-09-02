@@ -1,0 +1,559 @@
+{
+ "slug": "jarrod-lopiccolo-b7-assessment",
+ "title": "The Human Digital Index",
+ "subtitle": "How your leadership habits, marketing metrics, and daily focus add up to work that actually connects",
+ "brand": {
+  "accent": "#f05a5d",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "context_first_leadership",
+   "name": "Context-First Leadership",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "When you hand a project to your team, how much of the reasoning behind the decision do you share?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I hand over the task and trust them to figure out the rest",
+       "score": 1
+      },
+      {
+       "label": "I cover the basics but keep most of the context with me",
+       "score": 2
+      },
+      {
+       "label": "I share enough that they could answer a client question without me in the room",
+       "score": 3
+      },
+      {
+       "label": "I share the full picture: the why, what success looks like, and what constraints exist",
+       "score": 4
+      },
+      {
+       "label": "I share everything I know, then make space for them to push back on the direction",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "When a team member makes a call you'd have made differently, how do you typically find out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Usually after a client or partner surfaces it",
+       "score": 1
+      },
+      {
+       "label": "In the project debrief, after the fact",
+       "score": 2
+      },
+      {
+       "label": "At a weekly check-in",
+       "score": 3
+      },
+      {
+       "label": "In real time because they loop me in early enough to course-correct",
+       "score": 4
+      },
+      {
+       "label": "Before the call. We've built a habit of talking through the reasoning in advance",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "You've handed a key client relationship to someone who's been on the account for over a year. They make a judgment call differently than you would. What do you do first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Step back in and redirect the decision",
+       "score": 1
+      },
+      {
+       "label": "Run a debrief on where they went wrong",
+       "score": 2
+      },
+      {
+       "label": "Ask them to walk me through their reasoning before deciding next steps",
+       "score": 3
+      },
+      {
+       "label": "Trust the call, then document what I'd want them to know for next time",
+       "score": 4
+      },
+      {
+       "label": "Read it as a sign that I haven't shared enough context yet, and address that",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're handing off tasks. Your team is working with half the picture.",
+     "text": "There's a real gap between giving someone the work and giving them the full reasoning behind it. Your team is making calls with half the information they need to make them the way you would. Delegation and giving people the actual context to act on your behalf are two different jobs.",
+     "steps": [
+      "Before handing off a project, write one paragraph on why this decision matters and what done looks like from the client's perspective",
+      "Share your mental model, not just the task. What constraints are you working inside that they don't know about?",
+      "After each debrief, ask yourself: could this person explain the full reasoning to a client without you in the room?"
+     ]
+    },
+    "mid": {
+     "headline": "You share more context than most. The next step is making it persistent.",
+     "text": "You've figured out that delegation without context doesn't hold. The gap between here and high isn't more information. It's a system that keeps that context alive when you're not in the room.",
+     "steps": [
+      "Document the reasoning on major decisions, not just the outcome, so the next person on the account doesn't start from scratch",
+      "Build a short context brief into your project kickoffs so the why travels with the work",
+      "Ask your team what context they're still missing. You'll be surprised what didn't make it through"
+     ]
+    },
+    "high": {
+     "headline": "Your team makes calls that sound like yours. Now make sure that transfers.",
+     "text": "You've built something worth protecting: a team that has internalized how you think. The work now is making sure that thinking compounds. Documented, transferable, and available to the next generation of your team.",
+     "steps": [
+      "Capture the decisions and the reasoning behind them. Not in a manual, but as living notes on live projects",
+      "Identify which context only lives in your head and build a plan to move it out",
+      "The teams that stay at this level turn context into culture, not just process"
+     ]
+    }
+   }
+  },
+  {
+   "id": "measuring_what_actually_",
+   "name": "Measuring What Actually Matters",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "When you review a campaign's performance, where do you start?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Impressions, reach, and click-through. The numbers easiest to pull",
+       "score": 1
+      },
+      {
+       "label": "The volume metrics my leadership team expects to see",
+       "score": 2
+      },
+      {
+       "label": "Leads or conversions, then I work backwards to see what drove them",
+       "score": 3
+      },
+      {
+       "label": "Revenue impact and cost per opportunity, even when they're harder to attribute",
+       "score": 4
+      },
+      {
+       "label": "Yield, lifetime value, and quality of what came in. The full business story",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "How often do you present a metric to leadership that you know doesn't tell the whole picture?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Regularly. It's what leadership expects and easier than the conversation",
+       "score": 1
+      },
+      {
+       "label": "Sometimes. I report what's asked, then add a caveat at the end",
+       "score": 2
+      },
+      {
+       "label": "Less often than I used to. I've reframed one or two reports to show more of the story",
+       "score": 3
+      },
+      {
+       "label": "Rarely. I've rebuilt the reporting to lead with the metrics that matter",
+       "score": 4
+      },
+      {
+       "label": "Almost never. And I've had the explicit conversation with leadership about why we measure what we measure",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "Your leadership or a key client asks for more visitors, leads, or volume. What's your first move?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Agree and build a plan to hit the number",
+       "score": 1
+      },
+      {
+       "label": "Ask which segment they want more of before committing",
+       "score": 2
+      },
+      {
+       "label": "Pull the current quality data and share it in the same conversation",
+       "score": 3
+      },
+      {
+       "label": "Reframe around value per visitor or lead rather than total count",
+       "score": 4
+      },
+      {
+       "label": "Come in ready with the yield data and a case for why fewer, better visitors is the stronger path",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "meetings_hours",
+     "type": "number",
+     "text": "How many hours per week do you spend in scheduled meetings?",
+     "hint": "Include recurring standups, client calls, one-on-ones, and internal reviews",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 60,
+     "step": 1,
+     "default": 15,
+     "normalize_formula": "Math.max(0, 100 - x * 2)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're measuring what's easy. That's not the same as what matters.",
+     "text": "Volume metrics are comfortable because they're easy to pull and easy to defend. Australia pulled 94% of its pre-COVID visitors and 120% of the spend. Fewer people, more value. That's the model. The metrics you lead with in the next report shape the conversation everyone has afterward.",
+     "steps": [
+      "Pick one campaign this quarter and rebuild the report around yield, not volume. What did each visitor or lead actually generate?",
+      "Add a quality column to every lead report, not just total count",
+      "Before the next meeting, ask yourself: is the number I'm leading with the one that reflects real business value?"
+     ]
+    },
+    "mid": {
+     "headline": "You know the right metrics. The work is getting the room to see them too.",
+     "text": "You're past just reporting what's easy. The gap now is organizational. Getting leadership and board members to see what you see is a different problem than fixing the data, and it takes a different kind of conversation.",
+     "steps": [
+      "Bring one concrete example of a higher-yield segment and what it would take to attract more of that visitor or lead type",
+      "Find one person in the room who already cares about value over volume and build the case with them first",
+      "Replace the volume column with a value-per-unit column in the next report and let the data make the argument"
+     ]
+    },
+    "high": {
+     "headline": "You're thinking in yield. Now make it the shared language.",
+     "text": "You've done the harder work of reframing what success looks like. The next challenge is making that framing durable. Not just how you talk about campaigns, but how your whole organization does.",
+     "steps": [
+      "Build a one-page guide to the metrics that matter and make it available to every new team member or board member",
+      "Document a case where yield thinking produced a better outcome and keep it ready for the next conversation",
+      "When a smaller, more valuable cohort performs, call it out explicitly. Celebrate the right wins internally"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_with_intention",
+   "name": "AI with Intention",
+   "questions": [
+    {
+     "id": "q7",
+     "text": "Before you start an AI-assisted project, how clearly have you defined what you're actually trying to solve?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I start prompting and figure it out as I go",
+       "score": 1
+      },
+      {
+       "label": "I have a general direction, but it sharpens after a few rounds",
+       "score": 2
+      },
+      {
+       "label": "I usually know the outcome I want before I open the tool",
+       "score": 3
+      },
+      {
+       "label": "I write out the problem, the outcome, and my own initial thinking before starting",
+       "score": 4
+      },
+      {
+       "label": "I treat it like a brief. Problem, outcome, constraints, and my own answer to the question before I prompt",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8",
+     "text": "When AI output starts to feel hollow or off, what do you do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Keep prompting and hope the next version lands better",
+       "score": 1
+      },
+      {
+       "label": "Add more detail to the prompt and try again",
+       "score": 2
+      },
+      {
+       "label": "Step back and rethink the approach before the next prompt",
+       "score": 3
+      },
+      {
+       "label": "Stop the session and ask myself what I was actually trying to solve",
+       "score": 4
+      },
+      {
+       "label": "Bail on it or start over. I know when the session isn't working and I stop wasting time on it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q9",
+     "text": "How often do you form your own point of view on a topic before using AI to explore it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely. I use AI to help me figure out what I think",
+       "score": 1
+      },
+      {
+       "label": "Sometimes, depending on how well I know the subject",
+       "score": 2
+      },
+      {
+       "label": "Usually. I come in with a rough take and test it",
+       "score": 3
+      },
+      {
+       "label": "Almost always. My own thinking goes into the prompt before the tool goes to work",
+       "score": 4
+      },
+      {
+       "label": "Always. The AI is a challenge to my thinking, not a stand-in for it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're using AI to avoid thinking. That's where the hollow feeling comes from.",
+     "text": "AI is at its best when you bring a point of view into the session. Without it, you're asking the tool to do the thinking, and the output reflects that. Technically fine, somehow empty. The moment you notice you're 20 prompts deep and still not getting there, that's real data about what's missing.",
+     "steps": [
+      "Before your next AI session, write 3 sentences with your own take on the topic. Then open the tool",
+      "When the output feels off, stop and ask yourself: what am I actually trying to solve? What's my own answer?",
+      "Set a personal rule. If you're 15 prompts in and still not getting there, close the session and think through the problem yourself first"
+     ]
+    },
+    "mid": {
+     "headline": "You know when AI is working and when it isn't. That instinct is rarer than it looks.",
+     "text": "The ability to sense when a session has hit a wall is a skill most people don't develop. The next step is catching that signal earlier. Not just knowing to bail, but knowing before you're 20 prompts deep.",
+     "steps": [
+      "At the start of each session, write your own answer to the question before you prompt. Use the AI to pressure-test it, not produce it",
+      "Set a session limit. If you haven't gotten something useful in 5 to 7 exchanges, reset and come back after thinking offline",
+      "Compare your best AI-assisted work against your best unassisted work. Notice what's different and where the thinking actually came from"
+     ]
+    },
+    "high": {
+     "headline": "You're using the tool on your terms. That's the position worth protecting.",
+     "text": "The people who get the most out of these tools are the ones who come in with a strong point of view and use the tool to challenge it. You're already there. The work now is protecting the conditions that make that possible, starting with the focused time where the original thinking happens.",
+     "steps": [
+      "Document your AI workflow so it's repeatable. What you write before you prompt, how you evaluate the output",
+      "Protect the upstream thinking time. Good prompts come from people who've already thought the thing through",
+      "Teach it to your team. This is a real advantage when it's organizational, not just personal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "protected_focus",
+   "name": "Protected Focus",
+   "questions": [
+    {
+     "id": "q10",
+     "text": "How deliberately do you protect time for deep, focused work with no meetings and no messages?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I find focus time whenever it happens to open up in the calendar",
+       "score": 1
+      },
+      {
+       "label": "I try to find it, but meetings usually take over",
+       "score": 2
+      },
+      {
+       "label": "I block some time, though it gets moved regularly",
+       "score": 3
+      },
+      {
+       "label": "I have consistent blocks that I defend most weeks",
+       "score": 4
+      },
+      {
+       "label": "My calendar is built around protected focus time. Interruptions are the exception, not the default",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q11",
+     "text": "When a colleague needs to pull you out of a focus block, what typically happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I stop. Most things feel urgent enough to interrupt",
+       "score": 1
+      },
+      {
+       "label": "I usually stop, though I wish I didn't",
+       "score": 2
+      },
+      {
+       "label": "I pause and check whether it can wait, and it usually can",
+       "score": 3
+      },
+      {
+       "label": "I respond after the block unless it's a real emergency, and I've communicated that expectation",
+       "score": 4
+      },
+      {
+       "label": "My team knows the protocol. Urgent means they call. Everything else waits",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12",
+     "text": "How well can your team find the information they need to move work forward without interrupting someone?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most knowledge lives in people's heads. Interruptions are how work gets unblocked",
+       "score": 1
+      },
+      {
+       "label": "Some things are documented but most of the context is still tribal",
+       "score": 2
+      },
+      {
+       "label": "Core processes are written down, though people still rely on each other for context they haven't written down",
+       "score": 3
+      },
+      {
+       "label": "Most of the work runs on documented processes with minimal interruption needed",
+       "score": 4
+      },
+      {
+       "label": "Our processes are documented well enough that someone new could follow most of our work without asking",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "focus_hours",
+     "type": "number",
+     "text": "How many hours per week do you protect for uninterrupted focused work?",
+     "hint": "Time you actively block and defend for deep thinking or creative work, with no meetings and no messages",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "Math.min(100, x * 5)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your best thinking is competing with your worst calendar.",
+     "text": "The research is clear. Out of 20 workplace amenities surveyed across more than 6,000 knowledge workers, exactly one separated high-performing teams from average ones: a quiet place to do focused work. Right now your best thinking is getting squeezed into whatever the calendar leaves behind.",
+     "steps": [
+      "Block one 60-minute window this week with no meetings and no messages, and treat it as a non-negotiable appointment with yourself",
+      "Tell your team what the block is for and what urgent means in the context of interrupting it",
+      "At the end of the week, compare what you got done in that block versus a comparable meeting hour. The data is usually obvious"
+     ]
+    },
+    "mid": {
+     "headline": "You've got the idea. The gap is making it structural rather than aspirational.",
+     "text": "You know focus time matters. The issue is it's still fragile. It gets moved, filled by meetings, or just doesn't hold. Getting from here to high isn't about more willpower. It's treating focus blocks the way you'd treat a client call: in the calendar, protected by default.",
+     "steps": [
+      "Pick two recurring slots in your weekly calendar and block them as standing focus time. Not holds, actual working blocks",
+      "Move the meeting-free habit to the team level. One shared 60-minute focus window per week shifts the culture faster than a policy",
+      "Document one key process that currently requires someone to interrupt a colleague to get the answer. Remove the interruption by writing it down"
+     ]
+    },
+    "high": {
+     "headline": "Your calendar is working for you. Now make sure your team's is too.",
+     "text": "You've solved the personal version of this. The next challenge is organizational. Making sure the conditions that let you do focused work exist for your whole team, especially the people doing the work that needs the most sustained attention.",
+     "steps": [
+      "Audit your team's calendar for interruption-heavy patterns: back-to-back meetings, no async documentation, knowledge that lives in one person's inbox",
+      "Build one meeting-free block into the team's weekly schedule and protect it the same way you protect yours",
+      "Document the processes that currently live in people's heads. That's what makes focus possible at scale"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "focus_ratio",
+   "label": "Focus-to-Meeting Ratio",
+   "format": "percent",
+   "formula": "focus_hours / Math.max(1, meetings_hours + focus_hours) * 100",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you sit right now?",
+  "answers": [
+   {
+    "label": "Agency Owner or Creative Leader",
+    "tag": "agency"
+   },
+   {
+    "label": "DMO or Destination Marketing Leader",
+    "tag": "dmo"
+   },
+   {
+    "label": "Brand or Marketing Executive",
+    "tag": "brand"
+   },
+   {
+    "label": "Business Owner or Entrepreneur",
+    "tag": "founder"
+   }
+  ]
+ }
+}
