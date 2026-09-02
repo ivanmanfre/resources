@@ -1,0 +1,575 @@
+{
+ "slug": "dom-urniezius-1d-assessment",
+ "title": "B2B Outbound Sales Readiness Score",
+ "subtitle": "Measures how well your outbound motion is set up to open conversations and fill pipeline consistently.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "icp_market_selection",
+   "name": "ICP & Market Selection",
+   "questions": [
+    {
+     "id": "icp_market_selection_q1",
+     "text": "How would you describe your Ideal Customer Profile today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We know the industry. Beyond that it is fuzzy.",
+       "score": 1
+      },
+      {
+       "label": "We have company size and industry defined.",
+       "score": 2
+      },
+      {
+       "label": "We have firmographics plus 2 to 3 filters like tech stack or funding stage.",
+       "score": 3
+      },
+      {
+       "label": "We have firmographics and a buyer persona tied to a specific pain we solve.",
+       "score": 4
+      },
+      {
+       "label": "All of the above, and we know which accounts are in-market right now.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "icp_market_selection_q2",
+     "text": "When entering a new market or country, how do you decide which segment to target first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We pick the biggest market and start there.",
+       "score": 1
+      },
+      {
+       "label": "We go where we have a reference customer or warm contacts.",
+       "score": 2
+      },
+      {
+       "label": "We run a short exercise to find the segment we can win fastest with what we have.",
+       "score": 3
+      },
+      {
+       "label": "We score segments by TAM, competitive density, and our existing proof, then pick.",
+       "score": 4
+      },
+      {
+       "label": "We have a repeatable market-entry playbook tested across multiple geographies.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "icp_market_selection_q3",
+     "text": "How often do you update your ICP based on which closed deals performed best?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have not reviewed it since we built the first version.",
+       "score": 1
+      },
+      {
+       "label": "We revisit it when we lose a big deal or a client churns.",
+       "score": 2
+      },
+      {
+       "label": "We review it quarterly but do not always update our targeting.",
+       "score": 3
+      },
+      {
+       "label": "We review quarterly and update list criteria to match closed-won patterns.",
+       "score": 4
+      },
+      {
+       "label": "We feed closed-won data back into our ICP monthly and adjust targeting immediately.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "icp_market_selection_q4",
+     "text": "How accurate and clean is the data your outbound team works from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We pull from LinkedIn manually and clean as we go.",
+       "score": 1
+      },
+      {
+       "label": "We use a data provider but do not verify before sequencing.",
+       "score": 2
+      },
+      {
+       "label": "We use a provider and spot-check key fields before outreach starts.",
+       "score": 3
+      },
+      {
+       "label": "We run automated verification and remove bounces before any sequence launches.",
+       "score": 4
+      },
+      {
+       "label": "We have enriched, verified lists with intent signals layered in.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your targeting is guesswork. Fix it before you add volume.",
+     "text": "Running outbound without a sharp ICP is the fastest way to waste SDR hours. One wrong filter and you are talking to the wrong buyers at scale. Every client we have onboarded who came in with a vague ICP needed four to six weeks of targeting work before outreach was worth sending.",
+     "steps": [
+      "Pull your last 20 closed-won deals. Find the three firmographic filters they share that your lost deals do not.",
+      "Build a list of 200 accounts that match those filters before writing a single message.",
+      "Set a quarterly ICP review. If you are not updating it, your targeting drifts every time your market shifts."
+     ]
+    },
+    "mid": {
+     "headline": "You know who you are selling to. Now make the data work harder.",
+     "text": "A solid ICP on paper still leaks if your lists are not clean or your market-entry process is slow. The companies hitting pipeline targets are not targeting better markets. They are moving into those markets faster with verified data.",
+     "steps": [
+      "Add one automated verification step before any new sequence launches. Bounce rate above 5% means your data is costing you sender reputation.",
+      "Document your market-entry decision process so it takes days, not months, to pick the first segment in a new country.",
+      "Update your ICP filters after every quarterly review and measure whether reply rates move."
+     ]
+    },
+    "high": {
+     "headline": "Strong targeting foundation. The next gain is speed of iteration.",
+     "text": "You are in the top tier on targeting. The companies at this level that grow fastest are the ones who close the loop fastest: closed-won data into ICP updates into new list builds within weeks, not quarters.",
+     "steps": [
+      "Automate the closed-won data feed into your ICP criteria. Manual quarterly reviews add lag.",
+      "If you are not using intent data yet, run a 60-day pilot on one segment and measure reply rate lift.",
+      "Test one new segment per quarter using your market-entry playbook. Document what the data showed versus what actually happened."
+     ]
+    }
+   }
+  },
+  {
+   "id": "outreach_consistency",
+   "name": "Outreach Consistency",
+   "questions": [
+    {
+     "id": "outreach_consistency_q1",
+     "text": "How consistent is your outbound volume week to week?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Highly variable. It depends on who has time that week.",
+       "score": 1
+      },
+      {
+       "label": "We try to keep a rhythm but delivery work often cuts into it.",
+       "score": 2
+      },
+      {
+       "label": "We have a weekly quota but it slips during busy periods.",
+       "score": 3
+      },
+      {
+       "label": "We hit our weekly volume target four weeks out of five.",
+       "score": 4
+      },
+      {
+       "label": "Volume is protected by a dedicated person or team. It does not drop.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "outreach_consistency_q2",
+     "text": "How many touchpoints does your outreach sequence include before you mark a prospect cold?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "1 to 2 touches, then we stop.",
+       "score": 1
+      },
+      {
+       "label": "3 to 4 touches.",
+       "score": 2
+      },
+      {
+       "label": "5 to 7 touches across one channel.",
+       "score": 3
+      },
+      {
+       "label": "6 to 8 touches across two channels.",
+       "score": 4
+      },
+      {
+       "label": "8 or more touches across three or more channels with a clear follow-up logic.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "outreach_consistency_q3",
+     "text": "Who is responsible for outbound prospecting in your company?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The founders do it between everything else.",
+       "score": 1
+      },
+      {
+       "label": "AEs do their own prospecting alongside closing.",
+       "score": 2
+      },
+      {
+       "label": "One person handles outbound but also covers other tasks.",
+       "score": 3
+      },
+      {
+       "label": "A dedicated SDR or BDR focused only on top-of-funnel.",
+       "score": 4
+      },
+      {
+       "label": "A dedicated outbound team or an external partner running it full time.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_manual_hours",
+     "type": "number",
+     "text": "How many hours per week does your team spend on manual prospecting, list-building, and writing outreach?",
+     "hint": "Include everyone touching top-of-funnel: founders, SDRs, AEs doing their own prospecting. We use €30/hr as a blended labor estimate to calculate your monthly outbound labor cost below.",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 80,
+     "step": 1,
+     "default": 15,
+     "normalize_formula": "x <= 2 ? 95 : x <= 5 ? 80 : x <= 10 ? 60 : x <= 20 ? 35 : x <= 40 ? 15 : 5"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Outbound that runs on spare capacity is not outbound. It is wishful thinking.",
+     "text": "Founders doing outbound between meetings is the most common pipeline killer at this stage. The week fills up so the sequences pause. The sequences pause so the pipeline gaps. The pipeline gaps so the founder jumps back in too late. This cycle does not break until outbound has a dedicated person or a dedicated partner.",
+     "steps": [
+      "Count how many focused hours per week your outbound actually gets. If it is less than 10 hours, your pipeline is running on luck.",
+      "Separating the person who starts conversations from the person who closes them is the structural fix. These are two different jobs.",
+      "Before hiring an SDR, run one quarter with an external partner. It is faster to learn what good outbound looks like when someone else is running it."
+     ]
+    },
+    "mid": {
+     "headline": "You have a motion. Now make it immune to delivery pressure.",
+     "text": "You are sequencing and following up. The gap is that volume drops when the team gets busy. That is the exact moment pipeline runs dry three months from now. The companies that grow consistently are the ones where outbound volume is protected, not borrowed from delivery.",
+     "steps": [
+      "Set a weekly outreach floor that does not move regardless of delivery load. Put it in a standing calendar block.",
+      "If your sequences stop before 6 touches, add two more. Most replies come after touch 4.",
+      "Measure weekly outbound volume in every team meeting without exception. What gets measured gets protected."
+     ]
+    },
+    "high": {
+     "headline": "Your outbound is consistent. The next gain is sequence quality at scale.",
+     "text": "Volume protection is in place. The companies at this level that pull ahead are the ones who run structured tests on their sequences on a set cycle, not when something breaks.",
+     "steps": [
+      "Run one A/B test per month on your highest-volume sequence. Test subject lines first, then opening lines, then call-to-action.",
+      "If you are not multi-channel (email plus LinkedIn at minimum), add the second channel this quarter and measure reply rate lift.",
+      "Document your sequence logic so it can be handed to a new hire or external partner without losing quality."
+     ]
+    }
+   }
+  },
+  {
+   "id": "pipeline_measurement",
+   "name": "Pipeline Measurement",
+   "questions": [
+    {
+     "id": "pipeline_measurement_q1",
+     "text": "Which metric do you check first when outbound results drop?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Revenue or deals closed that month.",
+       "score": 1
+      },
+      {
+       "label": "Number of meetings held.",
+       "score": 2
+      },
+      {
+       "label": "Number of SQLs generated.",
+       "score": 3
+      },
+      {
+       "label": "Number of replies or conversations started.",
+       "score": 4
+      },
+      {
+       "label": "Activity volume at the top: sequences launched, connection requests sent.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "pipeline_measurement_q2",
+     "text": "How far ahead can you predict next month's pipeline from outbound alone?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We cannot. Pipeline is unpredictable.",
+       "score": 1
+      },
+      {
+       "label": "We get a rough picture one week out.",
+       "score": 2
+      },
+      {
+       "label": "We can estimate within 30% two to three weeks ahead.",
+       "score": 3
+      },
+      {
+       "label": "We forecast reliably three to four weeks out using conversation rates.",
+       "score": 4
+      },
+      {
+       "label": "We model pipeline two months out with historical conversion data from each stage.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "pipeline_measurement_q3",
+     "text": "How do you track the conversion from outreach sent to conversation started?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not track it. We count meetings and work backward.",
+       "score": 1
+      },
+      {
+       "label": "We track it manually in a spreadsheet.",
+       "score": 2
+      },
+      {
+       "label": "We track it in our CRM but review it less than monthly.",
+       "score": 3
+      },
+      {
+       "label": "We review it weekly and adjust messaging when rates drop.",
+       "score": 4
+      },
+      {
+       "label": "We test messaging against conversion data and update sequences on a set cycle.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are reading the scoreboard two months after the game ended.",
+     "text": "Checking revenue or closed deals when outbound drops is like reading the map after you have already taken the wrong exit. By the time the revenue number moves, the problem started 60 to 90 days ago in your sequences. Track conversations started as your primary outbound metric and act on it weekly.",
+     "steps": [
+      "Add one metric to your weekly team check-in: how many new conversations did outbound start this week? Track it for 90 days straight.",
+      "If you do not know your outreach-to-reply rate, pull the last 30 days from your sequencer right now. Below 3% means your targeting or your messaging is broken.",
+      "Build a three-stage pipeline tracker: sequences sent, conversations started, SQLs booked. Review it weekly."
+     ]
+    },
+    "mid": {
+     "headline": "You track the numbers. Now make them predictive.",
+     "text": "You are measuring. Most companies at this stage have a two to three week visibility window. The ones who get to 60-day forecasting connect their historical conversion rates to current activity volume. The math is already in your data.",
+     "steps": [
+      "Take your last 90 days of data. Calculate: for every 100 outreach sent, how many conversations start? How many become SQLs? How many close? That ratio is your forecast model.",
+      "Set a weekly activity floor based on what you need at the top to hit SQL target at the bottom.",
+      "Review conversion rates monthly. If reply-to-SQL drops, check whether it is a messaging problem or a handoff problem."
+     ]
+    },
+    "high": {
+     "headline": "You think in leading indicators. That puts you ahead of most sales teams.",
+     "text": "You are forecasting from activity data. The next level is tightening the model: which channels convert best, which personas reply fastest, which sequence length produces the highest SQL rate. That precision is what lets you scale without breaking the conversion rates you have built.",
+     "steps": [
+      "Segment your conversion data by channel and by persona. Most teams find one combination is producing 60 to 70% of SQLs. Double into it.",
+      "Set a monthly review where you publish the full conversion funnel to the team. Transparency drives accountability.",
+      "If you are forecasting two months out, start stress-testing: what does the model say you need to do today to hit the quarter after next?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sales_development_struct",
+   "name": "Sales Development Structure",
+   "questions": [
+    {
+     "id": "sales_development_struct_q1",
+     "text": "How does a conversation started by outbound get handed to your closing team?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The same person starts and closes. There is no handoff.",
+       "score": 1
+      },
+      {
+       "label": "We email the AE with some context but there is no standard format.",
+       "score": 2
+      },
+      {
+       "label": "We have a handoff template but it is not always completed.",
+       "score": 3
+      },
+      {
+       "label": "Every SQL has a completed handoff brief before the first call.",
+       "score": 4
+      },
+      {
+       "label": "Structured handoff: recorded call context, CRM data, and agreed response-time SLAs.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sales_development_struct_q2",
+     "text": "How do you use trade shows and live events for sales development?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We attend and leave follow-up to whoever collected business cards.",
+       "score": 1
+      },
+      {
+       "label": "We send follow-up emails after the event closes.",
+       "score": 2
+      },
+      {
+       "label": "We book a few meetings before the event and follow up after.",
+       "score": 3
+      },
+      {
+       "label": "We run targeted outreach four to six weeks before the event to fill the calendar in advance.",
+       "score": 4
+      },
+      {
+       "label": "We have a structured pre-event outreach program. The calendar is full before we arrive.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sales_development_struct_q3",
+     "text": "What happens to your outbound when your team is deep in delivery?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It stops. The team is heads-down on client work.",
+       "score": 1
+      },
+      {
+       "label": "It slows to a fraction of normal volume.",
+       "score": 2
+      },
+      {
+       "label": "Founders step back in to keep volume up.",
+       "score": 3
+      },
+      {
+       "label": "We have a minimum floor and protect it regardless of delivery load.",
+       "score": 4
+      },
+      {
+       "label": "Outbound runs independently of delivery. Separate people, separate function.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your sales development is delivery-dependent. That is a structural problem.",
+     "text": "When the same people who close deals also start the conversations, pipeline becomes a cycle: a busy quarter means no outbound, no outbound means an empty quarter after that. Separating the two functions structurally is the fix. One person starts conversations. A different person closes them.",
+     "steps": [
+      "Write down how a qualified lead moves from first contact to first call in your company right now. If the answer involves three different people's inboxes, you have a handoff problem.",
+      "Before your next trade show, start outreach six weeks early. Book meetings before you get on the plane. An empty calendar at a trade show is a sunk cost.",
+      "Define a weekly outbound floor: the minimum number of sequences that go out regardless of delivery pressure."
+     ]
+    },
+    "mid": {
+     "headline": "The motion is there. The weak point is handoff and event preparation.",
+     "text": "You start conversations consistently. Where you lose is in the gap between conversation started and meeting qualified. And most companies at this stage treat trade shows as networking events. They are not. They are the highest-density sales opportunity in B2B when you prepare for them correctly.",
+     "steps": [
+      "Build a one-page handoff brief: company name, buyer pain in their words, what was said in the thread, suggested first call agenda. Make it mandatory for every SQL.",
+      "For your next event, start outreach to attendees eight weeks before doors open. Set a target: a specific number of qualified meetings booked before the event starts.",
+      "Define your outbound floor and assign ownership for protecting it when delivery gets heavy."
+     ]
+    },
+    "high": {
+     "headline": "Strong structure. The edge is in event ROI and handoff speed.",
+     "text": "You have separated the functions and built a floor. The companies at this level that grow fastest treat pre-event outreach as a standalone campaign and compress the time between SQL creation and first AE contact. Speed at handoff matters more than most teams measure.",
+     "steps": [
+      "Measure the time between SQL creation and first AE contact. If it is more than four hours during business hours, you are losing deals to speed.",
+      "Run a pre-event campaign for every trade show you attend. Target not just attendees but speakers, sponsors, and companies on the exhibitor list.",
+      "Audit your events from last year. How many meetings were booked before arrival versus after? That ratio tells you exactly how much ROI you left on the table."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly_outbound_labor_cost",
+   "label": "Monthly outbound labor cost (manual work, €30/hr blended estimate)",
+   "format": "currency_per_period",
+   "formula": "weekly_manual_hours * 30 * 4",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your current situation?",
+  "answers": [
+   {
+    "label": "Founder running outbound myself",
+    "tag": "founder-led"
+   },
+   {
+    "label": "Sales leader with a small SDR team (1-5 reps)",
+    "tag": "sales-leader"
+   },
+   {
+    "label": "Head of Sales scaling into new markets or geographies",
+    "tag": "international-scale"
+   },
+   {
+    "label": "RevOps or operations lead responsible for GTM systems",
+    "tag": "revops"
+   }
+  ]
+ }
+}
