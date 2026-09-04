@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 440445d42128f832c4c8d1864f459d81ffdf330a at 2026-09-03T20:49:01.269Z
+Deploy: 4fffb7c9a4ccc3e3feefd6263693260180b65840 at 2026-09-04T09:00:55.780Z
 
-- nitin-manchanda-4c-assessment: data.json HTTP 404
+- kirsty-l-6f-assessment: data.json HTTP 404
