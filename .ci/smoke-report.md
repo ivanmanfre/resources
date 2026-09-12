@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: f330aebaa6abdc22753ddb0a4b2570a00d49739b at 2026-09-12T00:47:56.149Z
+Deploy: 63523e989af89976a57d154fb71c2452fd053ef3 at 2026-09-12T15:52:06.114Z
 
-- patricio-bruno-fractional-cmo-marketing--8f-assessment: data.json HTTP 404
+- nerijus-danilevicius-43-assessment: data.json HTTP 404
