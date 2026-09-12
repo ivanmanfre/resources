@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: f8c0cb5cdba9842731568e46ab582e66464ebe8b at 2026-09-04T15:55:24.182Z
+Deploy: f330aebaa6abdc22753ddb0a4b2570a00d49739b at 2026-09-12T00:47:56.149Z
 
-- andy-milligan-56-assessment: data.json HTTP 404
+- patricio-bruno-fractional-cmo-marketing--8f-assessment: data.json HTTP 404
