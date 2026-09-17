@@ -1,7 +1,7 @@
 {
  "slug": "yunhee-choi-87-assessment",
- "title": "The Answerability Index",
- "subtitle": "A self-scored read on whether your brand is built for AI to understand, trust, and recommend it, not just mention it.",
+ "title": "The AI Recommendation Readiness Score",
+ "subtitle": "This shows whether AI can only mention your brand or actually understand it well enough to recommend it over competitors.",
  "brand": {
   "accent": "#e3181b",
   "hero_badge": "Interactive Assessment"
@@ -9,88 +9,88 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "knowledge_modeling_not_c",
-   "name": "Knowledge Modeling, Not Content Volume",
+   "id": "knowledge_modeling_brand",
+   "name": "Knowledge Modeling & Brand Ontology",
    "questions": [
     {
-     "id": "knowledge_modeling_not_c_q1",
-     "text": "How does your team currently organize brand information — product, features, benefits, evidence, user needs?",
+     "id": "knowledge_modeling_brand_q1",
+     "text": "When someone asks an AI assistant to compare your brand against a competitor, what typically happens?",
      "max_score": 5,
      "answers": [
       {
-       "label": "It lives scattered across decks, brand guidelines, and whoever remembers it",
+       "label": "It does not mention us at all",
        "score": 1
       },
       {
-       "label": "We have a content calendar, mostly a list of topics, not connected facts",
+       "label": "It mentions us, but the details are wrong or outdated",
        "score": 2
       },
       {
-       "label": "We have structured product/feature pages, but they don't link to evidence or proof",
+       "label": "It mentions us correctly, but cannot explain why we might be the better fit",
        "score": 3
       },
       {
-       "label": "We've mapped features to benefits, with some evidence attached",
+       "label": "It gives one or two reasons we might be the better fit",
        "score": 4
       },
       {
-       "label": "We maintain a living blueprint connecting facts, evidence, judgment, and desired brand perception, and we update it",
+       "label": "It compares features, evidence and fit accurately enough to hold up in a sales call",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "knowledge_modeling_not_c_q2",
-     "text": "When you publish new content, is it anchored to the core topics that define your brand, or wherever there's search volume?",
+     "id": "knowledge_modeling_brand_q2",
+     "text": "How connected are your brand facts, proof points and desired positioning across your published content?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Wherever there's keyword volume, regardless of topic fit",
+       "label": "They live in separate documents that were never meant to connect",
        "score": 1
       },
       {
-       "label": "Mostly volume-driven, with occasional on-topic pieces",
+       "label": "A few pages repeat the same claims, with nothing tying claim to evidence",
        "score": 2
       },
       {
-       "label": "Roughly half on-topic, half opportunistic",
+       "label": "Product pages cite proof points, but perception and support content sit apart from them",
        "score": 3
       },
       {
-       "label": "Mostly anchored to a defined set of core topics",
+       "label": "Facts, evidence and the perception we want are mapped for our top products",
        "score": 4
       },
       {
-       "label": "Every piece is checked against our core topic map before it's greenlit — off-topic volume plays get rejected",
+       "label": "We maintain a structured map from facts to evidence to the perception we want AI to form, updated on a schedule",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "knowledge_modeling_not_c_q3",
-     "text": "If an AI system tried to explain what your brand is and does using only public information, how confident are you it would get it right?",
+     "id": "knowledge_modeling_brand_q3",
+     "text": "If you deleted your top 20 pages of content tomorrow, would an AI system still know who you are?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Not confident at all — I've tested it and the answer was wrong or generic",
+       "label": "No, our entire brand story lives on those pages",
        "score": 1
       },
       {
-       "label": "Not confident, but I haven't actually tested it",
+       "label": "It would remember our name and nothing specific",
        "score": 2
       },
       {
-       "label": "Somewhat confident on the basics, unsure on specifics like features vs. benefits",
+       "label": "It would remember one or two facts, mostly outdated",
        "score": 3
       },
       {
-       "label": "Confident on most facts, still fuzzy on why we're different",
+       "label": "It would recall our core positioning from mentions elsewhere",
        "score": 4
       },
       {
-       "label": "Confident — tested across tools, and it consistently gets our story and our differentiation right",
+       "label": "It would recall our positioning, our proof points and how we compare, from sources across the web",
        "score": 5
       }
      ],
@@ -99,442 +99,232 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You're feeding AI isolated pieces, not a brand",
-     "text": "This is the part I keep repeating in every GEO talk: AI doesn't reward more content, it rewards a brand it can model as one connected object. Right now your facts, evidence, and perception aren't wired together, so there's nothing for AI to reason with.",
+     "headline": "Your brand is a pile of pages, not a knowledge map",
+     "text": "Right now AI has facts about you scattered across pages that were never built to connect. My answer is always the same. Build a map from facts to evidence to the judgment you want AI to reach, starting with one product line.",
      "steps": [
-      "List your top 10 product/service facts and the evidence behind each one, in one document",
-      "Draw the line from each fact to the benefit it supports and the brand perception you want it to build",
-      "Stop publishing anything that doesn't trace back to that map"
+      "List every proof point you have for your top product or service",
+      "Connect each proof point to the specific claim it supports",
+      "Write, in one sentence, the judgment you want AI to reach after reading all of it"
      ]
     },
     "mid": {
-     "headline": "The pieces exist, the connections don't",
-     "text": "You have structured content. What's missing is the ontology layer — the explicit links between brand, product, evidence, and the judgment you want AI to make. That's the difference between being mentioned and being understood.",
+     "headline": "You have pieces of an ontology, not a full one",
+     "text": "Some of your facts and evidence already connect, though the map doesn't reach support content, reviews or comparison pages yet. Extend it past your own site.",
      "steps": [
-      "Pick your 3 most important product claims and attach explicit evidence to each",
-      "Write the 'facts → evidence → judgment → desired perception' chain for those 3 claims",
-      "Test one AI tool with a direct question about your differentiation and score the answer against that chain"
+      "Audit which proof points already appear outside your own site",
+      "Close the biggest gap between a claim you make and evidence a stranger can find",
+      "Pick your next category and repeat the mapping exercise"
      ]
     },
     "high": {
-     "headline": "You're modeling your brand, not just marketing it",
-     "text": "This is close to the ontology approach I described at Search SEOul — treating brand knowledge as a structured blueprint instead of isolated content. Keep pressure-testing it against every new AI tool that ships.",
+     "headline": "AI can already reason about you, keep the map current",
+     "text": "You've moved past getting cited into something AI can evaluate and compare. The risk now is staleness, an outdated fact sitting inside a correct-looking answer. Put a review cycle on the map itself.",
      "steps": [
-      "Re-test your knowledge blueprint quarterly against new AI models, not just the ones you tested last time",
-      "Extend the same fact-to-evidence mapping to your next product line before content gets written",
-      "Share the blueprint with PR/social so their language reinforces the same connections"
+      "Schedule a quarterly review of your facts-to-evidence map",
+      "Watch for outdated claims surfacing in AI answers about you",
+      "Extend the mapping method to your next two priority categories"
      ]
     }
    }
   },
   {
-   "id": "visibility_vs_answerabil",
-   "name": "Visibility vs. Answerability",
+   "id": "measurement_maturity_vis",
+   "name": "Measurement Maturity: Visibility to Answerability",
    "questions": [
     {
-     "id": "visibility_vs_answerabil_q1",
-     "text": "When you check how your brand shows up in AI answers, what do you actually look at?",
+     "id": "measurement_maturity_vis_q1",
+     "text": "How does your team currently track AI search visibility?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We don't check at all",
+       "label": "We don't track it at all",
        "score": 1
       },
       {
-       "label": "Just whether we're mentioned",
+       "label": "Someone checks a few prompts by hand when they remember to",
        "score": 2
       },
       {
-       "label": "Whether we're mentioned, and roughly how favorably",
+       "label": "We check weekly or monthly and record a snapshot",
        "score": 3
       },
       {
-       "label": "Mention, sentiment, and whether the reasoning/context around us is accurate",
+       "label": "We check often enough to see the pattern change, not just one day's answer",
        "score": 4
       },
       {
-       "label": "Mention, sentiment, reasoning accuracy, and whether we're actually recommended over competitors, tracked as separate signals",
+       "label": "We track visibility rate day by day, because we treat AI answers as a probability",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "visibility_vs_answerabil_q2",
-     "text": "Have you ever found an AI answer that mentioned your brand but attached outdated or wrong information to it (a discontinued feature, an old policy, a wrong price)?",
+     "id": "measurement_maturity_vis_q2",
+     "text": "Which of these do you actually measure about what AI says about you: sentiment, reasoning, accuracy?",
      "max_score": 5,
      "answers": [
       {
-       "label": "I don't know, I've never looked",
+       "label": "None of the three",
        "score": 1
       },
       {
-       "label": "I've heard this happens to others but haven't checked mine",
+       "label": "We glance at accuracy occasionally, nothing formal",
        "score": 2
       },
       {
-       "label": "I checked once and found nothing, but I've only checked once",
+       "label": "We track accuracy and sentiment, but the reasoning behind the answer stays a blind spot",
        "score": 3
       },
       {
-       "label": "I've found it and flagged it internally, but there's no process to fix it",
+       "label": "We track two of the three consistently",
        "score": 4
       },
       {
-       "label": "We have a standing process to catch and correct it",
+       "label": "We track all three and use them to catch a wrong or outdated claim before a customer does",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "visibility_vs_answerabil_q3",
-     "text": "Which best describes what your content is actually optimized to win?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Keyword rankings and traffic, still the main thing we track",
-       "score": 1
-      },
-      {
-       "label": "We track both, but rankings are still the KPI reported up",
-       "score": 2
-      },
-      {
-       "label": "In transition — rankings still measured, citations getting equal weight",
-       "score": 3
-      },
-      {
-       "label": "Citation/mention rate is now a primary KPI alongside rankings",
-       "score": 4
-      },
-      {
-       "label": "We've picked specific answer-spaces we intend to own and run a claim, substantiate, propagate cycle for each",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "You're optimizing for Seen, not for Chosen",
-     "text": "Getting mentioned is step one of three. AI has to see you, then believe you, then choose you. If you're not checking sentiment and reasoning accuracy, you don't actually know which of the three steps you're failing at.",
-     "steps": [
-      "Ask three different AI tools to describe and compare your brand against one competitor",
-      "Note not just whether you appear, but what reasoning the AI gives for its judgment",
-      "Flag any wrong or outdated fact you find, in writing, this week"
-     ]
-    },
-    "mid": {
-     "headline": "You track mentions, now track the judgment behind them",
-     "text": "You're past pure visibility. The next layer is whether AI can survive reasoning about you — can it compare you, evaluate you, and land on a recommendation, not just a mention.",
-     "steps": [
-      "Pick 10 specific questions your best buyers would ask an AI assistant",
-      "Run them monthly and log mention, sentiment, and reasoning accuracy separately",
-      "Fix the single most-repeated wrong or missing fact before adding new content"
-     ]
-    },
-    "high": {
-     "headline": "You're running the Seen → Believed → Chosen model I talk about",
-     "text": "This is the answerability posture: picking the answer-spaces you can actually win and running claim, substantiate, propagate as a repeatable cycle instead of a one-time push.",
-     "steps": [
-      "Expand your owned answer-spaces from 10 to the next tier of buyer questions",
-      "Audit whether your evidence for each claim is still current every quarter",
-      "Share your reasoning-accuracy findings with product, since wrong AI answers often trace back to outdated product facts"
-     ]
-    }
-   }
-  },
-  {
-   "id": "one_story_everywhere",
-   "name": "One Story, Everywhere",
-   "questions": [
-    {
-     "id": "one_story_everywhere_q1",
-     "text": "When you have a core brand claim or story, how many different formats and channels does it get repurposed into?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "One format, one channel — usually the blog or homepage",
-       "score": 1
-      },
-      {
-       "label": "Two formats, like a blog post plus one social post",
-       "score": 2
-      },
-      {
-       "label": "Three to four channels, but the story shifts slightly in each",
-       "score": 3
-      },
-      {
-       "label": "Four or more channels carrying the same core story, adapted in form",
-       "score": 4
-      },
-      {
-       "label": "The same core story is deliberately placed across owned, earned, and community channels so it repeats consistently",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "channels",
+     "id": "manual_check_hours",
      "type": "number",
-     "text": "Of these six places your core brand story could live natively — YouTube, Reddit, LinkedIn, press/media, podcast, community forum — how many does it actually appear on today, in your own words, not just linked from your site?",
-     "hint": "The logic behind GEO: the same core story repeated in different forms across sources is what a model learns to trust and remember.",
-     "suffix": "channels",
+     "text": "In a normal week, how many hours does someone on your team spend manually checking how your brand shows up in ChatGPT, Perplexity, Gemini or similar tools?",
+     "hint": "Include screenshots, spreadsheets, or typing the same prompts by hand.",
+     "suffix": "hrs/week",
      "min": 0,
-     "max": 6,
+     "max": 40,
      "step": 1,
-     "default": 1,
-     "normalize_formula": "(x/6)*100"
+     "default": 5,
+     "normalize_formula": "Math.max(0, 100 - (x/40)*100)"
     },
     {
-     "id": "one_story_everywhere_q3",
-     "text": "Are your SEO/content team and your PR, social, and influencer teams working from a shared story plan, or separately?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Completely separate, no coordination",
-       "score": 1
-      },
-      {
-       "label": "We loop each other in occasionally, no shared plan",
-       "score": 2
-      },
-      {
-       "label": "We share a content calendar but plan independently",
-       "score": 3
-      },
-      {
-       "label": "We coordinate on major stories, plan separately on the rest",
-       "score": 4
-      },
-      {
-       "label": "One shared story plan drives SEO, PR, social, and influencer work together",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "One channel can't build the memory an LLM needs",
-     "text": "Ten blue links don't come back. Google is a destination now, not a pass-through, and the same is true everywhere else. If your story lives in one place, there's nothing for a model to find repeated and consistent enough to trust.",
-     "steps": [
-      "Take your single best-performing claim and rewrite it natively for one new channel this month",
-      "Pick the channel your buyers actually spend time in, not the easiest one for your team",
-      "Keep the core facts identical across every version, only the format changes"
-     ]
-    },
-    "mid": {
-     "headline": "You're distributing, now make it the same story",
-     "text": "Multiple channels with a drifting story is close to worse than one channel with a consistent one. A model trusts signals that repeat consistently across sources, not signals that contradict each other slightly in each place.",
-     "steps": [
-      "Write down your core story once, in one paragraph, and check your last 5 pieces against it",
-      "Get SEO/content and PR/social on one shared calendar for at least your top 3 stories a quarter",
-      "Add one more native channel from the six, prioritizing the one where the story is weakest"
-     ]
-    },
-    "high": {
-     "headline": "You're building the kind of repetition an LLM remembers",
-     "text": "If SEO teams stay siloed from PR, social, and influencer, half the game is already lost — you're clearly not in that half. Keep protecting the discipline of one story in many forms.",
-     "steps": [
-      "Audit whether all six channels still say the same core facts, since teams drift over time",
-      "Add a new format only after confirming the existing ones haven't diverged",
-      "Use the channel with the strongest signal as the template for onboarding any new team member"
-     ]
-    }
-   }
-  },
-  {
-   "id": "measuring_like_a_probabi",
-   "name": "Measuring Like a Probability Engine",
-   "questions": [
-    {
-     "id": "measuring_like_a_probabi_q1",
-     "text": "How often do you actually check your brand's presence in AI search answers?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Never, it's not tracked",
-       "score": 1
-      },
-      {
-       "label": "A few times a year",
-       "score": 2
-      },
-      {
-       "label": "Monthly",
-       "score": 3
-      },
-      {
-       "label": "Weekly",
-       "score": 4
-      },
-      {
-       "label": "Daily or near-daily, because I treat it as a probability, not a fixed rank",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "checks",
+     "id": "hourly_rate",
      "type": "number",
-     "text": "In an average month, how many separate times do you or your tool check where your brand shows up in AI answers (ChatGPT, Gemini, Perplexity, AI Overviews)?",
-     "hint": "AI search is a probability engine, not a fixed ranking — a single monthly check treats a probability like it's a permanent score. There are about 30 days in a month; count actual check events, up to daily.",
-     "suffix": "checks/month",
-     "min": 0,
-     "max": 30,
-     "step": 1,
-     "default": 4,
-     "normalize_formula": "Math.min(100, (x/30)*100)"
-    },
-    {
-     "id": "measuring_like_a_probabi_q3",
-     "text": "If checking more often meant a higher monitoring bill, what would you actually do?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Cut back to monthly or less to save cost, without really weighing the tradeoff",
-       "score": 1
-      },
-      {
-       "label": "Keep it as-is, I haven't thought about the tradeoff",
-       "score": 2
-      },
-      {
-       "label": "Ask for more budget with no clear case for why",
-       "score": 3
-      },
-      {
-       "label": "Weigh the cost against the pattern I'd lose visibility into, then decide",
-       "score": 4
-      },
-      {
-       "label": "I can explain exactly why my current frequency is worth its cost, in terms of what pattern it protects",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "text": "What hourly rate should this time be valued at?",
+     "hint": "Use your own loaded rate or your team's. We'll multiply this by the hours above, then by 52 weeks, to show the yearly cost of doing this by hand.",
+     "suffix": "$/hr",
+     "min": 10,
+     "max": 500,
+     "step": 5,
+     "default": 60,
+     "normalize_formula": "50 + (x*0)"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "You're measuring a probability engine like a scoreboard",
-     "text": "The same prompt gives you a different answer structure across runs — the order of brands in that answer matches less than 1% of the time. Checking once a month tells you almost nothing about the pattern underneath.",
+     "headline": "You're checking a rank that doesn't exist anymore",
+     "text": "AI search runs on probability. It never held a fixed position to begin with. Checking once a month tells you almost nothing about the pattern. Start smaller and more often instead of bigger and more rare.",
      "steps": [
-      "Move your check cadence from monthly to weekly for your top 3 buyer questions",
-      "Log the raw answers, not just a yes/no on mention, so you can see the pattern shift",
-      "Decide the frequency based on what pattern you'd miss, not just what's cheapest"
+      "Pick five prompts that matter most to your business",
+      "Check them at least weekly, ideally daily, and log what changes",
+      "Add sentiment and reasoning to what you track, alongside whether you appear at all"
      ]
     },
     "mid": {
-     "headline": "You're checking, now check like it's a probability",
-     "text": "Weekly is progress, but AI visibility moves faster than a weekly snapshot can catch. The choice to check less often should be a stated tradeoff, not a default made to save cost.",
+     "headline": "You have a snapshot, you need a pattern",
+     "text": "Weekly or monthly checks tell you where you stood on one day. The pattern, how often you show up and in what shape, is the number that predicts what happens next.",
      "steps": [
-      "Move your highest-priority questions to daily checks for one month and compare the pattern to your weekly data",
-      "Write down, in one sentence, what you'd lose by staying at your current frequency",
-      "Present that tradeoff to whoever controls the monitoring budget, instead of quietly downgrading"
+      "Move your check-in cadence from monthly to weekly, then weekly to daily on your top prompts",
+      "Add sentiment and reasoning next to the accuracy number you already track",
+      "Use your hours and rate above to decide if a shorter check-in cycle is worth the added cost"
      ]
     },
     "high": {
-     "headline": "You're tracking probability, not position",
-     "text": "This is the standard I hold every client to: near-daily checks, because a single point-in-time rank tells you almost nothing about a probability engine. Keep the discipline even when budget pressure shows up.",
+     "headline": "You're already tracking visibility rate, put that lead to use",
+     "text": "Daily tracking across accuracy, sentiment and reasoning puts you ahead of most brands still staring at a rank that doesn't apply anymore. Use that lead to catch a wrong claim before a customer repeats it back to you.",
      "steps": [
-      "Extend daily monitoring to your next tier of buyer questions, not just the top 3",
-      "Re-verify quarterly that your stated reason for the frequency still holds",
-      "Share the pattern data with product and PR so it informs more than just SEO reporting"
+      "Set an alert for when an outdated or wrong claim about you appears",
+      "Share the pattern, not the snapshot, with whoever owns the affected product",
+      "Automate the repetitive part of this check to shrink the manual hours above"
      ]
     }
    }
   },
   {
-   "id": "the_human_20",
-   "name": "The Human 20%",
+   "id": "distribution_the_context",
+   "name": "Distribution & the Context Layer",
    "questions": [
     {
-     "id": "the_human_20_q1",
-     "text": "When your team debates a content or SEO decision, what usually settles it?",
+     "id": "distribution_the_context_q1",
+     "text": "Is your core brand story told the same way across YouTube, Reddit, LinkedIn, press and your own site?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Whoever is most senior in the room",
+       "label": "We only have our own site, nothing else carries the story",
        "score": 1
       },
       {
-       "label": "Whatever tool or dashboard number looks best",
+       "label": "We're on a few other channels, but the story changes depending on who wrote it",
        "score": 2
       },
       {
-       "label": "A mix of data and gut, applied inconsistently",
+       "label": "The facts agree everywhere, but the framing shifts channel to channel",
        "score": 3
       },
       {
-       "label": "Data first, but a person makes the final call on taste and context",
+       "label": "The story is consistent across most channels, with small gaps",
        "score": 4
       },
       {
-       "label": "We deliberately protect time for taste, the right question, and real-world nuance — the parts a model can't pattern-match",
+       "label": "The same core story repeats across our site, press, community and social in different formats, and we treat that repetition as the signal AI trusts",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "the_human_20_q2",
-     "text": "Is your original data (studies, proprietary numbers, first-hand research) something AI could actually cite, or is your content mostly synthesis of what's already out there?",
+     "id": "distribution_the_context_q2",
+     "text": "For the topics you most want to win, do you run a repeatable cycle of making a claim, backing it with proof, and spreading it across channels?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Almost entirely synthesized from other sources, no original data",
+       "label": "We don't have a defined list of topics we're trying to win",
        "score": 1
       },
       {
-       "label": "Mostly synthesis, with a little original data buried inside",
+       "label": "We have a list, but nothing systematic happens after we publish",
        "score": 2
       },
       {
-       "label": "Some original data exists, but it's not packaged to be easily cited",
+       "label": "We publish and back claims with proof, but distribution stays ad hoc",
        "score": 3
       },
       {
-       "label": "Regular original data, clearly sourced and easy to find",
+       "label": "We run the claim, proof and spread cycle for a few priority topics",
        "score": 4
       },
       {
-       "label": "Original data is a core, repeated pillar of our content, clearly attributed and refreshed",
+       "label": "We run this cycle deliberately for the topics we picked to win, and can name the proof behind each claim",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "the_human_20_q3",
-     "text": "Is your brand's public data something an AI agent could reliably access, transact with, and interoperate with, or is it built only for a human clicking through pages?",
+     "id": "distribution_the_context_q3",
+     "text": "Roughly how much of your team's time goes into the context layer, the reviews, forums, comparison sites and community answers around your own content?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Built purely for human page-clicking, no thought given to agent access",
+       "label": "All our time goes into our own site, we don't touch anything outside it",
        "score": 1
       },
       {
-       "label": "We've heard this matters but haven't looked into it",
+       "label": "We occasionally respond on review sites when something goes wrong",
        "score": 2
       },
       {
-       "label": "Basic structured data exists, nothing built for agent transactions",
+       "label": "We spend some time here, under a quarter of our effort",
        "score": 3
       },
       {
-       "label": "Structured data plus some API or feed access exists",
+       "label": "We spend close to half our time here",
        "score": 4
       },
       {
-       "label": "We've deliberately designed for accessible, securely transactable, interoperable access, not just human browsing",
+       "label": "We treat this as a major share of the work, because this is where AI decides what to trust",
        "score": 5
       }
      ],
@@ -543,30 +333,268 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You've left the 20% to the machine too",
-     "text": "AI can handle the middle 80%, pattern matching. The 20% at either end, taste, the right question, real-world nuance, still needs a person. If dashboards or hierarchy are settling every call, that 20% isn't happening.",
+     "headline": "One channel cannot carry your whole story",
+     "text": "If your site is the only place your story lives, AI has one source to trust or distrust. Pick your strongest story and put a version of it in three more places before you build anything new.",
      "steps": [
-      "Name one person whose job is explicitly to apply taste and context before publishing, not just approve",
-      "Add one piece of original data or first-hand observation to your next 3 pieces of content",
-      "Ask your dev team one question: could an outside system read our product data without a human clicking through?"
+      "Choose the one story you most want AI to repeat about you",
+      "Publish a version of it on one channel outside your own site this month",
+      "Keep the facts identical across every version, even as the format changes"
      ]
     },
     "mid": {
-     "headline": "The judgment layer exists, now make it visible to AI",
-     "text": "You've got some original data and some human judgment in the mix. The gap is usually packaging: original data that isn't citeable, or a site that isn't built for anything but a human visitor.",
+     "headline": "Same facts, different framing",
+     "text": "Your facts already agree across channels, though the framing shifts depending on who wrote it. Tighten the framing so every channel expresses the same message, just in a different format.",
      "steps": [
-      "Package your existing original data into a clearly sourced, standalone page or dataset",
-      "Add basic structured data (schema markup) to your key product and evidence pages if it's missing",
-      "Protect a recurring slot on the calendar for judgment-only review, separate from production"
+      "Write one short version of your core story that every channel has to match",
+      "Review your last five pieces of content across channels against that version",
+      "Run one claim through the full cycle: state it, back it with proof, spread it"
      ]
     },
     "high": {
-     "headline": "You're set up for the agent-as-user shift",
-     "text": "This is close to the direction I flagged from SEOWeek: the agent is the new user, and your site needs to be accessible, safely transactable, and interoperable, not just readable. Keep investing in the human 20% as the differentiator.",
+     "headline": "You're repeating the story, keep picking your topics on purpose",
+     "text": "You already treat repetition as a signal. Make sure it's aimed at the topics you actually want to win, not the topics that were easy to publish.",
      "steps": [
-      "Test whether an AI agent can actually complete a real transaction or lookup on your site end to end",
-      "Keep a running log of the original data you publish so it doesn't quietly stop after the first push",
-      "Protect the human judgment layer explicitly as automation increases, don't let it erode by default"
+      "Confirm your list of topics you're deliberately trying to win still matches your business priorities",
+      "Check that the claim-proof-spread cycle runs for each of them, not just your favorites",
+      "Retire a topic from the list once you can no longer back the claim with proof"
+     ]
+    }
+   }
+  },
+  {
+   "id": "agent_readiness",
+   "name": "Agent Readiness",
+   "questions": [
+    {
+     "id": "agent_readiness_q1",
+     "text": "If an AI shopping agent tried to check your pricing or availability directly, instead of a person browsing your site, what would happen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing but a person clicking through pages can get that information",
+       "score": 1
+      },
+      {
+       "label": "The information exists, but only in a format built for human eyes (PDF, image, chat widget)",
+       "score": 2
+      },
+      {
+       "label": "Some of it is available in a structured, machine-readable form",
+       "score": 3
+      },
+      {
+       "label": "Most of our product and pricing data is available in a structured form an agent could read",
+       "score": 4
+      },
+      {
+       "label": "An agent could read our data, complete a transaction safely and reconcile it with other systems, we've tested this",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "agent_readiness_q2",
+     "text": "Where does your current funnel put the moment a customer closely evaluates your options against alternatives?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We assume a person does this step every time",
+       "score": 1
+      },
+      {
+       "label": "We haven't thought about who or what does this step",
+       "score": 2
+      },
+      {
+       "label": "We know some of this evaluation now happens inside an AI answer, but haven't changed anything",
+       "score": 3
+      },
+      {
+       "label": "We've started shaping content specifically for that evaluation step",
+       "score": 4
+      },
+      {
+       "label": "We design for a step where an AI evaluates and a person only confirms at the end, and we've adjusted our content for it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "agent_readiness_q3",
+     "text": "How prepared is your site for a non-human visitor, something other than a search bot or a person?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We've never considered this",
+       "score": 1
+      },
+      {
+       "label": "We know it's coming but haven't audited anything",
+       "score": 2
+      },
+      {
+       "label": "We've checked whether our site blocks or allows known AI crawlers",
+       "score": 3
+      },
+      {
+       "label": "We've reviewed structured data, access and basic security for automated visitors",
+       "score": 4
+      },
+      {
+       "label": "Our site is reachable, safe to transact with and compatible with outside systems for an automated visitor",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your site was built for a person, not for what's coming next",
+     "text": "An AI agent can't read a PDF catalog. Start where the cost of skipping this is highest, your pricing and availability, and make that machine-readable first.",
+     "steps": [
+      "Pick your single most-requested piece of information (pricing, availability, specs)",
+      "Publish it in a structured, machine-readable format",
+      "Test whether a basic AI agent can retrieve it correctly"
+     ]
+    },
+    "mid": {
+     "headline": "Some of your data is ready for an agent, most isn't",
+     "text": "Partial structured data is a start. An agent that hits a wall on your site will simply move to a competitor that built one that works.",
+     "steps": [
+      "List which product or service data is still trapped in an image, PDF or chat-only format",
+      "Structure the highest-traffic pages first",
+      "Check basic transaction security for a non-human visitor, not only a human one"
+     ]
+    },
+    "high": {
+     "headline": "You're built for agents, now prove it holds",
+     "text": "Being reachable and structured for an agent puts you ahead of most of the market. Confirm it actually works end to end, not only in theory.",
+     "steps": [
+      "Run an end-to-end test of an agent completing a real task on your site",
+      "Reconcile what the agent reports back against your own records",
+      "Repeat this test whenever pricing or catalog structure changes"
+     ]
+    }
+   }
+  },
+  {
+   "id": "trust_team_structure_dat",
+   "name": "Trust, Team Structure & Data Ownership",
+   "questions": [
+    {
+     "id": "trust_team_structure_dat_q1",
+     "text": "Where does your search and SEO team sit relative to PR, social and content teams?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Completely separate, we rarely talk",
+       "score": 1
+      },
+      {
+       "label": "We loop each other in occasionally, with no shared plan",
+       "score": 2
+      },
+      {
+       "label": "We coordinate on big launches only",
+       "score": 3
+      },
+      {
+       "label": "We share a plan for most major topics",
+       "score": 4
+      },
+      {
+       "label": "Search, PR, social and content run from one shared plan",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "trust_team_structure_dat_q2",
+     "text": "When you publish data or a claim you want AI to cite, where does it originate?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We mostly summarize what's already publicly known",
+       "score": 1
+      },
+      {
+       "label": "A mix of original and secondhand material, with no clear rule",
+       "score": 2
+      },
+      {
+       "label": "Original material for our biggest claims only",
+       "score": 3
+      },
+      {
+       "label": "Most of what we publish is original, with sources named",
+       "score": 4
+      },
+      {
+       "label": "We treat original data with a named source and a human point of view as what AI can actually trust and repeat",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "trust_team_structure_dat_q3",
+     "text": "Do you think of your search data (rankings, mentions, citations) as a report you send, or an asset you build?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A report, we send it and move on",
+       "score": 1
+      },
+      {
+       "label": "Mostly a report, though we keep the raw files",
+       "score": 2
+      },
+      {
+       "label": "We keep and organize it, but nobody outside the team uses it",
+       "score": 3
+      },
+      {
+       "label": "Other teams pull from it when they need to",
+       "score": 4
+      },
+      {
+       "label": "We collect, clean and share it as an asset the whole company can use",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "A split team already gives up half the game",
+     "text": "When search, PR, social and content don't share a plan, AI sees a fragmented version of you, because that's what actually exists. Start with one shared meeting before you build one shared plan.",
+     "steps": [
+      "Put search, PR, social and content in the same room for your next major topic",
+      "Agree on one story before any of them publish",
+      "Name original data you already own but haven't published anywhere"
+     ]
+    },
+    "mid": {
+     "headline": "You coordinate sometimes, make it the default",
+     "text": "Occasional coordination on big launches leaves everything else disconnected. Widen what counts as worth coordinating on.",
+     "steps": [
+      "Add a standing check-in between search and content before publishing",
+      "Turn your search data into something another team pulls from, beyond a report you send",
+      "Commit to one original data source you can publish on a regular schedule"
+     ]
+    },
+    "high": {
+     "headline": "You treat search data as an asset, keep proving it",
+     "text": "Shared planning and original data are what AI ends up trusting and repeating. It stopped being a one-time report a while ago, protect that by keeping the pipeline clean as you scale it.",
+     "steps": [
+      "Confirm every team pulling from your search data understands what it means",
+      "Keep naming a human source behind your original data",
+      "Revisit team structure whenever headcount changes enough to re-create a silo"
      ]
     }
    }
@@ -589,40 +617,40 @@
  },
  "computed_outputs": [
   {
-   "id": "blind-days",
-   "label": "Days per month your brand's AI visibility goes unchecked",
-   "format": "integer",
-   "formula": "30 - checks",
+   "id": "weekly-manual-cost",
+   "label": "Weekly cost of manual AI-visibility checks",
+   "format": "currency_per_period",
+   "formula": "manual_check_hours * hourly_rate",
    "show_in_result": true
   },
   {
-   "id": "channel-gap",
-   "label": "Trust-signal channels missing from your distributed story",
-   "format": "integer",
-   "formula": "6 - channels",
+   "id": "annual-manual-cost",
+   "label": "Yearly cost if this stays manual",
+   "format": "currency",
+   "formula": "manual_check_hours * hourly_rate * 52",
    "show_in_result": true
   }
  ],
  "schema_version": "v2",
  "persona_selector": {
   "id": "role",
-  "text": "Which best describes you?",
+  "text": "Which best describes your seat right now?",
   "answers": [
    {
-    "label": "In-house SEO/marketing lead at a brand",
-    "tag": "in_house_lead"
+    "label": "I run SEO or GEO in-house for one brand",
+    "tag": "inhouse"
    },
    {
-    "label": "Agency or consultant advising multiple brands",
-    "tag": "agency_consultant"
+    "label": "I run an agency or consult across multiple brands",
+    "tag": "agency"
    },
    {
-    "label": "Founder or brand owner without a dedicated SEO team",
-    "tag": "founder_brand_owner"
+    "label": "I own the marketing or brand function, SEO is one part of my job",
+    "tag": "brand_owner"
    },
    {
-    "label": "SEO/content specialist executing someone else's strategy",
-    "tag": "seo_specialist"
+    "label": "I am a founder and search is mostly something I read about, not run",
+    "tag": "founder"
    }
   ]
  }
