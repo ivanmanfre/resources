@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: e29f1cc75a0c1b684d866079228a17e62fb5fdf0 at 2026-09-14T11:14:31.443Z
+Deploy: 6f0ddc63f863e643c3e9c35cd92b7cd2ea11cf6c at 2026-09-17T06:03:46.346Z
 
-- alex-napier-holland-21-assessment: data.json HTTP 404
+- yunhee-choi-87-assessment: data.json HTTP 404
