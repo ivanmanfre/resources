@@ -814,7 +814,14 @@
       if (!embedMode) {
         if (data.cta && data.cta.url) {
           var cta = make("div", { class: "lmc-cta-box" });
-          cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener"><span class="lmc-cta-btn-text">' + esc(data.cta.button || "Book Strategy Call") + '</span></a>';
+          // 2026-09-18 (goal-run lm-own-side-attribution, D4). Every other engine routes its
+          // data-supplied CTA through LM.normalizeCtaUrl (assessment.js:1119, architecture.js:676,
+          // ai-walkthrough.js:334, n8n-workflow.js:142, stack-picker.js:398); this one rendered
+          // data.cta.url raw, so the 55 *-assessment pages sent every booking to Calendly with no
+          // attribution at all. Same destination, utm_* only. Fail-soft: if shared.js has not
+          // loaded, the raw url is used exactly as before.
+          var ctaUrl = (window.LM && window.LM.normalizeCtaUrl) ? window.LM.normalizeCtaUrl(data.cta.url, "closing-cta") : data.cta.url;
+          cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(ctaUrl) + '" target="_blank" rel="noopener"><span class="lmc-cta-btn-text">' + esc(data.cta.button || "Book Strategy Call") + '</span></a>';
           unl.appendChild(cta);
           if (window.LM && window.LM.editMode) {
             var ctaH3 = cta.querySelector("h3");

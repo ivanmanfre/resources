@@ -51,5 +51,28 @@
   </div>
 </main>
 <footer class="im-footer">&copy; 2026 Ivan Manfredi &nbsp;·&nbsp; <a href="https://ivanmanfredi.com">ivanmanfredi.com</a></footer>
+<script>
+/* 2026-09-18 (goal-run lm-own-side-attribution, D5). This page loads no shared.js, so its
+   fit-call link went to Calendly with an empty `tracking` object and both lm_attribution
+   writers skipped the booking (each needs utm_source in ('lm-resource','lm') plus a
+   utm_campaign). The page DOES know its lead magnet: landing.js:196 sends the reader here
+   as /thanks/?lm=<slug>. Query string only — the href's host and path are untouched, so
+   the destination account is unchanged, and no visible text changes. Fail-soft: no ?lm,
+   an unparseable href or an already-tagged url all leave the link exactly as authored. */
+(function () {
+  try {
+    var slug = new URLSearchParams(location.search).get("lm");
+    if (!slug) return;
+    var a = document.querySelector('a.cta[href*="calendly.com"]');
+    if (!a) return;
+    var u = new URL(a.getAttribute("href"), location.href);
+    if (u.searchParams.get("utm_source")) return;
+    u.searchParams.set("utm_source", "lm-resource");
+    u.searchParams.set("utm_medium", "thanks");
+    u.searchParams.set("utm_campaign", slug);
+    a.setAttribute("href", u.toString());
+  } catch (_) { /* never break the page for a tracking parameter */ }
+})();
+</script>
 </body>
 </html>

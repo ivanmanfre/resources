@@ -312,8 +312,32 @@
   // Rewrite data-supplied CTA URLs that point at the retired ivan-intelligents
   // Calendly account (30 published data.json files carry it) to the canonical
   // callUrl(). Never touches other URLs — prospect-owned embed CTAs pass through.
+  // 2026-09-18 (goal-run lm-own-side-attribution, D3). A CTA already pointing at the
+  // canonical im-ivanmanfredi account fell through this function untagged — 55 published
+  // data.json files carry that URL — so the booking reached Calendly with an empty
+  // `tracking` object and both lm_attribution writers (the calendly-webhook edge fn and
+  // the reconcile poller) skipped it: each requires utm_source in ('lm-resource','lm')
+  // and a utm_campaign. Measured 2026-09-18: 0 real bookings in 180 days carried an LM
+  // signal. Add the same utm_* keys callUrl() sets, to the SAME url — host, path and any
+  // existing query params are preserved, so the destination account is unchanged (moving
+  // an account is D1/D2, not this). A url that already carries utm_source is left as is.
+  function tagCalendlyUrl(url, medium) {
+    try {
+      var u = new URL(url);
+      if (u.searchParams.get("utm_source")) return url;
+      u.searchParams.set("utm_source", "lm-resource");
+      u.searchParams.set("utm_medium", medium || "closing-cta");
+      u.searchParams.set("utm_campaign", window.__lm_slug || "lm");
+      u.searchParams.set("utm_content", readerIdentity().session_id);
+      return u.toString();
+    } catch (_) {
+      return url;
+    }
+  }
+
   function normalizeCtaUrl(url, medium) {
     if (url && /calendly\.com\/ivan-intelligents/i.test(url)) return callUrl(medium || "closing-cta");
+    if (url && /calendly\.com\/im-ivanmanfredi/i.test(url)) return tagCalendlyUrl(url, medium);
     return url;
   }
 
