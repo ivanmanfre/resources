@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 6fcfed564d77fc1e9063b13a292b830775de15b7 at 2026-09-18T03:08:35.880Z
+Deploy: 9159e8bcd3d1b522adaab0a95aa2971cf6d4158b at 2026-09-18T19:06:34.836Z
 
-- yisan-lee-be-assessment: data.json HTTP 404
+- jeff-kratzer-c0-assessment: data.json HTTP 404
