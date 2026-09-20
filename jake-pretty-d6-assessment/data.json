@@ -1,0 +1,648 @@
+{
+ "slug": "jake-pretty-d6-assessment",
+ "title": "The Warm Signal Score",
+ "subtitle": "A short check on whether you're working the buyers already near you, or still guessing cold.",
+ "brand": {
+  "accent": "#d86b07",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "signal_capture",
+   "name": "Signal Capture",
+   "questions": [
+    {
+     "id": "signal_capture_q1",
+     "text": "When someone visits your website, reads a case study, and leaves without filling in a form, what happens next at your company?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing. We never know they were there.",
+       "score": 1
+      },
+      {
+       "label": "It sits in an analytics tool nobody actually opens.",
+       "score": 2
+      },
+      {
+       "label": "We can see the company name if someone checks the dashboard.",
+       "score": 3
+      },
+      {
+       "label": "We get an alert with the company, and someone reviews it that week.",
+       "score": 4
+      },
+      {
+       "label": "We get the company, find the actual person who'd own the decision, and message them the same day.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "signal_capture_q2",
+     "text": "Someone liked or commented on one of your posts, especially one you paid to boost. What happens to that person?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing. The post already did its job by getting a reaction.",
+       "score": 1
+      },
+      {
+       "label": "We notice the name if it's someone big, otherwise it's forgotten.",
+       "score": 2
+      },
+      {
+       "label": "We keep a rough list somewhere but rarely act on it.",
+       "score": 3
+      },
+      {
+       "label": "We check if they match our buyer profile before doing anything.",
+       "score": 4
+      },
+      {
+       "label": "We check they match our buyer profile and run them through outreach within the week.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "signal_capture_q3",
+     "text": "A company in your target market posts a job for a role tied to the problem you solve. Do you know about it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No. We don't track job posts at all.",
+       "score": 1
+      },
+      {
+       "label": "We might notice by chance if someone happens to see it.",
+       "score": 2
+      },
+      {
+       "label": "Someone occasionally checks job boards for a few target accounts.",
+       "score": 3
+      },
+      {
+       "label": "We track hiring signals for our named target accounts.",
+       "score": 4
+      },
+      {
+       "label": "We treat a hiring signal as a real, budgeted need and reach out fast.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_website_visitors",
+     "type": "number",
+     "text": "Roughly how many people visit your website in an average month?",
+     "hint": "Jake's number: only 3 percent of visitors ever fill in a form or download something. The other 97 percent leave without a name.",
+     "suffix": "visitors/mo",
+     "min": 0,
+     "max": 100000,
+     "step": 100,
+     "default": 2000,
+     "normalize_formula": "Math.min(x/5000,1)*100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're losing people the moment they leave.",
+     "text": "Most of your traffic closes the tab and you never know it happened. The visit cost you nothing. Missing it is what costs you.",
+     "steps": [
+      "Put a visitor identification tag on your site this week.",
+      "Set up an alert so a real person sees new company visits.",
+      "Write down the two or three visit types worth acting on, like a second visit or a long session on the pricing page."
+     ]
+    },
+    "mid": {
+     "headline": "You catch some visits. Most of the traffic still gets away.",
+     "text": "You see the traffic when someone remembers to check. A company that visited twice and looked at pricing needs a person on it inside the week.",
+     "steps": [
+      "Move visitor alerts into a tool your team opens every day, not a separate dashboard.",
+      "Assign one person to review new visits daily.",
+      "Track hiring posts for your top twenty target accounts."
+     ]
+    },
+    "high": {
+     "headline": "You're catching the signal. Keep the discipline.",
+     "text": "You already turn a visit into a name and a message the same week. The next gain is speed and volume.",
+     "steps": [
+      "Push visitor alerts straight into Slack or your CRM so nothing waits for a dashboard check.",
+      "Add hiring signals as a second source feeding the same queue.",
+      "Review weekly what closed and trace it back to the original signal."
+     ]
+    }
+   }
+  },
+  {
+   "id": "finding_the_actual_buyer",
+   "name": "Finding the Actual Buyer",
+   "questions": [
+    {
+     "id": "finding_the_actual_buyer_q1",
+     "text": "Your visitor data gives you a company name from a monthly traffic list. What's your next move?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We message whoever's name we've got, if any.",
+       "score": 1
+      },
+      {
+       "label": "We guess at a job title and hope.",
+       "score": 2
+      },
+      {
+       "label": "We look the company up but aren't sure who to pick.",
+       "score": 3
+      },
+      {
+       "label": "We find the location on the record and check who works there.",
+       "score": 4
+      },
+      {
+       "label": "We find the location, open the company on LinkedIn, filter to that location, and pick the one or two people who'd own the decision.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "finding_the_actual_buyer_q2",
+     "text": "How much of your monthly traffic list actually gets worked?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None of it. It sits in a dashboard.",
+       "score": 1
+      },
+      {
+       "label": "Whatever's left after someone skims it once.",
+       "score": 2
+      },
+      {
+       "label": "Roughly half, when someone has time.",
+       "score": 3
+      },
+      {
+       "label": "Most of it, after we cut recruiters, students, and competitors first.",
+       "score": 4
+      },
+      {
+       "label": "All of the qualified names, every single week.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "finding_the_actual_buyer_q3",
+     "text": "A list comes in mixed with recruiters, students, your own team, and competitors alongside the real buyers. What do you do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Work the whole list as it comes.",
+       "score": 1
+      },
+      {
+       "label": "Skip the obviously wrong ones as we go.",
+       "score": 2
+      },
+      {
+       "label": "Someone cleans it up occasionally.",
+       "score": 3
+      },
+      {
+       "label": "We filter to our buyer profile before anyone touches it.",
+       "score": 4
+      },
+      {
+       "label": "We filter to our buyer profile first, every single week, before anyone looks at a name.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Names on a list aren't buyers yet.",
+     "text": "A company on a list isn't a buyer, and neither is whoever happened to click through. Selling to the wrong person on the right account still loses the deal.",
+     "steps": [
+      "Take the location on each company record and open the company on LinkedIn.",
+      "Filter to that location and find who'd actually own the decision.",
+      "Message that person, not the visitor."
+     ]
+    },
+    "mid": {
+     "headline": "You're filtering some of it. Do it every time.",
+     "text": "A rough clean up once in a while leaves the real buyer sitting in a pile of recruiters and students. The filter has to run before anyone reads the list, every time.",
+     "steps": [
+      "Filter every list to your buyer profile before anyone touches it.",
+      "Cut recruiters, students, competitors, and your own team out first.",
+      "Work whatever's left in full, every week."
+     ]
+    },
+    "high": {
+     "headline": "You're finding the right person on purpose.",
+     "text": "You filter first, find the real decision maker, and don't waste a message on the wrong title. That discipline is what makes the list worth anything.",
+     "steps": [
+      "Time how long it takes from visit to message and cut it further.",
+      "Check win rate by list source to confirm the filter is still working.",
+      "Feed the same process into every new channel you add."
+     ]
+    }
+   }
+  },
+  {
+   "id": "cold_calling_culture",
+   "name": "Cold Calling Culture",
+   "questions": [
+    {
+     "id": "cold_calling_culture_q1",
+     "text": "How does your team feel about picking up the phone and cold calling?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody on the team calls. We stopped years ago.",
+       "score": 1
+      },
+      {
+       "label": "One or two people call occasionally, reluctantly.",
+       "score": 2
+      },
+      {
+       "label": "We call sometimes but email is the default.",
+       "score": 3
+      },
+      {
+       "label": "Calling is a normal part of the week for most of the team.",
+       "score": 4
+      },
+      {
+       "label": "Calling is the main channel, and the team treats a hard no as useful information.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "cold_calling_culture_q2",
+     "text": "A prospect says 'we already use someone' or 'call me in March' on a cold call. What happens with that?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't get this kind of answer because we don't call.",
+       "score": 1
+      },
+      {
+       "label": "It gets written down somewhere and probably forgotten.",
+       "score": 2
+      },
+      {
+       "label": "The rep remembers it if they happen to work that account again.",
+       "score": 3
+      },
+      {
+       "label": "It goes into the record and shapes the next follow up.",
+       "score": 4
+      },
+      {
+       "label": "It gets logged and changes what we do next, every time.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "cold_calling_culture_q3",
+     "text": "How does a cold email that gets no reply get treated on your team?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "As proof the whole list was bad, so we stop.",
+       "score": 1
+      },
+      {
+       "label": "We don't look into it. We just send more.",
+       "score": 2
+      },
+      {
+       "label": "We notice the number is low but don't dig into why.",
+       "score": 3
+      },
+      {
+       "label": "We check subject lines and timing but can't tell what actually went wrong.",
+       "score": 4
+      },
+      {
+       "label": "We know it fails silently, so calling is how we find out what email can't tell us.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_cold_dials",
+     "type": "number",
+     "text": "How many cold dials does your team actually make in an average week?",
+     "hint": "Jake's benchmark: 100 dials in a day, a handful of real conversations. Five days a week is 500, that's full score here.",
+     "suffix": "dials/week",
+     "min": 0,
+     "max": 2000,
+     "step": 25,
+     "default": 100,
+     "normalize_formula": "Math.min(x/500,1)*100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your team avoids the one channel that tells you the truth.",
+     "text": "Email fails silently. A cold call fails out loud, and a loud no still teaches you something an unopened email never will.",
+     "steps": [
+      "Pick one person to make twenty calls this week, no target beyond that.",
+      "Write down every real objection you hear, word for word.",
+      "Review those objections as a group once a week."
+     ]
+    },
+    "mid": {
+     "headline": "Calling happens sometimes. It isn't the habit yet.",
+     "text": "A rep who calls when they remember to isn't building the skill that comes from doing it daily. The team that calls for six months understands its buyers. The team that only emails understands deliverability.",
+     "steps": [
+      "Set a daily call number per rep and track it.",
+      "Log every objection in one shared place.",
+      "Review objection patterns monthly and adjust the opener."
+     ]
+    },
+    "high": {
+     "headline": "Calling is the muscle. Keep training it.",
+     "text": "You've built the habit most teams avoid. The objections you're logging now are the edge your competitors don't have, because they stopped picking up the phone.",
+     "steps": [
+      "Turn your most common objection into a line every rep uses.",
+      "Rotate call recordings through the team weekly for coaching.",
+      "Track which objections correlate with deals that close later."
+     ]
+    }
+   }
+  },
+  {
+   "id": "message_and_timing_disci",
+   "name": "Message and Timing Discipline",
+   "questions": [
+    {
+     "id": "message_and_timing_disci_q1",
+     "text": "You know a person visited your website last week. How do you open the conversation with them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We say we noticed them on the site, right in the opener.",
+       "score": 1
+      },
+      {
+       "label": "We mention the visit somewhere in the message.",
+       "score": 2
+      },
+      {
+       "label": "We leave it out of the opener but bring it up later if they ask.",
+       "score": 3
+      },
+      {
+       "label": "We never mention it. We write the same message we'd send any cold lead.",
+       "score": 4
+      },
+      {
+       "label": "We never mention it and use the timing itself as the edge.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "message_and_timing_disci_q2",
+     "text": "When you cold call someone, how do you open?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't cold call.",
+       "score": 1
+      },
+      {
+       "label": "We launch straight into the pitch.",
+       "score": 2
+      },
+      {
+       "label": "We ask an open ended question and hope it lands.",
+       "score": 3
+      },
+      {
+       "label": "We name that it's a cold call and ask for a small amount of time.",
+       "score": 4
+      },
+      {
+       "label": "We either name it and ask permission, or state the real reason straight away, on purpose, every time.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "cold_dm_reply_rate",
+     "type": "number",
+     "text": "Out of 100 cold DMs or emails you send, how many replies do you typically get back?",
+     "hint": "Jake's example: 100 cold DMs a day and 1 reply back is the exact problem he calls out.",
+     "suffix": "replies per 100 sent",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "x"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're giving away your edge in the opener.",
+     "text": "The moment you tell someone you saw them on your site, they stop listening to the message and start wondering how you knew. The visit is for your timing. Keep it out of your opening line.",
+     "steps": [
+      "Remove any mention of the visit from your message templates.",
+      "Write the same message you'd send a cold lead who never visited anything.",
+      "Keep the timing advantage in your head, not in the message."
+     ]
+    },
+    "mid": {
+     "headline": "Half discipline is still a leak.",
+     "text": "Leaving it out of the opener but bringing it up if they ask still gives it away. State the real reason for the message and stop there.",
+     "steps": [
+      "Decide on one opener style, permission based or straight to the reason, and use it every time.",
+      "Drop any reference to the visit from every stage of the sequence.",
+      "Test the same message on visited and non visited leads to check it reads the same."
+     ]
+    },
+    "high": {
+     "headline": "You've kept the advantage where it belongs, in your head.",
+     "text": "You never hand the reveal to the prospect, and you open on purpose every time. That's what keeps the signal on your side.",
+     "steps": [
+      "Track reply rate by opener style to see which one wins for you.",
+      "Keep testing timing windows, same day versus a week later.",
+      "Share the winning opener with the whole team as the default."
+     ]
+    }
+   }
+  },
+  {
+   "id": "staying_in_front_of_buye",
+   "name": "Staying in Front of Buyers",
+   "questions": [
+    {
+     "id": "staying_in_front_of_buye_q1",
+     "text": "You post on LinkedIn and it gets a handful of reactions. What do you make of that?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We stop posting. It's clearly not working.",
+       "score": 1
+      },
+      {
+       "label": "We keep posting but expect it to bring in deals right away.",
+       "score": 2
+      },
+      {
+       "label": "We post occasionally, without much of a plan.",
+       "score": 3
+      },
+      {
+       "label": "We keep posting because we know most of it won't land on the right day for the reader.",
+       "score": 4
+      },
+      {
+       "label": "We post consistently, knowing the point is being the first name a buyer thinks of when the problem shows up.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "staying_in_front_of_buye_q2",
+     "text": "A company reaches out to you on their own, having never spoken to you before. How often does that happen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never. Every deal starts because we went and got it.",
+       "score": 1
+      },
+      {
+       "label": "Almost never, maybe once a year by accident.",
+       "score": 2
+      },
+      {
+       "label": "Occasionally, and we're not sure why.",
+       "score": 3
+      },
+      {
+       "label": "A handful of times a year, usually tied to something we posted.",
+       "score": 4
+      },
+      {
+       "label": "Regularly enough that we track it as its own source of pipeline.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're judging noise by a demo it was never meant to book.",
+     "text": "A post with ten reactions and no deal still does its job. It plants your name for the day the problem shows up for that reader.",
+     "steps": [
+      "Commit to posting on a fixed schedule for the next twelve weeks, no exceptions.",
+      "Write about the exact problem you solve, plainly, every time.",
+      "Stop checking for a deal after every single post."
+     ]
+    },
+    "mid": {
+     "headline": "You're posting. Keep going long enough for it to compound.",
+     "text": "Occasional posting with no plan doesn't build the recognition that makes someone reach out on their own months later. The reach outs come from the posts they forgot they'd read.",
+     "steps": [
+      "Pick a weekly posting cadence and hold it for a full quarter.",
+      "Write down every inbound reach out and what post came before it.",
+      "Keep writing about the same problem, not a new topic every week."
+     ]
+    },
+    "high": {
+     "headline": "It's working. Don't stop when it goes quiet for a stretch.",
+     "text": "You've already had someone reach out with no pitch from you first. That's the compounding effect. It just took longer than a single post to show up.",
+     "steps": [
+      "Keep tracking inbound as its own pipeline source with its own numbers.",
+      "Ask each inbound contact what made them remember you.",
+      "Keep the posting cadence steady even during a slow quarter."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_cold_dials",
+   "label": "Cold dials your team makes in a year",
+   "format": "integer",
+   "formula": "weekly_cold_dials * 52",
+   "show_in_result": true
+  },
+  {
+   "id": "anonymous_visitors_lost_yearly",
+   "label": "Website visitors who leave with no name captured, per year",
+   "format": "integer",
+   "formula": "monthly_website_visitors * 12 * 0.97",
+   "show_in_result": true
+  },
+  {
+   "id": "reply_rate_display",
+   "label": "Your current cold outreach reply rate",
+   "format": "percent",
+   "formula": "cold_dm_reply_rate",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which one are you right now?",
+  "answers": [
+   {
+    "label": "I'm the founder and I still do outbound myself",
+    "tag": "founder"
+   },
+   {
+    "label": "I run a sales team that calls and messages every day",
+    "tag": "sales_leader"
+   },
+   {
+    "label": "I run marketing and send traffic to our website",
+    "tag": "marketer"
+   },
+   {
+    "label": "I'm a rep on the phones and in the DMs daily",
+    "tag": "rep"
+   }
+  ]
+ }
+}
