@@ -1,5 +1,6 @@
 # Resource smoke failures
 
-Deploy: 9159e8bcd3d1b522adaab0a95aa2971cf6d4158b at 2026-09-18T19:06:34.836Z
+Deploy: 8965f64396c4ae53ae2e3e7a6611e862d4ab33d3 at 2026-09-20T16:11:11.489Z
 
-- jeff-kratzer-c0-assessment: data.json HTTP 404
+- jake-pretty-d6-assessment: data.json HTTP 404
+- jake-pretty-d6-assessment: beacon POST HTTP 504
