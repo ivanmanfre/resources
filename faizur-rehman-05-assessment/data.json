@@ -1,0 +1,578 @@
+{
+ "slug": "faizur-rehman-05-assessment",
+ "title": "The Designer's Business Maturity Score",
+ "subtitle": "A self-check on how you price, retain clients, use AI, and run your process, the way a design business actually grows.",
+ "brand": {
+  "accent": "#eb6e47",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "client_fit_pricing",
+   "name": "Client Fit & Pricing",
+   "questions": [
+    {
+     "id": "quote_reaction",
+     "text": "When a lead asks about your rate, what's actually happening in your head?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I panic and quote low so I don't lose them",
+       "score": 1
+      },
+      {
+       "label": "I think about whether they look like a 'big brand' before I price",
+       "score": 2
+      },
+      {
+       "label": "I quote my standard rate and hope they say yes",
+       "score": 3
+      },
+      {
+       "label": "I check if they can pay what I charge, that's the only filter I use",
+       "score": 4
+      },
+      {
+       "label": "I quote my rate, and if they hesitate I explain the result they get for it, not just the deliverable",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "pitch_frame",
+     "text": "How do you talk about your work in a pitch or call?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I show pretty screens and hope they like the visuals",
+       "score": 1
+      },
+      {
+       "label": "I describe the process, wireframes, mockups, revisions",
+       "score": 2
+      },
+      {
+       "label": "I mention the brand will 'look better' after",
+       "score": 3
+      },
+      {
+       "label": "I frame it around what changes in their business, conversions, customers, revenue",
+       "score": 4
+      },
+      {
+       "label": "I show before/after business impact from past work, not just visuals",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "avg_project_price",
+     "type": "number",
+     "text": "What's your average price per project right now?",
+     "hint": "My own line on what 'high-paying' actually means: I want clients who can pay me at least $5k. Enter your typical project fee.",
+     "suffix": "$",
+     "min": 200,
+     "max": 20000,
+     "step": 100,
+     "default": 3000,
+     "normalize_formula": "Math.min(100, (x/5000)*100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're guessing at what 'high-paying' means",
+     "text": "I don't think there's such a thing as a high-paying client. There's just a client who can pay what you charge. If you're still sizing people up by their brand or their follower count, you're solving the wrong problem.",
+     "steps": [
+      "Write down the number you need per project to feel good about it",
+      "Stop screening leads by how big their brand looks",
+      "On your next call, just ask if they can pay your rate, and let that be the whole filter"
+     ]
+    },
+    "mid": {
+     "headline": "You've got the filter, now sell the outcome",
+     "text": "You already know a client is right for you when they can pay your rate. Good. Now the work is making sure they understand what they're buying. Pretty screens don't get you to $5k projects. Business results do.",
+     "steps": [
+      "Pick your last 3 projects and write one line each on what changed for the client's business, not the design",
+      "Use that line in your next pitch instead of describing the process",
+      "Ask every new lead what result they're hoping for before you talk deliverables"
+     ]
+    },
+    "high": {
+     "headline": "You price like someone who's done the math",
+     "text": "You're not chasing 'high-paying,' you're charging what your work is worth and proving it with results, not screens. Keep raising the bar on what counts as your minimum.",
+     "steps": [
+      "Review your rate every quarter, not just when a client pushes back",
+      "Turn your best before/after result into a case study that leads with the business number",
+      "Say no faster to leads who can't meet your price, it's not personal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "retention_referral_relat",
+   "name": "Retention, Referral & Relationship Depth",
+   "questions": [
+    {
+     "id": "post_project_followup",
+     "text": "A project wraps and the client goes quiet. What happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing, I wait for them to reach out if they need more",
+       "score": 1
+      },
+      {
+       "label": "I send the final files and close the thread",
+       "score": 2
+      },
+      {
+       "label": "I check in once, right after delivery, then let it go",
+       "score": 3
+      },
+      {
+       "label": "I follow up about a month later to see how the work is performing",
+       "score": 4
+      },
+      {
+       "label": "I follow up after a month, and I already offered an ongoing package before the project even closed",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ongoing_structure",
+     "text": "How do you structure work with a client who wants more of your time than one project covers?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I quote an hourly rate and bill whatever hours they use",
+       "score": 1
+      },
+      {
+       "label": "I say yes to more work but never formalize it",
+       "score": 2
+      },
+      {
+       "label": "I offer a monthly block, like 20 hours for a flat fee",
+       "score": 3
+      },
+      {
+       "label": "I sell my week, not my hours, since ideas don't take the same time every time",
+       "score": 4
+      },
+      {
+       "label": "I sell the week, and I've drawn a clear line, refinement and support are ongoing, new screens are a new project",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "unasked_problems",
+     "text": "During a project, when do you flag a problem the client didn't ask you to look at?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I stay in my lane, I only do what's in the brief",
+       "score": 1
+      },
+      {
+       "label": "I mention it if it comes up in small talk on a call",
+       "score": 2
+      },
+      {
+       "label": "I flag it if it's clearly going to block the outcome",
+       "score": 3
+      },
+      {
+       "label": "I fix or flag it as soon as I see it, even outside scope",
+       "score": 4
+      },
+      {
+       "label": "I fix or flag it, and I send progress updates before they ever have to ask how it's going",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "scope_creep_hours",
+     "type": "number",
+     "text": "In an average week, how many hours go into unpaid extra revisions or 'quick changes' outside the agreed scope?",
+     "hint": "Round 3: 'actually, go back to version 1.' Round 4: 'my wife prefers blue.' Estimate the hours that eats.",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "Math.max(0, Math.min(100, 100 - x*8))"
+    },
+    {
+     "id": "effective_hourly_rate",
+     "type": "number",
+     "text": "If that scope-creep time were billable, what would you charge per hour?",
+     "hint": "Use your real rate, the one you'd actually put on an invoice.",
+     "suffix": "$/hr",
+     "min": 20,
+     "max": 500,
+     "step": 5,
+     "default": 75,
+     "normalize_formula": "Math.min(100, (x/150)*100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're leaving relationships on the table",
+     "text": "Half my income last year came from people who never saw my portfolio. That doesn't happen by accident, it happens because I follow up, flag problems nobody asked me to flag, and never make a client chase me for a status. If you close a project and go quiet, you're closing doors too.",
+     "steps": [
+      "Send one unprompted status update on your current project this week",
+      "Follow up with your last closed client and ask how the work is performing",
+      "Before your next proposal, offer an ongoing option instead of waiting for them to ask"
+     ]
+    },
+    "mid": {
+     "headline": "You're building relationships, now build the structure",
+     "text": "You're already doing some of the right things. The next step is making it repeatable. Sell the week, not the hour. Set a clear line for what's ongoing support and what's a new project, so you're not stuck answering every ping for free.",
+     "steps": [
+      "Draft one ongoing package, hours or a flat monthly fee, to offer at the end of every project",
+      "Write your own rule for what counts as new scope versus support, so you're not guessing mid-project",
+      "Set a recurring reminder to check in with past clients a month after delivery"
+     ]
+    },
+    "high": {
+     "headline": "Clients don't just pay you, they recruit for you",
+     "text": "This is where referrals come from. You solve what wasn't asked, you update before anyone has to ask, and you check in after the invoice clears. That's not extra effort, that's the actual business.",
+     "steps": [
+      "Track which of your active clients came from a referral, and thank whoever sent them",
+      "Turn your best repeat client into a documented ongoing retainer instead of ad hoc asks",
+      "Keep the scope line firm, growth should come from care, not from free work bleeding into every request"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_fluency_craft_instinc",
+   "name": "AI Fluency & Craft Instincts",
+   "questions": [
+    {
+     "id": "ai_usage",
+     "text": "How do you actually use AI in your design work?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I let it generate the layout and ship close to what it gives me",
+       "score": 1
+      },
+      {
+       "label": "I use it for most of the thinking, then tidy up the output",
+       "score": 2
+      },
+      {
+       "label": "I use it for a chunk of the work but still redo the parts I don't trust",
+       "score": 3
+      },
+      {
+       "label": "I use it to challenge my own work, not do it, it pushes me to better questions",
+       "score": 4
+      },
+      {
+       "label": "I use it to challenge my work, and I can still sketch the concept or judge the balance with it turned off",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "build_skill",
+     "text": "Where are you on turning designs into working product, not just case studies?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I've never opened a build or coding tool, that's someone else's job",
+       "score": 1
+      },
+      {
+       "label": "I've watched tutorials but haven't built anything real",
+       "score": 2
+      },
+      {
+       "label": "I've built one small thing, a todo app, a simple tool, to learn",
+       "score": 3
+      },
+      {
+       "label": "I've built several small working products to sharpen this skill",
+       "score": 4
+      },
+      {
+       "label": "Clients already come to me having built their own rough version and ask me to make it work",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "client_ai_draft",
+     "text": "A client shows up with an AI-generated flow or design already done. What's your reaction?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I feel like my job just got replaced",
+       "score": 1
+      },
+      {
+       "label": "I quietly worry this means fewer projects for me",
+       "score": 2
+      },
+      {
+       "label": "I redo their AI output without thinking much about what it means",
+       "score": 3
+      },
+      {
+       "label": "I see it as the job changing shape, like an accountant checking a tax form someone already filled out",
+       "score": 4
+      },
+      {
+       "label": "I treat it as more opportunity, I take their starting point and go further than they could alone",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're letting the tool think for you",
+     "text": "AI isn't taking your job. But if you can't sketch a concept or judge balance without a prompt, something already left. Use it to challenge your work, not to produce it.",
+     "steps": [
+      "Do your next concept sketch with AI closed, see what your hand and eye still know",
+      "Pick one small tool you could build, a todo app, a simple form, and build it this month",
+      "Ask yourself before every AI output, would I have agreed with this on my own"
+     ]
+    },
+    "mid": {
+     "headline": "You're using it, now set your red lines",
+     "text": "You're not scared of AI, that's good. The next move is deciding what it's allowed to touch. I don't use it to do the work, I use it to push the work further. That line matters more than the tool.",
+     "steps": [
+      "Write down your own 2 to 3 red lines for what AI never does in your process",
+      "Take one client project and build a working version yourself, not just the screens",
+      "When a client brings an AI-generated starting point, treat it as more room to add value, not less"
+     ]
+    },
+    "high": {
+     "headline": "You're doing the job that's actually growing",
+     "text": "You're past 'UI/UX designer' as a label. Clients come to you already having tried their own version and ask you to make it work. That's the new job, and you're already in it.",
+     "steps": [
+      "Keep building small real products, it's the fastest way to stay sharp on this",
+      "Document how you turn a client's AI draft into a better product, most portfolios don't have this story",
+      "Share this shift publicly, most portfolios still only show case studies, wireframes, and sitemaps"
+     ]
+    }
+   }
+  },
+  {
+   "id": "identity_focus_process_d",
+   "name": "Identity, Focus & Process Discipline",
+   "questions": [
+    {
+     "id": "process_start",
+     "text": "Where does a website or design project actually start for you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "With a mood board or visual direction",
+       "score": 1
+      },
+      {
+       "label": "With wireframes",
+       "score": 2
+      },
+      {
+       "label": "With a client call to gather requirements",
+       "score": 3
+      },
+      {
+       "label": "With understanding why they need it and what outcome they want",
+       "score": 4
+      },
+      {
+       "label": "With understanding and copy first, strategy before layout, detailing comes last",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "audience_focus",
+     "text": "How many audiences or offers does your own brand currently speak to?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I mix everything, personal brand, portfolio, and side projects on one page",
+       "score": 1
+      },
+      {
+       "label": "I have one page but it tries to serve a few different audiences",
+       "score": 2
+      },
+      {
+       "label": "I'm aware of the overlap but haven't separated it yet",
+       "score": 3
+      },
+      {
+       "label": "I keep one clear message and one offer per audience",
+       "score": 4
+      },
+      {
+       "label": "I've fully separated my personal brand and portfolio into their own spaces",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sharing_motive",
+     "text": "What's driving your posting or sharing right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I only post when I need leads",
+       "score": 1
+      },
+      {
+       "label": "I track what gets engagement and chase that",
+       "score": 2
+      },
+      {
+       "label": "I post a mix, some for visibility, some for genuine interest",
+       "score": 3
+      },
+      {
+       "label": "I share what I actually care about, without checking if it'll convert",
+       "score": 4
+      },
+      {
+       "label": "I share what I care about, and I've noticed the money follows the impact, not the other way around",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "messy_process",
+     "text": "When you look at your own Figma files or process mid-project, what do you see?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I feel behind because it looks nothing like a finished portfolio piece",
+       "score": 1
+      },
+      {
+       "label": "I clean it up constantly to avoid feeling disorganized",
+       "score": 2
+      },
+      {
+       "label": "I let it get messy but feel a little guilty about it",
+       "score": 3
+      },
+      {
+       "label": "I let it stay messy, mess means I'm exploring, not failing",
+       "score": 4
+      },
+      {
+       "label": "I let it stay messy, and I've stopped comparing my behind-the-scenes to someone else's polished result",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're starting in the wrong place",
+     "text": "If you don't know why someone needs a website or what outcome they want, the website is just a website. Start with understanding, not with a mood board.",
+     "steps": [
+      "Before your next project, write the outcome the client actually wants in one sentence",
+      "Separate your personal brand from your portfolio if they're still mixed in one place",
+      "Let your Figma file get messy, stop cleaning it up to look competent"
+     ]
+    },
+    "mid": {
+     "headline": "You've got a process, now protect it",
+     "text": "You're not just decorating pages anymore, you understand there's a sequence, understanding, then copy, then layout, then detail. Keep that order even when a client wants to jump straight to visuals.",
+     "steps": [
+      "Write your process out in one page so you can explain it before a project starts",
+      "Pick one audience for your own content and stop trying to speak to everyone at once",
+      "Track for a month whether sharing what you actually care about brings more replies than sharing to perform"
+     ]
+    },
+    "high": {
+     "headline": "You work from impact, the money already follows",
+     "text": "You're not chasing engagement or chasing high-paying clients. You're sharing what you care about, keeping one message for one audience, and letting the mess of real work happen without apologizing for it. That's the whole system working.",
+     "steps": [
+      "Keep your personal brand and portfolio separate as your work grows, don't let them blur again",
+      "Revisit your process doc once a year, the sequence stays but the tools underneath will change",
+      "Share your process publicly, most people still think this is a design problem, not a business one"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "scope_creep_annual_cost",
+   "label": "What unpaid scope creep costs you in a year",
+   "format": "currency",
+   "formula": "scope_creep_hours * effective_hourly_rate * 52",
+   "show_in_result": true
+  },
+  {
+   "id": "ideal_client_gap",
+   "label": "Gap between your average project and a $5k client",
+   "format": "currency",
+   "formula": "Math.max(0, 5000 - avg_project_price)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which one are you here for?",
+  "answers": [
+   {
+    "label": "Founder trying to get funded or launch",
+    "tag": "founder"
+   },
+   {
+    "label": "Designer trying to charge more and land better clients",
+    "tag": "designer"
+   },
+   {
+    "label": "Freelancer figuring out ongoing work and referrals",
+    "tag": "freelancer"
+   },
+   {
+    "label": "Both, I design and I sell",
+    "tag": "builder"
+   }
+  ]
+ }
+}
