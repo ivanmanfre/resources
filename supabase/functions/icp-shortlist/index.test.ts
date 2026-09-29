@@ -1,0 +1,7 @@
+import {publicUrl} from '../_shared/icp-shortlist/core.ts';
+import {validateInput} from './index.ts';
+function assert(x:unknown,msg='assertion failed'){if(!x)throw new Error(msg)}
+Deno.test('only public web URL shapes; normalize bare domains',()=>{assert(publicUrl('agency.com')==='https://agency.com/');for(const s of ['http://127.0.0.1','http://2130706433','http://0x7f000001','http://[::1]','http://user:pass@site.com','http://site.local','http://metadata.google.internal','http://site.com:22','file:///etc/passwd','https://','localhost']){let rejected=false;try{publicUrl(s)}catch{rejected=true}assert(rejected,'accepted '+s)}});
+const valid={agency_url:'agency.com',client_url:'client.com',email:' DEMO@agency.com ',service:'Paid social and landing pages',website:'',idempotency_key:'fd1b3b18-d25f-4a70-93a4-9f858345882d',attribution:{utm_source:'linkedin',secret:'should not persist'}};
+Deno.test('valid intake trims and whitelists attribution',()=>{const r=validateInput(valid);assert(r.email==='demo@agency.com');assert(r.agency_url==='https://agency.com/');assert(!('secret' in r.attribution))});
+Deno.test('invalid/abusive intake cannot enqueue',()=>{for(const override of [{email:'no-at'}, {service:'seo'}, {website:'bot'}, {idempotency_key:'fake'}, {client_url:'www.agency.com'}, {agency_url:'localhost'}]){let rejected=false;try{validateInput({...valid,...override})}catch{rejected=true}assert(rejected,JSON.stringify(override))}});
