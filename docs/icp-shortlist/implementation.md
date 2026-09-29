@@ -32,7 +32,7 @@ Report shape {companies:[{name,website,fit,fit_sources:[{url,quote}],finding:{ti
 - [x] Private report handles all terminal states and CSV safely.
 - [x] Live pilot manually reviewed while delivery held: two accepted matches (Adnomics and STRYDE), both with supported fit/finding/current contacts. Report email sent to Ivan and confirmed in Gmail inbox. Public intake and automatic delivery released after this check.
 - [x] Build/screenshots desktop+mobile and real deployed form/private report/email verified.
-- [ ] Fresh public request completes without review hold; launch draft+queue with identical copy/media confirmed for October 7.
+- [x] Fresh public request completed without review hold: one supported match, private report verified and email confirmed in Gmail. Launch draft+queue with identical copy/media confirmed for October 7, 10:45 Warsaw. Existing October 2/5/6/8 slots unchanged.
 
 ## Model and budgets
 
@@ -48,3 +48,9 @@ Migration 003 permits a corrected brief after failed or empty research, while ke
 - First accepted pilot is partial with two matches; no fixed match count or delivery-time promise is published. Email verification was unavailable for those contacts and their emails remain blank.
 - Dedicated cron `icp-shortlist-worker` runs each minute. No n8n workflows or other cron jobs changed.
 - Kill switch for new requests: set `icp_shortlist_settings.enabled=false`. `auto_delivery=false` places future submissions on review hold. Existing jobs retain their submission-time review setting.
+
+## Final release record
+
+Fresh public request `1663215a-4ef3-44d7-bc65-1f82785f52e4` completed as partial with one supported company, Top Growth Marketing. It entered through the deployed browser form as a normal public request, with automatic delivery and no review hold. Gmail confirmed receipt at 23:02 UTC on September 29. Marked `is_test=true` only after successful completion to exclude owner QA from acquisition reporting.
+
+Launch draft `c154638b-5df4-413a-b958-1826455537e9` and pending queue row `af057dc8-2379-4532-9ed4-15f0aa5ab413` both target `2026-10-07T08:45:00Z`, with identical copy and `cover-v4-website.png`. Intake enabled, automatic delivery enabled, maximum 30 requests/day.
