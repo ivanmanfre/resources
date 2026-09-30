@@ -1,0 +1,6 @@
+{
+  "roles": ["founder", "co-founder", "owner", "CEO"],
+  "businesses": ["marketing agency", "creative agency", "consultancy"],
+  "exclusions": ["recruiter", "student"],
+  "locations": []
+}

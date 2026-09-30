@@ -1,0 +1,130 @@
+{
+  "name": "LinkedIn Network Buyer Finder",
+  "version": "2026-09-30",
+  "fictionalPracticeRows": 8,
+  "kitFileCount": 12,
+  "fileCount": 24,
+  "files": [
+    {
+      "path": "app.js",
+      "bytes": 16511,
+      "sha256": "f30d7837dff93561b3148917df08ce8ba17240ddbbde1bbd5caed83d1f512fbe"
+    },
+    {
+      "path": "assets/cover.jpg",
+      "bytes": 326425,
+      "sha256": "edef98d6de2a761b822fb36f04da38da2dc39cbd0c42b0d2ac5fa19260c19e75"
+    },
+    {
+      "path": "assets/fictional-founder.webp",
+      "bytes": 6266,
+      "sha256": "7d325265209454908609d0b51f21a96c8e29fb1b03b3af5746ca9b2ee51224a7"
+    },
+    {
+      "path": "assets/inter-variable.woff2",
+      "bytes": 352240,
+      "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+    },
+    {
+      "path": "assets/manrope.woff2",
+      "bytes": 24576,
+      "sha256": "e310b55a7fd9677f5e3555e6c6c4d064fa1f1d24393f0ddbe217cea12a8c432f"
+    },
+    {
+      "path": "assets/network-to-shortlist.svg",
+      "bytes": 2589,
+      "sha256": "59639f59176a314f5e8da99b912e5565b620e5130d230a733617bb571bb882b6"
+    },
+    {
+      "path": "core.js",
+      "bytes": 13883,
+      "sha256": "1c9d2d7eb2605d7320717c8a6af618fcb5c5096d2dcfbc6ca0c3fcfea4b3adf0"
+    },
+    {
+      "path": "core.test.cjs",
+      "bytes": 10249,
+      "sha256": "e123487f9752d10ccc8ce11d482d5541da8fe45b041112c8a5bbea6f427488f3"
+    },
+    {
+      "path": "data.json",
+      "bytes": 24293,
+      "sha256": "43611fb6bf82a6d0730f4e7ed047664612c061bcc6cbd166f75ff8a880b58e26"
+    },
+    {
+      "path": "index.html",
+      "bytes": 41421,
+      "sha256": "12fb058bd72d00820e0f2d0fd278dc3a022725f59d84324c968894210359eae2"
+    },
+    {
+      "path": "kit/AGENTS.md",
+      "bytes": 1957,
+      "sha256": "83f7cd056e4d4152783d5e59ec9eb692b73e393a87ad284bee9a867392f7f989"
+    },
+    {
+      "path": "kit/ICP-worksheet.md",
+      "bytes": 1940,
+      "sha256": "8f6a4a1ff3f50e42d36f92b8f6b474a7f0ef7ca3a49641c50eadb7b18195845b"
+    },
+    {
+      "path": "kit/README.md",
+      "bytes": 2146,
+      "sha256": "0b3dc0434d80d55132dc78eb7cd44f7d109193e2c297aba85fa9b7ee7ea2799a"
+    },
+    {
+      "path": "kit/SETUP.md",
+      "bytes": 2605,
+      "sha256": "8d1d5d9e5c89a0b9b3fd5eba9c052f68ee14146be39450f203cf7d7919bfa405"
+    },
+    {
+      "path": "kit/buyer-criteria.json",
+      "bytes": 190,
+      "sha256": "8d12f95d1725c9937c028b0afef3078e2e6a0019ebafb5f360762b62ede21b33"
+    },
+    {
+      "path": "kit/connections-template.csv",
+      "bytes": 127,
+      "sha256": "a78b81b0114bad18fbbface6b5c6a5ee68345ac60b95550693cf06ad753ad74d"
+    },
+    {
+      "path": "kit/expected-decisions.md",
+      "bytes": 1488,
+      "sha256": "f6f8a310db60ae5a7f0b41950fc98595a0bf086861ba4c79bdefef5facc4d1d2"
+    },
+    {
+      "path": "kit/fictional-practice.csv",
+      "bytes": 1364,
+      "sha256": "874ce14c70750aa62579e0cb521995097bec7955ecbefad21968371a3dfa06fa"
+    },
+    {
+      "path": "kit/prompts/ambiguous-record-review.md",
+      "bytes": 1501,
+      "sha256": "c24a3e8feb3b4d604aa280d4ea4f7aee4fd718ba450b77be511a00489a334a17"
+    },
+    {
+      "path": "kit/review-playbook.md",
+      "bytes": 3053,
+      "sha256": "a95cfa1495775a8a011ee34756736a33164fdfc4362a5842cac3555afd8bd51f"
+    },
+    {
+      "path": "kit/run-review.cjs",
+      "bytes": 1369,
+      "sha256": "726c63520f8d67c963bfa1de5b92dd03801daf33537185da5c7facd078ab1a7d"
+    },
+    {
+      "path": "kit/usage-and-review-guide.md",
+      "bytes": 2690,
+      "sha256": "fa2ea2802ef5928807843a2e77af40261b4d542e0ad02da75921ea6f7afcb18e"
+    },
+    {
+      "path": "pack.py",
+      "bytes": 4256,
+      "sha256": "c48ca459973896ad9237a3ce0eae50c282423f980bd8cabf70a9b6c631ffdbc1"
+    },
+    {
+      "path": "style.css",
+      "bytes": 20393,
+      "sha256": "c42bbfd3edb2e8f900ca4f818295c70ce36cc715e414ce0c140f92aa582f85a3"
+    }
+  ],
+  "manifestNote": "This manifest lists all archive payload files except manifest.json itself. The ZIP is not nested inside its own payload."
+}
