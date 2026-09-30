@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: aeb6ebdd8862225337cb349024a25548e1f8c133 at 2026-09-22T10:39:03.513Z
+Deploy: 58276df661fa57bcc5d2a2a64b785b2892066345 at 2026-09-30T09:33:57.266Z
 
-- luiza-vass-8c-assessment: data.json HTTP 404
+- story-assessment-selftest-assessment: data.json HTTP 404
