@@ -1,7 +1,7 @@
 {
  "slug": "story-assessment-selftest-assessment",
  "title": "Water Cost Exposure Score",
- "subtitle": "Scores how exposed your planned hotel, senior living or multifamily building is to 20 years of rising water and sewer rates, across rate assumptions, fixture choices, metering and reuse readiness, and",
+ "subtitle": "Scores how exposed your planned hotel, senior living or multifamily building is to 20 years of rising water and sewer rates, before the plumbing is drawn.",
  "brand": {
   "accent": "#116dff",
   "hero_badge": "Interactive Assessment"
@@ -9,215 +9,203 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "rate_assumptions_in_the_",
-   "name": "Rate Assumptions in the Proforma",
+   "id": "rate_assumptions",
+   "name": "Rate Assumptions",
    "questions": [
     {
-     "id": "waterbill",
+     "id": "rate_assumptions_q1",
+     "text": "What annual water and sewer rate increase sits in the proforma for this building today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We carry today's rate flat for the whole hold period",
+       "score": 1
+      },
+      {
+       "label": "We use a general inflation figure, around 2 to 3%",
+       "score": 2
+      },
+      {
+       "label": "We use 4% a year because that's the number everyone uses",
+       "score": 3
+      },
+      {
+       "label": "We use the utility's published plan for the next few years, then 4%",
+       "score": 4
+      },
+      {
+       "label": "We run 4%, 6%, 8% and 10% side by side and set the base case from the local rate plan",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "rate_assumptions_q2",
+     "text": "How well do you know the rate plan of the utility serving this site?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't know which utility sets the sewer rate here",
+       "score": 1
+      },
+      {
+       "label": "I know the current rate and nothing past this year",
+       "score": 2
+      },
+      {
+       "label": "I've seen a headline about increases but haven't read the plan",
+       "score": 3
+      },
+      {
+       "label": "I have the utility's multi-year rate plan in the project file",
+       "score": 4
+      },
+      {
+       "label": "I have the rate plan and the capital program behind it, and I know what's funding the next increase",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "bill",
      "type": "number",
-     "text": "What is the projected year-one water and sewer bill for this building?",
-     "hint": "Use the utility estimate or your MEP engineer's demand model. For scale, a hotel uses about 209 gallons per occupied room per day and senior living about 109 gallons per resident per day. Enter 0 if nobody has estimated it yet.",
-     "suffix": "$ per year",
+     "text": "What is this building's modeled water and sewer bill in its first full year of operation?",
+     "hint": "Use the combined water and sewer number from your proforma. If nobody on the team has modeled it yet, enter 0, and this question scores zero.",
+     "suffix": "$/yr",
      "min": 0,
-     "max": 2000000,
+     "max": 5000000,
      "step": 5000,
      "default": 100000,
      "normalize_formula": "x > 0 ? 100 : 0"
     },
     {
-     "id": "proformarate",
+     "id": "escalation",
      "type": "number",
-     "text": "What annual water and sewer rate increase does your proforma assume?",
-     "hint": "Enter 0 if the model holds water and sewer flat. The scoring gives 10 points per percentage point, so 10% or higher scores full marks, the top of the 4% to 10% range I use in 20-year projections.",
+     "text": "What annual water and sewer increase would you plan on for this site over the next 20 years?",
+     "hint": "Recent rate programs run about 5.5% in Denver, 6% in New York, 7 to 8% in Austin, 13% in Phoenix and up to 18% proposed in St. Louis. 8% or higher scores full marks here.",
      "suffix": "% per year",
-     "min": 0,
-     "max": 20,
-     "step": 1,
-     "default": 3,
-     "normalize_formula": "Math.min(100, x * 10)"
-    },
-    {
-     "id": "localrate",
-     "type": "number",
-     "text": "What is the highest annual water and sewer increase your utility has approved or proposed for the next five years?",
-     "hint": "Check the council or utility rate study and round to the nearest whole percent. Recent examples are Denver at about 5.5%, Charlotte about 6.5% for multifamily, Phoenix up to 13% and St. Louis proposing up to 18%. The scoring subtracts 10 points per percentage point, so a market at 10% or higher scores 0.",
-     "suffix": "% per year",
-     "min": 0,
+     "min": 1,
      "max": 20,
      "step": 1,
      "default": 6,
-     "normalize_formula": "Math.max(0, 100 - x * 10)"
-    },
-    {
-     "id": "rate_assumptions_in_the__q4",
-     "text": "How was the water and sewer escalation rate in your proforma chosen?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "It copies the general inflation line, or water is held flat",
-       "score": 1
-      },
-      {
-       "label": "Someone picked a round number like 3% and nobody has questioned it",
-       "score": 2
-      },
-      {
-       "label": "We used the utility's published increase for next year only",
-       "score": 3
-      },
-      {
-       "label": "We used the utility's multi-year rate plan and ran a higher case",
-       "score": 4
-      },
-      {
-       "label": "We modelled 4%, 6%, 8% and 10% over 20 years and the deal holds at the high case",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "rate_assumptions_in_the__q5",
-     "text": "At 8% a year, the water and sewer bill at year 20 is 4.66 times today's. What happens to this building's NOI when you run that number?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Nobody has run it",
-       "score": 1
-      },
-      {
-       "label": "We ran it and left it out of the investor model",
-       "score": 2
-      },
-      {
-       "label": "We know NOI takes a hit, and the design has not changed because of it",
-       "score": 3
-      },
-      {
-       "label": "The number is in the model and it moved at least one design decision",
-       "score": 4
-      },
-      {
-       "label": "The 8% case is our base underwriting case, and the design reduces potable demand to cover it",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "normalize_formula": "Math.min(100, x / 8 * 100)"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Your proforma has a flat water line on a rising bill",
-     "text": "When I run 20-year ROI projections I used to use 4% a year, and I now think that is too low for a lot of markets. At 4% the bill is 2.19 times today's by year 20. At 8% it is 4.66 times. If your model holds water flat, the gap starts compounding in year one and you will see it in NOI around year eight.",
+     "headline": "Your proforma is carrying a flat water rate",
+     "text": "I used 4% a year in my own 20-year projections for a long time, and I now think that was too low. At 4% your water and sewer bill is 2.19 times today's number in 20 years. At 8% it's 4.66 times. If this building is modeled flat, the gap shows up in your NOI somewhere around year eight and nobody on the team will have a line for it.",
      "steps": [
-      "Pull your utility's published multi-year rate plan",
-      "Rerun the proforma at 4%, 6%, 8% and 10% water and sewer increases",
-      "Put the 20-year difference in front of the investment committee"
+      "Pull the multi-year rate plan for the utility serving this site",
+      "Rerun the proforma at 4%, 6%, 8% and 10% water and sewer escalation",
+      "Put the 20-year water and sewer number in front of your lender before design development closes"
      ]
     },
     "mid": {
-     "headline": "You have a rate assumption. Test it against your market.",
-     "text": "You have a number in the model, which puts you ahead of a flat-rate proforma. Now check it against what your utility has published. At a $100,000 year-one bill, the 20-year total is about $2.98M at 4% and about $3.68M at 6%. Two points of difference is roughly $700,000 you did not budget for.",
+     "headline": "You model an increase, at one rate",
+     "text": "You model an increase, which puts you ahead of a flat proforma. The weak spot is the single rate. Denver is running around 5.5%, Charlotte about 6.5% for commercial and multifamily, and Phoenix has seen increases reach 13%. Between 4% and 10% a year, your bill in 20 years lands anywhere from 2.19 to 6.73 times today's number, and your proforma only shows one of those outcomes.",
      "steps": [
-      "Replace the round-number assumption with the utility's published rate plan",
-      "Model a high case at 8% and check whether NOI still meets the investor target",
-      "Share the high case with your MEP engineer before plumbing design"
+      "Model water and sewer escalation at three rates in the same proforma",
+      "Tie the base case to the local utility's published plan",
+      "Mark the year each scenario doubles your first-year bill"
      ]
     },
     "high": {
-     "headline": "Your rate assumptions would hold up to a lender's questions",
-     "text": "You modelled real escalation and the deal holds at the high case. The next step is using that number to pay for design decisions. Every gallon of potable demand you remove now is a gallon you never pay the year-20 rate on.",
+     "headline": "You underwrite water the way you underwrite energy",
+     "text": "You already treat water and sewer as a cost that climbs every year and needs a plan. The next question is how much of that exposure you remove at the building level. Greywater recycling can cut potable demand by about 35 to 50% and wastewater by a similar amount, which takes that same share off the bills you just modeled.",
      "steps": [
-      "Convert the high-case water cost into a budget for reuse and fixtures",
-      "Update the rate study every year during development",
-      "Show investors the NOI difference between the base design and a reuse design"
+      "Run your escalation scenarios with and without onsite reuse",
+      "Show the lender avoided 20-year water and sewer cost as its own line",
+      "Revisit the rate plan each time the utility files a new increase"
      ]
     }
    }
   },
   {
-   "id": "fixture_and_end_use_dema",
-   "name": "Fixture and End-Use Demand",
+   "id": "fixture_choices",
+   "name": "Fixture Choices",
    "questions": [
     {
-     "id": "fixture_and_end_use_dema_q1",
-     "text": "Where does the water for toilet flushing come from in the current design?",
+     "id": "fixture_choices_q1",
+     "text": "How were the toilets and urinals in this building specified?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Potable water, standard fixtures, and nobody has asked the question",
+       "label": "Whatever the plumbing engineer's standard spec is",
        "score": 1
       },
       {
-       "label": "Potable water with low-flow fixtures, and that is the whole water strategy",
+       "label": "Standard 1.6 gallon (6 litre) toilets across the building",
        "score": 2
       },
       {
-       "label": "Potable water for now, with space set aside for a future non-potable riser",
+       "label": "High-efficiency fixtures, chosen mainly to hit a LEED or code number",
        "score": 3
       },
       {
-       "label": "Dual plumbing is drawn so toilets can run on recycled water",
+       "label": "High-efficiency fixtures, with flush volume modeled against occupancy",
        "score": 4
       },
       {
-       "label": "Toilets are designed to run on treated greywater or harvested rainwater from day one",
+       "label": "High-efficiency fixtures on a separate non-potable supply line, ready for recycled water",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "fixture_and_end_use_dema_q2",
-     "text": "Do you know how the building's demand splits across showers and sinks, toilets, laundry, irrigation and cooling towers?",
+     "id": "fixture_choices_q2",
+     "text": "What does the drain design do with shower, bath and laundry water?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We only have one total demand number from the utility estimate",
+       "label": "We haven't looked at drain layout past code minimums",
        "score": 1
       },
       {
-       "label": "We know the total and a rough per-unit or per-room figure",
+       "label": "All drains combine into one sanitary line leaving the building",
        "score": 2
       },
       {
-       "label": "MEP has an end-use breakdown, and the development team has not seen it",
+       "label": "The engineer knows greywater separation exists, but it isn't drawn",
        "score": 3
       },
       {
-       "label": "We have the split and know how much of the demand does not need to be drinking water",
+       "label": "Shower, bath and laundry drains are separated on the drawings in some zones",
        "score": 4
       },
       {
-       "label": "We have the split, the greywater supply volume and the non-potable demand it can cover",
+       "label": "Shower, bath and laundry drains are separated building-wide and routed to a planned treatment room",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "fixture_and_end_use_dema_q3",
-     "text": "How were the fixtures in this building selected?",
+     "id": "fixture_choices_q3",
+     "text": "Do you know this building's daily water use per occupied room, resident or unit?",
      "max_score": 5,
      "answers": [
       {
-       "label": "On unit price in the budget line",
+       "label": "No, we size it off the code tables and move on",
        "score": 1
       },
       {
-       "label": "To meet the plumbing code minimum",
+       "label": "We have a rough number from a past project",
        "score": 2
       },
       {
-       "label": "To hit a LEED or green building water-efficiency target",
+       "label": "We use a published benchmark for our building type, like 209 gallons per occupied hotel room",
        "score": 3
       },
       {
-       "label": "Low-flow fixtures, with the flow rates fed into a 20-year water cost model",
+       "label": "We have a benchmark broken out by showers, toilets, laundry, irrigation and cooling",
        "score": 4
       },
       {
-       "label": "Fixtures and the reuse system were sized together, so each saving is counted once and the payback is known",
+       "label": "We have an end-use model for this building, checked against a similar operating property",
        "score": 5
       }
      ],
@@ -226,89 +214,117 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Your toilets flush drinking water you pay for twice",
-     "text": "A low-flow toilet still uses 1.6 gallons per flush. You pay to bring that water in as drinking water, and you pay sewer charges to send it back out. In a hotel or senior living building a large share of daily demand does not need to be potable at all, and right now you have no way to see which share.",
+     "headline": "Your toilets are running on drinking water",
+     "text": "A low-flow toilet still uses 1.6 gallons, about 6 litres, of treated drinking water per flush, and each person flushes about 5 times a day. In a hotel or senior living building that's a big share of demand you pay for twice, once coming in and again as sewer. With the plumbing as drawn, you can't change that later without opening walls.",
      "steps": [
-      "Ask your MEP engineer for an end-use water breakdown",
-      "Mark toilets, irrigation, laundry and cooling towers as non-potable candidates",
-      "Reserve space for a non-potable riser before the design is locked"
+      "Ask your plumbing engineer for a separate non-potable supply line to toilets and urinals",
+      "Separate shower, bath and laundry drains on the drawings",
+      "Get an end-use water estimate for this building type"
      ]
     },
     "mid": {
-     "headline": "You know the demand. Now separate what needs to be potable.",
-     "text": "Efficient fixtures lower the bill, and they are the first step. The bigger number is the water that goes down the shower drain and could come back to flush a toilet. For a 200-room hotel, up to 60% of water demand can be recycled.",
+     "headline": "Efficient fixtures on a single potable supply",
+     "text": "You picked efficient fixtures, which lowers the starting bill. Your exposure to rate increases keeps the same shape, because every litre is still potable and every litre still leaves as sewer. The cheapest time to add a second supply line and separate the drains is before the plumbing drawings are issued.",
      "steps": [
-      "Size the greywater supply from showers, baths and laundry",
-      "Match that supply against toilet and irrigation demand",
-      "Draw dual plumbing into the current design set"
+      "Add a non-potable toilet supply line to the current drawings",
+      "Route greywater drains toward one mechanical room",
+      "Check the fixture model against your occupancy numbers"
      ]
     },
     "high": {
-     "headline": "Your fixtures and reuse are designed as one system",
-     "text": "You know where the water goes and you designed for it. The last check is that fixture savings and reuse savings are each counted correctly in the 20-year model, so the payback you show investors is the payback you get.",
+     "headline": "Your plumbing is ready for recycled water",
+     "text": "Separated drains and a non-potable toilet line are the hardest pieces to add after construction, and you've already designed them in. What's left is sizing treatment and storage to the flows you modeled.",
      "steps": [
-      "Run fixture and reuse savings together in one model",
-      "Confirm cooling tower make-up water as a reuse candidate",
-      "Document the end-use split for the operator"
+      "Size a greywater treatment system to your shower, bath and laundry flows",
+      "Match recycled water supply to toilet, irrigation and cooling demand",
+      "Document the separated plumbing for the LEED v5 Water Reuse credit"
      ]
     }
    }
   },
   {
-   "id": "metering_and_visibility",
-   "name": "Metering and Visibility",
+   "id": "metering",
+   "name": "Metering",
    "questions": [
     {
-     "id": "metering_and_visibility_q1",
-     "text": "How is water metered in the design?",
+     "id": "metering_q1",
+     "text": "How will water be metered in this building?",
      "max_score": 5,
      "answers": [
       {
-       "label": "One building meter, and the first real data will be the first utility bill",
+       "label": "One master meter at the street",
        "score": 1
       },
       {
-       "label": "One building meter plus separate irrigation metering",
+       "label": "A master meter plus a separate irrigation meter",
        "score": 2
       },
       {
-       "label": "Submeters on major end uses such as laundry, kitchen or cooling towers",
+       "label": "Submeters planned for some units or zones",
        "score": 3
       },
       {
-       "label": "Submetering by unit or wing, with the data going to the operator",
+       "label": "Submeters on every unit or wing, read monthly",
        "score": 4
       },
       {
-       "label": "Submetering by end use and by source, so potable, recycled and rainwater volumes each show up in the monthly report",
+       "label": "Submeters on every unit plus separate meters on laundry, kitchen, cooling and any reuse system, read in near real time",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "metering_and_visibility_q2",
-     "text": "After opening, how would you find out that water and sewer costs are running above the proforma?",
+     "id": "metering_q2",
+     "text": "How fast would your team find a running toilet or a stuck irrigation valve?",
      "max_score": 5,
      "answers": [
       {
-       "label": "When the asset manager asks why NOI is down, probably years in",
+       "label": "When the quarterly bill arrives",
        "score": 1
       },
       {
-       "label": "At the annual budget review",
+       "label": "When the monthly bill looks off",
        "score": 2
       },
       {
-       "label": "A quarterly utility cost report that someone reads",
+       "label": "When a guest, resident or staff member reports it",
        "score": 3
       },
       {
-       "label": "Monthly tracking against the proforma rate with an alert threshold",
+       "label": "Within a few days, from submeter reads",
        "score": 4
       },
       {
-       "label": "Monthly tracking by end use against the rate case we underwrote, with a named person responsible",
+       "label": "The same day, from flow alerts",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "metering_q3",
+     "text": "Does your team split the water charge from the sewer charge when you model operating cost?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We model one utility line and don't separate them",
+       "score": 1
+      },
+      {
+       "label": "We know sewer is billed off water use but haven't modeled it separately",
+       "score": 2
+      },
+      {
+       "label": "We model them separately at today's rates",
+       "score": 3
+      },
+      {
+       "label": "We model them separately, each with its own escalation",
+       "score": 4
+      },
+      {
+       "label": "We model them separately and know whether sewer here is billed on metered discharge or on water coming in",
        "score": 5
       }
      ],
@@ -317,30 +333,30 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "The first real water data you see will be the first bill",
-     "text": "With one building meter you find out after opening, and by then the plumbing is behind finished walls. I would rather see a project spend on submeters now than guess for 20 years about where the money goes.",
+     "headline": "With one meter, you find out from the bill",
+     "text": "With a single master meter you learn about a leak, a stuck valve or a rate change a month or a quarter after it started. You also can't show a lender or a buyer where the water goes, so any water savings you claim later is hard to prove.",
      "steps": [
-      "Add submeters on laundry, kitchen, irrigation and cooling towers",
-      "Name the person who reads the water report every month",
-      "Set an alert threshold tied to the proforma rate"
+      "Add submeters to units, laundry, kitchen and cooling in the current design",
+      "Split water and sewer into separate lines in the operating model",
+      "Confirm how this utility bills sewer, on metered discharge or on water coming in"
      ]
     },
     "mid": {
-     "headline": "You have meters. Connect them to the proforma.",
-     "text": "Submeters pay off when someone compares them against what you underwrote. A quarterly report catches a problem after three months of overpaying. Monthly tracking against the rate case catches it in weeks.",
+     "headline": "You can see water use, a month late",
+     "text": "You have submeters, so the data exists. With monthly reads, a running toilet in a senior living wing can run for weeks before anyone looks. With faster reads your team catches leaks in days, and you have the baseline you'll need to measure any reuse system you add.",
      "steps": [
-      "Move water reporting to monthly",
-      "Compare cost per room or per unit against the proforma",
-      "Track potable and recycled volumes separately once reuse is running"
+      "Specify flow alerts on submeters for toilets and irrigation",
+      "Meter reuse system supply separately from potable supply",
+      "Set a daily use target per occupied room or resident"
      ]
     },
     "high": {
-     "headline": "You will see a rate increase before it reaches NOI",
-     "text": "Your metering shows what each use costs and which source it comes from. That same data is what a municipality wants to see when you ask about capacity for your next project.",
+     "headline": "You'll know where every litre goes",
+     "text": "With separate meters on each end use and on reuse supply, you have proof. When rates go up you'll know the exact share of the bill you avoided, and you can show that number to an owner, a lender or a buyer.",
      "steps": [
-      "Share recycled-water volumes with the utility",
-      "Use the metered data to support LEED v5 water performance credits",
-      "Report water numbers to investors next to energy"
+      "Report avoided water and sewer cost monthly alongside NOI",
+      "Compare metered daily use against the design benchmark each quarter",
+      "Share reuse volumes with the municipality when capacity questions come up"
      ]
     }
    }
@@ -351,27 +367,27 @@
    "questions": [
     {
      "id": "reuse_readiness_q1",
-     "text": "Where is onsite water reuse in this project today?",
+     "text": "Where is water reuse in this project's timeline?",
      "max_score": 5,
      "answers": [
       {
-       "label": "It has not come up",
+       "label": "It hasn't come up",
        "score": 1
       },
       {
-       "label": "Someone mentioned greywater and it was cut as a green extra",
+       "label": "Someone raised it and we parked it on cost",
        "score": 2
       },
       {
-       "label": "We asked for a water cost savings analysis and it is sitting unread",
+       "label": "It's on the list for a later phase or retrofit",
        "score": 3
       },
       {
-       "label": "A greywater recycling or rainwater harvesting system is in the design with a sized treatment room and a payback number",
+       "label": "A reuse supplier has reviewed the drawings during design development",
        "score": 4
       },
       {
-       "label": "The reuse system is specified, code compliance is confirmed with the local authority, and the savings are in the proforma",
+       "label": "Reuse is in the design, sized, with a mechanical room and a 20-year cost model behind it",
        "score": 5
       }
      ],
@@ -379,27 +395,27 @@
     },
     {
      "id": "reuse_readiness_q2",
-     "text": "Where is plumbing design relative to the reuse decision?",
+     "text": "Which non-potable water sources have you checked for this site?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Plumbing is designed and reuse was never on the table",
+       "label": "None",
        "score": 1
       },
       {
-       "label": "Plumbing is designed, and adding reuse now means a change order",
+       "label": "Rainwater, informally",
        "score": 2
       },
       {
-       "label": "Plumbing is in schematic design and reuse is still an open question",
+       "label": "Rainwater or greywater, with a rough yield number for one of them",
        "score": 3
       },
       {
-       "label": "Reuse is on the agenda before plumbing design starts",
+       "label": "Greywater from showers, baths and laundry plus rainwater, with yield numbers for both",
        "score": 4
       },
       {
-       "label": "Greywater collection, the treatment room and non-potable distribution were set before the plumbing layout was drawn",
+       "label": "Greywater and rainwater with yields matched to toilet, irrigation and cooling demand",
        "score": 5
       }
      ],
@@ -407,150 +423,71 @@
     },
     {
      "id": "reuse_readiness_q3",
-     "text": "Under the current plan, how much of the building's potable demand could come from recycled greywater or harvested rainwater?",
+     "text": "How do you weigh the capital cost of a reuse system?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We don't know, and nobody has run the numbers",
+       "label": "As an added cost that has to come out of the budget somewhere",
        "score": 1
       },
       {
-       "label": "Zero. Everything runs on municipal drinking water.",
+       "label": "Against first-year water savings only",
        "score": 2
       },
       {
-       "label": "Under 20%, mainly irrigation from rainwater",
+       "label": "Against a simple payback at today's rates",
        "score": 3
       },
       {
-       "label": "20% to 35%, mainly greywater to toilets",
+       "label": "Against 20 years of avoided water and sewer charges at one escalation rate",
        "score": 4
       },
       {
-       "label": "35% to 50% or more, with greywater and rainwater combined",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    }
-   ],
-   "recommendations": {
-    "low": {
-     "headline": "Reuse is off the table, and your plumbing may lock it out",
-     "text": "Onsite reuse costs the least to add before the plumbing is designed. After that it becomes a change order, and change orders get cut. A commercially certified greywater system can reduce potable demand by about 35% to 50% and reduce sewer discharge by a similar amount. You can't get that from fixtures alone.",
-     "steps": [
-      "Request a water cost savings analysis for this building",
-      "Get reuse on the agenda before plumbing design starts",
-      "Confirm local code requirements for greywater and rainwater"
-     ]
-    },
-    "mid": {
-     "headline": "Reuse is in the conversation. Get it into the drawings.",
-     "text": "If the savings analysis is still unread, the building is still designed for 100% potable water. What moves it forward is a sized treatment room, a tank location and a payback number the investment committee has seen. The initial CAPEX is small next to what the system saves over 20 years of rising sewer charges.",
-     "steps": [
-      "Reserve a treatment room and tank location in the current plans",
-      "Calculate the payback at your utility's published rate",
-      "Confirm code compliance with the local authority"
-     ]
-    },
-    "high": {
-     "headline": "Your building is designed to use water twice",
-     "text": "Your building will draw less municipal water than it would have, and that frees capacity for the next project in the community. That is worth raising with the municipality early, and it counts toward the LEED v5 Water Reuse credit.",
-     "steps": [
-      "Add rainwater harvesting where greywater alone does not cover demand",
-      "Bring the capacity number to the municipality",
-      "Plan operator training before commissioning"
-     ]
-    }
-   }
-  },
-  {
-   "id": "who_owns_the_20_year_num",
-   "name": "Who Owns the 20-Year Number",
-   "questions": [
-    {
-     "id": "who_owns_the_20_year_num_q1",
-     "text": "Who on the team is accountable for water and sewer cost after year five?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Nobody. The developer plans to sell before it matters.",
-       "score": 1
-      },
-      {
-       "label": "The future operator, who had no input on the design",
-       "score": 2
-      },
-      {
-       "label": "The asset manager, who inherits whatever the design delivered",
-       "score": 3
-      },
-      {
-       "label": "The developer and operator agreed a water cost target during design",
-       "score": 4
-      },
-      {
-       "label": "One named person owns the 20-year water cost number from design through operations",
+       "label": "Against 20 years of avoided charges at several escalation rates, plus NOI, LEED v5 water credits and municipal capacity",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "who_owns_the_20_year_num_q2",
-     "text": "How does this project judge the capital cost of a reuse system?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Any water spend above code minimum is cut in value engineering",
-       "score": 1
-      },
-      {
-       "label": "On first cost alone",
-       "score": 2
-      },
-      {
-       "label": "On simple payback at today's rates",
-       "score": 3
-      },
-      {
-       "label": "On payback at the rate increase our utility has published",
-       "score": 4
-      },
-      {
-       "label": "On 20-year NOI, municipal capacity and LEED v5 Water Reuse credit value together",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "id": "reuse",
+     "type": "number",
+     "text": "What share of this building's water and sewer bill does your current design remove through onsite reuse?",
+     "hint": "Commercially certified greywater recycling typically cuts potable demand by about 35 to 50%, with wastewater down by a similar amount. Enter 0 if reuse isn't in the design. 35% or more scores full marks here.",
+     "suffix": "%",
+     "min": 0,
+     "max": 80,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "Math.min(100, x / 35 * 100)"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Nobody owns the water bill at year eight",
-     "text": "If the developer plans to sell and the operator inherits the design, the water cost lands on someone who had no say in it. A flat rate in your proforma becomes the next owner's surprise, and a buyer underwriting the building will run the rate you left out.",
+     "headline": "This building will run 100% on potable water for 20 years",
+     "text": "Right now every drop this building uses comes from the municipal system and goes back into it as sewer, at whatever rate the utility sets in year 5, 10 and 15. Greywater recycling can cut potable demand by about 35 to 50%, and it costs far less to design in than to retrofit. I run a complimentary water cost analysis for new builds, so send me the building type and room or unit count and I'll model it.",
      "steps": [
-      "Name one person who owns the 20-year water cost",
-      "Bring the operator into fixture and reuse decisions",
-      "Put a water cost target in the design brief"
+      "Get a greywater and rainwater yield estimate for this site",
+      "Price reuse against 20 years of avoided water and sewer charges",
+      "Reserve space for a treatment and storage room in the current plan"
      ]
     },
     "mid": {
-     "headline": "You are judging reuse on today's rates",
-     "text": "Simple payback at current rates makes a reuse system look slower than it is. On a 200-room hotel the payback is often 4 to 6 years, and every rate increase shortens it. Today's rate is the cheapest one you will pay in the next 20 years.",
+     "headline": "Reuse is on the table, parked on capital cost",
+     "text": "You've looked at reuse and it's waiting on a budget call. If you compare the capital cost only against year-one savings, you'll pass on it almost every time. Run it against 20 years of rates at 6% or 8% and the payback gets shorter every year rates rise. I've seen 200-room hotel numbers in the $40K to $120K a year range with a 4 to 6 year payback.",
      "steps": [
-      "Recalculate reuse payback at your utility's published increase",
-      "Add municipal capacity and LEED v5 credit value to the evaluation",
-      "Hold reuse out of value engineering until the 20-year number is on the table"
+      "Model reuse capital cost against avoided charges at 4%, 6% and 8%",
+      "Bring a reuse supplier into design development",
+      "Check which LEED v5 water credits the system earns"
      ]
     },
     "high": {
-     "headline": "You underwrite water the way you underwrite energy",
-     "text": "We routinely protect buildings against rising energy costs. You have done the same for water, and one person owns the result. That makes the building easier to hold and easier to sell.",
+     "headline": "You've designed rising rates out of part of your bill",
+     "text": "With reuse sized and in the design, you've removed a real share of your water and sewer exposure for the life of the building. You also free up municipal capacity the community can use for the next project, which matters more every year to the planners approving growth.",
      "steps": [
-      "Revisit the water cost target at every design stage",
-      "Hand the 20-year model to the operator at turnover",
-      "Use this project as the template for your next build"
+      "Commission the reuse system with metered potable and recycled supply",
+      "Put avoided water and sewer cost into your NOI reporting",
+      "Share the demand reduction with the municipality during approvals"
      ]
     }
    }
@@ -573,42 +510,42 @@
  },
  "computed_outputs": [
   {
-   "id": "twenty-year-spend",
-   "label": "20-year water and sewer spend at your utility's rate",
+   "id": "year-20-bill",
+   "label": "Your annual water and sewer bill 20 years out, at your escalation rate",
    "format": "currency",
-   "formula": "localrate === 0 ? waterbill * 20 : waterbill * (Math.pow(1 + localrate / 100, 20) - 1) / (localrate / 100)",
+   "formula": "bill * Math.pow(1 + escalation / 100, 20)",
    "show_in_result": true
   },
   {
-   "id": "unbudgeted-gap",
-   "label": "Water and sewer cost your proforma leaves out over 20 years",
+   "id": "unmodeled-20yr-spend",
+   "label": "20-year water and sewer spend above a flat-rate proforma",
    "format": "currency",
-   "formula": "Math.max(0, (localrate === 0 ? waterbill * 20 : waterbill * (Math.pow(1 + localrate / 100, 20) - 1) / (localrate / 100)) - (proformarate === 0 ? waterbill * 20 : waterbill * (Math.pow(1 + proformarate / 100, 20) - 1) / (proformarate / 100)))",
+   "formula": "bill * ((Math.pow(1 + escalation / 100, 20) - 1) / (escalation / 100) - 20)",
    "show_in_result": true
   },
   {
-   "id": "year-twenty-bill",
-   "label": "Annual water and sewer bill in year 20 at your utility's rate",
+   "id": "exposure-after-reuse",
+   "label": "Spend above flat rate still exposed after your planned reuse",
    "format": "currency",
-   "formula": "waterbill * Math.pow(1 + localrate / 100, 20)",
+   "formula": "bill * (1 - reuse / 100) * ((Math.pow(1 + escalation / 100, 20) - 1) / (escalation / 100) - 20)",
    "show_in_result": true
   }
  ],
  "schema_version": "v2",
  "persona_selector": {
   "id": "role",
-  "text": "Which best describes your role on this project?",
+  "text": "Which seat are you in on this project?",
   "answers": [
    {
     "label": "Developer or owner",
     "tag": "developer"
    },
    {
-    "label": "Investor or lender underwriting the deal",
-    "tag": "investor"
+    "label": "Owner-operator or asset manager",
+    "tag": "operator"
    },
    {
-    "label": "Architect or MEP engineer",
+    "label": "Architect or engineer of record",
     "tag": "design"
    },
    {
@@ -616,11 +553,11 @@
     "tag": "gc"
    },
    {
-    "label": "Portfolio or asset manager",
-    "tag": "portfolio"
+    "label": "Investor or lender",
+    "tag": "capital"
    },
    {
-    "label": "Municipality or utility staff",
+    "label": "Municipal or utility planner",
     "tag": "municipal"
    }
   ]
