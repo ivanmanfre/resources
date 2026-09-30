@@ -1,0 +1,71 @@
+{
+  "model": "gpt-6.1-sol",
+  "playbooks": 5,
+  "file_count": 16,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "0ea3c9a03e1e2b26443313962eb499762703aede2fa466e9f49486a603bd5898"
+    },
+    {
+      "path": "SETUP.md",
+      "sha256": "3570d2ead35a4a3ba2c4a14a340f3435a3890e68f9d4c95a27ac3eb717e56812"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "1a5182fd704d1cd696049f1ea344f6282a1f6c796bd0507e971d0661e39d791e"
+    },
+    {
+      "path": "ROUTINE.md",
+      "sha256": "6fe42b0ea96c9cff362f3cc9da2b07e4181d75191faed19a13761a3c9022fb48"
+    },
+    {
+      "path": "context/agency-offer.md",
+      "sha256": "74ba12ca4d1dd373e9929483c83ed8f7508014a670e69d331d768cbace639cbb"
+    },
+    {
+      "path": "context/prospects.csv",
+      "sha256": "4a7b087433bd39f924f5ed4534580fafbd2969784c9467859d03d6e366319aae"
+    },
+    {
+      "path": "context/source-notes.md",
+      "sha256": "9f55f07883f7d6c05a36095aad194a297e74b1b46418fbd47974ab2efacee33c"
+    },
+    {
+      "path": "context/campaign.csv",
+      "sha256": "0e225e907d41d7585093c834aeb3f5201770fefe8ca60be75a35840b25f17b74"
+    },
+    {
+      "path": "playbooks/account-research.md",
+      "sha256": "9b800e45fd901e2b125457fed6c011364b0f191affce5ac8afe726e1cc0c13ce"
+    },
+    {
+      "path": "playbooks/prospect-fit.md",
+      "sha256": "27c82d13d99d1ed017bc99b30d02fb0b9b9f5bb431b24f8c0f6528f828314f41"
+    },
+    {
+      "path": "playbooks/message-drafts.md",
+      "sha256": "351cb41683383beb07536bc0411f56fa772138c37911600f79426cf8ed24c811"
+    },
+    {
+      "path": "playbooks/reply-triage.md",
+      "sha256": "9d178cd7974ad92ffdc8bd4503165079b13fb2c9677775e00523cc8ad539e98c"
+    },
+    {
+      "path": "playbooks/campaign-review.md",
+      "sha256": "3dbde2f8918b5b2edb4a3bee022069698c0133596a7446135b651b3c1dca7dc0"
+    },
+    {
+      "path": "examples/practice-input.md",
+      "sha256": "816a4667a3b2a8fb1a14b00c0e9abf8118f2fc50cd57291077fdb5e18e2a9679"
+    },
+    {
+      "path": "examples/expected-output.md",
+      "sha256": "4f65b6b1c1385c0c42e9bd15c08efab8750bd4b606bbeaecded12e74d7deaf26"
+    },
+    {
+      "path": "outputs/README.md",
+      "sha256": "902fca2d4d0e2451d20128f7b00d76a009891026f31917bd0928771f99da6427"
+    }
+  ]
+}

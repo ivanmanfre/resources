@@ -1,0 +1,2 @@
+campaign_id,window_start,window_end,channel,cohort_definition,message_version,unique_accounts_attempted,unique_accounts_delivered,unique_accounts_replied,unique_accounts_interested,unique_accounts_booked,opt_outs,bounces
+[campaign],[YYYY-MM-DD],[YYYY-MM-DD],[channel],[unique accounts first contacted in this window],[version],[count],[count],[count],[count],[count],[count],[count]
