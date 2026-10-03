@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LinkedIn Post Preview, a Claude Code mod | InboundOnSteroids</title>
+<meta name="description" content="A free Claude Code mod. Ask Claude for a LinkedIn post and a pane shows each draft on a LinkedIn post card, cut where the feed cuts it.">
+<link rel="canonical" href="https://resources.ivanmanfredi.com/claude-code-linkedin-preview/">
+<meta name="theme-color" content="#131210"><meta property="og:type" content="website">
+<meta property="og:url" content="https://resources.ivanmanfredi.com/claude-code-linkedin-preview/">
+<meta property="og:title" content="LinkedIn Post Preview, a Claude Code mod">
+<meta property="og:description" content="See where &quot;see more&quot; cuts your LinkedIn post, inside Claude Code. Free.">
+<meta property="og:image" content="https://resources.ivanmanfredi.com/claude-code-linkedin-preview/assets/cover.jpg">
+<meta property="og:image:alt" content="Claude Code Mods: see where LinkedIn cuts your hook. A phone shows a post cut at see more after 3 lines.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="LinkedIn Post Preview, a Claude Code mod">
+<meta name="twitter:image" content="https://resources.ivanmanfredi.com/claude-code-linkedin-preview/assets/cover.jpg">
+<meta name="robots" content="noindex">
+<link rel="preload" href="assets/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<style>
+.shot{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+.panel figcaption,.shot-cap{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5}
+.cmd{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.7;background:#131210;color:#f4f1ec;padding:14px 16px;border-radius:12px;margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.keys{width:100%;border-collapse:collapse;margin-top:18px;font-size:15px}
+.keys td{padding:10px 0;border-top:1px solid var(--line);vertical-align:top}
+.keys td:first-child{width:5.5em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:650}
+.shows{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px}
+.shows li{padding-left:22px;position:relative;line-height:1.55}
+.shows li:before{content:"→";position:absolute;left:0;color:var(--red)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.content-section{padding:72px 0}
+@media(max-width:860px){.two{grid-template-columns:1fr;gap:32px}}
+</style>
+</head><body>
+<a class="skip" href="#main">Skip to the install steps</a>
+<header class="mast wrap"><a class="wordmark" href="https://inboundonsteroids.com/" aria-label="InboundOnSteroids">INBOUND<b>ON</b>STEROIDS</a><a class="library" href="../">Resource library ↗</a></header>
+<main id="main">
+<section class="hero wrap" aria-labelledby="title">
+  <div class="hero-copy">
+    <span class="kicker">Free Claude Code mod · LinkedIn posts</span>
+    <h1 id="title">See where <em>"see more"</em><br> cuts your post.</h1>
+    <p class="lede">Ask Claude for a LinkedIn post like you always do. A pane opens in Claude Code with each draft on a LinkedIn post card, cut where the feed cuts it.</p>
+    <div class="hero-actions"><a class="button primary" href="#install">Install it in 2 commands <span aria-hidden="true">↓</span></a><a class="inline-link" href="assets/linkedin-preview.zip" download>Download the ZIP ↓</a></div>
+    <p class="note">Needs Claude Code 2.1.287 or newer.<br> Runs in the terminal and in the Code tab of the Claude Desktop app.</p>
+  </div>
+  <figure class="panel">
+    <img class="shot" src="assets/pane-terminal.png" width="920" height="383" alt="The LinkedIn preview pane in a Claude Code terminal: three draft tabs, a mobile post card cut at see more after the first line wraps, and the character count.">
+    <figcaption>A real terminal session. Claude wrote 3 hooks, and the pane opened by itself with one tab per draft.</figcaption>
+  </figure>
+</section>
+
+<section class="band setup" id="install" aria-labelledby="setup-title"><div class="wrap setup-layout"><div><span class="kicker">Install</span><h2 id="setup-title">Two commands<br> in Claude Code.</h2><p class="section-intro">Run them inside a Claude Code session, in the terminal or in the Desktop app's Code tab.</p><span class="cmd">/plugin marketplace add ivanmanfre/manfredi
+/plugin install linkedin-preview@manfredi</span><p class="note">Then run <code>/plugin</code>. The list shows linkedin-preview as an active mod.</p></div><ol class="steps">
+<li><span class="step-number">01</span><div><h3>Ask for a post.</h3><p>For example: write 3 hook variants for a LinkedIn post about your topic. The mod asks Claude to put each draft in its own block, so it knows where every draft starts and ends.</p></div></li>
+<li><span class="step-number">02</span><div><h3>Read the fold.</h3><p>When Claude finishes, a line under the answer counts the drafts and the pane opens. A narrow terminal shows the line only. Run <code>/preview</code> to open the pane at any width.</p></div></li>
+<li><span class="step-number">03</span><div><h3>Fix the hook, then copy.</h3><p>Switch drafts and views, and press <code>c</code> to copy the post with the markdown symbols removed, ready to paste into LinkedIn.</p></div></li>
+<li><span class="step-number">04</span><div><h3>Put your name on the card.</h3><p><code>/preview-profile Your Name | Your headline</code> sets the card header. It's saved for later sessions.</p></div></li>
+</ol></div></section>
+
+<section class="wrap content-section two" aria-labelledby="shows-title">
+  <div>
+    <span class="kicker">What the pane shows</span>
+    <h2 id="shows-title">The feed version<br> of every draft.</h2>
+    <ul class="shows">
+      <li>The fold on mobile and on desktop. Both show 3 feed lines before "see more", and a blank line counts as one.</li>
+      <li>A flag on <code>**bold**</code>, <code># headings</code>, links and code, which LinkedIn shows as raw symbols.</li>
+      <li>Your character count against LinkedIn's 3,000 limit, plus words and read time.</li>
+      <li>One tab per draft when you ask Claude for a few hooks.</li>
+      <li>A copy that strips the formatting before you paste.</li>
+    </ul>
+    <table class="keys" aria-label="Keys in the pane">
+      <tr><td>1 to 9</td><td>Switch drafts</td></tr>
+      <tr><td>m</td><td>Mobile or desktop view</td></tr>
+      <tr><td>f</td><td>See more or see less</td></tr>
+      <tr><td>c</td><td>Copy the post, markdown removed</td></tr>
+      <tr><td>Esc</td><td>Back to the prompt</td></tr>
+    </table>
+  </div>
+  <figure>
+    <img class="shot" src="assets/pane-desktop.png" width="1150" height="503" alt="The same pane in the Claude Desktop app's Code tab, drawn as a white LinkedIn post card in the desktop view.">
+    <figcaption class="shot-cap">In the Desktop app's Code tab the pane draws a LinkedIn-style card beside the chat.</figcaption>
+  </figure>
+</section>
+
+<section class="faq wrap" aria-labelledby="faq-title"><h2 id="faq-title">Before you install.</h2><div class="faq-items">
+<details><summary>Where does it run?</summary><p>In the Claude Code terminal and in the Code tab of the Claude Desktop app, on version 2.1.287 or newer. Check with <code>claude --version</code>. The claude.ai chat, the VS Code panel and <code>claude -p</code> don't draw mod panes.</p></details>
+<details><summary>Does it send my drafts anywhere?</summary><p>No. It reads Claude's answers in your session and draws a pane. It makes no network calls and starts no programs. It saves your name, headline and preferred view in Claude Code's own plugin store. Run <code>claude plugin validate</code> on the folder to see every event and call it uses.</p></details>
+<details><summary>How exact is the fold?</summary><p>We measured the live LinkedIn feed in October 2026: 3 lines on a phone and on desktop, about 54 characters per phone line and about 78 per desktop line. LinkedIn changes this without notice, so the pane marks the fold with ≈.</p></details>
+<details><summary>Nothing shows up. What now?</summary><p>Update Claude Code if it's older than 2.1.287. <code>"disableAllHooks": true</code> in your settings turns every mod off, and some organizations block user mods. For a pane that opens by itself, the terminal needs 144 columns. <code>/preview</code> opens it at any width.</p></details>
+<details><summary>How do I remove it?</summary><p>Run <code>/plugin</code>, open Installed, pick linkedin-preview and uninstall it.</p></details>
+</div></section>
+
+<section class="download-band band" aria-labelledby="download-title"><div class="wrap download-layout"><div><span class="kicker">No marketplace?</span><h2 id="download-title">Try it for one session.</h2><p>Unzip, then start Claude Code with <code>claude --plugin-dir ./linkedin-preview</code></p></div><div><a class="button primary" href="assets/linkedin-preview.zip" download>Download the ZIP <span aria-hidden="true">↓</span></a><p class="note">Free · version 0.1.1</p></div></div></section>
+</main><footer class="wrap"><p>Built by Ivan Manfredi · InboundOnSteroids. We run LinkedIn inbound for agency founders: the posts, the comments and the DMs.</p><a href="https://inboundonsteroids.com/start">See how it works ↗</a></footer>
+</body></html>

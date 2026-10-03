@@ -1,0 +1,24 @@
+{
+  "slug": "claude-code-linkedin-preview",
+  "format_label": "Claude Code Mod",
+  "category": "LinkedIn posts",
+  "headline": "See your LinkedIn post the way the feed shows it, before you post it",
+  "headline_emphasis": "",
+  "subhead": "A free Claude Code mod. Ask Claude for a post like you always do, and a pane in Claude Code shows your draft on a LinkedIn post card, cut where \"see more\" cuts it.",
+  "subhead_secondary": "Works in the Claude Code terminal and in the Code tab of the Claude Desktop app, on Claude Code 2.1.287 or newer. It doesn't run in the claude.ai chat.",
+  "cover_url": "https://resources.ivanmanfredi.com/claude-code-linkedin-preview/assets/cover.jpg",
+  "inside": [
+    "The fold on mobile and on desktop, so you see where your hook gets cut",
+    "A flag on bold, headings and links that LinkedIn shows as raw symbols",
+    "Your character count against LinkedIn's 3,000 limit",
+    "One tab per draft when you ask Claude for a few hooks",
+    "A copy button that strips the formatting before you paste"
+  ],
+  "proof": "<b>We run LinkedIn inbound for agency founders.</b> The posts, the comments and the DMs. This mod is the free part: it shows you the feed version of a draft before anyone else sees it.",
+  "proof_avatar": "https://resources.ivanmanfredi.com/assets/ivan.jpg",
+  "proof_avatar_alt": "Ivan Manfredi",
+  "resource_url": "https://resources.ivanmanfredi.com/claude-code-linkedin-preview/",
+  "gate_keyword": "PREVIEW",
+  "cta_label": "Email me the mod",
+  "gate_mode": "always"
+}
