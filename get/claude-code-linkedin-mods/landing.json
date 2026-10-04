@@ -1,0 +1,24 @@
+{
+  "slug": "claude-code-linkedin-mods",
+  "format_label": "Claude Code Mods",
+  "category": "LinkedIn posts",
+  "headline": "5 free Claude Code mods for LinkedIn",
+  "headline_emphasis": "for LinkedIn",
+  "subhead": "Ask Claude for a LinkedIn post like you always do. The mods show each draft the way the feed cuts it, score your hook against your own best posts, flag the lines that sound AI-written and offer the next step. A fifth one counts your leads, replies and booked calls.",
+  "subhead_secondary": "Works in the Claude Code terminal and in the Code tab of the Claude Desktop app, on Claude Code 2.1.287 or newer. They don't run in the claude.ai chat.",
+  "cover_url": "https://resources.ivanmanfredi.com/claude-code-linkedin-mods/assets/cover.jpg",
+  "inside": [
+    "Post preview: each draft on a LinkedIn post card, cut where \"see more\" cuts it, with the markdown LinkedIn won't render flagged",
+    "Hook score: every hook scored 1 to 10 against your own best posts, with one plain reason",
+    "Voice guard: the phrases that make a draft sound AI-written, flagged in their line and rewritten on one key",
+    "Next post: 3 next steps after a draft on one key each, like a carousel, replies to 3 objections or a hook that fits the fold",
+    "Pipeline: your leads, replies and booked calls in a pane, from your LinkedIn data export or a CRM CSV"
+  ],
+  "proof": "<b>We run LinkedIn inbound for agency founders.</b> The posts, the comments and the DMs. These mods are the free part: four of them check each draft inside Claude Code before anyone else sees it, and one counts your leads.",
+  "proof_avatar": "https://resources.ivanmanfredi.com/assets/ivan.jpg",
+  "proof_avatar_alt": "Ivan Manfredi",
+  "resource_url": "https://resources.ivanmanfredi.com/claude-code-linkedin-mods/",
+  "gate_keyword": "MODS",
+  "cta_label": "Email me the mods",
+  "gate_mode": "always"
+}
