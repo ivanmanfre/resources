@@ -1,0 +1,21 @@
+{
+  "slug": "content-brain-guide",
+  "format_label": "Guide",
+  "category": "",
+  "headline": "What 100,000 LinkedIn posts taught my content brain",
+  "headline_emphasis": "",
+  "subhead": "What 100,000 LinkedIn posts taught my content brain",
+  "subhead_secondary": "",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/content-brain-guide/cover-v4-2026-10-11.jpg",
+  "inside": [
+    "Real posts that blew up, next to each pattern",
+    "The loop I run every Monday to pick what to write",
+    "A prompt that turns a winning post into your own draft",
+    "A checklist to run before you hit post",
+    "7 one-page visuals"
+  ],
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
+  "resource_url": "https://resources.ivanmanfredi.com/content-brain-guide/",
+  "gate_keyword": "BRAIN",
+  "cta_label": "Email me the resource"
+}
