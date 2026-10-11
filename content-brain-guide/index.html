@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What 10,629 LinkedIn posts taught my content brain | Ivan Manfredi</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="What actually makes a LinkedIn post take off">
+<meta property="og:description" content="The full guide: what beats an author's usual on LinkedIn, what does nothing, the weekly loop, a prompt and a pre-post checklist.">
+<meta property="og:image" content="https://resources.ivanmanfredi.com/content-brain-guide/assets/img/og.jpg">
+<meta property="og:url" content="https://resources.ivanmanfredi.com/content-brain-guide/">
+
+<meta name="description" content="The full guide: what beats an author's usual on LinkedIn, what does nothing, the weekly outlier loop, a prompt and a pre-post checklist.">
+<style>
+@font-face { font-family: "IMDisplay"; src: url("assets/fonts/Brico.ttf") format("truetype"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "IMSans"; src: url("assets/fonts/GeistV.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "IMMono"; src: url("assets/fonts/GeistMonoV.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+:root {
+  --ground: #0F0E0D; --lifted: #1A1816; --ink: #16181A;
+  --tx: #F3EFE6; --tx2: #A39E93; --tx3: #6B675F;
+  --red: #C8361B; --redt: #E5502F; --sheet: #FBFAF7; --line: rgba(22,24,26,.10); --hair: rgba(243,239,230,.12);
+  --shadow: 0 2px 6px rgba(0,0,0,.35), 0 60px 120px -30px rgba(0,0,0,.78);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: var(--ground); }
+body { font-family: "IMSans", system-ui, sans-serif; color: var(--tx); background: var(--ground); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(55% 40% at 18% 8%, rgba(214,132,74,.22), rgba(214,132,74,0) 70%),
+    radial-gradient(50% 40% at 90% 85%, rgba(200,54,27,.10), rgba(200,54,27,0) 70%),
+    radial-gradient(120% 90% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
+body::after { content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .06; background: url("assets/img/grain.png"); mix-blend-mode: overlay; }
+main, header, footer { position: relative; z-index: 2; }
+a { color: inherit; }
+.wrap { width: min(1080px, 92vw); margin: 0 auto; }
+.read { width: min(720px, 92vw); margin: 0 auto; }
+
+/* Hero */
+.hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; }
+.hero .wrap { position: relative; padding: 14vh 0 0; }
+.hero h1 { font-family: "IMDisplay"; font-weight: 800; font-variation-settings: "opsz" 96; letter-spacing: -.035em; line-height: .9;
+  font-size: clamp(56px, 9.4vw, 132px); max-width: 11ch; position: relative; z-index: 2; }
+.mark { position: relative; white-space: nowrap; }
+.mark::before { content: ""; position: absolute; left: -.06em; right: -.06em; top: .42em; bottom: .02em; background: var(--red); z-index: -1;
+  border-radius: .06em .12em .05em .1em; transform: rotate(-1.2deg); }
+.hero .data { font-family: "IMMono"; font-size: 14px; color: var(--tx2); letter-spacing: .02em; margin: 34px 0 0; position: relative; z-index: 3; }
+.hero .ivan { position: absolute; right: -4vw; bottom: 0; width: min(560px, 52vw); z-index: 3; pointer-events: none; }
+.hero .ivan img { width: 100%; display: block; filter: drop-shadow(0 30px 60px rgba(0,0,0,.6)); -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); }
+.hero .spacer { height: 18vh; }
+.thread { position: absolute; left: 0; right: 0; bottom: 9vh; height: 2px; background: linear-gradient(90deg, rgba(200,54,27,0), var(--red) 20%, var(--red) 80%, rgba(200,54,27,0)); z-index: 1; }
+
+/* Text */
+.intro { padding: 12vh 0 4vh; }
+.intro p, .sec p { color: var(--tx); margin: 0 0 1.1em; }
+.intro p.lead { font-size: 22px; line-height: 1.5; }
+.sec { padding: 9vh 0 2vh; }
+.sec h2 { font-family: "IMDisplay"; font-weight: 800; font-variation-settings: "opsz" 96; letter-spacing: -.03em; line-height: .95;
+  font-size: clamp(40px, 6vw, 72px); margin: 0 0 .5em; }
+.sec h2 .n { color: var(--redt); }
+.sec h3 { font-family: "IMDisplay"; font-weight: 700; font-size: 26px; letter-spacing: -.02em; margin: 1.6em 0 .5em; }
+.muted { color: var(--tx2); }
+strong { font-weight: 650; }
+ol.steps, ul.arrows { list-style: none; margin: 0 0 1.2em; }
+ol.steps { counter-reset: s; }
+ol.steps li { counter-increment: s; position: relative; padding: 0 0 .8em 2.4em; }
+ol.steps li::before { content: counter(s); position: absolute; left: 0; top: .1em; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--lifted);
+  border: 1px solid var(--hair); font-family: "IMMono"; font-size: 13px; display: grid; place-items: center; color: var(--tx); }
+ul.arrows li { position: relative; padding: 0 0 .5em 1.6em; }
+ul.arrows li::before { content: "→"; position: absolute; left: 0; color: var(--redt); }
+
+/* Light sheets */
+.sheet { position: relative; background: var(--sheet); color: var(--ink); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; margin: 28px 0 34px; }
+.sheet::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(180deg, rgba(255,255,255,.9) 0, rgba(255,255,255,0) 2px); }
+.sheet .pad { padding: 26px 28px; }
+.info { margin: 30px 0 36px; }
+.info img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: var(--shadow); }
+.info a { display: inline-block; margin-top: 10px; font-family: "IMMono", ui-monospace, monospace; font-size: 13px; color: var(--tx2); text-decoration: none; }
+.info a:hover { color: var(--tx); }
+.sheet .cap { font-size: 14px; color: #5b5e61; padding: 14px 28px; border-top: 1px solid var(--line); background: #F5F3EE; }
+table.lift { width: 100%; border-collapse: collapse; font-size: 16px; }
+table.lift td { padding: 13px 28px; border-top: 1px solid var(--line); vertical-align: top; }
+table.lift tr:first-child td { border-top: 0; }
+table.lift td.v { text-align: right; white-space: nowrap; font-family: "IMMono"; font-weight: 600; font-size: 15px; }
+table.lift td.v.up { color: #1d6b3a; } table.lift td.v.down { color: var(--red); } table.lift td.v.zero { color: #8a8d90; }
+table.lift td .sub { display: block; font-size: 13.5px; color: #6b6e71; margin-top: 2px; }
+table.lift tr.group td { background: #F1EEE7; font-weight: 650; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #4a4d50; padding: 9px 28px; }
+.formula { font-family: "IMMono"; font-size: 17px; line-height: 1.9; }
+.formula b { color: var(--red); font-weight: 600; }
+
+/* Outlier example cards */
+.ex { display: grid; grid-template-columns: 1fr auto; gap: 6px 18px; padding: 22px 26px; }
+.ex .who { font-weight: 650; font-size: 15px; }
+.ex .meta { grid-column: 1 / -1; font-size: 13.5px; color: #6b6e71; }
+.ex .line { grid-column: 1 / -1; font-size: 19px; line-height: 1.45; margin: 4px 0 2px; }
+.ex .x { font-family: "IMDisplay"; font-weight: 800; font-size: 30px; letter-spacing: -.02em; color: var(--red); line-height: 1; }
+.ex .x small { font-family: "IMSans"; font-size: 12px; font-weight: 500; color: #6b6e71; display: block; text-align: right; letter-spacing: 0; }
+.ex a { font-size: 13.5px; color: #3c3f42; }
+.why { font-size: 15px; color: #3c3f42; grid-column: 1 / -1; border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 6px; }
+
+/* Prompt */
+.prompt { position: relative; background: #1C1B19; color: var(--tx); border-radius: 18px; box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,.07) inset; margin: 24px 0 30px; }
+.prompt pre { font-family: "IMMono"; font-size: 14.5px; line-height: 1.65; white-space: pre-wrap; padding: 26px 28px 28px; }
+.prompt button { position: absolute; top: 14px; right: 14px; font: 600 13px "IMSans"; background: var(--tx); color: var(--ink); border: 0; border-radius: 99px; padding: 8px 14px; cursor: pointer; }
+
+/* Checklist */
+.check label { display: flex; gap: 14px; align-items: flex-start; padding: 14px 28px; border-top: 1px solid var(--line); cursor: pointer; font-size: 16.5px; }
+.check label:first-child { border-top: 0; }
+.check input { appearance: none; width: 22px; height: 22px; border: 2px solid #b9b6ae; border-radius: 6px; flex: none; margin-top: 2px; display: grid; place-items: center; }
+.check input:checked { background: var(--red); border-color: var(--red); }
+.check input:checked::after { content: "✓"; color: #fff; font-size: 14px; font-weight: 700; }
+.check .bar { font-size: 14px; color: #5b5e61; padding: 12px 28px; background: #F5F3EE; border-top: 1px solid var(--line); display: flex; justify-content: space-between; }
+.check .bar button { font: 600 13px "IMSans"; background: none; border: 0; color: var(--red); cursor: pointer; }
+
+/* CTA */
+.cta { padding: 12vh 0 16vh; }
+.cta h2 { font-family: "IMDisplay"; font-weight: 800; font-variation-settings: "opsz" 96; letter-spacing: -.035em; line-height: .92; font-size: clamp(44px, 7vw, 92px); max-width: 12ch; }
+.btn { display: inline-flex; align-items: center; gap: 12px; margin-top: 34px; background: var(--tx); color: var(--ink); text-decoration: none; font-weight: 650; font-size: 17px; padding: 15px 22px; border-radius: 99px; box-shadow: 0 2px 6px rgba(0,0,0,.2), 0 20px 40px -18px rgba(0,0,0,.6); }
+.btn i { font-style: normal; background: var(--ink); color: var(--tx); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; }
+footer { border-top: 1px solid var(--hair); padding: 26px 0 40px; font-size: 14px; color: var(--tx3); }
+
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+  .hero { min-height: 88vh; }
+  .hero .ivan { width: 78vw; right: -14vw; }
+  .hero .spacer { height: 34vh; }
+  table.lift td, .check label, .ex { padding-left: 18px; padding-right: 18px; }
+  .sheet .pad, .prompt pre { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>What <span class="mark">10,629</span> LinkedIn posts taught my content brain</h1>
+    <p class="data">10,629 posts · 140 creators · 3 niches</p>
+    <div class="spacer"></div>
+  </div>
+  <div class="thread"></div>
+  <div class="ivan"><img src="assets/img/ivan-sd10-cut.png" alt="Ivan Manfredi"></div>
+</header>
+
+<main>
+<section class="intro read">
+  <p class="lead">I built a content brain for my LinkedIn. Every week it reads posts across different niches, pulls the ones that did 3x or more of their author's usual engagement, and works out why they took off. Then it hands me 3 of them to borrow from.</p>
+  <p>Last week I pointed it at everything it had collected: 10,629 posts from 140 creators in 3 niches.</p>
+  <ul class="arrows">
+    <li>AI, automation and agencies: 4,867 posts, 69 creators</li>
+    <li>Ecommerce and DTC: 4,281 posts, 46 creators</li>
+    <li>Influencer and creator marketing: 1,481 posts, 25 creators</li>
+  </ul>
+  <p>This is the full guide. What wins, what does nothing, real outliers for each pattern, and the weekly loop I run off it.</p>
+</section>
+
+<section class="sec read" id="outliers">
+  <h2><span class="n">1.</span> Measure a post against its own author</h2>
+  <p>The easy move is copying whatever got the most likes in your feed. That mostly copies follower count.</p>
+  <p>Say a creator with 200k followers averages 800 likes. Another 800-like post from them tells you nothing about writing. So the brain only asks one question: did this post beat its own author?</p>
+  <div class="sheet"><div class="pad formula">
+    score = likes + <b>3</b> × reposts<br>
+    usual = the author's median score<br>
+    outlier = a post at <b>3×</b> usual or more
+  </div><div class="cap">Reposts count triple because a repost pushes the post into a new network.</div></div>
+  <figure class="info"><img src="assets/img/info/01-score.jpg" alt="A big account at its usual 800 likes scores 1x. A small founder at 60 likes against a usual of 15 scores 4x." loading="lazy" width="1400" height="1750"><a href="assets/img/info/01-score.jpg" download>Save this visual ↓</a></figure>
+  <p>A 2,000-follower founder whose usual is 15 and who hits 60 is an outlier. The 200k account doing its usual 800 is invisible. In the AI and automation niche alone, the brain has scored 7,175 posts. 475 of them hit 3x.</p>
+  <h3>Find the outliers in your own niche (no tools needed)</h3>
+  <ol class="steps">
+    <li>List 20 to 30 creators your buyers actually follow. Mix sizes on purpose.</li>
+    <li>Open each profile and log their last 30 posts: likes and reposts.</li>
+    <li>Work out each creator's usual (the median of likes + 3x reposts).</li>
+    <li>Flag every post from the last 45 days at 3x their usual or higher.</li>
+  </ol>
+  <p>That's your outlier pool. After the first pass you only add the new week's posts.</p>
+</section>
+
+<section class="sec read" id="openings">
+  <h2><span class="n">2.</span> Openings</h2>
+  <p>Every number in this guide compares a creator's posts with their own other posts, so account size is already out of the picture.</p>
+  <figure class="info"><img src="assets/img/info/02-openings.jpg" alt="Opening with something you did: +12%. First line under 45 characters: +9%. Question mark in the first line: -12%." loading="lazy" width="1400" height="1750"><a href="assets/img/info/02-openings.jpg" download>Save this visual ↓</a></figure>
+  <div class="sheet"><table class="lift">
+    <tr class="group"><td colspan="2">Worked</td></tr>
+    <tr><td>Opening from something the author did, saw or measured<span class="sub">+15% in AI and automation. Held up again on the newest posts.</span></td><td class="v up">+11.7%</td></tr>
+    <tr><td>First line of 45 characters or less</td><td class="v up">+8.7%</td></tr>
+    <tr><td>Hook that leads with a surprising number or result<span class="sub">Strongest in influencer marketing (+16%). Weaker elsewhere.</span></td><td class="v up">+6.9%</td></tr>
+    <tr class="group"><td colspan="2">Did nothing</td></tr>
+    <tr><td>Curiosity gaps</td><td class="v zero">no lift</td></tr>
+    <tr><td>Contrarian takes</td><td class="v zero">no lift</td></tr>
+    <tr><td>Tension or "everyone is wrong about X" hooks</td><td class="v zero">no lift</td></tr>
+    <tr><td>Hooks that talk to the reader ("you")</td><td class="v zero">no lift</td></tr>
+    <tr><td>Scene-setting hooks and how-to openers</td><td class="v zero">no lift</td></tr>
+    <tr><td>Opening with a quote</td><td class="v zero">no lift</td></tr>
+    <tr class="group"><td colspan="2">Hurt</td></tr>
+    <tr><td>A question mark in the first line<span class="sub">Negative in every niche we looked at.</span></td><td class="v down">−11.8%</td></tr>
+  </table></div>
+  <p>The "did nothing" list surprised me. Half the hook templates on LinkedIn are built on those, and across 10,629 posts they show no measurable lift.</p>
+  <p><strong>The rule I took from it:</strong> open with your own action, number or moment. Keep the first line short. Drop the question.</p>
+
+  <h3>Real outliers</h3>
+  <div class="sheet"><div class="ex">
+    <div class="who">Taylor Haren</div><div class="x">22.6x<small>their usual</small></div>
+    <div class="line">"We were Clay's largest user at one point in time, hitting their platform 17.3 million times per week."</div>
+    <div class="meta">March 2026 · 353 words</div>
+    <div class="why">Opens on something they did, with a number in the first sentence. No question, no tease.</div>
+    <a href="https://www.linkedin.com/posts/taylorharen_we-were-clays-largest-user-at-one-point-activity-7434655206426042368-J1dE" target="_blank" rel="noopener">View post ↗</a>
+  </div></div>
+  <div class="sheet"><div class="ex">
+    <div class="who">Kenny Damian</div><div class="x">12.0x<small>their usual</small></div>
+    <div class="line">"I've spent 600+ hours inside Claude Code."</div>
+    <div class="meta">March 2026 · 396 words</div>
+    <div class="why">41-character first line, author-voiced, with a number. Then a long body.</div>
+    <a href="https://www.linkedin.com/posts/kenny-damian-90aba221a_ive-spent-600-hours-inside-claude-code-activity-7441843440847560705-nWy9" target="_blank" rel="noopener">View post ↗</a>
+  </div></div>
+  <figure class="info"><img src="assets/img/info/03-anatomy.jpg" alt="Kenny Damian's post annotated: starts from their own work, 41 characters, 396 words, 12x their usual." loading="lazy" width="1400" height="1750"><a href="assets/img/info/03-anatomy.jpg" download>Save this visual ↓</a></figure>
+</section>
+
+<section class="sec read" id="body">
+  <h2><span class="n">3.</span> The body</h2>
+  <figure class="info"><img src="assets/img/info/04-body.jpg" alt="Up to 100 words: -12%. 101 to 200 words: baseline. Over 200 words: no clear gain. A real story: +13% all niches, +23% AI and automation." loading="lazy" width="1400" height="1750"><a href="assets/img/info/04-body.jpg" download>Save this visual ↓</a></figure>
+  <div class="sheet"><table class="lift">
+    <tr><td>Body carried by a real story (a moment, then what happened next)<span class="sub">+13% across all 3 niches.</span></td><td class="v up">+23% <span style="font-weight:400">AI niche</span></td></tr>
+    <tr><td>Lists of 3+ lines<span class="sub">+13.5% in ecommerce, about +1% in AI and automation.</span></td><td class="v up">+6.8%</td></tr>
+    <tr><td>Going past 200 words<span class="sub">No clear advantage over 101 to 200.</span></td><td class="v zero">no lift</td></tr>
+    <tr><td>One-line paragraphs everywhere</td><td class="v zero">no lift</td></tr>
+    <tr><td>Body of 100 words or less<span class="sub">Compared with 101 to 200 words.</span></td><td class="v down">−12.3%</td></tr>
+  </table></div>
+  <p>So the very short post underperforms. Give the idea room to land, around 100 to 200 words, and tell what happened.</p>
+  <p>Lists depend on the audience. DTC readers reward them. In AI and automation they barely move anything, so I use one only when the content really is a list.</p>
+  <h3>Real outliers</h3>
+  <div class="sheet"><div class="ex">
+    <div class="who">Joe Gannon</div><div class="x">7.2x<small>their usual</small></div>
+    <div class="line">"I asked for 8-4 instead of 9-5 in my first ever job."</div>
+    <div class="meta">June 2026 · 176 words</div>
+    <div class="why">One real moment carries the whole post: the ask, the manager's yes, and the evenings that became a business.</div>
+    <a href="https://www.linkedin.com/posts/joe-gannon_i-asked-for-8-4-instead-of-9-5-in-my-first-activity-7471161892619595776-os_z" target="_blank" rel="noopener">View post ↗</a>
+  </div></div>
+  <div class="sheet"><div class="ex">
+    <div class="who">Taylor Haren</div><div class="x">6.4x<small>their usual</small></div>
+    <div class="line">"Clay's new pricing is probably my fault. We were paying $314 a month, but using (based on their new model) $214,087.50 worth of Clay a WEEK."</div>
+    <div class="meta">March 2026 · 553 words</div>
+    <div class="why">A story told call by call, with the numbers inside it. Long, and it still beat their usual 6x.</div>
+    <a href="https://www.linkedin.com/posts/taylorharen_clays-new-pricing-is-probably-my-fault-activity-7442225214677024768-uOsL" target="_blank" rel="noopener">View post ↗</a>
+  </div></div>
+</section>
+
+<section class="sec read" id="endings">
+  <h2><span class="n">4.</span> Endings</h2>
+  <p>No closer type wins. Sign-offs, questions, hard stops, "DM me", morals, punchlines. None of them held up as a winner.</p>
+  <div class="sheet"><table class="lift">
+    <tr><td>Explicit ask for comments: comments<span class="sub">Likes and reposts didn't move.</span></td><td class="v up">+86%</td></tr>
+    <tr><td>Every closer type on likes and reposts</td><td class="v zero">no winner</td></tr>
+  </table></div>
+  <p>So a comment ask gets you comments and not much else. Use it when comments are the goal, like a lead magnet. Skip it on everything else.</p>
+</section>
+
+<section class="sec read" id="topics">
+  <h2><span class="n">5.</span> Topics</h2>
+  <p>In a separate topic study on the same 3 niches, one topic beat the author's usual everywhere.</p>
+  <figure class="info"><img src="assets/img/info/05-topics.jpg" alt="Founder life and career: 1.2x in AI and automation, 1.2x in ecommerce and DTC, 1.5x in influencer marketing. Bottom in every niche: growth marketing, creative and ads." loading="lazy" width="1400" height="1750"><a href="assets/img/info/05-topics.jpg" download>Save this visual ↓</a></figure>
+  <p>I still cap mine at 1 or 2 founder posts a week and keep the rest of the week varied.</p>
+  <h3>Real outlier</h3>
+  <div class="sheet"><div class="ex">
+    <div class="who">Tim Renders</div><div class="x">5.3x<small>their usual</small></div>
+    <div class="line">"We hit 1 million euros in revenue today."</div>
+    <div class="meta">August 2026 · 175 words</div>
+    <div class="why">A founder milestone in 40 characters, then the years behind it.</div>
+    <a href="https://www.linkedin.com/posts/tim-renders-723a168_we-hit-1-million-euros-in-revenue-today-activity-7499031334498234368-bGzA" target="_blank" rel="noopener">View post ↗</a>
+  </div></div>
+</section>
+
+<section class="sec read" id="loop">
+  <h2><span class="n">6.</span> The weekly loop</h2>
+  <p>This is the part that actually changes what I post. Every Monday:</p>
+  <ol class="steps">
+    <li><strong>Pull the outliers.</strong> Everything at 3x+ from the last 45 days.</li>
+    <li><strong>Pick 3.</strong> Each one for a different reason: one for the angle, one for the format, one for the argument.</li>
+    <li><strong>Work out why it took off.</strong> Topic, opening, body shape, length, and who engaged. If the people engaging are your buyers, it moves up the list.</li>
+    <li><strong>Borrow the angle or the structure.</strong> Swap in your own facts, numbers and stories.</li>
+    <li><strong>Tag every claim.</strong> Next to each line, note where it came from: your own record, an industry source, someone else's post, or your opinion. Anything with no source gets cut.</li>
+    <li><strong>Run the checklist below</strong>, then post.</li>
+  </ol>
+  <figure class="info"><img src="assets/img/info/06-loop.jpg" alt="The Monday loop: pull the 3x outliers, pick 3, work out why, borrow one thing, tag every claim, check, then post." loading="lazy" width="1400" height="1750"><a href="assets/img/info/06-loop.jpg" download>Save this visual ↓</a></figure>
+  <h3>Step 4 as a prompt</h3>
+  <p>Paste the outlier post and your own notes into Claude or ChatGPT, then run this:</p>
+  <div class="prompt"><button type="button" id="copy">Copy</button><pre id="ptext">Here is a LinkedIn post that did 3x its author's usual engagement:
+[paste the outlier]
+
+Here are my own facts, numbers and stories for this week:
+[paste your notes]
+
+1. In 2 sentences, say why this post likely beat its author's usual:
+   the topic, the opening, the body shape, the length.
+2. Pick ONE thing to borrow: the angle, the format, or the argument.
+3. Write a new post with that one thing, using only my facts.
+   Open with something I did, saw or measured. No question in the
+   first line. 100 to 200 words. Carry it with a real moment if my
+   notes have one.
+4. Under the draft, list every claim and where it came from in my
+   notes. Mark any claim with no source.</pre></div>
+  <p>Delete every marked claim before you post.</p>
+</section>
+
+<section class="sec read" id="checklist">
+  <h2><span class="n">7.</span> The pre-post checklist</h2>
+  <figure class="info"><img src="assets/img/info/07-checklist.jpg" alt="Before you post: six checks." loading="lazy" width="1400" height="1750"><a href="assets/img/info/07-checklist.jpg" download>Save this visual ↓</a></figure>
+  <p>The full list, tick as you go. It resets for your next draft.</p>
+  <div class="sheet check" id="cl">
+    <label><input type="checkbox"> The first sentence starts from something I did, saw or measured.</label>
+    <label><input type="checkbox"> The first line is short (45 characters or so).</label>
+    <label><input type="checkbox"> No question mark in the first line.</label>
+    <label><input type="checkbox"> The body is over 100 words.</label>
+    <label><input type="checkbox"> A real moment or story carries it.</label>
+    <label><input type="checkbox"> No curiosity gap or contrarian hook with nothing behind it.</label>
+    <label><input type="checkbox"> Any list is there because the content is a list.</label>
+    <label><input type="checkbox"> The ending fits the goal (a comment ask only if comments are the goal).</label>
+    <label><input type="checkbox"> This isn't my 3rd founder story this week.</label>
+    <label><input type="checkbox"> I can point to a source for every number.</label>
+    <div class="bar"><span id="count">0 of 10</span><button type="button" id="reset">Reset for the next draft</button></div>
+  </div>
+</section>
+
+<section class="sec read" id="limits">
+  <h2><span class="n">8.</span> What this data can't tell you</h2>
+  <p>I'd rather you trust the numbers, so here's where they stop.</p>
+  <ul class="arrows">
+    <li>These are likes and reposts, which stand in for reach. They don't measure leads or booked calls.</li>
+    <li>They're patterns across thousands of posts. A pattern that shows up a lot is a good default. It doesn't guarantee your next post.</li>
+    <li>On the newest slice of posts, no single feature cleared the strictest statistical test on its own. The opening pattern came closest and held its direction everywhere.</li>
+    <li>When I checked my own 240 posts, the opening pattern didn't show a gain. My account is small, so I keep these as defaults and keep testing.</li>
+  </ul>
+  <p>So the brain keeps pulling new outliers every Monday, and I check them against these numbers.</p>
+</section>
+
+<section class="cta read">
+  <h2>Want this running on your account every week?</h2>
+  <a class="btn" href="https://www.linkedin.com/in/ivanmanfredi/" target="_blank" rel="noopener">DM me "BRAIN" on LinkedIn <i>↗</i></a>
+</section>
+</main>
+
+<footer><div class="read">Ivan Manfredi · Numbers: 10,629 public LinkedIn posts from 140 creators, measured 7+ days after posting, each post compared with the same author's other posts. Example ratios use likes + 3x reposts against the author's median in the sample.</div></footer>
+
+<script>
+document.getElementById('copy').onclick = function () {
+  navigator.clipboard.writeText(document.getElementById('ptext').innerText).then(() => { this.textContent = 'Copied'; setTimeout(() => this.textContent = 'Copy', 1500); });
+};
+const boxes = [...document.querySelectorAll('#cl input')], key = 'cb-guide-checklist';
+const saved = JSON.parse(localStorage.getItem(key) || '[]');
+boxes.forEach((b, i) => { b.checked = !!saved[i]; b.onchange = upd; });
+function upd() { localStorage.setItem(key, JSON.stringify(boxes.map(b => b.checked))); document.getElementById('count').textContent = boxes.filter(b => b.checked).length + ' of 10'; }
+document.getElementById('reset').onclick = () => { boxes.forEach(b => b.checked = false); upd(); };
+upd();
+</script>
+</body>
+</html>
