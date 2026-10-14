@@ -27,7 +27,7 @@
 
 @media print{.conversations{break-before:page}.investment{break-before:auto;break-inside:avoid}}
 
-</style></head>
+[hidden]{display:none!important}#signing-direct{flex-shrink:0;font-size:15px}#signing-help{font-size:15px;color:var(--muted);margin-top:16px}@media print{#signing-direct,#signing-help{display:none!important}}</style></head>
 <body>
 <a class="skip" href="#main">Skip to proposal</a>
 <header class="mast wrap"><a class="wordmark" href="#main" aria-label="InboundOnSteroids">inbound<span>on</span>steroids</a><span class="prepared">For Jonathan at SwishDM</span><a class="nav-next" href="#next">Get started ↗</a></header>
@@ -93,22 +93,48 @@
 </div></section>
 <section class="next wrap" id="next" aria-labelledby="next-title"><h2 id="next-title">Let’s put your LinkedIn on steroids.</h2><p class="section-intro">Jonathan, let’s build an audience of the right buyers and turn those conversations into opportunities for SwishDM.</p><p class="section-intro">You’ll work directly with me. On onboarding, we’ll connect your LinkedIn, agree who we’re targeting and plan the first content and outreach.</p>
 <ol class="next-steps">
-<li><div class="step-main"><div><h3>1. Sign the agreement</h3><p>Both parties sign this revised agreement before payment.</p></div><button id="agreement-link" class="button primary" type="button" aria-expanded="false" aria-controls="signing-panel">Review &amp; sign <span aria-hidden="true">↓</span></button><a class="print-agreement" href="agreement.html">Read the agreement ↗</a></div><div id="signing-panel" class="signing-panel" hidden><div class="signing-heading"><div><span class="artifact-label">Your service agreement</span></div><button id="close-signing" type="button" aria-label="Close agreement">Close ×</button></div><p id="signing-status" role="status" aria-live="polite">Loading your agreement…</p><div id="agreement-embed" title="Service agreement signing"></div><div class="signing-fallback"><a href="agreement.html" target="_blank" rel="noopener">Read the agreement in a new tab ↗</a><a id="signing-fullscreen" href="agreement.html" target="_blank" rel="noopener">Open signing full screen ↗</a><button id="retry-signing" type="button" hidden>Try again</button></div></div></li>
+<li><div class="step-main"><div><h3>1. Sign the agreement</h3><p>Both parties sign this revised agreement before payment.</p></div><button id="agreement-link" class="button primary" type="button" aria-expanded="false" aria-controls="signing-panel">Review &amp; sign <span aria-hidden="true">↓</span></button><a class="print-agreement" href="agreement.html">Read the agreement ↗</a><a id="signing-direct" class="text-link" href="agreement.html" target="_blank" rel="noopener noreferrer" hidden>Sign directly in SignWell ↗</a></div><p id="signing-help" hidden>To sign, open the complete proposal link Ivan sent you. The agreement below is available to read.</p><div id="signing-panel" class="signing-panel" hidden><div class="signing-heading"><div><span class="artifact-label">Your service agreement</span></div><button id="close-signing" type="button" aria-label="Close agreement">Close ×</button></div><p id="signing-status" role="status" aria-live="polite">Loading your agreement…</p><div id="agreement-embed" title="Service agreement signing"></div><div class="signing-fallback"><a href="agreement.html" target="_blank" rel="noopener">Read the agreement in a new tab ↗</a><a id="signing-fullscreen" href="agreement.html" target="_blank" rel="noopener">Open signing full screen ↗</a><button id="retry-signing" type="button" hidden>Try again</button></div></div></li>
 <li><div class="step-main"><div><h3>2. Pay your first $1,000</h3><p>Once both parties have signed, start your 30-day subscription in USD.</p></div><a class="button secondary" href="https://buy.stripe.com/3cIdR1aiD0Nb7gW1z5fEk1c">Pay with Stripe <span aria-hidden="true">↗</span></a></div></li>
 <li><div class="step-main"><div><h3>3. Book onboarding</h3><p>Connect your account and set our first priorities.</p></div><a class="button secondary" href="https://calendly.com/im-ivanmanfredi/30min">Book onboarding <span aria-hidden="true">↗</span></a></div></li>
 </ol></section>
 </main><footer class="footer wrap"><span>Ivan Manfredi · InboundOnSteroids</span><button id="print-button" type="button">Save as PDF ↓</button></footer>
 <script id="signing-config" type="application/json">{"mode": "live"}</script>
-<script>(() => {
+<script>(async () => {
   const config = JSON.parse(document.getElementById('signing-config').textContent);
   const button = document.getElementById('agreement-link');
-  const signingToken = new URLSearchParams(location.hash.slice(1)).get('sign');
-  if (!/^[a-f0-9]{10}$/.test(signingToken || '') || new URLSearchParams(location.hash.slice(1)).get('v') !== '20261013a') {
+  const params = new URLSearchParams(location.hash.slice(1));
+  const query = new URLSearchParams(location.search);
+  const storageKey = 'swishdm-signing-05cac0d1-8313-4b77-8140-5bf9069f49a0';
+  const explicitToken = params.has('sign') || query.has('sign');
+  let signingToken = params.has('sign') ? params.get('sign') : query.get('sign');
+  if (!explicitToken) {
+    try { signingToken = sessionStorage.getItem(storageKey); } catch (_) {}
+  }
+  let valid = false;
+  if (/^[a-f0-9]{10}$/.test(signingToken || '')) {
+    try {
+      const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(signingToken));
+      const fingerprint = Array.from(new Uint8Array(bytes), b => b.toString(16).padStart(2, '0')).join('');
+      valid = ["531d9d02de100611a18b7ed82817e6a3880a75ba347a7a7748dfb14fae2b034a", "673e93a4201fbe1a1cc9cd634eb8500aaa1a1801bb90bcff0f2700e55e095c98"].includes(fingerprint);
+    } catch (_) {}
+  }
+  if (!valid) {
     button.textContent = 'Read the agreement ↗';
+    document.getElementById('signing-help').hidden = false;
     button.addEventListener('click', () => { location.href = 'agreement.html'; });
     return;
   }
+  try { sessionStorage.setItem(storageKey, signingToken); } catch (_) {}
   config.url = 'https://www.signwell.com/docs/' + signingToken + '/';
+  const direct = document.getElementById('signing-direct');
+  direct.href = config.url;
+  direct.hidden = false;
+  // Normalize query links to the private fragment before any signing SDK loads.
+  if (query.has('sign')) {
+    query.delete('sign'); query.delete('v');
+    const remaining = query.toString();
+    history.replaceState(null, '', location.pathname + (remaining ? '?' + remaining : '') + '#sign=' + signingToken + '&v=20261013a');
+  }
   // Keep recipient access in the shared URL fragment, never in published files.
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', event => {
@@ -137,7 +163,7 @@
   function fail() {
     clearTimeout(timer);
     status.hidden = false;
-    status.textContent = 'The signing panel could not load. Try again, or read the agreement below.';
+    status.textContent = 'The signing panel could not load. Use “Sign directly in SignWell” or try again.';
     retry.hidden = false;
     panel.dataset.state = 'error';
   }
