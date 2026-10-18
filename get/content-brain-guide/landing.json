@@ -2,20 +2,20 @@
   "slug": "content-brain-guide",
   "format_label": "Guide",
   "category": "",
-  "headline": "What 100,000 LinkedIn posts taught my content brain",
+  "headline": "BEAT THE ALGORITHM",
   "headline_emphasis": "",
-  "subhead": "What 100,000 LinkedIn posts taught my content brain",
+  "subhead": "Rewrite your post with winning patterns from your niche.",
   "subhead_secondary": "",
-  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/content-brain-guide/cover-v4-2026-10-11.jpg",
+  "cover_url": "https://resources.ivanmanfredi.com/content-brain-guide/assets/img/og-conversion.jpg",
   "inside": [
-    "Real posts that blew up, next to each pattern",
-    "The loop I run every Monday to pick what to write",
-    "A prompt that turns a winning post into your own draft",
-    "A checklist to run before you hit post",
-    "7 one-page visuals"
+    "A worked draft-to-rewrite example",
+    "Prompts to rewrite a draft and compare ideas",
+    "Public source posts and practical research takeaways",
+    "A tutorial for the free ChatGPT plugin"
   ],
-  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
-  "resource_url": "https://resources.ivanmanfredi.com/content-brain-guide/",
+  "proof": "Built by Ivan Manfredi. Public niche research and original posts, in the ChatGPT conversation where you write.",
+  "resource_url": "https://resources.ivanmanfredi.com/content-brain-guide/?access=email#start",
   "gate_keyword": "BRAIN",
-  "cta_label": "Email me the resource"
+  "cta_label": "Get my free plugin + prompts",
+  "gate_mode": "public_only"
 }
