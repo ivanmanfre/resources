@@ -136,7 +136,7 @@ function unlockAccess(deliveryOk, returning = false) {
   document.querySelector('#prompt-lock').hidden = true;
   if (!returning) document.querySelector('#access-success-title').focus({ preventScroll: true });
   document.querySelector('#delivery-status').textContent = returning
-    ? 'Your access is saved in this browser. You can open the plugin and copy the prompts again.'
+    ? 'Your plugin link and prompts are ready. You can open them again here.'
     : deliveryOk
       ? 'The guide link is on its way to your inbox. You can start here now.'
       : 'Your signup is saved. The email could not be sent just now, so use the plugin and prompt pack here.';
