@@ -1,0 +1,7 @@
+Use Inbound Content Patterns to review the LinkedIn draft in my previous message. Ask for my niche, intended reader and source facts if they are missing.
+
+Check the evidence for that niche and show the sample size, baseline and source links. Say when an example matches only the broad topic or when the tool uses a pooled fallback.
+
+Give me three complete opening options using only my facts. Choose one and return the full rewritten draft in my voice. Explain the main edit in two sentences. Keep the original if a rewrite would weaken its point.
+
+Separate historical engagement evidence from your writing judgment. Keep any demo or fictional label. Never add a client, result, feeling or experience I did not supply. Do not assign a predicted score or success rate.

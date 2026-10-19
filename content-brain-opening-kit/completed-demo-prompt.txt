@@ -1,0 +1,5 @@
+Use Inbound Content Patterns. My niche is AI and automation. My reader is an agency founder. Rewrite this demo draft so the opening shows the build and the body explains it. This is an illustrative workflow, not a claim about work I performed. Keep that demo label in your answer. Use only the supplied facts.
+
+Daily sales reporting is easy to automate with n8n. My workflow pulls orders, groups sales by product and emails me the summary.
+
+Return one full rewrite and the reason for the main change. Explain whether the research supports the opening choice.

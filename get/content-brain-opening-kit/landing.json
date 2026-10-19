@@ -1,0 +1,21 @@
+{
+  "slug": "content-brain-opening-kit",
+  "format_label": "Opening kit",
+  "category": "",
+  "headline": "18 real LinkedIn openings.",
+  "subhead": "Study the original posts. Then rewrite your next draft with your own facts.",
+  "cover_url": "https://resources.ivanmanfredi.com/content-brain-opening-kit/assets/infographic-v5.png",
+  "inside": [
+    "18 completed opening excerpts, each linked to its original post",
+    "All 13 work-post opening features, ranked by their matched-pair result",
+    "A full before-and-after rewrite with 3 complete opening options",
+    "A copy-ready prompt for 3 openings and a full draft rewrite"
+  ],
+  "proof": "Built by Ivan Manfredi from the Content Brain research. The work-post comparison covered 828 same-author, same-format pairs.",
+  "resource_url": "https://resources.ivanmanfredi.com/content-brain-opening-kit/",
+  "gate_keyword": "HOOKS",
+  "cta_label": "Email me the opening kit",
+  "gate_mode": "public_only",
+  "cta_open_label": "Open the 18-opening kit",
+  "optin_micro": "One email with the kit link."
+}
