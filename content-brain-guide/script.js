@@ -6,9 +6,9 @@ if (!reader.session_id) {
 }
 const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const editSteps = {
-  opening: { number: '01', title: 'Lead with something you did.', description: "The research found a positive association for author-voiced openings in automation. Here, the rewrite brings the author's own build into the first line.", origin: 'Research-informed opening' },
-  body: { number: '02', title: 'Make the workflow easy to follow.', description: 'The rewrite separates the three actions already in the draft. Readers can see what the workflow does. This formatting is a writing choice made by ChatGPT.', origin: 'Editorial choice' },
-  payoff: { number: '03', title: 'Show what the finished workflow gives you.', description: 'The summary becomes a concrete outcome: seeing what sold in one email. The rewrite keeps the original scope and adds no time saved, revenue or client results.', origin: 'Your facts, preserved' }
+  opening: { number: '01', title: 'Get to the point in the first line.', description: 'The revised opening keeps where Ivan finds content ideas and makes the wording more direct.', origin: 'Clearer opening' },
+  body: { number: '02', title: 'Keep the useful detail.', description: 'The explanation about client questions stays in the post. The edit keeps Ivan’s own experience.', origin: 'Body kept unchanged' },
+  payoff: { number: '03', title: 'Keep the context.', description: 'The final paragraph keeps why Ivan saves the question with his answer. That detail stays in the revision.', origin: 'Original facts kept' }
 };
 const editButtons = [...document.querySelectorAll('[data-edit]')];
 const comparison = document.querySelector('.rewrite-comparison');
@@ -179,7 +179,7 @@ accessForm.addEventListener('submit', async event => {
   } catch {
     accessStatus.textContent = "Your signup didn't go through. Please try again. Your email is still in the form.";
     accessSubmit.disabled = false;
-    accessSubmit.textContent = 'Get my free editor + prompts ↗';
+    accessSubmit.textContent = 'Get Content BRAIN free ↗';
   }
 });
 if (location.hostname === 'resources.ivanmanfredi.com') {
