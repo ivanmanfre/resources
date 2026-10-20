@@ -1,36 +1,41 @@
-INBOUND CONTENT PATTERNS: PROMPT PACK
-Free ChatGPT plugin by Ivan Manfredi
+CONTENT BRAIN: EDITOR + PROMPT PACK
+Free ChatGPT post editor by Ivan Manfredi
 
-PLUGIN
+INSTALL INBOUND CONTENT PATTERNS
 https://chatgpt.com/plugins/plugin_asdk_app_6ac0c0d09dfc81919688101f83f0b0fc
 
-SETUP
-Install from the listing. Start a new chat, type @ and select Inbound Content Patterns. Replace the brackets in a prompt below with your own niche and facts.
+OPEN THE CONTENT BRAIN EDITOR
+https://chatgpt.com/mcp-app/asdk_app_6ac0c0d09dfc81919688101f83f0b0fc/content_brain_open
 
-REWRITE MY DRAFT
-My niche is [AI and automation / ecommerce / mobile games marketing]. Use Inbound Content Patterns to find relevant patterns and source posts for this draft. Explain which changes the research supports and which are your writing judgment. Rewrite it using only my facts and keep my voice. Draft: [paste your draft]
+YOUR FIRST DRAFT
+Install Inbound Content Patterns, then open the editor link above. If ChatGPT shows a loading error, select Retry.
 
-COMPARE TWO IDEAS
-I write for [reader] in [AI and automation / ecommerce / mobile games marketing]. Use Inbound Content Patterns to compare these two ideas: [idea A] and [idea B]. Show the closest public examples and explain which is better supported. Tell me when the match is weak. Help me choose an angle using these facts: [your facts].
+Paste your draft and choose AI and automation, Ecommerce or Mobile games. Something else loads a labelled broader sample. Choose Whole post or Opening only, then click Improve my post or Improve the opening.
 
-FIND STANDOUT POSTS
-Use Inbound Content Patterns to find posts in [AI and automation / ecommerce / mobile games marketing] that beat their own author's usual engagement. Show the original links, the author-relative comparison and what I can study in each opening. Help me apply a relevant pattern to this real experience: [your experience].
+Your draft stays in the editor. The rewrite appears in the ChatGPT conversation. Open the Examples tab to browse real authors, engagement figures and original post links.
 
-WORKED EXAMPLE
-Demo draft:
-Daily sales reporting is easy to automate with n8n. My workflow pulls orders, groups sales by product and emails me the summary.
+Closing or reloading the editor clears your draft. Save your text before leaving.
 
-Demo rewrite:
-I built a daily sales report that lands in my inbox.
+FOLLOW-UP REQUESTS
+Use these in the ChatGPT conversation after sending a draft from the editor. Replace the brackets with your own details.
 
-It runs in n8n:
-- Pull orders
-- Group sales by product
-- Email the daily summary
+ANOTHER VERSION
+For the draft I just sent, give me another version for [reader]. Keep the facts I supplied. Explain which changes come from the research and which are your writing choices.
 
-Now I can see what sold in one email.
+ANOTHER OPENING
+Give me another opening for the draft I just sent. Keep the rest of the post unchanged and use only the facts I supplied. Explain the reason for the change.
 
-The opening applies the author-voiced pattern found in the automation study. Separating the steps is an editorial choice. This synthetic example keeps the draft's facts and includes no promised performance improvement.
+STUDY AN EXAMPLE
+Show me the original links for the examples behind your suggestions. Explain the author-relative engagement comparison and whether each example applies to my topic. Help me use a relevant structure with these facts from my work: [your facts].
+
+WORKED EXAMPLE FROM THE TESTED EDITOR FLOW
+Original opening:
+I find a ton of content ideas coming from client comms on Slack...
+
+Revised opening:
+I get a ton of content ideas from client conversations on Slack.
+
+The body paragraphs stayed unchanged. ChatGPT explained that tightening the wording was an editorial choice. The research does not predict how either version will perform.
 
 FULL GUIDE
 https://resources.ivanmanfredi.com/content-brain-guide/

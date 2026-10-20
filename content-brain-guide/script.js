@@ -62,9 +62,9 @@ motionQuery.addEventListener('change', () => { if (motionQuery.matches) stopDemo
 document.addEventListener('visibilitychange', () => { if (document.hidden) stopDemo(); });
 
 const prompts = {
-  rewrite: 'My niche is [AI and automation / ecommerce / mobile games marketing]. Use Inbound Content Patterns to find relevant patterns and source posts for this draft. Explain which changes the research supports and which are your writing judgment. Rewrite it using only my facts and keep my voice. Draft: [paste your draft]',
-  compare: 'I write for [reader] in [AI and automation / ecommerce / mobile games marketing]. Use Inbound Content Patterns to compare these two ideas: [idea A] and [idea B]. Show the closest public examples and explain which is better supported. Tell me when the match is weak. Help me choose an angle using these facts: [your facts].',
-  examples: 'Use Inbound Content Patterns to find posts in [AI and automation / ecommerce / mobile games marketing] that beat their own author\'s usual engagement. Show the original links, the author-relative comparison and what I can study in each opening. Help me apply a relevant pattern to this real experience: [your experience].'
+  rewrite: 'For the draft I just sent, give me another version for [reader]. Keep the facts I supplied. Explain which changes come from the research and which are your writing choices.',
+  compare: 'Give me another opening for the draft I just sent. Keep the rest of the post unchanged and use only the facts I supplied. Explain the reason for the change.',
+  examples: 'Show me the original links for the examples behind your suggestions. Explain the author-relative engagement comparison and whether each example applies to my topic. Help me use a relevant structure with these facts from my work: [your facts].'
 };
 const promptTabs = [...document.querySelectorAll('[data-prompt]')];
 const promptText = document.querySelector('#prompt-text');
@@ -89,7 +89,7 @@ promptTabs.forEach((button, index) => {
 document.querySelector('#copy-prompt').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(promptText.textContent);
-    copyStatus.textContent = 'Copied. Select the plugin in ChatGPT, paste the prompt and add your facts.';
+    copyStatus.textContent = 'Copied. Paste this into the ChatGPT conversation after sending your draft from the editor.';
   } catch {
     const selection = window.getSelection();
     const range = document.createRange();
@@ -136,11 +136,11 @@ function unlockAccess(deliveryOk, returning = false) {
   document.querySelector('#prompt-lock').hidden = true;
   if (!returning) document.querySelector('#access-success-title').focus({ preventScroll: true });
   document.querySelector('#delivery-status').textContent = returning
-    ? 'Your plugin link and prompts are ready. You can open them again here.'
+    ? 'Your editor link and prompts are ready. You can open them again here.'
     : deliveryOk
       ? 'The guide link is on its way to your inbox. You can start here now.'
-      : 'Your signup is saved. The email could not be sent just now, so use the plugin and prompt pack here.';
-  document.querySelector('.access-footnote').textContent = 'Start a new chat, select the installed plugin with @ and add your draft.';
+      : 'Your signup is saved. The email could not be sent just now, so use the editor and prompt pack here.';
+  document.querySelector('.access-footnote').textContent = 'Install the plugin, open Content BRAIN and paste your draft into the editor.';
   document.querySelectorAll('[data-cta$="access"]').forEach(link => {
     link.href = '#access';
   });
@@ -179,7 +179,7 @@ accessForm.addEventListener('submit', async event => {
   } catch {
     accessStatus.textContent = "Your signup didn't go through. Please try again. Your email is still in the form.";
     accessSubmit.disabled = false;
-    accessSubmit.textContent = 'Get my free plugin + prompts ↗';
+    accessSubmit.textContent = 'Get my free editor + prompts ↗';
   }
 });
 if (location.hostname === 'resources.ivanmanfredi.com') {
