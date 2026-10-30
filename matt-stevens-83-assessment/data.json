@@ -1,0 +1,636 @@
+{
+ "slug": "matt-stevens-83-assessment",
+ "title": "Desk Bench Strength Score",
+ "subtitle": "How exposed your desk is if a senior producer resigns tomorrow, scored on client coverage, a named backup, reach into employed talent and interviews that test judgment.",
+ "brand": {
+  "accent": "#123a6e",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "where_client_coverage_si",
+   "name": "Where Client Coverage Sits",
+   "questions": [
+    {
+     "id": "revenue",
+     "type": "number",
+     "text": "Roughly what does your desk or group bring in per year?",
+     "hint": "Gross annual revenue, your best estimate. It sizes the cost below and scores neutral.",
+     "suffix": "USD",
+     "min": 0,
+     "max": 1000000000,
+     "step": 1000000,
+     "default": 25000000,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "concentration",
+     "type": "number",
+     "text": "What share of that revenue comes from clients your top producer covers alone, with no second person the client would call?",
+     "hint": "If the client would phone only one person on your desk, that revenue counts here.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 40,
+     "normalize_formula": "100 - x"
+    },
+    {
+     "id": "vacancy",
+     "type": "number",
+     "text": "If your top producer resigned this morning, how many months until someone else is producing on those accounts?",
+     "hint": "Count the search, notice period, garden leave and ramp. We divide by 12 to turn annual revenue into the months the seat sits empty. A year or more scores zero.",
+     "suffix": "months",
+     "min": 0,
+     "max": 24,
+     "step": 1,
+     "default": 9,
+     "normalize_formula": "Math.max(0, 100 - x * 100 / 12)"
+    },
+    {
+     "id": "where_client_coverage_si_q4",
+     "text": "Your top producer's three biggest clients pick up the phone. Who else on your desk would they recognize by voice?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody. Every call on those accounts goes to one person.",
+       "score": 1
+      },
+      {
+       "label": "A junior who sends the materials and joins calls on mute.",
+       "score": 2
+      },
+      {
+       "label": "One other banker they have met in person once or twice.",
+       "score": 3
+      },
+      {
+       "label": "A second senior person who joins the quarterly calls and knows the open mandates.",
+       "score": 4
+      },
+      {
+       "label": "A second senior person who has led live calls on each account in the last six months.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "where_client_coverage_si_q5",
+     "text": "If you needed the full history on your top producer's biggest account by Friday, where would it come from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Their head. It has never been written down.",
+       "score": 1
+      },
+      {
+       "label": "Scattered emails and a pitch book from two years ago.",
+       "score": 2
+      },
+      {
+       "label": "A CRM entry that covers the deals and misses the relationships.",
+       "score": 3
+      },
+      {
+       "label": "Current notes in a shared system, plus one colleague who knows the background.",
+       "score": 4
+      },
+      {
+       "label": "Current notes and a colleague who could brief a new client contact without calling the producer.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "where_client_coverage_si_q6",
+     "text": "When did a top client last hear from your desk with your top producer out of the room?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I can't remember it happening.",
+       "score": 1
+      },
+      {
+       "label": "During their vacation, and the client waited for them to get back.",
+       "score": 2
+      },
+      {
+       "label": "A few times a year, mostly logistics.",
+       "score": 3
+      },
+      {
+       "label": "Every quarter, on something with substance.",
+       "score": 4
+      },
+      {
+       "label": "Every month. The client already treats two people as their coverage.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your revenue sits with one person",
+     "text": "If your top producer resigns, those clients follow the phone number they already have. Nobody on your desk has the history to call them back with anything useful. That is the first thing I would fix, before any search.",
+     "steps": [
+      "Pick the three accounts that would hurt most to lose and put a second senior name on each this month.",
+      "Have that second person lead one live call on each account before the end of the quarter.",
+      "Write down the account history, fee terms and open mandates where someone else on the desk can read them."
+     ]
+    },
+    "mid": {
+     "headline": "A second name exists on paper",
+     "text": "Some clients know a second person on your desk. Fewer would call that person first with a problem. When a producer leaves, clients follow the person they trust, so the gap between those two groups is your exposure.",
+     "steps": [
+      "Ask each top client, on a call, who else on the desk they would phone with a problem.",
+      "Hand one recurring client meeting a quarter to the second senior person.",
+      "Update account notes the same week every mandate closes."
+     ]
+    },
+    "high": {
+     "headline": "Clients already know two people",
+     "text": "Your coverage would hold through a resignation. Keep testing it. A second person who stops getting calls is a stranger to the client again within a year.",
+     "steps": [
+      "Check twice a year that the second person led a live call on each top account.",
+      "Rotate the lead on one account per year so you keep testing the depth."
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_named_backup",
+   "name": "The Named Backup",
+   "questions": [
+    {
+     "id": "the_named_backup_q1",
+     "text": "If your top producer gave notice today, who takes their clients on Monday?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I would have to think about it.",
+       "score": 1
+      },
+      {
+       "label": "Whoever has the most capacity that week.",
+       "score": 2
+      },
+      {
+       "label": "A name on an org chart, picked when the chart was drawn.",
+       "score": 3
+      },
+      {
+       "label": "A specific person I have in mind, who probably suspects it.",
+       "score": 4
+      },
+      {
+       "label": "A specific person who knows it is them, because I told them and we planned it.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_named_backup_q2",
+     "text": "Does your named backup know they are the backup?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There is no named backup.",
+       "score": 1
+      },
+      {
+       "label": "I haven't told them. They would hear it the day it happens.",
+       "score": 2
+      },
+      {
+       "label": "It came up once, informally, a while ago.",
+       "score": 3
+      },
+      {
+       "label": "I told them directly, and they know which accounts.",
+       "score": 4
+      },
+      {
+       "label": "They know, they have met every client on the list, and we review it twice a year.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_named_backup_q3",
+     "text": "A client asks your backup whether anything changes after the departure. What would they say?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They would not know what to say.",
+       "score": 1
+      },
+      {
+       "label": "Something rehearsed that the client would see through on the call.",
+       "score": 2
+      },
+      {
+       "label": "A reasonable answer, without the account history to back it up.",
+       "score": 3
+      },
+      {
+       "label": "A specific answer, citing the last mandate and who worked on it.",
+       "score": 4
+      },
+      {
+       "label": "The client knows them well enough that the question never comes up.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Nobody knows they are the backup",
+     "text": "A backup who finds out the day of the resignation spends the first month learning names while the client decides whether to stay. Tell the person now. It is an awkward conversation and much cheaper than losing the account.",
+     "steps": [
+      "Name one backup for each senior producer and tell them directly, on a call or in person.",
+      "Give them the client list they would inherit.",
+      "Set a date in the next 60 days for them to meet each client on that list."
+     ]
+    },
+    "mid": {
+     "headline": "The backup knows, the clients don't",
+     "text": "You have a name and the person knows it. Clients would still meet them for the first time after the departure, and clients decide fast in that first meeting.",
+     "steps": [
+      "Introduce the backup to every account on their list this quarter.",
+      "Ask the backup how they would answer a client asking what changes, and listen for the pause."
+     ]
+    },
+    "high": {
+     "headline": "Your backup could take the call tomorrow",
+     "text": "You told the person, they know the accounts, and the clients have met them. Review the list when people get promoted or move seats, because that is when a plan goes out of date without anyone noticing.",
+     "steps": [
+      "Review the backup list after every promotion or departure.",
+      "Ask each backup what they still don't know about each account."
+     ]
+    }
+   }
+  },
+  {
+   "id": "hearing_it_before_the_re",
+   "name": "Hearing It Before the Resignation",
+   "questions": [
+    {
+     "id": "hearing_it_before_the_re_q1",
+     "text": "When did you last talk with your top producer, by phone or in person, about where they want to be in two years?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never. Comp conversations cover it.",
+       "score": 1
+      },
+      {
+       "label": "At their last review, and it was mostly about the number.",
+       "score": 2
+      },
+      {
+       "label": "Within the last year, briefly.",
+       "score": 3
+      },
+      {
+       "label": "In the last six months, and I heard what they want next.",
+       "score": 4
+      },
+      {
+       "label": "In the last quarter, and I could repeat their answer word for word.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hearing_it_before_the_re_q2",
+     "text": "After the last earnings call, what did your team hear from you about bonus and hiring?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing. They read the headlines like everyone else.",
+       "score": 1
+      },
+      {
+       "label": "A forwarded email from the firm.",
+       "score": 2
+      },
+      {
+       "label": "A short note in the team chat.",
+       "score": 3
+      },
+      {
+       "label": "A team meeting where I said what I knew and what I didn't.",
+       "score": 4
+      },
+      {
+       "label": "A team meeting, then one-on-one calls with the senior people most likely to take a recruiter's call.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You will hear about it in the resignation letter",
+     "text": "When exits slow and the payout moves further out, good people start taking calls they ignored last year. They decide to move well before anyone tells you. A phone call about their next two years is the only early warning you get.",
+     "steps": [
+      "Call your top producer this week and ask where they want to be in two years.",
+      "After each earnings call, tell your team what you know about bonus and hiring, and what you don't know yet.",
+      "Ask how much of their bonus is deferred and how they feel about it."
+     ]
+    },
+    "mid": {
+     "headline": "You talk, mostly about the number",
+     "text": "A comp review tells you what someone earns. It rarely tells you what would make them listen to a recruiter. That comes out in a real conversation, and it usually takes a phone call.",
+     "steps": [
+      "Hold one conversation a quarter with each senior person that has nothing to do with the bonus number.",
+      "Write down what each of them wants next, so you notice when the answer changes."
+     ]
+    },
+    "high": {
+     "headline": "You would hear it early",
+     "text": "You know what your senior people want and you tell them the truth after earnings. Keep doing it in the slow quarters, because that is when people start taking calls.",
+     "steps": [
+      "Keep the quarterly calls on the calendar through a slow cycle.",
+      "Ask each senior person directly whether anyone has called them about a seat."
+     ]
+    }
+   }
+  },
+  {
+   "id": "reaching_employed_candid",
+   "name": "Reaching Employed Candidates",
+   "questions": [
+    {
+     "id": "reaching_employed_candid_q1",
+     "text": "If you needed a senior replacement next month, how would you reach people who are happily employed elsewhere?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Post the role and see who applies.",
+       "score": 1
+      },
+      {
+       "label": "Send InMails and wait.",
+       "score": 2
+      },
+      {
+       "label": "Ask the team for names, then email the ones we know.",
+       "score": 3
+      },
+      {
+       "label": "Call a short list of people I already know by name and situation.",
+       "score": 4
+      },
+      {
+       "label": "Call people I have spoken with in the last year, who would pick up because they trust me.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reaching_employed_candid_q2",
+     "text": "How many senior people at competing desks could you call today and expect them to pick up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None.",
+       "score": 1
+      },
+      {
+       "label": "One or two, and only for a deal question.",
+       "score": 2
+      },
+      {
+       "label": "A handful I know from conferences.",
+       "score": 3
+      },
+      {
+       "label": "Five or more I have spoken with this year.",
+       "score": 4
+      },
+      {
+       "label": "Ten or more, and I know what would make each of them move.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reaching_employed_candid_q3",
+     "text": "When you look at candidates, how far past the big names do you search?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We only look at the top five firms.",
+       "score": 1
+      },
+      {
+       "label": "Mostly bulge brackets, with the odd exception.",
+       "score": 2
+      },
+      {
+       "label": "We look at smaller firms when a recruiter brings them.",
+       "score": 3
+      },
+      {
+       "label": "We actively look at boutiques and regional shops.",
+       "score": 4
+      },
+      {
+       "label": "I know specific people at smaller firms doing strong work that rarely gets seen from outside.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your replacement plan is a job posting",
+     "text": "The people you would want are employed, paid well and not reading postings. A message gets their attention. A call is where they decide whether to trust you, and you need that trust before the seat is open.",
+     "steps": [
+      "List ten senior people at other desks you would hire tomorrow.",
+      "Call two of them this month with no ask attached.",
+      "Put at least three names from smaller firms on that list."
+     ]
+    },
+    "mid": {
+     "headline": "You know names, few would pick up",
+     "text": "You can name the people. The question is whether they would take your call and tell you what it would take to move. Someone you met once at a conference will have coffee with you. Talking about a move takes more history than that.",
+     "steps": [
+      "Turn five conference contacts into a phone call each this quarter.",
+      "Note what each person said they care about, and follow up on it."
+     ]
+    },
+    "high": {
+     "headline": "You could call the replacement tomorrow",
+     "text": "You have a short list of employed people who trust you enough to take the call. Keep it current, because their situations change with every bonus cycle.",
+     "steps": [
+      "Refresh the list after each bonus season.",
+      "Add one strong person from a smaller firm each quarter."
+     ]
+    }
+   }
+  },
+  {
+   "id": "interviews_that_test_jud",
+   "name": "Interviews That Test Judgment",
+   "questions": [
+    {
+     "id": "interviews_that_test_jud_q1",
+     "text": "In your last senior interview, how did you test whether the candidate would tell you you're wrong?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We didn't. We covered the deal sheet and technicals.",
+       "score": 1
+      },
+      {
+       "label": "We asked a culture question and accepted the answer.",
+       "score": 2
+      },
+      {
+       "label": "Someone noticed whether they pushed back, but nobody asked about it.",
+       "score": 3
+      },
+      {
+       "label": "We put a flawed view on the table and watched whether they challenged it.",
+       "score": 4
+      },
+      {
+       "label": "We did that, and asked about a call that went wrong, listening for 'I' or 'the market'.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "interviews_that_test_jud_q2",
+     "text": "Something in an interview feels off and the résumé looks perfect. What happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The paper wins. We hire and hope.",
+       "score": 1
+      },
+      {
+       "label": "I mention it, then get outvoted.",
+       "score": 2
+      },
+      {
+       "label": "I note it and move on.",
+       "score": 3
+      },
+      {
+       "label": "I make a reference call to find out why before an offer.",
+       "score": 4
+      },
+      {
+       "label": "We run it down with references and a second conversation, and hold the offer until we know.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your interviews check the résumé twice",
+     "text": "Modeling, Excel and the deal sheet all came in with the résumé. What you can't see on paper is whether they will tell the person who signs their bonus that they are wrong. If a candidate agrees with everything you say in the first meeting, expect the same in the tenth.",
+     "steps": [
+      "Put one flawed view on the table in every senior interview and see who challenges it.",
+      "Ask about a call that went wrong and listen for 'I' or 'the market'.",
+      "Ask candidates for their dealbreakers in the first conversation, before an offer is on the table."
+     ]
+    },
+    "mid": {
+     "headline": "You notice judgment, you rarely test it",
+     "text": "Someone on your panel probably senses when a candidate is too agreeable. When I get that feeling, I go find out why. In fifteen years it has been pattern recognition every time, and every time I overrode it, it cost me.",
+     "steps": [
+      "Give each interviewer one judgment question to own.",
+      "Make a reference call on any flag before the offer goes out."
+     ]
+    },
+    "high": {
+     "headline": "Your interviews test what the résumé can't",
+     "text": "You test for pushback and you chase down the flags. Keep the same bar for senior hires, where the pressure to close fast is highest.",
+     "steps": [
+      "Review your last three hires against what the interviews predicted.",
+      "Ask candidates what the last person in the seat struggled with, and notice who asks you first."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "revenue-with-one-person",
+   "label": "Annual revenue covered by one person",
+   "format": "currency",
+   "formula": "revenue * concentration / 100",
+   "show_in_result": true
+  },
+  {
+   "id": "revenue-exposed-during-vacancy",
+   "label": "Revenue exposed while the seat is empty",
+   "format": "currency",
+   "formula": "revenue * concentration / 100 * vacancy / 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which seat do you sit in?",
+  "answers": [
+   {
+    "label": "Group head or desk head",
+    "tag": "group_head"
+   },
+   {
+    "label": "Managing director running client coverage",
+    "tag": "md_coverage"
+   },
+   {
+    "label": "COO or business manager",
+    "tag": "coo"
+   },
+   {
+    "label": "Head of talent or HR business partner",
+    "tag": "talent_partner"
+   },
+   {
+    "label": "Founder or partner at a boutique",
+    "tag": "boutique_partner"
+   }
+  ]
+ }
+}
