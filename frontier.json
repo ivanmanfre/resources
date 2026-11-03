@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-01T18:01:24.421Z",
+ "generated_at": "2026-11-03T05:01:09.278Z",
  "as_of": "2026-07-10",
  "stale": false,
  "source": "frontier_models (curated + human-confirmed)",
@@ -48,7 +48,8 @@
    "knowledge_cutoff": null,
    "released_on": null,
    "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-   "confirmed_at": "2026-09-01"
+   "confirmed_at": "2026-09-01",
+   "stale": true
   }
  ],
  "flagships": {
