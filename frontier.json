@@ -1,37 +1,36 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T05:01:09.278Z",
- "as_of": "2026-07-10",
+ "generated_at": "2026-11-16T10:18:26.466Z",
+ "as_of": "2026-11-16",
  "stale": false,
  "source": "frontier_models (curated + human-confirmed)",
  "models": [
   {
    "provider": "anthropic",
-   "model_id": "claude-opus-4-8",
-   "display_name": "Claude Opus 4.8",
-   "family": "opus",
+   "model_id": "claude-fable-5-2",
+   "display_name": "Claude Fable 5.2",
+   "family": null,
    "tier": "flagship",
    "is_current_flagship": true,
    "status": "current",
    "pricing": {
-    "input": 5,
-    "output": 25,
-    "cached_input": 0.5,
+    "input": null,
+    "output": null,
+    "cached_input": null,
     "unit": "per_mtok",
     "currency": "USD"
    },
-   "context_window": 1000000,
-   "max_output_tokens": 64000,
+   "context_window": null,
+   "max_output_tokens": null,
    "knowledge_cutoff": null,
-   "released_on": "2026-05-28",
-   "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
-   "confirmed_at": "2026-07-10",
-   "stale": true
+   "released_on": null,
+   "source_url": "https://www.anthropic.com/pricing",
+   "confirmed_at": "2026-11-16"
   },
   {
    "provider": "anthropic",
-   "model_id": "claude-fable-5-1",
-   "display_name": "Fable 5.1",
+   "model_id": "claude-opus-5-5",
+   "display_name": "Claude Opus 5.5",
    "family": null,
    "tier": "flagship",
    "is_current_flagship": false,
@@ -48,23 +47,90 @@
    "knowledge_cutoff": null,
    "released_on": null,
    "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-   "confirmed_at": "2026-09-01",
-   "stale": true
+   "confirmed_at": "2026-11-16"
+  },
+  {
+   "provider": "anthropic",
+   "model_id": "claude-sonnet-5-5",
+   "display_name": "Claude Sonnet 5.5",
+   "family": null,
+   "tier": "mid",
+   "is_current_flagship": false,
+   "status": "current",
+   "pricing": {
+    "input": null,
+    "output": null,
+    "cached_input": null,
+    "unit": "per_mtok",
+    "currency": "USD"
+   },
+   "context_window": null,
+   "max_output_tokens": null,
+   "knowledge_cutoff": null,
+   "released_on": null,
+   "source_url": "https://www.anthropic.com/pricing",
+   "confirmed_at": "2026-11-16"
+  },
+  {
+   "provider": "anthropic",
+   "model_id": "claude-haiku-5-5",
+   "display_name": "Claude Haiku 5.5",
+   "family": null,
+   "tier": "small",
+   "is_current_flagship": false,
+   "status": "current",
+   "pricing": {
+    "input": null,
+    "output": null,
+    "cached_input": null,
+    "unit": "per_mtok",
+    "currency": "USD"
+   },
+   "context_window": null,
+   "max_output_tokens": null,
+   "knowledge_cutoff": null,
+   "released_on": null,
+   "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "confirmed_at": "2026-11-16"
   }
  ],
  "flagships": {
-  "anthropic": "claude-opus-4-8"
+  "anthropic": "claude-fable-5-2"
  },
  "constants": {},
  "model_currency": {
-  "as_of": "2026-07-10",
-  "stamp": "Models and pricing current as of Jul 10, 2026",
-  "current_models_line": "Claude Opus 4.8",
+  "as_of": "2026-11-16",
+  "stamp": "Models and pricing current as of Nov 16, 2026",
+  "current_models_line": "Claude Fable 5.2",
   "tested_against": [
-   "claude-opus-4-8"
+   "claude-fable-5-2"
   ]
  },
  "changelog": [
+  {
+   "date": "2026-09-22",
+   "event": "model_launch",
+   "models": [
+    "claude-opus-5-5"
+   ],
+   "summary": "Claude Opus 5.5 launched"
+  },
+  {
+   "date": "2026-09-28",
+   "event": "model_launch",
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "summary": "Claude Sonnet 5.5 launched"
+  },
+  {
+   "date": "2026-11-09",
+   "event": "model_launch",
+   "models": [
+    "claude-fable-5-2"
+   ],
+   "summary": "Claude Fable 5.2 launched"
+  },
   {
    "date": "2026-09-01",
    "event": "model_launch",
