@@ -1,0 +1,655 @@
+{
+ "slug": "muhammad-luqman-snma-specialist-3b-assessment",
+ "title": "The Phone Search Scorecard for Restaurants",
+ "subtitle": "Scores what a hungry local sees when they search your cuisine and area on a phone, and whether one tap gets them to call, book or order.",
+ "brand": {
+  "accent": "#87c83b",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "showing_up_when_they_sea",
+   "name": "Showing up when they search",
+   "questions": [
+    {
+     "id": "showing_up_when_they_sea_q1",
+     "text": "Open a private browser tab on your phone and type your cuisine and your area into Google. Where does your restaurant appear?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have never done this search",
+       "score": 1
+      },
+      {
+       "label": "I did it once and we were not on the first page",
+       "score": 2
+      },
+      {
+       "label": "We show in the map results sometimes, below rivals",
+       "score": 3
+      },
+      {
+       "label": "We show on the first page for our cuisine and area",
+       "score": 4
+      },
+      {
+       "label": "We show in the top three map results, and I check this every month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "showing_up_when_they_sea_q2",
+     "text": "Search the dish you most want to be known for plus your town. What comes up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have not picked a dish to be found for",
+       "score": 1
+      },
+      {
+       "label": "We picked one, and we do not appear for it",
+       "score": 2
+      },
+      {
+       "label": "We appear, and rival photos of that dish come first",
+       "score": 3
+      },
+      {
+       "label": "We appear and our own photo of that dish shows",
+       "score": 4
+      },
+      {
+       "label": "We appear for our top two or three dishes, and I recheck after every menu change",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "showing_up_when_they_sea_q3",
+     "text": "How finished is your Google Business Profile today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I am not sure who has the login",
+       "score": 1
+      },
+      {
+       "label": "Name, address and phone number only",
+       "score": 2
+      },
+      {
+       "label": "Categories and description filled in, with a few sections empty",
+       "score": 3
+      },
+      {
+       "label": "Every section done, including services and attributes",
+       "score": 4
+      },
+      {
+       "label": "Every section done, and I post an update or offer at least every two weeks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "A hungry local cannot find you yet",
+     "text": "When I search for restaurants like yours on a phone, the reason new guests never arrive is usually right there on the screen. Your listing sits below rivals or does not show at all for your cuisine and area.",
+     "steps": [
+      "Search your cuisine and your area on your phone in a private browser tab",
+      "Write down the three restaurants that appear above you",
+      "Claim your Google Business Profile and fill in every section this week"
+     ]
+    },
+    "mid": {
+     "headline": "You show up, and rivals show up first",
+     "text": "You appear for some searches. The guest deciding at 6pm on a Friday taps one of the first three results, and right now that is often someone else.",
+     "steps": [
+      "Pick the one dish you most want to be found for",
+      "Add that dish to your profile with a photo and a price",
+      "Post an update on your profile every two weeks",
+      "Repeat the phone search once a month and write down your position"
+     ]
+    },
+    "high": {
+     "headline": "You show up where the decision happens",
+     "text": "You appear for your cuisine, your area and your best dishes. Keep checking, because a rival can pass you in a month.",
+     "steps": [
+      "Add your second and third signature dishes to the profile",
+      "Recheck your position after every menu change"
+     ]
+    }
+   }
+  },
+  {
+   "id": "hours_menu_and_photos",
+   "name": "Hours, menu and photos",
+   "questions": [
+    {
+     "id": "hours_menu_and_photos_q1",
+     "text": "On the last bank holiday, what did your Google listing say about your opening hours?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I do not know",
+       "score": 1
+      },
+      {
+       "label": "It showed our normal hours, and we had changed them",
+       "score": 2
+      },
+      {
+       "label": "I updated it on the day, after a guest told us",
+       "score": 3
+      },
+      {
+       "label": "I set special hours a few days ahead",
+       "score": 4
+      },
+      {
+       "label": "Special hours are already set for every bank holiday this year",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_menu_and_photos_q2",
+     "text": "A guest taps Menu on your listing. What do they get?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No menu shows",
+       "score": 1
+      },
+      {
+       "label": "An old photo of a paper menu with prices that have changed",
+       "score": 2
+      },
+      {
+       "label": "A link to a PDF that is hard to read on a phone",
+       "score": 3
+      },
+      {
+       "label": "A current menu that loads well on a phone",
+       "score": 4
+      },
+      {
+       "label": "A current menu with prices, updated the same week we change a dish",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_menu_and_photos_q3",
+     "text": "Scroll the photos on your listing the way a stranger would. What do the first five show?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The car park, the front door or a dark, blurry shot",
+       "score": 1
+      },
+      {
+       "label": "Mostly guest photos I have never looked at",
+       "score": 2
+      },
+      {
+       "label": "Some good dish photos mixed with weak ones",
+       "score": 3
+      },
+      {
+       "label": "Bright dish photos that look like the plate that arrives",
+       "score": 4
+      },
+      {
+       "label": "Our best sellers shot in window light, and I swap out weak photos every month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your listing is telling guests the wrong thing",
+     "text": "Wrong hours on a bank holiday, an old menu and a photo of the car park. A stranger sees all of it before they see your food, and they choose with their eyes in seconds.",
+     "steps": [
+      "Set special hours for every bank holiday left this year",
+      "Upload a current menu that loads on a phone",
+      "Report or remove the worst photos on your listing",
+      "Shoot five dish photos next to a window this week"
+     ]
+    },
+    "mid": {
+     "headline": "Close, with gaps a guest will notice",
+     "text": "Most of the information is right. One stale price or one blurry photo is enough to send a hungry guest to the next listing.",
+     "steps": [
+      "Shoot your best seller from slightly above in window light, with the overhead lights off",
+      "Wipe the plate rim before every photo",
+      "Swap your weakest five photos for the new ones",
+      "Update menu prices the same week you change a dish"
+     ]
+    },
+    "high": {
+     "headline": "What they see is what arrives",
+     "text": "Your hours, menu and photos match the plate that reaches the table. Good photos also make paid ads work harder, so put them to work there too.",
+     "steps": [
+      "Use your best listing photos in your next ad",
+      "Set a monthly reminder to check the photos guests upload"
+     ]
+    }
+   }
+  },
+  {
+   "id": "reviews_asked_for_and_an",
+   "name": "Reviews asked for and answered",
+   "questions": [
+    {
+     "id": "reviews_asked_for_and_an_q1",
+     "text": "A guest tells your team the food was lovely. What happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We say thank you and that is the end of it",
+       "score": 1
+      },
+      {
+       "label": "Sometimes someone says 'leave us a review' and we hope",
+       "score": 2
+      },
+      {
+       "label": "We send an email or text asking for a review a few days later",
+       "score": 3
+      },
+      {
+       "label": "Staff hand over a QR card to our review page with some bills",
+       "score": 4
+      },
+      {
+       "label": "Every bill goes out with a QR card, and staff ask in that moment",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reviews_asked_for_and_an_q2",
+     "text": "Find your oldest unanswered complaint on Google. How old is it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There are several, and some are over a year old",
+       "score": 1
+      },
+      {
+       "label": "A few from the last few months",
+       "score": 2
+      },
+      {
+       "label": "One or two slipped through",
+       "score": 3
+      },
+      {
+       "label": "None are unanswered, and replies can take a week",
+       "score": 4
+      },
+      {
+       "label": "None, every review gets a reply within a day",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reviews_asked_for_and_an_q3",
+     "text": "Read your last ten replies as someone who has never eaten with you. What do they show?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not reply",
+       "score": 1
+      },
+      {
+       "label": "The same copied line on every review",
+       "score": 2
+      },
+      {
+       "label": "Replies to good reviews, and the bad ones skipped",
+       "score": 3
+      },
+      {
+       "label": "Personal replies to most reviews, good and bad",
+       "score": 4
+      },
+      {
+       "label": "Personal replies to every review that mention the dish or moment the guest wrote about",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reviews",
+     "type": "number",
+     "text": "How many new Google reviews does your restaurant get in a typical week?",
+     "hint": "Count the last four weeks and divide by four. 10 or more a week scores full marks. We multiply your weekly number by 52 weeks to show your year.",
+     "suffix": "reviews a week",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "Math.min(100, x * 10)"
+    },
+    {
+     "id": "reviewgap",
+     "type": "number",
+     "text": "Find the restaurant on your street with the most Google reviews. How many more do they have than you?",
+     "hint": "Enter 0 if you have the most. A gap of 400 or more scores zero. If you get no reviews in a week, we count your pace as one a week so the catch-up sum can run.",
+     "suffix": "reviews",
+     "min": 0,
+     "max": 5000,
+     "step": 1,
+     "default": 100,
+     "normalize_formula": "Math.max(0, 100 - x / 4)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your reviews are working against you",
+     "text": "Guests compare stars and read how the owner replies. Every person who has not visited yet reads those old unanswered complaints, and then they pick the place next door.",
+     "steps": [
+      "Reply to every unanswered review this week, starting with the oldest complaint",
+      "Print a small card with a QR code that opens your Google review page",
+      "Hand the card over with the bill when a guest says the food was lovely"
+     ]
+    },
+    "mid": {
+     "headline": "You ask and reply, and you miss some tables",
+     "text": "The habit has started. A few extra reviews every week add up faster than you expect, and the gap to the busiest place on your street closes only when the asking happens at every table.",
+     "steps": [
+      "Put a QR card with every bill",
+      "Train staff to ask in the moment a guest praises the food",
+      "Reply to every review within a day in your own words"
+     ]
+    },
+    "high": {
+     "headline": "Your reviews are selling tables for you",
+     "text": "Guests are asked at the right moment and every reply is personal. That is what a stranger reads before they book.",
+     "steps": [
+      "Mention the dish or moment the guest wrote about in each reply",
+      "Track new reviews per week against the busiest restaurant on your street"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ads_and_the_searches_you",
+   "name": "Ads and the searches you pay for",
+   "questions": [
+    {
+     "id": "ads_and_the_searches_you_q1",
+     "text": "Who can see your Google or Facebook ads right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We boost posts to whoever Facebook picks",
+       "score": 1
+      },
+      {
+       "label": "A whole city or region",
+       "score": 2
+      },
+      {
+       "label": "Our town, set once and never checked",
+       "score": 3
+      },
+      {
+       "label": "People within a short drive of our door",
+       "score": 4
+      },
+      {
+       "label": "A short drive, with the radius tested against where our orders come from",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ads_and_the_searches_you_q2",
+     "text": "When did you last open the search terms report and block searches that do not fit your restaurant?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I do not know what that report is",
+       "score": 1
+      },
+      {
+       "label": "Once, when the account was set up",
+       "score": 2
+      },
+      {
+       "label": "Every few months",
+       "score": 3
+      },
+      {
+       "label": "Every month, with jobs, recipe and free blocked",
+       "score": 4
+      },
+      {
+       "label": "Every week, and I block anything off our menu or out of our area",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ads_and_the_searches_you_q3",
+     "text": "Before your last ad went live, what did you set as its goal?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Likes and reach",
+       "score": 1
+      },
+      {
+       "label": "Website visits",
+       "score": 2
+      },
+      {
+       "label": "A mix of goals in one ad",
+       "score": 3
+      },
+      {
+       "label": "One action, a call, a booking or an order",
+       "score": 4
+      },
+      {
+       "label": "One action, with the dish and the instruction in the first line",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your ad money is reaching people who will never visit",
+     "text": "Boosting a post to anyone, or showing an ad to a whole region, buys likes and clicks from people far from your door. That is usually why an owner decides ads do not work for restaurants.",
+     "steps": [
+      "Choose one action for your next ad, a call, a booking or an order",
+      "Set the audience to people within a short drive of your door",
+      "Add jobs, recipe and free as negative keywords"
+     ]
+    },
+    "mid": {
+     "headline": "The setup is close, and the leaks happen weekly",
+     "text": "Your area and goal are mostly right. Unfit searches still slip through between checks, and every unwanted click you block is money you keep.",
+     "steps": [
+      "Open the search terms report every week",
+      "Block any search that has nothing to do with your menu or your area",
+      "Bid on your dish plus your town, like lamb karahi or sunday roast"
+     ]
+    },
+    "high": {
+     "headline": "Your ads reach people who could eat with you tonight",
+     "text": "You run a tight area and one action per ad, and you block unfit searches every week. Small budgets work when the goal is narrow and the audience is local.",
+     "steps": [
+      "Test a smaller radius against where your orders come from",
+      "Write a separate ad for each signature dish"
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_button_they_tap",
+   "name": "The button they tap",
+   "questions": [
+    {
+     "id": "the_button_they_tap_q1",
+     "text": "Where does a click on your ad or the website link on your listing land?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On a home page with our story and the phone number at the bottom",
+       "score": 1
+      },
+      {
+       "label": "On a home page with the menu two taps away",
+       "score": 2
+      },
+      {
+       "label": "On a menu page with no call or booking button",
+       "score": 3
+      },
+      {
+       "label": "On one page with the menu, address and a call button",
+       "score": 4
+      },
+      {
+       "label": "On one page per ad with menu, hours, address and a big call, book or order button at the top",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_button_they_tap_q2",
+     "text": "Tap every button on your listing on your own phone tonight. What happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have never tapped them",
+       "score": 1
+      },
+      {
+       "label": "At least one goes nowhere or to an old website",
+       "score": 2
+      },
+      {
+       "label": "They work, and the order button goes to a delivery app I do not track",
+       "score": 3
+      },
+      {
+       "label": "Call, directions, booking and order all work",
+       "score": 4
+      },
+      {
+       "label": "All work, and I can count the calls, bookings and orders each one brought last month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The click lands and the guest gets lost",
+     "text": "A hungry person taps your ad or your listing and lands on a home page story with the phone number at the bottom. They go back and tap the next result.",
+     "steps": [
+      "Tap every button on your listing on your phone tonight",
+      "Fix or remove any button that goes nowhere",
+      "Build one page with your menu, address and a big call button at the top"
+     ]
+    },
+    "mid": {
+     "headline": "The buttons work, and you cannot see what they bring",
+     "text": "Guests can call, book or order. Without knowing which button brought which table, you cannot tell which ad or listing change paid for itself.",
+     "steps": [
+      "Put your hours and a booking button at the top of your ad page",
+      "Add a call button so one tap rings your phone",
+      "Count the calls, bookings and orders each button brought last month"
+     ]
+    },
+    "high": {
+     "headline": "One tap gets them to a table",
+     "text": "Every search ends on a page with the menu, the hours and one clear button, and you know what each button brings. That is when a small budget goes a long way.",
+     "steps": [
+      "Make one landing page per ad, matched to the dish in the ad",
+      "Review last month's calls, bookings and orders before you change any budget"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "reviews-this-year",
+   "label": "New reviews you will add this year at your current weekly pace (52 weeks)",
+   "format": "integer",
+   "formula": "reviews * 52",
+   "show_in_result": true
+  },
+  {
+   "id": "weeks-to-catch-up",
+   "label": "Weeks to match the busiest restaurant on your street, if they got no new reviews from today",
+   "format": "integer",
+   "formula": "Math.ceil(reviewgap / Math.max(reviews, 1))",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which describes you best?",
+  "answers": [
+   {
+    "label": "I own and run one restaurant",
+    "tag": "owner_single"
+   },
+   {
+    "label": "I own two or more sites",
+    "tag": "owner_group"
+   },
+   {
+    "label": "I manage the restaurant for the owner",
+    "tag": "manager"
+   },
+   {
+    "label": "I handle marketing for a restaurant",
+    "tag": "marketer"
+   }
+  ]
+ }
+}
