@@ -1,0 +1,566 @@
+{
+ "slug": "owen-grosvenor-40-assessment",
+ "title": "Category Sameness Score",
+ "subtitle": "How closely your brand copies your six nearest competitors, judged on logo, type, colour, the ten-second homepage test and whether every asset looks like one brand.",
+ "brand": {
+  "accent": "#5b6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "competitor_overlap",
+   "name": "Competitor Overlap",
+   "questions": [
+    {
+     "id": "competitor_overlap_q1",
+     "text": "When did you last put your homepage side by side with your six nearest competitors?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I couldn't name six nearest competitors right now",
+       "score": 1
+      },
+      {
+       "label": "I know who they are but I've never compared us side by side",
+       "score": 2
+      },
+      {
+       "label": "I looked once, before we launched",
+       "score": 3
+      },
+      {
+       "label": "I compared us in the last year and changed a few things",
+       "score": 4
+      },
+      {
+       "label": "I keep a live board of all six and check it every quarter",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "competitor_overlap_q2",
+     "text": "Where did your brand's look come from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I found a site I liked and asked the designer to do something like it",
+       "score": 1
+      },
+      {
+       "label": "We pulled from the same Dribbble, Behance or Awwwards shots everyone in our space saves",
+       "score": 2
+      },
+      {
+       "label": "A mix of saved references plus a few ideas of our own",
+       "score": 3
+      },
+      {
+       "label": "A brief built on our positioning, with references used to check we weren't copying anyone",
+       "score": 4
+      },
+      {
+       "label": "Strategy first, then concepts presented in a full deck explaining why each one fits us and nobody else",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "competitor_overlap_q3",
+     "text": "Cover the logo on your homepage and on a competitor's. Could a buyer tell which is which?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, you could swap us and nobody would notice",
+       "score": 1
+      },
+      {
+       "label": "Only from the product photos or screenshots",
+       "score": 2
+      },
+      {
+       "label": "Maybe, if they already knew both of us",
+       "score": 3
+      },
+      {
+       "label": "Yes, the tone of the copy gives it away",
+       "score": 4
+      },
+      {
+       "label": "Instantly, the colour, type and words are clearly ours",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "palette",
+     "type": "number",
+     "text": "Of your six nearest competitors, how many use the same main colour family as you?",
+     "hint": "Count only those six competitors, so your answer is somewhere from 0 to 6.",
+     "suffix": "competitors",
+     "min": 0,
+     "max": 6,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "100 - x * 100 / 6"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You can't see how much you look like them",
+     "text": "Right now you're competing without looking at the field. Chances are your brand came from the same reference sites your competitors used, so a buyer comparing all of you sees one blur. An honest side-by-side is where I'd start.",
+     "steps": [
+      "List the six competitors a buyer would compare you to before buying",
+      "Screenshot their homepages next to yours and cover every logo",
+      "Ask two people outside your industry to match each screenshot to a brand"
+     ]
+    },
+    "mid": {
+     "headline": "You've looked, now act on what you saw",
+     "text": "You know who you're up against and you've spotted some overlap. The risk is treating that comparison as a one-off while competitors keep changing and your team keeps saving the same references they do.",
+     "steps": [
+      "Put all six competitors on one board and update it every quarter",
+      "Mark every colour, typeface and phrase you share with at least two of them",
+      "Brief your designer on what to avoid as well as what to aim for"
+     ]
+    },
+    "high": {
+     "headline": "You stand out and you can prove it",
+     "text": "You've done the uncomfortable comparison and buyers can tell you apart. Keep checking, because new competitors tend to copy whoever looks strongest in the category, and that might be you now.",
+     "steps": [
+      "Add any new entrant to your comparison board the month they launch",
+      "Write down the visual choices only your brand makes and protect them",
+      "Review your board before approving any new campaign"
+     ]
+    }
+   }
+  },
+  {
+   "id": "logo_type_and_colour",
+   "name": "Logo, Type and Colour",
+   "questions": [
+    {
+     "id": "logo_type_and_colour_q1",
+     "text": "What would a stranger guess about your business from your logo alone?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing, it's a generic wordmark in a default font",
+       "score": 1
+      },
+      {
+       "label": "The obvious category, because it uses the same icon every brand in our space uses",
+       "score": 2
+      },
+      {
+       "label": "Roughly the right industry, but nothing about why we're different",
+       "score": 3
+      },
+      {
+       "label": "The right industry, plus a hint of what makes us different",
+       "score": 4
+      },
+      {
+       "label": "The right industry, and they'd still remember it a day later",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "logo_type_and_colour_q2",
+     "text": "How was your typeface chosen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It was the default in the website builder",
+       "score": 1
+      },
+      {
+       "label": "It's the same clean sans-serif half our category uses",
+       "score": 2
+      },
+      {
+       "label": "A designer picked it because it looked good",
+       "score": 3
+      },
+      {
+       "label": "It was picked to match how we want buyers to feel about us",
+       "score": 4
+      },
+      {
+       "label": "It was chosen for our personality, and we checked no close competitor uses it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "logo_type_and_colour_q3",
+     "text": "Can you explain why your brand colour is your brand colour?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, it came with the template",
+       "score": 1
+      },
+      {
+       "label": "It's the colour our category uses, so it felt safe",
+       "score": 2
+      },
+      {
+       "label": "We liked it",
+       "score": 3
+      },
+      {
+       "label": "It ties to something real about the people we serve",
+       "score": 4
+      },
+      {
+       "label": "It ties to our positioning and no direct competitor owns it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your identity could belong to anyone in your category",
+     "text": "A default font, the category colour and the obvious icon add up to a logo a buyer forgets by the next tab. I always start with positioning and design the logo to carry it. Skip that and you end up with a nice PNG and nothing behind it.",
+     "steps": [
+      "Write one sentence on who you serve and why they pick you",
+      "Ask for logo concepts in a full deck with the reasoning behind each one",
+      "Check every concept against your six competitors before you pick"
+     ]
+    },
+    "mid": {
+     "headline": "Your look is professional and safe",
+     "text": "Your logo, type and colour look the part. The trouble is that the same choices sit on several competitor sites, so a buyer has no visual reason to remember you over them.",
+     "steps": [
+      "Find the one element where you overlap most with competitors and change it first",
+      "Test a typeface no direct competitor uses",
+      "Tie your main colour to something real about the people you serve"
+     ]
+    },
+    "high": {
+     "headline": "A buyer can pick you out",
+     "text": "A buyer can read your industry and your difference from the logo alone, and your colour and type have reasons behind them. Write those reasons down so the next designer or hire keeps them.",
+     "steps": [
+      "Document why each colour and typeface was chosen",
+      "Keep a record of competitor palettes so nobody drifts towards them",
+      "Revisit the identity when your positioning changes and leave it alone otherwise"
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_ten_second_homepage",
+   "name": "The Ten-Second Homepage",
+   "questions": [
+    {
+     "id": "the_ten_second_homepage_q1",
+     "text": "Show your homepage to someone outside your industry for ten seconds. What can they tell you back?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing specific, it's a big image and a vague tagline",
+       "score": 1
+      },
+      {
+       "label": "The category, and that's it",
+       "score": 2
+      },
+      {
+       "label": "What we do, but they can't say who it's for",
+       "score": 3
+      },
+      {
+       "label": "What we do and who it's for",
+       "score": 4
+      },
+      {
+       "label": "What we do, who it's for and why they'd pick us",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_ten_second_homepage_q2",
+     "text": "Which describes your homepage headline?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A stock line like 'Innovative solutions for modern businesses'",
+       "score": 1
+      },
+      {
+       "label": "It names the category and promises quality",
+       "score": 2
+      },
+      {
+       "label": "It names a benefit, though a competitor could claim it too",
+       "score": 3
+      },
+      {
+       "label": "It makes a claim specific to us, with a number or a name behind it",
+       "score": 4
+      },
+      {
+       "label": "It makes a claim only we can make, and buyers repeat it back on calls",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_ten_second_homepage_q3",
+     "text": "What does a first-time visitor see above the fold?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Stock photography any competitor could also use",
+       "score": 1
+      },
+      {
+       "label": "A generic product shot or illustration in our category's usual style",
+       "score": 2
+      },
+      {
+       "label": "Our own photos or product, laid out like every other site in the space",
+       "score": 3
+      },
+      {
+       "label": "Our own imagery in a layout that feels like us",
+       "score": 4
+      },
+      {
+       "label": "Something a buyer would recognise as ours even out of context",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "headlines",
+     "type": "number",
+     "text": "How many of your six nearest competitors have a homepage headline that could sit on your homepage unchanged?",
+     "hint": "Read each of the six headlines and count the ones you could paste onto your site without it looking wrong, so 0 to 6.",
+     "suffix": "competitors",
+     "min": 0,
+     "max": 6,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "100 - x * 100 / 6"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Buyers leave your homepage knowing nothing",
+     "text": "Ten seconds is about what you get. If a stranger can only tell your category, you're asking buyers to work out why you're different, and they won't bother.",
+     "steps": [
+      "Rewrite your headline to say what you do and who it's for in one line",
+      "Replace stock imagery with your own product, team or work",
+      "Run the ten-second test on three people outside your industry and write down what they say back"
+     ]
+    },
+    "mid": {
+     "headline": "They understand what you do and stop there",
+     "text": "Visitors can tell what you sell, but a competitor could post your headline tomorrow and nobody would notice. Your next gain is a claim only you can make.",
+     "steps": [
+      "Add a number, a named client or your method to your headline",
+      "Check your headline against all six competitor homepages",
+      "Design the area above the fold so it looks like you even with the logo covered"
+     ]
+    },
+    "high": {
+     "headline": "Your homepage passes the ten-second test",
+     "text": "A stranger can tell what you do, who it's for and why they'd pick you. Keep testing, since every new page or campaign is a chance for your team to slide back into category language.",
+     "steps": [
+      "Repeat the ten-second test after every homepage change",
+      "Collect the phrases buyers repeat on calls and use them in your copy",
+      "Apply the same test to your landing pages and pitch deck"
+     ]
+    }
+   }
+  },
+  {
+   "id": "one_brand_everywhere",
+   "name": "One Brand Everywhere",
+   "questions": [
+    {
+     "id": "one_brand_everywhere_q1",
+     "text": "Line up your website, pitch deck, socials, invoices and packaging. What do you see?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Five different brands",
+       "score": 1
+      },
+      {
+       "label": "The logo matches and everything else drifts",
+       "score": 2
+      },
+      {
+       "label": "Mostly matching, with a couple of assets made in a rush",
+       "score": 3
+      },
+      {
+       "label": "All recognisably us, with small slips",
+       "score": 4
+      },
+      {
+       "label": "One brand, every piece built from the same system",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "one_brand_everywhere_q2",
+     "text": "What do your brand guidelines look like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There aren't any, the logo is a PNG someone emailed us",
+       "score": 1
+      },
+      {
+       "label": "A logo pack with colour codes and nothing else",
+       "score": 2
+      },
+      {
+       "label": "A guide exists but nobody on the team opens it",
+       "score": 3
+      },
+      {
+       "label": "A guide the team uses for most new assets",
+       "score": 4
+      },
+      {
+       "label": "A guide plus templates, and new assets get checked against it before they go out",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "one_brand_everywhere_q3",
+     "text": "When someone on your team makes a new social graphic or sales doc, where do they start?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A Canva template they found that looked nice",
+       "score": 1
+      },
+      {
+       "label": "Copying whatever competitor post did well last month",
+       "score": 2
+      },
+      {
+       "label": "Our old assets, edited until they look close enough",
+       "score": 3
+      },
+      {
+       "label": "Our own templates, most of the time",
+       "score": 4
+      },
+      {
+       "label": "Our own templates and a short checklist that stops off-brand work going out",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're running several brands by accident",
+     "text": "A brand is the whole experience around the logo, and right now that experience changes depending on which asset a buyer sees first. Step back and look at everything together before you make anything new.",
+     "steps": [
+      "Lay every asset you use out on one table or screen",
+      "Pick the version that looks most like you and make it the reference",
+      "Build a basic guide with colours, type, logo use and two templates"
+     ]
+    },
+    "mid": {
+     "headline": "Mostly one brand, with a few rushed assets",
+     "text": "Your core assets match, but rushed graphics and old templates keep creeping in. Those are often the pieces a new buyer sees first.",
+     "steps": [
+      "Find the assets made in a rush and rebuild them from your guide",
+      "Give the team templates for the five things they make most",
+      "Add a quick brand check before anything new goes out"
+     ]
+    },
+    "high": {
+     "headline": "One brand wherever buyers meet you",
+     "text": "Every asset comes from the same system and your team uses it. Protect that by keeping the guide easy to find and updating it when the brand moves on.",
+     "steps": [
+      "Review a random sample of new assets every month",
+      "Update the templates whenever you change anything in the identity",
+      "Brief every new hire or freelancer on the guide in their first week"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "lookalike-share",
+   "label": "Share of your competitor checks where you look the same",
+   "format": "percent",
+   "formula": "(palette + headlines) / 12 * 100",
+   "show_in_result": true
+  },
+  {
+   "id": "closest-lookalikes",
+   "label": "Competitors you could be swapped with on colour or headline",
+   "format": "integer",
+   "formula": "Math.max(palette, headlines)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes you?",
+  "answers": [
+   {
+    "label": "Founder doing the brand myself",
+    "tag": "diy_founder"
+   },
+   {
+    "label": "Founder working with a freelance designer",
+    "tag": "freelancer_led"
+   },
+   {
+    "label": "Founder with an in-house marketing team",
+    "tag": "inhouse_team"
+   },
+   {
+    "label": "Founder about to rebrand",
+    "tag": "pre_rebrand"
+   }
+  ]
+ }
+}
