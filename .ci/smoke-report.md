@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 009839bbcaf274c9e0d81a030f104f2c93a2c52f at 2026-11-17T15:43:25.376Z
+Deploy: 0d40fff73239c8d24d48c41dae8785d464c608ef at 2026-11-20T20:24:58.939Z
 
-- muhammad-luqman-snma-specialist-3b-assessment: data.json HTTP 503
+- marco-teodoro-3c-assessment: data.json HTTP 404
