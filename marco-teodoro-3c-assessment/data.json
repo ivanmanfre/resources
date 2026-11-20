@@ -1,0 +1,634 @@
+{
+ "slug": "marco-teodoro-3c-assessment",
+ "title": "Umbraco Migrate or Rewrite Score",
+ "subtitle": "Scores whether your out-of-support Umbraco site should be migrated, rewritten or fixed first, across security, content model, design, custom code and maintenance.",
+ "brand": {
+  "accent": "#2027b7",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "support_and_security_ris",
+   "name": "Support and security risk",
+   "questions": [
+    {
+     "id": "unpatched",
+     "type": "number",
+     "text": "How many months has your Umbraco version been without security patches?",
+     "hint": "Umbraco 8 lost support on 24 February 2025. Enter 0 if you are on a supported version. Scored 100 at 0 months, falling to 0 at 24 months or more. We add 12 months to show where you will be this time next year.",
+     "suffix": "months",
+     "min": 0,
+     "max": 120,
+     "step": 1,
+     "default": 12,
+     "normalize_formula": "Math.max(0, 100 - x * 100 / 24)"
+    },
+    {
+     "id": "support_and_security_ris_q2",
+     "text": "If a security vulnerability affecting your Umbraco version were published tomorrow, what would happen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody would hear about it. No one watches advisories for this site.",
+       "score": 1
+      },
+      {
+       "label": "We would hear eventually, but there is no patch for our version and no plan for that day.",
+       "score": 2
+      },
+      {
+       "label": "Our agency would tell us, we would patch the server and hope the CMS holds.",
+       "score": 3
+      },
+      {
+       "label": "A configured WAF sits in front of the site and a named person reviews advisories.",
+       "score": 4
+      },
+      {
+       "label": "We are on a supported version, patches go out within days, and someone owns that process.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "support_and_security_ris_q3",
+     "text": "Which of these describes the .NET runtime and hosting under the site?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Old .NET Framework or .NET 5 on a server nobody has logged into for a year",
+       "score": 1
+      },
+      {
+       "label": "Out-of-support runtime in Azure or similar, and we are unsure what we pay for there",
+       "score": 2
+      },
+      {
+       "label": "Out-of-support runtime, but we know every hosting resource and what each one costs",
+       "score": 3
+      },
+      {
+       "label": "Supported .NET, with a few hosting leftovers we have not cleaned up yet",
+       "score": 4
+      },
+      {
+       "label": "Supported .NET on hosting we review regularly, with no idle services on the invoice",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Cover the risk before you pick a path",
+     "text": "Your site is exposed and nobody is watching it. I would not spend a week debating migrate or rewrite while that stays true. For a client with 130 regulated financial sites on Umbraco 8, waiting until next year was never an option, and you carry the same exposure on an unwatched site whatever your sector. Get the immediate risk covered first, then make the bigger decision with a clear head.",
+     "steps": [
+      "Configure a WAF in front of the site this month, starting with any you already pay for",
+      "Name one person who reads Umbraco security advisories",
+      "List every hosting resource and what it costs each month",
+      "Book the migrate-or-rewrite decision within the next 90 days"
+     ]
+    },
+    "mid": {
+     "headline": "Put a date on the decision",
+     "text": "You have some cover, a WAF or an agency who would warn you, but you are still running a version with no patches. You add to the eventual emergency every month you stay where you are. Pick the date you want to be on a supported version and work backwards from it.",
+     "steps": [
+      "Set a target date for running a supported Umbraco version",
+      "Remove hosting resources nobody uses",
+      "Ask your partner for a written plan covering the period until that date"
+     ]
+    },
+    "high": {
+     "headline": "You have time to choose well",
+     "text": "You are patched or close to it, and someone owns the process. That is the best position to make a migrate-or-rewrite call from, because nobody is forcing your hand. Spend that time on the other four sections of this score, where the real answer sits.",
+     "steps": [
+      "Keep the advisory review on a fixed weekly slot",
+      "Check the upgrade path for your version before support ends",
+      "Use the rest of this score to decide between migration and rewrite"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_model_health",
+   "name": "Content model health",
+   "questions": [
+    {
+     "id": "content_model_health_q1",
+     "text": "How much of your Umbraco content tree is editorial pages that editors change and might need to roll back?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Thousands of nodes are imported data (records, products, archive entries) nobody edits by hand",
+       "score": 1
+      },
+      {
+       "label": "A large share is imported data, and editors work around it in the tree",
+       "score": 2
+      },
+      {
+       "label": "Mostly pages, with some data sets we know should live elsewhere",
+       "score": 3
+      },
+      {
+       "label": "Pages only, with data held in custom tables or an external source",
+       "score": 4
+      },
+      {
+       "label": "Pages only, and someone can still explain why each document type exists",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_model_health_q2",
+     "text": "What happens on the live site when an editor unpublishes a page or record that other content points to?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have no idea, and nobody has checked",
+       "score": 1
+      },
+      {
+       "label": "Linked pages render with gaps or blank blocks and nobody gets warned",
+       "score": 2
+      },
+      {
+       "label": "We have seen gaps and fix them when a visitor reports one",
+       "score": 3
+      },
+      {
+       "label": "Editors check references before unpublishing, out of habit",
+       "score": 4
+      },
+      {
+       "label": "The code handles missing references and editors see a warning before they unpublish",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_model_health_q3",
+     "text": "When did someone last clean up content versions and unused document types?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never. Version history goes back to launch day.",
+       "score": 1
+      },
+      {
+       "label": "Once, years ago, after the site got slow",
+       "score": 2
+      },
+      {
+       "label": "We run version cleanup, but unused document types and properties keep piling up",
+       "score": 3
+      },
+      {
+       "label": "Version cleanup is scheduled and we removed dead document types in the last year",
+       "score": 4
+      },
+      {
+       "label": "Both are scheduled, and we reviewed the content model against how editors work today",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Fix the content model before anything else",
+     "text": "When you migrate, you carry your content model over as it is. If thousands of imported records sit in the tree as versioned nodes, you take that weight to Umbraco 17 with you. We took over a theatre archive with 20,000 records stored as content nodes, no referential integrity, and pages rendering with gaps whenever a record got unpublished. If we had migrated it as it was, we would have moved the problem to a newer version. We had to give the data its own home first.",
+     "steps": [
+      "Count how many nodes are imported data and how many are editorial pages",
+      "Move archive and product data into custom tables or an external store",
+      "Find every content picker that can point at unpublished content",
+      "Run content version cleanup and record the database size before and after"
+     ]
+    },
+    "mid": {
+     "headline": "Clean up before you carry it across",
+     "text": "Your content model mostly works, with a few data sets and dead document types you already know about. Deal with those before the migration, because a developer has to map, test and explain every unused property you carry over.",
+     "steps": [
+      "Delete document types and properties nobody has used in a year",
+      "Schedule content version cleanup",
+      "Add an editor warning before unpublishing referenced content"
+     ]
+    },
+    "high": {
+     "headline": "Your content model is worth keeping",
+     "text": "I weigh this section more than any other when I judge whether a migration is worth the cost, and you score well on it. Editors work with pages, data lives where data belongs, and someone can explain each document type. For the 130 financial sites we could migrate in minutes per site because the foundation was identical across all of them. A clean model like yours gets you close to that.",
+     "steps": [
+      "Document the current document types as the migration reference",
+      "Run a test migration on a copy of the database",
+      "Keep version cleanup scheduled on the new version"
+     ]
+    }
+   }
+  },
+  {
+   "id": "design_and_user_journeys",
+   "name": "Design and user journeys",
+   "questions": [
+    {
+     "id": "design_and_user_journeys_q1",
+     "text": "If you migrated the site exactly as it is today, how would your marketing team react to the result?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They would ask why we paid to get the same site they already want to replace",
+       "score": 1
+      },
+      {
+       "label": "Relieved it is patched, embarrassed by how it looks",
+       "score": 2
+      },
+      {
+       "label": "Fine for a year or two, then they would ask for a redesign",
+       "score": 3
+      },
+      {
+       "label": "Happy, apart from a few templates that need work",
+       "score": 4
+      },
+      {
+       "label": "Happy. We refreshed the design recently and it still fits the brand.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "design_and_user_journeys_q2",
+     "text": "When did someone last review your main user journey (donation, enquiry, booking or search) against real usage data?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never. It is the same flow the site launched with.",
+       "score": 1
+      },
+      {
+       "label": "We know it breaks in places but have no data on how often",
+       "score": 2
+      },
+      {
+       "label": "We looked at analytics once and made a few fixes",
+       "score": 3
+      },
+      {
+       "label": "In the last year, and we changed things based on what we found",
+       "score": 4
+      },
+      {
+       "label": "We review it regularly and the journeys match what visitors come for",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "design_and_user_journeys_q3",
+     "text": "How does the site hold up on a phone and for accessibility?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It was never built for mobile and we have never checked accessibility",
+       "score": 1
+      },
+      {
+       "label": "It works on a phone, badly, and known accessibility issues stay open",
+       "score": 2
+      },
+      {
+       "label": "Responsive, but the last accessibility audit is years old",
+       "score": 3
+      },
+      {
+       "label": "Responsive and audited, with a short list of open issues",
+       "score": 4
+      },
+      {
+       "label": "Responsive, audited against WCAG in the last year, with issues closed",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "A migration would hand you the same tired site",
+     "text": "If you lift a 2019 website into 2026, you get a 2019 website on a patched CMS, and not much else. Your marketing team already wants to replace the design and nobody has checked the main journeys against real use. I would recommend a rewrite here before I quoted any migration, and I would still use the migrated content as the starting point for it.",
+     "steps": [
+      "Pull analytics on your top three user journeys",
+      "Ask marketing which templates they would delete tomorrow",
+      "Scope a rewrite that reuses your existing content",
+      "Run an accessibility audit before the new design is signed off"
+     ]
+    },
+    "mid": {
+     "headline": "Decide how much redesign belongs in this project",
+     "text": "Your team can live with the design today and will want changes within two years. If you do a straight migration, you get a year or two before someone asks for a redesign, and then you pay twice. Price the templates that need work now and decide whether they are part of this project.",
+     "steps": [
+      "List the templates marketing would change first",
+      "Price the redesign of those templates alongside the migration",
+      "Review your main journey with this year's analytics"
+     ]
+    },
+    "high": {
+     "headline": "You can keep your design through the move",
+     "text": "Your design is recent, your journeys match how visitors use the site, and accessibility has been audited. This is the case where I would migrate without hesitation, since you keep the work you already paid for and get a supported platform under it.",
+     "steps": [
+      "Use the current templates as the reference for migration testing",
+      "Write the main journeys down as test scripts before the move",
+      "Check accessibility again on the migrated build"
+     ]
+    }
+   }
+  },
+  {
+   "id": "custom_code_and_integrat",
+   "name": "Custom code and integrations",
+   "questions": [
+    {
+     "id": "custom_code_and_integrat_q1",
+     "text": "How much of the custom code in the solution could someone on your team explain today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None of it. The people who wrote it left and there is no documentation.",
+       "score": 1
+      },
+      {
+       "label": "We know roughly what it does, but nobody wants to touch it",
+       "score": 2
+      },
+      {
+       "label": "Most of it, with a few areas everyone avoids",
+       "score": 3
+      },
+      {
+       "label": "All of it, in source control with a readable history",
+       "score": 4
+      },
+      {
+       "label": "All of it, documented, with tests around the integrations that matter",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "custom_code_and_integrat_q2",
+     "text": "How many installed packages and plugins have no version for current Umbraco?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not know which packages are installed or what they do",
+       "score": 1
+      },
+      {
+       "label": "Several, and some sit in the middle of core features like forms or search",
+       "score": 2
+      },
+      {
+       "label": "One or two, and we know what would replace them",
+       "score": 3
+      },
+      {
+       "label": "None that matter. The rest have current versions.",
+       "score": 4
+      },
+      {
+       "label": "None. We keep packages to a minimum and every one is maintained.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "custom_code_and_integrat_q3",
+     "text": "How are integrations with other systems (CRM, ERP, payments, your other websites) built?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Wired straight into templates and controllers, and we are unsure which still run",
+       "score": 1
+      },
+      {
+       "label": "Scattered across the code, some calling services that may no longer exist",
+       "score": 2
+      },
+      {
+       "label": "Mostly in one place, with a couple of hard-coded exceptions",
+       "score": 3
+      },
+      {
+       "label": "Behind clear services we could move to a new version with modest work",
+       "score": 4
+      },
+      {
+       "label": "Behind clear services, logged and monitored, each with a named owner",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Find out what the code does before you plan anything",
+     "text": "With code nobody understands, packages without current versions and integrations nobody owns, I cannot give you a reliable estimate for a migration or a rewrite. An NGO came to us with a site that kept crashing, and the cause was traffic from another website the same organisation ran. Nobody had looked at where the requests came from. Until someone reads the code and maps what calls what, any estimate you get is a guess.",
+     "steps": [
+      "Put the codebase into source control if it is not there yet",
+      "List every installed package and whether it has a current version",
+      "Map each integration to the system it calls and check that system still exists",
+      "Trace where your 404 traffic comes from"
+     ]
+    },
+    "mid": {
+     "headline": "Map the awkward parts first",
+     "text": "You know most of your code, plus a few areas everyone avoids. I would look at those areas first, because the timeline depends on them. Our migration process handles most of the work automatically, and custom migrations for specific plugins are still the part we write by hand.",
+     "steps": [
+      "Write down what each avoided area does and who last changed it",
+      "Pick replacements for packages with no current version",
+      "Move each hard-coded integration behind its own service"
+     ]
+    },
+    "high": {
+     "headline": "Your code is ready to move",
+     "text": "With readable code, maintained packages and integrations behind clear services, you can migrate fast and with a predictable cost. You can go straight from your source database to Umbraco 17 without stepping through every version in between.",
+     "steps": [
+      "Run a test migration against a copy of production",
+      "Use your integration tests to check the migrated build",
+      "Plan the cutover around your quietest traffic week"
+     ]
+    }
+   }
+  },
+  {
+   "id": "maintenance_history",
+   "name": "Maintenance history",
+   "questions": [
+    {
+     "id": "firefighting",
+     "type": "number",
+     "text": "In a typical month, how many hours go on restarts, emergency fixes and workarounds to keep the site up?",
+     "hint": "Count your own team and your agency together. Scored 100 at 0 hours, falling to 0 at 40 hours a month or more. We multiply by 12 months for the yearly total.",
+     "suffix": "hours/month",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 8,
+     "normalize_formula": "Math.max(0, 100 - x * 100 / 40)"
+    },
+    {
+     "id": "maintenance_history_q2",
+     "text": "When was the last meaningful commit to the site's codebase?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would first have to find out where the code lives",
+       "score": 1
+      },
+      {
+       "label": "Years ago. Changes since then were made directly on the server.",
+       "score": 2
+      },
+      {
+       "label": "Over a year ago, small fixes only",
+       "score": 3
+      },
+      {
+       "label": "In the last few months, as part of planned work",
+       "score": 4
+      },
+      {
+       "label": "Last month. Maintenance runs on a schedule with a partner who knows the site.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "maintenance_history_q3",
+     "text": "How often does the site need a restart or an emergency fix to stay up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Every few days. Restarting it is part of someone's routine.",
+       "score": 1
+      },
+      {
+       "label": "Every few weeks, usually when traffic peaks",
+       "score": 2
+      },
+      {
+       "label": "A few times a year, and we never traced the cause",
+       "score": 3
+      },
+      {
+       "label": "Rarely, and we found and fixed the root cause of the last incident",
+       "score": 4
+      },
+      {
+       "label": "Not in the last year, and the database and logs get regular attention",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Fix the neglect before anyone quotes a rebuild",
+     "text": "My read is that a site you restart every few days is a maintenance problem before it is a platform problem. At an NGO restarting every three days we found content versions never cleaned, a database never optimised and old patterns still running in production. Fix that before anyone quotes you a rebuild. With the same maintenance habits, you would end up in the same place on a new site.",
+     "steps": [
+      "Clean up content versions and record the database size before and after",
+      "Remove old Umbraco versions and files sitting on disk",
+      "Find the cause of the last three crashes in the logs",
+      "Agree a monthly maintenance slot with a partner"
+     ]
+    },
+    "mid": {
+     "headline": "Turn occasional fixes into a schedule",
+     "text": "You fix things when they break and the site mostly stays up. The gap is that nobody traces causes, so you see the same incident again. Before you decide on a migration, get a few months of planned maintenance behind you and see how much of the pain goes away.",
+     "steps": [
+      "Write a root cause for every incident from now on",
+      "Schedule database maintenance and version cleanup",
+      "Review the commit history with whoever maintains the site"
+     ]
+    },
+    "high": {
+     "headline": "You can choose either path from solid ground",
+     "text": "You commit regularly, incidents are rare, and a partner knows the site well. Whatever you choose, migrate or rewrite, you start from a codebase people understand and a database in good shape. Keep the same rhythm through the project and after launch.",
+     "steps": [
+      "Keep the maintenance schedule running during the migration",
+      "Record a baseline for performance and errors before the move",
+      "Book the post-launch cleanup before go-live"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "yearly-firefighting-hours",
+   "label": "Hours a year spent keeping the old site running",
+   "format": "hours_per_period",
+   "formula": "firefighting * 12",
+   "show_in_result": true
+  },
+  {
+   "id": "unpatched-next-year",
+   "label": "Months without security patches by this time next year if nothing changes",
+   "format": "integer",
+   "formula": "unpatched + 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these describes you best?",
+  "answers": [
+   {
+    "label": "Marketing or digital lead who owns the website",
+    "tag": "marketing-lead"
+   },
+   {
+    "label": "CTO or IT lead responsible for the platform",
+    "tag": "tech-lead"
+   },
+   {
+    "label": "Manager at an NGO or public sector organisation",
+    "tag": "public-sector-ngo"
+   },
+   {
+    "label": "Agency or developer who inherited the site",
+    "tag": "agency-partner"
+   }
+  ]
+ }
+}
