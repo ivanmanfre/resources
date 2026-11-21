@@ -1,0 +1,648 @@
+{
+ "slug": "terence-sim-10-assessment",
+ "title": "Post-Click Follow-Up Scorecard",
+ "subtitle": "Scores what happens after someone clicks your ad and enquires. First reply, ownership, WhatsApp follow-up, CRM records and revenue tracking, scored honestly.",
+ "brand": {
+  "accent": "#00bcd4",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "first_reply_speed",
+   "name": "First Reply Speed",
+   "questions": [
+    {
+     "id": "first_reply_speed_q1",
+     "text": "A Meta lead form comes in at 2pm on a Tuesday. When does that person get a real reply from your team?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Sometime the next day, or whenever someone checks the inbox",
+       "score": 1
+      },
+      {
+       "label": "Same day, usually after 5pm",
+       "score": 2
+      },
+      {
+       "label": "Within 2 to 3 hours",
+       "score": 3
+      },
+      {
+       "label": "Within an hour, most of the time",
+       "score": 4
+      },
+      {
+       "label": "Within 15 minutes, every time, with an instant acknowledgement first",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "first_reply_speed_q2",
+     "text": "An enquiry from your Google Ads lands at 9pm on a Saturday. What happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It sits until someone happens to see it next week",
+       "score": 1
+      },
+      {
+       "label": "Someone replies on Monday morning, if they remember to check weekend leads",
+       "score": 2
+      },
+      {
+       "label": "An auto-reply goes out, and a person replies on Monday",
+       "score": 3
+      },
+      {
+       "label": "An auto-reply goes out and someone replies by Sunday",
+       "score": 4
+      },
+      {
+       "label": "An instant WhatsApp acknowledgement goes out and a named person replies within the hour",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "first_reply_speed_q3",
+     "text": "Do you know your average first reply time for paid enquiries last month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No idea, and I have never checked",
+       "score": 1
+      },
+      {
+       "label": "I feel we are fast, but I have no number",
+       "score": 2
+      },
+      {
+       "label": "I could work it out by scrolling through WhatsApp and email",
+       "score": 3
+      },
+      {
+       "label": "I check it roughly once a month",
+       "score": 4
+      },
+      {
+       "label": "Yes, it is on a report I see every week, split by channel",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You pay for the click, then make the person wait",
+     "text": "In my experience, someone who fills in your Meta form at 2pm has sent the same enquiry to two or three other companies. The one who replies first tends to get the appointment. If your team replies the next day, you paid for that enquiry and handed it to a competitor.",
+     "steps": [
+      "Turn on an instant acknowledgement for every Google and Meta lead form",
+      "Send each new enquiry alert to a named person's phone",
+      "Agree a reply-time rule with your team, for example 15 minutes during office hours"
+     ]
+    },
+    "mid": {
+     "headline": "Fast on weekdays, slow after hours",
+     "text": "Your office-hours replies are reasonable. Many people browse ads at night and on weekends, and those enquiries wait the longest. Measure your reply time first so you know exactly where the gap is.",
+     "steps": [
+      "Pull last month's first reply times from WhatsApp, email and your CRM",
+      "Set an after-hours and weekend rule with a named person on rotation",
+      "Review reply time by channel every week"
+     ]
+    },
+    "high": {
+     "headline": "Your reply speed already wins appointments",
+     "text": "You reply within minutes and you can prove it with a number. Keep that number on the weekly report so it holds when the team grows or someone new joins.",
+     "steps": [
+      "Track reply time per salesperson as well as per channel",
+      "Test whether a call within 5 minutes books more appointments than WhatsApp alone",
+      "Add reply-time checks to onboarding for new hires"
+     ]
+    }
+   }
+  },
+  {
+   "id": "named_ownership_of_each_",
+   "name": "Named Ownership of Each Enquiry",
+   "questions": [
+    {
+     "id": "named_ownership_of_each__q1",
+     "text": "Ten paid enquiries came in yesterday. Can you name the person responsible for each one?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They go into a shared inbox and whoever is free picks them up",
+       "score": 1
+      },
+      {
+       "label": "I know roughly, but two or three could belong to anyone",
+       "score": 2
+      },
+      {
+       "label": "One person handles all of them, and nothing moves when that person is away",
+       "score": 3
+      },
+      {
+       "label": "Each one has a named owner, written down somewhere",
+       "score": 4
+      },
+      {
+       "label": "Each one is assigned to a named person in the CRM within minutes, with backup cover",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "named_ownership_of_each__q2",
+     "text": "Your salesperson goes on leave for a week. What happens to their open enquiries?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They wait until the person comes back",
+       "score": 1
+      },
+      {
+       "label": "Someone checks that person's WhatsApp only if a customer complains",
+       "score": 2
+      },
+      {
+       "label": "I take them over myself, in between everything else",
+       "score": 3
+      },
+      {
+       "label": "We hand them over on a list before the leave starts",
+       "score": 4
+      },
+      {
+       "label": "We reassign them in the CRM to a named colleague who sees the full history",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "named_ownership_of_each__q3",
+     "text": "When a paid enquiry never turns into an appointment, who answers for it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody. We assume the lead was poor quality",
+       "score": 1
+      },
+      {
+       "label": "We blame the ads and ask for more leads",
+       "score": 2
+      },
+      {
+       "label": "We talk about it sometimes, with no clear owner",
+       "score": 3
+      },
+      {
+       "label": "The assigned person logs a reason for every lost enquiry",
+       "score": 4
+      },
+      {
+       "label": "The owner logs a lost reason, and we review those reasons every month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Nobody owns your paid enquiries",
+     "text": "When enquiries go into a shared inbox, each person assumes someone else replied. I have seen good leads sit for three days this way, and then the business decides the ads bring in poor quality leads.",
+     "steps": [
+      "Assign every new enquiry to one named person within 30 minutes",
+      "Name a backup for each salesperson's leave days",
+      "Log a lost reason whenever an enquiry does not book an appointment"
+     ]
+    },
+    "mid": {
+     "headline": "Ownership holds until someone goes on leave",
+     "text": "You know who handles what on a normal day. You lose enquiries during leave, busy periods and handovers. Put the owner inside your CRM so the next person can read the full history in one look.",
+     "steps": [
+      "Record the owner of each enquiry in the CRM",
+      "Hand over open enquiries on a list before any leave starts",
+      "Review lost reasons with the team once a month"
+     ]
+    },
+    "high": {
+     "headline": "Every enquiry has a name next to it",
+     "text": "You can point at any enquiry and say who owns it. Use your lost-reason data to separate lead quality problems from follow-up problems before you change anything in your ads.",
+     "steps": [
+      "Compare lost reasons by campaign every month",
+      "Share lost-reason patterns with whoever manages your ads",
+      "Set conversion targets per owner using the numbers you already have"
+     ]
+    }
+   }
+  },
+  {
+   "id": "whatsapp_and_phone_follo",
+   "name": "WhatsApp and Phone Follow-Up",
+   "questions": [
+    {
+     "id": "whatsapp_and_phone_follo_q1",
+     "text": "A paid enquiry does not reply to your first message. How many more times does your team try to reach them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None. If they don't reply, we move on",
+       "score": 1
+      },
+      {
+       "label": "Once more, if someone remembers",
+       "score": 2
+      },
+      {
+       "label": "Two or three more times, mostly the same copy-paste message",
+       "score": 3
+      },
+      {
+       "label": "Four or five attempts across WhatsApp and phone over a week",
+       "score": 4
+      },
+      {
+       "label": "A set sequence of calls and personalised WhatsApp messages over 10 to 14 days, tracked for every enquiry",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "whatsapp_and_phone_follo_q2",
+     "text": "What does your first WhatsApp message to a new enquiry look like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't send one. We wait for them to call us",
+       "score": 1
+      },
+      {
+       "label": "A generic 'Hi, thanks for your enquiry' copied for everyone",
+       "score": 2
+      },
+      {
+       "label": "A template with their name added",
+       "score": 3
+      },
+      {
+       "label": "A personalised message that mentions what they asked about in the form",
+       "score": 4
+      },
+      {
+       "label": "A personalised message about their request with two appointment slots, sent within minutes",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "dropped",
+     "type": "number",
+     "text": "Think of last month's paid enquiries. Roughly what percentage never got a second follow-up after the first reply?",
+     "hint": "Count anyone who got one message and then silence, plus anyone who got no reply at all. A rough guess is fine.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 30,
+     "normalize_formula": "Math.max(0, 100 - x)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "One message and then silence",
+     "text": "A single 'thanks for your enquiry' message is where I see paid leads go to waste. People are busy and miss messages. Without a second and third attempt, you pay for every enquiry and keep only the ones who chase you back.",
+     "steps": [
+      "Write a follow-up sequence of calls and WhatsApp messages over 10 days",
+      "Personalise the first message with what the person asked about",
+      "Offer two appointment slots in the first reply"
+     ]
+    },
+    "mid": {
+     "headline": "You follow up, but it reads like a template",
+     "text": "You make a few attempts and that already helps. Copy-paste messages are easy to ignore. People reply more often when your message mentions their request and gives them a clear next step.",
+     "steps": [
+      "Rewrite your first WhatsApp message to reference their form answers",
+      "Add phone calls to the sequence for enquiries who go quiet",
+      "Track how many attempts each enquiry received"
+     ]
+    },
+    "high": {
+     "headline": "Your follow-up runs as a system",
+     "text": "You run a set sequence and you track it. Look at which attempt books the most appointments, and use smart automation for the reminders so your salespeople spend their time on calls.",
+     "steps": [
+      "Find which attempt number books the most appointments",
+      "Automate follow-up reminders in your CRM",
+      "Test call timing, such as lunch hour against after 6pm"
+     ]
+    }
+   }
+  },
+  {
+   "id": "crm_records_with_source",
+   "name": "CRM Records with Source",
+   "questions": [
+    {
+     "id": "crm_records_with_source_q1",
+     "text": "Where does a new paid enquiry live after it arrives?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "In someone's phone, WhatsApp chats or personal email",
+       "score": 1
+      },
+      {
+       "label": "In an Excel sheet a few people update when they remember",
+       "score": 2
+      },
+      {
+       "label": "In a shared spreadsheet updated most days",
+       "score": 3
+      },
+      {
+       "label": "In a CRM, though some enquiries are still handled only on WhatsApp",
+       "score": 4
+      },
+      {
+       "label": "Every enquiry goes into the CRM automatically, with WhatsApp and call notes attached",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "crm_records_with_source_q2",
+     "text": "Pick any customer who bought from you last month. Can you see which ad or channel first brought them in?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No. We would have to ask them",
+       "score": 1
+      },
+      {
+       "label": "We ask 'how did you hear about us' but rarely record the answer",
+       "score": 2
+      },
+      {
+       "label": "We record the channel by hand, like Google or Facebook, for some customers",
+       "score": 3
+      },
+      {
+       "label": "The source is captured at channel level for most enquiries",
+       "score": 4
+      },
+      {
+       "label": "The CRM shows the exact campaign, ad group and keyword for every enquiry, captured automatically",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "crm_records_with_source_q3",
+     "text": "How complete is the record for each enquiry in your system?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Name and phone number, if that",
+       "score": 1
+      },
+      {
+       "label": "Contact details and a short note",
+       "score": 2
+      },
+      {
+       "label": "Contact details, what they asked about and the current status",
+       "score": 3
+      },
+      {
+       "label": "Status, owner, source and dated notes of each call and message",
+       "score": 4
+      },
+      {
+       "label": "All of that, plus appointment date, proposal value and outcome, updated the same day",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your enquiries live in personal phones",
+     "text": "If an enquiry sits in someone's WhatsApp, you lose it when that person leaves the company. You also lose the source, so you can never tell which ad brought in your best customers.",
+     "steps": [
+      "Move every paid enquiry into one CRM, even a free one",
+      "Capture the source channel on every enquiry form",
+      "Log WhatsApp and call notes against each enquiry"
+     ]
+    },
+    "mid": {
+     "headline": "Your records have gaps you can't see",
+     "text": "You have a CRM or a shared sheet, but some enquiries are still handled only on WhatsApp and the source is typed in by hand. Each gap means a revenue report you can't fully trust.",
+     "steps": [
+      "Pass UTM tags from every ad into your enquiry forms",
+      "Connect WhatsApp to your CRM so chats are recorded",
+      "Check 10 random records each week for missing source or status"
+     ]
+    },
+    "high": {
+     "headline": "Every enquiry has a full record",
+     "text": "You capture campaign, owner, status and outcome for each enquiry. With that record you can judge your ads on revenue and close the loop with your marketing team.",
+     "steps": [
+      "Record proposal value and closed value on every enquiry",
+      "Add lost reasons as a fixed dropdown for cleaner reporting",
+      "Audit source capture whenever you launch a new campaign"
+     ]
+    }
+   }
+  },
+  {
+   "id": "tracking_from_campaign_t",
+   "name": "Tracking from Campaign to Revenue",
+   "questions": [
+    {
+     "id": "tracking_from_campaign_t_q1",
+     "text": "If I asked which campaign brought in the most revenue last quarter, how would you answer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I would guess, based on which one gets the most clicks",
+       "score": 1
+      },
+      {
+       "label": "I would point to the one with the most enquiries",
+       "score": 2
+      },
+      {
+       "label": "I could give appointments per campaign, but revenue would be a guess",
+       "score": 3
+      },
+      {
+       "label": "I would pull it from a spreadsheet that matches deals to campaigns, with some gaps",
+       "score": 4
+      },
+      {
+       "label": "I would open one report showing enquiries, appointments, proposals, closed deals and revenue per campaign",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "tracking_from_campaign_t_q2",
+     "text": "What do you look at before deciding to increase your ad budget?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Whether the phone feels busy lately",
+       "score": 1
+      },
+      {
+       "label": "Clicks and cost per click from the ad platform",
+       "score": 2
+      },
+      {
+       "label": "Number of enquiries and cost per enquiry",
+       "score": 3
+      },
+      {
+       "label": "Appointments and conversion rate from enquiry to sale",
+       "score": 4
+      },
+      {
+       "label": "Customer acquisition cost and revenue per campaign, compared with what each customer is worth",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "spend",
+     "type": "number",
+     "text": "Roughly how much do you spend on Google Ads, Meta Ads and other paid channels each month?",
+     "hint": "Ad spend only, in SGD. Enter 0 if you don't track it.",
+     "suffix": "SGD",
+     "min": 0,
+     "max": 500000,
+     "step": 100,
+     "default": 3000,
+     "normalize_formula": "x > 0 ? 100 : 0"
+    },
+    {
+     "id": "enquiries",
+     "type": "number",
+     "text": "How many enquiries did those paid ads bring in last month?",
+     "hint": "Forms, WhatsApp clicks and calls from ads combined. Enter 0 if you don't count them.",
+     "suffix": "enquiries",
+     "min": 0,
+     "max": 5000,
+     "step": 1,
+     "default": 40,
+     "normalize_formula": "x > 0 ? 100 : 0"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You judge your ads on clicks and gut feel",
+     "text": "If you can't trace a sale back to a campaign, every budget decision is a guess. Before you spend more on Google Ads or Meta Ads, I would want to know which campaign brings in paying customers. More enquiries do not always mean more sales.",
+     "steps": [
+      "Track appointments, proposals and closed deals for each campaign",
+      "Calculate cost per enquiry and customer acquisition cost every month",
+      "Hold any budget increase until you can see revenue per campaign"
+     ]
+    },
+    "mid": {
+     "headline": "You see appointments, revenue is still a guess",
+     "text": "You track further than clicks and enquiries, which is a good start. The last step is matching closed deals and revenue to the campaign that brought each customer in.",
+     "steps": [
+      "Match each closed deal to its original campaign in your CRM",
+      "Build one monthly report from enquiry to revenue per campaign",
+      "Compare customer acquisition cost against what each customer is worth"
+     ]
+    },
+    "high": {
+     "headline": "You know which campaigns make money",
+     "text": "You can trace revenue to each campaign. Now you can move budget to the campaigns that close and cut the ones that only fill the inbox.",
+     "steps": [
+      "Shift budget each month towards campaigns with the lowest acquisition cost",
+      "Review lead quality by campaign with your sales team",
+      "Rework your offer and landing pages for campaigns with weak conversion"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "cost-per-enquiry",
+   "label": "What each paid enquiry costs you",
+   "format": "currency",
+   "formula": "spend / Math.max(1, enquiries)",
+   "show_in_result": true
+  },
+  {
+   "id": "dropped-enquiries",
+   "label": "Paid enquiries each month with no second follow-up",
+   "format": "integer",
+   "formula": "Math.round(enquiries * dropped / 100)",
+   "show_in_result": true
+  },
+  {
+   "id": "dropped-spend",
+   "label": "Monthly ad spend going to enquiries nobody followed up",
+   "format": "currency_per_period",
+   "formula": "spend * dropped / 100",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes you?",
+  "answers": [
+   {
+    "label": "Business owner who still replies to enquiries myself",
+    "tag": "owner"
+   },
+   {
+    "label": "Sales manager or sales team lead",
+    "tag": "sales_lead"
+   },
+   {
+    "label": "Marketing manager running the ads",
+    "tag": "marketing"
+   },
+   {
+    "label": "Admin or front desk handling enquiries",
+    "tag": "front_desk"
+   }
+  ]
+ }
+}
