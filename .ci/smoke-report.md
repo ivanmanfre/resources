@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 0d40fff73239c8d24d48c41dae8785d464c608ef at 2026-11-20T20:24:58.939Z
+Deploy: 864d5c9d9a18a32b3fcded4da44f5567d0e2d366 at 2026-11-21T15:19:19.527Z
 
-- marco-teodoro-3c-assessment: data.json HTTP 404
+- terence-sim-10-assessment: data.json HTTP 404
