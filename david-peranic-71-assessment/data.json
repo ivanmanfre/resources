@@ -1,7 +1,7 @@
 {
  "slug": "david-peranic-71-assessment",
- "title": "Prvo provjeri, pa troši: spremnost za oglase",
- "subtitle": "Bodujete maržu, cijenu kupca, ponovljene kupnje, potražnju, web, prodaju i mjerenje poziva prije nego uložite idući euro u oglase.",
+ "title": "Spremnost za plaćeno oglašavanje",
+ "subtitle": "Boduje maržu, cijenu kupca, ponovljene kupnje, potražnju, web, prodaju i mjerenje upita, da prije prvog eura vidite je li prepreka u oglasima ili u poslovanju.",
  "brand": {
   "accent": "#1032cf",
   "hero_badge": "Interactive Assessment"
@@ -9,100 +9,84 @@
  "estimated_minutes": 8,
  "categories": [
   {
-   "id": "mar_a_nakon_svih_tro_kov",
-   "name": "Marža nakon svih troškova",
+   "id": "mar_a_i_cijena_kupca",
+   "name": "Marža i cijena kupca",
    "questions": [
+    {
+     "id": "kosarica",
+     "type": "number",
+     "text": "Kolika je prosječna vrijednost prve kupnje ili zaključenog posla?",
+     "hint": "Iznos u eurima bez PDV-a. Orijentir za bodovanje je da ispod 30 € prva kupnja rijetko pokrije oglas i prodaju, a od 150 € naviše ima prostora.",
+     "suffix": "€",
+     "min": 1,
+     "max": 100000,
+     "step": 1,
+     "default": 80,
+     "normalize_formula": "Math.max(0, Math.min(100, (x - 30) / (150 - 30) * 100))"
+    },
     {
      "id": "marza",
      "type": "number",
-     "text": "Kolika vam je prosječna marža nakon svih troškova (nabava, dostava, naknade za plaćanje, povrati, rad), prije troška oglasa?",
-     "hint": "Upišite postotak od prodajne cijene bez PDV-a. 50 % i više boduje se punih 100 bodova, 0 % daje 0 bodova.",
+     "text": "Koliki postotak od te kupnje ostaje firmi nakon svih troškova, prije troška oglasa?",
+     "hint": "Oduzmite nabavu, dostavu, provizije, rad i povrate. Orijentir za bodovanje je da ispod 20% oglasi imaju malo prostora, a 40% i više je zdrav prostor.",
      "suffix": "%",
      "min": 0,
-     "max": 90,
+     "max": 100,
      "step": 1,
      "default": 25,
-     "normalize_formula": "Math.min(100, Math.max(0, x / 50 * 100))"
+     "normalize_formula": "Math.max(0, Math.min(100, (x - 20) / (40 - 20) * 100))"
     },
     {
-     "id": "mar_a_nakon_svih_tro_kov_q2",
-     "text": "Kad računate maržu, koje troškove stvarno uključujete?",
+     "id": "mar_a_i_cijena_kupca_q3",
+     "text": "Odakle dolazi broj marže koji ste upravo upisali?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Gledam razliku između nabavne i prodajne cijene i tu stajem.",
+       "label": "Procjena iz glave, nikad ga nismo izračunali",
        "score": 1
       },
       {
-       "label": "Uključim nabavu i PDV, ostalo procjenjujem napamet.",
+       "label": "Bruto marža iz nabavne cijene, bez dostave, povrata i rada",
        "score": 2
       },
       {
-       "label": "Uključim nabavu, dostavu i naknade za plaćanje.",
+       "label": "Računovodstvo nam ga jednom godišnje da za cijelu firmu",
        "score": 3
       },
       {
-       "label": "Uključim i povrate, pakiranje i rad ljudi po narudžbi ili poslu.",
+       "label": "Imamo ga po grupama proizvoda ili usluga, ažuriran u zadnja tri mjeseca",
        "score": 4
       },
       {
-       "label": "Imam izračun po proizvodu ili usluzi sa svim tim troškovima, osvježen u zadnja tri mjeseca.",
+       "label": "Znamo ga po proizvodu ili usluzi i provjeravamo drži li kad se plati promet",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "mar_a_nakon_svih_tro_kov_q3",
-     "text": "Što se dogodi s maržom kad joj dodate trošak oglasa za tog kupca?",
+     "id": "mar_a_i_cijena_kupca_q4",
+     "text": "Znate li koliko vas danas stvarno košta jedan novi kupac?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Nikad to nisam izračunao.",
+       "label": "Ne znamo, gledamo samo koliko smo potrošili na oglase",
        "score": 1
       },
       {
-       "label": "Mislim da nešto ostaje, ali ne znam koliko.",
+       "label": "Gledamo cijenu klika ili upita u Google Adsu",
        "score": 2
       },
       {
-       "label": "Na nekim proizvodima ostaje, na nekima idem u minus i ne znam točno na kojima.",
+       "label": "Znamo cijenu kupca iz Adsa, a ne poklapa se s blagajnom ili CRM-om",
        "score": 3
       },
       {
-       "label": "Znam koji proizvodi ili usluge podnose oglas, a ostale ne guram.",
+       "label": "Znamo cijenu kupca po kanalu i usporedili smo je s maržom",
        "score": 4
       },
       {
-       "label": "Za svaku kategoriju znam koliko smijem platiti kupca i budžet vodim po tom broju.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "mar_a_nakon_svih_tro_kov_q4",
-     "text": "Kako odlučujete o popustima i akcijama, recimo za Black Friday ili sezonu?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Popust dajemo kad prodaja padne, bez izračuna.",
-       "score": 1
-      },
-      {
-       "label": "Pratimo što daje konkurencija i damo slično.",
-       "score": 2
-      },
-      {
-       "label": "Znamo koliko popust smanjuje maržu, ali ne i koliko narudžbi mora donijeti više.",
-       "score": 3
-      },
-      {
-       "label": "Za veće akcije izračunamo koliko narudžbi treba više da zarada ostane ista.",
-       "score": 4
-      },
-      {
-       "label": "Svaka akcija ima izračun zarade nakon popusta i oglasa, i nakon akcije ga usporedimo sa stvarnim brojkama.",
+       "label": "Znamo cijenu kupca po kanalu i proizvodu i imamo gornju granicu koju ne prelazimo",
        "score": 5
       }
      ],
@@ -111,113 +95,101 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Oglasi će naplatiti maržu koju ne znate",
-     "text": "Ako ne znate koliko ostaje nakon svih troškova, svaki euro u oglase je oklada. Prvo provjeri, pa troši. Taj izračun napravite prije idućeg budžeta, a ne nakon prve loše kampanje.",
+     "headline": "Oglasi će vam naplatiti maržu koju ne znate",
+     "text": "Bez marže nakon svih troškova i cijene kupca svaki euro u oglase je oklada. Kampanja će vam pokazati koliko košta kupac tek nakon što ga platite. Te brojke se mogu izračunati prije prvog uloženog eura i to je prvo što radimo s klijentom.",
      "steps": [
-      "Izračunajte maržu za 10 proizvoda ili usluga koje najviše prodajete, s dostavom, naknadama, povratima i radom.",
-      "Za svaki od njih upišite koliko smijete platiti kupca da ostanete na nuli.",
-      "Na proizvodima gdje taj broj još ne znate, ne dižite budžet dok ga ne izračunate."
+      "Izračunajte maržu po glavnim proizvodima ili uslugama nakon nabave, dostave, povrata i rada",
+      "Iz te marže izračunajte najveću cijenu kupca koju si možete priuštiti",
+      "Zapišite trenutnu cijenu kupca iz oglasa pored tog broja i usporedite ih"
      ]
     },
     "mid": {
-     "headline": "Znate maržu, sad je vežite uz budžet",
-     "text": "Marža je izračunata, ali budžet se još ne vodi po njoj. Na nekim proizvodima prodajete i gubite novac, a izvještaj iz Google Adsa to neće pokazati.",
+     "headline": "Imate brojke, a budžet se još vodi osjećajem",
+     "text": "Znate otprilike maržu i cijenu kupca. Između tog znanja i dobre odluke o budžetu stoji gornja granica, broj iznad kojeg kupca više ne plaćate. Bez nje kampanja raste dok ne pojede profit.",
      "steps": [
-      "Podijelite kampanje po skupinama marže.",
-      "Za svaku skupinu postavite ciljanu cijenu kupca iz izračuna marže.",
-      "Prije svake akcije izračunajte koliko narudžbi treba više da zarada ostane ista."
+      "Postavite gornju granicu cijene kupca po proizvodu ili usluzi",
+      "Svaki mjesec provjerite drži li marža kad se plati promet",
+      "Popravite ili isključite ono što trajno prelazi granicu"
      ]
     },
     "high": {
-     "headline": "Marža drži kad se plati promet",
-     "text": "Znate koliko smijete platiti kupca i budžet vodite po tom broju. Sljedeće pitanje je gdje je iduća poluga u poslovanju, u nabavi, cijeni ili vrijednosti košarice.",
+     "headline": "Znate koliko smijete platiti kupca",
+     "text": "Na ovome oglasi mogu rasti. Kad znate maržu i cijenu kupca po proizvodu, razgovor o budžetu postaje računica. Sljedeći korak je vidjeti gdje vam marža dopušta jače ulaganje.",
      "steps": [
-      "Svaki kvartal osvježite izračun marže s novim cijenama nabave i dostave.",
-      "Testirajte veću vrijednost košarice prije nego posegnete za novim popustom.",
-      "Kad dižete budžet, prvo gurajte proizvode s najboljom maržom."
+      "Nađite proizvode ili usluge s najvećom maržom i provjerite imaju li dovoljno potražnje",
+      "Testirajte veći budžet na njima tri tjedna i pratite cijenu kupca",
+      "Ažurirajte maržu kad se promijene nabavne cijene ili dostava"
      ]
     }
    }
   },
   {
-   "id": "cijena_kupca_i_ponovljen",
-   "name": "Cijena kupca i ponovljene kupnje",
+   "id": "ponovljene_kupnje",
+   "name": "Ponovljene kupnje",
    "questions": [
     {
-     "id": "aov",
+     "id": "kupnje",
      "type": "number",
-     "text": "Kolika je prosječna vrijednost prve kupnje ili prvog posla?",
-     "hint": "U eurima, bez PDV-a. Ovaj broj sam ne mijenja bodove (fiksno 50 bodova), koristi se u izračunu na kraju.",
-     "suffix": "€",
+     "text": "Koliko puta prosječan kupac kupi kod vas u 12 mjeseci?",
+     "hint": "Uključite i prvu kupnju. Orijentir za bodovanje je da 1 znači da sve mora zaraditi prva kupnja, a 3 i više daje oglasima prostor.",
+     "suffix": "kupnji",
      "min": 1,
-     "max": 100000,
-     "step": 10,
-     "default": 80,
-     "normalize_formula": "50"
-    },
-    {
-     "id": "cac",
-     "type": "number",
-     "text": "Koliko vas trenutno košta oglašavanje po jednom novom kupcu?",
-     "hint": "Ukupni mjesečni trošak oglasa podijeljen s brojem novih kupaca iz oglasa u tom mjesecu. Ako ne znate, upišite procjenu, pitanje ispod boduje znate li taj broj. Ovaj broj sam ne mijenja bodove (fiksno 50 bodova).",
-     "suffix": "€",
-     "min": 0,
-     "max": 10000,
+     "max": 50,
      "step": 1,
-     "default": 30,
-     "normalize_formula": "50"
+     "default": 1,
+     "normalize_formula": "Math.max(0, Math.min(100, (x - 1) / (3 - 1) * 100))"
     },
     {
-     "id": "cijena_kupca_i_ponovljen_q3",
-     "text": "Koliko točno znate cijenu jednog kupca?",
+     "id": "ponovljene_kupnje_q2",
+     "text": "Što se događa s kupcem nakon prve kupnje?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Ne znam, gledam samo koliko smo ukupno potrošili na oglase.",
+       "label": "Ništa, ne znamo ni tko je kupio",
        "score": 1
       },
       {
-       "label": "Znam cijenu klika ili cijenu upita iz Google Adsa.",
+       "label": "Imamo kontakte, ali im se ne javljamo",
        "score": 2
       },
       {
-       "label": "Znam cijenu upita, ali ne znam koliko upita postane kupac.",
+       "label": "Povremeno pošaljemo newsletter ili akciju",
        "score": 3
       },
       {
-       "label": "Znam cijenu kupca po kanalu za zadnjih nekoliko mjeseci.",
+       "label": "Imamo redovni kontakt i vidimo koliko se kupaca vrati",
        "score": 4
       },
       {
-       "label": "Znam cijenu kupca po kanalu i proizvodu i svaki mjesec je usporedim s maržom.",
+       "label": "Znamo koliko se kupaca vrati i koliko donesu kroz godinu i to uračunamo u budžet",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "cijena_kupca_i_ponovljen_q4",
-     "text": "Koliko se kupaca vrati i kupi ponovno?",
+     "id": "ponovljene_kupnje_q3",
+     "text": "Kad računate isplati li se kampanja, koliko kupnji po kupcu uzimate u obzir?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Ne znam, to ne pratimo.",
+       "label": "Isplativost kampanje uopće ne računamo",
        "score": 1
       },
       {
-       "label": "Neki se vrate, ali nemamo broj.",
+       "label": "Samo prvu kupnju, i ona mora biti u plusu, a često nije",
        "score": 2
       },
       {
-       "label": "Imamo broj, ali ga ne koristimo kad odlučujemo koliko platiti kupca.",
+       "label": "Pretpostavljamo da se kupci vraćaju, ali nemamo broj",
        "score": 3
       },
       {
-       "label": "Znamo postotak povrata i koliko kupac prosječno potroši u godini.",
+       "label": "Imamo broj ponovljenih kupnji iz prošle godine",
        "score": 4
       },
       {
-       "label": "Znamo koliko kupac donese zarade u 12 mjeseci i po tom broju odlučujemo koliko smijemo platiti prvu kupnju.",
+       "label": "Imamo broj ponovljenih kupnji po kanalu i znamo koliko čekamo povrat uloženog",
        "score": 5
       }
      ],
@@ -226,30 +198,30 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Plaćate kupce kojima ne znate cijenu",
-     "text": "Cijena klika i cijena upita su tek međukorak. Dok ne znate koliko upita postane kupac i koliko se kupaca vrati, ne znate ni koliko smijete platiti oglas. Pogledajte izračun na kraju, ako je iznos koji vam ostaje po kupcu u minusu, oglasi već sad naplaćuju problem u poslovanju.",
+     "headline": "Sve mora zaraditi prva kupnja",
+     "text": "Ako se kupac ne vraća ili ne znate vraća li se, prva kupnja nosi cijeli trošak oglasa. Uz nisku maržu to rijetko izađe u plus. Kupca kojeg ste već jednom platili oglasom možete prodati opet za puno manje novca.",
      "steps": [
-      "Izračunajte cijenu kupca za zadnja tri mjeseca, trošak oglasa podijeljen s brojem novih kupaca.",
-      "Iz webshopa, CRM-a ili knjigovodstva izvucite koliko kupaca je kupilo drugi put u 12 mjeseci.",
-      "Usporedite cijenu kupca s iznosom koji smijete platiti iz rezultata ovog testa."
+      "Prikupite kontakt svakog kupca i zapišite datum i iznos kupnje",
+      "Izvucite koliko je kupaca kupilo dva ili više puta u zadnjih 12 mjeseci",
+      "Pošaljite postojećim kupcima jednu ponudu i izmjerite koliko ih se vrati"
      ]
     },
     "mid": {
-     "headline": "Imate broj, sad po njemu odlučujte",
-     "text": "Cijena kupca je poznata, ali ponovljene kupnje još ne ulaze u odluku o budžetu. Ako se kupci vraćaju, prvu kupnju možda smijete platiti više nego što mislite. Ako se ne vraćaju, prva kupnja mora sama vratiti trošak oglasa.",
+     "headline": "Kupci se vraćaju, a budžet to još ne zna",
+     "text": "Imate kontakt s kupcima, ali broj ponovljenih kupnji ne ulazi u računicu. Zato kampanje ocjenjujete samo po prvoj kupnji i lako ugasite one koje bi se kroz godinu isplatile.",
      "steps": [
-      "Izračunajte zaradu po kupcu kroz 12 mjeseci, odvojeno za kupce iz oglasa i ostale.",
-      "Postavite ciljanu cijenu kupca prema toj zaradi, a ne prema prvoj narudžbi.",
-      "Za nove kupce složite ponudu ili e-mail za drugu kupnju i pratite koliko ih se vrati."
+      "Izračunajte prosječan broj kupnji po kupcu u 12 mjeseci",
+      "Uračunajte taj broj u najveću cijenu kupca koju plaćate",
+      "Pratite koliko dugo treba da se novac uložen u kupca vrati"
      ]
     },
     "high": {
-     "headline": "Znate vrijednost kupca kroz godinu",
-     "text": "Budžet određujete prema zaradi po kupcu kroz 12 mjeseci. Na toj razini oglas je ulaganje s poznatim povratom i možete ga planirati kao i svaku drugu investiciju.",
+     "headline": "Kupac vrijedi više od prve kupnje i to znate u brojkama",
+     "text": "Možete platiti kupca više od konkurencije koja gleda samo prvu kupnju. Na aukciji je to stvarna prednost, sve dok novac u blagajni prati duži povrat uloženog.",
      "steps": [
-      "Pratite cijenu kupca po kanalu i proizvodu svaki mjesec.",
-      "Liste kupaca s najvećom vrijednošću kroz godinu koristite za ciljanje u Google Adsu.",
-      "Testirajte koliko više smijete platiti prvu kupnju u kategorijama s najviše ponovljenih kupnji."
+      "Dajte više budžeta kanalu koji donosi kupce s više ponovljenih kupnji",
+      "Provjerite podnosi li blagajna duži povrat uloženog kad povećate budžet",
+      "Pratite pada li broj povrataka kupaca kad raste broj novih"
      ]
     }
    }
@@ -260,27 +232,27 @@
    "questions": [
     {
      "id": "potra_nja_na_tr_i_tu_q1",
-     "text": "Koliko ljudi stvarno traži ono što prodajete?",
+     "text": "Koliko ljudi već traži ono što prodajete?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Nemam pojma, nadam se da će oglasi stvoriti potražnju.",
+       "label": "Nemamo pojma, nikad nismo provjerili",
        "score": 1
       },
       {
-       "label": "Pretpostavljam da je velika jer imamo konkurenciju.",
+       "label": "Mislimo da traže, jer vidimo oglase konkurencije",
        "score": 2
       },
       {
-       "label": "Pogledao sam okvirne brojke pretraga za nekoliko glavnih pojmova.",
+       "label": "Pogledali smo procjene pretraga, ali ne za svoje područje i sezonu",
        "score": 3
       },
       {
-       "label": "Znam broj pretraga po mjesecima i koliko se mijenja kroz sezonu.",
+       "label": "Znamo broj pretraga po glavnim upitima i po sezoni",
        "score": 4
       },
       {
-       "label": "Znam potražnju po mjesecima i koliki dio realno mogu dobiti uz našu cijenu i konkurente.",
+       "label": "Znamo potražnju i koliko je od nje realno naše, i to smo potvrdili malim testom kampanje",
        "score": 5
       }
      ],
@@ -288,27 +260,55 @@
     },
     {
      "id": "potra_nja_na_tr_i_tu_q2",
-     "text": "Kupac vidi vaš oglas možda 10 sekundi, uz konkurenciju na istoj stranici. Što on vidi?",
+     "text": "Kako ste dosad doznavali hoće li nova ponuda ili novo tržište prodavati?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Nisam gledao tko se još oglašava na našim pojmovima.",
+       "label": "Uložili smo veći budžet i rezultat vidjeli nakon par mjeseci",
        "score": 1
       },
       {
-       "label": "Znam tko su konkurenti, ali ne znam po čemu smo bolji.",
+       "label": "Pitali smo poznanike i išli prema osjećaju",
        "score": 2
       },
       {
-       "label": "Imamo prednost, ali je kupac u oglasu i na webu ne vidi odmah.",
+       "label": "Krenuli smo s oglasima bez cilja što trebamo vidjeti",
        "score": 3
       },
       {
-       "label": "Kupac u 10 sekundi vidi zašto bi izabrao nas.",
+       "label": "Testirali smo kampanjom par tjedana s unaprijed zadanim brojkama",
        "score": 4
       },
       {
-       "label": "Testirali smo ponudu protiv konkurencije i imamo brojke da nas kupci biraju po našoj cijeni.",
+       "label": "Uvijek prvo testiramo manjim budžetom tri tjedna i tek onda odlučujemo o većem ulaganju",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "potra_nja_na_tr_i_tu_q3",
+     "text": "Kad bi konkurent sutra udvostručio budžet za oglase, što bi se dogodilo s vašim brojkama?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Ne znamo tko su nam konkurenti u oglasima",
+       "score": 1
+      },
+      {
+       "label": "Izgubili bismo većinu upita, jer prodajemo isto po istoj cijeni",
+       "score": 2
+      },
+      {
+       "label": "Izgubili bismo dio, a teško bismo rekli zašto bi netko kupio baš kod nas",
+       "score": 3
+      },
+      {
+       "label": "Imamo prednost u ponudi ili cijeni koju kupci sami spominju",
+       "score": 4
+      },
+      {
+       "label": "Imamo prednost koju kupci spominju i maržu koja izdrži skuplji klik",
        "score": 5
       }
      ],
@@ -317,30 +317,30 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Prvo izmjerite potražnju, onda budžet",
-     "text": "Ako ne znate koliko ljudi traži ono što prodajete i zašto bi izabrali vas, budžet ide na nadu. Oglas može uhvatiti potražnju koja postoji. Ako je nema, i najbolja kampanja stane.",
+     "headline": "Ne znate traži li vas itko",
+     "text": "Oglas može uhvatiti samo potražnju koja postoji. Ako je nikad niste provjerili, riskirate da skupo platite saznanje da je tržište malo. To se može vidjeti prije kampanje i potvrditi u tri tjedna manjim budžetom. Prvo provjeri, pa troši.",
      "steps": [
-      "U planeru ključnih riječi u Google Adsu pogledajte broj pretraga po mjesecima za 20 pojmova.",
-      "Pretražite te pojmove i zapišite tko se oglašava i što nudi.",
-      "Napišite jednu rečenicu zašto bi kupac izabrao vas po vašoj cijeni i provjerite vidi li se na webu u 10 sekundi."
+      "Provjerite broj pretraga za glavne upite na svom području i u svojoj sezoni",
+      "Pokrenite test od tri tjedna s unaprijed zapisanim ciljem za cijenu kupca",
+      "Odluku o većem budžetu donesite tek nakon testa"
      ]
     },
     "mid": {
-     "headline": "Potražnja postoji, vaša ponuda se još ne vidi",
-     "text": "Znate da ljudi traže, ali kupac na stranici rezultata ne vidi odmah zašto baš vi. Tada plaćate klikove ljudi koji se nakon par sekundi vrate konkurenciji.",
+     "headline": "Potražnja postoji, a vaš udio u njoj je nepoznanica",
+     "text": "Znate da ljudi traže. Ne znate koliko te potražnje može biti vaše uz cijenu i ponudu koju imate. Kad konkurencija podigne budžet, to pitanje dođe na naplatu.",
      "steps": [
-      "Prepišite oglase i naslov stranice tako da prednost bude u prvoj rečenici.",
-      "Testirajte dvije verzije ponude tri tjedna i usporedite cijenu kupca.",
-      "Pratite udio prikazivanja na glavnim pojmovima da znate koliko potražnje još ne dosežete."
+      "Zapišite zašto bi netko kupio baš kod vas i provjerite to sa zadnjih nekoliko kupaca",
+      "Usporedite svoju cijenu i ponudu s tri konkurenta koje vidite u oglasima",
+      "Testirajte oglas s tom prednošću i usporedite stopu konverzije"
      ]
     },
     "high": {
-     "headline": "Znate koliki dio tržišta možete uzeti",
-     "text": "Imate brojke potražnje i dokaz da vas kupci biraju po vašoj cijeni. Rast ovdje ovisi o tome koliko ste spremni proširiti ponudu, tržište ili sezonu.",
+     "headline": "Znate potražnju i svoje mjesto u njoj",
+     "text": "Testirate prije većih ulaganja i imate prednost koju kupci prepoznaju. U ovoj situaciji veći budžet ima smisla, uz uvjet da pratite što se događa s maržom kad klik poskupi.",
      "steps": [
-      "Procijenite koliko potražnje još ne dosežete na postojećim pojmovima.",
-      "Testirajte jedno novo tržište ili kategoriju s ograničenim budžetom.",
-      "Planirajte vrhunac sezone dva do tri mjeseca ranije na temelju prošlogodišnjih brojki."
+      "Planirajte budžet unaprijed prema sezoni potražnje",
+      "Nova područja ili proizvode testirajte istim postupkom od tri tjedna",
+      "Pratite koliko marže ostaje kad cijena klika poraste"
      ]
     }
    }
@@ -351,27 +351,27 @@
    "questions": [
     {
      "id": "web_i_prodaja_q1",
-     "text": "Kad ste zadnji put provjerili pretvara li web interes u upit ili kupnju?",
+     "text": "Kad biste danas na web pustili 1.000 posjetitelja s oglasa, što znate o tome što bi se dogodilo?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Nikad, web je takav kakav je.",
+       "label": "Ništa, ne pratimo što ljudi rade na webu",
        "score": 1
       },
       {
-       "label": "Gledali smo kako izgleda, ali ne i kako ljudi kupuju ili šalju upit.",
+       "label": "Znamo broj posjeta, ali ne i koliko ih kupi ili pošalje upit",
        "score": 2
       },
       {
-       "label": "Znamo stopu konverzije, ali ne znamo gdje ljudi odustaju.",
+       "label": "Znamo stopu konverzije za cijeli web, bez podjele po stranicama i uređajima",
        "score": 3
       },
       {
-       "label": "Znamo gdje ljudi odustaju i imamo popis popravaka.",
+       "label": "Znamo konverziju po glavnim stranicama i uređajima",
        "score": 4
       },
       {
-       "label": "Popravke smo napravili i izmjerili prije nego što smo povećali budžet.",
+       "label": "Znamo gdje ljudi odustaju i to smo popravili prije povećanja budžeta",
        "score": 5
       }
      ],
@@ -379,27 +379,27 @@
     },
     {
      "id": "web_i_prodaja_q2",
-     "text": "Kad stigne upit ili poziv iz oglasa, koliko brzo netko odgovori?",
+     "text": "Koliko brzo netko iz firme odgovori na novi upit?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Kad stignemo, ponekad i za nekoliko dana.",
+       "label": "Nemamo pravilo, nekad sutra, nekad nikad",
        "score": 1
       },
       {
-       "label": "Isti dan, ako nije gužva.",
+       "label": "Isti dan, ako vlasnik stigne",
        "score": 2
       },
       {
-       "label": "Unutar nekoliko sati u radno vrijeme.",
+       "label": "Unutar nekoliko sati u radno vrijeme",
        "score": 3
       },
       {
-       "label": "Unutar sat vremena, i znamo prosječno vrijeme odgovora.",
+       "label": "Unutar sat vremena, i točno se zna tko je zadužen",
        "score": 4
       },
       {
-       "label": "Unutar sat vremena, i pratimo koliko se upita zatvori ovisno o brzini odgovora.",
+       "label": "Unutar sat vremena, i mjerimo koliko upita završi prodajom po osobi",
        "score": 5
       }
      ],
@@ -407,27 +407,27 @@
     },
     {
      "id": "web_i_prodaja_q3",
-     "text": "Koliko dobro prodaja pretvara upite u novac?",
+     "text": "Koliko upita koje dobijete završi prodajom?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Ne znam koliko upita postane posao.",
+       "label": "Ne znamo",
        "score": 1
       },
       {
-       "label": "Okvirno znam, a svaki prodavač radi po svom.",
+       "label": "Imamo osjećaj, ali nigdje nije zapisano",
        "score": 2
       },
       {
-       "label": "Znamo postotak zatvaranja, ali ne znamo zašto pada ili raste.",
+       "label": "Znamo okvirno za cijelu firmu",
        "score": 3
       },
       {
-       "label": "Znamo postotak zatvaranja po izvoru upita.",
+       "label": "Znamo po kanalu, uključujući Google oglase",
        "score": 4
       },
       {
-       "label": "Znamo postotak zatvaranja po izvoru i prodavaču i imamo proces koji svi prate.",
+       "label": "Znamo po kanalu i po prodavaču i znamo najčešće razloge odustajanja",
        "score": 5
       }
      ],
@@ -436,30 +436,30 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Web i prodaja su probušene gume",
-     "text": "Kad stisnete gas, čut će se više buke i auto će više trošiti, ali neće voziti brže. Meni se to dogodilo u turizmu. Agencija je naplatila kampanju pa javila da je web loš, a web je bio isti i prije kampanje. To se dalo vidjeti prije prvog eura.",
+     "headline": "Promet će doći, a firma ga neće pretvoriti u novac",
+     "text": "Ovo sam naučio na vlastitom novcu. Agencija je odradila kampanju, naplatila i onda rekla da je web loš. Web je bio isti i prije kampanje. Ako upiti čekaju odgovor do sutra ili ne znate koliko ih završi prodajom, oglasi će taj problem ubrzati i naplatiti.",
      "steps": [
-      "Prođite kupnju ili slanje upita na mobitelu kao kupac i zapišite svaki zastoj.",
-      "Dogovorite pravilo da se na svaki upit odgovori unutar sat vremena u radno vrijeme.",
-      "Počnite bilježiti koliko upita postane posao, makar u običnoj tablici."
+      "Postavite praćenje kupnji i upita na webu prije prve kampanje",
+      "Odredite tko odgovara na upite i u kojem roku",
+      "Zapisujte svaki upit i je li završio prodajom"
      ]
     },
     "mid": {
-     "headline": "Znate gdje curi, sad to popravite",
-     "text": "Imate brojke konverzije i zatvaranja, ali popravci još čekaju. Svaki mjesec čekanja plaćate kroz oglase, jer dovodite ljude na isti zastoj.",
+     "headline": "Znate dio puta od klika do novca",
+     "text": "Vidite konverziju i imate nekoga tko odgovara na upite. Rupe su u detaljima, na kojoj stranici ljudi odustaju i zašto upit ne postane prodaja. Kao s probušenom gumom, auto troši više i ne ubrzava.",
      "steps": [
-      "Poredajte popravke weba po tome koliko ljudi odustaje na tom koraku.",
-      "Mjerite postotak zatvaranja po izvoru upita i usporedite oglase s preporukama.",
-      "Povećajte budžet tek kad popravak pokaže bolju konverziju u brojkama."
+      "Pogledajte konverziju po stranici i uređaju i popravite najslabiju",
+      "Mjerite vrijeme odgovora na upite i spustite ga ispod sat vremena",
+      "Zapišite tri najčešća razloga zbog kojih upit ne završi prodajom"
      ]
     },
     "high": {
      "headline": "Web i prodaja pretvaraju interes u novac",
-     "text": "Znate postotak zatvaranja po izvoru i prodavaču, a web je izmjeren. Ovdje veći budžet donosi veću prodaju, pa možete testirati koliko daleko gas ide.",
+     "text": "Kad pojačate oglase, ovaj dio firme to može podnijeti. Pazite na kapacitet, jer brz odgovor na 80 upita tjedno traži više ljudi nego na 20.",
      "steps": [
-      "Povećavajte budžet u koracima i pratite drži li postotak zatvaranja.",
-      "Snimite što najbolji prodavač radi drukčije i pretvorite to u proces.",
-      "Testirajte nove stranice za glavne usluge ili kategorije prije većih kampanja."
+      "Provjerite kapacitet prodaje prije povećanja budžeta",
+      "Pratite stopu zatvaranja po prodavaču kad raste broj upita",
+      "Promjene na webu testirajte jednu po jednu i mjerite razliku"
      ]
     }
    }
@@ -470,27 +470,27 @@
    "questions": [
     {
      "id": "mjerenje_upita_koji_se_z_q1",
-     "text": "Kako znate koji oglas je donio posao koji se zatvorio telefonom?",
+     "text": "Kad kupac nazove i kupi telefonom, vidi li se ta prodaja kod oglasa koji ga je doveo?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Ne znamo, telefon zazvoni i to je to.",
+       "label": "Telefonske prodaje uopće ne bilježimo",
        "score": 1
       },
       {
-       "label": "Pitamo kupca odakle je čuo za nas, kad se sjetimo.",
+       "label": "Bilježimo ih ručno, bez veze s izvorom",
        "score": 2
       },
       {
-       "label": "Pratimo pozive iz oglasa, ali ne znamo koji su postali posao.",
+       "label": "Prodavač pita kupca odakle je čuo za nas, kad se sjeti",
        "score": 3
       },
       {
-       "label": "Svaki poziv i upit bilježimo u CRM-u s izvorom i ishodom.",
+       "label": "Pozive s oglasa pratimo i spajamo s prodajom u CRM-u, dio ručno",
        "score": 4
       },
       {
-       "label": "Zatvorene poslove s vrijednošću vraćamo u Google Ads i kampanje optimiziramo na prodaju.",
+       "label": "Zaključene prodaje iz poziva i upita vraćamo u Google Ads s vrijednošću posla",
        "score": 5
       }
      ],
@@ -498,55 +498,27 @@
     },
     {
      "id": "mjerenje_upita_koji_se_z_q2",
-     "text": "Isti prihod često ima tri broja, u Google Adsu, u GA4 i u bruto marži. Koji broj vi gledate?",
+     "text": "Kad usporedite prihod u Google Adsu, u GA4 i bruto maržu za isti mjesec, što vidite?",
      "max_score": 5,
      "answers": [
       {
-       "label": "Gledam samo broj u Google Adsu.",
+       "label": "Nikad ih nismo usporedili",
        "score": 1
       },
       {
-       "label": "Gledam Google Ads i GA4 i ne znam zašto se razlikuju.",
+       "label": "Gledamo samo broj u Google Adsu",
        "score": 2
       },
       {
-       "label": "Znam zašto se razlikuju, ali odluke donosim na broju iz oglasa.",
+       "label": "Usporedili smo ih, razlikuju se i ne znamo zašto",
        "score": 3
       },
       {
-       "label": "Odluke donosim na bruto marži, a ostale brojke koristim za kontrolu.",
+       "label": "Znamo zašto se razlikuju i odlučujemo prema marži",
        "score": 4
       },
       {
-       "label": "Svaki mjesec usporedim sva tri broja s knjigovodstvom i znam koliko oglasi stvarno donose u firmu.",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "mjerenje_upita_koji_se_z_q3",
-     "text": "Kad kampanja da loš rezultat, što napravite?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Zaključim da Google oglašavanje kod nas ne radi i ugasim ga.",
-       "score": 1
-      },
-      {
-       "label": "Promijenim agenciju ili osobu koja vodi oglase.",
-       "score": 2
-      },
-      {
-       "label": "Tražimo problem u postavkama kampanje.",
-       "score": 3
-      },
-      {
-       "label": "Gledamo cijeli put, od oglasa preko weba do prodaje.",
-       "score": 4
-      },
-      {
-       "label": "Loš rezultat čitamo kao vijest o poslu i znamo je li pukla cijena kupca, web, prodaja ili marža.",
+       "label": "Imamo mjesečni izvještaj sa sva tri broja i budžet mijenjamo prema marži nakon troška oglasa",
        "score": 5
       }
      ],
@@ -555,30 +527,30 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "Ne znate koji oglas donosi posao",
-     "text": "Kad se prodaja zatvara telefonom, a izvor poziva se ne bilježi, Google Ads optimizira na upite koji možda nikad nisu postali posao. Onda je lako zaključiti da Google kod vas ne radi. U pravilu iza te rečenice stoji nešto što se vidi u brojkama, ako ih netko pogleda.",
+     "headline": "Oglase ocjenjujete bez prodaje koju su donijeli",
+     "text": "Ako se prodaja zatvara telefonom i to se ne veže uz izvor, Google Ads vidi samo klik i upit. Kampanja se optimizira na ono što se lako broji, a novac stiže negdje drugdje. Tako lako ugasite kampanju koja vam donosi najbolje kupce.",
      "steps": [
-      "Uvedite praćenje poziva iz oglasa i s weba.",
-      "Svaki upit i poziv upišite u CRM ili tablicu s izvorom i ishodom.",
-      "Jednom mjesečno usporedite prihod iz Google Adsa, GA4 i knjigovodstva."
+      "Uvedite praćenje poziva s oglasa i s weba",
+      "Zapišite izvor svakog upita u CRM ili tablicu u trenutku kad stigne",
+      "Jednom mjesečno spojite zaključene prodaje s izvorom upita"
      ]
     },
     "mid": {
-     "headline": "Mjerite upite, vratite i zatvorene poslove",
-     "text": "Pozive i upite pratite, ali Google Ads još ne zna koji su postali novac. Dok to ne zna, kampanja će tražiti više upita, a vi trebate više zatvorenih poslova.",
+     "headline": "Brojke postoje, a međusobno se ne slažu",
+     "text": "Imate prihod u Adsu, u GA4 i u knjigovodstvu. Sva tri mogu biti točna i svejedno vas zavarati. Dok ne znate zašto se razlikuju, budžet se vodi prema broju koji najljepše izgleda.",
      "steps": [
-      "Zatvorene poslove s vrijednošću uvozite u Google Ads kao offline konverzije.",
-      "Odluke o budžetu donosite na bruto marži.",
-      "Kad kampanja padne, prvo provjerite cijenu kupca, web i prodaju, pa tek onda postavke."
+      "Usporedite sva tri broja za isti mjesec i zapišite razlog razlike",
+      "Vratite zaključene prodaje iz poziva u Google Ads s vrijednošću posla",
+      "Odluke o budžetu donosite prema marži nakon troška oglasa"
      ]
     },
     "high": {
-     "headline": "Kampanja vam radi kao okretomjer",
-     "text": "Mjerenje vam pokaže što motor stvarno može. Loš rezultat čitate kao prvu vijest o poslu i znate u kojoj brojci tražiti uzrok.",
+     "headline": "Oglas vam radi i kao mjerni instrument",
+     "text": "Vidite koja kampanja donosi zaključene poslove i koliko marže ostaje. Kao okretomjer u autu, pokazuje što motor stvarno može. Google sada uči na pravim prodajama.",
      "steps": [
-      "Optimizirajte kampanje na vrijednost zatvorenih poslova.",
-      "Novi kanal testirajte tri tjedna kao mjerni instrument prije većeg budžeta.",
-      "Svaki kvartal provjerite poklapaju li se Google Ads, GA4 i knjigovodstvo."
+      "Jednom mjesečno provjerite da se prodaje iz poziva i dalje vraćaju u Google Ads",
+      "Šaljite u Google Ads vrijednost marže gdje je to moguće",
+      "Usporedite Google i Metu prema zaključenim poslovima"
      ]
     }
    }
@@ -601,40 +573,40 @@
  },
  "computed_outputs": [
   {
-   "id": "max-cijena-kupca",
-   "label": "Najviše što smijete platiti jednog kupca na prvoj kupnji",
+   "id": "prag-prve-kupnje",
+   "label": "Najviše što smijete platiti za novog kupca da prva kupnja ne ode u minus",
    "format": "currency",
-   "formula": "aov * marza / 100",
+   "formula": "kosarica * marza / 100",
    "show_in_result": true
   },
   {
-   "id": "ostaje-po-kupcu",
-   "label": "Koliko vam ostaje po kupcu nakon troška oglasa (minus znači da oglas naplaćuje gubitak)",
+   "id": "prag-godine",
+   "label": "Najviše što smijete platiti za kupca kad uračunate njegove kupnje u 12 mjeseci",
    "format": "currency",
-   "formula": "aov * marza / 100 - cac",
+   "formula": "kosarica * marza / 100 * kupnje",
    "show_in_result": true
   }
  ],
  "schema_version": "v2",
  "persona_selector": {
   "id": "role",
-  "text": "Koja je vaša uloga u firmi?",
+  "text": "Što od ovoga najbolje opisuje vas?",
   "answers": [
    {
-    "label": "Vlasnik ili direktor",
-    "tag": "owner"
+    "label": "Vlasnik webshopa",
+    "tag": "webshop"
    },
    {
-    "label": "Voditelj marketinga",
-    "tag": "marketing_lead"
+    "label": "Vlasnik firme koja prodaje putem upita i telefona",
+    "tag": "lead_gen"
    },
    {
-    "label": "Vlasnik koji sam vodi oglase",
-    "tag": "solo_owner"
+    "label": "Vlasnik u turizmu (apartmani, agencija, smještaj)",
+    "tag": "turizam"
    },
    {
-    "label": "Osnivač na početku, oglase tek planiram",
-    "tag": "early_founder"
+    "label": "Voditelj marketinga u firmi",
+    "tag": "marketing"
    }
   ]
  }
