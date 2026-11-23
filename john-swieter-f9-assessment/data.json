@@ -1,0 +1,582 @@
+{
+ "slug": "john-swieter-f9-assessment",
+ "title": "The Brandscape Check",
+ "subtitle": "Scores how well your restaurant or hospitality brand holds together across strategy, visuals, messaging and every channel from app to signage.",
+ "brand": {
+  "accent": "#ff6600",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "brand_strategy",
+   "name": "Brand Strategy",
+   "questions": [
+    {
+     "id": "brand_strategy_q1",
+     "text": "If a new GM, a franchisee and your app developer each wrote one sentence on what your brand stands for, how close would those three sentences be?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have never written down what the brand stands for.",
+       "score": 1
+      },
+      {
+       "label": "Each would write something different, and all three would sound reasonable.",
+       "score": 2
+      },
+      {
+       "label": "Two would match. The app developer would describe features.",
+       "score": 3
+      },
+      {
+       "label": "All three would land close, because each was handed a written brand platform.",
+       "score": 4
+      },
+      {
+       "label": "All three would quote the same platform line, and we use that line to approve or kill work.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_strategy_q2",
+     "text": "The last time your leadership team made a big call (a new concept, a menu overhaul, a remodel), what role did the brand strategy play?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody brought it up.",
+       "score": 1
+      },
+      {
+       "label": "Marketing mentioned it after the decision was already made.",
+       "score": 2
+      },
+      {
+       "label": "It was in the deck, and the call still came down to cost and timing.",
+       "score": 3
+      },
+      {
+       "label": "We used it to shape the options before the call.",
+       "score": 4
+      },
+      {
+       "label": "It is a standing filter at the C-suite table, and at least one idea died in the last year because it failed that filter.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_strategy_q3",
+     "text": "Who owns the brand across every location and every channel?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody in particular. Each department handles its own piece.",
+       "score": 1
+      },
+      {
+       "label": "Marketing owns it on paper, and operations and franchisees make their own calls.",
+       "score": 2
+      },
+      {
+       "label": "One person owns it, without the authority to stop off-brand work.",
+       "score": 3
+      },
+      {
+       "label": "One owner signs off on every customer-facing launch.",
+       "score": 4
+      },
+      {
+       "label": "One owner signs off on every launch, sits in C-suite decisions, and has a budget that covers every channel.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand has no single owner yet",
+     "text": "When nobody owns the brand, every department builds its own version, and guests feel the gap before you see it in the numbers. I have watched this happen inside Fortune 100 companies and inside ten-location restaurant groups. The work starts at the top, with a written platform and one person who can say no.",
+     "steps": [
+      "Write a one-page brand platform covering purpose, promise, personality and the guest you serve",
+      "Name one brand owner with sign-off on every customer-facing launch",
+      "Test one live leadership decision against the platform at your next meeting"
+     ]
+    },
+    "mid": {
+     "headline": "The strategy exists and sits in a deck",
+     "text": "You have done the hard thinking. The next step is putting it to work in the room where the big calls get made. A brand strategy proves its value the day it changes a decision about a concept, a remodel or a menu.",
+     "steps": [
+      "Add a brand check to the approval form for every new concept, remodel and menu change",
+      "Give the brand owner a seat in C-suite planning",
+      "Review your last three big decisions and mark where the platform would have changed the call"
+     ]
+    },
+    "high": {
+     "headline": "Your leadership team runs on the brand platform",
+     "text": "This is rare. Keep the platform current as you open locations, add channels or enter new markets. You will need to revisit what worked at twelve locations once you reach forty.",
+     "steps": [
+      "Schedule a yearly platform review with the full leadership team",
+      "Build the platform into onboarding for every new GM and franchisee",
+      "Keep a list of the ideas the platform killed and share it with the team"
+     ]
+    }
+   }
+  },
+  {
+   "id": "visual_identity",
+   "name": "Visual Identity",
+   "questions": [
+    {
+     "id": "visual_identity_q1",
+     "text": "Lay your menu, your app home screen, a to-go bag and a photo of your storefront signage side by side. What do you see?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Four different brands.",
+       "score": 1
+      },
+      {
+       "label": "The same logo, with color, type and photography changing from piece to piece.",
+       "score": 2
+      },
+      {
+       "label": "Clearly related, with a few pieces that drifted (usually the oldest or the cheapest to produce).",
+       "score": 3
+      },
+      {
+       "label": "One family, with small drift only on vendor-produced items.",
+       "score": 4
+      },
+      {
+       "label": "One brand. A guest would recognize it with the logo covered.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "visual_identity_q2",
+     "text": "What do your vendors, printers and franchisees work from when they make something new for guests?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A logo file someone emails them.",
+       "score": 1
+      },
+      {
+       "label": "An old PDF guide that predates the app and the current menu.",
+       "score": 2
+      },
+      {
+       "label": "A current guide for logo, color and type, with gaps for packaging, digital and environmental.",
+       "score": 3
+      },
+      {
+       "label": "A full current system covering print, digital, packaging and signage.",
+       "score": 4
+      },
+      {
+       "label": "A full system plus an asset library, templates, and a review step before anything goes into production.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "visual_identity_q3",
+     "text": "How does your identity hold up at the edges (catering trays, third-party delivery listings, staff uniforms, the temporary banner at a new opening)?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Locations make those items themselves, and we first see them when a guest posts a photo.",
+       "score": 1
+      },
+      {
+       "label": "Delivery listings and uniforms are close. Everything else is improvised.",
+       "score": 2
+      },
+      {
+       "label": "We cover most of them, and nobody checks after launch.",
+       "score": 3
+      },
+      {
+       "label": "We have specs for each and spot-check a few locations every quarter.",
+       "score": 4
+      },
+      {
+       "label": "Every edge item has a spec and an owner, and we audit it on a schedule.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Guests are meeting several different brands",
+     "text": "When the menu, the app and the sign out front each look like a different company, a guest has to work harder to trust you. In my experience this traces back to vendors working from a logo file and their own taste.",
+     "steps": [
+      "Gather every customer-facing piece you produce and put it on one wall",
+      "Build a current identity guide covering print, digital, packaging and signage",
+      "Send every vendor the same guide and asset files this month"
+     ]
+    },
+    "mid": {
+     "headline": "One family with a few pieces drifting",
+     "text": "The core is in place. The drift comes from the edges, delivery listings, uniforms, catering and the banner someone ordered for a grand opening. Guests photograph those edges, so I would look there next.",
+     "steps": [
+      "List every edge item and assign each one an owner and a spec",
+      "Create templates for the pieces locations produce on their own",
+      "Add a pre-production review for every vendor-made item"
+     ]
+    },
+    "high": {
+     "headline": "Your identity holds with the logo covered",
+     "text": "That is the test I use, and you pass it. The work now is protecting it as staff, vendors and agencies change, because every new person who touches the brand brings their own habits.",
+     "steps": [
+      "Audit a sample of locations every quarter",
+      "Refresh the asset library whenever the menu, app or packaging changes",
+      "Walk every new vendor through the system before their first job"
+     ]
+    }
+   }
+  },
+  {
+   "id": "messaging_and_tone",
+   "name": "Messaging and Tone",
+   "questions": [
+    {
+     "id": "messaging_and_tone_q1",
+     "text": "Read your website About page, your last five app push notifications and your server training script back to back. Do they sound like one voice?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They sound like three different companies.",
+       "score": 1
+      },
+      {
+       "label": "The website sounds polished, the pushes sound like coupons, and servers improvise.",
+       "score": 2
+      },
+      {
+       "label": "Website and app are close. Floor staff have never seen either.",
+       "score": 3
+      },
+      {
+       "label": "Mostly one voice, and front of house gets talking points that match.",
+       "score": 4
+      },
+      {
+       "label": "One voice, written down with examples, and staff training draws on the same document as marketing.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "messaging_and_tone_q2",
+     "text": "When a promotion launches, how does the message get written for each channel?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Each channel owner writes their own version from a one-line request.",
+       "score": 1
+      },
+      {
+       "label": "Marketing writes a headline, and every channel rewrites it their own way.",
+       "score": 2
+      },
+      {
+       "label": "One master brief exists, and social, app and in-store adapt it without review.",
+       "score": 3
+      },
+      {
+       "label": "One master message, adapted per channel, reviewed by one person before launch.",
+       "score": 4
+      },
+      {
+       "label": "One master message with every channel version written together, so the offer, the tone and the reason to come in match everywhere.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "messaging_and_tone_q3",
+     "text": "If a guest complained publicly today, would the replies from your social team, your GM and your customer service inbox sound like the same brand?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have no shared guidance for replies.",
+       "score": 1
+      },
+      {
+       "label": "Each would handle it their own way, some well and some badly.",
+       "score": 2
+      },
+      {
+       "label": "Social has a tone guide. The GMs and the inbox do not.",
+       "score": 3
+      },
+      {
+       "label": "All three have shared reply guidance, and they mostly follow it.",
+       "score": 4
+      },
+      {
+       "label": "All three use the same tone guide and examples, and we review real replies against it.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Every channel is writing its own script",
+     "text": "Your website, your app and your servers each tell guests something a little different, and guests hear all three in the same visit. Set the voice once, write it down with examples, and hand it to everyone who speaks for the brand, from the person writing push notifications to the host stand.",
+     "steps": [
+      "Write a voice guide with ten before-and-after examples from your own channels",
+      "Share it with marketing, operations and front-of-house trainers on the same day",
+      "Rewrite your top three guest-facing scripts against the guide"
+     ]
+    },
+    "mid": {
+     "headline": "Marketing has the voice and the floor team is still guessing",
+     "text": "Your copy reads well. The gap sits in the live moments, a server greeting, a complaint reply, a GM answering a question at the table. Guests remember those moments longer than any ad.",
+     "steps": [
+      "Build one master message brief that every promotion starts from",
+      "Train GMs and the service inbox on the same tone guide as social",
+      "Review ten real guest replies against the guide each month"
+     ]
+    },
+    "high": {
+     "headline": "Guests hear one voice everywhere",
+     "text": "You got here through discipline, and you will have to keep at it. Watch new channels closely. A new delivery partner or app feature usually arrives with copy someone wrote in a hurry.",
+     "steps": [
+      "Add every new channel to the master message brief before it launches",
+      "Keep a running file of strong examples to train new hires",
+      "Retire old scripts and templates the day the voice guide changes"
+     ]
+    }
+   }
+  },
+  {
+   "id": "channel_consistency",
+   "name": "Channel Consistency",
+   "questions": [
+    {
+     "id": "channel_consistency_q1",
+     "text": "How were your current app, website, social channels, menu and in-store signage briefed?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Each one separately, by different people, at different times.",
+       "score": 1
+      },
+      {
+       "label": "Mostly separately. A few shared a brief because they launched together.",
+       "score": 2
+      },
+      {
+       "label": "From one brand guide, by separate teams who never saw each other's work.",
+       "score": 3
+      },
+      {
+       "label": "From one integrated brief, with the teams checking each other's work before launch.",
+       "score": 4
+      },
+      {
+       "label": "From one integrated brief, by one accountable team, with every channel reviewed side by side before anything ships.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "channel_consistency_q2",
+     "text": "When you change something (a new menu item, a price, store hours), how long until every channel tells guests the same thing?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Some channels never catch up. We still find old information months later.",
+       "score": 1
+      },
+      {
+       "label": "A few weeks, and someone usually spots a miss.",
+       "score": 2
+      },
+      {
+       "label": "About a week, with the app or delivery listings lagging behind.",
+       "score": 3
+      },
+      {
+       "label": "Within a day or two, working from a checklist.",
+       "score": 4
+      },
+      {
+       "label": "The same day, because one owner pushes the change to every channel from one source.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "channel_consistency_q3",
+     "text": "When did someone last walk the full guest path (search, app, order, arrival, signage, table, receipt, follow-up email) and score it as one experience?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never.",
+       "score": 1
+      },
+      {
+       "label": "Only after something went visibly wrong.",
+       "score": 2
+      },
+      {
+       "label": "Once, during a rebrand or a new launch.",
+       "score": 3
+      },
+      {
+       "label": "Once a year, as part of planning.",
+       "score": 4
+      },
+      {
+       "label": "Every quarter, at more than one location, with findings that go straight into the next round of briefs.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "fixhours",
+     "type": "number",
+     "text": "In a typical month, how many hours does your team spend correcting or redoing customer-facing work that came back off-brand (menus, social posts, app screens, signage, packaging)?",
+     "hint": "Count everyone involved, including marketing, design, operations and vendor back-and-forth. Zero scores best and 100 or more scores lowest. Your results multiply this by 12 months.",
+     "suffix": "hours/month",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 20,
+     "normalize_formula": "Math.max(0, 100 - x)"
+    },
+    {
+     "id": "hourlyrate",
+     "type": "number",
+     "text": "What is the loaded hourly cost of the people doing that rework?",
+     "hint": "Use salary plus benefits divided by hours worked, or the hourly rate your agency bills. It drives the cost figure in your results.",
+     "suffix": "$/hour",
+     "min": 15,
+     "max": 500,
+     "step": 5,
+     "default": 75,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "briefteams",
+     "type": "number",
+     "text": "How many separate teams, agencies or vendors brief or produce your customer-facing channels today?",
+     "hint": "Count in-house marketing, your app or web developer, your social agency, your printer, your sign shop, franchise marketing and anyone else who writes or designs for guests. One team scores best.",
+     "suffix": "teams",
+     "min": 1,
+     "max": 30,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "100 / x"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Each channel was briefed on its own",
+     "text": "This is the thing I find most often, and it costs the most. The app team, the social agency, the sign shop and the menu designer each got a separate request, so each one built a slightly different restaurant. Look at the rework figure in your results. That is what the separate briefs cost you every year.",
+     "steps": [
+      "Write one integrated brief that every channel works from",
+      "Put every team and vendor on the same kickoff call for your next launch",
+      "Review all channels side by side before anything goes live"
+     ]
+    },
+    "mid": {
+     "headline": "One brief, several teams working apart",
+     "text": "You have a shared starting point. The gap opens after kickoff, when each team builds alone and nobody sees the whole picture until guests do.",
+     "steps": [
+      "Hold a side-by-side review of app, web, social, menu and signage before every launch",
+      "Create one change checklist for price, item and hours updates across every channel",
+      "Walk the full guest path at two locations this quarter"
+     ]
+    },
+    "high": {
+     "headline": "Guests get one story from search to signage",
+     "text": "You run your channels as one brand, and that takes an accountable team and the habit of checking the whole. Keep walking the guest path. Every new location, partner and platform adds one more place where the story can split. RANGE knows.",
+     "steps": [
+      "Walk the full guest path every quarter at more than one location",
+      "Feed every finding from that walk into the next round of briefs",
+      "Keep the number of teams briefing guest-facing work as low as you can"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual-rework-cost",
+   "label": "Yearly cost of fixing off-brand work",
+   "format": "currency",
+   "formula": "fixhours * hourlyrate * 12",
+   "show_in_result": true
+  },
+  {
+   "id": "annual-rework-hours",
+   "label": "Hours a year spent fixing off-brand work",
+   "format": "hours",
+   "formula": "fixhours * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your seat at the table?",
+  "answers": [
+   {
+    "label": "Owner or founder of a restaurant group",
+    "tag": "owner"
+   },
+   {
+    "label": "CMO or marketing lead",
+    "tag": "marketing"
+   },
+   {
+    "label": "Brand or creative director",
+    "tag": "creative"
+   },
+   {
+    "label": "Operations or franchise leader",
+    "tag": "operations"
+   },
+   {
+    "label": "Hotel or hospitality executive",
+    "tag": "hospitality"
+   }
+  ]
+ }
+}
