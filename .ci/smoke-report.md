@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 3fc1335cea9ab4bab76518c45c5dd5355aea4d4a at 2026-11-22T16:19:54.838Z
+Deploy: ddba8127f16eee18b797a18ae6d52392bdb81cb2 at 2026-11-23T12:55:27.107Z
 
-- david-peranic-71-assessment: data.json HTTP 404
+- stephane-morera-05-assessment: data.json HTTP 404
