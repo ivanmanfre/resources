@@ -1,0 +1,667 @@
+{
+ "slug": "stephane-morera-05-assessment",
+ "title": "AI Answer Visibility Score",
+ "subtitle": "Scores how likely ChatGPT, Claude, Gemini and Perplexity are to name your business when a buyer asks for what you sell, and where each gap sits.",
+ "brand": {
+  "accent": "#6bb3f8",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "how_you_test_answers",
+   "name": "How You Test Answers",
+   "questions": [
+    {
+     "id": "how_you_test_answers_q1",
+     "text": "When you check whether AI engines recommend you, how do you run the test?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have never asked an AI engine who to hire for what I sell",
+       "score": 1
+      },
+      {
+       "label": "I asked ChatGPT once, logged in to my own account",
+       "score": 2
+      },
+      {
+       "label": "I ask a few engines now and then and go by memory",
+       "score": 3
+      },
+      {
+       "label": "I run the same buyer question several times per engine in logged-out sessions and write down the results",
+       "score": 4
+      },
+      {
+       "label": "I run a fixed set of buyer questions on a schedule across ChatGPT, Claude, Gemini and Perplexity and keep every verbatim answer with its date",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "how_you_test_answers_q2",
+     "text": "Before you change your site or a profile, what do you write down?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing, I make the change and wait to see what happens",
+       "score": 1
+      },
+      {
+       "label": "I remember roughly how the answers looked before",
+       "score": 2
+      },
+      {
+       "label": "I save a screenshot of one answer before the change",
+       "score": 3
+      },
+      {
+       "label": "I record a baseline from repeated runs before the change",
+       "score": 4
+      },
+      {
+       "label": "I log a baseline, a written prediction with the number that would count as failure, and readings at 7 and 14 days",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "engines",
+     "type": "number",
+     "text": "Ask your main buyer question today (for example 'who is the best roofer in DeLand') on ChatGPT logged out, Claude, Gemini and Perplexity. How many of those 4 engines named your business?",
+     "hint": "Use live web search and a fresh, logged-out session. Count an engine only if your business name appears in the answer.",
+     "suffix": "of 4 engines",
+     "min": 0,
+     "max": 4,
+     "step": 1,
+     "default": 1,
+     "normalize_formula": "x / 4 * 100"
+    },
+    {
+     "id": "runs",
+     "type": "number",
+     "text": "Now ask ChatGPT, logged out, that same question 10 times in 10 fresh chats. In how many of the 10 runs did your business appear?",
+     "hint": "The answers change from one run to the next, so one check tells you very little. Ten runs give you a share you can track month to month.",
+     "suffix": "of 10 runs",
+     "min": 0,
+     "max": 10,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "x / 10 * 100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Start a baseline this week",
+     "text": "Your read on AI visibility comes from one chat, maybe none. These engines answer differently from run to run, so a single check tells you very little. Pick five questions a buyer would ask, run each one many times on every engine, and save every answer with the date.",
+     "steps": [
+      "Write 5 buyer questions in the words a customer would use, with your city in each one",
+      "Run each question 10 times on ChatGPT logged out, Claude, Gemini and Perplexity with web search on",
+      "Save the verbatim answers and every cited source in one dated file",
+      "Repeat the same set on the first Monday of every month"
+     ]
+    },
+    "mid": {
+     "headline": "Turn spot checks into experiments",
+     "text": "You test, and that puts you ahead of your competitors. You still lose the lesson when you skip the prediction. Before each change, write down what you expect and the number that would make you call it a failure, then read the results at 7 and 14 days.",
+     "steps": [
+      "Write one prediction per change, with a failure number, before you ship it",
+      "Change one thing at a time so you know what moved the answer",
+      "Read the same question set at day 7 and day 14",
+      "Keep the runs where nothing moved in the same log as the wins"
+     ]
+    },
+    "high": {
+     "headline": "Publish your baseline",
+     "text": "Your testing is solid. The next step is putting the raw runs on a public page with dates, including the runs where nothing happened. Buyers trust receipts, and a dated page with real answers is one more source an engine can cite.",
+     "steps": [
+      "Publish your monthly sweep with verbatim answers and sources",
+      "Add each prediction to the page before the reading lands",
+      "Post every reading on schedule, including the misses",
+      "Add a new engine to the sweep when your buyers start using it"
+     ]
+    }
+   }
+  },
+  {
+   "id": "index_coverage_on_google",
+   "name": "Index Coverage on Google and Bing",
+   "questions": [
+    {
+     "id": "index_coverage_on_google_q1",
+     "text": "Do you know whether Bing has indexed your service pages?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have never looked at Bing",
+       "score": 1
+      },
+      {
+       "label": "I assume Bing has whatever Google has",
+       "score": 2
+      },
+      {
+       "label": "I set up Bing Webmaster Tools once and never went back",
+       "score": 3
+      },
+      {
+       "label": "I check Bing Webmaster Tools and fix pages Bing has dropped",
+       "score": 4
+      },
+      {
+       "label": "I check Google Search Console and Bing Webmaster Tools every month and track the indexed count for every service page",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "index_coverage_on_google_q2",
+     "text": "How do you know whether your Google ranking carries over into AI answers?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I rank well on Google, so I figure the AI engines see me too",
+       "score": 1
+      },
+      {
+       "label": "I have wondered about it and never checked",
+       "score": 2
+      },
+      {
+       "label": "I compare my Google rank with one AI answer now and then",
+       "score": 3
+      },
+      {
+       "label": "I know Copilot and ChatGPT search pull from Bing, and I check my Bing positions for the same questions",
+       "score": 4
+      },
+      {
+       "label": "I track Google rank, Bing rank and AI citations per page side by side and can name pages that get cited with zero Google clicks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "index_coverage_on_google_q3",
+     "text": "How many of your pages are indexed and clear of basic SEO problems (duplicate titles, missing descriptions, broken links)?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have no idea how many of my pages are indexed",
+       "score": 1
+      },
+      {
+       "label": "I know some pages are missing and haven't fixed them",
+       "score": 2
+      },
+      {
+       "label": "Most pages are indexed, and I have never audited titles or links",
+       "score": 3
+      },
+      {
+       "label": "I audited the site this year and fixed most of what I found",
+       "score": 4
+      },
+      {
+       "label": "Every service and city page is indexed on both engines, and I re-audit after each site change",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Check the index the engines read",
+     "text": "You can rank well on Google and still be missing from Bing, which is the index Copilot and ChatGPT search read from. Each engine reads its own index, so you have four scoreboards to check and Google is only one of them.",
+     "steps": [
+      "Verify your site in Bing Webmaster Tools and submit your sitemap",
+      "Compare the indexed page count in Bing with the count in Google Search Console",
+      "List every service page missing from either index and fix it first",
+      "Give every page one unique title and one description"
+     ]
+    },
+    "mid": {
+     "headline": "Read each scoreboard separately",
+     "text": "You know the two indexes differ. Now track them per page. In one week of our own data, the page Copilot cited most, 60 times, sat at position 66 on Google with zero clicks in a month. You only see that when the numbers sit side by side.",
+     "steps": [
+      "Build one sheet per page with Google rank, Bing rank and AI citations",
+      "Check Bing positions for the same buyer questions you test in the engines",
+      "Fix the pages that rank on Google and are missing on Bing",
+      "Re-read the sheet once a month"
+     ]
+    },
+    "high": {
+     "headline": "Keep coverage tight after every change",
+     "text": "Both indexes carry your pages and you track them. You can still lose pages from Bing during a redesign or a plugin update without seeing any warning in Google, so re-check both after every site change.",
+     "steps": [
+      "Re-run the indexed counts within a week of any site change",
+      "Set an alert for drops in Bing Webmaster Tools",
+      "Log which pages earn AI citations and protect their URLs during edits"
+     ]
+    }
+   }
+  },
+  {
+   "id": "directory_and_review_pro",
+   "name": "Directory and Review Profiles",
+   "questions": [
+    {
+     "id": "directory_and_review_pro_q1",
+     "text": "Do you know which directories and lists the AI engines pull from when they answer questions about your trade in your city?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have no idea which sources they use",
+       "score": 1
+      },
+      {
+       "label": "I know Google reviews matter and stop there",
+       "score": 2
+      },
+      {
+       "label": "I have looked at the sources one or two engines cited",
+       "score": 3
+      },
+      {
+       "label": "I collect the cited sources from each engine and keep a list of the ones I'm missing from",
+       "score": 4
+      },
+      {
+       "label": "I pull the search queries and cited sources for each engine, and my business is on every directory on that list",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "directory_and_review_pro_q2",
+     "text": "How consistent are your business name, address, phone, hours and services across directories?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have never checked my listings outside Google",
+       "score": 1
+      },
+      {
+       "label": "I know some listings still show an old phone number or address",
+       "score": 2
+      },
+      {
+       "label": "My main listings match, and I haven't checked the smaller ones",
+       "score": 3
+      },
+      {
+       "label": "I audited every listing I could find in the last year and fixed the mismatches",
+       "score": 4
+      },
+      {
+       "label": "I keep one master record and check every listing against it on a schedule",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "directory_and_review_pro_q3",
+     "text": "How recent and detailed are your reviews on the platforms the engines cite?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have a handful of reviews, mostly old",
+       "score": 1
+      },
+      {
+       "label": "I have reviews on Google and nowhere else",
+       "score": 2
+      },
+      {
+       "label": "I get a review now and then when a customer offers one",
+       "score": 3
+      },
+      {
+       "label": "I ask every finished customer for a review on two or more platforms",
+       "score": 4
+      },
+      {
+       "label": "I get steady reviews across the cited platforms, customers mention the service and the city, and I reply to each one",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Get on the lists the engines read",
+     "text": "When Claude left my company out of an answer, I pulled the search queries it ran and found a handful of directory lists we had never joined. The fix fit on a sticky note. Yours probably will too, once you know which lists to check.",
+     "steps": [
+      "Ask each engine your buyer question and write down every source it cites",
+      "Claim and complete your profile on each cited directory",
+      "Fix your name, address and phone so every listing matches your Google Business Profile",
+      "Ask your last 10 customers for a review"
+     ]
+    },
+    "mid": {
+     "headline": "Close the gap per engine",
+     "text": "You have the basics on the big platforms. Each engine searches its own sources, so the directories that matter for Perplexity can look different from the ones Claude reads. Build a missing list per engine and work through it.",
+     "steps": [
+      "Keep one list of cited directories per engine",
+      "Mark every directory where your business is missing or out of date",
+      "Clear three items off the list each week",
+      "Re-run your buyer questions after each batch and log what changed"
+     ]
+    },
+    "high": {
+     "headline": "Earn an independent mention",
+     "text": "Your listings are clean and your reviews keep coming. In my own knowledge panel test, the step I expect to take longest is an independent source describing me. Your business is in the same spot, so go after a local news piece, an association page or a trade publication.",
+     "steps": [
+      "Pitch one local outlet a story built on your own numbers",
+      "Get listed on the member page of your trade association",
+      "Make sure every independent mention uses the same business details as your master record"
+     ]
+    }
+   }
+  },
+  {
+   "id": "answer_ready_service_pag",
+   "name": "Answer-Ready Service Pages",
+   "questions": [
+    {
+     "id": "answer_ready_service_pag_q1",
+     "text": "If an engine reads your service page, can it find a direct answer to the buyer's question?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have one services page that lists everything in a paragraph",
+       "score": 1
+      },
+      {
+       "label": "Each service has a page, and the pages are mostly sales copy",
+       "score": 2
+      },
+      {
+       "label": "My service pages explain the work, and the answer sits halfway down the page",
+       "score": 3
+      },
+      {
+       "label": "Each service page opens with a plain answer on what I do, where and for whom",
+       "score": 4
+      },
+      {
+       "label": "Each service page opens with that answer and covers price ranges, timelines, service area and the questions buyers ask on calls",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "answer_ready_service_pag_q2",
+     "text": "Do you have pages for the cities or areas you serve?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "My site names one city in the footer",
+       "score": 1
+      },
+      {
+       "label": "I list my service area on one page",
+       "score": 2
+      },
+      {
+       "label": "I have a few city pages with the same text and a swapped city name",
+       "score": 3
+      },
+      {
+       "label": "I have a page for each main city with local details and jobs done there",
+       "score": 4
+      },
+      {
+       "label": "Each city page has real local jobs, photos, reviews from customers in that city and answers to the local questions buyers ask",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "answer_ready_service_pag_q3",
+     "text": "Can a stranger check every claim on your service pages?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "My pages say we are the best and leave it there",
+       "score": 1
+      },
+      {
+       "label": "I mention years in business and a few general claims",
+       "score": 2
+      },
+      {
+       "label": "I list licenses and certifications without any links",
+       "score": 3
+      },
+      {
+       "label": "I back claims with license numbers, review counts and project details",
+       "score": 4
+      },
+      {
+       "label": "Every claim links to a source anyone can open, such as a license lookup, an association listing or a dated job with numbers",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Answer the buyer's question on the page",
+     "text": "If your services sit in one paragraph of sales copy, an engine has nothing clean to quote. Give each service its own page and open it with two sentences on what you do, where you do it and who you do it for.",
+     "steps": [
+      "Build one page per service",
+      "Write the first two sentences as the answer to the buyer's question",
+      "Add a price range, a typical timeline and your service area",
+      "Give each page one title and make sure it appears once"
+     ]
+    },
+    "mid": {
+     "headline": "Make your city pages worth citing",
+     "text": "Your service pages answer the question. A city page with a swapped city name gives an engine nothing new to read. Add the jobs you did in that city, the photos from those jobs and the reviews from customers who live there.",
+     "steps": [
+      "Pick your three biggest cities and rewrite those pages first",
+      "Add two real local jobs with dates and photos to each page",
+      "Answer the five questions you hear most from buyers in that city"
+     ]
+    },
+    "high": {
+     "headline": "Back every claim with a source",
+     "text": "Your pages are ready for an engine to quote. Before anything goes out from my practice, every claim gets traced to a primary source. Hold your pages to the same rule and remove any claim you can't back.",
+     "steps": [
+      "Link every license and certification to its public lookup",
+      "Add dates and numbers to each case on the page",
+      "Review every service page each quarter and cut claims without a source"
+     ]
+    }
+   }
+  },
+  {
+   "id": "machine_readable_busines",
+   "name": "Machine-Readable Business Details",
+   "questions": [
+    {
+     "id": "machine_readable_busines_q1",
+     "text": "What structured data (schema markup) does your site carry?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't know what schema markup is",
+       "score": 1
+      },
+      {
+       "label": "My theme or plugin adds something and I have never looked at it",
+       "score": 2
+      },
+      {
+       "label": "I have basic Organization or LocalBusiness schema on the homepage",
+       "score": 3
+      },
+      {
+       "label": "I have LocalBusiness and Service schema that matches my listings, tested in a validator",
+       "score": 4
+      },
+      {
+       "label": "Every page carries schema that matches my listings, with FAQ, review and service markup tested after each change",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "machine_readable_busines_q2",
+     "text": "Do your website, profiles and owner pages point to each other as one business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "My site and my profiles don't link to each other",
+       "score": 1
+      },
+      {
+       "label": "My site links to a couple of social profiles",
+       "score": 2
+      },
+      {
+       "label": "My schema lists some of my profiles in sameAs",
+       "score": 3
+      },
+      {
+       "label": "My business and I each have one consistent ID that all my sites and profiles reference",
+       "score": 4
+      },
+      {
+       "label": "Those IDs are consistent across every site I own, and an independent source describes both with the same details",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "machine_readable_busines_q3",
+     "text": "If an engine read only the text and schema on your site, could it answer price, hours, service area and contact?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, most of that lives in images or PDFs",
+       "score": 1
+      },
+      {
+       "label": "Some of it is in text, scattered across different pages",
+       "score": 2
+      },
+      {
+       "label": "Hours and contact are in text, price and service area are missing",
+       "score": 3
+      },
+      {
+       "label": "All four are in plain text on the site and in my listings",
+       "score": 4
+      },
+      {
+       "label": "All four are in plain text, in schema and in every listing, and they match",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Put your details where machines can read them",
+     "text": "If your prices sit in a PDF and your hours sit in an image, an engine has to guess. Put price, hours, service area and contact in plain text on your site, then add LocalBusiness schema that matches your Google Business Profile line for line.",
+     "steps": [
+      "Move prices, hours and service area out of images and into page text",
+      "Add LocalBusiness schema to your homepage and contact page",
+      "Test the markup in a schema validator",
+      "Match every schema field to your Google Business Profile"
+     ]
+    },
+    "mid": {
+     "headline": "Connect your business and yourself as one entity",
+     "text": "You have schema in place. Next, give your business and yourself one consistent ID each and reference them from every site and profile you own. I moved evoix.io onto the same Person ID my other sites already used before I started my own knowledge panel test.",
+     "steps": [
+      "Pick one ID for the business and one for the owner",
+      "Reference both IDs from every site you own",
+      "List every real profile in sameAs and remove dead ones",
+      "Log a prediction and read the results at 7 and 14 days"
+     ]
+    },
+    "high": {
+     "headline": "Keep the record matched everywhere",
+     "text": "Your details are readable, linked and consistent. Re-test your schema after every site change and compare it against your master record, since one stale phone number in one listing gives an engine two answers to choose from.",
+     "steps": [
+      "Re-test schema after each site update",
+      "Compare schema, site text and listings against your master record each quarter",
+      "Add Service and FAQ markup to any new page before it goes live"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "engines-missing",
+   "label": "AI engines that left your business out of the answer",
+   "format": "integer",
+   "formula": "4 - engines",
+   "show_in_result": true
+  },
+  {
+   "id": "chatgpt-share",
+   "label": "Your answer share on ChatGPT across 10 runs",
+   "format": "percent",
+   "formula": "runs / 10 * 100",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which describes you best?",
+  "answers": [
+   {
+    "label": "I run a local service business (roofing, HVAC, plumbing, cleaning, landscaping)",
+    "tag": "local_service"
+   },
+   {
+    "label": "I run a professional practice (law, dental, medical, accounting, real estate)",
+    "tag": "professional_practice"
+   },
+   {
+    "label": "I run a business with more than one location",
+    "tag": "multi_location"
+   },
+   {
+    "label": "I handle marketing for a small business or for agency clients",
+    "tag": "marketer"
+   }
+  ]
+ }
+}
