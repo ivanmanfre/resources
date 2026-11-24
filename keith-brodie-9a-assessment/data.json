@@ -1,0 +1,554 @@
+{
+ "slug": "keith-brodie-9a-assessment",
+ "title": "B2B AI Search Readiness Assessment",
+ "subtitle": "Score how ready your B2B site is for AI product comparisons by checking your shortlist questions, public proof and how you verify AI answers and citations.",
+ "brand": {
+  "accent": "#2f7bbf",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "the_questions_that_decid",
+   "name": "The Questions That Decide the Shortlist",
+   "questions": [
+    {
+     "id": "the_questions_that_decid_q1",
+     "text": "Which questions can you trace to buyers who were deciding which products to shortlist?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have a list of product keywords and their search volumes.",
+       "score": 1
+      },
+      {
+       "label": "Our team drafted comparison questions from memory.",
+       "score": 2
+      },
+      {
+       "label": "We've saved exact questions from recent sales calls or emails.",
+       "score": 3
+      },
+      {
+       "label": "We've grouped those questions by the decision the buyer was trying to make.",
+       "score": 4
+      },
+      {
+       "label": "We can point to the questions that changed who made the shortlist and show where buyers asked them.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_questions_that_decid_q2",
+     "text": "Can you name the setup requirement that would take your product off a buyer's shortlist?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We describe who the product is for in broad terms.",
+       "score": 1
+      },
+      {
+       "label": "Sales can name a common deal-breaker from memory.",
+       "score": 2
+      },
+      {
+       "label": "We have a written list of setup requirements buyers ask about.",
+       "score": 3
+      },
+      {
+       "label": "We can tie specific requirements to deals we qualified or lost.",
+       "score": 4
+      },
+      {
+       "label": "We can quote the buyer's question, explain the requirement and say when we'd tell them to rule us out.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "the_questions_that_decid_q3",
+     "text": "How do you decide which shortlist question deserves a page of its own?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We pick the keyword with the highest search volume.",
+       "score": 1
+      },
+      {
+       "label": "We make a page for each comparison phrase in the keyword report.",
+       "score": 2
+      },
+      {
+       "label": "We group search phrases that express the same buyer question.",
+       "score": 3
+      },
+      {
+       "label": "We give a question its own page when buyers need a distinct answer to make a decision.",
+       "score": 4
+      },
+      {
+       "label": "We can show why even a low-volume question deserves a page, using a deal where the answer changed the shortlist.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Pull the questions from sales calls",
+     "text": "I'd start with a deal you won and a deal you lost. Find the question each buyer needed answered before they could pick a vendor.",
+     "steps": [
+      "Copy the buyer's exact question from the call notes or email.",
+      "Record the requirement that put a vendor on the shortlist or took one off."
+     ]
+    },
+    "mid": {
+     "headline": "Rank the questions by what buyers decide",
+     "text": "A question about setup can decide a deal even when your keyword tool reports very little volume.",
+     "steps": [
+      "Group questions that ask for the same decision.",
+      "Pick the question you can tie to a recent deal and check what a buyer can learn from your site."
+     ]
+    },
+    "high": {
+     "headline": "Recheck your shortlist against lost deals",
+     "text": "Use the next lost deal to test whether your list covers the condition that ruled you out.",
+     "steps": [
+      "Confirm the buyer's reason with sales.",
+      "Add the buyer's wording to your shortlist tests if the question is missing."
+     ]
+    }
+   }
+  },
+  {
+   "id": "public_proof_before_the_",
+   "name": "Public Proof Before the Demo",
+   "questions": [
+    {
+     "id": "public_proof_before_the__q1",
+     "text": "If a buyer asks exactly what they need to set up your product, what can they verify on your public site?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The setup details live in a sales deck or come up on the demo.",
+       "score": 1
+      },
+      {
+       "label": "We say setup is easy, and buyers can ask sales for details.",
+       "score": 2
+      },
+      {
+       "label": "We list the basic steps on a public page.",
+       "score": 3
+      },
+      {
+       "label": "We publish the prerequisites, what the buyer's team has to do and the limits that affect setup.",
+       "score": 4
+      },
+      {
+       "label": "A buyer can check those details against public documentation or a worked setup example for their use case.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "public_proof_before_the__q2",
+     "text": "If a buyer asks to see results for a business like theirs, what can they verify from the page where you make the claim?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Sales shares relevant results privately.",
+       "score": 1
+      },
+      {
+       "label": "The page shows customer logos or a broad outcome claim.",
+       "score": 2
+      },
+      {
+       "label": "The page links to a public case study with a result.",
+       "score": 3
+      },
+      {
+       "label": "The case study gives the starting point, what the customer did and the result over a stated period.",
+       "score": 4
+      },
+      {
+       "label": "The case study also gives buyers enough context about the customer's use case and setup to judge whether the result applies to them.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "public_proof_before_the__q3",
+     "text": "When a buyer compares your product with another option, how much of the fit decision can they make from your public pages?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The buyer has to ask sales how the products compare.",
+       "score": 1
+      },
+      {
+       "label": "The buyer can read general claims about why we'd be a good choice.",
+       "score": 2
+      },
+      {
+       "label": "The buyer can see which use cases we support.",
+       "score": 3
+      },
+      {
+       "label": "The buyer can check which requirements we meet and where we'd advise them to pick another option.",
+       "score": 4
+      },
+      {
+       "label": "The buyer can follow each claim that could change their decision to public documentation or relevant customer evidence.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "proof",
+     "type": "number",
+     "text": "For how many of 10 real shortlist questions can you find a direct answer with proof on your public site?",
+     "hint": "Pick 10 questions buyers ask when comparing products for a use case you serve. Count setup details kept in a sales deck as missing public proof. Each question with proof earns 10 points on a 100-point scale.",
+     "suffix": "questions",
+     "min": 0,
+     "max": 10,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "x * 100 / 10"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Publish the setup answer before the demo",
+     "text": "Open the deck you use on sales calls. Find the setup detail a buyer would need to know before putting you on the shortlist.",
+     "steps": [
+      "Put the requirement and the buyer's setup work on a public page.",
+      "Link to documentation or an example a buyer can check without a login."
+     ]
+    },
+    "mid": {
+     "headline": "Put the proof next to the claim",
+     "text": "Give the buyer enough detail to tell if the customer in your case study had the same problem and setup.",
+     "steps": [
+      "Link the comparison claim to the most relevant case study or documentation.",
+      "Add the starting point and time period to any result you cite."
+     ]
+    },
+    "high": {
+     "headline": "Check what changed since you published",
+     "text": "I'd rerun the fit check after a setup change. A buyer may still be comparing you on a requirement you've changed.",
+     "steps": [
+      "Check the public comparison page against current product documentation.",
+      "Update any example that still describes the old setup."
+     ]
+    }
+   }
+  },
+  {
+   "id": "organic_search_and_third",
+   "name": "Organic Search and Third-Party Proof",
+   "questions": [
+    {
+     "id": "organic_search_and_third_q1",
+     "text": "When you run a shortlist search without including your brand name, what can buyers find in Google's organic results?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We track paid placements and haven't checked the organic results.",
+       "score": 1
+      },
+      {
+       "label": "We can find our pages when we add our brand name.",
+       "score": 2
+      },
+      {
+       "label": "Our homepage or a broad product page appears for some shortlist searches.",
+       "score": 3
+      },
+      {
+       "label": "We have recorded where the page that answers each priority question appears, including the searches where it is absent.",
+       "score": 4
+      },
+      {
+       "label": "After updating a page, we rerun the search and check whether buyers can find the page with the answer and its proof.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "organic_search_and_third_q2",
+     "text": "If an AI answer cites an independent source about your product, what can a buyer verify there?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We haven't checked for public sources outside our own site.",
+       "score": 1
+      },
+      {
+       "label": "We can point to directory listings that confirm our name and URL.",
+       "score": 2
+      },
+      {
+       "label": "We can point to public customer reviews or mentions in relevant industry publications.",
+       "score": 3
+      },
+      {
+       "label": "A relevant independent source describes a specific use case or result buyers ask about.",
+       "score": 4
+      },
+      {
+       "label": "For our priority shortlist questions, we can point to independent sources that support specific claims and identify where we're still relying on our own pages.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "organic_search_and_third_q3",
+     "text": "If a buyer opens your organic result while comparing products, how quickly can they find the answer promised by the page title?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They arrive on a general product page and have to work out where to look.",
+       "score": 1
+      },
+      {
+       "label": "They can choose among several pages with similar titles and much of the same copy.",
+       "score": 2
+      },
+      {
+       "label": "They land on a page with a specific title and find the answer after reading through the background.",
+       "score": 3
+      },
+      {
+       "label": "They see the direct answer near the top and can follow a link to the proof.",
+       "score": 4
+      },
+      {
+       "label": "They see the direct answer, the conditions that change it and the evidence they need to compare products.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Run the search without your brand name",
+     "text": "Look for the page a buyer would need to make the comparison. Record what they can find in the organic results.",
+     "steps": [
+      "Run a real shortlist query in Google and record the result.",
+      "Give the page that answers the question a title that matches the answer."
+     ]
+    },
+    "mid": {
+     "headline": "Find a source buyers can check outside your site",
+     "text": "Start with a claim a buyer would ask you to prove on a call. Check what a relevant review or industry publication actually says about it.",
+     "steps": [
+      "Read the source and record the claim it supports.",
+      "Use that evidence on the page where buyers compare their options."
+     ]
+    },
+    "high": {
+     "headline": "Test the shortlist queries where you're absent",
+     "text": "I'd look at the result a buyer can find today and read it against the exact question. It may cover a setup condition your page leaves out.",
+     "steps": [
+      "Compare the visible result with your page on the buyer's requirement.",
+      "Fill any gap you can prove and run the same search again."
+     ]
+    }
+   }
+  },
+  {
+   "id": "verified_ai_answers_and_",
+   "name": "Verified AI Answers and Citations",
+   "questions": [
+    {
+     "id": "verified_ai_answers_and__q1",
+     "text": "What could you show me from the last time you asked Google AI Overviews and an AI chat platform your buyers use to compare products?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We haven't run buyer comparison questions on either.",
+       "score": 1
+      },
+      {
+       "label": "We searched for our brand once and saw it mentioned.",
+       "score": 2
+      },
+      {
+       "label": "We saved a dated answer to a real shortlist question on one platform.",
+       "score": 3
+      },
+      {
+       "label": "We ran the same questions on both and recorded which products were named and which pages were cited.",
+       "score": 4
+      },
+      {
+       "label": "We rerun the same questions and can show where the answer, recommendation or citation changed, including searches where no AI Overview appeared.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "verified_ai_answers_and__q2",
+     "text": "When an AI answer recommends your product and cites a page, how do you check whether the page supports the recommendation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We count the brand mention.",
+       "score": 1
+      },
+      {
+       "label": "We check which domain the answer cites.",
+       "score": 2
+      },
+      {
+       "label": "We open the cited page and confirm it discusses our product.",
+       "score": 3
+      },
+      {
+       "label": "We check the exact claim against the cited passage and record any setup detail the answer misstated.",
+       "score": 4
+      },
+      {
+       "label": "We save the answer and supporting passage and log claims the source can't support, even when it recommends us.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "verified_ai_answers_and__q3",
+     "text": "What do you do when a buyer's test question produces a wrong setup answer or leaves your product out of a shortlist where it fits?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have no record of which questions produced those results.",
+       "score": 1
+      },
+      {
+       "label": "We save a screenshot when someone spots a problem.",
+       "score": 2
+      },
+      {
+       "label": "We log the question, platform, date and issue.",
+       "score": 3
+      },
+      {
+       "label": "We check the cited source and our public proof before deciding what we can fix.",
+       "score": 4
+      },
+      {
+       "label": "We assign the fix, rerun the question and report what changed separately from any leads or revenue we can trace.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "verified",
+     "type": "number",
+     "text": "Of those 10 shortlist questions, how many produced a recommendation for your product that you could verify against the cited page?",
+     "hint": "Use one AI platform your buyers use. For each question, count a recommendation only if it names your product, gives an accurate reason it fits and cites a public page that supports that reason. Count only tests you've run. Each verified recommendation earns 10 points on a 100-point scale.",
+     "suffix": "questions",
+     "min": 0,
+     "max": 10,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "x * 100 / 10"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Save the answer and open the citation",
+     "text": "Run the same buyer question in Google and an AI chat platform your buyers use. Check what each says about who fits and why.",
+     "steps": [
+      "Save the question, date, answer and cited pages.",
+      "Open each citation and find the passage that supports the claim."
+     ]
+    },
+    "mid": {
+     "headline": "Fix the first wrong answer that could cost you a shortlist spot",
+     "text": "Start with a wrong setup claim a buyer could use to rule you out. Check what the cited page says and what your own public pages prove.",
+     "steps": [
+      "Record the exact claim and the evidence for the correct answer.",
+      "Fix any gap on the public page you own and rerun the original question."
+     ]
+    },
+    "high": {
+     "headline": "Keep citation checks separate from lead reporting",
+     "text": "Report which questions produced accurate, supported recommendations. Give leads and revenue their own line when you have evidence of where they came from.",
+     "steps": [
+      "Rerun the same shortlist questions after changes to your public proof.",
+      "Record any lead that names an AI answer or citation as the source."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "public-proof-gap",
+   "label": "Shortlist questions you still need to prove on your site",
+   "format": "integer",
+   "formula": "10 - proof",
+   "show_in_result": true
+  },
+  {
+   "id": "verified-recommendation-gap",
+   "label": "Shortlist questions still without a verified recommendation",
+   "format": "integer",
+   "formula": "10 - verified",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "What's your role for the B2B site you're scoring?",
+  "answers": [
+   {
+    "label": "B2B founder or general manager",
+    "tag": "founder"
+   },
+   {
+    "label": "Head of B2B marketing",
+    "tag": "marketing-lead"
+   },
+   {
+    "label": "In-house SEO or demand generation specialist",
+    "tag": "search-demand"
+   },
+   {
+    "label": "Agency lead for a B2B client",
+    "tag": "agency-lead"
+   }
+  ]
+ }
+}
