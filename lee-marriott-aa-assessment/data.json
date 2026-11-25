@@ -1,0 +1,539 @@
+{
+ "slug": "lee-marriott-aa-assessment",
+ "title": "SMS Opt-in Readiness Score",
+ "subtitle": "Score your Shopify SMS capture on form wording, shopper choice, proof in Klaviyo and opt-outs before you text the numbers you've collected.",
+ "brand": {
+  "accent": "#b4f24d",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "form_wording",
+   "name": "Form wording",
+   "questions": [
+    {
+     "id": "form_wording_q1",
+     "text": "What does the live pop-up tell a shopper they're signing up for when you ask for their mobile number?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We ask for a mobile number and give no reason.",
+       "score": 1
+      },
+      {
+       "label": "We mention a discount or early access and leave marketing texts out of the wording.",
+       "score": 2
+      },
+      {
+       "label": "We mention texts, but shoppers could read that as a one-off code or an order update.",
+       "score": 3
+      },
+      {
+       "label": "Our main pop-up says we'll send marketing texts, but some live offers use different wording.",
+       "score": 4
+      },
+      {
+       "label": "Every live version says the shopper is signing up for marketing texts, including versions that offer a code.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "form_wording_q2",
+     "text": "On a phone, what can a shopper read about SMS marketing before they tap to sign up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They can submit the form before they see any SMS wording.",
+       "score": 1
+      },
+      {
+       "label": "They have to open a terms link to find out they're signing up for marketing texts.",
+       "score": 2
+      },
+      {
+       "label": "We show the wording on the form, but it can sit below the button or get cut off on a phone.",
+       "score": 3
+      },
+      {
+       "label": "We checked the main mobile form. The wording is readable next to the sign-up action.",
+       "score": 4
+      },
+      {
+       "label": "We opened every live mobile version and confirmed shoppers can read the wording before they submit.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "form_wording_q3",
+     "text": "When did you last check the live SMS form on each storefront against the current UK, US or local rules where you sell?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We've never checked the forms against the rules where we sell.",
+       "score": 1
+      },
+      {
+       "label": "We copied the wording from a template or another store and assumed it would cover us.",
+       "score": 2
+      },
+      {
+       "label": "We checked our main market, but we have storefronts or markets we haven't reviewed.",
+       "score": 3
+      },
+      {
+       "label": "We checked every live storefront against the current rules for the markets it sells into and kept a record.",
+       "score": 4
+      },
+      {
+       "label": "We have that record and someone checks the rules again before we change a form or open a new market.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Read the live form on your phone",
+     "text": "I'd open the pop-up from the ad that sends it the most traffic. If the shopper sees a discount and a mobile field, check where they find out you'll send marketing texts. Marketing texts are restricted, so check the current rules wherever that storefront sells before you send.",
+     "steps": [
+      "Screenshot the live form before you tap the button.",
+      "Put the marketing text wording next to the sign-up action.",
+      "Check the wording and required disclosures for each market the storefront sells into."
+     ]
+    },
+    "mid": {
+     "headline": "Check the forms beyond your main pop-up",
+     "text": "I'd check the sale version next. The everyday pop-up can be fine while the one you put live for Black Friday still asks for a number with only the discount on screen.",
+     "steps": [
+      "List every live SMS form by storefront and offer.",
+      "Test each version on a phone before you send paid traffic to it."
+     ]
+    },
+    "high": {
+     "headline": "Keep a copy of the wording shoppers saw",
+     "text": "I'd save the exact form before changing the offer. If someone asks about a text after the sale ends, you'll want the wording they saw when they signed up.",
+     "steps": [
+      "Save the wording, storefront, form version and dates it ran.",
+      "Repeat the local rules check before the next form change or market launch."
+     ]
+    }
+   }
+  },
+  {
+   "id": "shopper_choice",
+   "name": "Shopper choice",
+   "questions": [
+    {
+     "id": "shopper_choice_q1",
+     "text": "What action does a shopper have to take to opt in to marketing texts?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Entering a number anywhere is enough for us to add them to SMS marketing.",
+       "score": 1
+      },
+      {
+       "label": "A marketing box starts ticked, or we count a general continue button as permission.",
+       "score": 2
+      },
+      {
+       "label": "Shoppers choose SMS on the main pop-up, but another live route still bundles it with email or checkout.",
+       "score": 3
+      },
+      {
+       "label": "Every live route asks for a clear, separate action to choose marketing texts.",
+       "score": 4
+      },
+      {
+       "label": "We tested choosing and skipping SMS on every live route and checked that Klaviyo recorded each choice correctly.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "shopper_choice_q2",
+     "text": "What happens when a shopper skips SMS and wants to finish checkout or take the email-only option you offer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They have to agree to marketing texts to finish checkout.",
+       "score": 1
+      },
+      {
+       "label": "They can finish checkout, but our form still requires SMS to complete the advertised email sign-up.",
+       "score": 2
+      },
+      {
+       "label": "They can finish either action, but on some versions they have to close the form or go back a step.",
+       "score": 3
+      },
+      {
+       "label": "They can skip SMS and finish checkout or the available email sign-up on every live route.",
+       "score": 4
+      },
+      {
+       "label": "We completed both paths on a phone wherever they're offered and checked that neither added our test profile to SMS marketing.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "shopper_choice_q3",
+     "text": "What happens in Klaviyo when a shopper gives you a number for delivery or in a social DM and skips the marketing text choice?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We add the number to SMS marketing when we receive it.",
+       "score": 1
+      },
+      {
+       "label": "We save the number and rely on someone to remove it from campaign audiences by hand.",
+       "score": 2
+      },
+      {
+       "label": "One capture route keeps those numbers out of SMS marketing, but we still need to check the others.",
+       "score": 3
+      },
+      {
+       "label": "Every route we use can save a number while keeping the profile out of SMS marketing.",
+       "score": 4
+      },
+      {
+       "label": "We tested every route we use and confirmed each profile stayed out of campaigns and marketing flows unless the shopper separately opted in.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Keep delivery numbers out of marketing sends",
+     "text": "I'd place a test order and enter a number for delivery. Skip the SMS box, then open the profile in Klaviyo. If it's eligible for your welcome text, hold that send and fix the route that added it.",
+     "steps": [
+      "Hold marketing sends to numbers collected through the affected route.",
+      "Give shoppers a separate choice to receive marketing texts.",
+      "Test checkout with SMS skipped and check the test profile in Klaviyo."
+     ]
+    },
+    "mid": {
+     "headline": "Test every route that can add a number",
+     "text": "If you've tested the main pop-up, I'd try checkout and any social DM capture next. Check what happens to the profile when the shopper gives you a number and leaves SMS marketing unticked.",
+     "steps": [
+      "Run a test with SMS skipped on each live capture route.",
+      "Check each test profile against the audiences for campaigns and welcome texts."
+     ]
+    },
+    "high": {
+     "headline": "Test both choices before a form goes live",
+     "text": "I'd run the opt-in and skip paths each time you test a new offer against the current one. Check the two Klaviyo profiles before paying to send traffic to the new form.",
+     "steps": [
+      "Save a test profile for each choice on the new version.",
+      "Compare each profile's SMS status and flow eligibility before launch."
+     ]
+    }
+   }
+  },
+  {
+   "id": "proof_in_klaviyo",
+   "name": "Proof in Klaviyo",
+   "questions": [
+    {
+     "id": "proof_in_klaviyo_q1",
+     "text": "If a shopper asks why they got a marketing text, what can you pull up from their Klaviyo profile?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We can see their mobile number.",
+       "score": 1
+      },
+      {
+       "label": "We can see an SMS subscription status, but we can't trace where it came from.",
+       "score": 2
+      },
+      {
+       "label": "We can see the time and source on some profiles, but we can't recover the wording the shopper saw.",
+       "score": 3
+      },
+      {
+       "label": "We can trace the number to an opt-in action, its time, the storefront and the wording that was live.",
+       "score": 4
+      },
+      {
+       "label": "We've pulled that record for sampled profiles across every capture route we send to and held the profiles with missing proof.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "proof_in_klaviyo_q2",
+     "text": "After you change a Shopify pop-up or run an A/B test, how do you verify which version a new SMS subscriber saw?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We replace the old form and keep no copy of what it said.",
+       "score": 1
+      },
+      {
+       "label": "We keep screenshots, but we can't link them to any subscriber.",
+       "score": 2
+      },
+      {
+       "label": "We can link a profile to the form, but we can't tell which live version the shopper saw.",
+       "score": 3
+      },
+      {
+       "label": "We keep the wording for each version and can link a profile to the version used.",
+       "score": 4
+      },
+      {
+       "label": "We submit each live version ourselves and match each test profile in Klaviyo to the wording and version we saw.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "proof_in_klaviyo_q3",
+     "text": "What keeps a profile with missing opt-in proof out of your next Klaviyo campaign and any live marketing SMS flow?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A saved mobile number can be enough to receive a marketing text.",
+       "score": 1
+      },
+      {
+       "label": "We rely on the SMS status and send without checking whether we can trace the opt-in.",
+       "score": 2
+      },
+      {
+       "label": "We hold profiles with unclear records from campaigns, but we haven't checked the live flows.",
+       "score": 3
+      },
+      {
+       "label": "We exclude profiles with unclear records from campaigns and live marketing SMS flows.",
+       "score": 4
+      },
+      {
+       "label": "We've verified the exclusion in both places with test profiles and review new capture sources before they can feed either.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "unverified",
+     "type": "number",
+     "text": "How many Klaviyo profiles could get a marketing text today even though you can't show how they opted in?",
+     "hint": "Use your current campaign audiences and live marketing SMS flows. Count each profile with missing proof once, even if it appears more than once. Enter 0 only after checking. A verified 0 scores 100 on this check. Any positive count scores 0.",
+     "suffix": "profiles",
+     "min": 0,
+     "max": 1000000000,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "x == 0 ? 100 : 0"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Hold the profiles you can't account for",
+     "text": "Before the next send, I'd open a few profiles from the actual audience and trace how each shopper signed up. If you can't recover permission for a group, keep that group out of campaigns and flows while you check the records.",
+     "steps": [
+      "Pull the audiences for your next campaign and live marketing SMS flows.",
+      "Trace sampled profiles back to the opt-in action and the wording shown.",
+      "Exclude profiles with missing proof from both send paths."
+     ]
+    },
+    "mid": {
+     "headline": "Check the welcome flow against the campaign audience",
+     "text": "I'd put a test profile with a mobile number and no SMS opt-in through the welcome flow. Check it against your next campaign audience too. You want to see it excluded from both.",
+     "steps": [
+      "Test campaign eligibility with a profile that has no SMS permission.",
+      "Check that the same profile skips every live marketing SMS flow."
+     ]
+    },
+    "high": {
+     "headline": "Spot-check the records before a bigger send",
+     "text": "Before sending to a bigger audience for Black Friday, I'd sample the profiles you plan to add. Open their records in Klaviyo and check that you can trace the opt-in back to the store and form they used.",
+     "steps": [
+      "Sample profiles from each capture route in the planned audience.",
+      "Hold any group whose permission records you can't verify."
+     ]
+    }
+   }
+  },
+  {
+   "id": "opt_outs",
+   "name": "Opt-outs",
+   "questions": [
+    {
+     "id": "opt_outs_q1",
+     "text": "How would a shopper reading one of your marketing texts know how to opt out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We haven't opened a delivered text to check what shoppers see.",
+       "score": 1
+      },
+      {
+       "label": "We tell shoppers to contact support, and we haven't checked which opt-out methods they need in each market.",
+       "score": 2
+      },
+      {
+       "label": "Our usual campaigns explain how to opt out, but we haven't checked live flow texts and other storefronts.",
+       "score": 3
+      },
+      {
+       "label": "We've checked the applicable opt-out instructions in campaign and flow texts for each market.",
+       "score": 4
+      },
+      {
+       "label": "We've followed the instructions from delivered test texts for each market and verified that the opt-out worked.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "opt_outs_q2",
+     "text": "If a shopper opts out after the first welcome text, what happens to the next marketing text they've already qualified for?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They can still get it because nobody checks their status again.",
+       "score": 1
+      },
+      {
+       "label": "Someone has to remove them by hand, so the next text can go out before the removal.",
+       "score": 2
+      },
+      {
+       "label": "We've verified suppression for campaigns, but we haven't checked profiles already waiting for a flow text.",
+       "score": 3
+      },
+      {
+       "label": "Klaviyo records the opt-out and excludes the profile from later marketing texts in campaigns and flows.",
+       "score": 4
+      },
+      {
+       "label": "We opted out a test profile already waiting for a flow text and confirmed it received neither that text nor the next test campaign.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "opt_outs_q3",
+     "text": "If you sync Shopify or upload a list before a sale, what keeps a shopper who opted out from going back into SMS marketing?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We can add the number back when we reload a list or sync customer records.",
+       "score": 1
+      },
+      {
+       "label": "Someone checks the list by hand when they remember.",
+       "score": 2
+      },
+      {
+       "label": "We checked our usual Shopify sync, but we haven't tested the other ways we add or update profiles.",
+       "score": 3
+      },
+      {
+       "label": "Every route we use preserves the opt-out unless the shopper gives fresh permission that we can show.",
+       "score": 4
+      },
+      {
+       "label": "We tested an opted-out profile on every route we use and verified it stayed out of marketing sends after each update.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Run an opt-out test before the next campaign",
+     "text": "I'd send a test text to my own phone and follow the instructions exactly as a shopper would. Open the profile in Klaviyo and check whether it can still receive a marketing text. Hold the affected sends if it can.",
+     "steps": [
+      "Check the required opt-out methods for each market you text.",
+      "Follow the instructions from a delivered test text.",
+      "Confirm the profile is excluded from both campaigns and live flows."
+     ]
+    },
+    "mid": {
+     "headline": "Check the text already waiting in a flow",
+     "text": "I'd test a profile partway through the welcome flow. Opt out after the first message and see what happens when the second one is due. A clean campaign audience leaves that part untested.",
+     "steps": [
+      "Opt out an internal test profile between two scheduled marketing texts.",
+      "Verify that the next flow text and test campaign both skip that profile."
+     ]
+    },
+    "high": {
+     "headline": "Retest suppression after a sync or upload",
+     "text": "Before a sale, I'd run an opted-out test profile through the same Shopify sync or list upload the team plans to use. Check its status in Klaviyo before scheduling the campaign.",
+     "steps": [
+      "Run an opted-out test profile through the planned update.",
+      "Verify that the profile stays out of the campaign and any eligible marketing flows."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "profiles-to-hold",
+   "label": "Klaviyo profiles to hold from marketing texts",
+   "format": "integer",
+   "formula": "unverified",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which role do you have in the Shopify store you're scoring?",
+  "answers": [
+   {
+    "label": "I own the brand",
+    "tag": "founder"
+   },
+   {
+    "label": "I run ecommerce or trading",
+    "tag": "ecommerce"
+   },
+   {
+    "label": "I run email, SMS or retention",
+    "tag": "crm"
+   },
+   {
+    "label": "I manage Klaviyo for the brand",
+    "tag": "agency"
+   }
+  ]
+ }
+}
