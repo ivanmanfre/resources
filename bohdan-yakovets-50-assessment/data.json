@@ -1,0 +1,547 @@
+{
+ "slug": "bohdan-yakovets-50-assessment",
+ "title": "Score de visibilité locale",
+ "subtitle": "Vérifiez si une famille qui ignore le nom de votre école peut la trouver sur Google ou Maps, comprendre les admissions, demander une visite et recevoir une réponse.",
+ "brand": {
+  "accent": "#d87642",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "google_et_maps_sans_le_n",
+   "name": "Google et Maps sans le nom de l’école",
+   "questions": [
+    {
+     "id": "google_et_maps_sans_le_n_q1",
+     "text": "Sur Google, hors annonces et carte, où apparaît votre site pour deux recherches sans le nom de l’école, l’une sur votre type d’école et l’autre sur un niveau proposé, avec la commune dans les deux cas ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nous n’avons jamais testé ces recherches.",
+       "score": 1
+      },
+      {
+       "label": "Nous retrouvons le site avec le nom de l’école, mais il est absent des trois premières pages pour les deux recherches.",
+       "score": 2
+      },
+      {
+       "label": "Le site apparaît dans les trois premières pages pour au moins une recherche, toujours après la première page.",
+       "score": 3
+      },
+      {
+       "label": "Le site est en première page pour une des deux recherches.",
+       "score": 4
+      },
+      {
+       "label": "Le site est en première page pour les deux recherches.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "google_et_maps_sans_le_n_q2",
+     "text": "Depuis votre commune, où figure votre école sur Google Maps quand vous cherchez votre type d’école, puis un niveau proposé, sans taper son nom ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nous n’avons pas de fiche visible ou nous n’avons jamais vérifié.",
+       "score": 1
+      },
+      {
+       "label": "Nous trouvons la fiche en tapant le nom de l’école. Elle est absente des dix premiers résultats pour les deux recherches sans le nom.",
+       "score": 2
+      },
+      {
+       "label": "La fiche apparaît dans les dix premiers résultats pour au moins une recherche, toujours après les trois premières places.",
+       "score": 3
+      },
+      {
+       "label": "La fiche figure dans les trois premiers résultats pour une des deux recherches.",
+       "score": 4
+      },
+      {
+       "label": "La fiche figure dans les trois premiers résultats pour les deux recherches.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "google_et_maps_sans_le_n_q3",
+     "text": "Une famille qui ouvre votre fiche Google peut-elle vérifier l’adresse du bon site scolaire, appeler les admissions et accéder au site de l’école ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "La fiche est absente ou son adresse est fausse.",
+       "score": 1
+      },
+      {
+       "label": "L’adresse est correcte. Le numéro et le lien du site sont absents ou périmés.",
+       "score": 2
+      },
+      {
+       "label": "L’adresse est correcte et l’un des deux accès fonctionne, le téléphone ou le lien du site.",
+       "score": 3
+      },
+      {
+       "label": "L’adresse est correcte, le numéro est joignable et le lien ouvre l’accueil du site.",
+       "score": 4
+      },
+      {
+       "label": "L’adresse est correcte, le numéro permet de joindre les admissions et le lien ouvre une page où la demande de visite est visible.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Vérifiez si Google vous trouve sans votre nom",
+     "text": "Je commencerais par taper le niveau et la commune. Si d’autres écoles apparaissent et que la vôtre reste introuvable, la famille a déjà des établissements à appeler.",
+     "steps": [
+      "Testez deux recherches avec la commune et relevez les écoles affichées sur Google et Maps.",
+      "Corrigez l’adresse, le téléphone et le lien du site dans votre fiche Google Business Profile.",
+      "Ajoutez le niveau proposé et la commune au titre de la page qui répond à la recherche."
+     ]
+    },
+    "mid": {
+     "headline": "Travaillez la recherche sur laquelle l’école manque",
+     "text": "Une famille peut vous trouver pour un niveau et passer à côté de votre école pour un autre. Je traiterais en premier le niveau pour lequel vous souhaitez recevoir davantage de demandes de visite.",
+     "steps": [
+      "Repérez la recherche sur laquelle d’autres écoles apparaissent avant la vôtre.",
+      "Vérifiez dans Google Search Console quelle page reçoit des clics pour cette recherche.",
+      "Complétez cette page avec les informations d’admission du niveau concerné."
+     ]
+    },
+    "high": {
+     "headline": "Vérifiez les demandes reçues grâce à Google",
+     "text": "Vous apparaissez sur les recherches testées. Faites le point chaque mois sur les clics hors nom d’école et sur les demandes de visite que vous pouvez attribuer à Google.",
+     "steps": [
+      "Séparez les recherches avec et sans le nom de l’école dans Google Search Console.",
+      "Vérifiez sur téléphone où mène le lien de votre fiche Google.",
+      "Rapprochez les données de visite du site des formulaires reçus et des visites fixées lorsque vous connaissez la provenance."
+     ]
+    }
+   }
+  },
+  {
+   "id": "clart_des_pages_d_admiss",
+   "name": "Clarté des pages d’admission",
+   "questions": [
+    {
+     "id": "clart_des_pages_d_admiss_q1",
+     "text": "Sur la page d’admission, à quel moment un parent peut-il vérifier que vous accueillez son enfant au niveau recherché ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Le parent doit appeler pour savoir quels niveaux nous proposons.",
+       "score": 1
+      },
+      {
+       "label": "Le parent doit ouvrir une brochure PDF pour trouver les niveaux.",
+       "score": 2
+      },
+      {
+       "label": "La page nomme les cycles, puis le parent doit chercher ailleurs les classes ou âges correspondants.",
+       "score": 3
+      },
+      {
+       "label": "La page indique les classes ou âges admis pour chaque cycle.",
+       "score": 4
+      },
+      {
+       "label": "La page indique les classes ou âges admis, avec un lien direct vers les conditions d’entrée de chaque niveau.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "clart_des_pages_d_admiss_q2",
+     "text": "Pour la prochaine rentrée, quelles étapes d’admission un parent peut-il vérifier en ligne avant de demander une visite ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Il trouve une adresse de contact et doit écrire pour connaître les étapes.",
+       "score": 1
+      },
+      {
+       "label": "Il trouve les étapes d’une rentrée passée et doit confirmer qu’elles sont encore valables.",
+       "score": 2
+      },
+      {
+       "label": "Il trouve les étapes à jour, puis doit demander les dates ou les pièces à fournir.",
+       "score": 3
+      },
+      {
+       "label": "Il trouve les étapes, les dates et les pièces à fournir sur la page.",
+       "score": 4
+      },
+      {
+       "label": "Il trouve ces informations pour le niveau recherché et sait à quel moment la visite intervient.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "clart_des_pages_d_admiss_q3",
+     "text": "Avant d’ouvrir le formulaire, que sait le parent de la visite qu’il s’apprête à demander ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "La page ne mentionne aucune possibilité de visiter l’école.",
+       "score": 1
+      },
+      {
+       "label": "La visite est mentionnée, sans préciser ce que la famille pourra voir ou qui elle rencontrera.",
+       "score": 2
+      },
+      {
+       "label": "La page précise ce que la famille pourra voir sur place.",
+       "score": 3
+      },
+      {
+       "label": "La page précise aussi qui accueillera la famille et combien de temps prévoir.",
+       "score": 4
+      },
+      {
+       "label": "Le parent connaît le déroulement, la durée et la manière dont l’équipe lui proposera un créneau.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Donnez aux parents de quoi décider s’ils demandent une visite",
+     "text": "Je partirais des questions que votre secrétariat reçoit déjà. Si un parent doit téléphoner pour vérifier que son enfant a l’âge requis, la page laisse une question d’admission sans réponse.",
+     "steps": [
+      "Publiez les niveaux et les âges admis directement sur la page Admissions.",
+      "Indiquez les étapes et les dates de la prochaine rentrée.",
+      "Décrivez ce que la famille pourra voir pendant la visite."
+     ]
+    },
+    "mid": {
+     "headline": "Complétez la page du niveau que les familles cherchent",
+     "text": "Relisez la page en pensant à une famille qui arrive depuis Google et découvre l’école. Elle doit pouvoir préparer sa visite depuis cette page.",
+     "steps": [
+      "Reprenez les questions que les parents posent avant de choisir un créneau.",
+      "Ajoutez les réponses sur la page du niveau concerné.",
+      "Placez le lien de demande de visite après les informations sur le déroulement."
+     ]
+    },
+    "high": {
+     "headline": "Contrôlez les pages avant chaque rentrée",
+     "text": "Les parents ont de quoi décider s’ils souhaitent venir. Vérifiez que les pages qui reçoivent des visites depuis Google sont à jour avant l’ouverture des admissions.",
+     "steps": [
+      "Repérez dans Google Search Console les pages d’admission qui reçoivent des clics.",
+      "Vérifiez leurs dates, conditions d’entrée et liens vers la visite.",
+      "Demandez au secrétariat quelles questions reviennent encore avant la prise de rendez-vous."
+     ]
+    }
+   }
+  },
+  {
+   "id": "acc_s_au_formulaire_de_v",
+   "name": "Accès au formulaire de visite",
+   "questions": [
+    {
+     "id": "acc_s_au_formulaire_de_v_q1",
+     "text": "Sur téléphone, depuis la page d’admission, combien d’appuis faut-il pour ouvrir le formulaire de demande de visite ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Il n’existe pas de formulaire de visite ou le lien est cassé.",
+       "score": 1
+      },
+      {
+       "label": "Il faut quitter la page d’admission et chercher dans le menu ou dans le pied de page.",
+       "score": 2
+      },
+      {
+       "label": "Un lien visible mène à une page de contact où il faut encore chercher le bon accès.",
+       "score": 3
+      },
+      {
+       "label": "Le formulaire de visite s’ouvre en un appui sur un lien visible.",
+       "score": 4
+      },
+      {
+       "label": "Le formulaire est sur la page ou s’ouvre en un appui, et nous avons vérifié cet accès pour chaque niveau sur téléphone.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "acc_s_au_formulaire_de_v_q2",
+     "text": "Sur téléphone, que doit fournir une famille pour envoyer sa première demande de visite ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nous n’avons jamais réussi à envoyer une demande de test sur téléphone.",
+       "score": 1
+      },
+      {
+       "label": "La famille doit créer un compte, joindre une pièce ou remplir un dossier d’inscription.",
+       "score": 2
+      },
+      {
+       "label": "Elle peut envoyer le formulaire sans compte ni document, avec des champs obligatoires qui concernent l’inscription.",
+       "score": 3
+      },
+      {
+       "label": "Elle renseigne ses coordonnées et le niveau recherché, puis peut envoyer la demande.",
+       "score": 4
+      },
+      {
+       "label": "Elle renseigne ces seules informations obligatoires et peut corriger un champ sur téléphone sans perdre le reste de sa saisie.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "acc_s_au_formulaire_de_v_q3",
+     "text": "Quand vous envoyez une demande de test depuis un téléphone, quelle preuve avez-vous que la famille et l’école savent qu’elle a été reçue ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nous n’avons jamais vérifié la réception d’une demande de test.",
+       "score": 1
+      },
+      {
+       "label": "Le site affiche une confirmation, mais nous n’avons pas retrouvé la demande côté admissions.",
+       "score": 2
+      },
+      {
+       "label": "Les admissions reçoivent la demande. La famille doit deviner si l’envoi a fonctionné.",
+       "score": 3
+      },
+      {
+       "label": "Les admissions reçoivent la demande et la famille voit une confirmation explicite.",
+       "score": 4
+      },
+      {
+       "label": "Nous avons vérifié la réception et la famille reçoit aussi un e-mail qui précise la prochaine étape.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Envoyez une demande depuis votre téléphone",
+     "text": "Ouvrez la page Admissions depuis Google et faites le trajet d’un parent. Tant que vous n’avez pas retrouvé votre demande côté admissions, vous ne savez pas si une famille peut vous joindre par ce formulaire.",
+     "steps": [
+      "Placez un lien intitulé « Demander une visite » sur la page Admissions.",
+      "Testez l’envoi avec une adresse e-mail extérieure à l’école.",
+      "Retrouvez la demande dans la boîte utilisée par les admissions."
+     ]
+    },
+    "mid": {
+     "headline": "Gardez les champs nécessaires à la visite",
+     "text": "Pour proposer un créneau, votre équipe a besoin de savoir qui joindre et pour quel niveau. Si vous demandez déjà les pièces d’inscription, une famille peut devoir passer sur ordinateur pour finir.",
+     "steps": [
+      "Déplacez les pièces d’inscription vers l’étape du dossier.",
+      "Vérifiez sur téléphone que le parent peut corriger une erreur de saisie.",
+      "Indiquez à la famille ce qui va se passer après l’envoi."
+     ]
+    },
+    "high": {
+     "headline": "Comptez les demandes que l’équipe a reçues",
+     "text": "Un clic sur « Envoyer » peut précéder un échec. Quand vous faites le point sur le site, comparez vos envois comptés aux demandes que les admissions peuvent retrouver.",
+     "steps": [
+      "Déclenchez la mesure dans Google Analytics après confirmation de l’envoi.",
+      "Comparez le nombre d’envois confirmés aux demandes reçues sur la même période.",
+      "Refaites un test sur téléphone après chaque modification du formulaire."
+     ]
+    }
+   }
+  },
+  {
+   "id": "suivi_des_demandes_de_vi",
+   "name": "Suivi des demandes de visite",
+   "questions": [
+    {
+     "id": "suivi_des_demandes_de_vi_q1",
+     "text": "Si une demande arrive pendant l’absence de la personne chargée des admissions, qui la voit et qui répond à la famille ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "La demande arrive dans une boîte individuelle et attend le retour de la personne.",
+       "score": 1
+      },
+      {
+       "label": "La demande arrive dans une boîte partagée que chacun consulte à l’occasion.",
+       "score": 2
+      },
+      {
+       "label": "Une personne consulte la boîte et transfère les demandes si elle anticipe son absence.",
+       "score": 3
+      },
+      {
+       "label": "Une personne et son relais sont désignés, avec accès aux mêmes demandes.",
+       "score": 4
+      },
+      {
+       "label": "Le relais voit les demandes encore sans réponse et peut reprendre le suivi depuis le dernier échange.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "suivi_des_demandes_de_vi_q2",
+     "text": "En prenant une demande reçue le mois dernier, quelles dates votre équipe peut-elle retrouver ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nous devons d’abord chercher si nous avons reçu la demande.",
+       "score": 1
+      },
+      {
+       "label": "Nous retrouvons la date de réception dans les e-mails.",
+       "score": 2
+      },
+      {
+       "label": "Nous retrouvons la réception et la première réponse en relisant le fil.",
+       "score": 3
+      },
+      {
+       "label": "Nous voyons les dates de réception et de première réponse dans le suivi des admissions, avec l’état de la demande.",
+       "score": 4
+      },
+      {
+       "label": "Nous voyons aussi la date du rendez-vous ou la date de la prochaine relance quand la visite reste à fixer.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "suivi_des_demandes_de_vi_q3",
+     "text": "À la fin du mois, quels chiffres pouvez-vous donner sur les demandes de visite envoyées depuis le site ?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nous ne pouvons pas donner de chiffre à partir des demandes reçues.",
+       "score": 1
+      },
+      {
+       "label": "Nous connaissons le trafic du site ou le nombre de clics sur le formulaire.",
+       "score": 2
+      },
+      {
+       "label": "Nous comptons les demandes reçues par formulaire.",
+       "score": 3
+      },
+      {
+       "label": "Nous comptons les demandes reçues et savons pour combien une visite a été fixée.",
+       "score": 4
+      },
+      {
+       "label": "Nous savons aussi combien attendent encore une première réponse et pouvons les retrouver une par une.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "delai",
+     "type": "number",
+     "text": "Depuis combien de jours ouvrés la demande de visite la plus ancienne attend-elle une première réponse de votre équipe ?",
+     "hint": "Vérifiez les demandes reçues par formulaire et comptez les jours ouvrés écoulés depuis la réception. Un accusé automatique ne compte pas comme une réponse. Saisissez 0 si vous avez vérifié qu’aucune demande n’attend. Le sous-score est de 100 jusqu’au repère de 2 jours ouvrés, puis se calcule en multipliant 100 par 2 et en divisant par le délai saisi.",
+     "suffix": "jours ouvrés",
+     "min": 0,
+     "max": 3650,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "x <= 2 ? 100 : 100 * 2 / x"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Retrouvez les familles qui attendent encore",
+     "text": "Je commencerais par les demandes déjà reçues. Si une famille attend dans une boîte que personne ne surveille, des clics supplémentaires sur Google ne l’aideront pas à obtenir un créneau.",
+     "steps": [
+      "Ouvrez la boîte de réception du formulaire et repérez les demandes sans réponse.",
+      "Répondez d’abord aux familles qui attendent depuis le plus longtemps.",
+      "Désignez une personne et un relais pour les prochaines demandes."
+     ]
+    },
+    "mid": {
+     "headline": "Suivez chaque demande jusqu’au créneau",
+     "text": "Vous savez quelles familles ont écrit. Pour savoir lesquelles attendent encore, gardez la date de première réponse et l’état du rendez-vous au même endroit.",
+     "steps": [
+      "Consignez la date de réception, la première réponse et le créneau s’il est fixé.",
+      "Ajoutez une date de relance aux demandes auxquelles l’équipe a répondu sans convenir d’une visite.",
+      "Vérifiez que le relais peut reprendre les demandes en cours avant la prochaine absence."
+     ]
+    },
+    "high": {
+     "headline": "Vérifiez combien de demandes aboutissent à une visite",
+     "text": "Vous pouvez suivre une demande jusqu’au rendez-vous. Faites la même vérification sur le mois pour savoir où travailler entre la réception du formulaire et la prise de rendez-vous.",
+     "steps": [
+      "Comptez chaque mois les demandes reçues, celles qui attendent une réponse et celles qui ont abouti à un rendez-vous.",
+      "Relisez les échanges des familles qui ont reçu une réponse sans fixer de créneau.",
+      "Vérifiez si les demandes attribuées à Google ont donné lieu à des visites fixées."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "attente-au-dela-du-repere",
+   "label": "Jours ouvrés au-delà du repère de 2 jours pour la famille qui attend depuis le plus longtemps",
+   "format": "integer",
+   "formula": "Math.max(0, delai - 2)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Quel est votre rôle dans l’école ?",
+  "answers": [
+   {
+    "label": "Je dirige l’école",
+    "tag": "direction"
+   },
+   {
+    "label": "Je gère les admissions",
+    "tag": "admissions"
+   },
+   {
+    "label": "Je travaille au secrétariat",
+    "tag": "secretariat"
+   },
+   {
+    "label": "Je m’occupe du site ou de la communication",
+    "tag": "communication"
+   }
+  ]
+ }
+}
