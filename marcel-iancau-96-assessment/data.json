@@ -1,7 +1,7 @@
 {
  "slug": "marcel-iancau-96-assessment",
  "title": "Black Friday Customer Score",
- "subtitle": "You can have your best Black Friday report and still buy customers who never return. Score your customer data, margins, ad targets and follow-up.",
+ "subtitle": "How well can you tell which of your Black Friday buyers were worth paying for, scored across customer data, order margins, ad targets and repeat follow-up.",
  "brand": {
   "accent": "#0080ff",
   "hero_badge": "Interactive Assessment"
@@ -14,27 +14,27 @@
    "questions": [
     {
      "id": "customer_data_q1",
-     "text": "Can you pull a list of everyone who bought from you for the first time during Black Friday week?",
+     "text": "Can you pull a list of every customer whose first order with you came in last year's Black Friday week?",
      "max_score": 5,
      "answers": [
       {
-       "label": "No, we only see total orders and revenue for the week",
+       "label": "No. Guest checkout and our exports make it impossible to separate them",
        "score": 1
       },
       {
-       "label": "The shop has the orders, but nobody has separated new buyers from returning ones",
+       "label": "Someone could build it by hand from order exports in about a day",
        "score": 2
       },
       {
-       "label": "We can pull it by hand from a shop export when someone asks",
+       "label": "Yes, though returning customers who used a new email show up as new",
        "score": 3
       },
       {
-       "label": "We have a saved segment of new Black Friday buyers, updated after the sale",
+       "label": "Yes, it sits as a saved segment in our shop platform or email tool",
        "score": 4
       },
       {
-       "label": "New Black Friday buyers are a tagged group in the shop, the email tool and the ad accounts",
+       "label": "Yes, the segment updates itself and sits next to last year's full-price group",
        "score": 5
       }
      ],
@@ -42,27 +42,27 @@
     },
     {
      "id": "customer_data_q2",
-     "text": "Do you know what share of your Black Friday orders came from first-time customers?",
+     "text": "When a Black Friday buyer orders again in March, does anything in your setup know it is the same person?",
      "max_score": 5,
      "answers": [
       {
-       "label": "No, the report shows total orders only",
+       "label": "No, every order is a separate line in the export",
        "score": 1
       },
       {
-       "label": "We think it was mostly new people, but we haven't checked",
+       "label": "Only if they log into an account, and few of them do",
        "score": 2
       },
       {
-       "label": "We know the split for the week as a whole",
+       "label": "We match on email, so a different email or a guest order breaks the link",
        "score": 3
       },
       {
-       "label": "We know the split per day and per product",
+       "label": "We match on email and phone and clean duplicates every quarter",
        "score": 4
       },
       {
-       "label": "We know the split per campaign and channel, and compared it with last November",
+       "label": "One customer record across shop, email and ads, with each person's full order history",
        "score": 5
       }
      ],
@@ -70,27 +70,55 @@
     },
     {
      "id": "customer_data_q3",
-     "text": "Can you tell which campaign or offer brought in each Black Friday buyer?",
+     "text": "Can you see, per customer, which Black Friday offer they used (the deepest code, free delivery, pay later)?",
      "max_score": 5,
      "answers": [
       {
-       "label": "No, we go by what Google and Meta report",
+       "label": "No, discount data stays at order level and nobody looks at it",
        "score": 1
       },
       {
-       "label": "Google and Meta both claim the same orders and we can't tell who is right",
+       "label": "We see one total for discounts given that week",
        "score": 2
       },
       {
-       "label": "We have UTMs on some campaigns and can match part of the orders",
+       "label": "We can see the code on each order, and we never look at those buyers again",
        "score": 3
       },
       {
-       "label": "We match every order to a campaign in the shop's own data",
+       "label": "We tag buyers by the offer they used and check them at least once after the sale",
        "score": 4
       },
       {
-       "label": "We can see per campaign how many of its buyers have ordered again",
+       "label": "We compare repeat orders by offer type, and it changes what we offer next year",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer_data_q4",
+     "text": "Do you know which Black Friday orders came back as returns, and who sent them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't track returns by week or by campaign",
+       "score": 1
+      },
+      {
+       "label": "We know the total refunded for November",
+       "score": 2
+      },
+      {
+       "label": "We know the return rate for the week, with no customer names attached",
+       "score": 3
+      },
+      {
+       "label": "Returns are tied to the customer and the order, and removed from revenue in our reports",
+       "score": 4
+      },
+      {
+       "label": "Returns are tied to the customer, removed from revenue, and removed from what the ad accounts count as a sale",
        "score": 5
       }
      ],
@@ -99,30 +127,31 @@
    ],
    "recommendations": {
     "low": {
-     "headline": "You can't yet see who you bought this year",
-     "text": "Your report shows orders and revenue for the week. It can't tell you how many of those people will ever order again, and right now you can't either. I'd fix this before the Christmas offers go live, because every sale after this one adds more buyers you can't separate.",
+     "headline": "You can't yet tell who you bought last week",
+     "text": "Right now your Black Friday buyers and your loyal customers sit in the same pile. Until you can pull last year's discount-week buyers as one list, the report answers every question about whether the week paid off, and the report only counts the first order.",
      "steps": [
-      "Export every order from Black Friday week and mark which customers had never bought before.",
-      "Save those first-time buyers as their own segment in the shop and in your email tool.",
-      "Write down how many new customers the week brought in, so you have a number to check against in three months."
+      "Export every order from last year's Black Friday week and mark the emails that had never ordered before",
+      "Match orders on email and phone so a second order in March links back to the same person",
+      "Tag each buyer with the offer they used",
+      "Take returned orders out of that week's revenue figure"
      ]
     },
     "mid": {
-     "headline": "The data exists, but someone has to go looking for it",
-     "text": "You can answer the question when someone asks, usually from an export. That works once. It won't help when you need to compare this November with the next one, or tell the ad accounts which buyers matter.",
+     "headline": "You have the list. Put it next to something",
+     "text": "You can find these customers. What's missing is a comparison. A list in the shop platform tells you very little until last year's discount-week group sits next to the people who bought at full price.",
      "steps": [
-      "Turn the manual export into a saved segment that updates after every sale.",
-      "Add the offer or discount code to each new customer's record.",
-      "Connect each Black Friday order to the campaign that brought it in, using UTMs and the order ID."
+      "Build two saved segments, first order in Black Friday week and first order at full price",
+      "Clean duplicates once a quarter so guest orders stop breaking the match",
+      "Add returns per customer to the same view"
      ]
     },
     "high": {
-     "headline": "You know who you bought",
-     "text": "You can name your Black Friday buyers, where they came from and which offer brought them in. With new clients, this is usually the part I have to build first. What's left is using it in the ad accounts and in the follow-up.",
+     "headline": "Your data can answer the hard question",
+     "text": "You can see who came in on the discount, what they used and whether they came back. Keep it this clean before the Christmas offers and the January sales add two more groups.",
      "steps": [
-      "Share the new-buyer segment with Google and Meta so they can tell new customers from existing ones.",
-      "Compare this year's Black Friday buyers with last year's at the same point after the sale.",
-      "Report repeat orders per campaign next to the revenue each campaign brought in."
+      "Create a segment for each offer period this season before it goes live",
+      "Share the customer view with whoever sets the ad targets",
+      "Check the match rate after each sale so the segments stay accurate"
      ]
     }
    }
@@ -132,128 +161,113 @@
    "name": "Order margins",
    "questions": [
     {
-     "id": "order_margins_q1",
-     "text": "Do you know what one Black Friday order kept after product, delivery and payment costs?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "No, we look at revenue and ROAS",
-       "score": 1
-      },
-      {
-       "label": "We know our usual margin and assume the sale took a bit off it",
-       "score": 2
-      },
-      {
-       "label": "We worked it out for the average order",
-       "score": 3
-      },
-      {
-       "label": "We worked it out per product at the sale price",
-       "score": 4
-      },
-      {
-       "label": "We know it per order, and whoever runs the ads sees the same number",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "order_margins_q2",
-     "text": "Before you picked the discount, did anyone check what it did to the margin on each product?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We matched what competitors were offering",
-       "score": 1
-      },
-      {
-       "label": "We used the same discount as last year",
-       "score": 2
-      },
-      {
-       "label": "We checked it on our best-selling products",
-       "score": 3
-      },
-      {
-       "label": "We checked every discounted product and dropped the ones that lost money",
-       "score": 4
-      },
-      {
-       "label": "We set the discount per product from a lowest price we agreed before the sale",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "order_margins_q3",
-     "text": "Did your margin numbers include free delivery, free returns and pay-later fees?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "We didn't count any of them",
-       "score": 1
-      },
-      {
-       "label": "We counted delivery only",
-       "score": 2
-      },
-      {
-       "label": "We counted delivery and payment fees",
-       "score": 3
-      },
-      {
-       "label": "We counted everything except returns, which we'll see later",
-       "score": 4
-      },
-      {
-       "label": "We counted all of them, with an expected return rate built in",
-       "score": 5
-      }
-     ],
-     "type": "likert"
-    },
-    {
-     "id": "costshare",
+     "id": "margin",
      "type": "number",
-     "text": "During Black Friday, what share of the price the customer paid went to product cost and delivery?",
-     "hint": "In Sam Tomlinson's example, a €70 sale price with €40 product cost and €8 delivery is 69%. Use your average order.",
+     "text": "At full price, what percentage of the selling price is left after product cost and delivery?",
+     "hint": "A €100 product that costs €40 to buy and €8 to send leaves 52%. Leave ad spend out of this number.",
      "suffix": "%",
      "min": 0,
      "max": 100,
      "step": 1,
-     "default": 60,
+     "default": 50,
+     "normalize_formula": "Math.max(0, Math.min(100, x))"
+    },
+    {
+     "id": "discount",
+     "type": "number",
+     "text": "What was your main Black Friday discount, as a percentage off full price?",
+     "hint": "Use the discount most of your orders got, for example 30 for 30% off.",
+     "suffix": "%",
+     "min": 0,
+     "max": 90,
+     "step": 1,
+     "default": 30,
      "normalize_formula": "Math.max(0, Math.min(100, 100 - x))"
+    },
+    {
+     "id": "order_margins_q3",
+     "text": "Before the sale went live, did anyone work out what each discounted order would leave you after product, delivery and ads?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, we set the discount by looking at what competitors offered",
+       "score": 1
+      },
+      {
+       "label": "We checked that we'd still sell above product cost",
+       "score": 2
+      },
+      {
+       "label": "We checked product and delivery cost and left ad spend out",
+       "score": 3
+      },
+      {
+       "label": "We worked out profit per order, ads included, for our top products",
+       "score": 4
+      },
+      {
+       "label": "Every product in the sale had a profit-per-order figure, and the ones that lost money stayed out of the sale",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "order_margins_q4",
+     "text": "Where does your margin data live, and who on the ads side has seen it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "In the owner's head, or in the accountant's file once a year",
+       "score": 1
+      },
+      {
+       "label": "In a spreadsheet the person running the ads has never opened",
+       "score": 2
+      },
+      {
+       "label": "Shared with the ads team as one average margin for the whole shop",
+       "score": 3
+      },
+      {
+       "label": "Margin per product or category, shared with whoever sets the ad targets",
+       "score": 4
+      },
+      {
+       "label": "Margin per product sits in the feed or the account, so the platforms can bid on it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "You don't know what each sale order kept",
-     "text": "A 30% discount comes off your price. The supplier and the courier still charge full price. If nobody has worked out the margin at the sale price, you could have had your best revenue week and lost money on every order.",
+     "headline": "The discount may have cost you more than the report shows",
+     "text": "On a €100 product that costs €40 to buy and €8 to send, 30% off at a 2.5 ROAS loses you €6 on every order. Nothing in Meta or Google shows that. If nobody worked this out before Black Friday, start with your ten best sellers now, before the Christmas offers go out.",
      "steps": [
-      "Take your top 10 products and work out the margin at the Black Friday price, after product, delivery and payment costs.",
-      "Add free delivery, free returns and pay-later fees to that number.",
-      "Mark any product that loses money at the sale price before it goes into the Christmas offer."
+      "Write down product cost and delivery cost for your ten best sellers",
+      "Work out what each one leaves you at the discounted price, with ad spend included",
+      "Pull any product that loses money at that discount out of the next sale",
+      "Send the margin sheet to whoever runs your ads"
      ]
     },
     "mid": {
-     "headline": "You know the margin for part of the range",
-     "text": "You've checked the margin on the hero products or on the average order. The products that sold most in the sale might be different ones, and extras like free returns usually sit outside the calculation.",
+     "headline": "You know the margin. The ads side needs it too",
+     "text": "One average margin for the whole shop hides the products that lose money on every discounted order. Break it down by product or category, and make sure the person setting targets has actually seen it.",
      "steps": [
-      "Work out the margin on every product that sold more than 20 units in the sale.",
-      "Put returns and refunds from the sale into the same sheet once they've come back.",
-      "Set a lowest price for each product that you won't go below in December or January."
+      "Split margin by product or category for everything in the next sale",
+      "Mark the products that fall below break-even at the planned discount",
+      "Review the sheet with your ads person before Christmas offers go live"
      ]
     },
     "high": {
-     "headline": "You price the sale from the margin",
-     "text": "You know what each order kept at the sale price, extras included. Make sure the people setting ad targets work from the same sheet, because Google and Meta only see what the order sold for.",
+     "headline": "Your margins are ready to drive your bids",
+     "text": "You know what every discounted order leaves you. The next step is getting that number into the accounts, so Google and Meta go looking for orders with profit in them.",
      "steps": [
-      "Send the margin sheet to whoever runs your ads before the next offer goes live.",
-      "Calculate break-even ROAS for each discount level you plan to run.",
-      "Test a smaller discount on one category and compare what you keep per order."
+      "Add margin per product to your product feed or conversion values",
+      "Set a minimum margin for any product that enters a promotion",
+      "Recheck margins when supplier or courier prices change"
      ]
     }
    }
@@ -264,27 +278,27 @@
    "questions": [
     {
      "id": "ad_account_targets_q1",
-     "text": "After you set the discount, what happened to the ROAS target in Google and Meta?",
+     "text": "When did anyone last change the ROAS target your campaigns run on?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We don't know what target the campaigns run on",
+       "label": "I don't know what our target is",
        "score": 1
       },
       {
-       "label": "We kept the target from October",
+       "label": "It was set when the account was built and nobody has touched it",
        "score": 2
       },
       {
-       "label": "We changed it a bit for the sale, by feel",
+       "label": "We changed it this year, well before the discount season",
        "score": 3
       },
       {
-       "label": "We set a new target from break-even ROAS at the sale price",
+       "label": "We raised it for Black Friday week by what felt safe",
        "score": 4
       },
       {
-       "label": "We set targets per campaign from break-even at the sale price and checked them every day of the sale",
+       "label": "We set a new target for every offer period, worked out from break-even ROAS at that price",
        "score": 5
       }
      ],
@@ -292,27 +306,27 @@
     },
     {
      "id": "ad_account_targets_q2",
-     "text": "What does your ad account count as a conversion during the sale?",
+     "text": "What does your ad account count as a conversion during Black Friday week?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We're not sure what it counts",
+       "label": "Any purchase event, including orders later refunded or cancelled",
        "score": 1
       },
       {
-       "label": "Every purchase, at the full order value, returns included",
+       "label": "Purchases at the price the customer paid, with no cost data",
        "score": 2
       },
       {
-       "label": "Purchases only, and we remove returns afterwards in our own reports",
+       "label": "Purchases, with refunds removed by hand later in a report",
        "score": 3
       },
       {
-       "label": "Purchases, with first-time customers given a higher value",
+       "label": "Purchases with margin or profit values sent back to the account",
        "score": 4
       },
       {
-       "label": "Purchases sent back with their margin as the value, and new customers flagged",
+       "label": "Profit values, plus a separate signal for new customers and returning ones",
        "score": 5
       }
      ],
@@ -320,71 +334,88 @@
     },
     {
      "id": "ad_account_targets_q3",
-     "text": "Do Google and Meta know which buyers were new and which had already bought from you?",
+     "text": "Can your ad account tell a new customer from someone who already bought from you?",
      "max_score": 5,
      "answers": [
       {
-       "label": "No, the platforms treat every buyer the same",
+       "label": "No, every buyer looks the same to Google and Meta",
        "score": 1
       },
       {
-       "label": "We excluded past buyers from a few campaigns",
+       "label": "We think so, someone switched a setting on once",
        "score": 2
       },
       {
-       "label": "We uploaded a customer list once, a while ago",
+       "label": "We upload a customer list now and then, months old by the time it's used",
        "score": 3
       },
       {
-       "label": "We upload a fresh customer list before each sale",
+       "label": "Customer lists sync regularly and we bid differently for new customers",
        "score": 4
       },
       {
-       "label": "Lists update automatically and new customers have their own goal and value",
+       "label": "Lists sync automatically and we see what a new customer cost us, separate from returning ones",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "adshare",
-     "type": "number",
-     "text": "What share of the sale price did ads take per order during Black Friday?",
-     "hint": "Divide 100 by your ROAS target. A 2.5 ROAS means ads take 40% of the price. If you're unsure of the target, use the ROAS you got for the week.",
-     "suffix": "%",
-     "min": 0,
-     "max": 100,
-     "step": 1,
-     "default": 40,
-     "normalize_formula": "Math.max(0, Math.min(100, 100 - x))"
+     "id": "ad_account_targets_q4",
+     "text": "When this year's Black Friday report came in, what did you look at first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Revenue and ROAS in the platform dashboard",
+       "score": 1
+      },
+      {
+       "label": "Revenue against last year's Black Friday",
+       "score": 2
+      },
+      {
+       "label": "Orders and cost per order, with returns still counted",
+       "score": 3
+      },
+      {
+       "label": "Profit after product, delivery, ads and returns",
+       "score": 4
+      },
+      {
+       "label": "Profit, plus how many buyers were new and what each new customer cost compared with October",
+       "score": 5
+      }
+     ],
+     "type": "likert"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Your ads are spending to an October target",
-     "text": "If the ROAS target stayed the same when the price dropped, Google and Meta kept spending as if nothing had changed. In Sam Tomlinson's example, selling a €100 product at 30% off moves break-even ROAS from 1.92 to 3.18. Nothing in the account will tell you that.",
+     "headline": "Your target was set for a price you no longer sell at",
+     "text": "In my example, break-even ROAS moves from 1.92 at full price to 3.18 at 30% off. If your October target is still running, the account keeps spending to it and reports a good week. Check the target before every offer period.",
      "steps": [
-      "Write down the ROAS target in every campaign that ran during Black Friday.",
-      "Compare each one with break-even ROAS at the sale price.",
-      "Raise any target that sits below break-even before the Christmas offers start."
+      "Find out what ROAS target each campaign runs on today",
+      "Work out break-even ROAS at the price you're selling at this month",
+      "Remove refunded and cancelled orders from what counts as a conversion",
+      "Read profit first when the next sale report comes in"
      ]
     },
     "mid": {
-     "headline": "The target moved and the conversion stayed the same",
-     "text": "You adjusted targets for the sale. The account still counts every purchase at what the order sold for, so it goes looking for more of the same buyers, discount hunters included.",
+     "headline": "The account counts sales. Feed it what you keep",
+     "text": "Your targets move with the season, and the account still only sees the price the customer paid. Feed it a sale with a margin attached and it starts finding more of those.",
      "steps": [
-      "Check what your Google and Meta accounts count as a conversion, and at what value.",
-      "Upload your customer list so the accounts can tell new buyers from existing ones.",
-      "Send margin or new-customer value back to the platforms where you can."
+      "Send profit or margin values back to Google and Meta",
+      "Sync your customer list so the account can tell new buyers from returning ones",
+      "Report cost per new customer next to ROAS every week of a sale"
      ]
     },
     "high": {
-     "headline": "You feed the account what you keep",
-     "text": "Your targets follow the sale price and the platforms know which buyers are new. The next step is telling them which new buyers come back, so they look for more of those.",
+     "headline": "Your account knows what a sale is worth",
+     "text": "Targets reset with the price and the accounts bid on profit. Keep comparing what a new customer cost you in a discount week with a normal month, and use that gap to decide how deep the next discount goes.",
      "steps": [
-      "Build a value for returning Black Friday buyers and send it back as a conversion value.",
-      "Lower bids on audiences that only ever buy during sales, or exclude them.",
-      "Review targets again before the January sales, at the January price."
+      "Recalculate break-even ROAS for the January sales before they launch",
+      "Compare cost per new customer in Black Friday week with October",
+      "Cap spend on campaigns that bring mostly returning buyers during a sale"
      ]
     }
    }
@@ -394,56 +425,40 @@
    "name": "Repeat-purchase follow-up",
    "questions": [
     {
-     "id": "repeat_purchase_follow_u_q1",
-     "text": "What happens to a new Black Friday buyer in the 60 days after their first order?",
-     "max_score": 5,
-     "answers": [
-      {
-       "label": "Nothing until the next sale newsletter",
-       "score": 1
-      },
-      {
-       "label": "The standard order confirmation and shipping emails",
-       "score": 2
-      },
-      {
-       "label": "A welcome email, then they join the main newsletter",
-       "score": 3
-      },
-      {
-       "label": "A short sequence about the product they bought",
-       "score": 4
-      },
-      {
-       "label": "A sequence per product, at full price, and we check who ordered again",
-       "score": 5
-      }
-     ],
-     "type": "likert"
+     "id": "repeat",
+     "type": "number",
+     "text": "Of the customers whose first order came in last year's Black Friday week, what percentage have ordered again since?",
+     "hint": "If you can't pull this number, enter 0 and treat that as your answer.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.max(0, Math.min(100, x))"
     },
     {
      "id": "repeat_purchase_follow_u_q2",
-     "text": "Do you know whether Black Friday buyers come back at full price or only for the next discount?",
+     "text": "What happens to a Black Friday buyer in the 60 days after their first order?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We don't know if they've come back at all",
+       "label": "Nothing planned. They get the same newsletter as everyone",
        "score": 1
       },
       {
-       "label": "Some came back, but we can't see at what price",
+       "label": "They get every promotion we send, mostly more discounts",
        "score": 2
       },
       {
-       "label": "We know how many came back and haven't split it by price yet",
+       "label": "A welcome email, then the regular newsletter",
        "score": 3
       },
       {
-       "label": "We split their repeat orders into full price and discounted",
+       "label": "A separate follow-up flow with a reason to buy at full price",
        "score": 4
       },
       {
-       "label": "We compare them with full-price customers on repeat orders and margin",
+       "label": "A separate flow, and we measure repeat orders and full-price share for that group against other buyers",
        "score": 5
       }
      ],
@@ -451,71 +466,88 @@
     },
     {
      "id": "repeat_purchase_follow_u_q3",
-     "text": "When will you decide whether this Black Friday was worth it?",
+     "text": "Have you ever compared the second orders of discount-week buyers with those of full-price buyers?",
      "max_score": 5,
      "answers": [
       {
-       "label": "We already did, from the week's report",
+       "label": "No, it never came up",
        "score": 1
       },
       {
-       "label": "After we see the December totals",
+       "label": "We've talked about it and nobody has pulled the data",
        "score": 2
       },
       {
-       "label": "After returns and refunds from the sale have come in",
+       "label": "We did it once, a while ago",
        "score": 3
       },
       {
-       "label": "After 90 days of repeat orders from the new buyers",
+       "label": "Yes, for last year's Black Friday group",
        "score": 4
       },
       {
-       "label": "After comparing their 6 to 9 month contribution with full-price buyers, against a rule we set before the sale",
+       "label": "Yes, every year, and it decides how deep we go on the next sale",
        "score": 5
       }
      ],
      "type": "likert"
     },
     {
-     "id": "repeatrate",
-     "type": "number",
-     "text": "Of last year's Black Friday first-time buyers, what share has ordered from you again since?",
-     "hint": "Enter 0 if you haven't checked.",
-     "suffix": "%",
-     "min": 0,
-     "max": 100,
-     "step": 1,
-     "default": 10,
-     "normalize_formula": "Math.max(0, Math.min(100, x))"
+     "id": "repeat_purchase_follow_u_q4",
+     "text": "Could you show your accountant today whether last year's Black Friday paid for itself nine months later?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, we'd only have the week's revenue",
+       "score": 1
+      },
+      {
+       "label": "We could show the week's profit and nothing after it",
+       "score": 2
+      },
+      {
+       "label": "We could estimate it, with a lot of guessing",
+       "score": 3
+      },
+      {
+       "label": "Yes, with repeat orders counted from our own data",
+       "score": 4
+      },
+      {
+       "label": "Yes, week profit plus repeat contribution per buyer, compared with full-price buyers",
+       "score": 5
+      }
+     ],
+     "type": "likert"
     }
    ],
    "recommendations": {
     "low": {
-     "headline": "Black Friday buyers hear from you at the next sale",
-     "text": "If the first message after the order is the Christmas discount, you're teaching new customers to wait for the next one. In Sam Tomlinson's model, repeat contribution per buyer falls 57% when you make buying as easy as Black Friday does. You'll only see it in about nine months.",
+     "headline": "You paid for customers you may never see again",
+     "text": "In Sam Tomlinson's model, deep discounts brought 3.3x the orders, and 28 of the 32 extra buyers were never coming back. If your Black Friday buyers get the same newsletter as everyone else, you won't know which side of that number you're on until next November.",
      "steps": [
-      "Send every new Black Friday buyer a short sequence about the product they bought, with no discount in it.",
-      "Put a date in the calendar 90 days from now to check how many have ordered again.",
-      "Decide now what repeat rate would make this year's Black Friday worth it."
+      "Pull last year's Black Friday buyers and count how many ordered again",
+      "Set up a separate 60-day follow-up for this year's discount-week buyers",
+      "Give them a reason to buy at full price, like a product they haven't tried",
+      "Keep discount codes out of the first follow-up emails"
      ]
     },
     "mid": {
-     "headline": "You follow up and can't yet see what it brings back",
-     "text": "There's a sequence, and some buyers come back. You can't yet say whether they come back at full price or only for the next code.",
+     "headline": "You follow up. Now measure it",
+     "text": "A welcome email and a flow are a start. You still can't say whether this group buys again as often as your full-price customers, and you need that answer before deciding how deep the next sale goes.",
      "steps": [
-      "Split repeat orders from Black Friday buyers into full price and discounted.",
-      "Compare their repeat rate with customers who first bought at full price.",
-      "Rewrite the sequence for the group that never opens it."
+      "Compare repeat orders for discount-week buyers and full-price buyers at 90 days",
+      "Track what share of their second orders were at full price",
+      "Cut the flows that only send more discounts"
      ]
     },
     "high": {
-     "headline": "You judge Black Friday months later",
-     "text": "You know which buyers came back and at what price, and you decided before the sale what worth it means. Use that to plan next November, starting with which discount and which channels brought the buyers who stayed.",
+     "headline": "You can prove whether Black Friday paid off",
+     "text": "You can put repeat contribution per buyer for the discount-week group next to your full-price buyers. That number belongs in the plan for next year's sale, before anyone picks a discount.",
      "steps": [
-      "Compare the 6 and 9 month contribution of this year's Black Friday buyers with last year's.",
-      "Cut the offer or channel whose buyers returned least, even if it sold the most.",
-      "Share the numbers with your team before anyone plans next November's discount."
+      "Run the same comparison for this year's group in August, nine months after the sale",
+      "Share repeat contribution per buyer with whoever sets the discount",
+      "Test a shallower offer on part of next year's list and compare second orders"
      ]
     }
    }
@@ -538,17 +570,24 @@
  },
  "computed_outputs": [
   {
-   "id": "kept-per-100",
-   "label": "What you kept from every €100 of Black Friday sales, before any other costs",
-   "format": "currency",
-   "formula": "100 - costshare - adshare",
+   "id": "break-even-full",
+   "label": "Break-even ROAS at full price",
+   "format": "decimal",
+   "formula": "margin > 0 ? 100 / margin : 0",
    "show_in_result": true
   },
   {
-   "id": "breakeven-roas",
-   "label": "Your break-even ROAS at the Black Friday price",
+   "id": "break-even-sale",
+   "label": "Break-even ROAS at your Black Friday price (0 means no ROAS covers your costs)",
    "format": "decimal",
-   "formula": "costshare < 100 ? 100 / (100 - costshare) : 0",
+   "formula": "margin > discount ? (100 - discount) / (margin - discount) : 0",
+   "show_in_result": true
+  },
+  {
+   "id": "never-back",
+   "label": "Out of every 100 discount-week buyers, how many have not ordered again",
+   "format": "integer",
+   "formula": "Math.round(100 - repeat)",
    "show_in_result": true
   }
  ],
@@ -558,20 +597,20 @@
   "text": "Which describes you best?",
   "answers": [
    {
-    "label": "I own or run the online shop",
-    "tag": "owner"
+    "label": "I own or run an online shop",
+    "tag": "shop_owner"
    },
    {
-    "label": "I run marketing in-house for the shop",
-    "tag": "in_house"
+    "label": "I run marketing in-house for an online shop",
+    "tag": "in_house_marketing"
    },
    {
-    "label": "I manage ads for online shops at an agency or as a freelancer",
-    "tag": "agency"
+    "label": "I manage the shop's e-commerce, orders and stock",
+    "tag": "ecommerce_manager"
    },
    {
-    "label": "I run e-commerce or operations for the shop",
-    "tag": "ecom_ops"
+    "label": "I run ads for online shops at an agency or as a freelancer",
+    "tag": "agency_freelance"
    }
   ]
  }
