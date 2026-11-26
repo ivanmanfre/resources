@@ -1,0 +1,578 @@
+{
+ "slug": "ryan-perdue-b3-assessment",
+ "title": "Product Teardown Score",
+ "subtitle": "Score the product buyers see today on clarity, finish and focus, the three things that decide whether a deal moves after the demo.",
+ "brand": {
+  "accent": "#797979",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "clarity",
+   "name": "Clarity",
+   "questions": [
+    {
+     "id": "clarity_q1",
+     "text": "A new buyer opens your product with nobody from your team on a call. How long until they know what it does for them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They need me on a call to explain it",
+       "score": 1
+      },
+      {
+       "label": "They get it after reading docs or watching a walkthrough video",
+       "score": 2
+      },
+      {
+       "label": "They get the idea after clicking around for 10+ minutes",
+       "score": 3
+      },
+      {
+       "label": "They get it within a few minutes of the first screen",
+       "score": 4
+      },
+      {
+       "label": "Someone outside the company did this cold and explained it back to me correctly",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "clarity_q2",
+     "text": "The last time you watched someone outside your team use the product for the first time, what happened?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have never watched someone use it without me guiding them",
+       "score": 1
+      },
+      {
+       "label": "They got stuck and I stepped in to explain",
+       "score": 2
+      },
+      {
+       "label": "They finished the main task after a few wrong turns",
+       "score": 3
+      },
+      {
+       "label": "They finished the main task with one small hesitation",
+       "score": 4
+      },
+      {
+       "label": "I watch new users on a set cadence and fix what trips them up within the week",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "clarity_q3",
+     "text": "How does your homepage or first screen describe the product today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It lists features and I add the meaning on calls",
+       "score": 1
+      },
+      {
+       "label": "It names the category, and a buyer still has to guess the outcome",
+       "score": 2
+      },
+      {
+       "label": "It names the outcome in words my team uses internally",
+       "score": 3
+      },
+      {
+       "label": "It names the outcome in words buyers use on calls",
+       "score": 4
+      },
+      {
+       "label": "Buyers repeat our first-screen line back to us on calls",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your product needs you in the room to make sense",
+     "text": "If a buyer only understands the product while you are explaining it, every deal depends on your calendar. When we start with a new partner, I want to see a stranger use the product cold, because one session like that tells me more than any internal review.",
+     "steps": [
+      "Watch two people outside your company use the product with no help this week and write down every place they pause",
+      "Rewrite your first-screen headline with the words buyers used on your last three calls",
+      "Fix the first spot where both people got stuck before you touch anything else"
+     ]
+    },
+    "mid": {
+     "headline": "Buyers get it, with some effort",
+     "text": "People can figure it out, and the minutes they spend figuring it out are minutes they spend doubting. I would close that gap before your next round of demos.",
+     "steps": [
+      "Time how long a new user takes to reach the main outcome, then set a target to cut it in half",
+      "Remove or hide one screen element that new users click by mistake",
+      "Ask your last three buyers what almost made them leave the first session"
+     ]
+    },
+    "high": {
+     "headline": "A stranger can explain it back to you",
+     "text": "That is rare and worth protecting. Every new feature is a chance to make the first screen harder to read, so I would keep watching new users even when things feel fine.",
+     "steps": [
+      "Keep a standing monthly session with one brand-new user",
+      "Check every new feature against the first-screen line before it ships",
+      "Share the session notes with whoever owns the roadmap"
+     ]
+    }
+   }
+  },
+  {
+   "id": "finish",
+   "name": "Finish",
+   "questions": [
+    {
+     "id": "finish_q1",
+     "text": "A buyer clicks off your demo path in the middle of a sales call. What happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I steer them back because the rest is placeholder or broken",
+       "score": 1
+      },
+      {
+       "label": "Some screens load with dummy data or dead buttons",
+       "score": 2
+      },
+      {
+       "label": "Most screens work, with rough edges I apologize for",
+       "score": 3
+      },
+      {
+       "label": "Everything works, and a few empty, error or loading states look unfinished",
+       "score": 4
+      },
+      {
+       "label": "I would hand the buyer the mouse on any screen with zero worry",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "finish_q2",
+     "text": "How much of what you show in a demo is live product, and how much is mocked or vibe coded for the meeting?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of the demo is mocked or held together for the meeting",
+       "score": 1
+      },
+      {
+       "label": "About half is live and the rest is staged",
+       "score": 2
+      },
+      {
+       "label": "The core flow is live and the side flows are staged",
+       "score": 3
+      },
+      {
+       "label": "Everything shown is live, and a few parts are still fragile",
+       "score": 4
+      },
+      {
+       "label": "Everything shown is live and a buyer could use it the same day",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "finish_q3",
+     "text": "Something on screen looks and feels AI-generated or rushed. What does your team do with it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We ship it because users rarely complain",
+       "score": 1
+      },
+      {
+       "label": "We ship it and add it to a list we rarely revisit",
+       "score": 2
+      },
+      {
+       "label": "We fix the parts buyers see in demos",
+       "score": 3
+      },
+      {
+       "label": "We fix it before release on anything a buyer touches",
+       "score": 4
+      },
+      {
+       "label": "Our quality bar blocks a release, and it has blocked one this quarter",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "finish_q4",
+     "text": "When a buyer signs up after the demo, how does their first week compare to what they saw?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It feels like a different, rougher product",
+       "score": 1
+      },
+      {
+       "label": "They hit bugs or gaps we told them were coming soon",
+       "score": 2
+      },
+      {
+       "label": "Mostly the same, with a few missing pieces they ask about",
+       "score": 3
+      },
+      {
+       "label": "Same product, with a slower setup than the demo suggested",
+       "score": 4
+      },
+      {
+       "label": "Same product, and new users reach the demo outcome on their own",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your demo is carrying a product that can't carry itself",
+     "text": "A demo built for the meeting can get you a second call. In my experience the deal stalls the moment a buyer clicks somewhere you didn't plan for, or signs up and meets the rough version.",
+     "steps": [
+      "List every screen you avoid during demos and rank them by how often buyers ask about them",
+      "Finish the empty, loading and error states on your top three screens",
+      "In your next internal demo, hand a teammate the mouse and let them click anywhere"
+     ]
+    },
+    "mid": {
+     "headline": "The demo path is solid and the edges are rough",
+     "text": "Buyers forgive one rough edge. Three in one call starts to feel like risk to them, and risk is what stalls a deal after the demo.",
+     "steps": [
+      "Write down every apology you made on your last five demo calls",
+      "Fix the screen behind the most frequent apology first",
+      "Compare a new user's first week to your demo script and close the biggest gap"
+     ]
+    },
+    "high": {
+     "headline": "Your product holds up off the script",
+     "text": "This is where 'good enough' gets tempting, because nobody is complaining. I would keep the bar where it is and check it every release.",
+     "steps": [
+      "Run one off-script demo per release where someone outside the team drives",
+      "Keep a written quality bar and name who can block a release",
+      "Review the first week of three new accounts every month"
+     ]
+    }
+   }
+  },
+  {
+   "id": "focus",
+   "name": "Focus",
+   "questions": [
+    {
+     "id": "focus_q1",
+     "text": "How was the last feature you shipped chosen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Someone on the team liked the idea, or AI made it fast to build",
+       "score": 1
+      },
+      {
+       "label": "A competitor had it",
+       "score": 2
+      },
+      {
+       "label": "One loud customer or investor asked for it",
+       "score": 3
+      },
+      {
+       "label": "Several users asked for it and we checked it against usage",
+       "score": 4
+      },
+      {
+       "label": "We watched users fail at a task, named it, and shipped a fix that measurably moved it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "focus_q2",
+     "text": "Pull up your roadmap right now. How many items can you tie to a specific user problem you heard or watched?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None of them, it reads like a feature wishlist",
+       "score": 1
+      },
+      {
+       "label": "A few",
+       "score": 2
+      },
+      {
+       "label": "About half",
+       "score": 3
+      },
+      {
+       "label": "Most of them",
+       "score": 4
+      },
+      {
+       "label": "Every item names the user problem and who raised it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "focus_q3",
+     "text": "How often do you cut something already on the roadmap because users don't need it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never, things only get added",
+       "score": 1
+      },
+      {
+       "label": "Rarely, and only when we run out of time",
+       "score": 2
+      },
+      {
+       "label": "Once or twice a year",
+       "score": 3
+      },
+      {
+       "label": "We cut at least one item every planning cycle",
+       "score": 4
+      },
+      {
+       "label": "We cut regularly and I can name the last thing we killed and why",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your roadmap is drifting",
+     "text": "AI made it easy to ship the next feature. Knowing which one users need is the hard part now, and a roadmap built from cool ideas and competitor lists drifts away from the people paying you.",
+     "steps": [
+      "Write the user problem next to every roadmap item and mark the ones where you can't",
+      "Cut one marked item this week",
+      "Talk to five current users about the last task they struggled with before you plan the next cycle"
+     ]
+    },
+    "mid": {
+     "headline": "Part of the roadmap is tied to users and part is guesswork",
+     "text": "You have real user problems on the list, mixed in with items nobody can trace. The untraced ones are where your build time quietly goes.",
+     "steps": [
+      "Split the roadmap into traced and untraced items",
+      "Pause every untraced item until someone can name the user who needs it",
+      "Bring one recorded user session into your next planning meeting"
+     ]
+    },
+    "high": {
+     "headline": "You ship the right thing",
+     "text": "Your roadmap ties back to real users and you are willing to cut. I would keep a record of what you killed and why, because a growing team drifts fastest when that history lives in one person's head.",
+     "steps": [
+      "Keep a shared log of cut items with the reason for each",
+      "Re-check the top three roadmap items against usage every month",
+      "Have a new team member explain the roadmap back to you in user terms"
+     ]
+    }
+   }
+  },
+  {
+   "id": "today_s_version",
+   "name": "Today's Version",
+   "questions": [
+    {
+     "id": "today_s_version_q1",
+     "text": "When you answered the questions above, which version of the product did you picture?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The version we plan to ship next quarter",
+       "score": 1
+      },
+      {
+       "label": "The version on our staging branch",
+       "score": 2
+      },
+      {
+       "label": "Today's live version, with fixes I know are coming",
+       "score": 3
+      },
+      {
+       "label": "Today's live version exactly as a buyer sees it",
+       "score": 4
+      },
+      {
+       "label": "Today's live version, and I clicked through it in the last week before scoring",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "today_s_version_q2",
+     "text": "Where does your money go right now, growth or making the product better?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost all goes to growth and sales, and product quality gets what is left",
+       "score": 1
+      },
+      {
+       "label": "Mostly growth, with product fixes squeezed in",
+       "score": 2
+      },
+      {
+       "label": "Roughly an even split",
+       "score": 3
+      },
+      {
+       "label": "Product quality gets funded first on anything buyers touch",
+       "score": 4
+      },
+      {
+       "label": "We fund product fixes before we spend more to bring people in, and we track whether they stay",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "demos",
+     "type": "number",
+     "text": "How many product demos do you run in a typical month, counting sales calls and investor meetings?",
+     "hint": "Count every call where you show the product live.",
+     "suffix": "demos",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 8,
+     "normalize_formula": "x > 0 ? 100 : 0"
+    },
+    {
+     "id": "advance",
+     "type": "number",
+     "text": "Out of every 100 demos, how many move to a next step (trial, proposal or second call) within two weeks?",
+     "hint": "Use your last 90 days if you track it. A rough number is fine.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 30,
+     "normalize_formula": "Math.max(0, Math.min(100, x))"
+    },
+    {
+     "id": "deal",
+     "type": "number",
+     "text": "What is your average first-year deal size for one customer?",
+     "hint": "Use first-year contract value in US dollars.",
+     "suffix": "USD",
+     "min": 0,
+     "max": 1000000,
+     "step": 500,
+     "default": 12000,
+     "normalize_formula": "x > 0 ? 100 : 0"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You scored the product you plan to ship",
+     "text": "That is the easy mistake, and buyers can't see your roadmap. Growth spending can get people to look at a product, but it can't make a weak product worth staying for. If you rated next quarter's version, retake this with the live product open in front of you.",
+     "steps": [
+      "Retake this score with today's live product open in another tab",
+      "Compare the stalled deal value in your results to what you spend each month to get those demos",
+      "Move one month of growth budget into fixing the screens buyers see first"
+     ]
+    },
+    "mid": {
+     "headline": "You see the gap, and the money still flows around it",
+     "text": "You scored the live product, so you know where it is weak. The stalled deal value in your results is the price of funding growth ahead of those fixes.",
+     "steps": [
+      "Pick the one weakness that comes up most on demo calls",
+      "Put a date on fixing it before your next growth spend goes out",
+      "Track your demo-to-next-step rate for the 30 days after the fix"
+     ]
+    },
+    "high": {
+     "headline": "You score the live product and fund the fixes first",
+     "text": "You rate what buyers see today and you put money behind it. I would keep that habit as the team grows, because the pressure to call a rushed release 'good enough' only gets louder.",
+     "steps": [
+      "Re-score the live product every quarter with someone outside the team",
+      "Keep tracking demo-to-next-step rate next to growth spend",
+      "Share the score with your team so everyone rates the same version"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "stalled-demos",
+   "label": "Demos per month that stall before a next step",
+   "format": "integer",
+   "formula": "demos * (100 - advance) / 100",
+   "show_in_result": true
+  },
+  {
+   "id": "stalled-value",
+   "label": "Deal value stalling after demos each month",
+   "format": "currency_per_period",
+   "formula": "demos * (100 - advance) / 100 * deal",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which one are you?",
+  "answers": [
+   {
+    "label": "Founder who runs most sales demos personally",
+    "tag": "founder-seller"
+   },
+   {
+    "label": "Founder with a product or engineering lead running the build",
+    "tag": "founder-builder"
+   },
+   {
+    "label": "Product or design lead at a startup",
+    "tag": "product-lead"
+   },
+   {
+    "label": "Pre-launch founder showing a prototype to buyers and investors",
+    "tag": "pre-launch"
+   }
+  ]
+ }
+}
