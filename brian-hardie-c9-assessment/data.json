@@ -1,0 +1,633 @@
+{
+ "slug": "brian-hardie-c9-assessment",
+ "title": "Growth Engine Self-Check",
+ "subtitle": "Scores how well your marketing supports your growth target across commercial focus, message clarity, enquiry follow-up, touchpoint alignment, and ownership and measurement.",
+ "brand": {
+  "accent": "#ff6240",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "commercial_focus",
+   "name": "Commercial Focus",
+   "questions": [
+    {
+     "id": "commercial_focus_q1",
+     "text": "If your board asked which two or three commercial opportunities marketing is going after this quarter, what would you say?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I'd list our campaigns and channels, because that is how we plan",
+       "score": 1
+      },
+      {
+       "label": "I'd quote the growth target, with no link to specific segments or offers",
+       "score": 2
+      },
+      {
+       "label": "I'd name segments, though sales and marketing would each give a different list",
+       "score": 3
+      },
+      {
+       "label": "I'd name agreed segments and offers, with a rough value attached to each",
+       "score": 4
+      },
+      {
+       "label": "I'd name them with the pipeline value we expect from each, and the whole leadership team would give the same answer",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "commercial_focus_q2",
+     "text": "How was this year's marketing budget split?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Last year's budget plus or minus a bit, spread across the same activity",
+       "score": 1
+      },
+      {
+       "label": "Mostly by channel, based on what the agencies or the team proposed",
+       "score": 2
+      },
+      {
+       "label": "Partly by opportunity, though a lot still goes on activity nobody wants to cut",
+       "score": 3
+      },
+      {
+       "label": "Mostly by commercial opportunity, reviewed once a year",
+       "score": 4
+      },
+      {
+       "label": "By expected pipeline per opportunity, moved every quarter when the numbers change",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "commercial_focus_q3",
+     "text": "When pipeline drops, what is the first thing your business does?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Asks marketing for extra campaigns and content",
+       "score": 1
+      },
+      {
+       "label": "Pushes sales harder for the quarter and hopes it recovers",
+       "score": 2
+      },
+      {
+       "label": "Opens the CRM, then argues over what the numbers mean",
+       "score": 3
+      },
+      {
+       "label": "Checks which segments and pipeline stages the drop came from before changing any spend",
+       "score": 4
+      },
+      {
+       "label": "Spots it weeks earlier from leading indicators and moves effort to the opportunity with the best return",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your marketing is busy with no commercial target to aim at",
+     "text": "Right now your plan is a list of activity. When pipeline dips, the business adds more of it, and the gap stays where it was because nobody agreed which opportunities the activity was for. I'd start with the commercial outcomes you need this year and work back from there.",
+     "steps": [
+      "Write down the two or three segments or offers where this year's growth target will be won",
+      "Put a rough pipeline value against each one, with your sales lead in the room",
+      "Pause any activity you cannot connect to one of those opportunities"
+     ]
+    },
+    "mid": {
+     "headline": "You know where growth should come from, and your budget hasn't caught up",
+     "text": "The opportunities are named, but spend still follows habit and agency proposals. That mismatch is usually behind inconsistent pipeline. I'd make budget allocation a quarterly decision taken against pipeline numbers.",
+     "steps": [
+      "Map every line of marketing spend to one named commercial opportunity",
+      "Agree the expected pipeline from each opportunity with sales",
+      "Move budget at each quarterly review toward the opportunities producing the most qualified pipeline"
+     ]
+    },
+    "high": {
+     "headline": "Your focus is commercial, so test it against the market",
+     "text": "You plan around opportunities and you move money when the numbers move. The risk at this stage is a focus that made sense twelve months ago and nobody has challenged since. I'd bring in fresh customer and market insight once a year to check you're still fishing in the right pond.",
+     "steps": [
+      "Review win and loss data by segment before next year's plan is set",
+      "Ask one outside advisor to challenge your chosen opportunities",
+      "Set a clear trigger, such as a fall in win rate, that forces a mid-year rethink"
+     ]
+    }
+   }
+  },
+  {
+   "id": "message_clarity",
+   "name": "Message Clarity",
+   "questions": [
+    {
+     "id": "message_clarity_q1",
+     "text": "Ask three people in your sales team to explain, in one sentence, why a customer should choose you. What comes back?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Three different answers, mostly about our features or our history",
+       "score": 1
+      },
+      {
+       "label": "Similar themes, worded very differently, with no proof behind them",
+       "score": 2
+      },
+      {
+       "label": "Roughly the same answer, though a competitor could say it too",
+       "score": 3
+      },
+      {
+       "label": "The same answer, tied to a specific customer problem we solve",
+       "score": 4
+      },
+      {
+       "label": "The same answer, backed by a number from a real client",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "message_clarity_q2",
+     "text": "How do you know what your best customers value most when they buy from you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We assume we know, based on our own view of the business",
+       "score": 1
+      },
+      {
+       "label": "Sales feedback and the odd anecdote",
+       "score": 2
+      },
+      {
+       "label": "A handful of customer conversations, done once or twice",
+       "score": 3
+      },
+      {
+       "label": "Regular win and loss reviews, with notes we act on",
+       "score": 4
+      },
+      {
+       "label": "Structured customer and market insight every year, which has changed our message and our pricing",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "message_clarity_q3",
+     "text": "How well does your pricing communicate the value you deliver?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We price on cost or competitor rates and rarely revisit it",
+       "score": 1
+      },
+      {
+       "label": "We discount often to get deals over the line",
+       "score": 2
+      },
+      {
+       "label": "We have reviewed pricing, but our sales conversations struggle to justify it",
+       "score": 3
+      },
+      {
+       "label": "Pricing and the value message were reviewed together in the last year",
+       "score": 4
+      },
+      {
+       "label": "We can show buyers the commercial return, and we track our discount rate as it falls",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your own team can't say why a customer should choose you",
+     "text": "If your people give three different answers, your buyers hear three different businesses. If you add content now, you spread that confusion further and faster. I'd go back to your best customers and ask them why they bought.",
+     "steps": [
+      "Interview five recent customers and ask what nearly stopped them buying",
+      "Write one sentence on why customers choose you, using their words",
+      "Test it with your sales team and agree it before any new campaign goes out"
+     ]
+    },
+    "mid": {
+     "headline": "Your message is close, but it still lacks proof",
+     "text": "The team broadly agrees on the story, but it could belong to a competitor, and pricing pressure tends to follow. Buyers pay for value they can see. I'd attach a real commercial result to the message and put pricing on the same table.",
+     "steps": [
+      "Pick two client results with numbers and get permission to use them",
+      "Run a joint review of pricing and value message with sales",
+      "Track your discount rate monthly so you can see whether the message is working"
+     ]
+    },
+    "high": {
+     "headline": "Your message is clear and backed by evidence",
+     "text": "Sales and marketing tell the same story with proof behind it, and pricing supports it. The job now is to keep it current as your market moves and your offer grows.",
+     "steps": [
+      "Refresh your customer insight every year before planning starts",
+      "Add a new client result to your proof bank every quarter",
+      "Review whether each new offer still fits the core message before launch"
+     ]
+    }
+   }
+  },
+  {
+   "id": "enquiry_follow_up",
+   "name": "Enquiry Follow-Up",
+   "questions": [
+    {
+     "id": "stalled",
+     "type": "number",
+     "text": "How many qualified enquiries last month had no recorded follow-up within two working days?",
+     "hint": "Pull the number from your CRM. If the CRM cannot tell you, enter your best estimate and note that gap for later.",
+     "suffix": "enquiries",
+     "min": 0,
+     "max": 500,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x <= 0 ? 100 : 100 / (1 + x)"
+    },
+    {
+     "id": "dealsize",
+     "type": "number",
+     "text": "What is the average first-year value of a deal you win?",
+     "hint": "Use your closed deals from the last 12 months. Enter 0 if nobody in the business knows this figure.",
+     "suffix": "£",
+     "min": 0,
+     "max": 1000000,
+     "step": 500,
+     "default": 20000,
+     "normalize_formula": "x > 0 ? 100 : 0"
+    },
+    {
+     "id": "enquiry_follow_up_q3",
+     "text": "What happens to an enquiry that comes in on a Friday afternoon?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It depends who sees it, and some sit there until someone remembers",
+       "score": 1
+      },
+      {
+       "label": "It lands in a shared inbox and gets picked up sometime the following week",
+       "score": 2
+      },
+      {
+       "label": "It is assigned to a person, though response times vary a lot",
+       "score": 3
+      },
+      {
+       "label": "It is assigned automatically with a response target, which we mostly hit",
+       "score": 4
+      },
+      {
+       "label": "It is assigned, answered within hours, and we report on response time every month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "enquiry_follow_up_q4",
+     "text": "When an enquiry isn't ready to buy yet, what happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing. It goes cold unless they come back to us",
+       "score": 1
+      },
+      {
+       "label": "It goes on the mailing list and gets the general newsletter",
+       "score": 2
+      },
+      {
+       "label": "A salesperson keeps it in their own notes and follows up when they can",
+       "score": 3
+      },
+      {
+       "label": "It enters a nurture sequence with a named owner and a review date",
+       "score": 4
+      },
+      {
+       "label": "It is nurtured by segment, scored, handed back to sales when ready, and we track how many convert",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your pipeline is leaking after the enquiry arrives",
+     "text": "Look at the deal value figure in your results. That is the full value of enquiries that waited more than two working days last month. You can't fix that with another campaign, because the loss happens after marketing has done its part. I'd put an owner and a response time on every enquiry before spending another pound on generating more.",
+     "steps": [
+      "Give every inbound enquiry a named owner on the same working day",
+      "Set a response target and report on it at your monthly leadership meeting",
+      "Build a simple nurture route for enquiries that aren't ready, with a review date on each"
+     ]
+    },
+    "mid": {
+     "headline": "Hot enquiries get picked up and slower ones get lost",
+     "text": "You handle ready-to-buy enquiries reasonably well. The leak is in the slower ones, which end up in someone's notes or the general newsletter. In B2B, those are often next quarter's deals.",
+     "steps": [
+      "List every open enquiry older than 30 days and give each one an owner",
+      "Split your nurture by segment so the content matches what each buyer cares about",
+      "Agree with sales the point at which a nurtured enquiry comes back to them"
+     ]
+    },
+    "high": {
+     "headline": "Follow-up is a strength, so make it compound",
+     "text": "Enquiries get a fast response and a proper route if they aren't ready. Now I'd use that data to learn which sources and segments convert best, and feed it back into where you spend.",
+     "steps": [
+      "Report conversion rate by enquiry source every month",
+      "Move budget toward the sources with the highest enquiry-to-deal rate",
+      "Review response times quarterly to catch drift as volumes grow"
+     ]
+    }
+   }
+  },
+  {
+   "id": "touchpoint_alignment",
+   "name": "Touchpoint Alignment",
+   "questions": [
+    {
+     "id": "touchpoint_alignment_q1",
+     "text": "Put your website, your last campaign and your sales deck side by side. What do you see?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Three different businesses",
+       "score": 1
+      },
+      {
+       "label": "Similar branding, with different stories and offers",
+       "score": 2
+      },
+      {
+       "label": "Mostly the same story, though the sales deck has drifted",
+       "score": 3
+      },
+      {
+       "label": "The same story and offer, updated in the last six months",
+       "score": 4
+      },
+      {
+       "label": "The same story, the same proof, and a clear next step at every point",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "touchpoint_alignment_q2",
+     "text": "How do marketing and sales agree what a good lead looks like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They don't. Sales says the leads are poor and marketing says sales never follows them up",
+       "score": 1
+      },
+      {
+       "label": "An informal understanding that changes depending on who is in the room",
+       "score": 2
+      },
+      {
+       "label": "A written definition exists, though it is rarely used",
+       "score": 3
+      },
+      {
+       "label": "An agreed definition sits in the CRM and both teams review it together",
+       "score": 4
+      },
+      {
+       "label": "The definition is agreed, tracked, and revised every quarter using closed-won data",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "touchpoint_alignment_q3",
+     "text": "How joined up are your agencies, freelancers and in-house team?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Each works to its own brief, and I find out what they did from separate reports",
+       "score": 1
+      },
+      {
+       "label": "They share a brand guide and little else",
+       "score": 2
+      },
+      {
+       "label": "They meet occasionally, though each has different targets",
+       "score": 3
+      },
+      {
+       "label": "They work to one plan with shared commercial targets",
+       "score": 4
+      },
+      {
+       "label": "They work to one plan, report against the same pipeline numbers, and their budgets move with results",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Buyers meet a different business at every step",
+     "text": "Your website, campaigns and sales conversations each tell a different story, so buyers have to work out for themselves why they should choose you. Sales and marketing also disagree on what a good lead is, which means good enquiries get dismissed and weak ones get chased. Businesses grow when commercial strategy, marketing and sales pull in the same direction.",
+     "steps": [
+      "Get sales and marketing in one room to agree a written definition of a qualified lead",
+      "Audit your website, sales deck and current campaign against one agreed story",
+      "Give every agency and freelancer the same brief and the same commercial target"
+     ]
+    },
+    "mid": {
+     "headline": "The pieces are close, and the gaps are costing you deals",
+     "text": "There is a shared story and a lead definition, but they drift between teams and suppliers. Small gaps at each touchpoint add up across a long B2B buying cycle.",
+     "steps": [
+      "Put the lead definition into the CRM so it is used on every enquiry",
+      "Update the sales deck to match the current campaign and website",
+      "Hold one monthly meeting where agencies and the in-house team report on the same pipeline numbers"
+     ]
+    },
+    "high": {
+     "headline": "Your touchpoints pull in the same direction",
+     "text": "Buyers hear one story and sales and marketing agree on what good looks like. I'd now look at the handover points in detail, because that is where friction tends to creep back in as the team grows.",
+     "steps": [
+      "Walk through your buying journey as a prospect once a quarter",
+      "Review the lead definition against last quarter's closed deals",
+      "Brief every new supplier or hire on the agreed story in their first week"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ownership_and_measuremen",
+   "name": "Ownership and Measurement",
+   "questions": [
+    {
+     "id": "ownership_and_measuremen_q1",
+     "text": "Who in your business owns the number for marketing-sourced pipeline?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nobody. We measure activity such as clicks, leads and event attendees",
+       "score": 1
+      },
+      {
+       "label": "Marketing reports it, but nobody is held to it",
+       "score": 2
+      },
+      {
+       "label": "Someone owns it on paper, but the leadership team doesn't review it",
+       "score": 3
+      },
+      {
+       "label": "A named person owns it and leadership reviews it monthly",
+       "score": 4
+      },
+      {
+       "label": "A named person owns it, leadership reviews it monthly, and it drives budget decisions",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ownership_and_measuremen_q2",
+     "text": "If your CEO asked what last year's marketing spend returned in revenue, how long would the answer take?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We couldn't answer it with any confidence",
+       "score": 1
+      },
+      {
+       "label": "A week of pulling reports, and the answer would still be disputed",
+       "score": 2
+      },
+      {
+       "label": "A few days, and we'd end up with a rough figure",
+       "score": 3
+      },
+      {
+       "label": "An hour, from a report we already run",
+       "score": 4
+      },
+      {
+       "label": "Minutes. It is in the board pack every month, split by opportunity",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Nobody owns the commercial number",
+     "text": "When nobody owns marketing-sourced pipeline, every report counts activity and every budget conversation turns into opinion. That is why it is so hard to say whether your marketing investment is creating commercial value. I'd name an owner before changing anything else.",
+     "steps": [
+      "Name one person who owns marketing-sourced pipeline and give them authority over budget",
+      "Agree three numbers the leadership team reviews monthly, starting with pipeline value by opportunity",
+      "Work out last year's return on marketing spend, even roughly, so you have a baseline"
+     ]
+    },
+    "mid": {
+     "headline": "The number exists, but it doesn't change decisions",
+     "text": "Someone reports pipeline, but it sits in a slide and budget moves for other reasons. Measurement only earns its cost when it changes where money and effort go.",
+     "steps": [
+      "Add marketing-sourced pipeline and win rate to the monthly board pack",
+      "Tie each quarterly budget decision to a specific number from that report",
+      "Clean up CRM fields so source and opportunity are recorded on every deal"
+     ]
+    },
+    "high": {
+     "headline": "You can show what marketing returns",
+     "text": "You have an owner, a monthly review and a number that moves budget. From here I'd look at forecasting, so you can see a pipeline gap a quarter before it arrives.",
+     "steps": [
+      "Build a pipeline forecast from your conversion rates by stage",
+      "Review forecast against actual every month and adjust the model",
+      "Share the forecast with sales leadership so both teams plan from the same view"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "leaking-pipeline-month",
+   "label": "Full deal value of last month's enquiries left without follow-up for two working days",
+   "format": "currency",
+   "formula": "stalled * dealsize",
+   "show_in_result": true
+  },
+  {
+   "id": "leaking-pipeline-year",
+   "label": "The same gap over 12 months, if last month was typical",
+   "format": "currency",
+   "formula": "stalled * dealsize * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role?",
+  "answers": [
+   {
+    "label": "CEO or MD",
+    "tag": "ceo_md"
+   },
+   {
+    "label": "CRO or Commercial Director",
+    "tag": "cro_commercial"
+   },
+   {
+    "label": "Marketing Director or Head of Marketing",
+    "tag": "marketing_lead"
+   },
+   {
+    "label": "Founder or owner-manager",
+    "tag": "founder_owner"
+   },
+   {
+    "label": "Board member or non-executive director",
+    "tag": "board_ned"
+   }
+  ]
+ }
+}
