@@ -1,0 +1,625 @@
+{
+ "slug": "aiden-felz-19-assessment",
+ "title": "Paid Lead Readiness Score",
+ "subtitle": "Scores how ready your service business is to pay for Facebook and Instagram leads, and where ad money could be wasted before a lead becomes a booked job.",
+ "brand": {
+  "accent": "#a9824a",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "offer",
+   "name": "Offer",
+   "questions": [
+    {
+     "id": "offer_q1",
+     "text": "If your ad went live today, what would it offer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Our company name and a line like \"call us for all your needs\"",
+       "score": 1
+      },
+      {
+       "label": "A list of every service we do",
+       "score": 2
+      },
+      {
+       "label": "One service, but customers would have to ask what's included",
+       "score": 4
+      },
+      {
+       "label": "One service, with what's included and how to book",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer_q2",
+     "text": "Who has already bought the offer you'd pay to advertise?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I haven't picked an offer",
+       "score": 1
+      },
+      {
+       "label": "I've picked one, but nobody has bought it yet",
+       "score": 2
+      },
+      {
+       "label": "Only repeat customers or referrals have bought it",
+       "score": 4
+      },
+      {
+       "label": "People with no connection to us have bought it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer_q3",
+     "text": "If you turned your ads on today, where would you run them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Wherever Facebook sets the location by default",
+       "score": 1
+      },
+      {
+       "label": "All of Chicagoland, or my whole metro area",
+       "score": 2
+      },
+      {
+       "label": "A radius around us that includes towns where we turn down work",
+       "score": 4
+      },
+      {
+       "label": "A tight radius around the towns where we work and want more jobs",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Pick one offer before you buy a single lead",
+     "text": "If you can't name the one job you want to sell, you'd be paying for ads while you guess. We spent $250 on Meta ads for a local pressure washing company and got 30 leads at $8.33 each. We used one clear offer and targeted a tight radius around where they work.",
+     "steps": [
+      "Pick one service you want to book more often.",
+      "Write what the customer gets in one sentence.",
+      "List the towns where you want that work."
+     ]
+    },
+    "mid": {
+     "headline": "Tighten your offer and your ad area",
+     "text": "You have part of this worked out. Start with your lowest answer in this section. With a vague offer or a wide ad area, you could pay for leads you'd never want to book.",
+     "steps": [
+      "Cut the ad down to one service.",
+      "Add a clear booking step to the offer.",
+      "Remove towns you'd turn down from the ad area."
+     ]
+    },
+    "high": {
+     "headline": "Your offer is ready for a small test",
+     "text": "By your answers, you know what you're selling and where you want to sell it. Keep the same offer for the whole test so you can judge the leads against it. Fix any weak sections below before you spend.",
+     "steps": [
+      "Write the final offer in one sentence.",
+      "Save the town list for your ad setup.",
+      "Use one offer for the full 2-week test."
+     ]
+    }
+   }
+  },
+  {
+   "id": "website",
+   "name": "Website",
+   "questions": [
+    {
+     "id": "website_q1",
+     "text": "Open your site on your phone and try to call yourself. What happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I can't. I have no website, or it won't load",
+       "score": 1
+      },
+      {
+       "label": "I have to hunt for the number or dial it by hand",
+       "score": 2
+      },
+      {
+       "label": "I can tap to call, but it takes 5 seconds or more, or the button is missing from some pages",
+       "score": 4
+      },
+      {
+       "label": "I tap a button at the top of any page and start the call in under 5 seconds",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "website_q2",
+     "text": "What on your site could make a paid visitor think you've gone out of business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "There's no site, the domain is dead, or Chrome shows \"Not Secure\"",
+       "score": 1
+      },
+      {
+       "label": "The site is broken or hard to use on a phone",
+       "score": 2
+      },
+      {
+       "label": "It works on a phone, but has an old footer date or a free website-builder address",
+       "score": 3
+      },
+      {
+       "label": "It's secure, on our own domain and works on a phone, but some service details are outdated",
+       "score": 4
+      },
+      {
+       "label": "Nothing. It's secure, on our own domain, works on a phone and is up to date",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "website_q3",
+     "text": "How much does a customer have to fill out on your site to ask for a job?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have no site, no form, or a form I've never tested",
+       "score": 1
+      },
+      {
+       "label": "I've tested the form, and it has 8 or more fields",
+       "score": 2
+      },
+      {
+       "label": "I've tested the form, and it has 4 to 7 fields",
+       "score": 4
+      },
+      {
+       "label": "I've tested the form, and it has 3 fields or fewer, like name, phone and what they need",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "website_q4",
+     "text": "Turn off Wi-Fi and open your site on your phone. How long does it take to load?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have no site, or it never loads",
+       "score": 1
+      },
+      {
+       "label": "I don't know. I've never timed it",
+       "score": 2
+      },
+      {
+       "label": "More than 5 seconds",
+       "score": 3
+      },
+      {
+       "label": "3 to 5 seconds",
+       "score": 4
+      },
+      {
+       "label": "Under 3 seconds",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Fix your site before you pay for traffic",
+     "text": "Sending ad traffic to a site that doesn't convert is paying to lose customers. I graded 50 electrician websites around Chicago. 33 were weak or broken, and the other 17 businesses had no website at all. If your site looks abandoned, customers assume your business is too, and they call the next guy. If you don't have a site yet, build these steps into your first one.",
+     "steps": [
+      "Put a tap-to-call button at the top of every mobile page.",
+      "Limit the form to name, phone and what the customer needs.",
+      "Set up a secure site on your own domain."
+     ]
+    },
+    "mid": {
+     "headline": "You could still lose the call on your site",
+     "text": "You have some of the basics in place, but a paid visitor could still get stuck on your weakest one. Your customers are on their phones, in a hurry, with a problem. Try to call yourself in under 5 seconds, then work through your lowest answers here. You can also ask me for my 10-point website checklist.",
+     "steps": [
+      "Test the call button on every page from your phone.",
+      "Get your mobile load time under 3 seconds.",
+      "List each town you serve on your site."
+     ]
+    },
+    "high": {
+     "headline": "Your site is close to ready for ad traffic",
+     "text": "By your answers, customers can reach you quickly from their phones. I'd still go through the site as a new customer before you run the first ad. If your form breaks, you could lose leads you've already paid for.",
+     "steps": [
+      "Submit a test lead through your form.",
+      "Call yourself from the page you'll use for the ad.",
+      "Compare the towns on your site with your ad area."
+     ]
+    }
+   }
+  },
+  {
+   "id": "proof",
+   "name": "Proof",
+   "questions": [
+    {
+     "id": "proof_q1",
+     "text": "Where would a stranger who clicked your ad find your reviews?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nowhere. We don't have any reviews they could see",
+       "score": 1
+      },
+      {
+       "label": "Only on Google, Facebook or another outside site",
+       "score": 2
+      },
+      {
+       "label": "On a separate page of our website",
+       "score": 3
+      },
+      {
+       "label": "On our homepage, but a long scroll down",
+       "score": 4
+      },
+      {
+       "label": "Near the top of our homepage, with real customer reviews",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "proof_q2",
+     "text": "If you had to launch an ad today, which photos could you use?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't have any photos ready",
+       "score": 1
+      },
+      {
+       "label": "Only stock photos",
+       "score": 2
+      },
+      {
+       "label": "Real job photos, but they're unclear, old or show a different service",
+       "score": 4
+      },
+      {
+       "label": "Clear, recent photos of our own work on the service we'd advertise",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "proof_q3",
+     "text": "A customer compares you with 3 local competitors online for 30 seconds. How do you hold up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Badly. They'd find almost nothing about us",
+       "score": 1
+      },
+      {
+       "label": "I don't know. I've never compared us side by side",
+       "score": 2
+      },
+      {
+       "label": "I've compared us, and 2 or 3 competitors look easier to trust",
+       "score": 3
+      },
+      {
+       "label": "I've compared us, and 1 competitor looks easier to trust",
+       "score": 4
+      },
+      {
+       "label": "I've compared us, and we look the easiest to trust",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Give strangers a reason to trust you",
+     "text": "With a referral, you start with some trust. A stranger who sees your ad may compare you with 3 other companies in about 30 seconds. Garrett and I kept seeing great local businesses with 5-star reviews lose calls to companies that looked better online.",
+     "steps": [
+      "Ask 5 recent customers for an honest review.",
+      "Put real reviews on your homepage.",
+      "Photograph your next finished job."
+     ]
+    },
+    "mid": {
+     "headline": "Put your best proof where customers will see it",
+     "text": "You have some proof, but a customer could miss it in a 30-second comparison. Put real reviews and photos of your own work where they'll see them first. Then look at your business next to 3 competitors on your phone, as a customer would.",
+     "steps": [
+      "Move your real reviews near the top of your homepage.",
+      "Replace stock photos with photos of your own work.",
+      "Compare your site with 3 local competitors on your phone."
+     ]
+    },
+    "high": {
+     "headline": "Strangers can see why you're worth calling",
+     "text": "I want your business to look as good online as you are in person. By your answers, you're close. Match your reviews and photos to the service in your ad so customers can see proof of the job they need done.",
+     "steps": [
+      "Choose a real review about the service in your ad.",
+      "Add recent photos of that service to your site.",
+      "Repeat the 3-competitor check before you launch."
+     ]
+    }
+   }
+  },
+  {
+   "id": "lead_follow_up",
+   "name": "Lead Follow-Up",
+   "questions": [
+    {
+     "id": "lead_follow_up_q1",
+     "text": "A lead you paid for comes in while you're on a job. What happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We reply if someone happens to notice it",
+       "score": 1
+      },
+      {
+       "label": "We reply that night or the next day",
+       "score": 2
+      },
+      {
+       "label": "One of us gets an alert and replies at the next break",
+       "score": 4
+      },
+      {
+       "label": "One of us gets an alert and replies within minutes",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "lead_follow_up_q2",
+     "text": "You call a new lead and nobody picks up. What do you do next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing. I wait for them to call back",
+       "score": 1
+      },
+      {
+       "label": "I leave one voicemail or text, then move on",
+       "score": 2
+      },
+      {
+       "label": "I leave a message and try again if I remember",
+       "score": 4
+      },
+      {
+       "label": "I leave a message, follow up on set days and log each try",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "lateleads",
+     "type": "number",
+     "text": "Out of your last 10 new leads, how many waited more than 1 hour for your first reply?",
+     "hint": "Check your calls, texts and inbox. Include leads you never answered. If you've had fewer than 10, estimate out of 10. Your cost result assumes paid leads would wait just as long and each cost the same.",
+     "suffix": "of 10 leads",
+     "min": 0,
+     "max": 10,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "(10 - x) / 10 * 100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You could pay for leads and lose them to slow replies",
+     "text": "You pay for the ad even if you never call the lead back. In our $250 pressure washing campaign, fast follow-up with every lead was part of what worked. Fix your follow-up before you turn ads on, or you'll be paying for more leads you don't reach in time.",
+     "steps": [
+      "Turn on phone alerts for new leads.",
+      "Assign one person to answer every new lead.",
+      "Write a short text for times you can't call."
+     ]
+    },
+    "mid": {
+     "headline": "Close the gaps in your follow-up",
+     "text": "You have part of a follow-up routine, but you could still miss paid leads on a busy day. Look at any recent lead who waited more than an hour and find out what held you up. Fix that before you pay for more leads.",
+     "steps": [
+      "Assign a backup for when you're on a job.",
+      "Set days for your next follow-up attempts.",
+      "Log your first reply time for every lead."
+     ]
+    },
+    "high": {
+     "headline": "You're ready to follow up with paid leads",
+     "text": "By your answers, you reply quickly and keep following up. Test your routine on your busiest day, because you'll need to keep it going when ad leads come in. If your other sections are strong too, DM me \"LEADS\" and I'll run the numbers for your business.",
+     "steps": [
+      "Send yourself a test lead on a busy workday.",
+      "Confirm who will cover leads during the ad test.",
+      "Review your reply times each week."
+     ]
+    }
+   }
+  },
+  {
+   "id": "tracking",
+   "name": "Tracking",
+   "questions": [
+    {
+     "id": "tracking_q1",
+     "text": "Could you show me where each of last month's booked jobs came from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No. We don't ask customers or keep a record",
+       "score": 1
+      },
+      {
+       "label": "I could only guess from memory",
+       "score": 2
+      },
+      {
+       "label": "I have the source written down for some jobs",
+       "score": 3
+      },
+      {
+       "label": "I have the source written down for most jobs",
+       "score": 4
+      },
+      {
+       "label": "I have the source written down for every job",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "tracking_q2",
+     "text": "After 2 weeks of ads, what could you use to decide whether to keep paying?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Likes, views or my gut feeling",
+       "score": 1
+      },
+      {
+       "label": "The number of leads",
+       "score": 2
+      },
+      {
+       "label": "The number of leads and the cost per lead",
+       "score": 3
+      },
+      {
+       "label": "The cost per lead and the number of booked jobs",
+       "score": 4
+      },
+      {
+       "label": "The cost per lead, the cost per booked job and what those jobs paid",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "adspend",
+     "type": "number",
+     "text": "How much would you put into Facebook and Instagram ads in your first month?",
+     "hint": "Enter ad spend only. For scoring, $50 gets full points and $3,000 gets zero because a smaller first test puts less money at risk. The 12-month result repeats this amount for 12 months.",
+     "suffix": "USD",
+     "min": 50,
+     "max": 3000,
+     "step": 10,
+     "default": 120,
+     "normalize_formula": "(3000 - x) / (3000 - 50) * 100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Track your booked jobs before you pay for leads",
+     "text": "If you can't trace a booked job back to an ad, you can't tell whether that ad paid off. Garrett and I started Burr Oak Digital to help local service businesses get phone calls and booked jobs. You can't make that call from likes. Set up a basic lead list and choose a small test budget before you run your first ad.",
+     "steps": [
+      "Ask every new lead how they found you.",
+      "Record each lead's source in one spreadsheet.",
+      "Add a booked-job column to that spreadsheet."
+     ]
+    },
+    "mid": {
+     "headline": "Track every lead through to the booked job",
+     "text": "You can get a cheap lead and still lose money if you don't book the job. We got 30 leads at $8.33 each for a local pressure washing company. To judge your own ads, you also need to know which leads you booked and what those jobs paid. Keep your test budget small while you fill in those numbers.",
+     "steps": [
+      "Log the source of every new lead.",
+      "Calculate ad spend per booked job.",
+      "Record what each booked job paid."
+     ]
+    },
+    "high": {
+     "headline": "You can judge a 2-week test on your own numbers",
+     "text": "By your answers, you have most of what you need to judge whether your ads are paying off. If your other sections are strong too, consider our 2-week free trial. We set up and run your Meta ads, and you only pay for the ad spend. You see the leads come in, and you can walk away if it's not working. If it works, we keep going with one monthly retainer set from your numbers. DM me \"LEADS\" and I'll run the numbers for your business.",
+     "steps": [
+      "Set your ad budget before the test begins.",
+      "Write down the most you can pay per booked job.",
+      "Compare ad spend with booked jobs after 2 weeks."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "first-month-late-spend",
+   "label": "First-month ad spend on leads you'd answer after 1 hour",
+   "format": "currency",
+   "formula": "adspend * lateleads / 10",
+   "show_in_result": true
+  },
+  {
+   "id": "twelve-month-late-spend",
+   "label": "12-month ad spend on leads you'd answer after 1 hour, at the same budget and reply speed",
+   "format": "currency",
+   "formula": "adspend * lateleads / 10 * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these sounds most like you as an owner?",
+  "answers": [
+   {
+    "label": "I'm out on jobs and answer every lead myself",
+    "tag": "solo-owner"
+   },
+   {
+    "label": "I run a crew and still answer the leads myself",
+    "tag": "crew-owner"
+   },
+   {
+    "label": "Someone in my office answers the leads",
+    "tag": "office-team"
+   },
+   {
+    "label": "Whoever is free answers the leads",
+    "tag": "shared-leads"
+   }
+  ]
+ }
+}
